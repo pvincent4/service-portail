@@ -10,5 +10,4 @@ module CASLaclasseCom
               service_validate_url: '/sso/serviceValidate',
               logout_url: '/sso/logout',
               logout_saml:'/saml/saml2/idp/SingleLogoutService.php'}
-  APIKEY = 'f3f5efb72a0661e19564bacfa3dcc908b1712133637989a0825748ab9938c243'
 end

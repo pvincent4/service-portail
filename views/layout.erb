@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <link rel="shortcut icon" href="img/favicon.png">
 
-    <title>D&eacute;monstrateur GAR</title>
+    <title>Laclasse Starter</title>
 
     <!-- Bootstrap core CSS -->
     <link href='css/bootstrap.min.css' rel='stylesheet' />
@@ -42,11 +42,11 @@
           <ul class="nav navbar-nav navbar-right">
             <% unless is_logged? %>
             <li>
-            <a href='/gar/login' title='Connexion avec Laclasse.com'>Connexion</a><br>
+            <a href='<% APP_PATH %>/login' title='Connexion avec Laclasse.com'>Connexion</a><br>
             </li>
             <% else %>
             <li>
-            <a href='/gar/logout' title='Déconnexion de Laclasse.com'>Déconnexion</a>
+            <a href='<% APP_PATH %>/logout' title='Déconnexion de Laclasse.com'>Déconnexion</a>
             </li>
             <% end %>
           </ul>

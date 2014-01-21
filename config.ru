@@ -6,18 +6,18 @@ require './config/CASLaclasseCom'
 require 'app'
 
 use Rack::Rewrite do
-  rewrite %r{/gar/.*(css|js)/(.*)}, '/$1/$2'
+  rewrite %r{/APP_PATH/.*(css|js)/(.*)}, '/$1/$2'
 end
 
 use Rack::Session::Cookie,
     key: 'rack.session',
-    path: '/gar',
+    path: APP_PATH,
     expire_after: 3600, # In seconds
     secret: 'as6df874asd65fg4sd6fg54asd6gf54' # Digest::SHA1.hexdigest( SecureRandom.base64 ) # test only
 
 use OmniAuth::Builder do
     configure do |config|
-      config.path_prefix =  '/gar/auth'
+      config.path_prefix =  APP_PATH '/auth'
     end
     provider :cas,  CASLaclasseCom::OPTIONS
 end

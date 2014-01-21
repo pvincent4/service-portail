@@ -14,9 +14,9 @@ module AuthenticationHelpers
     if !route.empty?
       route += "?" + env['QUERY_STRING'] if !env['QUERY_STRING'].empty?
       route = URI.escape(env['rack.url_scheme'] + "://" + env['HTTP_HOST'] + route)
-      redirect  "/gar/auth/cas?url=#{URI.encode( route )}"
+      redirect  APP_PATH + "/auth/cas?url=#{URI.encode( route )}"
     end
-    redirect "/gar/auth/cas"
+    redirect APP_PATH + "/auth/cas"
   end
 
   #
