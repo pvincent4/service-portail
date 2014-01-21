@@ -6,7 +6,7 @@ require './config/CASLaclasseCom'
 require 'app'
 
 use Rack::Rewrite do
-  rewrite %r{/APP_PATH/.*(css|js)/(.*)}, '/$1/$2'
+  rewrite %r{/app/.*(css|js)/(.*)}, '/$1/$2'
 end
 
 use Rack::Session::Cookie,
@@ -17,7 +17,7 @@ use Rack::Session::Cookie,
 
 use OmniAuth::Builder do
     configure do |config|
-      config.path_prefix =  APP_PATH '/auth'
+      config.path_prefix =  APP_PATH + '/auth'
     end
     provider :cas,  CASLaclasseCom::OPTIONS
 end

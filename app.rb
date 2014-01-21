@@ -31,16 +31,16 @@ class SinatraApp < Sinatra::Base
    helpers AuthenticationHelpers
 
    get APP_PATH + '/' do
-      erb "<a href='<% APP_PATH %>/listResources'>Lister les ressources</a>"
+      erb "Public page"
    end
 
    get APP_PATH + '/auth/:provider/callback' do
       init_session( request.env )
 
-      if params[:url] != 'http://localhost:9292' + APP_PATH + '/'
+      if params[:url] !=  env['rack.url_scheme'] + "://" + env['HTTP_HOST'] + APP_PATH + '/'
          redirect params[:url]
       else
-         erb "<h2><a href='<% APP_PATH%>/listResources'>Lister les ressources</a></h2>"
+         erb "<h2><a href='<%= APP_PATH%>/listResources'>Lister les ressources</a></h2>"
       end
    end
 
@@ -55,7 +55,7 @@ class SinatraApp < Sinatra::Base
    get APP_PATH + '/protected' do
       throw(:halt, [401, "Not authorized\n"]) unless session[:authenticated]
       erb "<pre>#{request.env['omniauth.auth'].to_json}</pre><hr>
-         <a href='<% APP_PATH %>/logout'>Logout</a>"
+         <a href='<%= APP_PATH %>/logout'>Logout</a>"
    end
 
    get APP_PATH + '/login' do
@@ -63,7 +63,7 @@ class SinatraApp < Sinatra::Base
    end
 
    get APP_PATH + '/logout' do
-      logout! 'http://localhost:9292/gar/'
+      logout! (env['rack.url_scheme'] + "://" + env['HTTP_HOST'] + APP_PATH + '/')
    end
 
 end
