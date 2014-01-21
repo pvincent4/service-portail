@@ -1,8 +1,7 @@
 # -*- encoding: utf-8 -*-
 
 $LOAD_PATH.unshift(File.dirname(__FILE__))
-require './config/env'
-require './config/CASLaclasseCom'
+require './config/init'
 require 'app'
 
 use Rack::Rewrite do
