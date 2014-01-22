@@ -31,7 +31,7 @@ class SinatraApp < Sinatra::Base
    helpers AuthenticationHelpers
 
    get APP_PATH + '/' do
-      erb "Public page"
+      erb "<div class='jumbotron'>Public page</div>"
    end
 
    get APP_PATH + '/auth/:provider/callback' do
