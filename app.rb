@@ -31,7 +31,10 @@ class SinatraApp < Sinatra::Base
    helpers AuthenticationHelpers
 
    get APP_PATH + '/' do
-      erb "<div class='jumbotron'>Public page</div>"
+      erb "<div class='jumbotron'>
+            <h1>Public page</h1>
+            <p class='lead'>This starter app is an example of Omniauth-cas and sinatra integration based on rack system.</p>
+            </div>"
    end
 
    get APP_PATH + '/auth/:provider/callback' do
