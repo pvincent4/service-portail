@@ -13,6 +13,7 @@ gem 'nokogiri'
 gem 'rack-rewrite'
 
 group :development do
+  gem 'sinatra-contrib'
   gem 'shotgun'
   gem 'pry'
 end

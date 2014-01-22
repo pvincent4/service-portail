@@ -26,7 +26,9 @@ module AuthenticationHelpers
     env['rack.session'][:authenticated] = false
     env['rack.session'][:current_user] = nil  
     CASLaclasseCom::OPTIONS[:ssl] ? protocol = 'https://' : protocol = 'http://'
-    redirect protocol + CASLaclasseCom::OPTIONS[:host] + CASLaclasseCom::OPTIONS[:logout_saml] +'?ReturnTo='+URI.encode('https://www.dev.laclasse.com/sso/logout?destination='+url)
+    
+    puts protocol + CASLaclasseCom::OPTIONS[:host] + CASLaclasseCom::OPTIONS[:logout] +'?url='+URI.encode(url)
+    redirect protocol + CASLaclasseCom::OPTIONS[:host] + CASLaclasseCom::OPTIONS[:logout] +'?url='+URI.encode(url)
   end
 
   #

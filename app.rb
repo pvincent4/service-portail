@@ -2,6 +2,7 @@
 
 require 'rubygems'
 require 'bundler'
+require "sinatra/reloader"
 
 Bundler.require( :default, ENV['RACK_ENV'].to_sym )     # require tout les gems définis dans Gemfile
 
@@ -28,23 +29,32 @@ class SinatraApp < Sinatra::Base
     set :protection, true
    end
 
+   configure :development do
+    register Sinatra::Reloader
+    #also_reload '/path/to/some/file'
+    #dont_reload '/path/to/other/file'
+   end
+
    helpers AuthenticationHelpers
 
    get APP_PATH + '/' do
+    if is_logged?
+      erb "<h1>Connected !</h1><pre>#{env['rack.session'][:current_user].to_html}</pre><hr>" 
+    else
       erb "<div class='jumbotron'>
             <h1>Public page</h1>
-            <p class='lead'>This starter app is an example of Omniauth-cas and sinatra integration based on rack system.</p>
+            <p class='lead'>This starter app is an example of Omniauth-cas and sinatra integration based on rack system.<br />
+            Please try to connect with CAS sso...
+            </p>
             </div>"
+    end  
    end
 
    get APP_PATH + '/auth/:provider/callback' do
       init_session( request.env )
-
-      if params[:url] !=  env['rack.url_scheme'] + "://" + env['HTTP_HOST'] + APP_PATH + '/'
-         redirect params[:url]
-      else
-         erb "<h2><a href='<%= APP_PATH%>/listResources'>Lister les ressources</a></h2>"
-      end
+      redirect params[:url] if params[:url] !=  env['rack.url_scheme'] + "://" + env['HTTP_HOST'] + APP_PATH + '/'
+      redirect APP_PATH + '/'
+      #erb "<h1>Connected !</h1><pre>#{request.env['omniauth.auth'].to_html}</pre><hr>"
    end
 
    get APP_PATH + '/auth/failure' do
