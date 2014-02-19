@@ -11,10 +11,10 @@
     <title>Laclasse Starter App</title>
 
     <!-- Bootstrap core CSS -->
-    <link href='css/bootstrap.min.css' rel='stylesheet' />
+    <link href='/app/bower_components/bootstrap/dist/css/bootstrap.min.css' rel='stylesheet' />
 
     <!-- Custom styles for this template -->
-    <link href="css/navbar.css" rel="stylesheet">
+    <link href="/app/styles/navbar.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -65,6 +65,13 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="js/jquery-1.10.2.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="<%= APP_PATH %>/bower_components/angular/angular.js"></script>
+    <script src="<%= APP_PATH %>/bower_components/angular-resource/angular-resource.min.js"></script>
+    <script src="<%= APP_PATH %>/bower_components/angular-route/angular-route.js"></script>
+    <script src="<%= APP_PATH %>/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="<%= APP_PATH %>/scripts/controllers/main.js"></script>
+    <script src="<%= APP_PATH %>/scripts/services/constant.js"></script>
+    <script src="<%= APP_PATH %>/scripts/services/authentication.js"></script>
+    <script src="<%= APP_PATH %>/scripts/app.js"></script> 
   </body>
 </html>

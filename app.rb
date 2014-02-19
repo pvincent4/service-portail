@@ -39,7 +39,7 @@ class SinatraApp < Sinatra::Base
 
    get APP_PATH + '/' do
     if is_logged?
-      erb "<h1>Connected !</h1><pre>#{env['rack.session'][:current_user].to_html}</pre><hr>" 
+      erb :app
     else
       erb "<div class='jumbotron'>
             <h1>Public page</h1>
