@@ -8,10 +8,10 @@ angular.module( 'portailApp',
     .config( [ '$routeProvider', 'APPLICATION_PREFIX',
 	       function( $routeProvider, APPLICATION_PREFIX ) {
 		   $routeProvider.when( '/view1',
-					{ templateUrl: APPLICATION_PREFIX + '/views/partial1.html',
+					{ templateUrl: APPLICATION_PREFIX + '/views/partials/partial1.html',
 					  controller: 'PortailCtrl1' } );
 		   $routeProvider.when( '/view2',
-					{ templateUrl: APPLICATION_PREFIX + '/views/partial2.html',
+					{ templateUrl: APPLICATION_PREFIX + '/views/partials/partial2.html',
 					  controller: 'PortailCtrl2' } );
 		   $routeProvider.otherwise( { redirectTo: '/view1' } );
 	       } ] )
