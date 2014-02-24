@@ -13,7 +13,7 @@ use Rack::Session::Cookie,
     key: 'rack.session',
     path: APP_PATH,
     expire_after: 3600, # In seconds
-    secret: 'as6df874asd65fg4sd6fg54asd6gf54' # Digest::SHA1.hexdigest( SecureRandom.base64 ) # test only
+    secret: '379460892c261bfa7df6a6e466dd98bbd7883a57' # Digest::SHA1.hexdigest( SecureRandom.base64 ) # test only
 
 use OmniAuth::Builder do
     configure do |config|
