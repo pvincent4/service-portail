@@ -5,8 +5,7 @@ require './config/init'
 require 'app'
 
 use Rack::Rewrite do
-  #rewrite %r{/app/.*(css|js)/(.*)}, '/$1/$2'
-  #rewrite %{/app/app/.*/.*}, '/app/$1/$2'
+  rewrite %r{/portail/(.*(css|js|html|png|jpg|gif|jpeg))}, '/app/$1'
 end
 
 use Rack::Session::Cookie,
