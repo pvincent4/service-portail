@@ -1,11 +1,11 @@
 'use strict';
 
-/* Controllers */
+angular.module( 'portailApp.controllers', [] )
+    .controller( 'PortailCtrl1',
+		 [ function(  ) {
 
-angular.module('myApp.controllers', []).
-  controller('MyCtrl1', [function() {
+		 } ] )
+    .controller( 'PortailCtrl2',
+		 [ function(  ) {
 
-  }])
-  .controller('MyCtrl2', [function() {
-
-  }]);  
+		 } ] );
