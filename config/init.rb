@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+#- -*- coding: utf-8 -*-
 
 # DIR Method
 def __DIR__(*args)

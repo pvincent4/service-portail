@@ -53,6 +53,8 @@
 	</div><!--/.nav-collapse -->
       </div>
 
+      <div id="flash"></div>
+
       <!-- Main component for a primary marketing message or call to action -->
       <div class="col-md-12" style="background-color:#E7E7E7;">
 	<%= yield %>
@@ -64,9 +66,12 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
+
+    <script src="<%= APP_PATH %>/faye/client.js"></script>
     <script src="<%= APP_PATH %>/bower_components/angular/angular.js"></script>
     <script src="<%= APP_PATH %>/bower_components/angular-resource/angular-resource.min.js"></script>
     <script src="<%= APP_PATH %>/bower_components/angular-route/angular-route.js"></script>
+    <script src="<%= APP_PATH %>/bower_components/jquery/dist/jquery.js"></script>
 
     <script src="<%= APP_PATH %>/scripts/controllers/main.js"></script>
     <script src="<%= APP_PATH %>/scripts/services/constants.js"></script>

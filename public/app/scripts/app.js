@@ -1,5 +1,7 @@
 'use strict';
 
+
+
 // Declare app level module which depends on filters, and services
 angular.module( 'portailApp',
 		[ 'portailApp.controllers',
@@ -20,3 +22,16 @@ angular.module( 'portailApp',
 		$rootScope.$location = $location;
 		window.scope = $rootScope;
 	    } ] );
+
+$(document).ready( function() {
+  var client = new Faye.Client( '/app/faye', {
+      timeout: 120
+      });
+
+  var subscription = client.subscribe('/foo', function(message) {
+    console.log("message received on /foo : " + message) ;
+    // handle message
+  });
+
+  client.publish('/foo', {text: 'Hi there'});
+});
