@@ -3,6 +3,7 @@
 source 'https://rubygems.org'
 source 'http://gems.erasme.org'
 
+gem 'rake'
 gem 'sinatra'
 gem 'json'
 gem 'omniauth'
