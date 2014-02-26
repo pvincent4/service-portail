@@ -3,26 +3,38 @@ GEM
   remote: http://gems.erasme.org/
   specs:
     addressable (2.3.5)
-    akami (1.2.0)
-      gyoku (>= 0.4.0)
-      nokogiri (>= 1.4.0)
     backports (3.3.5)
-    builder (3.2.2)
     coderay (1.1.0)
+    cookiejar (0.3.1)
     daemons (1.1.9)
+    em-http-request (1.1.2)
+      addressable (>= 2.3.4)
+      cookiejar
+      em-socksify (>= 0.3)
+      eventmachine (>= 1.0.3)
+      http_parser.rb (>= 0.6.0)
+    em-socksify (0.3.0)
+      eventmachine (>= 1.0.0.beta.4)
     eventmachine (1.0.3)
-    gyoku (1.0.0)
-      builder (>= 2.1.2)
+    faye (1.0.1)
+      cookiejar (>= 0.3.0)
+      em-http-request (>= 0.3.0)
+      eventmachine (>= 0.12.0)
+      faye-websocket (>= 0.7.0)
+      multi_json (>= 1.0.0)
+      rack (>= 1.0.0)
+      websocket-driver (>= 0.3.0)
+    faye-websocket (0.7.2)
+      eventmachine (>= 0.12.0)
+      websocket-driver (>= 0.3.1)
     hashie (2.0.5)
-    httpi (2.0.2)
-      rack
+    http_parser.rb (0.6.0)
     json (1.8.1)
     method_source (0.8.2)
     mini_portile (0.5.2)
     multi_json (1.8.2)
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
-    nori (2.1.0)
     omniauth (1.1.4)
       hashie (>= 1.2, < 3)
       rack
@@ -40,14 +52,6 @@ GEM
     rack-rewrite (1.4.1)
     rack-test (0.6.2)
       rack (>= 1.0)
-    savon (2.2.0)
-      akami (~> 1.2.0)
-      builder (>= 2.1.2)
-      gyoku (~> 1.0.0)
-      httpi (~> 2.0.2)
-      nokogiri (>= 1.4.0)
-      nori (~> 2.1.0)
-      wasabi (~> 3.1.0)
     shotgun (0.9)
       rack (>= 1.0)
     sinatra (1.4.4)
@@ -67,21 +71,19 @@ GEM
       eventmachine (>= 1.0.0)
       rack (>= 1.0.0)
     tilt (1.4.1)
-    wasabi (3.1.0)
-      httpi (~> 2.0)
-      nokogiri (>= 1.4.0)
+    websocket-driver (0.3.2)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  faye
   json
   nokogiri
   omniauth
   omniauth-cas
   pry
   rack-rewrite
-  savon
   shotgun
   sinatra
   sinatra-contrib

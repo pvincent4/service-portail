@@ -8,9 +8,9 @@ gem 'json'
 gem 'omniauth'
 gem 'omniauth-cas'
 gem 'thin'
-gem 'savon'
 gem 'nokogiri'
 gem 'rack-rewrite'
+gem 'faye'
 
 group :development do
   gem 'sinatra-contrib'

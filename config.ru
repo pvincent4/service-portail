@@ -1,8 +1,12 @@
 # -*- encoding: utf-8 -*-
 
 $LOAD_PATH.unshift(File.dirname(__FILE__))
+
 require './config/init'
+require 'faye'
 require 'app'
+
+Faye::WebSocket.load_adapter('thin')
 
 use Rack::Rewrite do
   rewrite %r{/portail/(.*(css|js|html|png|jpg|gif|jpeg))}, '/app/$1'
@@ -20,5 +24,9 @@ use OmniAuth::Builder do
     end
     provider :cas,  CASLaclasseCom::OPTIONS
 end
+
+
+use Faye::RackAdapter, :mount      => "/app/faye",
+                       :timeout    => 25
 
 run SinatraApp
