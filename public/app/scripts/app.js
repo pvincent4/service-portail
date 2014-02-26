@@ -28,8 +28,10 @@ $(document).ready( function() {
       timeout: 120
       });
 
-  var subscription = client.subscribe('/foo', function(message) {
-    console.log("message received on /foo : " + message) ;
+  var subscription = client.subscribe('/foo', function(msg) {
+    console.log("message received on /foo : " + msg) ;
+    $.growl.notice({ duration: 6400, size: "large", title: "Hey there", message: "New message" });
+    $.growl({ message: msg.text });
     // handle message
   });
 
