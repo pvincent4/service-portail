@@ -11,11 +11,11 @@
     <title>Laclasse Starter App</title>
 
     <!-- Bootstrap core CSS -->
-    <link href='/app/bower_components/bootstrap/dist/css/bootstrap.min.css' rel='stylesheet' />
+    <link href="<%= APP_PATH %>/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet />
 
     <!-- Custom styles for this template -->
-    <link href="/app/styles/navbar.css" rel="stylesheet">
-    <link href="/app/styles/jquery.growl.css" rel="stylesheet" type="text/css" />
+    <link href="<%= APP_PATH %>/styles/navbar.css" rel="stylesheet">
+    <link href="<%= APP_PATH %>/bower_components/growl/stylesheets/jquery.growl.css" rel="stylesheet" type="text/css" />
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -68,12 +68,12 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
 
-    <script src="<%= APP_PATH %>/faye/client.js"></script>
+    <script src="<%= APP_PATH %>/bower_components/faye/include.js"></script>
     <script src="<%= APP_PATH %>/bower_components/angular/angular.js"></script>
     <script src="<%= APP_PATH %>/bower_components/angular-resource/angular-resource.min.js"></script>
     <script src="<%= APP_PATH %>/bower_components/angular-route/angular-route.js"></script>
     <script src="<%= APP_PATH %>/bower_components/jquery/dist/jquery.js"></script>
-    <script src="<%= APP_PATH %>/scripts/jquery.growl.js"></script>
+    <script src="<%= APP_PATH %>/bower_components/growl/javascripts/jquery.growl.js"></script>
 
     <script src="<%= APP_PATH %>/scripts/controllers/main.js"></script>
     <script src="<%= APP_PATH %>/scripts/services/constants.js"></script>

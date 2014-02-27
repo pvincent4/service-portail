@@ -11,7 +11,9 @@
     "angular-cookies": "latest",
     "angular-sanitize": "latest",
     "angular-route": "latest",
-    "Font-Awesome": "latest"
+      "Font-Awesome": "latest",
+      "growl": "latest",
+      "faye": "latest"
   },
   "devDependencies": {
     "angular-mocks": "latest",
