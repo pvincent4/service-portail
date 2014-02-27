@@ -20,13 +20,13 @@ use Rack::Session::Cookie,
 
 use OmniAuth::Builder do
     configure do |config|
-      config.path_prefix =  APP_PATH + '/auth'
+      config.path_prefix = "#{APP_PATH}/auth"
     end
-    provider :cas,  CASLaclasseCom::OPTIONS
+    provider :cas, CASLaclasseCom::OPTIONS
 end
 
-
-use Faye::RackAdapter, :mount      => "/app/faye",
-                       :timeout    => 25
+use Faye::RackAdapter,
+    mount: "#{APP_PATH}/faye",
+    timeout: 25
 
 run SinatraApp
