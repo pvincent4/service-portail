@@ -1,22 +1,22 @@
 {
-  "name": "app",
-  "version": "0.0.0",
-  "dependencies": {
-    "angular": "latest",
-    "json3": "latest",
-    "es5-shim": "latest",
-    "jquery": "latest",
-    "bootstrap": "latest",
-    "angular-resource": "latest",
-    "angular-cookies": "latest",
-    "angular-sanitize": "latest",
-    "angular-route": "latest",
-      "Font-Awesome": "latest",
-      "growl": "latest",
-      "faye": "latest"
-  },
-  "devDependencies": {
-    "angular-mocks": "latest",
-    "angular-scenario": "latest"
-  }
+    "name": "app",
+    "version": "0.0.0",
+    "dependencies": {
+	"angular": "latest",
+	"json3": "latest",
+	"es5-shim": "latest",
+	"jquery": "latest",
+	"bootstrap": "latest",
+	"angular-resource": "latest",
+	"angular-cookies": "latest",
+	"angular-sanitize": "latest",
+	"angular-ui-router": "latest",
+	"Font-Awesome": "latest",
+	"growl": "latest",
+	"faye": "latest"
+    },
+    "devDependencies": {
+	"angular-mocks": "latest",
+	"angular-scenario": "latest"
+    }
 }

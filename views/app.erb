@@ -1,8 +1,8 @@
 <div data-ng-app="portailApp">
-    <div class="row-fluid">
-      <div data-ng-view></div>
-    </div>
-    <pre>
-      Monde de sinatra <%=env['rack.session'][:current_user].to_html%>
-    </pre>
+  <div class="row-fluid">
+    <div data-ui-view></div>
+  </div>
+  <pre>
+    Monde de sinatra <%=env['rack.session'][:current_user].to_html%>
+  </pre>
 </div>
