@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <link rel="shortcut icon" href="img/favicon.png">
 
-    <title>Laclasse Starter App</title>
+    <title>Laclasse.com</title>
 
     <!-- Bootstrap core CSS -->
     <link href="<%= APP_PATH %>/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet />
@@ -19,8 +19,8 @@
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
   </head>
 
@@ -32,23 +32,23 @@
       <div class="navbar navbar-default" role="navigation">
 	<div class="navbar-header">
 	  <!--button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-	    <span class="sr-only">Toggle navigation</span>
-	    <span class="icon-bar"></span>
-	    <span class="icon-bar"></span>
-	    <span class="icon-bar"></span>
+	  <span class="sr-only">Toggle navigation</span>
+	  <span class="icon-bar"></span>
+	  <span class="icon-bar"></span>
+	  <span class="icon-bar"></span>
 	  </button-->
-	  <a class="navbar-brand" href="#">Laclasse.com -&gt; Starter App</a>
+	  <!-- <a class="navbar-brand" href="#">Laclasse.com -&gt; Starter App</a> -->
 	</div>
 	<div class="navbar-collapse collapse">
 	  <ul class="nav navbar-nav navbar-right">
 	    <% unless is_logged? %>
-	    <li>
-	    <a href='<%= APP_PATH %>/login' title='Connexion avec Laclasse.com'>Connexion</a><br>
-	    </li>
+	      <li>
+		<a href='<%= APP_PATH %>/login' title='Connexion avec Laclasse.com'>Connexion</a><br>
+	      </li>
 	    <% else %>
-	    <li>
-	    <a href='<%= APP_PATH %>/logout' title='Déconnexion de Laclasse.com'>Déconnexion</a>
-	    </li>
+	      <li>
+		<a href='<%= APP_PATH %>/logout' title='Déconnexion de Laclasse.com'>Déconnexion</a>
+	      </li>
 	    <% end %>
 	  </ul>
 	</div><!--/.nav-collapse -->
@@ -72,6 +72,7 @@
     <script src="<%= APP_PATH %>/bower_components/angular/angular.js"></script>
     <script src="<%= APP_PATH %>/bower_components/angular-resource/angular-resource.min.js"></script>
     <script src="<%= APP_PATH %>/bower_components/angular-route/angular-route.js"></script>
+    <script src="<%= APP_PATH %>/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="<%= APP_PATH %>/bower_components/jquery/dist/jquery.js"></script>
     <script src="<%= APP_PATH %>/bower_components/growl/javascripts/jquery.growl.js"></script>
 
