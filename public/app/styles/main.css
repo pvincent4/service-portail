@@ -79,7 +79,26 @@ body {
 }
 
 
+
+* { height: 100%; }
+#flash {display:none}
 body {padding:0}
 
 .container-fluid {width:100%;max-width:100%;padding:0;margin:0}
 .container-fluid * {padding:0;margin:0}
+
+.mire .info {background-color:#abc}
+
+
+/* cases du damier */
+.damier .tile {float:left;display:table-cell;text-align:center;vertical-align:middle}
+.damier .tile .glyphicon {font-size:300%}
+
+/* tailles */
+.damier .tile.small {width:25%;height:25%}
+.damier .tile.big {width:50%;height:75%}
+
+/* couleurs */
+.damier .tile.red {background:red}
+.damier .tile.blue {background:blue}
+.damier .tile.yellow {background:yellow}
