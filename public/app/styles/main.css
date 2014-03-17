@@ -91,16 +91,31 @@ body {padding:0}
 
 
 /* cases du damier */
-.damier .case {float:left;display:table-cell;vertical-align:middle;text-align:center}
+.damier .case {position:relative;
+	       float:left;
+	       display:table-cell;
+	       vertical-align:middle;
+	       text-align:center}
 
 /* tailles */
 .damier .petite.case {min-width:20%;width:20%;height:25%}
 /* .damier .grande.case {width:60%;height:75%} */
 
 /* couleurs */
-.damier .case.red {background:red}
-.damier .case.blue {background:blue}
-.damier .case.yellow {background:yellow}
+.damier .case.red {background:#d00}
+.damier .case.blue {background:#05d}
+.damier .case.yellow {background:#dd0}
 
 /* icônes */
+.compteur-notification {background:#FF1616;
+			border-radius:1em;
+			color:#fff;
+			font-size:1.5em;
+			font-weight:bold;
+			height:2em;
+			padding-top:0.25em;
+			position:absolute;
+			right:0.1em;
+			top:0.1em;
+			width:2em;}
 .app-icon {font-size:6em;height:66%;margin-top:10%}
