@@ -87,8 +87,10 @@ body {padding:0}
 .container-fluid {width:100%;max-width:100%;padding:0;margin:0}
 .container-fluid * {padding:0;margin:0}
 
-.mire .info {background-color:#abc}
+.mire .header, .mire .footer {height:25%}
+.mire .slider {height:50%}
 
+.mire .avatar {background-color:#aff}
 
 /* cases du damier */
 .damier .case {position:relative;
