@@ -80,7 +80,7 @@ body {
 
 
 
-* { height: 100%; }
+div, html, body {height: 100%}
 #flash {display:none}
 body {padding:0}
 
@@ -91,14 +91,16 @@ body {padding:0}
 
 
 /* cases du damier */
-.damier .tile {float:left;display:table-cell;text-align:center;vertical-align:middle}
-.damier .tile .glyphicon {font-size:300%}
+.damier .case {float:left;display:table-cell;vertical-align:middle;text-align:center}
 
 /* tailles */
-.damier .tile.small {width:25%;height:25%}
-.damier .tile.big {width:50%;height:75%}
+.damier .petite.case {min-width:20%;width:20%;height:25%}
+/* .damier .grande.case {width:60%;height:75%} */
 
 /* couleurs */
-.damier .tile.red {background:red}
-.damier .tile.blue {background:blue}
-.damier .tile.yellow {background:yellow}
+.damier .case.red {background:red}
+.damier .case.blue {background:blue}
+.damier .case.yellow {background:yellow}
+
+/* icônes */
+.app-icon {font-size:6em;height:66%;margin-top:10%}
