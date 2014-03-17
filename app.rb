@@ -48,6 +48,7 @@ class SinatraApp < Sinatra::Base
             <p class='lead'>This starter app is an example of Omniauth-cas and sinatra integration based on rack system.<br />
             Please try to connect with CAS sso...
             </p>
+            <p><a href='login' title='Connexion avec Laclasse.com'>Connexion</a></p>
             </div>"
     end
    end
