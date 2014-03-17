@@ -81,5 +81,5 @@ body {
 
 body {padding:0}
 
-.container {width:100%;max-width:100%;padding:0;margin:0}
-.container * {padding:0;margin:0}
+.container-fluid {width:100%;max-width:100%;padding:0;margin:0}
+.container-fluid * {padding:0;margin:0}
