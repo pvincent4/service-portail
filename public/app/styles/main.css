@@ -121,3 +121,17 @@ body {padding:0}
 			top:0.1em;
 			width:2em;}
 .app-icon {font-size:6em;height:66%;margin-top:10%}
+
+
+
+/* /show-app */
+#app-wrapper {overflow:hidden}
+#app-wrapper .en-tete, #app-wrapper .en-tete .navbar {height:1.5em;
+						      min-height:1.5em;
+						      max-height:1.5em;
+						      background-color:#16161d}
+#app-wrapper .iframe {height:calc(100% - 1.5em);
+		      background-color:#ececed}
+#app-wrapper .iframe iframe {width:100%;
+			     height:100%;
+			     border:0}
