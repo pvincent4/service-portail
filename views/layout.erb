@@ -27,32 +27,6 @@
 
   <body>
 
-
-      <!-- Static navbar -->
-      <div class="navbar navbar-default" role="navigation">
-	<div class="navbar-header">
-	  <!--button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-	  <span class="sr-only">Toggle navigation</span>
-	  <span class="icon-bar"></span>
-	  <span class="icon-bar"></span>
-	  <span class="icon-bar"></span>
-	  </button-->
-	  <!-- <a class="navbar-brand" href="#">Laclasse.com -&gt; Starter App</a> -->
-	</div>
-	<div class="navbar-collapse collapse">
-	  <ul class="nav navbar-nav navbar-right">
-	    <% unless is_logged? %>
-	      <li>
-		<a href='<%= APP_PATH %>/login' title='Connexion avec Laclasse.com'>Connexion</a><br>
-	      </li>
-	    <% else %>
-	      <li>
-		<a href='<%= APP_PATH %>/logout' title='Déconnexion de Laclasse.com'>Déconnexion</a>
-	      </li>
-	    <% end %>
-	  </ul>
-	</div><!--/.nav-collapse -->
-      </div>
     <div class="container-fluid">
 
       <div id="flash"></div>
