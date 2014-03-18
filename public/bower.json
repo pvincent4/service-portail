@@ -13,7 +13,8 @@
 	"angular-ui-router": "latest",
 	"Font-Awesome": "latest",
 	"growl": "latest",
-	"faye": "latest"
+	"faye": "latest",
+	"underscore": "latest"
     },
     "devDependencies": {
 	"angular-mocks": "latest",
