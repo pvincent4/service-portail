@@ -4,6 +4,7 @@
 angular.module( 'portailApp',
 		[ 'portailApp.controllers',
 		  'portailApp.services.constants',
+		  'portailApp.services.authentication',
 		  'ui.router' ] )
     .config( [ '$stateProvider', '$urlRouterProvider', 'APPLICATION_PREFIX',
 	       function( $stateProvider, $urlRouterProvider, APPLICATION_PREFIX ) {
