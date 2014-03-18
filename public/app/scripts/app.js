@@ -3,21 +3,21 @@
 // Declare app level module which depends on filters, and services
 angular.module( 'portailApp',
 		[ 'portailApp.controllers',
-		  'ui.router',
-		  'services.constants' ] )
+		  'portailApp.services.constants',
+		  'ui.router' ] )
     .config( [ '$stateProvider', '$urlRouterProvider', 'APPLICATION_PREFIX',
 	       function( $stateProvider, $urlRouterProvider, APPLICATION_PREFIX ) {
 		   $stateProvider
-		       .state( 'view1',
-			       { url: '/mire',
-				 templateUrl: APPLICATION_PREFIX + '/views/mire.html',
-		       .state( 'view2',
+		       .state( 'portail',
+			       { url: '/',
+				 templateUrl: APPLICATION_PREFIX + '/views/portail.html',
 				 controller: 'PortailCtrl' } )
+		       .state( 'app-wrapper',
 			       { url: '/show-app',
 				 templateUrl: APPLICATION_PREFIX + '/views/show-app.html',
 				 controller: 'AppWrapperCtrl' } );
 
-		   $urlRouterProvider.otherwise( '/mire' );
+		   $urlRouterProvider.otherwise( '/' );
 	       } ] )
     .run( [ '$rootScope', '$location',
 	    function( $rootScope, $location ) {

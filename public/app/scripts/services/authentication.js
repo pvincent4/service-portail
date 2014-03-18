@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module( 'services.authentication', [  ] );
-angular.module( 'services.authentication' )
+angular.module( 'portailApp.services.authentication', [  ] );
+angular.module( 'portailApp.services.authentication' )
     .factory( 'currentUser',
 	      function(  ){
 		  var currentUser = {  } ;
