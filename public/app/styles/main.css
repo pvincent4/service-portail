@@ -104,9 +104,13 @@ body {padding:0}
 /* .damier .grande.case {width:60%;height:75%} */
 
 /* couleurs */
-.damier .case.red {background:#d00}
-.damier .case.blue {background:#05d}
-.damier .case.yellow {background:#dd0}
+.damier .case.rouge {background-color:#d00}
+.damier .case.orange {background-color:orange}
+.damier .case.jaune {background-color:#dd0}
+.damier .case.vert {background-color:#5d0}
+.damier .case.bleu {background-color:#05d}
+.damier .case.indigo {background-color:indigo}
+.damier .case.violet {background-color:violet}
 
 /* icônes */
 .compteur-notification {background:#FF1616;

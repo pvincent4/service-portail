@@ -6,9 +6,13 @@ angular.module( 'portailApp.controllers' )
 		   function( $scope ) {
 		       var nb_cases = 20;
 
-		       $scope.couleurs = [ 'red',
-					   'blue',
-					   'yellow' ];
+		       $scope.couleurs = [ 'rouge',
+					   'orange',
+					   'jaune',
+					   'vert',
+					   'bleu',
+					   'indigo',
+					   'violet' ];
 		       $scope.randCouleur = function(  ) {
 			   return $scope.couleurs[ _.random( 0, $scope.couleurs.length - 1 ) ];
 		       };
