@@ -47,6 +47,12 @@ class SinatraApp < Sinatra::Base
       end
    end
 
+   # {{{ API
+   get "#{APP_PATH}/api/user" do
+      return { "user" => "","info" => { } }.to_json unless session[:authenticated]
+      env['rack.session'][:current_user].to_json
+   end
+   # }}}
    get "#{APP_PATH}/auth/:provider/callback" do
       init_session( request.env )
       redirect params[:url] if params[:url] !=  "#{env['rack.url_scheme']}://env['HTTP_HOST']#{APP_PATH}/"
