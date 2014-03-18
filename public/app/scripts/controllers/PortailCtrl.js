@@ -24,7 +24,7 @@ angular.module( 'portailApp.controllers' )
 			   $scope.apps = [];
 
 			   if ( $scope.currentUser.is_logged ) {
-			       // FIXME: utiliser de vrais données
+			       // FIXME: utiliser de vraies données
 			       $scope.apps = [
 				   { icone: '📓',
 				     couleur: $scope.randCouleur(),
