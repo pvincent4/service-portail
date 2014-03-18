@@ -28,7 +28,7 @@
 
     <div data-ng-repeat="app in apps" class="petite case {{ app.couleur }}" >
       <span class="compteur-notification" data-ng-show="app.notifications.length > 0">{{app.notifications.length}}</span>
-      <a href="{{app.lien}}"><span class="app-icon">{{app.icone}}</span></a>
+      <a href="{{app.lien}}" data-ng-show="app.lien !== ''"><span class="app-icon">{{app.icone}}</span></a>
     </div>
 
   </div>
