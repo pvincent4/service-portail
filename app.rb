@@ -53,6 +53,8 @@ class SinatraApp < Sinatra::Base
       env['rack.session'][:current_user].to_json
    end
    # }}}
+
+   # {{{ auth
    get "#{APP_PATH}/auth/:provider/callback" do
       init_session( request.env )
       redirect params[:url] if params[:url] !=  "#{env['rack.url_scheme']}://env['HTTP_HOST']#{APP_PATH}/"
@@ -79,6 +81,7 @@ class SinatraApp < Sinatra::Base
    get "#{APP_PATH}/logout" do
       logout! "#{env['rack.url_scheme']}://#{env['HTTP_HOST']}#{APP_PATH}/"
    end
+   # }}}
 
 end
 
