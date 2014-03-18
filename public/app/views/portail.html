@@ -3,11 +3,11 @@
 
     <div class="row-fluid header">
       <div class="col-xs-6 col-s-m6 col-md-6 col-lg-6">
+
       </div>
       <div class="col-xs-6 col-s-m6 col-md-6 col-lg-6 avatar">
-	<a href='login' title='Connexion avec Laclasse.com'>Connexion</a>
-	<br>
-	<a href='logout' title='Déconnexion de Laclasse.com'>Déconnexion</a>
+	<a href='login' title='Connexion avec Laclasse.com' data-ng-show="currentUser.user == ''">Connexion</a>
+	<a href='logout' title='Déconnexion de Laclasse.com' data-ng-hide="currentUser.user == ''">Déconnexion</a>
       </div>
     </div>
 
