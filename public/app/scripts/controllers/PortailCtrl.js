@@ -4,6 +4,7 @@ angular.module( 'portailApp.controllers' )
     .controller( 'PortailCtrl',
 		 [ '$scope',
 		   function( $scope ) {
+		       // {{{ damier
 		       var nb_cases = 20;
 
 		       $scope.couleurs = [ 'rouge',
@@ -50,4 +51,9 @@ angular.module( 'portailApp.controllers' )
 
 		       // randomize
 		       $scope.apps = _($scope.apps).shuffle();
+		       // }}}
+
+		       // {{{ aside
+
+		       // }}}
 		 } ] );
