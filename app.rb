@@ -40,16 +40,10 @@ class SinatraApp < Sinatra::Base
    helpers AuthenticationHelpers
 
    get "#{APP_PATH}/" do
-      erb "<div class='jumbotron'>
-            <h1>Public page</h1>
-            <p class='lead'>This starter app is an example of Omniauth-cas and sinatra integration based on rack system.<br />
-            Please try to connect with CAS sso...
-            </p>
-            <p><a href='login' title='Connexion avec Laclasse.com'>Connexion</a></p>
-            </div>"
       if is_logged?
          erb :app
       else
+         erb :public
       end
    end
 
@@ -60,17 +54,16 @@ class SinatraApp < Sinatra::Base
    end
 
    get "#{APP_PATH}/auth/failure" do
-      erb "<h1>Authentication Failed:</h1><h3>message:<h3> <pre>#{params}</pre>"
+      erb :auth_failure
    end
 
    get "#{APP_PATH}/auth/:provider/deauthorized" do
-      erb "#{params[:provider]} has deauthorized this app."
+      erb :auth_deauthorized
    end
 
    get "#{APP_PATH}/protected" do
       throw( :halt, [ 401, "Not authorized\n" ] ) unless session[:authenticated]
-      erb "<pre>#{request.env['omniauth.auth'].to_json}</pre><hr>
-         <a href='<%= APP_PATH %>/logout'>Logout</a>"
+      erb :auth_protected
    end
 
    get "#{APP_PATH}/login" do
