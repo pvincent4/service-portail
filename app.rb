@@ -40,11 +40,7 @@ class SinatraApp < Sinatra::Base
    helpers AuthenticationHelpers
 
    get "#{APP_PATH}/" do
-      if is_logged?
-         erb :app
-      else
-         erb :public
-      end
+      erb :app
    end
 
    # {{{ API
