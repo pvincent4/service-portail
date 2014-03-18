@@ -15,7 +15,7 @@ class Hash
           map { |k, v|
              [ "<li><strong>#{k}</strong> : ", v.respond_to?(:to_html) ? v.to_html : "<span>#{v}</span></li>" ]
           },
-       '</ul>'
+          '</ul>'
       ].join
    end
 end
@@ -24,25 +24,22 @@ end
 class SinatraApp < Sinatra::Base
 
    configure do
-    set :app_file, __FILE__
-    set :root, APP_ROOT
-    set :public_folder, proc { File.join( root, 'public' ) }
-    set :inline_templates, true
-    set :protection, true
+      set :app_file, __FILE__
+      set :root, APP_ROOT
+      set :public_folder, proc { File.join( root, 'public' ) }
+      set :inline_templates, true
+      set :protection, true
    end
 
    configure :development do
-    register Sinatra::Reloader
-    # also_reload '/path/to/some/file'
-    # dont_reload '/path/to/other/file'
+      register Sinatra::Reloader
+      # also_reload '/path/to/some/file'
+      # dont_reload '/path/to/other/file'
    end
 
    helpers AuthenticationHelpers
 
    get "#{APP_PATH}/" do
-    if is_logged?
-      erb :app
-    else
       erb "<div class='jumbotron'>
             <h1>Public page</h1>
             <p class='lead'>This starter app is an example of Omniauth-cas and sinatra integration based on rack system.<br />
@@ -50,7 +47,10 @@ class SinatraApp < Sinatra::Base
             </p>
             <p><a href='login' title='Connexion avec Laclasse.com'>Connexion</a></p>
             </div>"
-    end
+      if is_logged?
+         erb :app
+      else
+      end
    end
 
    get "#{APP_PATH}/auth/:provider/callback" do
