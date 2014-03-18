@@ -11,11 +11,11 @@ angular.module( 'portailApp',
 		       .state( 'view1',
 			       { url: '/mire',
 				 templateUrl: APPLICATION_PREFIX + '/views/mire.html',
-				 controller: 'PortailCtrl1' } )
 		       .state( 'view2',
+				 controller: 'PortailCtrl' } )
 			       { url: '/show-app',
 				 templateUrl: APPLICATION_PREFIX + '/views/show-app.html',
-				 controller: 'PortailCtrl2' } );
+				 controller: 'AppWrapperCtrl' } );
 
 		   $urlRouterProvider.otherwise( '/mire' );
 	       } ] )
