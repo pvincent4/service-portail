@@ -121,12 +121,12 @@ body {padding:0}
 .compteur-notification { background:#ff7814;
 			 border-radius:1em;
 			 color:#fff;
-			 font-size:1.5em;
+			 font-size:2em;
 			 font-weight:bold;
 			 padding:0 0.4em;
 			 position: absolute;
-			 right: 0.25em;
-			 top: 0.25em }
+			 right: 0.5em;
+			 top: 0.5em }
 .app-icon {font-size:6em;height:66%;margin-top:10%}
 
 
