@@ -6,7 +6,10 @@ require 'sinatra/reloader'
 
 Bundler.require( :default, ENV['RACK_ENV'].to_sym )     # require tout les gems définis dans Gemfile
 
+require_relative './config/options'
+
 require_relative './lib/AuthenticationHelpers'
+require_relative './lib/annuaire'
 
 # https://gist.github.com/chastell/1196800
 class Hash
@@ -45,7 +48,9 @@ class SinatraApp < Sinatra::Base
 
    # {{{ API
    get "#{APP_PATH}/api/user" do
-      return { "user" => "","info" => { } }.to_json unless session[:authenticated]
+      return { 'user' => '', 'info' => { } }.to_json unless session[:authenticated]
+
+      env['rack.session'][:current_user][:extra] = Annuaire.get_user( env['rack.session'][:current_user][:info][:uid] )
       env['rack.session'][:current_user].to_json
    end
    # }}}
