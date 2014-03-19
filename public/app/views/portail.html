@@ -31,12 +31,12 @@
   </div>
   <div class="col-xs-8 col-s-m8 col-md-8 col-lg-8 damier">
 
-    <div data-ng-repeat="app in apps" class="petite case {{apps_definitions[ app.id ].couleur}}" >
+    <div data-ng-repeat="app in apps" class="petite case {{ app.couleur }}" >
       <span class="compteur-notification" data-ng-show="app.notifications.length > 0">{{app.notifications.length}}</span>
-      <a href="{{apps_definitions[ app.id ].lien}}" data-ng-show="app.id !== ''">
-	<data-ng-include class="svg" src="apps_definitions[ app.id ].icone"></data-ng-include>
+      <a href="{{ app.lien }}" data-ng-show="app.lien !== ''">
+	<data-ng-include class="svg" src="app.icone"></data-ng-include>
 	<br>
-	<span>{{apps_definitions[ app.id ].nom}}</span>
+	<span>{{ app.nom }}</span>
       </a>
     </div>
 
