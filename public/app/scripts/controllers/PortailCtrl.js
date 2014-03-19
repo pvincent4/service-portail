@@ -2,11 +2,12 @@
 
 angular.module( 'portailApp.controllers' )
     .controller( 'PortailCtrl',
-		 [ '$scope', 'currentUser',
-		   function( $scope, currentUser ) {
+		 [ '$scope', 'currentUser', 'APPLICATION_PREFIX',
+		   function( $scope, currentUser, APPLICATION_PREFIX ) {
 		       // {{{ damier
 		       var nb_cases = 20;
 
+		       $scope.racine_images = '/app/bower_components/charte-graphique-laclasse-com/images/';
 		       $scope.couleurs = [ 'bleu',
 					   'vert',
 					   'rouge',
@@ -17,6 +18,12 @@ angular.module( 'portailApp.controllers' )
 					   'gris2',
 					   'gris3',
 					   'gris4' ];
+		       $scope.apps_definitions = {
+			   'cahierdetextes': {icone: $scope.racine_images + '03_cahierdetextes.svg',
+					      couleur: 'violet',
+					      nom: 'Cahier de textes',
+					      lien: '/portail/#/show-app'}
+		       };
 		       $scope.randCouleur = function(  ) {
 			   return $scope.couleurs[ _.random( 0, $scope.couleurs.length - 1 ) ];
 		       };
@@ -29,26 +36,12 @@ angular.module( 'portailApp.controllers' )
 			   if ( $scope.currentUser.is_logged ) {
 			       // FIXME: utiliser de vraies données
 			       $scope.apps = [
-				   { icone: '📓',
-				     couleur: $scope.randCouleur(),
-				     nom: 'Cahier de textes',
-				     lien: '/portail/#/show-app',
+				   { id: 'cahierdetextes',
 				     notifications: [ { dummy: 'value' },
 						      { dummy: 'value' },
 						      { dummy: 'value' },
 						      { dummy: 'value' }
-						    ] },
-				   { icone: '☕',
-				     couleur: $scope.randCouleur(),
-				     nom: 'Café',
-				     lien: '/café',
-				     notifications: [ { dummy: 'value' }
-						    ] },
-				   { icone: '🎵',
-				     couleur: $scope.randCouleur(),
-				     nom: 'Musique',
-				     lien: '/musique',
-				     notifications: [  ] }
+						    ] }
 			       ];
 			   }
 

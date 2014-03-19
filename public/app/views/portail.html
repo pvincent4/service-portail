@@ -4,12 +4,13 @@
     <div class="row-fluid header">
       <div class="col-xs-6 col-s-m6 col-md-6 col-lg-6 logolaclasse gris4">
 	<a href="{{APPLICATION_PREFIX}}">
-	  <span class="svg" data-ng-include="'/app/bower_components/charte-graphique-laclasse-com/images/logolaclasse.svg'"></span>
+	  <data-ng-include class="svg" src="APPLICATION_PREFIX+'/app/bower_components/charte-graphique-laclasse-com/images/logolaclasse.svg'"></data-ng-include>
 	  <br>
-	  <p>laclasse.com</p>
+	  <span>laclasse.com</span>
 	</a>
       </div>
       <div class="col-xs-6 col-s-m6 col-md-6 col-lg-6 avatar">
+	{{currentUser}}
 	<a href="login" title="Connexion avec Laclasse.com" data-ng-show="currentUser.is_logged">Connexion</a>
 	<a href="logout" title="Déconnexion de Laclasse.com" data-ng-hide="currentUser.is_logged">Déconnexion</a>
       </div>
@@ -31,9 +32,13 @@
   </div>
   <div class="col-xs-8 col-s-m8 col-md-8 col-lg-8 damier">
 
-    <div data-ng-repeat="app in apps" class="petite case {{ app.couleur }}" >
+    <div data-ng-repeat="app in apps" class="petite case {{apps_definitions[ app.id ].couleur}}" >
       <span class="compteur-notification" data-ng-show="app.notifications.length > 0">{{app.notifications.length}}</span>
-      <a href="{{app.lien}}" data-ng-show="app.lien !== ''"><span class="app-icon">{{app.icone}}</span></a>
+      <a href="{{apps_definitions[ app.id ].lien}}" data-ng-show="app.id !== ''">
+	<data-ng-include class="svg" src="apps_definitions[ app.id ].icone"></data-ng-include>
+	<br>
+	<span>{{apps_definitions[ app.id ].nom}}</span>
+      </a>
     </div>
 
   </div>
