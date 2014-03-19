@@ -53,9 +53,6 @@ angular.module( 'portailApp.controllers' )
 						   lien: '',
 						   notifications: [  ] } );
 			   });
-
-			   // randomize
-			   $scope.apps = _($scope.apps).shuffle();
 			   // }}}
 
 			   // {{{ aside
