@@ -90,6 +90,11 @@ body {padding:0}
 .portail .header {height:25%}
 .portail .slider {height:75%}
 
+.portail .logolaclasse {color:#fff;
+			text-align:center}
+.portail .logolaclasse .svg path {fill:#fff}
+.portail .logolaclasse div {height:auto}
+
 .portail .avatar {background-color:#aff}
 
 /* cases du damier */
