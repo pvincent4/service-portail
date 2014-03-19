@@ -115,17 +115,15 @@ body {padding:0}
 /* .damier .grande.case {width:60%;height:75%} */
 
 /* icônes */
-.compteur-notification {background:#FF1616;
-			border-radius:1em;
-			color:#fff;
-			font-size:1.5em;
-			font-weight:bold;
-			height:2em;
-			padding-top:0.25em;
-			position:absolute;
-			right:0.1em;
-			top:0.1em;
-			width:2em;}
+.compteur-notification { background:#FF1616;
+			 border-radius:1em;
+			 color:#fff;
+			 font-size:1.5em;
+			 font-weight:bold;
+			 padding:0 0.4em;
+			 position: absolute;
+			 right: 0.25em;
+			 top: 0.25em }
 .app-icon {font-size:6em;height:66%;margin-top:10%}
 
 
