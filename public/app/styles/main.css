@@ -90,12 +90,15 @@ body {padding:0}
 .portail .header {height:25%}
 .portail .slider {height:75%}
 
+.damier .petite.case,
 .portail .logolaclasse {text-align:center}
+.damier .petite.case a,
 .portail .logolaclasse a {color:#fff;
 			  text-decoration:none;
 			  float: left;
 			  height: 100%;
 			  width: 100%}
+.damier .petite.case svg path,
 .portail .logolaclasse .svg path {fill:#fff}
 
 .portail .avatar {background-color:#aff}
