@@ -7,13 +7,16 @@ angular.module( 'portailApp.controllers' )
 		       // {{{ damier
 		       var nb_cases = 20;
 
-		       $scope.couleurs = [ 'rouge',
+		       $scope.couleurs = [ 'bleu',
+					   'vert',
+					   'rouge',
+					   'violet',
 					   'orange',
 					   'jaune',
-					   'vert',
-					   'bleu',
-					   'indigo',
-					   'violet' ];
+					   'gris1',
+					   'gris2',
+					   'gris3',
+					   'gris4' ];
 		       $scope.randCouleur = function(  ) {
 			   return $scope.couleurs[ _.random( 0, $scope.couleurs.length - 1 ) ];
 		       };

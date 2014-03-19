@@ -15,7 +15,8 @@
 	"Font-Awesome": "latest",
 	"growl": "latest",
 	"faye": "latest",
-	"underscore": "latest"
+	"underscore": "latest",
+	"charte-graphique-laclasse-com": "http://gitlab.erasme.org/laclasse/charte-graphique-laclasse-com.git#latest"
     },
     "devDependencies": {
 	"angular-mocks": "latest",

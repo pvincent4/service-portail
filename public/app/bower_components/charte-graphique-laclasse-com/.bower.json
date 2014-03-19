@@ -1,0 +1,17 @@
+{
+  "name": "charte-graphique-laclasse-com",
+  "private": true,
+  "main": "css/main.css",
+  "ignore": [],
+  "dependencies": {},
+  "devDependencies": {},
+  "_release": "f350792f4b",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "f350792f4b0ec62625335a7676014e89f4ffb04c"
+  },
+  "_source": "http://gitlab.erasme.org/laclasse/charte-graphique-laclasse-com.git",
+  "_target": "*",
+  "_originalSource": "http://gitlab.erasme.org/laclasse/charte-graphique-laclasse-com.git"
+}

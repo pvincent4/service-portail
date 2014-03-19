@@ -103,15 +103,6 @@ body {padding:0}
 .damier .petite.case {min-width:20%;width:20%;height:25%}
 /* .damier .grande.case {width:60%;height:75%} */
 
-/* couleurs */
-.damier .case.rouge {background-color:#d00}
-.damier .case.orange {background-color:orange}
-.damier .case.jaune {background-color:#dd0}
-.damier .case.vert {background-color:#5d0}
-.damier .case.bleu {background-color:#05d}
-.damier .case.indigo {background-color:indigo}
-.damier .case.violet {background-color:violet}
-
 /* icônes */
 .compteur-notification {background:#FF1616;
 			border-radius:1em;
