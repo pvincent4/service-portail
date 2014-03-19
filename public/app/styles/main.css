@@ -90,10 +90,13 @@ body {padding:0}
 .portail .header {height:25%}
 .portail .slider {height:75%}
 
-.portail .logolaclasse {color:#fff;
-			text-align:center}
+.portail .logolaclasse {text-align:center}
+.portail .logolaclasse a {color:#fff;
+			  text-decoration:none;
+			  float: left;
+			  height: 100%;
+			  width: 100%}
 .portail .logolaclasse .svg path {fill:#fff}
-.portail .logolaclasse div {height:auto}
 
 .portail .avatar {background-color:#aff}
 
