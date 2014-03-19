@@ -10,8 +10,10 @@
 	</a>
       </div>
       <div class="col-xs-6 col-s-m6 col-md-6 col-lg-6 avatar">
-	<a href="login" title="Connexion avec Laclasse.com" data-ng-show="currentUser.is_logged">Connexion</a>
-	<a href="logout" title="Déconnexion de Laclasse.com" data-ng-hide="currentUser.is_logged">Déconnexion</a>
+	<h2>{{currentUser['info']['LaclassePrenom']}} {{currentUser['info'] ['LaclasseNom']}}</h2>
+	<h3></h3>
+	<a href="login" title="Connexion avec Laclasse.com" data-ng-hide="currentUser.is_logged">se connecter</a>
+	<a href="logout" title="Déconnexion de Laclasse.com" data-ng-show="currentUser.is_logged">se déconnecter</a>
       </div>
     </div>
 

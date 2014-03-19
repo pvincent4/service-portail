@@ -13,6 +13,7 @@ gem 'thin'
 gem 'nokogiri'
 gem 'rack-rewrite'
 gem 'faye'
+gem 'rest-client'
 
 group :development do
   gem 'sinatra-contrib'

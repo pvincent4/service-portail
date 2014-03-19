@@ -1,0 +1,1 @@
+../../service-cahiertextes/lib/annuaire.rb
