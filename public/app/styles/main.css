@@ -79,7 +79,7 @@ body {
 }
 
 
-
+* {color:#fff}
 div, html, body {height: 100%}
 #flash {display:none}
 body {padding:0}
@@ -90,8 +90,30 @@ body {padding:0}
 .portail .aside { background-color:#16161d;
 		  box-shadow: 5px 0 8px 0 rgba(0, 0, 0, 0.5);
 		  z-index:1 }
-.portail .header {height:25%}
-.portail .slider {height:75%}
+.portail .aside .header {height:25%}
+.portail .aside .slider {height:75%}
+.portail .aside .user {text-align:center}
+.portail .aside .user * {width:100%}
+.portail .aside .user .user-info { position:absolute;
+				   top:40%;
+				   right:0 }
+.portail .logolaclasse h3,
+.portail .aside .user .user-info h3 { padding:0;
+				      font-weight:bold }
+.portail .aside .user .button-wrapper { position:absolute;
+					bottom:1.5em;
+					right:0;
+					text-align:center }
+.portail .aside .user a { border:1px solid #fff;
+			  color:#fff;
+			  padding:0.5em;
+			  margin:0.5em;
+			  text-transform:uppercase }
+.portail .aside .user select { background: transparent;
+			       border: 0;
+			       font-weight: bold;
+			       opacity: 0.5;
+			       width: 100% }
 
 .damier .petite.case,
 .portail .logolaclasse {text-align:center}
@@ -129,6 +151,8 @@ body {padding:0}
 			 top: 0.5em }
 .app-icon {font-size:6em;height:66%;margin-top:10%}
 
+.damier .petite.case a span { font-size:1.5em;
+			      font-weight:lighter }
 
 
 /* /show-app */

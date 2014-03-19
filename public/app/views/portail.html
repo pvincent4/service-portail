@@ -6,15 +6,26 @@
 	<a href="{{APPLICATION_PREFIX}}">
 	  <data-ng-include class="svg" src="APPLICATION_PREFIX+'/app/bower_components/charte-graphique-laclasse-com/images/logolaclasse.svg'"></data-ng-include>
 	  <br>
-	  <span>laclasse.com</span>
+	  <h3>laclasse.com</h3>
 	</a>
       </div>
-      <div class="col-xs-6 col-s-m6 col-md-6 col-lg-6 avatar">
-	<h2>{{currentUser['info']['LaclassePrenom']}} {{currentUser['info'] ['LaclasseNom']}}</h2>
-	<h3></h3>
-	<a href="login" title="Connexion avec Laclasse.com" data-ng-hide="currentUser.is_logged">se connecter</a>
-	<a href="logout" title="Déconnexion de Laclasse.com" data-ng-show="currentUser.is_logged">se déconnecter</a>
+
+      <div class="col-xs-6 col-s-m6 col-md-6 col-lg-6 user">
+
+	<span class="user-info" data-ng-show="current_user.is_logged">
+	  <h3>{{current_user['info']['LaclassePrenom']}} {{current_user['info']['LaclasseNom']}}</h3>
+	  <select data-ng-model="current_user['profil_actif']"
+		  data-ng-options="profil['etablissement'] + ' : ' + profil['nom'] group by profil['etablissement'] for profil in current_user['profils']" data-ng-change="reload()">
+	  </select>
+	</span>
+
+	<span class="button-wrapper">
+	  <a href="logout" title="Déconnexion de Laclasse.com" data-ng-show="current_user.is_logged">se déconnecter</a>
+	  <a href="login" title="Connexion avec Laclasse.com" data-ng-hide="current_user.is_logged">se connecter</a>
+	</span>
+
       </div>
+
     </div>
 
     <div class="row-fluid slider">
@@ -35,7 +46,7 @@
 
     <div data-ng-repeat="app in apps" class="petite case {{ app.couleur }}" >
       <span class="compteur-notification" data-ng-show="app.notifications.length > 0">{{app.notifications.length}}</span>
-      <a href="{{ app.lien }}" data-ng-show="app.lien !== ''">
+      <a href="{{ app.lien }}" data-ng-show="app.active === true && app.lien !== ''">
 	<data-ng-include class="svg" src="app.icone"></data-ng-include>
 	<br>
 	<span>{{ app.nom }}</span>

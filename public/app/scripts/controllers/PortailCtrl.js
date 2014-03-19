@@ -21,7 +21,7 @@ angular.module( 'portailApp.controllers' )
 					 icone: $scope.racine_images + '01_messagerie.svg',
 					 couleur: 'bleu',
 					 nom: 'messagerie',
-					 lien: '/portail/#/show-app/',
+					 lien: '/portail/#/show-app?app=messagerie',
 					 notifications: [  ],
 					 active: false
 				       },
@@ -29,7 +29,7 @@ angular.module( 'portailApp.controllers' )
 					 icone: $scope.racine_images + '02_documents.svg',
 					 couleur: 'jaune',
 					 nom: 'documents',
-					 lien: '/portail/#/show-app/',
+					 lien: '/portail/#/show-app?app=documents',
 					 notifications: [  ],
 					 active: false
 				       },
@@ -37,7 +37,7 @@ angular.module( 'portailApp.controllers' )
 					 icone: $scope.racine_images + '03_cahierdetextes.svg',
 					 couleur: 'violet',
 					 nom: 'cahier de textes',
-					 lien: '/portail/#/show-app/',
+					 lien: '/portail/#/show-app?app=cahierdetextes',
 					 notifications: [  ],
 					 active: false
 				       },
@@ -45,7 +45,7 @@ angular.module( 'portailApp.controllers' )
 					 icone: $scope.racine_images + '04_notesabsences.svg',
 					 couleur: 'vert',
 					 nom: 'notes et absences',
-					 lien: '/portail/#/show-app/',
+					 lien: '/portail/#/show-app?app=notesabsences',
 					 notifications: [  ],
 					 active: false
 				       },
@@ -53,7 +53,7 @@ angular.module( 'portailApp.controllers' )
 					 icone: $scope.racine_images + '05_validationcompetences.svg',
 					 couleur: 'rouge',
 					 nom: 'validation de compétences',
-					 lien: '/portail/#/show-app/',
+					 lien: '/portail/#/show-app?app=validationcompetences',
 					 notifications: [  ],
 					 active: false
 				       },
@@ -61,7 +61,7 @@ angular.module( 'portailApp.controllers' )
 					 icone: $scope.racine_images + '06_thematiques.svg',
 					 couleur: 'vert',
 					 nom: 'classes culturelles numériques',
-					 lien: '/portail/#/show-app/',
+					 lien: '/portail/#/show-app?app=thematiques',
 					 notifications: [  ],
 					 active: false
 				       },
@@ -69,7 +69,7 @@ angular.module( 'portailApp.controllers' )
 					 icone: $scope.racine_images + '07_blogs.svg',
 					 couleur: 'bleu',
 					 nom: 'blogs',
-					 lien: '/portail/#/show-app/',
+					 lien: '/portail/#/show-app?app=blogs',
 					 notifications: [  ],
 					 active: false
 				       },
@@ -77,7 +77,7 @@ angular.module( 'portailApp.controllers' )
 					 icone: $scope.racine_images + '08_ressources.svg',
 					 couleur: 'jaune',
 					 nom: 'ressources numériques',
-					 lien: '/portail/#/show-app/',
+					 lien: '/portail/#/show-app?app=ressources',
 					 notifications: [  ],
 					 active: false
 				       },
@@ -85,7 +85,7 @@ angular.module( 'portailApp.controllers' )
 					 icone: $scope.racine_images + '09_trombi.svg',
 					 couleur: 'violet',
 					 nom: 'trombinoscope',
-					 lien: '/portail/#/show-app/',
+					 lien: '/portail/#/show-app?app=trombi',
 					 notifications: [  ],
 					 active: false
 				       },
@@ -93,7 +93,7 @@ angular.module( 'portailApp.controllers' )
 					 icone: $scope.racine_images + '10_suivi.svg',
 					 couleur: 'bleu',
 					 nom: 'suivi des élèves',
-					 lien: '/portail/#/show-app/',
+					 lien: '/portail/#/show-app?app=suivi',
 					 notifications: [  ],
 					 active: false
 				       },
@@ -101,7 +101,7 @@ angular.module( 'portailApp.controllers' )
 					 icone: $scope.racine_images + '11_publipostage.svg',
 					 couleur: 'jaune',
 					 nom: 'info familles',
-					 lien: '/portail/#/show-app/',
+					 lien: '/portail/#/show-app?app=publipostage',
 					 notifications: [  ],
 					 active: false
 				       },
@@ -109,7 +109,7 @@ angular.module( 'portailApp.controllers' )
 					 icone: $scope.racine_images + '12_aide.svg',
 					 couleur: 'rouge',
 					 nom: 'aide',
-					 lien: '/portail/#/show-app/',
+					 lien: '/portail/#/show-app?app=aide',
 					 notifications: [  ],
 					 active: false
 				       },
@@ -117,7 +117,7 @@ angular.module( 'portailApp.controllers' )
 					 icone: $scope.racine_images + '13_admin.svg',
 					 couleur: 'jaune',
 					 nom: 'administration',
-					 lien: '/portail/#/show-app/',
+					 lien: '/portail/#/show-app?app=admin',
 					 notifications: [  ],
 					 active: false
 				       },
@@ -148,9 +148,9 @@ angular.module( 'portailApp.controllers' )
 				     ];
 
 		       currentUser.get().then( function( response ) {
-			   $scope.currentUser = response.data;
+			   $scope.current_user = response.data;
 
-			   if ( $scope.currentUser.is_logged ) {
+			   if ( $scope.current_user.is_logged ) {
 			       // FIXME: utiliser de vraies données
 			       _($scope.apps).each( function( app ) {
 				   app.active = true;
