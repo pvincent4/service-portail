@@ -19,10 +19,10 @@ angular.module( 'portailApp.controllers' )
 					   'gris3',
 					   'gris4' ];
 		       $scope.apps_definitions = {
-			   'cahierdetextes': {icone: $scope.racine_images + '03_cahierdetextes.svg',
-					      couleur: 'violet',
-					      nom: 'Cahier de textes',
-					      lien: '/portail/#/show-app'}
+			   'cahierdetextes': { icone: $scope.racine_images + '03_cahierdetextes.svg',
+					       couleur: 'violet',
+					       nom: 'Cahier de textes',
+					       lien: '/portail/#/show-app' }
 		       };
 		       $scope.randCouleur = function(  ) {
 			   return $scope.couleurs[ _.random( 0, $scope.couleurs.length - 1 ) ];
