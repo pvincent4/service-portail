@@ -87,6 +87,9 @@ body {padding:0}
 .container-fluid {width:100%;max-width:100%;padding:0;margin:0}
 .container-fluid * {padding:0;margin:0}
 
+.portail .aside { background-color:#16161d;
+		  box-shadow: 5px 0 8px 0 rgba(0, 0, 0, 0.5);
+		  z-index:1 }
 .portail .header {height:25%}
 .portail .slider {height:75%}
 
