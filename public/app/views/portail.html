@@ -45,8 +45,8 @@
   <div class="col-xs-8 col-s-m8 col-md-8 col-lg-8 damier">
 
     <div data-ng-repeat="app in apps" class="petite case {{ app.couleur }}" >
-      <span class="compteur-notification" data-ng-show="app.notifications.length > 0">{{app.notifications.length}}</span>
       <a href="{{ app.lien }}" data-ng-show="app.active === true && app.lien !== ''">
+	<span class="compteur-notification orange-brillant" data-ng-show="app.notifications.length > 0">{{app.notifications.length}}</span>
 	<data-ng-include class="svg" src="app.icone"></data-ng-include>
 	<br>
 	<span>{{ app.nom }}</span>
