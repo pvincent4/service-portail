@@ -8,7 +8,7 @@ Comments and contributions welcome :)
 
 Proudly brought to you by the [@revolunet](http://twitter.com/revolunet) team.
 
-**NOTE :** if you use iOS<7 or Android<4 please include the [requestAnimationFrame polyfill](https://github.com/darius/requestAnimationFrame/blob/master/requestAnimationFrame.js) in your application.
+**NOTE :** if you use IE<=9, iOS<7 or Android<4 please include the [requestAnimationFrame polyfill](https://github.com/darius/requestAnimationFrame/blob/master/requestAnimationFrame.js) in your application.
 
 ## Usage :
 
@@ -45,9 +45,10 @@ angular.module('MyApp', ['angular-carousel']);
 ```
 
 
+
 ## Features :
  - Mobile friendly, tested on webkit+firefox
- - use CSS 3D transformations and `requestAnimationFrame`.
+ - use CSS 3D transformations and `requestAnimationFrame`. (fallback to CSS 2D if 3D support not available)
  - DOM buffering
  - index data-binding
  - optional indicators
