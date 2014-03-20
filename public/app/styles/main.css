@@ -177,6 +177,14 @@ body {padding:0}
 						      min-height:1.5em;
 						      max-height:1.5em;
 						      background-color:#16161d}
+
+#app-wrapper .portail-menu a,
+#app-wrapper .user-menu a { color:#fff;
+			    text-decoration:none;
+			    display:inline-block;
+			    width:100%;
+			    cursor:pointer }
+
 #app-wrapper .iframe {height:calc(100% - 1.5em);
 		      background-color:#ececed}
 #app-wrapper .iframe iframe {width:100%;

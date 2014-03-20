@@ -7,16 +7,29 @@
 	<!-- Collect the nav links, forms, and other content for toggling -->
 	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
-	  <li class="dropdown">
+	  <div class="portail-menu dropdown col-xs-2 col-sm-2 col-md-2 col-lg-2 gris4 pull-leftt">
 	    <a class="dropdown-toggle">
-	      menu
+	      menu portail
 	    </a>
-	    <ul class="dropdown-menu">
-	      <li ng-repeat="item in menu">
+	    <ul class="dropdown-menu col-xs-2 col-sm-2 col-md-2 col-lg-2 gris4 gris4">
+	      <li class="gris4" ng-repeat="item in menu">
 		<a>{{item}}</a>
 	      </li>
 	    </ul>
-	  </li>
+	  </div>
+
+	  <span class="col-xs-8 col-sm-8 col-md-8 col-lg-8 bleu">titre</span>
+
+	  <div class="user-menu dropdown col-xs-2 col-sm-2 col-md-2 col-lg-2 gris4 pull-right">
+	    <a class="dropdown-toggle">
+	      menu utilisateur
+	    </a>
+	    <ul class="dropdown-menu col-xs-2 col-sm-2 col-md-2 col-lg-2 gris4 gris4">
+	      <li class="gris4" ng-repeat="item in menu">
+		<a>{{item}}</a>
+	      </li>
+	    </ul>
+	  </div>
 
 	</div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
