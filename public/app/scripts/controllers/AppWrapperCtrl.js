@@ -2,6 +2,7 @@
 
 angular.module( 'portailApp.controllers' )
     .controller( 'AppWrapperCtrl',
-		 [ function(  ) {
-
+		 [ '$scope',
+		   function( $scope ) {
+		     $scope.menu = ['danser', 'jouer'];
 		 } ] );
