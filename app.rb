@@ -59,7 +59,13 @@ class SinatraApp < Sinatra::Base
    get "#{APP_PATH}/api/news" do
       rss = SimpleRSS.parse open('http://xkcd.com/rss.xml')
 
-      rss.items.to_json
+      rss.items
+      .map {
+         |news|
+
+         news[:image] = news.description.match( /http.*png/ )[0]
+         news
+      }.to_json
    end
    # }}}
 
