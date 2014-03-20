@@ -2,8 +2,8 @@
 
 angular.module( 'portailApp.controllers' )
     .controller( 'PortailCtrl',
-		 [ '$scope', 'currentUser', 'APPLICATION_PREFIX',
-		   function( $scope, currentUser, APPLICATION_PREFIX ) {
+		 [ '$scope', 'currentUser', 'news', 'APPLICATION_PREFIX',
+		   function( $scope, currentUser, news, APPLICATION_PREFIX ) {
 		       // {{{ damier
 		       $scope.racine_images = '/app/bower_components/charte-graphique-laclasse-com/images/';
 		       $scope.couleurs = [ 'bleu',
@@ -162,6 +162,11 @@ angular.module( 'portailApp.controllers' )
 			   // }}}
 
 			   // {{{ aside
+			   news.get().then( function( response ) {
+			       $scope.newsfeed = response.data;
+			       console.debug($scope.newsfeed)
+			   });
+
 			   // }}}
 		       });
 

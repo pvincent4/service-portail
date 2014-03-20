@@ -5,6 +5,7 @@ angular.module( 'portailApp',
 		[ 'portailApp.controllers',
 		  'portailApp.services.constants',
 		  'portailApp.services.authentication',
+		  'portailApp.services.news',
 		  'ui.router',
 		  'angular-carousel' ] )
     .config( [ '$stateProvider', '$urlRouterProvider', 'APPLICATION_PREFIX',
