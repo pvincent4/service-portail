@@ -140,8 +140,7 @@ body {padding:0}
 /* .damier .grande.case {width:60%;height:75%} */
 
 /* icônes */
-.compteur-notification { background:#ff7814;
-			 border-radius:1em;
+.compteur-notification { border-radius:1em;
 			 color:#fff;
 			 font-size:2em;
 			 font-weight:bold;
