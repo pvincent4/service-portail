@@ -112,8 +112,12 @@ body {padding:0}
 .portail .aside .user select { background: transparent;
 			       border: 0;
 			       font-weight: bold;
-			       opacity: 0.5;
 			       width: 100% }
+.portail .aside .user .user-info svg { bottom: 0;
+				       left: 0;
+				       opacity: 0.5;
+				       position: absolute;
+				       z-index:-1 }
 
 .damier .petite.case,
 .portail .logolaclasse {text-align:center}
@@ -123,6 +127,7 @@ body {padding:0}
 			  float: left;
 			  height: 100%;
 			  width: 100%}
+.user-info svg *,
 .damier .petite.case svg *,
 .portail .logolaclasse .svg * {fill:#fff}
 
