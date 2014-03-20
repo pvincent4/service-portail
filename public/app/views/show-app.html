@@ -6,9 +6,18 @@
 
 	<!-- Collect the nav links, forms, and other content for toggling -->
 	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-	  <data-bs-dropdown data-menu-type="button" data-select-val="selected_status = selectedVal"
-			    data-preselected-item="selected_status" data-dropdown-data="statuses">
-	  </data-bs-dropdown>
+
+	  <li class="dropdown">
+	    <a class="dropdown-toggle">
+	      menu
+	    </a>
+	    <ul class="dropdown-menu">
+	      <li ng-repeat="item in menu">
+		<a>{{item}}</a>
+	      </li>
+	    </ul>
+	  </li>
+
 	</div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>

@@ -11,6 +11,7 @@
 	"angular-cookies": "latest",
 	"angular-sanitize": "latest",
 	"angular-ui-router": "latest",
+	"angular-bootstrap": "latest",
 	"angular-carousel": "latest",
 	"Font-Awesome": "latest",
 	"growl": "latest",
