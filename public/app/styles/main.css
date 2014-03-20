@@ -184,7 +184,9 @@ body {padding:0}
 			    display:inline-block;
 			    width:100%;
 			    cursor:pointer }
-
+#app-wrapper .portail-menu svg { height:1em;
+			       width:1em }
+#app-wrapper .portail-menu svg * {fill:#fff}
 #app-wrapper .iframe {height:calc(100% - 1.5em);
 		      background-color:#ececed}
 #app-wrapper .iframe iframe {width:100%;
