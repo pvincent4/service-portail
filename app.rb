@@ -3,6 +3,8 @@
 require 'rubygems'
 require 'bundler'
 require 'sinatra/reloader'
+require 'open-uri'
+require 'json'
 
 Bundler.require( :default, ENV['RACK_ENV'].to_sym )     # require tout les gems définis dans Gemfile
 
@@ -52,6 +54,12 @@ class SinatraApp < Sinatra::Base
 
       env['rack.session'][:current_user][:extra] = Annuaire.get_user( env['rack.session'][:current_user][:info][:uid] )
       env['rack.session'][:current_user].to_json
+   end
+
+   get "#{APP_PATH}/api/news" do
+      rss = SimpleRSS.parse open('http://xkcd.com/rss.xml')
+
+      rss.items.to_json
    end
    # }}}
 
