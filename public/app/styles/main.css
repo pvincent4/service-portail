@@ -140,18 +140,19 @@ body {padding:0}
 /* .damier .grande.case {width:60%;height:75%} */
 
 /* icônes */
-.compteur-notification { border-radius:1em;
-			 color:#fff;
-			 font-size:2em;
-			 font-weight:bold;
-			 padding:0 0.4em;
-			 position: absolute;
-			 right: 0.5em;
-			 top: 0.5em }
 .app-icon {font-size:6em;height:66%;margin-top:10%}
 
 .damier .petite.case a span { font-size:1.5em;
 			      font-weight:lighter }
+
+.damier .petite.case a .compteur-notification { border-radius:1em;
+			 color:#fff;
+			 font-size:2em;
+			 font-weight:bolder;
+			 padding:0 0.4em;
+			 position: absolute;
+			 right: 0.5em;
+			 top: 0.5em }
 
 
 /* /show-app */
