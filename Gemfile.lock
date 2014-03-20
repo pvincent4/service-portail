@@ -58,6 +58,7 @@ GEM
       mime-types (>= 1.16)
     shotgun (0.9)
       rack (>= 1.0)
+    simple-rss (1.3.1)
     sinatra (1.4.4)
       rack (~> 1.4)
       rack-protection (~> 1.4)
@@ -91,6 +92,7 @@ DEPENDENCIES
   rake
   rest-client
   shotgun
+  simple-rss
   sinatra
   sinatra-contrib
   thin
