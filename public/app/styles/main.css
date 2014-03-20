@@ -123,8 +123,8 @@ body {padding:0}
 			  float: left;
 			  height: 100%;
 			  width: 100%}
-.damier .petite.case svg path,
-.portail .logolaclasse .svg path {fill:#fff}
+.damier .petite.case svg *,
+.portail .logolaclasse .svg * {fill:#fff}
 
 .portail .avatar {background-color:#aff}
 
