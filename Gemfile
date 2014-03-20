@@ -14,6 +14,7 @@ gem 'nokogiri'
 gem 'rack-rewrite'
 gem 'faye'
 gem 'rest-client'
+gem 'simple-rss'
 
 group :development do
   gem 'sinatra-contrib'
