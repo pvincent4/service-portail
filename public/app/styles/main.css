@@ -129,9 +129,19 @@ body {padding:0}
 			  width: 100%}
 .user-info svg *,
 .damier .petite.case svg *,
-.portail .logolaclasse .svg * {fill:#fff}
+.aside .logolaclasse .svg * {fill:#fff}
 
-.portail .avatar {background-color:#aff}
+.aside .avatar {background-color:#aff}
+
+.rn-carousel-slides {height:100%}
+.rn-carousel-indicator { position:absolute;
+			 bottom:33.333% }
+.rn-carousel-slide .news-content { background-color: rgba(255, 255, 255, 0.1);
+				   bottom: 0;
+				   height: 33.333%;
+				   padding: 5px;
+				   position: absolute;
+				   width: 100% }
 
 /* cases du damier */
 .damier .case { position:relative;

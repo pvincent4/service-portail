@@ -38,10 +38,14 @@
       <div class="col-xs-12 col-s-m12 col-md-12 col-lg-12">
 
 	<ul data-rn-carousel data-rn-carousel-control data-rn-carousel-indicator>
-	  <li>des</li>
-	  <li>images</li>
-	  <li>qui</li>
-	  <li>défilent</li>
+	  <li data-ng-repeat="news in newsfeed" data-ng-style="{'background': 'url(' + news.image + ') center top no-repeat'}">
+	    <div class="news-content">
+	      <a href="{{ news.link }}">
+		<h6>{{ news.title }}</h6>
+	      </a>
+	      {{news.description}}
+	    </div>
+	  </li>
 	</ul>
 
       </div>
