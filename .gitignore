@@ -10,8 +10,8 @@ rdoc
 spec/reports
 test/tmp
 test/version_tmp
-config/CASLaclasseCom.rb
 tmp
+.ruby-version
 
 # YARD artifacts
 .yardoc
@@ -23,3 +23,5 @@ doc/
 vagrant/
 
 /config/options.rb
+/config/CAS*.rb
+
