@@ -148,15 +148,20 @@ body {padding:0}
 		float:left }
 
 /* tailles */
-.damier .petite.case {height:25%}
+.damier .petite.case {height:25% }
 /* .damier .grande.case {width:60%;height:75%} */
 
 /* icônes */
+.damier .petite.case a { background-position:center center;
+			 background-repeat:no-repeat }
 .app-icone { position:absolute;
 	     height:auto;
 	     width:100%;
 	     left:0;
 	     bottom:2em }
+/* .app-icone .icone, */
+.app-icone .icone svg { /* height:50%; */
+			width:50% }
 
 .damier .petite.case a span { font-size:1.5em;
 			      font-weight:lighter }
