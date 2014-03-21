@@ -172,11 +172,13 @@ body {padding:0}
 
 
 /* /show-app */
-#app-wrapper {overflow:hidden}
-#app-wrapper .en-tete, #app-wrapper .en-tete .navbar {height:1.5em;
-						      min-height:1.5em;
-						      max-height:1.5em;
-						      background-color:#16161d}
+#app-wrapper { overflow:hidden }
+#app-wrapper .en-tete,
+#app-wrapper .en-tete .navbar { height:1.5em;
+				min-height:1.5em;
+				max-height:1.5em;
+				background-color:#16161d;
+				border:0 }
 
 #app-wrapper .portail-menu a,
 #app-wrapper .user-menu a { color:#fff;
@@ -184,9 +186,12 @@ body {padding:0}
 			    display:inline-block;
 			    width:100%;
 			    cursor:pointer }
-#app-wrapper .portail-menu svg { height:1em;
+#app-wrapper .petit-logo svg { height:1em;
 			       width:1em }
-#app-wrapper .portail-menu svg * {fill:#fff}
+#app-wrapper .petit-logo svg * {fill:#fff}
+#app-wrapper .dropdown-menu a {opacity:0.7}
+#app-wrapper .dropdown-menu a:hover {background-color:#000}
+
 #app-wrapper .iframe {height:calc(100% - 1.5em);
 		      background-color:#ececed}
 #app-wrapper .iframe iframe {width:100%;

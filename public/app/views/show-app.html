@@ -5,12 +5,16 @@
       <div class="container-fluid">
 
 	<!-- Collect the nav links, forms, and other content for toggling -->
-	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	<div class="collapse navbar-collapse">
+
+	  <a class="petit-logo pull-left" href="{{APPLICATION_PREFIX}}">
+	    <data-ng-include class="svg" src="APPLICATION_PREFIX+'/app/bower_components/charte-graphique-laclasse-com/images/logolaclasse.svg'"></data-ng-include>
+	  </a>
 
 	  <div class="portail-menu dropdown col-xs-2 col-sm-2 col-md-2 col-lg-2 gris4 pull-leftt">
 	    <a class="dropdown-toggle">
-	      <data-ng-include class="svg" src="APPLICATION_PREFIX+'/app/bower_components/charte-graphique-laclasse-com/images/logolaclasse.svg'"></data-ng-include>
 	      menu portail
+	      <span class="caret"></span>
 	    </a>
 	    <ul class="dropdown-menu col-xs-2 col-sm-2 col-md-2 col-lg-2 gris4 gris4">
 	      <li class="gris4" ng-repeat="item in menu">
@@ -19,11 +23,12 @@
 	    </ul>
 	  </div>
 
-	  <span class="col-xs-8 col-sm-8 col-md-8 col-lg-8 bleu">titre</span>
+	  <span class="col-xs-7 col-sm-7 col-md-7 col-lg-7 bleu">titre</span>
 
-	  <div class="user-menu dropdown col-xs-2 col-sm-2 col-md-2 col-lg-2 gris4 pull-right">
+	  <div class="user-menu dropdown col-xs-2 col-sm-2 col-md-2 col-lg-2 gris4 pull-leftt">
 	    <a class="dropdown-toggle">
 	      menu utilisateur
+	      <span class="caret"></span>
 	    </a>
 	    <ul class="dropdown-menu col-xs-2 col-sm-2 col-md-2 col-lg-2 gris4 gris4">
 	      <li class="gris4" ng-repeat="item in menu">
@@ -39,7 +44,7 @@
   </div>
 
   <div class="row-fluid iframe">
-    <iframe>
+    <iframe src="http://getbootstrap.com/">
     </iframe>
   </div>
 </div>
