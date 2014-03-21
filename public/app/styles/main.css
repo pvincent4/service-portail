@@ -205,10 +205,18 @@ body {padding:0}
 
 #app-wrapper .user-menu { text-align:right;
 			  padding-right:1em }
+#app-wrapper .user-menu .profil-select-wrapper { float:left;
+						 overflow:hidden;
+						 width:calc( 12em - 15px ) }
+#app-wrapper .user-menu select { width:12em;
+				 border:0;
+				 background:transparent;
+				 appearance:none;
+				 -moz-appearance:none;
+				 -webkit-appearance:none }
 #app-wrapper .user-menu a { display:inline-block;
 			    color:#fff;
 			    text-decoration:none;
-			    width:100%;
 			    cursor:pointer }
 #app-wrapper .user-menu h6 { display:inline;
 			     font-weight:bold;

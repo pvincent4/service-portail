@@ -17,7 +17,13 @@
 	  <span class="titre col-xs-9 col-sm-9 col-md-9 col-lg-9 bleu">titre</span>
 
 	  <div class="user-menu dropdown col-xs-2 col-sm-2 col-md-2 col-lg-2 gris4 pull-right">
+	    <div class="profil-select-wrapper">
+	      <select data-ng-model="current_user['profil_actif']"
+		      data-ng-options="profil['etablissement'] + ' : ' + profil['nom'] group by profil['etablissement'] for profil in current_user['profils']" data-ng-change="reload()">
+	      </select>
+	    </div>
 	    <a class="dropdown-toggle">
+
 	      <h6>{{current_user['info']['LaclassePrenom']}} {{current_user['info']['LaclasseNom']}}</h6>
 	      <span class="caret"></span>
 	    </a>
