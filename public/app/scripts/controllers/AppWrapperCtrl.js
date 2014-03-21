@@ -2,8 +2,8 @@
 
 angular.module( 'portailApp.controllers' )
     .controller( 'AppWrapperCtrl',
-		 [ '$scope',
-		   function( $scope ) {
+		 [ '$scope', 'currentUser',
+		   function( $scope, currentUser ) {
 		       $scope.menu = [ { icone: '12_aide.svg',
 					 texte: 'retour au portail',
 					 lien: '/portail' },
@@ -13,4 +13,9 @@ angular.module( 'portailApp.controllers' )
 				       { icone: '12_aide.svg',
 					 texte: 'se déconnecter',
 					 lien: '/logout' } ];
+
+
+		       currentUser.get().then( function( response ) {
+			   $scope.current_user = response.data;
+		       } );
 		 } ] );
