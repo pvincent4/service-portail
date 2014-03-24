@@ -113,11 +113,10 @@ body {padding:0}
 			       border: 0;
 			       font-weight: bold;
 			       width: 100% }
-.portail .aside .user .user-info svg { bottom: 0;
-				       left: 0;
-				       opacity: 0.5;
-				       position: absolute;
-				       z-index:-1 }
+.user-info svg { bottom: 0;
+		 left: 0;
+		 opacity: 0.5;
+		 position: absolute }
 
 .damier .petite.case,
 .portail .logolaclasse {text-align:center}
@@ -127,9 +126,7 @@ body {padding:0}
 			  float: left;
 			  height: 100%;
 			  width: 100%}
-.user-info svg *,
-.damier .petite.case svg *,
-.aside .logolaclasse .svg * {fill:#fff}
+svg * {fill:#fff}
 
 .aside .avatar {background-color:#aff}
 
