@@ -164,7 +164,6 @@ angular.module( 'portailApp.controllers' )
 			   // {{{ aside
 			   news.get().then( function( response ) {
 			       $scope.newsfeed = response.data;
-			       console.debug($scope.newsfeed)
 			   });
 
 			   // }}}
