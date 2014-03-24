@@ -28,7 +28,7 @@ angular.module( 'portailApp',
 				 }
 			       } )
 		       .state( 'app-wrapper',
-			       { url: '/show-app',
+			       { url: '/show-app?app',
 				 templateUrl: APPLICATION_PREFIX + '/views/show-app.html',
 				 controller: 'AppWrapperCtrl' } );
 
