@@ -13,8 +13,20 @@ angular.module( 'portailApp',
 	       function( $stateProvider, $urlRouterProvider, APPLICATION_PREFIX ) {
 		   $stateProvider
 		       .state( 'portail',
+			       { templateUrl: APPLICATION_PREFIX + '/views/portail/index.html'} )
+		       .state( 'portail.apps',
 			       { url: '/',
-				 templateUrl: APPLICATION_PREFIX + '/views/portail.html' } )
+				 views: {
+				     'aside': {
+					 templateUrl: APPLICATION_PREFIX + '/views/portail/aside.html',
+					 controller: 'PortailAsideCtrl'
+				     },
+				     'main': {
+					 templateUrl: APPLICATION_PREFIX + '/views/portail/apps.html',
+					 controller: 'PortailAppsDamierCtrl'
+				     }
+				 }
+			       } )
 		       .state( 'app-wrapper',
 			       { url: '/show-app',
 				 templateUrl: APPLICATION_PREFIX + '/views/show-app.html',
