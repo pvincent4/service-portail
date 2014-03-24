@@ -70,7 +70,6 @@ module Annuaire
       # Fin patch compat.
 
       query = args.map { |key, value| "#{key}=#{CGI.escape(value)}" }.join( '&' )
-
       "#{uri}#{@liaison}#{service}#{@coordination}#{query};#{signature}"
    end
 

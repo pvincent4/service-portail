@@ -27,7 +27,8 @@ end
 
 # Application Sinatra servant de base
 class SinatraApp < Sinatra::Base
-
+   @@my_channel_list=[]
+   
    configure do
       set :app_file, __FILE__
       set :root, APP_ROOT
@@ -43,7 +44,7 @@ class SinatraApp < Sinatra::Base
    end
 
    helpers AuthenticationHelpers
-
+   
    get "#{APP_PATH}/" do
       erb :app
    end
@@ -66,6 +67,23 @@ class SinatraApp < Sinatra::Base
          news[:image] = news.description.match( /http.*png/ )[0]
          news
       }.to_json
+   end
+   
+   get "#{APP_PATH}/api/channel_list" do
+     #redirect login! unless session[:authenticated]
+     profil=session[:current_user][:info].ENTPersonProfils.split(":")[0]
+     uai=session[:current_user][:info].ENTPersonProfils.split(":")[1]
+     etb=Annuaire.get_etablissement(uai)
+     opts= { :serveur =>"http://localhost:3001/faye", 
+             :profil => profil,  
+             :uai => uai,  
+             :uid => session[:current_user][:info].uid,  
+             :classes => etb["classes"].map{ |c| c["libelle"]},
+             :groupes => etb["groupes_eleves"].map{ |g| g["libelle"]},
+             :groupes_libres => etb["groupes_libres"].map{ |g| g["libelle"]}
+             }
+     @@my_channel_list=EntNotifs.new opts
+     @@my_channel_list.my_channels.to_json
    end
    # }}}
 
