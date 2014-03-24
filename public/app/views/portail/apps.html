@@ -1,0 +1,16 @@
+<div class="row-fluid damier">
+  <div data-ng-repeat="app in apps" class="col-xs-12 col-sm-6 col-md-3 col-lg-3 petite case {{ app.couleur }}" >
+    <div data-ng-show="app.id == 'horloge'">
+      <h3>{{time.getHours()}}:{{time.getMinutes()}}:{{time.getSeconds()}}</h3>
+      <span>{{time.toDateString()}}</span>
+    </div>
+    <a href="{{ app.lien }}" data-ng-show="app.active === true && app.lien !== ''">
+      <span class="compteur-notification orange-brillant" data-ng-show="app.notifications.length > 0">{{app.notifications.length}}</span>
+      <div class="app-icone">
+	<data-ng-include class="svg" src="app.icone"></data-ng-include>
+	<br>
+	<span>{{ app.nom }}</span>
+      </div>
+    </a>
+  </div>
+</div>

@@ -87,29 +87,29 @@ body {padding:0}
 .container-fluid {width:100%;max-width:100%;padding:0;margin:0}
 .container-fluid * {padding:0;margin:0}
 
-.portail .aside { background-color:#16161d;
+.aside { background-color:#16161d;
 		  box-shadow: 5px 0 8px 0 rgba(0, 0, 0, 0.5);
 		  z-index:1 }
-.portail .aside .header {height:25%}
-.portail .aside .slider {height:75%}
-.portail .aside .user {text-align:center}
-.portail .aside .user * {width:100%}
-.portail .aside .user .user-info { position:absolute;
+.aside .header {height:25%}
+.aside .slider {height:75%}
+.aside .user {text-align:center}
+.aside .user * {width:100%}
+.aside .user .user-info { position:absolute;
 				   top:40%;
 				   right:0 }
-.portail .logolaclasse h3,
-.portail .aside .user .user-info h3 { padding:0;
+.logolaclasse h3,
+.aside .user .user-info h3 { padding:0;
 				      font-weight:bold }
-.portail .aside .user .button-wrapper { position:absolute;
+.aside .user .button-wrapper { position:absolute;
 					bottom:1.5em;
 					right:0;
 					text-align:center }
-.portail .aside .user a { border:1px solid #fff;
+.aside .user a { border:1px solid #fff;
 			  color:#fff;
 			  padding:0.5em;
 			  margin:0.5em;
 			  text-transform:uppercase }
-.portail .aside .user select { background: transparent;
+.aside .user select { background: transparent;
 			       border: 0;
 			       font-weight: bold;
 			       width: 100% }
@@ -119,9 +119,9 @@ body {padding:0}
 		 position: absolute }
 
 .damier .petite.case,
-.portail .logolaclasse {text-align:center}
+.logolaclasse {text-align:center}
 .damier .petite.case a,
-.portail .logolaclasse a {color:#fff;
+.logolaclasse a {color:#fff;
 			  text-decoration:none;
 			  float: left;
 			  height: 100%;
@@ -169,69 +169,69 @@ svg * {fill:#fff}
 
 
 /* /show-app */
-#app-wrapper { overflow:hidden }
+/* #app-wrapper { overflow:hidden } */
 
-#app-wrapper .en-tete,
-#app-wrapper .en-tete .navbar,
-#app-wrapper .en-tete .user-menu,
-#app-wrapper .en-tete .titre { height:1.5em;
+.en-tete,
+.en-tete .navbar,
+.en-tete .user-menu,
+.en-tete .titre { height:1.5em;
 			      min-height:1.5em;
 			      max-height:1.5em;
 			      border:0 }
 
-#app-wrapper .titre { padding-left:1em;
+.titre { padding-left:1em;
 		      font-weight:bolder }
 
-#app-wrapper .laclasse-com { text-align:center;
+.laclasse-com { text-align:center;
 			     font-weight:bolder;
 			     float:left }
-#app-wrapper .laclasse-com a { color:#fff;
+.laclasse-com a { color:#fff;
 			       text-decoration:none }
 
-#app-wrapper .laclasse-com .petit-logo { display:inline-block;
+.laclasse-com .petit-logo { display:inline-block;
 					 float:left;
 					 width:1.5em;
 					 padding-top:1px }
-#app-wrapper .laclasse-com .petit-logo svg { height:1em;
+.laclasse-com .petit-logo svg { height:1em;
 					     width:1em }
-#app-wrapper .laclasse-com .petit-logo svg * {fill:#fff}
+.laclasse-com .petit-logo svg * {fill:#fff}
 
-#app-wrapper .laclasse-com span { display:inline-block;
+.laclasse-com span { display:inline-block;
 				  float:left;
 				  padding-left:1em }
 
-#app-wrapper .user-menu { text-align:right;
+.user-menu { text-align:right;
 			  padding-right:1em }
-#app-wrapper .user-menu .profil-select-wrapper { float:left;
+.user-menu .profil-select-wrapper { float:left;
 						 overflow:hidden;
 						 width:calc( 12em - 15px ) }
-#app-wrapper .user-menu select { width:12em;
+.user-menu select { width:12em;
 				 border:0;
 				 background:transparent;
 				 appearance:none;
 				 -moz-appearance:none;
 				 -webkit-appearance:none }
-#app-wrapper .user-menu a { display:inline-block;
+.user-menu a { display:inline-block;
 			    color:#fff;
 			    text-decoration:none;
 			    cursor:pointer }
-#app-wrapper .user-menu h6 { display:inline;
+.user-menu h6 { display:inline;
 			     font-weight:bold;
 			     padding-left:1em }
-#app-wrapper .user-menu ul { border:0;
+.user-menu ul { border:0;
 			     border-radius:0 }
-#app-wrapper .user-menu li { text-align:left;
+.user-menu li { text-align:left;
 			     border-top:1px solid #fff }
-#app-wrapper .user-menu li a { width:100%;
+.user-menu li a { width:100%;
 			       height:3.5em;
 			       line-height:3em;
 			       padding:0.25em }
-#app-wrapper .user-menu li a:hover { background-color:#16161d }
-#app-wrapper .user-menu li a * { float:left }
-#app-wrapper .user-menu li a svg { height:3em;
+.user-menu li a:hover { background-color:#16161d }
+.user-menu li a * { float:left }
+.user-menu li a svg { height:3em;
 				   width:3em }
-#app-wrapper .user-menu li a svg * { fill:#fff }
-#app-wrapper .user-menu li a.dropdown-toggle { height:1em;
+.user-menu li a svg * { fill:#fff }
+.user-menu li a.dropdown-toggle { height:1em;
 					       line-height:1em;
 					       text-align:center;
 					       display: inline-block;
@@ -239,8 +239,8 @@ svg * {fill:#fff}
 					       padding: 0;
 					       width: 100% }
 
-#app-wrapper .iframe {height:calc(100% - 1.5em);
+.iframe {height:calc(100% - 1.5em);
 		      background-color:#ececed}
-#app-wrapper .iframe iframe {width:100%;
+.iframe iframe {width:100%;
 			     height:100%;
 			     border:0}
