@@ -225,7 +225,8 @@ body {padding:0}
 			     border-radius:0 }
 #app-wrapper .user-menu li { text-align:left }
 #app-wrapper .user-menu li.divider { margin:0 }
-#app-wrapper .user-menu li a { height:3em;
+#app-wrapper .user-menu li a { width:100%;
+			       height:3em;
 			       line-height:3em }
 #app-wrapper .user-menu li a:hover { background-color:#16161d }
 #app-wrapper .user-menu li a * { float:left }
