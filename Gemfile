@@ -16,6 +16,9 @@ gem 'faye'
 gem 'rest-client'
 gem 'simple-rss'
 
+# Gems spécifiques ENT
+gem 'ent_notifs'
+
 group :development do
   gem 'sinatra-contrib'
   gem 'shotgun'
