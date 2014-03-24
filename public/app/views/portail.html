@@ -1,7 +1,7 @@
 <div class="row-fluid portail">
   <div class="col-xs-4 col-s-m4 col-md-4 col-lg-4">
 
-    <div class="aside">
+    <div class="aside" data-ng-controller="PortailAsideCtrl">
       <div class="row-fluid header">
 	<div class="col-xs-6 col-s-m6 col-md-6 col-lg-6 logolaclasse gris4">
 	  <a href="{{APPLICATION_PREFIX}}">
@@ -54,7 +54,7 @@
 
   </div>
   <div class="col-xs-8 col-s-m8 col-md-8 col-lg-8">
-    <div class="row-fluid damier">
+    <div class="row-fluid damier" data-ng-controller="PortailAppsDamierCtrl">
       <div data-ng-repeat="app in apps" class="col-xs-12 col-sm-6 col-md-3 col-lg-3 petite case {{ app.couleur }}" >
 	<div data-ng-show="app.id == 'horloge'">
 	  <h3>{{time.getHours()}}:{{time.getMinutes()}}:{{time.getSeconds()}}</h3>

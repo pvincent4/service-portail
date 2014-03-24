@@ -1,10 +1,10 @@
 'use strict';
 
 angular.module( 'portailApp.controllers' )
-    .controller( 'PortailCtrl',
+    .controller( 'PortailAppsDamierCtrl',
 		 [ '$scope', 'currentUser', 'news', 'APPLICATION_PREFIX',
 		   function( $scope, currentUser, news, APPLICATION_PREFIX ) {
-		       // {{{ damier
+
 		       $scope.racine_images = '/app/bower_components/charte-graphique-laclasse-com/images/';
 		       $scope.couleurs = [ 'bleu',
 					   'vert',
@@ -159,14 +159,6 @@ angular.module( 'portailApp.controllers' )
 				   }
 			       });
 			   }
-			   // }}}
-
-			   // {{{ aside
-			   news.get().then( function( response ) {
-			       $scope.newsfeed = response.data;
-			   });
-
-			   // }}}
 		       });
 
 		   } ] );
