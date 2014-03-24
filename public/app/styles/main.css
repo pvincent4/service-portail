@@ -258,6 +258,19 @@ svg * {fill:#fff}
 	       padding:1em }
 .user-profil *,
 .user-profil a { color:#16161d }
-accordion,
-accordion div { height:auto }
-accordion .panel-heading h4 { font-size:2em }
+
+.user-profil accordion,
+.user-profil accordion div { height:auto }
+
+.user-profil accordion .panel-heading h4 { font-size:2em }
+
+.user-profil footer { border-top: 1px solid #777;
+		      bottom: 0;
+		      padding: 1.25em;
+		      position: absolute;
+		      text-align: center;
+		      width: 100% }
+.user-profil footer button { border:1px solid #000;
+			     padding: 0.5em 2em;
+			     text-transform:uppercase;
+			     margin:0 1em }
