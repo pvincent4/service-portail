@@ -14,8 +14,7 @@ angular.module( 'portailApp',
 		   $stateProvider
 		       .state( 'portail',
 			       { url: '/',
-				 templateUrl: APPLICATION_PREFIX + '/views/portail.html',
-				 controller: 'PortailCtrl' } )
+				 templateUrl: APPLICATION_PREFIX + '/views/portail.html' } )
 		       .state( 'app-wrapper',
 			       { url: '/show-app',
 				 templateUrl: APPLICATION_PREFIX + '/views/show-app.html',
