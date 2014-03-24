@@ -27,6 +27,19 @@ angular.module( 'portailApp',
 				     }
 				 }
 			       } )
+		       .state( 'portail.user',
+			       { url: '/user',
+				 views: {
+				     'aside': {
+					 templateUrl: APPLICATION_PREFIX + '/views/portail/aside.html',
+					 controller: 'PortailAsideCtrl'
+				     },
+				     'main': {
+					 templateUrl: APPLICATION_PREFIX + '/views/portail/user.html',
+					 controller: 'PortailUserCtrl'
+				     }
+				 }
+			       } )
 		       .state( 'app-wrapper',
 			       { url: '/show-app?app',
 				 templateUrl: APPLICATION_PREFIX + '/views/show-app.html',
