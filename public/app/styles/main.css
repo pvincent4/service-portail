@@ -223,11 +223,12 @@ body {padding:0}
 			     padding-left:1em }
 #app-wrapper .user-menu ul { border:0;
 			     border-radius:0 }
-#app-wrapper .user-menu li { text-align:left }
-#app-wrapper .user-menu li.divider { margin:0 }
+#app-wrapper .user-menu li { text-align:left;
+			     border-top:1px solid #fff }
 #app-wrapper .user-menu li a { width:100%;
-			       height:3em;
-			       line-height:3em }
+			       height:3.5em;
+			       line-height:3em;
+			       padding:0.25em }
 #app-wrapper .user-menu li a:hover { background-color:#16161d }
 #app-wrapper .user-menu li a * { float:left }
 #app-wrapper .user-menu li a svg { height:3em;
