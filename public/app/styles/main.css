@@ -169,7 +169,7 @@ svg * {fill:#fff}
 
 
 /* /show-app */
-/* #app-wrapper { overflow:hidden } */
+#app-wrapper { overflow:hidden }
 
 .en-tete,
 .en-tete .navbar,
