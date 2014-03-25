@@ -6,28 +6,24 @@
     </a>
   </div>
 
-  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 user">
+  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 user" data-ng-style="{'background-image': 'url(' + avatar + ')'}">
 
     <span class="user-info" data-ng-show="current_user.is_logged">
       <a href="/portail/#/user">
-	<data-ng-include class="svg"
-			 src="APPLICATION_PREFIX+'/app/bower_components/charte-graphique-laclasse-com/images/avatar_feminin.svg'"
-			 data-ng-show="current_user['extra']['sexe'] === 'F'"></data-ng-include>
-	<data-ng-include class="svg"
-			 src="APPLICATION_PREFIX+'/app/bower_components/charte-graphique-laclasse-com/images/avatar_masculin.svg'"
-			 data-ng-show="current_user['extra']['sexe'] === 'M' || current_user['extra']['sexe'] === null"></data-ng-include>
 	<h3>{{current_user['info']['LaclassePrenom']}} {{current_user['info']['LaclasseNom']}}</h3>
       </a>
+      <br>
       <select data-ng-model="current_user['profil_actif']"
 	      data-ng-options="profil['etablissement'] + ' : ' + profil['nom'] group by profil['etablissement'] for profil in current_user['profils']" data-ng-change="reload()">
       </select>
+      <br>
+      <a class="logout" href="logout" title="Déconnexion de Laclasse.com">se déconnecter</a>
     </span>
 
-    <span class="button-wrapper">
-      <a href="logout" title="Déconnexion de Laclasse.com" data-ng-show="current_user.is_logged">se déconnecter</a>
-      <a href="login" title="Connexion avec Laclasse.com" data-ng-hide="current_user.is_logged">se connecter</a>
+    <span class="connect-register" data-ng-hide="current_user.is_logged">
+      <a href="login" title="Connexion avec Laclasse.com">se connecter</a>
+      <a href="register" title="Création de compte avec Laclasse.com">s'inscrire</a>
     </span>
-
   </div>
 </div>
 
