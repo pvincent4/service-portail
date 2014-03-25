@@ -1,81 +1,81 @@
 /* Space out content a bit */
 body {
-  padding-top: 20px;
-  padding-bottom: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
 .marketing,
 .footer {
-  padding-left: 15px;
-  padding-right: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
 /* Custom page header */
 .header {
-  border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
 }
 /* Make the masthead heading the same height as the navigation */
 .header h3 {
-  margin-top: 0;
-  margin-bottom: 0;
-  line-height: 40px;
-  padding-bottom: 19px;
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 40px;
+    padding-bottom: 19px;
 }
 
 /* Custom page footer */
 .footer {
-  padding-top: 19px;
-  color: #777;
-  border-top: 1px solid #e5e5e5;
+    padding-top: 19px;
+    color: #777;
+    border-top: 1px solid #e5e5e5;
 }
 
 /* Customize container */
 @media (min-width: 768px) {
-  .container {
-    max-width: 730px;
-  }
+    .container {
+	max-width: 730px;
+    }
 }
 .container-narrow > hr {
-  margin: 30px 0;
+    margin: 30px 0;
 }
 
 /* Main marketing message and sign up button */
 .jumbotron {
-  text-align: center;
-  border-bottom: 1px solid #e5e5e5;
+    text-align: center;
+    border-bottom: 1px solid #e5e5e5;
 }
 .jumbotron .btn {
-  font-size: 21px;
-  padding: 14px 24px;
+    font-size: 21px;
+    padding: 14px 24px;
 }
 
 /* Supporting marketing content */
 .marketing {
-  margin: 40px 0;
+    margin: 40px 0;
 }
 .marketing p + h4 {
-  margin-top: 28px;
+    margin-top: 28px;
 }
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
-  /* Remove the padding we set earlier */
-  .header,
-  .marketing,
-  .footer {
-    padding-left: 0;
-    padding-right: 0;
-  }
-  /* Space out the masthead */
-  .header {
-    margin-bottom: 30px;
-  }
-  /* Remove the bottom border on the jumbotron for visual effect */
-  .jumbotron {
-    border-bottom: 0;
-  }
+    /* Remove the padding we set earlier */
+    .header,
+    .marketing,
+    .footer {
+	padding-left: 0;
+	padding-right: 0;
+    }
+    /* Space out the masthead */
+    .header {
+	margin-bottom: 30px;
+    }
+    /* Remove the bottom border on the jumbotron for visual effect */
+    .jumbotron {
+	border-bottom: 0;
+    }
 }
 
 
@@ -91,33 +91,33 @@ body {padding:0}
 .container-fluid * {padding:0;margin:0}
 
 .aside { background-color:#16161d;
-		  box-shadow: 5px 0 8px 0 rgba(0, 0, 0, 0.5);
-		  z-index:1 }
+	 box-shadow: 5px 0 8px 0 rgba(0, 0, 0, 0.5);
+	 z-index:1 }
 .aside .header {height:25%}
 .aside .slider {height:75%}
 .aside .user {text-align:center}
 .aside .user * {width:100%}
 .aside .user .user-info { position:absolute;
-				   top:40%;
-				   right:0 }
+			  top:40%;
+			  right:0 }
 .logolaclasse h3,
 .aside .user .user-info h3 { padding:0;
 			     font-weight:bold;
 			     color:#fff;
 			     text-decoration:none }
 .aside .user .button-wrapper { position:absolute;
-					bottom:1.5em;
-					right:0;
-					text-align:center }
+			       bottom:1.5em;
+			       right:0;
+			       text-align:center }
 .aside .user .button-wrapper a { border:1px solid #fff;
 				 color:#fff;
 				 padding:0.5em;
 				 margin:0.5em;
 				 text-transform:uppercase }
 .aside .user select { background: transparent;
-			       border: 0;
-			       font-weight: bold;
-			       width: 100% }
+		      border: 0;
+		      font-weight: bold;
+		      width: 100% }
 .user-info svg { bottom: 0;
 		 left: 0;
 		 opacity: 0.5;
@@ -185,75 +185,75 @@ svg * {fill:#fff}
 .en-tete .navbar,
 .en-tete .user-menu,
 .en-tete .titre { height:1.5em;
-			      min-height:1.5em;
-			      max-height:1.5em;
-			      border:0 }
+		  min-height:1.5em;
+		  max-height:1.5em;
+		  border:0 }
 
 .titre { padding-left:1em;
-		      font-weight:bolder }
+	 font-weight:bolder }
 
 .laclasse-com { text-align:center;
-			     font-weight:bolder;
-			     float:left }
+		font-weight:bolder;
+		float:left }
 .laclasse-com a { color:#fff;
-			       text-decoration:none }
+		  text-decoration:none }
 
 .laclasse-com .petit-logo { display:inline-block;
-					 float:left;
-					 width:1.5em;
-					 padding-top:1px }
+			    float:left;
+			    width:1.5em;
+			    padding-top:1px }
 .laclasse-com .petit-logo svg { height:1em;
-					     width:1em }
+				width:1em }
 .laclasse-com .petit-logo svg * {fill:#fff}
 
 .laclasse-com span { display:inline-block;
-				  float:left;
-				  padding-left:1em }
+		     float:left;
+		     padding-left:1em }
 
 .user-menu { text-align:right;
-			  padding-right:1em }
+	     padding-right:1em }
 .user-menu .profil-select-wrapper { float:left;
-						 overflow:hidden;
-						 width:calc( 12em - 15px ) }
+				    overflow:hidden;
+				    width:calc( 12em - 15px ) }
 .user-menu select { width:12em;
-				 border:0;
-				 background:transparent;
-				 appearance:none;
-				 -moz-appearance:none;
-				 -webkit-appearance:none }
+		    border:0;
+		    background:transparent;
+		    appearance:none;
+		    -moz-appearance:none;
+		    -webkit-appearance:none }
 .user-menu a { display:inline-block;
-			    color:#fff;
-			    text-decoration:none;
-			    cursor:pointer }
+	       color:#fff;
+	       text-decoration:none;
+	       cursor:pointer }
 .user-menu h6 { display:inline;
-			     font-weight:bold;
-			     padding-left:1em }
+		font-weight:bold;
+		padding-left:1em }
 .user-menu ul { border:0;
-			     border-radius:0 }
+		border-radius:0 }
 .user-menu li { text-align:left;
-			     border-top:1px solid #fff }
+		border-top:1px solid #fff }
 .user-menu li a { width:100%;
-			       height:3.5em;
-			       line-height:3em;
-			       padding:0.25em }
+		  height:3.5em;
+		  line-height:3em;
+		  padding:0.25em }
 .user-menu li a:hover { background-color:#16161d }
 .user-menu li a * { float:left }
 .user-menu li a svg { height:3em;
-				   width:3em }
+		      width:3em }
 .user-menu li a svg * { fill:#fff }
 .user-menu li a.dropdown-toggle { height:1em;
-					       line-height:1em;
-					       text-align:center;
-					       display: inline-block;
-					       height: 100%;
-					       padding: 0;
-					       width: 100% }
+				  line-height:1em;
+				  text-align:center;
+				  display: inline-block;
+				  height: 100%;
+				  padding: 0;
+				  width: 100% }
 
 .iframe {height:calc(100% - 1.5em);
-		      background-color:#ececed}
+	 background-color:#ececed}
 .iframe iframe {width:100%;
-			     height:100%;
-			     border:0}
+		height:100%;
+		border:0}
 
 
 
