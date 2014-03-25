@@ -215,10 +215,11 @@ body { padding:0 }
 .laclasse-com .petit-logo { display:inline-block;
 			    float:left;
 			    padding-top:1px;
-			    width:1.5em }
-
-.laclasse-com .petit-logo svg { height:1em;
-				width:1em }
+			    width:1.5em;
+			    height:1.5em;
+			    background-position: left top;
+			    background-repeat: no-repeat;
+			    background-size: auto 90% }
 
 .laclasse-com span { display:inline-block;
 		     float:left;
@@ -365,4 +366,4 @@ div,html,body,.rn-carousel-slides { height:100% }
 
 .aside .header,.damier .petite.case { height:25% }
 
-svg *,.laclasse-com .petit-logo svg *,.user-menu li a svg * { fill:#fff }
+svg * { fill:#fff }
