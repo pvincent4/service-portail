@@ -79,6 +79,8 @@ body {
 }
 
 
+html { overflow:hidden }
+
 .nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
 .panel-group div { height:auto }
 
@@ -112,8 +114,11 @@ body {padding:0}
 			     color:#fff;
 			     text-decoration:none }
 
-.aside .user-info { padding-top:33%;
-		    line-height:0 }
+.aside .user-info span { position:absolute;
+			 bottom:0;
+			 height:auto;
+			 background:transparent;
+			 line-height:0 }
 .aside .user .connect-register a,
 .aside .user-info a.logout { border:1px solid #fff;
 			     color:#fff;
@@ -275,10 +280,12 @@ svg * {fill:#fff}
 
 /* User Profil */
 .user-profil { background:#ececed;
-	       padding:1em }
+	       padding:0 1em }
 .user-profil *,
 .user-profil a { color:#16161d }
-.user-profil h1, .user-profil h2, .user-profil h3 { line-height:1.5em }
+.user-profil h1,
+.user-profil h2,
+.user-profil h3 { line-height:1.5em }
 .user-profil h3 { color:#b2b2b2;
 		  font-weight:bolder }
 .user-profil h1 { color:#1aa1cc;
@@ -286,7 +293,11 @@ svg * {fill:#fff}
 .user-profil h2 { color:#1aa1cc;
 		  font-size: 1.5em }
 
-.user-profil header { margin-bottom:2em }
+.user-profil header { margin-bottom:2em;
+		      width: calc( 100% - 2em ) }
+
+.user-profil div.form { overflow-y:auto;
+			height:70% }
 .user-profil accordion .panel { border:0;
 				box-shadow:0;
 				background:transparent }
@@ -314,11 +325,12 @@ svg * {fill:#fff}
 			     padding: 0.5em 2em; }
 
 .user-profil footer { border-top: 1px solid #b2b2b2;
+		      background-color:#ececed;
 		      bottom: 0;
 		      padding: 1.25em;
 		      position: absolute;
 		      text-align: center;
-		      width: 100% }
+		      width: calc( 100% - 2em ) }
 .user-profil footer button { border:1px solid #000;
 			     padding: 0.5em 2em;
 			     text-transform:uppercase;
