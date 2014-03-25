@@ -12,29 +12,29 @@
 	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
 	  <div class="form-group">
 	    <label for="datenaissance">date de naissance :</label>
-	    <input type="date" class="form-control" id="datenaissance">
+	    <input type="text" class="form-control" data-ng-model="current_user['extra']['date_naissance']" data-ng-required="true" data-close-text="Close" />
 	  </div>
 	  <div class="form-group">
 	    <label for="adressedomicile">adresse du domicile :</label>
-	    <input type="text" class="form-control" id="adressedomicile">
+	    <input type="text" class="form-control" id="adressedomicile" data-ng-model="current_user['extra']['adresse']">
 	  </div>
 	  <div class="form-group">
 	    <label for="tel1">téléphone 1 :</label>
-	    <input type="text" class="form-control" id="tel1">
+	    <input type="text" class="form-control" id="tel1" data-ng-model="current_user['extra']['telephones'][ 0 ]">
 	  </div>
 	</div>
 	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
 	  <div class="form-group">
 	    <label for="sexe">sexe :</label>
-	    <input type="text" class="form-control" id="sexe">
+	    <input type="text" class="form-control" id="sexe" data-ng-model="current_user['extra']['sexe']">
 	  </div>
 	  <div class="form-group">
 	    <label for="email">adresse électronique :</label>
-	    <input type="text" class="form-control" id="email">
+	    <input type="text" class="form-control" id="email" data-ng-model="current_user['extra']['emails'][ 0 ]">
 	  </div>
 	  <div class="form-group">
 	    <label for="tel2">téléphone 2 :</label>
-	    <input type="text" class="form-control" id="tel2">
+	    <input type="text" class="form-control" id="tel2" data-ng-model="current_user['extra']['telephones'][ 1 ]">
 	  </div>
 	</div>
 	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 avatar">
