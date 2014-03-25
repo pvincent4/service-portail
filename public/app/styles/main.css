@@ -95,29 +95,42 @@ body {padding:0}
 	 z-index:1 }
 .aside .header {height:25%}
 .aside .slider {height:75%}
-.aside .user {text-align:center}
+
+.aside .user { text-align:center;
+	       background-position:center center;
+	       background-repeat:no-repeat;
+	       background-size:contain }
 .aside .user * {width:100%}
-.aside .user .user-info { position:absolute;
-			  top:40%;
-			  right:0 }
+.aside .user span { display:block;
+		    position:absolute;
+		    height:100%;
+		    width:100%;
+		    background-color:rgba(0, 0, 0, 0.5) }
 .logolaclasse h3,
 .aside .user .user-info h3 { padding:0;
 			     font-weight:bold;
 			     color:#fff;
 			     text-decoration:none }
-.aside .user .button-wrapper { position:absolute;
-			       bottom:1.5em;
-			       right:0;
-			       text-align:center }
-.aside .user .button-wrapper a { border:1px solid #fff;
-				 color:#fff;
-				 padding:0.5em;
-				 margin:0.5em;
-				 text-transform:uppercase }
-.aside .user select { background: transparent;
-		      border: 0;
-		      font-weight: bold;
-		      width: 100% }
+
+.aside .user-info { padding-top:33%;
+		    line-height:0 }
+.aside .user .connect-register a,
+.aside .user-info a.logout { border:1px solid #fff;
+			     color:#fff;
+			     padding:0.5em;
+			     margin:0.5em;
+			     text-transform:uppercase }
+.aside .user-info a.logout { line-height:3 }
+
+.aside .user .connect-register a { display:block;
+				   width:80%;
+				   margin:13.5% auto 0 }
+
+.aside .user select { background:transparent;
+		      border:0;
+		      font-weight:lighter;
+		      width:100% }
+
 .user-info svg { bottom: 0;
 		 left: 0;
 		 opacity: 0.5;
