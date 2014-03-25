@@ -265,7 +265,15 @@ svg * {fill:#fff}
 	       padding:1em }
 .user-profil *,
 .user-profil a { color:#16161d }
+.user-profil h1, .user-profil h2, .user-profil h3 { line-height:1.5em }
+.user-profil h3 { color:#b2b2b2;
+		  font-weight:bolder }
+.user-profil h1 { color:#1aa1cc;
+		  font-weight:bolder }
+.user-profil h2 { color:#1aa1cc;
+		  font-size: 1.5em }
 
+.user-profil header { margin-bottom:2em }
 .user-profil accordion .panel { border:0;
 				box-shadow:0;
 				background:transparent }
