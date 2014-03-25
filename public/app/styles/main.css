@@ -293,11 +293,16 @@ svg * {fill:#fff}
 .user-profil h2 { color:#1aa1cc;
 		  font-size: 1.5em }
 
-.user-profil header { margin-bottom:2em;
-		      width: calc( 100% - 2em ) }
+.user-profil header { position:absolute;
+		      width: calc( 100% - 2em );
+		      height:12em }
 
 .user-profil div.form { overflow-y:auto;
-			height:70% }
+			position:absolute;
+			top:12em; /* hauteur header */
+			bottom:5em; /* hauteur footer */
+			width: calc( 100% - 2em );
+			height:calc( 100% - 12em - 5em ) }
 .user-profil accordion .panel { border:0;
 				box-shadow:0;
 				background:transparent }
@@ -330,7 +335,8 @@ svg * {fill:#fff}
 		      padding: 1.25em;
 		      position: absolute;
 		      text-align: center;
-		      width: calc( 100% - 2em ) }
+		      width: calc( 100% - 2em );
+		      height:5em }
 .user-profil footer button { border:1px solid #000;
 			     padding: 0.5em 2em;
 			     text-transform:uppercase;
