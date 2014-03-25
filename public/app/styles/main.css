@@ -126,14 +126,19 @@ body {padding:0}
 .damier .petite.case,
 .logolaclasse {text-align:center}
 .damier .petite.case a,
-.logolaclasse a {color:#fff;
-			  text-decoration:none;
-			  float: left;
-			  height: 100%;
-			  width: 100%}
+.logolaclasse a { color:#fff;
+		  text-decoration:none;
+		  float:left;
+		  height:100%;
+		  width:100% }
+.logolaclasse a h3 { bottom:0;
+		     position:absolute;
+		     text-align:center;
+		     width:100% }
+
 svg * {fill:#fff}
 
-.aside .avatar {background-color:#aff}
+.aside .avatar { background-color:#aff }
 
 .rn-carousel-slides {height:100%}
 .rn-carousel-indicator { position:absolute;
@@ -150,20 +155,18 @@ svg * {fill:#fff}
 		float:left }
 
 /* tailles */
-.damier .petite.case {height:25% }
+.damier .petite.case { height:25% }
 /* .damier .grande.case {width:60%;height:75%} */
 
-/* icônes */
+.logolaclasse a,
 .damier .petite.case a { background-position:center center;
-			 background-repeat:no-repeat }
+			 background-repeat:no-repeat;
+			 background-size:66% }
 .app-icone { position:absolute;
 	     height:auto;
 	     width:100%;
 	     left:0;
 	     bottom:2em }
-/* .app-icone .icone, */
-.app-icone .icone svg { /* height:50%; */
-			width:50% }
 
 .damier .petite.case a span { font-size:1.5em;
 			      font-weight:lighter }
