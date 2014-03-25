@@ -1,7 +1,10 @@
 <div class="row-fluid user-profil">
-  <h3>profil utilisateur</h3>
-  <h1>{{current_user['info']['LaclassePrenom']}} {{current_user['info']['LaclasseNom']}}</h1>
-
+  <header>
+    <h3>profil utilisateur</h3>
+    <h1>{{current_user['info']['LaclassePrenom']}} {{current_user['info']['LaclasseNom']}}</h1>
+    <h2>{{current_user['profil_actif']['etablissement']}}</h2>
+    <h2>{{current_user['profil_actif']['nom']}}</h2>
+  </header>
   <accordion close-others="false">
 
     <accordion-group data-is-open="groups[ 0 ].ouvert">
