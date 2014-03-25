@@ -147,6 +147,7 @@ body { padding:0 }
 		 opacity:0.5;
 		 position:absolute }
 
+.damier { overflow-y:auto }
 .damier .petite.case,.logolaclasse { text-align:center }
 
 .damier .petite.case a,.logolaclasse a { color:#fff;
