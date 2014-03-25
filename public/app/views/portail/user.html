@@ -4,83 +4,90 @@
 
   <accordion close-others="false">
 
-    <accordion-group>
+    <accordion-group data-is-open="groups[ 0 ].ouvert">
       <accordion-heading>
-	<span class="glyphicon" ng-class="{'glyphicon-chevron-down': isopen, 'glyphicon-chevron-right': !isopen}"> informations</span>
+	<span class="glyphicon" ng-class="{'glyphicon-chevron-down': groups[ 0 ].ouvert, 'glyphicon-chevron-right': !groups[ 0 ].ouvert}"> informations</span>
       </accordion-heading>
       <div class="row-fluid">
 	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
 	  <div class="form-group">
-	    <label for="exampleInputEmail1">Email address</label>
-	    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+	    <label for="datenaissance">date de naissance :</label>
+	    <input type="date" class="form-control" id="datenaissance">
 	  </div>
 	  <div class="form-group">
-	    <label for="exampleInputEmail1">Email address</label>
-	    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+	    <label for="adressedomicile">adresse du domicile :</label>
+	    <input type="text" class="form-control" id="adressedomicile">
 	  </div>
 	  <div class="form-group">
-	    <label for="exampleInputEmail1">Email address</label>
-	    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+	    <label for="tel1">téléphone 1 :</label>
+	    <input type="text" class="form-control" id="tel1">
 	  </div>
 	</div>
 	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
 	  <div class="form-group">
-	    <label for="exampleInputEmail1">Email address</label>
-	    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+	    <label for="sexe">sexe :</label>
+	    <input type="text" class="form-control" id="sexe">
 	  </div>
 	  <div class="form-group">
-	    <label for="exampleInputEmail1">Email address</label>
-	    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+	    <label for="email">adresse électronique :</label>
+	    <input type="text" class="form-control" id="email">
 	  </div>
 	  <div class="form-group">
-	    <label for="exampleInputEmail1">Email address</label>
-	    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+	    <label for="tel2">téléphone 2 :</label>
+	    <input type="text" class="form-control" id="tel2">
 	  </div>
 	</div>
-	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-	  avatar
+	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 avatar">
+	  <data-ng-include class="svg"
+			   src="APPLICATION_PREFIX+'/app/bower_components/charte-graphique-laclasse-com/images/avatar_feminin.svg'"
+			   data-ng-show="current_user['extra']['sexe'] === 'F'"></data-ng-include>
+	  <data-ng-include class="svg"
+			   src="APPLICATION_PREFIX+'/app/bower_components/charte-graphique-laclasse-com/images/avatar_masculin.svg'"
+			   data-ng-show="current_user['extra']['sexe'] === 'M' || current_user['extra']['sexe'] === null"></data-ng-include>
+	  <br>
+	  <button>changer de photo</button>
 	</div>
       </div>
 
     </accordion-group>
 
-    <accordion-group>
+    <accordion-group data-is-open="groups[ 1 ].ouvert">
       <accordion-heading>
-	<span class="glyphicon" ng-class="{'glyphicon-chevron-down': isopen, 'glyphicon-chevron-right': !isopen}"> mot de passe</span>
+	<span class="glyphicon" ng-class="{'glyphicon-chevron-down': groups[ 1 ].ouvert, 'glyphicon-chevron-right': !groups[ 1 ].ouvert}"> mot de passe</span>
       </accordion-heading>
       <div class="row-fluid">
 	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
 	  <div class="form-group">
-	    <label for="exampleInputEmail1">Email address</label>
-	    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+	    <label for="oldpasswd">entrer l'ancien mot de passe :</label>
+	    <input type="password" class="form-control" id="oldpasswd">
 	  </div>
 	</div>
 	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
 	  <div class="form-group">
-	    <label for="exampleInputEmail1">Email address</label>
-	    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+	    <label for="newpasswd1">entre le nouveau mot de passe :</label>
+	    <input type="password" class="form-control" id="newpasswd1">
 	  </div>
 	</div>
 	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
 	  <div class="form-group">
-	    <label for="exampleInputEmail1">Email address</label>
-	    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+	    <label for="newpasswd2">confirmer le nouveau mot de passe :</label>
+	    <input type="password" class="form-control" id="newpasswd2">
 	  </div>
 	</div>
       </div>
 
     </accordion-group>
 
-    <accordion-group>
+    <accordion-group data-is-open="groups[ 2 ].ouvert">
       <accordion-heading>
-	<span class="glyphicon" ng-class="{'glyphicon-chevron-down': isopen, 'glyphicon-chevron-right': !isopen}"> droits</span>
+	<span class="glyphicon" ng-class="{'glyphicon-chevron-down': groups[ 2 ].ouvert, 'glyphicon-chevron-right': !groups[ 2 ].ouvert}"> droits</span>
       </accordion-heading>
       <p>The body of the accordion group grows to fit the contents</p>
     </accordion-group>
 
-    <accordion-group>
+    <accordion-group data-is-open="groups[ 3 ].ouvert">
       <accordion-heading>
-	<span class="glyphicon" ng-class="{'glyphicon-chevron-down': isopen, 'glyphicon-chevron-right': !isopen}"> statistiques</span>
+	<span class="glyphicon" ng-class="{'glyphicon-chevron-down': groups[ 3 ].ouvert, 'glyphicon-chevron-right': !groups[ 3 ].ouvert}"> statistiques</span>
       </accordion-heading>
       <p>The body of the accordion group grows to fit the contents</p>
     </accordion-group>
