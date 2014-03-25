@@ -253,12 +253,18 @@ body { padding:0 }
 .user-menu li { border-top:1px solid #fff;
 		text-align:left }
 
-.user-menu li a { height:3.5em;
+.user-menu li a { color:#fff;
+		  background-position: left center;
+		  background-repeat: no-repeat;
+		  background-size: auto 80%;
+		  height:3.5em;
 		  line-height:3em;
 		  padding:.25em;
+		  padding-left:3em;
 		  width:100% }
 
-.user-menu li a:hover { background-color:#16161d }
+.user-menu li a:hover { background-color:#16161d;
+			color:#fff }
 
 .user-menu li a * { float:left }
 
@@ -271,6 +277,8 @@ body { padding:0 }
 				  padding:0;
 				  text-align:center;
 				  width:100% }
+
+.user-menu li a.dropdown-toggle span { width:100% }
 
 .iframe { height:calc( 100% - 1.5em ) }
 

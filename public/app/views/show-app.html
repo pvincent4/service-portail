@@ -29,8 +29,7 @@
 	    </a>
 	    <ul role="menu" class="dropdown-menu gris3">
 	      <li ng-repeat="item in menu">
-		<a href="{{item.lien}}">
-		  <data-ng-include class="svg" src="APPLICATION_PREFIX+'/app/bower_components/charte-graphique-laclasse-com/images/' + item.icone"></data-ng-include>
+		<a href="{{item.lien}}" data-ng-style="{'background-image': 'url(' + APPLICATION_PREFIX+'/app/bower_components/charte-graphique-laclasse-com/images/' + item.icone + ') '}" >
 		  {{item.texte}}
 		</a>
 	      </li>
