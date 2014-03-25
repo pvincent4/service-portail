@@ -7,10 +7,7 @@
     <a href="{{ app.lien }}" data-ng-show="app.active === true && app.lien !== ''"
        data-ng-style="{'background-image': 'url(' + app.icone + ') '}">
       <span class="compteur-notification orange-brillant" data-ng-show="app.notifications.length > 0">{{app.notifications.length}}</span>
-      <div class="app-icone">
-	<br>
-	<span>{{ app.nom }}</span>
-      </div>
+      <span class="app-name">{{ app.nom }}</span>
     </a>
   </div>
 </div>
