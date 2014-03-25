@@ -4,10 +4,10 @@
       <h3>{{time.getHours()}}:{{time.getMinutes()}}:{{time.getSeconds()}}</h3>
       <span>{{time.toDateString()}}</span>
     </div>
-    <a href="{{ app.lien }}" data-ng-show="app.active === true && app.lien !== ''">
+    <a href="{{ app.lien }}" data-ng-show="app.active === true && app.lien !== ''"
+       data-ng-style="{'background-image': 'url(' + app.icone + ') '}">
       <span class="compteur-notification orange-brillant" data-ng-show="app.notifications.length > 0">{{app.notifications.length}}</span>
       <div class="app-icone">
-	<data-ng-include class="svg" src="app.icone"></data-ng-include>
 	<br>
 	<span>{{ app.nom }}</span>
       </div>
