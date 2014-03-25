@@ -161,15 +161,15 @@ svg * {fill:#fff}
 .logolaclasse a,
 .damier .petite.case a { background-position:center center;
 			 background-repeat:no-repeat;
-			 background-size:66% }
-.app-icone { position:absolute;
-	     height:auto;
-	     width:100%;
-	     left:0;
-	     bottom:2em }
+			 background-size:auto 66% }
 
 .damier .petite.case a span { font-size:1.5em;
 			      font-weight:lighter }
+.damier .petite.case .app-name { bottom:8%;
+				 font-weight:lighter;
+				 left:0;
+				 position:absolute;
+				 width:100% }
 
 .damier .petite.case a .compteur-notification { border-radius:1em;
 						color:#fff;
