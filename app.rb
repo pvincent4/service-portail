@@ -67,6 +67,7 @@ class SinatraApp < Sinatra::Base
 
       env['rack.session'][:current_user].to_json
    end
+   # TODO: ajouter API changement profil actif
 
    get "#{APP_PATH}/api/news" do
       rss = SimpleRSS.parse open('http://xkcd.com/rss.xml')
