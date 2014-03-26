@@ -10,7 +10,6 @@ angular.module( 'portailApp.controllers' )
 					 { ouvert: false } ];
 
 		       currentUser.get().then( function( response ) {
-			   $scope.current_user = response.data;
-			   console.debug($scope.current_user)
+			   $scope.current_user = response;
 		       });
 		   } ] );

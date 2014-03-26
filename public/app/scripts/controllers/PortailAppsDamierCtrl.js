@@ -170,7 +170,7 @@ angular.module( 'portailApp.controllers' )
 				     ];
 
 		       currentUser.get().then( function( response ) {
-			   $scope.current_user = response.data;
+			   $scope.current_user = response;
 
 			   if ( $scope.current_user.is_logged ) {
 			       // FIXME: utiliser de vraies données
