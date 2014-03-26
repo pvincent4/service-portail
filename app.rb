@@ -50,9 +50,21 @@ class SinatraApp < Sinatra::Base
 
    # {{{ API
    get "#{APP_PATH}/api/user" do
-      return { 'user' => '', 'info' => { } }.to_json unless session[:authenticated]
+      return { user: '',
+                 info: { },
+             is_logged: false }.to_json unless session[:authenticated]
 
+      env['rack.session'][:current_user][:is_logged] = true
       env['rack.session'][:current_user][:extra] = Annuaire.get_user( env['rack.session'][:current_user][:info][:uid] )
+      env['rack.session'][:current_user][:profils] = env['rack.session'][:current_user][:extra]['profils'].map {
+         |profil|
+         { type: profil['profil_id'],
+             uai: profil['etablissement_code_uai'],
+             etablissement: profil['etablissement_nom'],
+             nom: profil['profil_nom'] }
+      }
+      env['rack.session'][:current_user][:profil_actif] = env['rack.session'][:current_user][:profils][0]
+
       env['rack.session'][:current_user].to_json
    end
 

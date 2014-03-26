@@ -5,7 +5,7 @@ angular.module( 'portailApp.controllers' )
 		 [ '$scope', 'currentUser', 'news', 'APPLICATION_PREFIX',
 		   function( $scope, currentUser, news, APPLICATION_PREFIX ) {
 		       currentUser.get().then( function( response ) {
-			   $scope.current_user = response.data;
+			   $scope.current_user = response;
 			   $scope.avatar = '';
 
 			   if ( $scope.current_user.is_logged ) {
