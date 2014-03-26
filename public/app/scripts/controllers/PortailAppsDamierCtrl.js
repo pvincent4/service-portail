@@ -6,16 +6,6 @@ angular.module( 'portailApp.controllers' )
 		   function( $scope, currentUser, news, APPLICATION_PREFIX ) {
 
 		       $scope.racine_images = '/app/bower_components/charte-graphique-laclasse-com/images/';
-		       $scope.couleurs = [ 'bleu',
-					   'vert',
-					   'rouge',
-					   'violet',
-					   'orange',
-					   'jaune',
-					   'gris1',
-					   'gris2',
-					   'gris3',
-					   'gris4' ];
 
 		       $scope.apps = [ { id: 'messagerie',
 					 icone: $scope.racine_images + '01_messagerie.svg',
