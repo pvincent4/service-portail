@@ -22,6 +22,6 @@ angular.module( 'portailApp.controllers' )
 			   });
 
 		       currentUser.get().then( function( response ) {
-			   $scope.current_user = response.data;
+			   $scope.current_user = response;
 		       } );
 		 } ] );
