@@ -163,7 +163,14 @@ body { padding:0 }
 .aside .avatar { background-color:#aff }
 
 .rn-carousel-indicator { bottom:33.333%;
-			 position:absolute }
+			 position:absolute;
+			 background:transparent }
+
+.rn-carousel-indicator span { font-size:2em;
+			      line-height:0.5em;
+			      color:#fff }
+.rn-carousel-indicator span:before { content:'○'}
+.rn-carousel-indicator span.active:before { content:'●'}
 
 .rn-carousel-slide .news-content { background-color:rgba(255,255,255,0.1);
 				   color:#fff;
