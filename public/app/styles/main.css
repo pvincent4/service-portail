@@ -81,8 +81,6 @@ body {
 
 .nav,.pagination,.carousel,.panel-title a { cursor:pointer }
 
-* { color:#fff }
-
 #flash { display:none }
 
 body { padding:0 }
@@ -137,7 +135,8 @@ body { padding:0 }
 				   margin:13.5% auto 0;
 				   width:80% }
 
-.aside .user select { background:transparent;
+.aside .user select { color:#fff;
+		      background:transparent;
 		      border:0;
 		      font-weight:lighter;
 		      width:100% }
@@ -198,10 +197,14 @@ body { padding:0 }
 						right:.5em;
 						top:.5em }
 
-.en-tete,.en-tete .navbar,.en-tete .user-menu,.en-tete .titre { border:0;
-								height:1.5em;
-								max-height:1.5em;
-								min-height:1.5em }
+.en-tete,
+.en-tete .navbar,
+.en-tete .user-menu,
+.en-tete .titre { color:#fff;
+		  border:0;
+		  height:1.5em;
+		  max-height:1.5em;
+		  min-height:1.5em }
 
 .titre { font-weight:bolder;
 	 padding-left:1em }
@@ -224,9 +227,11 @@ body { padding:0 }
 
 .laclasse-com span { display:inline-block;
 		     float:left;
+		     color:#fff;
 		     padding-left:1em }
 
-.user-menu { padding-right:1em;
+.user-menu { color:#fff;
+	     padding-right:1em;
 	     text-align:right }
 
 .user-menu .profil-select-wrapper { float:left;
@@ -291,7 +296,8 @@ body { padding:0 }
 .user-profil { background:#ececed;
 	       padding:0 1em }
 
-.user-profil *,.user-profil a { color:#16161d }
+.user-profil *,
+.user-profil a { color:#16161d }
 
 .user-profil h1,.user-profil h2,.user-profil h3 { line-height:1.5em }
 
@@ -367,4 +373,4 @@ div,html,body,.rn-carousel-slides { height:100% }
 
 .aside .header,.damier .petite.case { height:25% }
 
-svg * { fill:#fff }
+/* svg * { fill:#fff } */
