@@ -166,6 +166,7 @@ body { padding:0 }
 			 position:absolute }
 
 .rn-carousel-slide .news-content { background-color:rgba(255,255,255,0.1);
+				   color:#fff;
 				   bottom:0;
 				   height:33.333%;
 				   padding:5px;
