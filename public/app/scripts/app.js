@@ -8,7 +8,8 @@ angular.module( 'portailApp',
 		  'portailApp.services.news',
 		  'ui.router',
 		  'ui.bootstrap',
-		  'angular-carousel' ] )
+		  'angular-carousel',
+		  'flow' ] )
     .config( [ '$stateProvider', '$urlRouterProvider', 'APPLICATION_PREFIX',
 	       function( $stateProvider, $urlRouterProvider, APPLICATION_PREFIX ) {
 		   $stateProvider
