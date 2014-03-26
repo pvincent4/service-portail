@@ -14,8 +14,9 @@
 	  <h3>{{current_user['info']['LaclassePrenom']}} {{current_user['info']['LaclasseNom']}}</h3>
 	</a>
 	<br>
-	<select data-ng-model="current_user['profil_actif']"
-		data-ng-options="profil['etablissement'] + ' : ' + profil['nom'] group by profil['etablissement'] for profil in current_user['profils']" data-ng-change="reload()">
+	<select data-ng-controller="ProfilActifCtrl"
+		data-ng-model="current_user['profil_actif']"
+		data-ng-options="profil['index'] as profil['etablissement'] + ' : ' + profil['nom'] group by profil['etablissement'] for profil in current_user['profils']" data-ng-change="reload()">
 	</select>
 	<br>
 	<a class="logout" href="logout" title="Déconnexion de Laclasse.com">se déconnecter</a>

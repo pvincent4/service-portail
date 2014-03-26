@@ -17,8 +17,9 @@
 
 	  <div class="user-menu dropdown col-xs-6 col-sm-4 col-md-4 col-lg-2 gris4 pull-right">
 	    <div class="profil-select-wrapper">
-	      <select data-ng-model="current_user['profil_actif']"
-		      data-ng-options="profil['etablissement'] + ' : ' + profil['nom'] group by profil['etablissement'] for profil in current_user['profils']" data-ng-change="reload()">
+	      <select data-ng-controller="ProfilActifCtrl"
+		      data-ng-model="current_user['profil_actif']"
+		      data-ng-options="profil['index'] as profil['etablissement'] + ' : ' + profil['nom'] group by profil['etablissement'] for profil in current_user['profils']" data-ng-change="reload()">
 	      </select>
 	    </div>
 	    <a class="dropdown-toggle">

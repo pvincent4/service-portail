@@ -56,14 +56,15 @@ class SinatraApp < Sinatra::Base
 
       env['rack.session'][:current_user][:is_logged] = true
       env['rack.session'][:current_user][:extra] = Annuaire.get_user( env['rack.session'][:current_user][:info][:uid] )
-      env['rack.session'][:current_user][:profils] = env['rack.session'][:current_user][:extra]['profils'].map {
-         |profil|
-         { type: profil['profil_id'],
-             uai: profil['etablissement_code_uai'],
-             etablissement: profil['etablissement_nom'],
-             nom: profil['profil_nom'] }
+      env['rack.session'][:current_user][:profils] = env['rack.session'][:current_user][:extra]['profils']
+                                                     .map.with_index { |profil, i|
+        { index: i,
+          type: profil['profil_id'],
+          uai: profil['etablissement_code_uai'],
+          etablissement: profil['etablissement_nom'],
+          nom: profil['profil_nom'] }
       }
-      env['rack.session'][:current_user][:profil_actif] = env['rack.session'][:current_user][:profils][0]
+      env['rack.session'][:current_user][:profil_actif] = 0
 
       racine_images = '/app/bower_components/charte-graphique-laclasse-com/images/'
       env['rack.session'][:current_user][:apps] = [ { id: 'messagerie',
