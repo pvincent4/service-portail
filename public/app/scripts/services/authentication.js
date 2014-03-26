@@ -12,11 +12,7 @@ angular.module( 'portailApp.services.authentication' )
     .service('currentUser',
 	     [ '$http', 'User',
 	       function( $http, User ) {
-		   var user = null;
-		   this.get = function() {
-		       if ( user == null ) {
-			   user = User.get().$promise;
-		       }
-		       return user;
-		   };
+		   this.get = _.memoize( function() {
+		       return User.get().$promise;
+		   } );
 	       } ] );
