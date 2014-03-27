@@ -100,8 +100,10 @@ body { font-family:'Open Sans', sans-serif;
 	 box-shadow:5px 0 8px 0 rgba(0,0,0,0.5);
 	 z-index:1 }
 
-.aside .slider { height:75% }
-
+.aside .slider { height:50% }
+@media screen and (min-width: 992px) {
+    .aside .slider { height:75% }
+}
 .aside .user { background-position:center center;
 	       background-repeat:no-repeat;
 	       background-size:contain;
