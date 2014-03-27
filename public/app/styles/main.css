@@ -83,9 +83,9 @@ body {
 
 #flash { display:none }
 
-@import url(http://fonts.googleapis.com/css?family=Oswald:300,400,700);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600italic,600,700,700italic,800,800italic);
 
-body { font-family:'Oswald', sans-serif;
+body { font-family:'Open Sans', sans-serif;
        padding:0 }
 
 .container-fluid { margin:0;
@@ -160,7 +160,8 @@ body { font-family:'Oswald', sans-serif;
 		  text-decoration:none;
 		  width:100% }
 
-.logolaclasse a h3 { bottom:0;
+.logolaclasse a h3 { font-weight:900;
+		     bottom:0;
 		     position:absolute;
 		     text-align:center;
 		     width:100% }
