@@ -17,7 +17,7 @@
 	"growl": "latest",
 	"faye": "latest",
 	"underscore": "latest",
-	"charte-graphique-laclasse-com": "http://gitlab.erasme.org/laclasse/charte-graphique-laclasse-com.git#latest",
+	"charte-graphique-laclasse-com": "git@gitlab.erasme.org:laclasse/charte-graphique-laclasse-com.git#latest",
 	"ng-flow": "latest"
     },
     "devDependencies": {
