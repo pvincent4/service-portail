@@ -83,7 +83,10 @@ body {
 
 #flash { display:none }
 
-body { padding:0 }
+@import url(http://fonts.googleapis.com/css?family=Oswald:300,400,700);
+
+body { font-family:'Oswald', sans-serif;
+       padding:0 }
 
 .container-fluid { margin:0;
 		   max-width:100%;
