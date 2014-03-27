@@ -101,9 +101,7 @@ body { font-family:'Open Sans', sans-serif;
 	 z-index:1 }
 
 .aside .slider { height:50% }
-@media screen and (min-width: 992px) {
-    .aside .slider { height:75% }
-}
+
 .aside .user { background-position:center center;
 	       background-repeat:no-repeat;
 	       background-size:contain;
@@ -137,7 +135,7 @@ body { font-family:'Open Sans', sans-serif;
 .aside .user-info a.logout { line-height:3 }
 
 .aside .user .connect-register a { display:block;
-				   margin:13.5% auto 0;
+				   margin:10% auto 0;
 				   width:80% }
 
 .aside .user select { color:#fff;
@@ -414,3 +412,7 @@ div,html,body,.rn-carousel-slides { height:100% }
 		     margin:20% auto 0 }
 
 /* svg * { fill:#fff } */
+@media screen and (min-width: 992px) {
+    .aside .slider { height:75% }
+    .aside .user .connect-register a { margin:20% auto 0 }
+}
