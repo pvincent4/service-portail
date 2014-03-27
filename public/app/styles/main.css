@@ -169,12 +169,10 @@ body { font-family:'Open Sans', sans-serif;
 .aside .avatar { background-color:#aff }
 
 .rn-carousel-indicator { bottom:33.333%;
-			 position:absolute;
-			 background:transparent }
+			 line-height:1em;
+			 position:absolute }
 
-.rn-carousel-indicator span { font-size:2em;
-			      line-height:0.5em;
-			      color:#fff }
+.rn-carousel-indicator span { color:#fff }
 .rn-carousel-indicator span:before { content:'○'}
 .rn-carousel-indicator span.active:before { content:'●'}
 
