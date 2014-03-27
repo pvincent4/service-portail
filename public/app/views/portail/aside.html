@@ -34,12 +34,12 @@
   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
     <ul data-rn-carousel data-rn-carousel-indicator>
-      <li data-ng-repeat="news in newsfeed" data-ng-style="{'background': 'url(' + news.image + ') center top no-repeat'}">
+      <li data-ng-repeat="news in newsfeed" data-ng-style="{'background-image': 'url(' + news.image + ')'}">
 	<div class="news-content">
 	  <a href="{{ news.link }}">
 	    <h6>{{ news.title }}</h6>
 	  </a>
-	  {{news.description}}
+	  <span data-ng-bind-html="news.trusted_description"></span>
 	  <a class="lire-la-suite" href="{{ news.link }}">(lire la suite)</a>
 	</div>
       </li>

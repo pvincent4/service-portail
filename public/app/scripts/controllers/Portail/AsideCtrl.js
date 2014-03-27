@@ -2,8 +2,8 @@
 
 angular.module( 'portailApp.controllers' )
     .controller( 'PortailAsideCtrl',
-		 [ '$scope', 'currentUser', 'news', 'APPLICATION_PREFIX',
-		   function( $scope, currentUser, news, APPLICATION_PREFIX ) {
+		 [ '$scope', '$sce', 'currentUser', 'news', 'APPLICATION_PREFIX',
+		   function( $scope, $sce, currentUser, news, APPLICATION_PREFIX ) {
 		       currentUser.get().then( function( response ) {
 			   $scope.current_user = response;
 			   $scope.avatar = '';
@@ -21,7 +21,10 @@ angular.module( 'portailApp.controllers' )
 			   }
 
 			   news.get().then( function( response ) {
-			       $scope.newsfeed = response.data;
+			       $scope.newsfeed = _(response.data).map( function( item ) {
+				   item.trusted_description = $sce.trustAsHtml( item.description );
+				   return item;
+			       });
 			   });
 		       });
 		   } ] );

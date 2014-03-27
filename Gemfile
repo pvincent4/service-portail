@@ -15,6 +15,7 @@ gem 'rack-rewrite'
 gem 'faye'
 gem 'rest-client'
 gem 'simple-rss'
+gem 'html_truncator'
 
 group :development do
   gem 'sinatra-contrib'
