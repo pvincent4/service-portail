@@ -147,13 +147,15 @@ body { padding:0 }
 		 position:absolute }
 
 .damier { overflow-y:auto }
-.damier .petite.case,.logolaclasse { text-align:center }
+.damier .petite.case,
+.logolaclasse { text-align:center }
 
-.damier .petite.case a,.logolaclasse a { color:#fff;
-					 float:left;
-					 height:100%;
-					 text-decoration:none;
-					 width:100% }
+.damier .petite.case a,
+.logolaclasse a { color:#fff;
+		  float:left;
+		  height:100%;
+		  text-decoration:none;
+		  width:100% }
 
 .logolaclasse a h3 { bottom:0;
 		     position:absolute;
@@ -380,5 +382,13 @@ html,#app-wrapper { overflow:hidden }
 div,html,body,.rn-carousel-slides { height:100% }
 
 .aside .header,.damier .petite.case { height:25% }
+
+.damier .grande.case { height:75% }
+.damier .presentation { color:#fff;
+			font-size:3em; /*FIXME: à adapter à la taille de l'écran*/
+			padding:1em }
+.damier .presentation em { font-weight:bolder }
+.damier .logos img { display:block;
+		     margin:20% auto 0 }
 
 /* svg * { fill:#fff } */
