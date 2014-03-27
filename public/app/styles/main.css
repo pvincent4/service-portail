@@ -178,6 +178,9 @@ body { font-family:'Open Sans', sans-serif;
 .rn-carousel-indicator span:before { content:'○'}
 .rn-carousel-indicator span.active:before { content:'●'}
 
+.rn-carousel-slide { background-position:center top;
+		     background-repeat:no-repeat;
+		     background-size:auto 66.666% }
 .rn-carousel-slide .news-content { background-color:rgba(255,255,255,0.1);
 				   color:#fff;
 				   bottom:0;
@@ -200,9 +203,10 @@ body { font-family:'Open Sans', sans-serif;
 .damier .case { float:left;
 		position:relative }
 
-.logolaclasse a,.damier .petite.case a { background-position:center center;
-					 background-repeat:no-repeat;
-					 background-size:auto 66% }
+.logolaclasse a,
+.damier .petite.case a { background-position:center center;
+			 background-repeat:no-repeat;
+			 background-size:auto 66% }
 
 .damier .petite.case a span { font-size:1.5em;
 			      font-weight:lighter }
