@@ -244,7 +244,7 @@ class SinatraApp < Sinatra::Base
      rss.items
        .first( 5 )
        .map { |news|
-       news[:image] = 'http://images4.fanpop.com/image/photos/16200000/Kitten-pic-cute-kittens-16292210-1024-768.jpg' # news.description.match( /http.*png/ )[0]
+       news[:image] = news.description.match( /http.*png/ )[0]
        news[:description] = news[:content] if news.has? :content
 
        # FIXME: pour avoir du contenu même quand "output error : unknown encoding ASCII-8BIT"
