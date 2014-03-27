@@ -246,7 +246,9 @@ body { padding:0 }
 
 .user-menu .profil-select-wrapper { float:left;
 				    overflow:hidden;
-				    width:calc( 12em - 15px ) }
+				    width:calc( 12em - 15px );
+				    text-align:left;
+				    padding-left:1em }
 
 .user-menu select { -moz-appearance:none;
 		    -webkit-appearance:none;
@@ -258,7 +260,8 @@ body { padding:0 }
 .user-menu a { color:#fff;
 	       cursor:pointer;
 	       display:inline-block;
-	       text-decoration:none }
+	       text-decoration:none;
+	       font-weight:bold }
 
 .user-menu h6 { display:inline;
 		font-weight:700;
