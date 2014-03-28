@@ -405,14 +405,22 @@ div,html,body,.rn-carousel-slides { height:100% }
 
 .damier .grande.case { height:75% }
 .damier .presentation { color:#fff;
-			font-size:3em; /*FIXME: à adapter à la taille de l'écran*/
+			font-size:1.8em;
 			padding:1em }
 .damier .presentation em { font-weight:bolder }
 .damier .logos img { display:block;
 		     margin:20% auto 0 }
 
 /* svg * { fill:#fff } */
+
+/* CSS dépendant d'une résolution */
 @media screen and (min-width: 992px) {
     .aside .slider { height:75% }
     .aside .user .connect-register a { margin:20% auto 0 }
+    .damier .presentation { font-size:2.5em }
+}
+
+@media (max-height: 768px) {
+    .damier .petite.case { height: 33.333% }
+    .damier .petite.case a span { font-size:1.1em }
 }
