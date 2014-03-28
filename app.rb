@@ -58,9 +58,9 @@ class SinatraApp < Sinatra::Base
               info: { },
               is_logged: false }.to_json unless session[:authenticated]
 
-      env['rack.session'][:current_user][:is_logged] = true
-      env['rack.session'][:current_user][:extra] = Annuaire.get_user( env['rack.session'][:current_user][:info][:uid] )
-      env['rack.session'][:current_user][:profils] = env['rack.session'][:current_user][:extra]['profils']
+      session[:current_user][:is_logged] = true
+      session[:current_user][:extra] = Annuaire.get_user( session[:current_user][:info][:uid] )
+      session[:current_user][:profils] = session[:current_user][:extra]['profils']
                                                      .map.with_index { |profil, i|
         { index: i,
           type: profil['profil_id'],
@@ -68,18 +68,18 @@ class SinatraApp < Sinatra::Base
           etablissement: profil['etablissement_nom'],
           nom: profil['profil_nom'] }
       }
-      env['rack.session'][:current_user][:profil_actif] = 0
+      session[:current_user][:profil_actif] = 0
 
-      env['rack.session'][:current_user][:apps] = config[:apps_tiles]
+      session[:current_user][:apps] = config[:apps_tiles]
 
-      env['rack.session'][:current_user].to_json
+      session[:current_user].to_json
    end
 
    # TODO: ajouter API changement profil actif
    put "#{APP_PATH}/api/user/profil_actif/:index" do
-     env['rack.session'][:current_user][:profil_actif] = params[ :index ].to_i
+     session[:current_user][:profil_actif] = params[ :index ].to_i
 
-     env['rack.session'][:current_user].to_json
+     session[:current_user].to_json
    end
 
    get "#{APP_PATH}/api/news" do
