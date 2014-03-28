@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
 
 module AuthenticationHelpers
-  
+
   def is_logged?
     env['rack.session'][:authenticated]
   end
@@ -11,12 +11,12 @@ module AuthenticationHelpers
   #   d'initialiser la session et de rediriger vers l'url passée en paramètre
   #
   def login!( route )
-    if !route.empty?
-      route += "?" + env['QUERY_STRING'] if !env['QUERY_STRING'].empty?
-      route = URI.escape(env['rack.url_scheme'] + "://" + env['HTTP_HOST'] + route)
+    unless route.empty?
+      route += '?' + env['QUERY_STRING'] unless env['QUERY_STRING'].empty?
+      route = URI.escape(env['rack.url_scheme'] + '://' + env['HTTP_HOST'] + route)
       redirect  APP_PATH + "/auth/cas?url=#{URI.encode( route )}"
     end
-    redirect APP_PATH + "/auth/cas"
+    redirect APP_PATH + '/auth/cas'
   end
 
   #
@@ -24,11 +24,11 @@ module AuthenticationHelpers
   #
   def logout!( url )
     env['rack.session'][:authenticated] = false
-    env['rack.session'][:current_user] = nil  
+    env['rack.session'][:current_user] = nil
     CASLaclasseCom::OPTIONS[:ssl] ? protocol = 'https://' : protocol = 'http://'
-    
-    puts protocol + CASLaclasseCom::OPTIONS[:host] + CASLaclasseCom::OPTIONS[:logout_url] +'?url='+URI.encode(url)
-    redirect protocol + CASLaclasseCom::OPTIONS[:host] + CASLaclasseCom::OPTIONS[:logout_url] +'?destination='+URI.encode(url)
+
+    puts protocol + CASLaclasseCom::OPTIONS[:host] + CASLaclasseCom::OPTIONS[:logout_url] + '?url=' + URI.encode( url )
+    redirect protocol + CASLaclasseCom::OPTIONS[:host] + CASLaclasseCom::OPTIONS[:logout_url] + '?destination=' + URI.encode( url )
   end
 
   #
