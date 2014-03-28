@@ -12,6 +12,7 @@ Bundler.require( :default, ENV['RACK_ENV'].to_sym )     # require tout les gems 
 require_relative './config/options'
 
 require_relative './lib/AuthenticationHelpers'
+require_relative './lib/AppsHelpers'
 require_relative './lib/annuaire'
 
 # https://gist.github.com/chastell/1196800
@@ -44,7 +45,9 @@ class SinatraApp < Sinatra::Base
    end
 
    helpers AuthenticationHelpers
+   helpers AppsHelpers
 
+   # routes
    get "#{APP_PATH}/" do
       erb :app
    end
@@ -67,8 +70,7 @@ class SinatraApp < Sinatra::Base
       }
       env['rack.session'][:current_user][:profil_actif] = 0
 
-      # FIXME: ne pas charger à chaque appel
-      env['rack.session'][:current_user][:apps] = YAML.load_file './config/apps_tiles.yaml'
+      env['rack.session'][:current_user][:apps] = apps_tiles
 
       env['rack.session'][:current_user].to_json
    end
@@ -92,14 +94,12 @@ class SinatraApp < Sinatra::Base
        # FIXME: pour avoir du contenu même quand "output error : unknown encoding ASCII-8BIT"
        news[:description] = "<em>Bla bla bla</em> I can't hear you. <em>Bla bla bla</em> I can't hear you. <em>Bla bla bla</em> I can't hear you. <em>Bla bla bla</em> I can't hear you. <em>Bla bla bla</em> I can't hear you. <em>Bla bla bla</em> I can't hear you."
        news[:description] = HTML_Truncator.truncate( news[:description], 30 )
+
        news
      }.to_json
    end
 
    get "#{APP_PATH}/api/apps/:id" do
-      # FIXME: ne pas charger à chaque appel
-      apps = YAML.load_file './config/apps.yaml'
-
       apps[ params[:id] ].to_json
    end
    # }}}
