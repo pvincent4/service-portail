@@ -12,7 +12,7 @@ Bundler.require( :default, ENV['RACK_ENV'].to_sym )     # require tout les gems 
 require_relative './config/options'
 
 require_relative './lib/AuthenticationHelpers'
-require_relative './lib/AppsHelpers'
+require_relative './lib/ConfigHelpers'
 require_relative './lib/annuaire'
 
 # https://gist.github.com/chastell/1196800
@@ -45,7 +45,7 @@ class SinatraApp < Sinatra::Base
    end
 
    helpers AuthenticationHelpers
-   helpers AppsHelpers
+   helpers ConfigHelpers
 
    # routes
    get "#{APP_PATH}/" do
@@ -70,7 +70,7 @@ class SinatraApp < Sinatra::Base
       }
       env['rack.session'][:current_user][:profil_actif] = 0
 
-      env['rack.session'][:current_user][:apps] = apps_tiles
+      env['rack.session'][:current_user][:apps] = config[:apps_tiles]
 
       env['rack.session'][:current_user].to_json
    end
@@ -83,7 +83,7 @@ class SinatraApp < Sinatra::Base
    end
 
    get "#{APP_PATH}/api/news" do
-     rss = SimpleRSS.parse open( 'http://xkcd.com/rss.xml' )
+     rss = SimpleRSS.parse open( config[:url_news] )
 
      rss.items
        .first( 5 )
@@ -100,7 +100,7 @@ class SinatraApp < Sinatra::Base
    end
 
    get "#{APP_PATH}/api/apps/:id" do
-      apps[ params[:id] ].to_json
+      config[ :apps ][ params[:id] ].to_json
    end
    # }}}
 
