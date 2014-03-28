@@ -24,10 +24,11 @@
 		      data-ng-show="current_user.is_logged">
 	      </select>
 	    </div>
+	    <span class="glyphicon glyphicon-chevron-down" data-ng-show="current_user.is_logged"></span>
 	    <a href="/portail/login" data-ng-hide="current_user.is_logged">connectez-vous</a>
 	    <a class="dropdown-toggle" data-ng-show="current_user.is_logged">
 	      <h6>{{current_user['info']['LaclassePrenom']}} {{current_user['info']['LaclasseNom']}}</h6>
-	      <span class="caret"></span>
+	      <span class="glyphicon glyphicon-chevron-down" data-ng-show="current_user.is_logged"></span>
 	    </a>
 	    <ul role="menu" class="dropdown-menu gris3" data-ng-show="current_user.is_logged">
 	      <li ng-repeat="item in menu">
