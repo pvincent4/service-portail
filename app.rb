@@ -67,7 +67,8 @@ class SinatraApp < Sinatra::Base
       }
       env['rack.session'][:current_user][:profil_actif] = 0
 
-      env['rack.session'][:current_user][:apps] = YAML.load_file './config/apps.yaml'
+      # FIXME: ne pas charger à chaque appel
+      env['rack.session'][:current_user][:apps] = YAML.load_file './config/apps_tiles.yaml'
 
       env['rack.session'][:current_user].to_json
    end
@@ -96,48 +97,9 @@ class SinatraApp < Sinatra::Base
    end
 
    get "#{APP_PATH}/api/apps/:id" do
-     apps = { 'messagerie' => {
-                nom: 'messagerie',
-                url: 'http://www.perdu.com' },
-              'validationcompetences' => {
-                nom: 'validation de competences',
-                url: 'http://www.perdu.com' },
-              'trombi' => {
-                nom: 'trombinoscope',
-                url: 'http://www.perdu.com' },
-              'admin' => {
-                nom: 'administration',
-                url: 'http://www.perdu.com' },
-              'documents' => {
-                nom: 'documents',
-                url: 'http://www.perdu.com' },
-              'thematiques' => {
-                nom: 'thématiques',
-                url: 'http://www.perdu.com' },
-              'suivi' => {
-                nom: 'suivi des élèves',
-                url: 'http://www.perdu.com' },
-              'cahierdetextes' => {
-                nom: 'cahier de textes',
-                url: 'http://www.perdu.com' },
-              'blogs' => {
-                nom: 'blogs',
-                url: 'http://www.perdu.com' },
-              'publipostage' => {
-                nom: 'info familles',
-                url: 'http://www.perdu.com' },
-              'notesabsences' => {
-                nom: 'notes et absences',
-                url: 'http://www.perdu.com' },
-              'ressources' => {
-                nom: 'ressources numériques',
-                url: 'http://www.perdu.com' },
-              'aide' => {
-                nom: 'aide',
-                url: 'http://www.perdu.com' }
-            }
+      # FIXME: ne pas charger à chaque appel
+      apps = YAML.load_file './config/apps.yaml'
 
-      p params[:id]
       apps[ params[:id] ].to_json
    end
    # }}}
