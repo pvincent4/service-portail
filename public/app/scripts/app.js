@@ -55,17 +55,17 @@ angular.module( 'portailApp',
 		window.scope = $rootScope;
 	    } ] );
 
-// $(document).ready( function() {
-//     var client = new Faye.Client( '/portail/faye', {
-//	timeout: 120
-//     });
+$(document).ready( function() {
+    var client = new Faye.Client( '/portail/faye', {
+	timeout: 120
+    });
 
-//     var subscription = client.subscribe('/foo', function(msg) {
-//	console.log("message received on /foo : " + msg) ;
-//	$.growl.notice({ duration: 6400, size: "large", title: "Hey there", message: "New message" });
-//	$.growl({ message: msg.text });
-//	// handle message
-//     });
+    var subscription = client.subscribe('/canal', function(msg) {
+	console.log("message received on /canal : " + msg) ;
+	$.growl.notice({ duration: 6400, size: "large", title: "Hey there", message: "New message" });
+	$.growl({ message: msg.text });
+	// handle message
+    });
 
-//     client.publish('/foo', {text: 'Hi there'});
-// });
+    client.publish('/canal', {text: 'Hi there'});
+});
