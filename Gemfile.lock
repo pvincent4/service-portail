@@ -31,6 +31,12 @@ GEM
     html_truncator (0.4.0)
       nokogiri (~> 1.5)
     http_parser.rb (0.6.0)
+    jasmine (2.0.0)
+      jasmine-core (~> 2.0.0)
+      phantomjs
+      rack (>= 1.2.1)
+      rake
+    jasmine-core (2.0.0)
     json (1.8.1)
     method_source (0.8.2)
     mime-types (2.2)
@@ -45,6 +51,7 @@ GEM
       addressable (~> 2.3)
       nokogiri (~> 1.6)
       omniauth (~> 1.1.0)
+    phantomjs (1.9.7.0)
     pry (0.9.12.6)
       coderay (~> 1.0)
       method_source (~> 0.8)
@@ -86,6 +93,7 @@ PLATFORMS
 DEPENDENCIES
   faye
   html_truncator
+  jasmine
   json
   nokogiri
   omniauth
