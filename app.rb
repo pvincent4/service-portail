@@ -76,7 +76,7 @@ class SinatraApp < Sinatra::Base
          config[ :apps ][ application[ 'id' ] ] = { nom: application[ 'description' ],
                                                       url: application[ 'url' ] }
          unless config[ :apps_tiles ][ application[ 'id' ] ].nil?
-            config[ :apps_tiles ][ application[ 'id' ] ][ :active ] = application[ 'active' ]
+            config[ :apps_tiles ][ application[ 'id' ] ][ :active ] = application[ 'active' ] && application[ 'etablissement_code_uai' ] == session[:current_user][:profils][ session[:current_user][:profil_actif] ][ 'etablissement_code_uai' ]
             config[ :apps_tiles ][ application[ 'id' ] ][ :nom ] = application[ 'description' ]
             config[ :apps_tiles ][ application[ 'id' ] ][ :lien ] = "/portail/#/show-app?app=#{application[ 'id' ]}"
          end
