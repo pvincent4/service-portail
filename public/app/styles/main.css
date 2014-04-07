@@ -211,6 +211,7 @@ body { font-family:'Open Sans', sans-serif;
 
 .damier .petite.case .app-name { bottom:8%;
 				 font-weight:lighter;
+				 text-transform:lowercase;
 				 left:0;
 				 position:absolute;
 				 width:100% }
