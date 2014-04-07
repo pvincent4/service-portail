@@ -13,23 +13,11 @@
   admin:
     :nom: administration
     :url: http://www.perdu.com
-  documents:
-    :nom: documents
-    :url: http://www.perdu.com
   thematiques:
     :nom: thématiques
     :url: http://www.perdu.com
-  suivi:
-    :nom: suivi des élèves
-    :url: http://www.perdu.com
-  cahierdetextes:
-    :nom: cahier de textes
-    :url: http://localhost:9293/ct/
   blogs:
     :nom: blogs
-    :url: http://www.perdu.com
-  publipostage:
-    :nom: info familles
     :url: http://www.perdu.com
   notesabsences:
     :nom: notes et absences
@@ -41,143 +29,105 @@
     :nom: aide
     :url: http://www.perdu.com
 :apps_tiles:
-- :id: messagerie
-  :icone: "/app/bower_components/charte-graphique-laclasse-com/images/01_messagerie.svg"
-  :couleur: bleu
-  :nom: messagerie
-  :lien: "/portail/#/show-app?app=messagerie"
-  :notifications: []
-  :active: true
-- :id: documents
-  :icone: "/app/bower_components/charte-graphique-laclasse-com/images/02_documents.svg"
-  :couleur: jaune
-  :nom: documents
-  :lien: "/portail/#/show-app?app=documents"
-  :notifications: []
-  :active: true
-- :id: cahierdetextes
-  :icone: "/app/bower_components/charte-graphique-laclasse-com/images/03_cahierdetextes.svg"
-  :couleur: violet
-  :nom: cahier de textes
-  :lien: "/portail/#/show-app?app=cahierdetextes"
-  :notifications: []
-  :active: true
-- :id: notesabsences
-  :icone: "/app/bower_components/charte-graphique-laclasse-com/images/04_notesabsences.svg"
-  :couleur: vert
-  :nom: notes et absences
-  :lien: "/portail/#/show-app?app=notesabsences"
-  :notifications: []
-  :active: true
-- :id: validationcompetences
-  :icone: "/app/bower_components/charte-graphique-laclasse-com/images/05_validationcompetences.svg"
-  :couleur: rouge
-  :nom: validation de compétences
-  :lien: "/portail/#/show-app?app=validationcompetences"
-  :notifications: []
-  :active: true
-- :id: thematiques
-  :icone: "/app/bower_components/charte-graphique-laclasse-com/images/06_thematiques.svg"
-  :couleur: vert
-  :nom: classes culturelles numériques
-  :lien: "/portail/#/show-app?app=thematiques"
-  :notifications: []
-  :active: true
-- :id: blogs
-  :icone: "/app/bower_components/charte-graphique-laclasse-com/images/07_blogs.svg"
-  :couleur: bleu
-  :nom: blogs
-  :lien: "/portail/#/show-app?app=blogs"
-  :notifications: []
-  :active: true
-- :id: ressources
-  :icone: "/app/bower_components/charte-graphique-laclasse-com/images/08_ressources.svg"
-  :couleur: jaune
-  :nom: ressources numériques
-  :lien: "/portail/#/show-app?app=ressources"
-  :notifications: []
-  :active: true
-- :id: trombi
-  :icone: "/app/bower_components/charte-graphique-laclasse-com/images/09_trombi.svg"
-  :couleur: violet
-  :nom: trombinoscope
-  :lien: "/portail/#/show-app?app=trombi"
-  :notifications: []
-  :active: true
-- :id: suivi
-  :icone: "/app/bower_components/charte-graphique-laclasse-com/images/10_suivi.svg"
-  :couleur: bleu
-  :nom: suivi des élèves
-  :lien: "/portail/#/show-app?app=suivi"
-  :notifications: []
-  :active: true
-- :id: publipostage
-  :icone: "/app/bower_components/charte-graphique-laclasse-com/images/11_publipostage.svg"
-  :couleur: jaune
-  :nom: info familles
-  :lien: "/portail/#/show-app?app=publipostage"
-  :notifications: []
-  :active: true
-- :id: aide
-  :icone: "/app/bower_components/charte-graphique-laclasse-com/images/12_aide.svg"
-  :couleur: rouge
-  :nom: aide
-  :lien: "/portail/#/show-app?app=aide"
-  :notifications: []
-  :active: true
-- :id: admin
-  :icone: "/app/bower_components/charte-graphique-laclasse-com/images/13_admin.svg"
-  :couleur: jaune
-  :nom: administration
-  :lien: "/portail/#/show-app?app=admin"
-  :notifications: []
-  :active: true
-- :id: ''
-  :icone: ''
-  :couleur: rouge
-  :nom: ''
-  :lien: ''
-  :notifications: []
-  :active: true
-- :id: ''
-  :icone: ''
-  :couleur: vert
-  :nom: ''
-  :lien: ''
-  :notifications: []
-  :active: true
-- :id: ''
-  :icone: ''
-  :couleur: orange
-  :nom: ''
-  :lien: ''
-  :notifications: []
-  :active: true
-- :id: ''
-  :icone: ''
-  :couleur: violet
-  :nom: ''
-  :lien: ''
-  :notifications: []
-  :active: true
-- :id: ''
-  :icone: ''
-  :couleur: vert
-  :nom: ''
-  :lien: ''
-  :notifications: []
-  :active: true
-- :id: ''
-  :icone: ''
-  :couleur: jaune
-  :nom: ''
-  :lien: ''
-  :notifications: []
-  :active: true
-- :id: horloge
-  :icone: ''
-  :couleur: bleu
-  :nom: ''
-  :lien: ''
-  :notifications: []
-  :active: true
+  messagerie:
+    :icone: "/app/bower_components/charte-graphique-laclasse-com/images/01_messagerie.svg"
+    :couleur: bleu
+    :notifications: []
+    :active: false
+  DOC:
+    :icone: "/app/bower_components/charte-graphique-laclasse-com/images/02_documents.svg"
+    :couleur: jaune
+    :notifications: []
+    :active: false
+  CTXT:
+    :icone: "/app/bower_components/charte-graphique-laclasse-com/images/03_cahierdetextes.svg"
+    :couleur: violet
+    :notifications: []
+    :active: false
+  notesabsences:
+    :icone: "/app/bower_components/charte-graphique-laclasse-com/images/04_notesabsences.svg"
+    :couleur: vert
+    :notifications: []
+    :active: false
+  validationcompetences:
+    :icone: "/app/bower_components/charte-graphique-laclasse-com/images/05_validationcompetences.svg"
+    :couleur: rouge
+    :notifications: []
+    :active: false
+  thematiques:
+    :icone: "/app/bower_components/charte-graphique-laclasse-com/images/06_thematiques.svg"
+    :couleur: vert
+    :notifications: []
+    :active: false
+  blogs:
+    :icone: "/app/bower_components/charte-graphique-laclasse-com/images/07_blogs.svg"
+    :couleur: bleu
+    :notifications: []
+    :active: false
+  ressources:
+    :icone: "/app/bower_components/charte-graphique-laclasse-com/images/08_ressources.svg"
+    :couleur: jaune
+    :notifications: []
+    :active: false
+  trombi:
+    :icone: "/app/bower_components/charte-graphique-laclasse-com/images/09_trombi.svg"
+    :couleur: violet
+    :notifications: []
+    :active: false
+  SUIVIELV:
+    :icone: "/app/bower_components/charte-graphique-laclasse-com/images/10_suivi.svg"
+    :couleur: bleu
+    :notifications: []
+    :active: false
+  Publi:
+    :icone: "/app/bower_components/charte-graphique-laclasse-com/images/11_publipostage.svg"
+    :couleur: jaune
+    :notifications: []
+    :active: false
+  aide:
+    :icone: "/app/bower_components/charte-graphique-laclasse-com/images/12_aide.svg"
+    :couleur: rouge
+    :notifications: []
+    :active: true
+    :nom: aide
+    :lien: "/portail/#/show-app?app=aide"
+  admin:
+    :icone: "/app/bower_components/charte-graphique-laclasse-com/images/13_admin.svg"
+    :couleur: jaune
+    :notifications: []
+    :active: false
+  empty1:
+    :icone: ''
+    :couleur: rouge
+    :notifications: []
+    :active: true
+  empty2:
+    :icone: ''
+    :couleur: vert
+    :notifications: []
+    :active: true
+  empty3:
+    :icone: ''
+    :couleur: orange
+    :notifications: []
+    :active: true
+  empty4:
+    :icone: ''
+    :couleur: violet
+    :notifications: []
+    :active: true
+  empty5:
+    :icone: ''
+    :couleur: vert
+    :notifications: []
+    :active: true
+  empty6:
+    :icone: ''
+    :couleur: jaune
+    :notifications: []
+    :active: true
+  empty7:
+    :icone: ''
+    :couleur: bleu
+    :notifications: []
+    :active: true

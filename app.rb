@@ -70,6 +70,17 @@ class SinatraApp < Sinatra::Base
       }
       session[:current_user][:profil_actif] = 0
 
+      # traitement des apps renvoyées par l'annuaire
+      session[:current_user][:extra]['applications'].each {
+         |application|
+         config[ :apps ][ application[ 'id' ] ] = { nom: application[ 'description' ],
+                                                      url: application[ 'url' ] }
+         unless config[ :apps_tiles ][ application[ 'id' ] ].nil?
+            config[ :apps_tiles ][ application[ 'id' ] ][ :active ] = application[ 'active' ]
+            config[ :apps_tiles ][ application[ 'id' ] ][ :nom ] = application[ 'description' ]
+            config[ :apps_tiles ][ application[ 'id' ] ][ :lien ] = "/portail/#/show-app?app=#{application[ 'id' ]}"
+         end
+      }
       session[:current_user][:apps] = config[:apps_tiles]
 
       session[:current_user].to_json
