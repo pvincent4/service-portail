@@ -89,7 +89,6 @@ class SinatraApp < Sinatra::Base
       session[:current_user].to_json
    end
 
-   # TODO: ajouter API changement profil actif
    put "#{APP_PATH}/api/user/profil_actif/:index" do
      session[:current_user][:profil_actif] = params[ :index ].to_i
 
