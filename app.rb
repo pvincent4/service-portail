@@ -81,7 +81,10 @@ class SinatraApp < Sinatra::Base
             config[ :apps_tiles ][ application[ 'id' ] ][ :lien ] = "/portail/#/show-app?app=#{application[ 'id' ]}"
          end
       }
-      session[:current_user][:apps] = config[:apps_tiles]
+      session[:current_user][:apps] = config[:apps_tiles].map { |id, app|
+         app[ :id ] = id
+         app
+      }
 
       session[:current_user].to_json
    end
