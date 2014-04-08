@@ -98,18 +98,15 @@ class SinatraApp < Sinatra::Base
    get "#{APP_PATH}/api/news" do
      rss = SimpleRSS.parse open( config[:url_news] )
 
-     rss.items
-       .first( 5 )
-       .map { |news|
-       news[:image] = news.description.match( /http.*png/ )[0]
-       news[:description] = news[:content] if news.has? :content
+      rss.items
+      .first( 5 )
+      .map { |news|
+         news[:description] = news[:content] if news.has? :content
+         news[:image] = news[:description].match( /http.*png/ )
+         # news[:description] = HTML_Truncator.truncate( news[:description], 30 )
 
-       # FIXME: pour avoir du contenu même quand "output error : unknown encoding ASCII-8BIT"
-       news[:description] = "<em>Bla bla bla</em> I can't hear you. <em>Bla bla bla</em> I can't hear you. <em>Bla bla bla</em> I can't hear you. <em>Bla bla bla</em> I can't hear you. <em>Bla bla bla</em> I can't hear you. <em>Bla bla bla</em> I can't hear you."
-       news[:description] = HTML_Truncator.truncate( news[:description], 30 )
-
-       news
-     }.to_json
+         news
+      }.to_json
    end
 
    get "#{APP_PATH}/api/apps/:id" do
