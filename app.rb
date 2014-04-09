@@ -142,6 +142,8 @@ class SinatraApp < Sinatra::Base
       logout! "#{env['rack.url_scheme']}://#{env['HTTP_HOST']}#{APP_PATH}/"
    end
    # }}}
+      news[:description] = news[:description].to_s.encode( 'UTF-8', { invalid: :replace, undef: :replace, replace: '?' } )
+      news[:description] = HTML_Truncator.truncate( news[:description], 30 )
 
 end
 
