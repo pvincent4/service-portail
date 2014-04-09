@@ -18,7 +18,9 @@ angular.module( 'portailApp.controllers' )
 			   $scope.current_user = response;
 
 			   currentUser.apps().then( function( response ) {
-			       $scope.app = { url: $sce.trustAsResourceUrl( _(response).findWhere({id: $stateParams.app}).url ) };
+			       var app = _(response).findWhere({id: $stateParams.app});
+			       $scope.app = { nom: app.nom,
+					      url: $sce.trustAsResourceUrl( app.url ) };
 			   } );
 		       } );
 		   } ] );
