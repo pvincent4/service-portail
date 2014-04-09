@@ -48,8 +48,8 @@ module AuthenticationHelpers
   # Initialisation de la session après l'authentification
   #
   def init_session( env )
-     session['init'] = true
-     if session
+    session['init'] = true
+    if session
       session[:user] = env['omniauth.auth'].extra.user
       session[:extra] = env['omniauth.auth'].extra
       session[:authenticated] = true
