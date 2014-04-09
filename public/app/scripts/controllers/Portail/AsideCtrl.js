@@ -13,7 +13,7 @@ angular.module( 'portailApp.controllers' )
 			       // if ( $scope.current_user['avatar'] !== null ) {
 			       //     ;
 			       // } else
-			       if ( $scope.current_user['extra']['sexe'] == 'F' ) {
+			       if ( $scope.current_user['sexe'] == 'F' ) {
 				   $scope.avatar = '/app/bower_components/charte-graphique-laclasse-com/images/avatar_feminin.svg';
 			       } else {
 				   $scope.avatar = '/app/bower_components/charte-graphique-laclasse-com/images/avatar_masculin.svg';

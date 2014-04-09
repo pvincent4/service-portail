@@ -6,5 +6,8 @@ angular.module( 'portailApp.controllers' )
 		   function( $scope, currentUser, news, APPLICATION_PREFIX ) {
 		       currentUser.get().then( function( response ) {
 			   $scope.current_user = response;
+			   currentUser.apps().then( function( response ) {
+			       $scope.apps = response;
+			   });
 		       });
 		   } ] );

@@ -59,9 +59,10 @@ class SinatraApp < Sinatra::Base
               is_logged: false }.to_json unless session[:authenticated]
 
     session[:current_user][:is_logged] = true
-    session[:current_user][:extra] = Annuaire.get_user( session[:current_user][:info][:uid] )
-    session[:current_user][:profils] = session[:current_user][:extra]['profils']
-    .map.with_index { |profil, i|
+    user_annuaire = Annuaire.get_user( session[:current_user][:info][:uid] )
+    session[:current_user][:sexe] = user_annuaire[:sexe]
+    session[:current_user][:profils] = user_annuaire['profils'].map.with_index {
+      |profil, i|
       { index: i,
          type: profil['profil_id'],
          uai: profil['etablissement_code_uai'],
@@ -69,22 +70,6 @@ class SinatraApp < Sinatra::Base
          nom: profil['profil_nom'] }
     }
     session[:current_user][:profil_actif] = 0
-
-    # traitement des apps renvoyées par l'annuaire
-    session[:current_user][:extra]['applications'].each {
-      |application|
-      config[ :apps ][ application[ 'id' ] ] = { nom: application[ 'description' ],
-                                                  url: application[ 'url' ] }
-      unless config[ :apps_tiles ][ application[ 'id' ] ].nil?
-        config[ :apps_tiles ][ application[ 'id' ] ][ :active ] = application[ 'active' ] && application[ 'etablissement_code_uai' ] == session[:current_user][:profils][ session[:current_user][:profil_actif] ][ 'etablissement_code_uai' ]
-        config[ :apps_tiles ][ application[ 'id' ] ][ :nom ] = application[ 'description' ]
-        config[ :apps_tiles ][ application[ 'id' ] ][ :lien ] = "/portail/#/show-app?app=#{application[ 'id' ]}"
-      end
-    }
-    session[:current_user][:apps] = config[:apps_tiles].map { |id, app|
-      app[ :id ] = id
-      app
-    }
 
     session[:current_user].to_json
   end
@@ -111,8 +96,33 @@ class SinatraApp < Sinatra::Base
     }.to_json
   end
 
-  get "#{APP_PATH}/api/apps/:id" do
-    config[ :apps ][ params[:id] ].to_json
+  get "#{APP_PATH}/api/apps" do
+    user_applications = Annuaire.get_user( session[:current_user][:info][:uid] )['applications']
+
+    # # FIXME: DEBUG
+    # user_applications = Annuaire.get_user( 'VAA60498' )['applications'].map {
+    #   |application|
+    #   application['etablissement_code_uai'] = session[:current_user][:profils][ session[:current_user][:profil_actif] ][ 'etablissement_code_uai' ]
+    #   application
+    # }
+    # # /FIXME
+
+    # traitement des apps renvoyées par l'annuaire
+    user_applications.each {
+      |application|
+
+      unless config[ :apps_tiles ][ application[ 'id' ] ].nil?
+        config[ :apps_tiles ][ application[ 'id' ] ][ :active ] = application[ 'active' ] && application[ 'etablissement_code_uai' ] == session[:current_user][:profils][ session[:current_user][:profil_actif] ][ 'etablissement_code_uai' ]
+        config[ :apps_tiles ][ application[ 'id' ] ][ :nom ] = application[ 'description' ]
+        config[ :apps_tiles ][ application[ 'id' ] ][ :lien ] = "/portail/#/show-app?app=#{application[ 'id' ]}"
+        config[ :apps_tiles ][ application[ 'id' ] ][ :url ] = "http://www.dev.laclasse.com#{application[ 'url' ]}"
+      end
+    }
+
+    config[:apps_tiles].map { |id, app|
+      app[ :id ] = id
+      app
+    }.to_json
   end
   # }}}
 
