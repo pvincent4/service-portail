@@ -13,11 +13,21 @@ angular.module('portailApp.services.authentication')
 							      params: { index: '@index' } } } );
 	       } ] );
 
+angular.module('portailApp.services.authentication')
+    .factory('UserApps',
+	     [ '$resource', 'APPLICATION_PREFIX',
+	       function( $resource, APPLICATION_PREFIX ) {
+		   return $resource( APPLICATION_PREFIX + '/api/apps' );
+	       } ] );
+
 angular.module( 'portailApp.services.authentication' )
     .service('currentUser',
-	     [ 'User',
-	       function( User ) {
+	     [ 'User', 'UserApps',
+	       function( User, UserApps ) {
 		   this.get = _.memoize( function() {
 		       return User.get().$promise;
+		   } );
+		   this.apps = _.memoize( function() {
+		       return UserApps.query().$promise;
 		   } );
 	       } ] );

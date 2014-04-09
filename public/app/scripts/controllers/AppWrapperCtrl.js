@@ -14,14 +14,11 @@ angular.module( 'portailApp.controllers' )
 					 texte: 'se déconnecter',
 					 lien: '/logout' } ];
 
-		       $http.get( APPLICATION_PREFIX + '/api/apps/' + $stateParams.app )
-			   .success( function( response ) {
-			       $scope.app = response;
-			       // sans $sce.trustasresourceurl l'iframe ne marche pas
-			       $scope.app.url = $sce.trustAsResourceUrl( $scope.app.url );
-			   });
-
 		       currentUser.get().then( function( response ) {
 			   $scope.current_user = response;
+
+			   currentUser.apps().then( function( response ) {
+			       $scope.app = { url: $sce.trustAsResourceUrl( _(response).findWhere({id: $stateParams.app}).url ) };
+			   } );
 		       } );
-		 } ] );
+		   } ] );
