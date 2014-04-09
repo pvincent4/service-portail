@@ -61,6 +61,7 @@ class SinatraApp < Sinatra::Base
     session[:current_user][:is_logged] = true
     user_annuaire = Annuaire.get_user( session[:current_user][:info][:uid] )
     session[:current_user][:sexe] = user_annuaire[:sexe]
+    session[:current_user][:ENTStructureNomCourant] = user_annuaire[:ENTStructureNomCourant]
     session[:current_user][:profils] = user_annuaire['profils'].map.with_index {
       |profil, i|
       { index: i,
