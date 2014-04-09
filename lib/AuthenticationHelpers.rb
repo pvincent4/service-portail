@@ -39,7 +39,7 @@ module AuthenticationHelpers
     if session[:user]
       session[:current_user][:user] ||= session[:user]
       session[:current_user][:info] ||= session[:extra]
-      session[:current_user][:info][:ENTStructureNomCourant] ||= session[:current_user][:extra][:ENTPersonStructRattachRNE]
+      session[:current_user][:info][:ENTStructureNomCourant] ||= session[:current_user][:ENTPersonStructRattachRNE]
     end
     session[:current_user]
   end
