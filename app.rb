@@ -10,7 +10,6 @@ require 'yaml'
 Bundler.require( :default, ENV['RACK_ENV'].to_sym )     # require tout les gems définis dans Gemfile
 
 require_relative './config/options'
-
 require_relative './lib/AuthenticationHelpers'
 require_relative './lib/ConfigHelpers'
 require_relative './lib/annuaire'
@@ -128,8 +127,7 @@ class SinatraApp < Sinatra::Base
         config[ :apps_tiles ][ application[ 'id' ] ][ :survol ] = application[ 'description' ]
         config[ :apps_tiles ][ application[ 'id' ] ][ :lien ] = "/portail/#/show-app?app=#{application[ 'id' ]}"
         url = "#{application[ 'url' ]}"
-        # FIXME : Mettre le domaine de l'ENT en CONSTANTE GLOBALE dans un fichier de conf.
-        url = "http://www.dev.laclasse.com" + url unless application[ 'url' ].to_s.start_with? "http"
+        url = ENT_SERVER + url unless application[ 'url' ].to_s.start_with? "http"
         config[ :apps_tiles ][ application[ 'id' ] ][ :url ] = url
       end
     }
