@@ -7,6 +7,7 @@
     :couleur: bleu
     :notifications: []
     :nom: 'messagerie'
+    :survol: ''
     :url: http://www.perdu.com
     :active: false
   DOC:
@@ -15,6 +16,7 @@
     :couleur: jaune
     :notifications: []
     :nom: ''
+    :survol: ''
     :active: false
   CTXT:
     :index: 3
@@ -22,6 +24,7 @@
     :couleur: violet
     :notifications: []
     :nom: ''
+    :survol: ''
     :active: false
   TELESRV:
     :index: 4
@@ -29,6 +32,7 @@
     :couleur: vert
     :notifications: []
     :nom: ''
+    :survol: ''
     :active: false
   LPC:
     :index: 5
@@ -36,6 +40,7 @@
     :couleur: rouge
     :notifications: []
     :nom: ''
+    :survol: ''
     :url: http://www.perdu.com
     :active: false
   CCNUM:
@@ -44,6 +49,7 @@
     :couleur: vert
     :notifications: []
     :nom: ''
+    :survol: ''
     :url: ''
     :active: false
   BLOGS:
@@ -52,6 +58,7 @@
     :couleur: bleu
     :notifications: []
     :nom: ''
+    :survol: ''
     :url: http://www.perdu.com
     :active: false
   GAR:
@@ -60,6 +67,7 @@
     :couleur: jaune
     :notifications: []
     :nom: ''
+    :survol: ''
     :url: http://www.perdu.com
     :active: false
   TROMBI:
@@ -68,6 +76,7 @@
     :couleur: violet
     :notifications: []
     :nom: ''
+    :survol: ''
     :url: http://www.perdu.com
     :active: false
   SUIVIELV:
@@ -76,6 +85,7 @@
     :couleur: bleu
     :notifications: []
     :nom: ''
+    :survol: ''
     :lien: ''
     :url: http://www.perdu.com
     :active: false
@@ -85,6 +95,7 @@
     :couleur: jaune
     :notifications: []
     :nom: ''
+    :survol: ''
     :url: http://www.perdu.com
     :active: false
   AIDE:
@@ -94,6 +105,7 @@
     :notifications: []
     :active: true
     :nom: aide
+    :survol: 'Aide en ligne'
     :url: http://www.perdu.com
   ADMIN:
     :index: 13
@@ -101,6 +113,7 @@
     :couleur: jaune
     :notifications: []
     :nom: ''
+    :survol: ''
     :url: http://www.perdu.com
     :active: false
   empty1:
@@ -109,6 +122,7 @@
     :couleur: rouge
     :notifications: []
     :nom: ''
+    :survol: ''
     :url: ''
     :active: true
   empty2:
@@ -117,6 +131,7 @@
     :couleur: vert
     :notifications: []
     :nom: ''
+    :survol: ''
     :url: ''
     :active: true
   empty3:
@@ -125,5 +140,6 @@
     :couleur: orange
     :notifications: []
     :nom: ''
+    :survol: ''
     :url: ''
     :active: true
