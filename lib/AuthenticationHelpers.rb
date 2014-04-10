@@ -1,9 +1,9 @@
 # -*- encoding: utf-8 -*-
 
 module AuthenticationHelpers
-  
+
   def is_logged?
-    env['rack.session'][:authenticated]
+    session[:authenticated]
   end
 
   #
@@ -11,47 +11,48 @@ module AuthenticationHelpers
   #   d'initialiser la session et de rediriger vers l'url passée en paramètre
   #
   def login!( route )
-    if !route.empty?
-      route += "?" + env['QUERY_STRING'] if !env['QUERY_STRING'].empty?
-      route = URI.escape(env['rack.url_scheme'] + "://" + env['HTTP_HOST'] + route)
+    unless route.empty?
+      route += '?' + env['QUERY_STRING'] unless env['QUERY_STRING'].empty?
+      route = URI.escape(env['rack.url_scheme'] + '://' + env['HTTP_HOST'] + route)
       redirect  APP_PATH + "/auth/cas?url=#{URI.encode( route )}"
     end
-    redirect APP_PATH + "/auth/cas"
+    redirect APP_PATH + '/auth/cas'
   end
 
   #
   # Délogue l'utilisateur du serveur CAS et de l'application
   #
   def logout!( url )
-    env['rack.session'][:authenticated] = false
-    env['rack.session'][:current_user] = nil  
+    session[:authenticated] = false
+    session[:current_user] = nil
     CASLaclasseCom::OPTIONS[:ssl] ? protocol = 'https://' : protocol = 'http://'
-    
-    puts protocol + CASLaclasseCom::OPTIONS[:host] + CASLaclasseCom::OPTIONS[:logout_url] +'?url='+URI.encode(url)
-    redirect protocol + CASLaclasseCom::OPTIONS[:host] + CASLaclasseCom::OPTIONS[:logout_url] +'?destination='+URI.encode(url)
+
+    puts protocol + CASLaclasseCom::OPTIONS[:host] + CASLaclasseCom::OPTIONS[:logout_url] + '?url=' + URI.encode( url )
+    redirect protocol + CASLaclasseCom::OPTIONS[:host] + CASLaclasseCom::OPTIONS[:logout_url] + '?destination=' + URI.encode( url )
   end
 
   #
   # récupération des données envoyée par CAS
   #
   def set_current_user( env )
-    env['rack.session'][:current_user] = { user: nil, info: nil }
-    if env['rack.session'][:user]
-      env['rack.session'][:current_user][:user] ||= env['rack.session'][:user]
-      env['rack.session'][:current_user][:info] ||= env['rack.session'][:extra]
-      env['rack.session'][:current_user][:info][:ENTStructureNomCourant] ||= env['rack.session'][:current_user][:extra][:ENTPersonStructRattachRNE]
+    session[:current_user] = { user: nil, info: nil }
+    if session[:user]
+      session[:current_user][:user] ||= session[:user]
+      session[:current_user][:info] ||= session[:extra]
+      session[:current_user][:info][:ENTStructureNomCourant] ||= session[:current_user][:ENTPersonStructRattachRNE]
     end
-    env['rack.session'][:current_user]
+    session[:current_user]
   end
 
   #
   # Initialisation de la session après l'authentification
   #
   def init_session( env )
-    if env['rack.session']
-      env['rack.session'][:user] = env['omniauth.auth'].extra.user
-      env['rack.session'][:extra] = env['omniauth.auth'].extra
-      env['rack.session'][:authenticated] = true
+    session['init'] = true
+    if session
+      session[:user] = env['omniauth.auth'].extra.user
+      session[:extra] = env['omniauth.auth'].extra
+      session[:authenticated] = true
     end
     set_current_user env
   end

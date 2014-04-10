@@ -15,6 +15,7 @@ gem 'rack-rewrite'
 gem 'faye'
 gem 'rest-client'
 gem 'simple-rss'
+gem 'html_truncator'
 
 # Gems spécifiques ENT
 gem 'ent_notifs'
@@ -25,4 +26,5 @@ group :development do
   gem 'pry'
   gem 'guard'
   gem 'guard-rspec'
+  gem 'jasmine'
 end
