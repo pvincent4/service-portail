@@ -50,23 +50,27 @@ angular.module( 'portailApp',
 
 		   $urlRouterProvider.otherwise( '/' );
 	       } ] )
-    .run( [ '$rootScope', '$location',
-	    function( $rootScope, $location ) {
+    .run( [ '$rootScope', '$location', 'notifications', 'APPLICATION_PREFIX', 
+	    function( $rootScope, $location, notifications, APPLICATION_PREFIX) {
 		$rootScope.$location = $location;
 		window.scope = $rootScope;
-	    } ] );
 
-//$(document).ready( function() {
-//    var client = new Faye.Client( APPLICATION_PREFIX + '/faye', {
-//	timeout: 120
-//    });
-//
-//    var subscription = client.subscribe('/canal', function(msg) {
-//	console.log("message received on /canal : " + msg) ;
-//	$.growl.notice({ duration: 6400, size: "large", title: "Hey there", message: "New message" });
-//	$.growl({ message: msg.text });
-//	// handle message
-//    });
-//
-//    client.publish('/canal', {text: 'Hi there'});
-//});
+                var client = new Faye.Client(APPLICATION_PREFIX + '/faye', {
+                    timeout: 120
+                });
+                notifications.get().then(function(response) {
+                   var channels = _(response.data).each(function(channel) {
+                       console.log (channel);
+                        client.subscribe(channel, function(msg) {
+                            console.log("message received on '" + channel + "' : " + msg.text);
+                            $.growl.notice({duration: 6400, size: "large", message: msg.text});
+                       });
+                    });
+                    _(channels).each(function(ch){
+                        client.publish(ch, {text: 'Vous êtes abonné au canal :"'+ch+'"'}); 
+                    });
+                    
+                });
+             
+
+            }]);

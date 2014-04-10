@@ -97,7 +97,7 @@ class SinatraApp < Sinatra::Base
     }.to_json
   end
 
-    get "#{APP_PATH}/api/channel_list" do
+    get "#{APP_PATH}/api/notifications" do
      #redirect login! unless session[:authenticated]
      profil=session[:current_user][:info].ENTPersonProfils.split(":")[0]
      uai=session[:current_user][:info].ENTPersonProfils.split(":")[1]
@@ -111,7 +111,7 @@ class SinatraApp < Sinatra::Base
              :groupes_libres => etb["groupes_libres"].map{ |g| g["libelle"]}
              }
      @@my_channel_list=EntNotifs.new opts
-     @@my_channel_list.my_channels.to_json
+     @@my_channel_list.my_channels.flatten(99).reject {|c| !c.to_s.start_with?("/") }.to_json
    end
 
   get "#{APP_PATH}/api/apps" do
