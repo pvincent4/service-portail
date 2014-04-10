@@ -6,6 +6,7 @@ angular.module( 'portailApp',
 		  'portailApp.services.constants',
 		  'portailApp.services.authentication',
 		  'portailApp.services.news',
+                  'portailApp.services.notifications',
 		  'ngResource',
 		  'ui.router',
 		  'ui.bootstrap',
@@ -55,17 +56,17 @@ angular.module( 'portailApp',
 		window.scope = $rootScope;
 	    } ] );
 
-$(document).ready( function() {
-    var client = new Faye.Client( APPLICATION_PREFIX + '/faye', {
-	timeout: 120
-    });
-
-    var subscription = client.subscribe('/canal', function(msg) {
-	console.log("message received on /canal : " + msg) ;
-	$.growl.notice({ duration: 6400, size: "large", title: "Hey there", message: "New message" });
-	$.growl({ message: msg.text });
-	// handle message
-    });
-
-    client.publish('/canal', {text: 'Hi there'});
-});
+//$(document).ready( function() {
+//    var client = new Faye.Client( APPLICATION_PREFIX + '/faye', {
+//	timeout: 120
+//    });
+//
+//    var subscription = client.subscribe('/canal', function(msg) {
+//	console.log("message received on /canal : " + msg) ;
+//	$.growl.notice({ duration: 6400, size: "large", title: "Hey there", message: "New message" });
+//	$.growl({ message: msg.text });
+//	// handle message
+//    });
+//
+//    client.publish('/canal', {text: 'Hi there'});
+//});

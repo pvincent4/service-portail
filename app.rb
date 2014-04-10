@@ -103,7 +103,7 @@ class SinatraApp < Sinatra::Base
      profil=session[:current_user][:info].ENTPersonProfils.split(":")[0]
      uai=session[:current_user][:info].ENTPersonProfils.split(":")[1]
      etb=Annuaire.get_etablissement(uai)
-     opts= { :serveur =>"http://localhost:3001/faye", 
+     opts= { :serveur =>"http://localhost:3001#{APP_PATH}/faye", 
              :profil => profil,  
              :uai => uai,  
              :uid => session[:current_user][:info].uid,  
