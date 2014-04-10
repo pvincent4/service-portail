@@ -6,13 +6,13 @@ angular.module( 'portailApp.controllers' )
 		   function( $scope, $http, $stateParams, $sce, currentUser, APPLICATION_PREFIX ) {
 		       $scope.menu = [ { icone: 'logolaclasse.svg',
 					 texte: 'retour au portail',
-					 lien: '/portail' },
+					 lien: APPLICATION_PREFIX + '/' },
 				       { icone: '12_aide.svg',
 					 texte: 'aide',
-					 lien: '/portail' },
+					 lien: APPLICATION_PREFIX + '/' },
 				       { icone: '12_aide.svg',
 					 texte: 'se déconnecter',
-					 lien: '/logout' } ];
+					 lien: APPLICATION_PREFIX + '/logout' } ];
 
 		       currentUser.get().then( function( response ) {
 			   $scope.current_user = response;
