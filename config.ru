@@ -22,7 +22,7 @@ use OmniAuth::Builder do
     configure do |config|
       config.path_prefix = "#{APP_PATH}/auth"
     end
-    provider :cas, CASLaclasseCom::OPTIONS
+    provider :cas, CasAuth::OPTIONS
 end
 
 use Faye::RackAdapter,
