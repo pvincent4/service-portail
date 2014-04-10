@@ -23,4 +23,6 @@ group :development do
   gem 'sinatra-contrib'
   gem 'shotgun'
   gem 'pry'
+  gem 'guard'
+  gem 'guard-rspec'
 end
