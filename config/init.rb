@@ -10,6 +10,6 @@ end
 puts "loading config/env"
 require __DIR__('env')
 
-puts "loading config/CASLaclasseCom"
-require __DIR__('CASLaclasseCom')
+puts "loading config/authentication"
+require __DIR__('authentication')
 
