@@ -138,7 +138,6 @@ class SinatraApp < Sinatra::Base
       app[ :id ] = id
       app
     }.to_json
-    
   end
   # }}}
 
