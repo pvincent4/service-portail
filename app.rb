@@ -124,9 +124,13 @@ class SinatraApp < Sinatra::Base
       unless config[ :apps_tiles ][ application[ 'id' ] ].nil?
         # On regarde si le profils actif de l'utilisateur comporte le code détablissement pour lequel l'application est activée
         config[ :apps_tiles ][ application[ 'id' ] ][ :active ] = application[ 'active' ] && application[ 'etablissement_code_uai' ] == session[:current_user][:profils][ session[:current_user][:profil_actif] ][:uai]
-        config[ :apps_tiles ][ application[ 'id' ] ][ :nom ] = application[ 'description' ]
+        config[ :apps_tiles ][ application[ 'id' ] ][ :nom ] = application[ 'libelle' ]
+        config[ :apps_tiles ][ application[ 'id' ] ][ :survol ] = application[ 'description' ]
         config[ :apps_tiles ][ application[ 'id' ] ][ :lien ] = "/portail/#/show-app?app=#{application[ 'id' ]}"
-        config[ :apps_tiles ][ application[ 'id' ] ][ :url ] = "http://www.dev.laclasse.com#{application[ 'url' ]}"
+        url = "#{application[ 'url' ]}"
+        # FIXME : Mettre le domaine de l'ENT en CONSTANTE GLOBALE dans un fichier de conf.
+        url = "http://www.dev.laclasse.com" + url unless application[ 'url' ].to_s.start_with? "http"
+        config[ :apps_tiles ][ application[ 'id' ] ][ :url ] = url
       end
     }
 
