@@ -1,22 +1,20 @@
 ---
 :url_news: http://xkcd.com/rss.xml
 :apps_tiles:
-  messagerie:
+  MAIL:
     :index: 1
     :icone: "/app/bower_components/charte-graphique-laclasse-com/images/01_messagerie.svg"
     :couleur: bleu
     :notifications: []
     :nom: 'messagerie'
-    :lien: "/portail/#/show-app?app=messagerie"
     :url: http://www.perdu.com
-    :active: true
+    :active: false
   DOC:
     :index: 2
     :icone: "/app/bower_components/charte-graphique-laclasse-com/images/02_documents.svg"
     :couleur: jaune
     :notifications: []
     :nom: ''
-    :lien: ''
     :active: false
   CTXT:
     :index: 3
@@ -24,59 +22,52 @@
     :couleur: violet
     :notifications: []
     :nom: ''
-    :lien: ''
     :active: false
-  notesabsences:
+  TELESRV:
     :index: 4
     :icone: "/app/bower_components/charte-graphique-laclasse-com/images/04_notesabsences.svg"
     :couleur: vert
     :notifications: []
     :nom: ''
-    :lien: ''
     :active: false
-  validationcompetences:
+  LPC:
     :index: 5
     :icone: "/app/bower_components/charte-graphique-laclasse-com/images/05_validationcompetences.svg"
     :couleur: rouge
     :notifications: []
     :nom: ''
-    :lien: ''
     :url: http://www.perdu.com
     :active: false
-  thematiques:
+  CCNUM:
     :index: 6
     :icone: "/app/bower_components/charte-graphique-laclasse-com/images/06_thematiques.svg"
     :couleur: vert
     :notifications: []
     :nom: ''
-    :lien: ''
-    :url: http://www.perdu.com
+    :url: ''
     :active: false
-  blogs:
+  BLOGS:
     :index: 7
     :icone: "/app/bower_components/charte-graphique-laclasse-com/images/07_blogs.svg"
     :couleur: bleu
     :notifications: []
     :nom: ''
-    :lien: ''
     :url: http://www.perdu.com
     :active: false
-  ressources:
+  GAR:
     :index: 8
     :icone: "/app/bower_components/charte-graphique-laclasse-com/images/08_ressources.svg"
     :couleur: jaune
     :notifications: []
     :nom: ''
-    :lien: ''
     :url: http://www.perdu.com
     :active: false
-  trombi:
+  TROMBI:
     :index: 9
     :icone: "/app/bower_components/charte-graphique-laclasse-com/images/09_trombi.svg"
     :couleur: violet
     :notifications: []
     :nom: ''
-    :lien: ''
     :url: http://www.perdu.com
     :active: false
   SUIVIELV:
@@ -94,25 +85,22 @@
     :couleur: jaune
     :notifications: []
     :nom: ''
-    :lien: ''
     :url: http://www.perdu.com
     :active: false
-  aide:
+  AIDE:
     :index: 12
     :icone: "/app/bower_components/charte-graphique-laclasse-com/images/12_aide.svg"
     :couleur: rouge
     :notifications: []
     :active: true
     :nom: aide
-    :lien: "/portail/#/show-app?app=aide"
     :url: http://www.perdu.com
-  admin:
+  ADMIN:
     :index: 13
     :icone: "/app/bower_components/charte-graphique-laclasse-com/images/13_admin.svg"
     :couleur: jaune
     :notifications: []
     :nom: ''
-    :lien: ''
     :url: http://www.perdu.com
     :active: false
   empty1:
@@ -121,7 +109,6 @@
     :couleur: rouge
     :notifications: []
     :nom: ''
-    :lien: ''
     :url: ''
     :active: true
   empty2:
@@ -130,7 +117,6 @@
     :couleur: vert
     :notifications: []
     :nom: ''
-    :lien: ''
     :url: ''
     :active: true
   empty3:
@@ -139,6 +125,5 @@
     :couleur: orange
     :notifications: []
     :nom: ''
-    :lien: ''
     :url: ''
     :active: true

@@ -117,21 +117,13 @@ class SinatraApp < Sinatra::Base
 
   get "#{APP_PATH}/api/apps" do
     user_applications = Annuaire.get_user( session[:current_user][:info][:uid] )['applications']
-
-    # # FIXME: DEBUG
-    # user_applications = Annuaire.get_user( 'VAA60498' )['applications'].map {
-    #   |application|
-    #   application['etablissement_code_uai'] = session[:current_user][:profils][ session[:current_user][:profil_actif] ][ 'etablissement_code_uai' ]
-    #   application
-    # }
-    # # /FIXME
-
     # traitement des apps renvoyées par l'annuaire
     user_applications.each {
       |application|
 
       unless config[ :apps_tiles ][ application[ 'id' ] ].nil?
-        config[ :apps_tiles ][ application[ 'id' ] ][ :active ] = application[ 'active' ] && application[ 'etablissement_code_uai' ] == session[:current_user][:profils][ session[:current_user][:profil_actif] ][ 'etablissement_code_uai' ]
+        # On regarde si le profils actif de l'utilisateur comporte le code détablissement pour lequel l'application est activée
+        config[ :apps_tiles ][ application[ 'id' ] ][ :active ] = application[ 'active' ] && application[ 'etablissement_code_uai' ] == session[:current_user][:profils][ session[:current_user][:profil_actif] ][:uai]
         config[ :apps_tiles ][ application[ 'id' ] ][ :nom ] = application[ 'description' ]
         config[ :apps_tiles ][ application[ 'id' ] ][ :lien ] = "/portail/#/show-app?app=#{application[ 'id' ]}"
         config[ :apps_tiles ][ application[ 'id' ] ][ :url ] = "http://www.dev.laclasse.com#{application[ 'url' ]}"
@@ -142,6 +134,7 @@ class SinatraApp < Sinatra::Base
       app[ :id ] = id
       app
     }.to_json
+    
   end
   # }}}
 
