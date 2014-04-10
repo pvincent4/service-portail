@@ -142,39 +142,3 @@
     :lien: ''
     :url: ''
     :active: true
-  empty4:
-    :index: 17
-    :icone: ''
-    :couleur: violet
-    :notifications: []
-    :nom: ''
-    :lien: ''
-    :url: ''
-    :active: true
-  empty5:
-    :index: 18
-    :icone: ''
-    :couleur: vert
-    :notifications: []
-    :nom: ''
-    :lien: ''
-    :url: ''
-    :active: true
-  empty6:
-    :index: 19
-    :icone: ''
-    :couleur: jaune
-    :notifications: []
-    :nom: ''
-    :lien: ''
-    :url: ''
-    :active: true
-  empty7:
-    :index: 20
-    :icone: ''
-    :couleur: bleu
-    :notifications: []
-    :nom: ''
-    :lien: ''
-    :url: ''
-    :active: true
