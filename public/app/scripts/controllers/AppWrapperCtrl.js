@@ -2,9 +2,9 @@
 
 angular.module( 'portailApp.controllers' )
     .controller( 'AppWrapperCtrl',
-		 [ '$scope', 'currentUser',
-		   function( $scope, currentUser ) {
-		       $scope.menu = [ { icone: '12_aide.svg',
+		 [ '$scope', '$http', '$stateParams', '$sce', 'currentUser', 'APPLICATION_PREFIX',
+		   function( $scope, $http, $stateParams, $sce, currentUser, APPLICATION_PREFIX ) {
+		       $scope.menu = [ { icone: 'logolaclasse.svg',
 					 texte: 'retour au portail',
 					 lien: '/portail' },
 				       { icone: '12_aide.svg',
@@ -14,8 +14,13 @@ angular.module( 'portailApp.controllers' )
 					 texte: 'se déconnecter',
 					 lien: '/logout' } ];
 
-
 		       currentUser.get().then( function( response ) {
-			   $scope.current_user = response.data;
+			   $scope.current_user = response;
+
+			   currentUser.apps().then( function( response ) {
+			       var app = _(response).findWhere({id: $stateParams.app});
+			       $scope.app = { nom: app.nom,
+					      url: $sce.trustAsResourceUrl( app.url ) };
+			   } );
 		       } );
-		 } ] );
+		   } ] );

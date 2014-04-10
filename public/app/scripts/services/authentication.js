@@ -1,29 +1,33 @@
 'use strict';
 
 angular.module( 'portailApp.services.authentication', [  ] );
+
+angular.module('portailApp.services.authentication')
+    .factory('User',
+	     [ '$resource', 'APPLICATION_PREFIX',
+	       function( $resource, APPLICATION_PREFIX ) {
+		   return $resource( APPLICATION_PREFIX + '/api/user',
+				     {},
+				     { change_profil_actif: { method: 'PUT',
+							      url: APPLICATION_PREFIX + '/api/user/profil_actif/:index',
+							      params: { index: '@index' } } } );
+	       } ] );
+
+angular.module('portailApp.services.authentication')
+    .factory('UserApps',
+	     [ '$resource', 'APPLICATION_PREFIX',
+	       function( $resource, APPLICATION_PREFIX ) {
+		   return $resource( APPLICATION_PREFIX + '/api/apps' );
+	       } ] );
+
 angular.module( 'portailApp.services.authentication' )
     .service('currentUser',
-	     [ '$http', 'APPLICATION_PREFIX',
-	       function( $http, APPLICATION_PREFIX ) {
-		   var user = null;
-		   this.get = function() {
-		       if ( user == null ) {
-			   user = $http.get( APPLICATION_PREFIX + '/api/user' )
-			       .success( function( response ) {
-				   response.is_logged = response.user !== '';
-				   if ( response.is_logged ) {
-				       response.profils = _(response.extra.profils).map( function( profil ) {
-					   return { 'type': profil['profil_id'],
-						    'uai': profil['etablissement_code_uai'],
-						    'etablissement': profil['etablissement_nom'],
-						    'nom': profil['profil_nom'] };
-				       });
-				       response.profil_actif = response.profils[ 0 ];
-				   }
-				   return response;
-			       } );
-		       }
-
-		       return user;
-		   };
+	     [ 'User', 'UserApps',
+	       function( User, UserApps ) {
+		   this.get = _.memoize( function() {
+		       return User.get().$promise;
+		   } );
+		   this.apps = _.memoize( function() {
+		       return UserApps.query().$promise;
+		   } );
 	       } ] );
