@@ -56,7 +56,7 @@ angular.module( 'portailApp',
 	    } ] );
 
 $(document).ready( function() {
-    var client = new Faye.Client( '/portail/faye', {
+    var client = new Faye.Client( APPLICATION_PREFIX + '/faye', {
 	timeout: 120
     });
 
