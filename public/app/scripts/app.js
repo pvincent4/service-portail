@@ -71,7 +71,7 @@ angular.module( 'portailApp',
                                 // (bool | optional) if you want it to fade out on its own or just sit there
                                 sticky: false,
                                 // (int | optional) the time you want it to be alive for before fading out (milliseconds)
-                                time: 8000,
+                                time: 6000,
                                 // (string | optional) the class name you want to apply directly to the notification for custom styling
                                 class_name: msg.class_name,
                                 // (function | optional) function called before it opens
@@ -90,24 +90,19 @@ angular.module( 'portailApp',
                             });
                        });
                     });
-                    _(channels).each(function(ch) {
-                    });
-                    // Notif de bienvenu à la nouvelle connexion
-                    client.publish('/etablissement/0692520p/ens/vaa61315', {
-                        title: 'Service du portail',
-                        image: '/app/bower_components/charte-graphique-laclasse-com/images/logolaclasse.svg',
-                        class_name: 'gritter-light',
-                        text: 'Bienvenue sur le portail de votre ENT.'
-                    });
-                    // Notif pour les autres utilisateurs de l'établissement
-                    client.publish('/etablissement/0692520p/ens/*', {
-                        title: 'Service du portail',
-                        image: '/app/bower_components/charte-graphique-laclasse-com/images/logolaclasse.svg',
-                        class_name: 'gritter-light',
-                        text: 'vaa61315 vient de se connecter.'
-                    });
                     
-
+                    // Notif de bienvenu à la nouvelle connexion
+                    // FIXME : Liste des notifications à mettre dans un objet json
+                    // FIXME : la variable 'client' est-elle utilisable ailleurs ? le .run n'est exécuté qu'une fois.
+                    // Ce n'est sans doute pas le bon endroit pour mettre cette déclaration ?
+                    setTimeout(function() {
+                        client.publish('/etablissement/0692520p/ens/vaa61315', {
+                            title: 'Service du portail',
+                            image: '/app/bower_components/charte-graphique-laclasse-com/images/logolaclasse.svg',
+                            class_name: 'gritter-light',
+                            text: 'Bienvenue sur le portail de votre ENT. Pour gérer vos notifications, rendez-vous, <a href="' + APPLICATION_PREFIX + '/notifs">Cliquez par là</a>...'
+                        });
+                    }, 3000);                    
                 });
 
 
