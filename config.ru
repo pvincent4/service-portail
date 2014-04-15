@@ -3,6 +3,7 @@
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 
 require './config/init'
+require 'redis'
 require 'faye'
 require 'app'
 
@@ -27,6 +28,11 @@ end
 
 use Faye::RackAdapter,
     mount: "#{APP_PATH}/faye",
-    timeout: 25
+    timeout: 25,
+    engine:  {
+                type: Faye::Redis,
+                host: 'localhost',
+                port: 6379
+             }
 
 run SinatraApp
