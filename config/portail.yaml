@@ -116,9 +116,9 @@
     :survol: ''
     :url: http://www.perdu.com
     :active: false
-  empty1:
+  PRONOTE:
     :index: 14
-    :icone: ''
+    :icone: "/app/bower_components/charte-graphique-laclasse-com/images/04_notesabsences.svg"
     :couleur: rouge
     :notifications: []
     :nom: ''

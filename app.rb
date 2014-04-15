@@ -18,17 +18,17 @@ require_relative './lib/annuaire'
 class Hash
   def to_html
     [ '<ul>',
-       map { |k, v|
-         [ "<li><strong>#{k}</strong> : ", v.respond_to?(:to_html) ? v.to_html : "<span>#{v}</span></li>" ]
-       },
-       '</ul>'
+      map { |k, v|
+        [ "<li><strong>#{k}</strong> : ", v.respond_to?(:to_html) ? v.to_html : "<span>#{v}</span></li>" ]
+      },
+      '</ul>'
     ].join
   end
 end
 
 # Application Sinatra servant de base
 class SinatraApp < Sinatra::Base
-  @@my_channel_list=[]
+  @ent_notifs=[]
 
   configure do
     set :app_file, __FILE__
@@ -55,8 +55,8 @@ class SinatraApp < Sinatra::Base
   # {{{ API
   get "#{APP_PATH}/api/user" do
     return { user: '',
-              info: { },
-              is_logged: false }.to_json unless session[:authenticated]
+      info: { },
+      is_logged: false }.to_json unless session[:authenticated]
 
     session[:current_user][:is_logged] = true
     user_annuaire = Annuaire.get_user( session[:current_user][:info][:uid] )
@@ -65,10 +65,10 @@ class SinatraApp < Sinatra::Base
     session[:current_user][:profils] = user_annuaire['profils'].map.with_index {
       |profil, i|
       { index: i,
-         type: profil['profil_id'],
-         uai: profil['etablissement_code_uai'],
-         etablissement: profil['etablissement_nom'],
-         nom: profil['profil_nom'] }
+        type: profil['profil_id'],
+        uai: profil['etablissement_code_uai'],
+        etablissement: profil['etablissement_nom'],
+        nom: profil['profil_nom'] }
     }
     session[:current_user][:profil_actif] = 0
 
@@ -97,22 +97,25 @@ class SinatraApp < Sinatra::Base
     }.to_json
   end
 
-    get "#{APP_PATH}/api/notifications" do
-     #redirect login! unless session[:authenticated]
-     profil=session[:current_user][:info].ENTPersonProfils.split(":")[0]
-     uai=session[:current_user][:info].ENTPersonProfils.split(":")[1]
-     etb=Annuaire.get_etablissement(uai)
-     opts= { :serveur =>"http://localhost:3001#{APP_PATH}/faye", 
-             :profil => profil,  
-             :uai => uai,  
-             :uid => session[:current_user][:info].uid,  
-             :classes => etb["classes"].map{ |c| c["libelle"]},
-             :groupes => etb["groupes_eleves"].map{ |g| g["libelle"]},
-             :groupes_libres => etb["groupes_libres"].map{ |g| g["libelle"]}
-             }
-     @@my_channel_list=EntNotifs.new opts
-     @@my_channel_list.my_channels.flatten(99).reject {|c| !c.to_s.start_with?("/") }.to_json
-   end
+  get "#{APP_PATH}/api/notifications" do
+    #redirect login! unless session[:authenticated]
+    if is_logged?
+      profil=session[:current_user][:info].ENTPersonProfils.split(":")[0]
+      uai=session[:current_user][:info].ENTPersonProfils.split(":")[1]
+      etb=Annuaire.get_etablissement(uai)
+      opts= { :serveur =>"http://localhost:9292/#{APP_PATH}/faye", 
+        :profil => profil,  
+        :uai => uai,  
+        :uid => session[:current_user][:info].uid,  
+        :classes => etb["classes"].map{ |c| c["libelle"]},
+        :groupes => etb["groupes_eleves"].map{ |g| g["libelle"]},
+        :groupes_libres => etb["groupes_libres"].map{ |g| g["libelle"]}
+      }
+      @ent_notifs=EntNotifs.new opts
+      #### @ent_notifs.notifier(:moi, "Salut tous le monde !")
+      @ent_notifs.my_channels.to_json
+    end
+  end
 
   get "#{APP_PATH}/api/apps" do
     user_applications = Annuaire.get_user( session[:current_user][:info][:uid] )['applications']
