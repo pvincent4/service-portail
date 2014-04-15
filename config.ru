@@ -35,4 +35,13 @@ use Faye::RackAdapter,
                 port: 6379
              }
 
+#bayeux = Faye::RackAdapter.new(:mount => "#{APP_PATH}/faye", 
+#                                  :timeout => 25, 
+#                                  :engine => { :type => Faye::Redis, :host => 'localhost', :port => 6379 })
+#run bayeux
+#bayeux.on(:subscribe) { | client_id, channel | 
+#        puts client_id.to_s + " has subscribed to channel '" + channel.to_s + "'" 
+#    }
+
+
 run SinatraApp
