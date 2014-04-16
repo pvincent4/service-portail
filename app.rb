@@ -86,7 +86,7 @@ class SinatraApp < Sinatra::Base
   end
 
   #
-  # Agragateur RSS
+  # Agrégateur RSS
   #
   get "#{APP_PATH}/api/news" do
     rss = SimpleRSS.parse open( config[:url_news] )
@@ -131,18 +131,24 @@ class SinatraApp < Sinatra::Base
   get "#{APP_PATH}/api/apps" do
     user_applications = Annuaire.get_user( session[:current_user][:info][:uid] )['applications']
     # traitement des apps renvoyées par l'annuaire
-    user_applications.each {
-      |application|
-
-      unless config[ :apps_tiles ][ application[ 'id' ] ].nil?
+    user_applications.each { |application|
+      config_apps = config[ :apps_tiles ][ application[ 'id' ] ]
+      unless config_apps.nil?
         # On regarde si le profils actif de l'utilisateur comporte le code détablissement pour lequel l'application est activée
-        config[ :apps_tiles ][ application[ 'id' ] ][ :active ] = application[ 'active' ] && application[ 'etablissement_code_uai' ] == session[:current_user][:profils][ session[:current_user][:profil_actif] ][:uai]
-        config[ :apps_tiles ][ application[ 'id' ] ][ :nom ] = application[ 'libelle' ]
-        config[ :apps_tiles ][ application[ 'id' ] ][ :survol ] = application[ 'description' ]
-        config[ :apps_tiles ][ application[ 'id' ] ][ :lien ] = "/portail/#/show-app?app=#{application[ 'id' ]}"
+        config_apps[ :active ] = application[ 'active' ] && application[ 'etablissement_code_uai' ] == session[:current_user][:profils][ session[:current_user][:profil_actif] ][:uai]
+        config_apps[ :nom ] = application[ 'libelle' ]
+        config_apps[ :survol ] = application[ 'description' ]
+        config_apps[ :lien ] = "/portail/#/show-app?app=#{application[ 'id' ]}"
         url = "#{application[ 'url' ]}"
         url = ENT_SERVER + url unless application[ 'url' ].to_s.start_with? "http"
-        config[ :apps_tiles ][ application[ 'id' ] ][ :url ] = url
+        config_apps[ :url ] = url
+        # Gérer les notifications sur chaque application
+        config_apps[ :notifications ] = 0
+        # THINK : Peut-être qu'il faut faire ce travail côté client AngularJS, afin de le rendre asynchrone et non bloquant.
+        unless config_apps[ :url_notif ].empty?
+          resp = Net::HTTP.get_response(URI.parse config_apps[ :url_notif ])
+          config_apps[ :notifications ] = resp.body if resp.body.is_a? Numeric
+        end
       end
     }
 
