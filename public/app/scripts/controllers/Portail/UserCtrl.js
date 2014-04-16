@@ -8,6 +8,7 @@ angular.module( 'portailApp.controllers' )
 			   console.debug( 'annuler les modifications')
 		       };
 		       $scope.enregistrer = function() {
+			   $scope.current_user.$save();
 			   console.debug($scope.current_user)
 		       };
 
