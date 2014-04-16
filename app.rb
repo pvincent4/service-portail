@@ -10,7 +10,6 @@ require 'yaml'
 Bundler.require( :default, ENV['RACK_ENV'].to_sym )     # require tout les gems définis dans Gemfile
 
 require_relative './config/options'
-
 require_relative './lib/AuthenticationHelpers'
 require_relative './lib/ConfigHelpers'
 require_relative './lib/annuaire'
@@ -29,6 +28,7 @@ end
 
 # Application Sinatra servant de base
 class SinatraApp < Sinatra::Base
+  @@my_channel_list=[]
 
   configure do
     set :app_file, __FILE__
@@ -103,22 +103,40 @@ class SinatraApp < Sinatra::Base
     }.to_json
   end
 
+    get "#{APP_PATH}/api/notifications" do
+     #redirect login! unless session[:authenticated]
+     profil=session[:current_user][:info].ENTPersonProfils.split(":")[0]
+     uai=session[:current_user][:info].ENTPersonProfils.split(":")[1]
+     etb=Annuaire.get_etablissement(uai)
+     opts= { :serveur =>"http://localhost:3001#{APP_PATH}/faye",
+             :profil => profil,
+             :uai => uai,
+             :uid => session[:current_user][:info].uid,
+             :classes => etb["classes"].map{ |c| c["libelle"]},
+             :groupes => etb["groupes_eleves"].map{ |g| g["libelle"]},
+             :groupes_libres => etb["groupes_libres"].map{ |g| g["libelle"]}
+             }
+     @@my_channel_list=EntNotifs.new opts
+     @@my_channel_list.my_channels.flatten(99).reject {|c| !c.to_s.start_with?("/") }.to_json
+   end
+
   get "#{APP_PATH}/api/apps" do
-    unless session[:current_user].nil?
-      user_applications = Annuaire.get_user( session[:current_user][:info][:uid] )['applications']
+    user_applications = Annuaire.get_user( session[:current_user][:info][:uid] )['applications']
+    # traitement des apps renvoyées par l'annuaire
+    user_applications.each {
+      |application|
 
-      # traitement des apps renvoyées par l'annuaire
-      user_applications.each {
-        |application|
-
-        unless config[ :apps_tiles ][ application[ 'id' ] ].nil?
-          config[ :apps_tiles ][ application[ 'id' ] ][ :active ] = application[ 'active' ] && application[ 'etablissement_code_uai' ] == session[:current_user][:profils][ session[:current_user][:profil_actif] ][ 'etablissement_code_uai' ]
-          config[ :apps_tiles ][ application[ 'id' ] ][ :nom ] = application[ 'description' ]
-          config[ :apps_tiles ][ application[ 'id' ] ][ :lien ] = "/portail/#/show-app?app=#{application[ 'id' ]}"
-          config[ :apps_tiles ][ application[ 'id' ] ][ :url ] = "http://www.dev.laclasse.com#{application[ 'url' ]}"
-        end
-      }
-    end
+      unless config[ :apps_tiles ][ application[ 'id' ] ].nil?
+        # On regarde si le profils actif de l'utilisateur comporte le code détablissement pour lequel l'application est activée
+        config[ :apps_tiles ][ application[ 'id' ] ][ :active ] = application[ 'active' ] && application[ 'etablissement_code_uai' ] == session[:current_user][:profils][ session[:current_user][:profil_actif] ][:uai]
+        config[ :apps_tiles ][ application[ 'id' ] ][ :nom ] = application[ 'libelle' ]
+        config[ :apps_tiles ][ application[ 'id' ] ][ :survol ] = application[ 'description' ]
+        config[ :apps_tiles ][ application[ 'id' ] ][ :lien ] = "/portail/#/show-app?app=#{application[ 'id' ]}"
+        url = "#{application[ 'url' ]}"
+        url = ENT_SERVER + url unless application[ 'url' ].to_s.start_with? "http"
+        config[ :apps_tiles ][ application[ 'id' ] ][ :url ] = url
+      end
+    }
 
     config[:apps_tiles].map { |id, app|
       app[ :id ] = id
@@ -155,7 +173,6 @@ class SinatraApp < Sinatra::Base
     logout! "#{env['rack.url_scheme']}://#{env['HTTP_HOST']}#{APP_PATH}/"
   end
   # }}}
-
 end
 
 SinatraApp.run! if __FILE__ == $PROGRAM_NAME

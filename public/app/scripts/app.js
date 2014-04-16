@@ -6,6 +6,7 @@ angular.module( 'portailApp',
 		  'portailApp.services.constants',
 		  'portailApp.services.authentication',
 		  'portailApp.services.news',
+                  'portailApp.services.notifications',
 		  'ngResource',
 		  'ui.router',
 		  'ui.bootstrap',
@@ -49,23 +50,65 @@ angular.module( 'portailApp',
 
 		   $urlRouterProvider.otherwise( '/' );
 	       } ] )
-    .run( [ '$rootScope', '$location',
-	    function( $rootScope, $location ) {
+    .run( [ '$rootScope', '$location', 'currentUser', 'notifications', 'APPLICATION_PREFIX', 
+	    function( $rootScope, $location, currentUser, notifications, APPLICATION_PREFIX) {
 		$rootScope.$location = $location;
 		window.scope = $rootScope;
-	    } ] );
 
-$(document).ready( function() {
-    var client = new Faye.Client( '/portail/faye', {
-	timeout: 120
-    });
+                var client = new Faye.Client(APPLICATION_PREFIX + '/faye', {
+                    timeout: 120
+                });
+                notifications.get().then(function(response) {
+                   var channels = _(response.data).each(function(channel) {
+                        client.subscribe(channel, function(msg) {
+                            $.gritter.add({
+                                // (string | mandatory) the heading of the notification
+                                title: msg.title,
+                                // (string | mandatory) the text inside the notification
+                                text: msg.text,
+                                // (string | optional) the image to display on the left
+                                image: msg.image,
+                                // (bool | optional) if you want it to fade out on its own or just sit there
+                                sticky: false,
+                                // (int | optional) the time you want it to be alive for before fading out (milliseconds)
+                                time: 8000,
+                                // (string | optional) the class name you want to apply directly to the notification for custom styling
+                                class_name: msg.class_name,
+                                // (function | optional) function called before it opens
+                                before_open: function() {
+                                },
+                                // (function | optional) function called after it opens
+                                after_open: function(e) {
+                                },
+                                // (function | optional) function called before it closes
+                                before_close: function(e, manual_close) {
+                                    // the manual_close param determined if they closed it by clicking the "x"
+                                },
+                                // (function | optional) function called after it closes
+                                after_close: function() {
+                                }
+                            });
+                       });
+                    });
+                    _(channels).each(function(ch) {
+                    });
+                    // Notif de bienvenu à la nouvelle connexion
+                    client.publish('/etablissement/0692520p/ens/vaa61315', {
+                        title: 'Service du portail',
+                        image: '/app/bower_components/charte-graphique-laclasse-com/images/logolaclasse.svg',
+                        class_name: 'gritter-light',
+                        text: 'Bienvenue sur le portail de votre ENT.'
+                    });
+                    // Notif pour les autres utilisateurs de l'établissement
+                    client.publish('/etablissement/0692520p/ens/*', {
+                        title: 'Service du portail',
+                        image: '/app/bower_components/charte-graphique-laclasse-com/images/logolaclasse.svg',
+                        class_name: 'gritter-light',
+                        text: 'vaa61315 vient de se connecter.'
+                    });
+                    
 
-    var subscription = client.subscribe('/canal', function(msg) {
-	console.log("message received on /canal : " + msg) ;
-	$.growl.notice({ duration: 6400, size: "large", title: "Hey there", message: "New message" });
-	$.growl({ message: msg.text });
-	// handle message
-    });
+                });
 
-    client.publish('/canal', {text: 'Hi there'});
-});
+
+            }]);
