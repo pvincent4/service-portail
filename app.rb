@@ -4,6 +4,7 @@ require 'rubygems'
 require 'bundler'
 require 'sinatra/reloader'
 require 'open-uri'
+require 'uri'
 require 'json'
 require 'yaml'
 
@@ -35,7 +36,7 @@ class SinatraApp < Sinatra::Base
     set :root, APP_ROOT
     set :public_folder, proc { File.join( root, 'public' ) }
     set :inline_templates, true
-    set :protection, true
+    set :protection, true #, except: :frame_options
   end
 
   configure :development do
@@ -53,6 +54,9 @@ class SinatraApp < Sinatra::Base
   end
 
   # {{{ API
+  #
+  # Gestion de session côtế client
+  #
   get "#{APP_PATH}/api/user" do
     return { user: '',
       info: { },
@@ -81,22 +85,26 @@ class SinatraApp < Sinatra::Base
     session[:current_user].to_json
   end
 
+  #
+  # Agragateur RSS
+  #
   get "#{APP_PATH}/api/news" do
     rss = SimpleRSS.parse open( config[:url_news] )
 
     rss.items
-    .first( 5 )
-    .map { |news|
-      news[:description] = news[:content] if news.has? :content
-      news[:image] = news[:description].match( /http.*png/ )
-
-      news[:description] = news[:description].to_s.encode( 'UTF-8', { invalid: :replace, undef: :replace, replace: '?' } )
-      news[:description] = HTML_Truncator.truncate( news[:description], 30 )
+    .first( 10 )
+    .map { |news|     
+      news.each { |k,v| news[k] = news[k].force_encoding("UTF-8").encode! if news[k].is_a? String }
+      news[:description] = news[:content_encoded] if news.has? :content_encoded
+      news[:image] = news[:content]
 
       news
     }.to_json
   end
 
+  #
+  # Configuration des canaux de notifications
+  #
   get "#{APP_PATH}/api/notifications" do
     #redirect login! unless session[:authenticated]
     if is_logged?
@@ -117,6 +125,9 @@ class SinatraApp < Sinatra::Base
     end
   end
 
+  #
+  # Service liste des applications
+  #
   get "#{APP_PATH}/api/apps" do
     user_applications = Annuaire.get_user( session[:current_user][:info][:uid] )['applications']
     # traitement des apps renvoyées par l'annuaire
