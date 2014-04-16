@@ -1,10 +1,21 @@
 ---
-:url_news: 
-    # Blog de la collectivité
-    - http://erasme.blogs.laclasse.com/feed/
-    # blog du projet ENT
-    - http://ent-laclasse.blogs.laclasse.com/feed/
-    
+:news_feed:
+    -
+        :titre: "Editoriaux d'Erasme"
+        :flux: http://erasme.blogs.laclasse.com/feed/
+        :icone: ''
+        :nb: 1  
+    -
+        :titre: "blog du projet ENT"
+        :flux: http://ent-laclasse.blogs.laclasse.com/feed/
+        :icone: ''
+        :nb: 3
+    -
+        :titre: "Rhone.fr"
+        :flux: http://http://edurhone.blogs.laclasse.com/feed/
+        :icone: ''
+        :nb: 1    
+
 :apps_tiles:
   MAIL:
     :index: 1
