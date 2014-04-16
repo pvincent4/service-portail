@@ -75,6 +75,12 @@ class SinatraApp < Sinatra::Base
     session[:current_user].to_json
   end
 
+  post "#{APP_PATH}/api/user" do
+    p '$save() appelé, TODO'
+    p params
+    session[:current_user].to_json
+  end
+
   put "#{APP_PATH}/api/user/profil_actif/:index" do
     session[:current_user][:profil_actif] = params[ :index ].to_i
 
