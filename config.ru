@@ -9,7 +9,7 @@ require 'app'
 Faye::WebSocket.load_adapter('thin')
 
 use Rack::Rewrite do
-  rewrite %r{/portail/(.*(css|js|html|png|jpg|gif|jpeg|eot|svg|ttf|woff))}, '/app/$1'
+  rewrite %r{/v3/(.*(css|js|html|png|jpg|gif|jpeg|eot|svg|ttf|woff))}, '/app/$1'
 end
 
 use Rack::Session::Cookie,
@@ -22,7 +22,7 @@ use OmniAuth::Builder do
     configure do |config|
       config.path_prefix = "#{APP_PATH}/auth"
     end
-    provider :cas, CASLaclasseCom::OPTIONS
+    provider :cas, CasAuth::OPTIONS
 end
 
 use Faye::RackAdapter,
