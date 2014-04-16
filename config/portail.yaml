@@ -6,6 +6,7 @@
     :icone: "/app/bower_components/charte-graphique-laclasse-com/images/01_messagerie.svg"
     :couleur: bleu
     :notifications: 0
+    :url_notif: ''
     :nom: 'messagerie'
     :survol: ''
     :url: http://www.perdu.com
@@ -15,6 +16,7 @@
     :icone: "/app/bower_components/charte-graphique-laclasse-com/images/02_documents.svg"
     :couleur: jaune
     :notifications: 0
+    :url_notif: ''
     :nom: ''
     :survol: ''
     :active: false
@@ -23,6 +25,7 @@
     :icone: "/app/bower_components/charte-graphique-laclasse-com/images/03_cahierdetextes.svg"
     :couleur: violet
     :notifications: 0
+    :url_notif: ''
     :nom: ''
     :survol: ''
     :active: false
@@ -31,6 +34,7 @@
     :icone: "/app/bower_components/charte-graphique-laclasse-com/images/04_notesabsences.svg"
     :couleur: vert
     :notifications: 0
+    :url_notif: ''
     :nom: ''
     :survol: ''
     :active: false
@@ -39,6 +43,7 @@
     :icone: "/app/bower_components/charte-graphique-laclasse-com/images/05_validationcompetences.svg"
     :couleur: rouge
     :notifications: 0
+    :url_notif: ''
     :nom: ''
     :survol: ''
     :url: http://www.perdu.com
@@ -48,6 +53,7 @@
     :icone: "/app/bower_components/charte-graphique-laclasse-com/images/06_thematiques.svg"
     :couleur: vert
     :notifications: 0
+    :url_notif: ''
     :nom: ''
     :survol: ''
     :url: ''
@@ -57,6 +63,7 @@
     :icone: "/app/bower_components/charte-graphique-laclasse-com/images/07_blogs.svg"
     :couleur: bleu
     :notifications: 0
+    :url_notif: ''
     :nom: ''
     :survol: ''
     :url: http://www.perdu.com
@@ -66,6 +73,7 @@
     :icone: "/app/bower_components/charte-graphique-laclasse-com/images/08_ressources.svg"
     :couleur: jaune
     :notifications: 0
+    :url_notif: ''
     :nom: ''
     :survol: ''
     :url: http://www.perdu.com
@@ -75,6 +83,7 @@
     :icone: "/app/bower_components/charte-graphique-laclasse-com/images/09_trombi.svg"
     :couleur: violet
     :notifications: 0
+    :url_notif: ''
     :nom: ''
     :survol: ''
     :url: http://www.perdu.com
@@ -84,6 +93,7 @@
     :icone: "/app/bower_components/charte-graphique-laclasse-com/images/10_suivi.svg"
     :couleur: bleu
     :notifications: 0
+    :url_notif: ''
     :nom: ''
     :survol: ''
     :lien: ''
@@ -94,6 +104,7 @@
     :icone: "/app/bower_components/charte-graphique-laclasse-com/images/11_publipostage.svg"
     :couleur: jaune
     :notifications: 0
+    :url_notif: ''
     :nom: ''
     :survol: ''
     :url: http://www.perdu.com
@@ -103,6 +114,7 @@
     :icone: "/app/bower_components/charte-graphique-laclasse-com/images/12_aide.svg"
     :couleur: rouge
     :notifications: 0
+    :url_notif: ''
     :active: true
     :nom: aide
     :survol: 'Aide en ligne'
@@ -112,6 +124,7 @@
     :icone: "/app/bower_components/charte-graphique-laclasse-com/images/13_admin.svg"
     :couleur: jaune
     :notifications: 0
+    :url_notif: ''
     :nom: ''
     :survol: ''
     :url: http://www.perdu.com
@@ -121,6 +134,7 @@
     :icone: "/app/bower_components/charte-graphique-laclasse-com/images/04_notesabsences.svg"
     :couleur: rouge
     :notifications: 0
+    :url_notif: ''
     :nom: ''
     :survol: ''
     :url: '#'
@@ -130,6 +144,7 @@
     :icone: ''
     :couleur: vert
     :notifications: 0
+    :url_notif: ''
     :nom: ''
     :survol: ''
     :url: '#'
@@ -139,6 +154,7 @@
     :icone: ''
     :couleur: orange
     :notifications: 0
+    :url_notif: ''
     :nom: ''
     :survol: ''
     :url: '#'
