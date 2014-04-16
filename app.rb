@@ -91,23 +91,27 @@ class SinatraApp < Sinatra::Base
   get "#{APP_PATH}/api/news" do
     # THINK : Comment mettre des priorités sur les différents flux ?
     news=[]
-    config[:url_news].each { |f|
-      rss = SimpleRSS.parse open(f) 
-      rss.items
-      .first( 20 )
-      .map { |n|     
-        n.each { |k,v| n[k] = URI.unescape(n[k]).to_s.force_encoding("UTF-8").encode! if n[k].is_a? String }
-        n[:description] = n[:content_encoded] if n.has? :content_encoded
-        n[:image] = n[:content]
-        n[:orderby] =  n[:pubDate].to_i
-        n[:pubDate] = n[:pubDate].strftime "%d/%m/%Y"
-        news.push n
-      }
+    config[:news_feed].each { |f|
+      begin
+        rss = SimpleRSS.parse open(f[:flux]) 
+        rss.items
+        .first( f[:nb] )
+        .map { |n|     
+          n.each { |k,v| n[k] = URI.unescape(n[k]).to_s.force_encoding("UTF-8").encode! if n[k].is_a? String }
+          n[:description] = n[:content_encoded] if n.has? :content_encoded
+          n[:image] = n[:content]
+          n[:orderby] =  n[:pubDate].to_i
+          n[:pubDate] = n[:pubDate].strftime "%d/%m/%Y"
+          news.push n
+        }
+      rescue 
+        puts "impossible d'ouvrir #{f[:flux].to_s}"
+      end
     }
     # Tri anté-chronologique
     news.sort!{|n1,n2| n2.orderby <=> n1.orderby}
     news.to_json
- end
+  end
 
   #
   # Configuration des canaux de notifications
