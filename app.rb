@@ -89,18 +89,25 @@ class SinatraApp < Sinatra::Base
   # Agrégateur RSS
   #
   get "#{APP_PATH}/api/news" do
-    rss = SimpleRSS.parse open( config[:url_news] )
-
-    rss.items
-    .first( 10 )
-    .map { |news|     
-      news.each { |k,v| news[k] = news[k].force_encoding("UTF-8").encode! if news[k].is_a? String }
-      news[:description] = news[:content_encoded] if news.has? :content_encoded
-      news[:image] = news[:content]
-
-      news
-    }.to_json
-  end
+    # THINK : Comment mettre des priorités sur les différents flux ?
+    news=[]
+    config[:url_news].each { |f|
+      rss = SimpleRSS.parse open(f) 
+      rss.items
+      .first( 20 )
+      .map { |n|     
+        n.each { |k,v| n[k] = URI.unescape(n[k]).to_s.force_encoding("UTF-8").encode! if n[k].is_a? String }
+        n[:description] = n[:content_encoded] if n.has? :content_encoded
+        n[:image] = n[:content]
+        n[:orderby] =  n[:pubDate].to_i
+        n[:pubDate] = n[:pubDate].strftime "%d/%m/%Y"
+        news.push n
+      }
+    }
+    # Tri anté-chronologique
+    news.sort!{|n1,n2| n2.orderby <=> n1.orderby}
+    news.to_json
+ end
 
   #
   # Configuration des canaux de notifications

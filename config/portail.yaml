@@ -1,5 +1,10 @@
 ---
-:url_news: http://ent-laclasse.blogs.laclasse.com/feed/
+:url_news: 
+    # Blog de la collectivité
+    - http://erasme.blogs.laclasse.com/feed/
+    # blog du projet ENT
+    - http://ent-laclasse.blogs.laclasse.com/feed/
+    
 :apps_tiles:
   MAIL:
     :index: 1

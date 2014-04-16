@@ -198,6 +198,10 @@ body { font-family:'Open Sans', sans-serif;
 						  font-weight:bolder;
 						  float:right }
 
+.rn-carousel-slide .news-content .pub-date { color:#ddd;
+                                             font-size: 0.8em;
+                                             float:right }
+
 .damier .case { float:left;
 		position:relative }
 
