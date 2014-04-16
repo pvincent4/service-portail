@@ -104,27 +104,21 @@ class SinatraApp < Sinatra::Base
   end
 
   get "#{APP_PATH}/api/apps" do
-    user_applications = Annuaire.get_user( session[:current_user][:info][:uid] )['applications']
+    unless session[:current_user].nil?
+      user_applications = Annuaire.get_user( session[:current_user][:info][:uid] )['applications']
 
-    # # FIXME: DEBUG
-    # user_applications = Annuaire.get_user( 'VAA60498' )['applications'].map {
-    #   |application|
-    #   application['etablissement_code_uai'] = session[:current_user][:profils][ session[:current_user][:profil_actif] ][ 'etablissement_code_uai' ]
-    #   application
-    # }
-    # # /FIXME
+      # traitement des apps renvoyées par l'annuaire
+      user_applications.each {
+        |application|
 
-    # traitement des apps renvoyées par l'annuaire
-    user_applications.each {
-      |application|
-
-      unless config[ :apps_tiles ][ application[ 'id' ] ].nil?
-        config[ :apps_tiles ][ application[ 'id' ] ][ :active ] = application[ 'active' ] && application[ 'etablissement_code_uai' ] == session[:current_user][:profils][ session[:current_user][:profil_actif] ][ 'etablissement_code_uai' ]
-        config[ :apps_tiles ][ application[ 'id' ] ][ :nom ] = application[ 'description' ]
-        config[ :apps_tiles ][ application[ 'id' ] ][ :lien ] = "/portail/#/show-app?app=#{application[ 'id' ]}"
-        config[ :apps_tiles ][ application[ 'id' ] ][ :url ] = "http://www.dev.laclasse.com#{application[ 'url' ]}"
-      end
-    }
+        unless config[ :apps_tiles ][ application[ 'id' ] ].nil?
+          config[ :apps_tiles ][ application[ 'id' ] ][ :active ] = application[ 'active' ] && application[ 'etablissement_code_uai' ] == session[:current_user][:profils][ session[:current_user][:profil_actif] ][ 'etablissement_code_uai' ]
+          config[ :apps_tiles ][ application[ 'id' ] ][ :nom ] = application[ 'description' ]
+          config[ :apps_tiles ][ application[ 'id' ] ][ :lien ] = "/portail/#/show-app?app=#{application[ 'id' ]}"
+          config[ :apps_tiles ][ application[ 'id' ] ][ :url ] = "http://www.dev.laclasse.com#{application[ 'url' ]}"
+        end
+      }
+    end
 
     config[:apps_tiles].map { |id, app|
       app[ :id ] = id
