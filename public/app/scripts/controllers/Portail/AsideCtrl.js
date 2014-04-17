@@ -5,6 +5,7 @@ angular.module( 'portailApp.controllers' )
 		 [ '$scope', '$sce', 'currentUser', 'news', 'APPLICATION_PREFIX',
 		   function( $scope, $sce, currentUser, news, APPLICATION_PREFIX ) {
 		       currentUser.get().then( function( response ) {
+                           $scope.prefix = APPLICATION_PREFIX;
 			   $scope.current_user = response;
 			   $scope.avatar = '';
 
