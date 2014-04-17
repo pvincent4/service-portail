@@ -1,25 +1,27 @@
 {
-    "name": "app",
-    "version": "0.0.0",
-    "dependencies": {
-	"angular": "latest",
-	"json3": "latest",
-	"es5-shim": "latest",
-	"jquery": "latest",
-	"bootstrap": "latest",
-	"angular-resource": "latest",
-	"angular-cookies": "latest",
-	"angular-sanitize": "latest",
-	"angular-ui-router": "latest",
-	"angular-carousel": "latest",
-	"Font-Awesome": "latest",
-	"growl": "latest",
-	"faye": "latest",
-	"underscore": "latest",
-	"charte-graphique-laclasse-com": "http://gitlab.erasme.org/laclasse/charte-graphique-laclasse-com.git#latest"
-    },
-    "devDependencies": {
-	"angular-mocks": "latest",
-	"angular-scenario": "latest"
-    }
+  "name": "app",
+  "version": "0.0.0",
+  "dependencies": {
+    "angular": "latest",
+    "json3": "latest",
+    "es5-shim": "latest",
+    "jquery": "latest",
+    "bootstrap": "latest",
+    "angular-resource": "latest",
+    "angular-cookies": "latest",
+    "angular-sanitize": "latest",
+    "angular-ui-router": "latest",
+    "angular-bootstrap": "latest",
+    "angular-carousel": "latest",
+    "Font-Awesome": "latest",
+    "faye": "latest",
+    "underscore": "latest",
+    "charte-graphique-laclasse-com": "git@gitlab.erasme.org:laclasse/charte-graphique-laclasse-com.git#latest",
+    "ng-flow": "latest",
+    "jquery.gritter": "*"
+  },
+  "devDependencies": {
+    "angular-mocks": "latest",
+    "angular-scenario": "latest"
+  }
 }

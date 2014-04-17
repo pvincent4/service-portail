@@ -4,7 +4,6 @@ require 'rake/clean'
 
 include Rake::DSL
 
-
 # All the bacon specifications
 PROJECT_SPECS = Dir.glob(File.expand_path('../spec/**/*.rb', __FILE__))
 PROJECT_SPECS.reject! { |e| e =~ /helper\.rb/ }
@@ -27,9 +26,11 @@ Dir.glob(File.expand_path('../tasks/*.rake', __FILE__)).each do |f|
   import(f)
 end
 
-desc "Starts the server"
-task :start => [ 'server:start' ]
+desc 'Starts the server'
+task start: [ 'server:start' ]
 
-desc "Stops the server"
-multitask :stop => [ 'server:stop' ]
+desc 'Stops the server'
+multitask stop: [ 'server:stop' ]
 
+require 'jasmine'
+load 'jasmine/tasks/jasmine.rake'
