@@ -4,7 +4,8 @@ angular.module('portailApp.controllers')
         .controller('AppWrapperCtrl',
                 ['$scope', '$http', '$stateParams', '$sce', 'currentUser', 'APPLICATION_PREFIX',
                     function($scope, $http, $stateParams, $sce, currentUser, APPLICATION_PREFIX) {
-                        $scope.menu = [{icone: 'logolaclasse.svg',
+                           $scope.prefix = APPLICATION_PREFIX;
+			   $scope.menu = [{icone: 'logolaclasse.svg',
                                 texte: 'retour au portail',
                                 lien: APPLICATION_PREFIX + '/'},
                             {icone: '12_aide.svg',
