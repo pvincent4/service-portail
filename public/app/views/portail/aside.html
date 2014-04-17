@@ -1,0 +1,50 @@
+<div class="row-fluid header">
+  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 logolaclasse gris4">
+    <a href="{{APPLICATION_PREFIX}}"
+       data-ng-style="{'background-image': 'url(' + APPLICATION_PREFIX+'/app/bower_components/charte-graphique-laclasse-com/images/logolaclasse.svg' + ') '}">
+      <h3>laclasse.com</h3>
+    </a>
+  </div>
+
+  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 user" data-ng-style="{'background-image': 'url(' + avatar + ')'}">
+
+    <span class="user-info" data-ng-show="current_user.is_logged">
+      <span>
+	<a data-ui-sref="portail.user">
+	  <h3>{{current_user['info']['LaclassePrenom']}} {{current_user['info']['LaclasseNom']}}</h3>
+	</a>
+	<br>
+	<select data-ng-controller="ProfilActifCtrl"
+		data-ng-model="current_user['profil_actif']"
+		data-ng-options="profil['index'] as profil['etablissement'] + ' : ' + profil['nom'] group by profil['etablissement'] for profil in current_user['profils']" data-ng-change="reload()">
+	</select>
+	<br>
+	<a class="logout" href="logout" title="Déconnexion de Laclasse.com">se déconnecter</a>
+      </span>
+    </span>
+
+    <span class="connect-register" data-ng-hide="current_user.is_logged">
+      <a href="login" title="Connexion avec Laclasse.com">se connecter</a>
+      <a href="register" title="Création de compte avec Laclasse.com">s'inscrire</a>
+    </span>
+  </div>
+</div>
+
+<div class="row-fluid slider">
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+    <ul data-rn-carousel data-rn-carousel-indicator>
+      <li data-ng-repeat="news in newsfeed" data-ng-style="{'background-image': 'url(' + news.image + ')'}">
+	<div class="news-content">
+          <span class="pub-date">{{ news.pubDate }}</span>
+	  <a href="{{ news.link }}">
+              <h6>{{ news.title }}</h6>
+	  </a>
+	  <span data-ng-bind-html="news.trusted_description"></span>
+	  <a class="lire-la-suite" href="{{ news.link }}">(lire la suite)</a>
+	</div>
+      </li>
+    </ul>
+
+  </div>
+</div>

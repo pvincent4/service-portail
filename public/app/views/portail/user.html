@@ -1,0 +1,112 @@
+<div class="row-fluid user-profil">
+  <header>
+    <h3>profil utilisateur</h3>
+    <h1>{{current_user['info']['LaclassePrenom']}} {{current_user['info']['LaclasseNom']}}</h1>
+    <h2>{{current_user['profil_actif']['etablissement']}}</h2>
+    <h2>{{current_user['profil_actif']['nom']}}</h2>
+  </header>
+  <div class="form">
+    <accordion close-others="false">
+
+      <accordion-group data-is-open="groups[ 0 ].ouvert">
+	<accordion-heading>
+	  <span class="glyphicon" ng-class="{'glyphicon-chevron-down': groups[ 0 ].ouvert, 'glyphicon-chevron-right': !groups[ 0 ].ouvert}"> informations</span>
+	</accordion-heading>
+	<div class="row-fluid">
+	  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+	    <div class="form-group">
+	      <label for="datenaissance">date de naissance :</label>
+	      <input type="text" class="form-control" data-ng-model="current_user['extra']['date_naissance']" data-ng-required="true" data-close-text="Close" />
+	    </div>
+	    <div class="form-group">
+	      <label for="adressedomicile">adresse du domicile :</label>
+	      <input type="text" class="form-control" id="adressedomicile" data-ng-model="current_user['extra']['adresse']">
+	    </div>
+	    <div class="form-group">
+	      <label for="tel1">téléphone 1 :</label>
+	      <input type="text" class="form-control" id="tel1" data-ng-model="current_user['extra']['telephones'][ 0 ]">
+	    </div>
+	  </div>
+	  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+	    <div class="form-group">
+	      <label for="sexe">sexe :</label>
+	      <input type="text" class="form-control" id="sexe" data-ng-model="current_user['extra']['sexe']">
+	    </div>
+	    <div class="form-group">
+	      <label for="email">adresse électronique :</label>
+	      <input type="text" class="form-control" id="email" data-ng-model="current_user['extra']['emails'][ 0 ]">
+	    </div>
+	    <div class="form-group">
+	      <label for="tel2">téléphone 2 :</label>
+	      <input type="text" class="form-control" id="tel2" data-ng-model="current_user['extra']['telephones'][ 1 ]">
+	    </div>
+	  </div>
+	  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 avatar" data-flow-init>
+	    <span data-ng-hide="$flow.files.length">
+	      <data-ng-include class="svg"
+			       src="APPLICATION_PREFIX+'/app/bower_components/charte-graphique-laclasse-com/images/avatar_feminin.svg'"
+			       data-ng-show="current_user['extra']['sexe'] === 'F'"></data-ng-include>
+	      <data-ng-include class="svg"
+			       src="APPLICATION_PREFIX+'/app/bower_components/charte-graphique-laclasse-com/images/avatar_masculin.svg'"
+			       data-ng-show="current_user['extra']['sexe'] === 'M' || current_user['extra']['sexe'] === null"></data-ng-include>
+	    </span>
+	    <img flow-img="$flow.files[0]" data-ng-show="$flow.files.length" />
+	    <br>
+	    <button flow-btn>changer de photo</button>
+	    <div class="alert" flow-drop>
+	      Drag And Drop your file here
+	    </div>
+	  </div>
+	</div>
+
+      </accordion-group>
+
+      <accordion-group data-is-open="groups[ 1 ].ouvert">
+	<accordion-heading>
+	  <span class="glyphicon" ng-class="{'glyphicon-chevron-down': groups[ 1 ].ouvert, 'glyphicon-chevron-right': !groups[ 1 ].ouvert}"> mot de passe</span>
+	</accordion-heading>
+	<div class="row-fluid">
+	  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+	    <div class="form-group">
+	      <label for="oldpasswd">entrer l'ancien mot de passe :</label>
+	      <input type="password" class="form-control" id="oldpasswd">
+	    </div>
+	  </div>
+	  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+	    <div class="form-group">
+	      <label for="newpasswd1">entre le nouveau mot de passe :</label>
+	      <input type="password" class="form-control" id="newpasswd1">
+	    </div>
+	  </div>
+	  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+	    <div class="form-group">
+	      <label for="newpasswd2">confirmer le nouveau mot de passe :</label>
+	      <input type="password" class="form-control" id="newpasswd2">
+	    </div>
+	  </div>
+	</div>
+
+      </accordion-group>
+
+      <accordion-group data-is-open="groups[ 2 ].ouvert">
+	<accordion-heading>
+	  <span class="glyphicon" ng-class="{'glyphicon-chevron-down': groups[ 2 ].ouvert, 'glyphicon-chevron-right': !groups[ 2 ].ouvert}"> droits</span>
+	</accordion-heading>
+	<p>The body of the accordion group grows to fit the contents</p>
+      </accordion-group>
+
+      <accordion-group data-is-open="groups[ 3 ].ouvert">
+	<accordion-heading>
+	  <span class="glyphicon" ng-class="{'glyphicon-chevron-down': groups[ 3 ].ouvert, 'glyphicon-chevron-right': !groups[ 3 ].ouvert}"> statistiques</span>
+	</accordion-heading>
+	<p>The body of the accordion group grows to fit the contents</p>
+      </accordion-group>
+
+    </accordion>
+  </div>
+
+  <footer>
+    <button data-ng-click="annuler()">annuler</button>
+    <button data-ng-click="enregistrer()">enregistrer</button>
+  </footer>
+</div>

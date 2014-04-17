@@ -1,4 +1,6 @@
 /* couleurs */
+.blanc {background-color:#fff}
+.noir {background-color:#000}
 .bleu {background-color:#1aa1cc}
 .vert {background-color:#80ba66}
 .rouge {background-color:#eb5454}
@@ -10,3 +12,6 @@
 .gris2 {background-color:#8e8e8e}
 .gris3 {background-color:#505050}
 .gris4 {background-color:#323232}
+
+/* notifications */
+#gritter-notice-wrapper { height:75px;}

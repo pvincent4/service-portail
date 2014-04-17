@@ -1,0 +1,8 @@
+# -*- encoding: utf-8 -*-
+# Adresse de l'ENT
+ENT_SERVER = "http://www.dev.laclasse.com"
+# Configuration de l'annuaire
+ANNUAIRE = { url: 'http://www.dev.laclasse.com/api/app',
+             app_id: 'PORTAIL',
+             secret: '',
+             api_mode: 'v3' }
