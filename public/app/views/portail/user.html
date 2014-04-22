@@ -43,9 +43,7 @@
 	  </div>
 	  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 avatar" data-flow-init>
 	    <span data-ng-hide="$flow.files.length">
-	      <data-ng-include class="svg"
-			       src="current_user['avatar']"
-			       data-ng-show="current_user['avatar'] !== ''"></data-ng-include>
+	      <img class="svg" data-ng-src="{{current_user['avatar']}}" data-ng-show="current_user['avatar'] !== ''" />
 	      <data-ng-include class="svg"
 			       src="APPLICATION_PREFIX +'/bower_components/charte-graphique-laclasse-com/images/avatar_feminin.svg'"
 			       data-ng-show="current_user['extra']['sexe'] === 'F'"></data-ng-include>
