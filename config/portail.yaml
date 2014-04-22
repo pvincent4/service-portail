@@ -124,7 +124,7 @@
     :url_notif: ''
     :nom: ''
     :survol: ''
-    :url: http://www.perdu.com
+    :url: 
     :active: false
   AIDE:
     :index: 12
