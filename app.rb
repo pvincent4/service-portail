@@ -62,20 +62,6 @@ class SinatraApp < Sinatra::Base
       info: { },
       is_logged: false }.to_json unless session[:authenticated]
 
-    session[:current_user][:is_logged] = true
-    user_annuaire = Annuaire.get_user( session[:current_user][:info][:uid] )
-    session[:current_user][:sexe] = user_annuaire[:sexe]
-    session[:current_user][:ENTStructureNomCourant] = user_annuaire[:ENTStructureNomCourant]
-    session[:current_user][:profils] = user_annuaire['profils'].map.with_index {
-      |profil, i|
-      { index: i,
-        type: profil['profil_id'],
-        uai: profil['etablissement_code_uai'],
-        etablissement: profil['etablissement_nom'],
-        nom: profil['profil_nom'] }
-    }
-    session[:current_user][:profil_actif] = 0
-
     session[:current_user].to_json
   end
   
@@ -118,10 +104,7 @@ class SinatraApp < Sinatra::Base
   #
   get "#{APP_PATH}/api/notifications" do
     #redirect login! unless session[:authenticated]
-    if is_logged?
-      #profil=session[:current_user][:info].ENTPersonProfils.split(":")[0]
-      #uai=session[:current_user][:info].ENTPersonProfils.split(":")[1]
-     
+    if is_logged?     
       profil = session[:current_user][:profils][ session[:current_user][:profil_actif] ][:type]
       uai = session[:current_user][:profils][ session[:current_user][:profil_actif] ][:uai]
       etb=Annuaire.get_etablissement(uai)
