@@ -15,9 +15,9 @@ angular.module( 'portailApp.controllers' )
 			       //     ;
 			       // } else
 			       if ( $scope.current_user['sexe'] == 'F' ) {
-				   $scope.avatar = '/app/bower_components/charte-graphique-laclasse-com/images/avatar_feminin.svg';
+				   $scope.avatar = APPLICATION_PREFIX + '/bower_components/charte-graphique-laclasse-com/images/avatar_feminin.svg';
 			       } else {
-				   $scope.avatar = '/app/bower_components/charte-graphique-laclasse-com/images/avatar_masculin.svg';
+				   $scope.avatar = APPLICATION_PREFIX + '/bower_components/charte-graphique-laclasse-com/images/avatar_masculin.svg';
 			       }
 			   }
 
