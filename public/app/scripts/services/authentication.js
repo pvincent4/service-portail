@@ -10,7 +10,9 @@ angular.module('portailApp.services.authentication')
 				     {},
 				     { change_profil_actif: { method: 'PUT',
 							      url: APPLICATION_PREFIX + '/api/user/profil_actif/:index',
-							      params: { index: '@index' } } } );
+							      params: { index: '@index' } 
+                                                            } 
+                                     });
 	       } ] );
 
 angular.module('portailApp.services.authentication')

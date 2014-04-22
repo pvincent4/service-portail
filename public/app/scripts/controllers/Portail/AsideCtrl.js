@@ -10,10 +10,9 @@ angular.module( 'portailApp.controllers' )
 			   $scope.avatar = '';
 
 			   if ( $scope.current_user.is_logged ) {
-			       // $scope.current_user['avatar'] = null //FIXME: debug
-			       // if ( $scope.current_user['avatar'] !== null ) {
-			       //     ;
-			       // } else
+			        if ( $scope.current_user['avatar'] !== null ) {
+			            $scope.avatar = $scope.current_user['avatar'];
+			        } else
 			       if ( $scope.current_user['sexe'] == 'F' ) {
 				   $scope.avatar = APPLICATION_PREFIX + '/bower_components/charte-graphique-laclasse-com/images/avatar_feminin.svg';
 			       } else {
