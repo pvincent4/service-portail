@@ -119,8 +119,11 @@ class SinatraApp < Sinatra::Base
   get "#{APP_PATH}/api/notifications" do
     #redirect login! unless session[:authenticated]
     if is_logged?
-      profil=session[:current_user][:info].ENTPersonProfils.split(":")[0]
-      uai=session[:current_user][:info].ENTPersonProfils.split(":")[1]
+      #profil=session[:current_user][:info].ENTPersonProfils.split(":")[0]
+      #uai=session[:current_user][:info].ENTPersonProfils.split(":")[1]
+     
+      profil = session[:current_user][:profils][ session[:current_user][:profil_actif] ][:type]
+      uai = session[:current_user][:profils][ session[:current_user][:profil_actif] ][:uai]
       etb=Annuaire.get_etablissement(uai)
       opts= { :serveur =>"http://localhost:9292/#{APP_PATH}/faye", 
         :profil => profil,  
