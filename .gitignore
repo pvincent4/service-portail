@@ -24,5 +24,5 @@ vagrant/
 
 /config/env.rb
 /config/options.rb
-/config/portail.yml
+/config/portail.yaml
 
