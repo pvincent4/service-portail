@@ -1,20 +1,21 @@
----
 :news_feed:
     -
         :titre: "Editoriaux d'Erasme"
-        :flux: http://erasme.blogs.laclasse.com/feed/
+        :flux: http://erasme-parc-dactivites-innovantes.blogs.dev.laclasse.com/feed/
+        #http://erasme.blogs.laclasse.com/feed/
         :icone: ''
         :nb: 1  
     -
         :titre: "blog du projet ENT"
-        :flux: http://ent-laclasse.blogs.laclasse.com/feed/
+        :flux: http://test.blogs.dev.laclasse.com/feed/
+        #http://ent-laclasse.blogs.laclasse.com/feed/
         :icone: ''
         :nb: 3
-    -
-        :titre: "Rhone.fr"
-        :flux: http://http://edurhone.blogs.laclasse.com/feed/
-        :icone: ''
-        :nb: 1    
+#    -
+#        :titre: "Rhone.fr"
+#        :flux: http://http://edurhone.blogs.laclasse.com/feed/
+#        :icone: ''
+#        :nb: 1    
 
 :apps_tiles:
   MAIL:
