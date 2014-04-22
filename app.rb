@@ -144,12 +144,13 @@ class SinatraApp < Sinatra::Base
   #
   get "#{APP_PATH}/api/apps" do
     user_applications = Annuaire.get_user( session[:current_user][:info][:uid] )['applications']
+    uai_courant = session[:current_user][:profils][ session[:current_user][:profil_actif] ][:uai]
     # traitement des apps renvoyées par l'annuaire
-    user_applications.each { |application|
+    user_applications.reject{|a| a[ 'etablissement_code_uai' ] != uai_courant }.each { |application|
       config_apps = config[ :apps_tiles ][ application[ 'id' ] ]
       unless config_apps.nil?
         # On regarde si le profils actif de l'utilisateur comporte le code détablissement pour lequel l'application est activée
-        config_apps[ :active ] = application[ 'active' ] && application[ 'etablissement_code_uai' ] == session[:current_user][:profils][ session[:current_user][:profil_actif] ][:uai]
+        config_apps[ :active ] = application[ 'active' ]
         config_apps[ :nom ] = application[ 'libelle' ]
         config_apps[ :survol ] = application[ 'description' ]
         config_apps[ :lien ] = "/portail/#/show-app?app=#{application[ 'id' ]}"
