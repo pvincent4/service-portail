@@ -1,7 +1,7 @@
 <div class="row-fluid header">
   <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 logolaclasse gris4">
-    <a href="{{APPLICATION_PREFIX}}"
-       data-ng-style="{'background-image': 'url(' + APPLICATION_PREFIX+'/app/bower_components/charte-graphique-laclasse-com/images/logolaclasse.svg' + ') '}">
+    <a href="{{prefix}}/"
+       data-ng-style="{'background-image': 'url('+prefix+'/bower_components/charte-graphique-laclasse-com/images/logolaclasse.svg) '}">
       <h3>laclasse.com</h3>
     </a>
   </div>
@@ -36,8 +36,9 @@
     <ul data-rn-carousel data-rn-carousel-indicator>
       <li data-ng-repeat="news in newsfeed" data-ng-style="{'background-image': 'url(' + news.image + ')'}">
 	<div class="news-content">
+          <span class="pub-date">{{ news.pubDate }}</span>
 	  <a href="{{ news.link }}">
-	    <h6>{{ news.title }}</h6>
+              <h6>{{ news.title }}</h6>
 	  </a>
 	  <span data-ng-bind-html="news.trusted_description"></span>
 	  <a class="lire-la-suite" href="{{ news.link }}">(lire la suite)</a>

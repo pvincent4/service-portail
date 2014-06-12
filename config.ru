@@ -3,13 +3,14 @@
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 
 require './config/init'
+require 'redis'
 require 'faye'
 require 'app'
 
 Faye::WebSocket.load_adapter('thin')
 
 use Rack::Rewrite do
-  rewrite %r{/v3/(.*(css|js|html|png|jpg|gif|jpeg|eot|svg|ttf|woff))}, '/app/$1'
+  rewrite %r{/v3/(.*(css|js|html|png|jpg|gif|jpeg|eot|svg|ttf|woff|pdf))}, '/app/$1'
 end
 
 use Rack::Session::Cookie,
@@ -27,6 +28,20 @@ end
 
 use Faye::RackAdapter,
     mount: "#{APP_PATH}/faye",
-    timeout: 25
+    timeout: 25,
+    engine:  {
+                type: Faye::Redis,
+                host: 'localhost',
+                port: 6379
+             }
+
+#bayeux = Faye::RackAdapter.new(:mount => "#{APP_PATH}/faye", 
+#                                  :timeout => 25, 
+#                                  :engine => { :type => Faye::Redis, :host => 'localhost', :port => 6379 })
+#run bayeux
+#bayeux.on(:subscribe) { | client_id, channel | 
+#        puts client_id.to_s + " has subscribed to channel '" + channel.to_s + "'" 
+#    }
+
 
 run SinatraApp
