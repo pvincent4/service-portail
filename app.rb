@@ -18,25 +18,25 @@ require_relative './lib/annuaire'
 # https://gist.github.com/chastell/1196800
 class Hash
   def to_html
-    [ '<ul>',
-      map { |k, v|
-        [ "<li><strong>#{k}</strong> : ", v.respond_to?(:to_html) ? v.to_html : "<span>#{v}</span></li>" ]
-      },
-      '</ul>'
+    ['<ul>',
+     map { |k, v|
+       [ "<li><strong>#{k}</strong> : ", v.respond_to?(:to_html) ? v.to_html : "<span>#{v}</span></li>" ]
+     },
+     '</ul>'
     ].join
   end
 end
 
 # Application Sinatra servant de base
 class SinatraApp < Sinatra::Base
-  @ent_notifs=[]
+  @ent_notifs = []
 
   configure do
     set :app_file, __FILE__
     set :root, APP_ROOT
     set :public_folder, proc { File.join( root, 'public' ) }
     set :inline_templates, true
-    set :protection, true #, except: :frame_options
+    set :protection, true
   end
 
   configure :development do
@@ -59,26 +59,27 @@ class SinatraApp < Sinatra::Base
   #
   get "#{APP_PATH}/api/user" do
     return { user: '',
-      info: { },
-      is_logged: false }.to_json unless session[:authenticated]
+            info: { },
+            is_logged: false }.to_json unless session[:authenticated]
 
     session[:current_user][:is_logged] = true
     user_annuaire = Annuaire.get_user( session[:current_user][:info][:uid] )
+    p user_annuaire
     session[:current_user][:sexe] = user_annuaire[:sexe]
     session[:current_user][:ENTStructureNomCourant] = user_annuaire[:ENTStructureNomCourant]
     session[:current_user][:profils] = user_annuaire['profils'].map.with_index {
       |profil, i|
       { index: i,
-        type: profil['profil_id'],
-        uai: profil['etablissement_code_uai'],
-        etablissement: profil['etablissement_nom'],
-        nom: profil['profil_nom'] }
+       type: profil['profil_id'],
+       uai: profil['etablissement_code_uai'],
+       etablissement: profil['etablissement_nom'],
+       nom: profil['profil_nom'] }
     }
     session[:current_user][:profil_actif] = 0
 
     session[:current_user].to_json
   end
-  
+
   put "#{APP_PATH}/api/user/profil_actif/:index" do
     session[:current_user][:profil_actif] = params[ :index ].to_i
 
@@ -93,23 +94,23 @@ class SinatraApp < Sinatra::Base
     news=[]
     config[:news_feed].each { |f|
       begin
-        rss = SimpleRSS.parse open(f[:flux]) 
+        rss = SimpleRSS.parse open(f[:flux])
         rss.items
-        .first( f[:nb] )
-        .map { |n|     
-          n.each { |k,v| n[k] = URI.unescape(n[k]).to_s.force_encoding("UTF-8").encode! if n[k].is_a? String }
+          .first( f[:nb] )
+          .map { |n|
+          n.each { |k, _| n[k] = URI.unescape(n[k]).to_s.force_encoding( 'UTF-8' ).encode! if n[k].is_a? String }
           n[:description] = n[:content_encoded] if n.has? :content_encoded
           n[:image] = n[:content]
           n[:orderby] =  n[:pubDate].to_i
-          n[:pubDate] = n[:pubDate].strftime "%d/%m/%Y"
+          n[:pubDate] = n[:pubDate].strftime '%d/%m/%Y'
           news.push n
         }
-      rescue 
-        puts "impossible d'ouvrir #{f[:flux].to_s}"
+      rescue
+        puts "impossible d'ouvrir #{f[:flux]}"
       end
     }
     # Tri anté-chronologique
-    news.sort!{|n1,n2| n2.orderby <=> n1.orderby}
+    news.sort! { |n1, n2| n2.orderby <=> n1.orderby }
     news.to_json
   end
 
@@ -117,20 +118,20 @@ class SinatraApp < Sinatra::Base
   # Configuration des canaux de notifications
   #
   get "#{APP_PATH}/api/notifications" do
-    #redirect login! unless session[:authenticated]
+    # redirect login! unless session[:authenticated]
     if is_logged?
-      profil=session[:current_user][:info].ENTPersonProfils.split(":")[0]
-      uai=session[:current_user][:info].ENTPersonProfils.split(":")[1]
-      etb=Annuaire.get_etablissement(uai)
-      opts= { :serveur =>"http://localhost:9292/#{APP_PATH}/faye", 
-        :profil => profil,  
-        :uai => uai,  
-        :uid => session[:current_user][:info].uid,  
-        :classes => etb["classes"].map{ |c| c["libelle"]},
-        :groupes => etb["groupes_eleves"].map{ |g| g["libelle"]},
-        :groupes_libres => etb["groupes_libres"].map{ |g| g["libelle"]}
-      }
-      @ent_notifs=EntNotifs.new opts
+      profil = session[:current_user][:info].ENTPersonProfils.split( ':' )[0]
+      uai = session[:current_user][:info].ENTPersonProfils.split( ':' )[1]
+      etb = Annuaire.get_etablissement(uai)
+      opts= {serveur: "http://localhost:9292/#{APP_PATH}/faye",
+             profil: profil,
+             uai: uai,
+             uid: session[:current_user][:info].uid,
+             classes: etb['classes'].map { |c| c['libelle'] },
+             groupes: etb['groupes_eleves'].map { |g| g['libelle'] },
+             groupes_libres: etb['groupes_libres'].map { |g| g['libelle'] }
+            }
+      @ent_notifs = EntNotifs.new opts
       #### @ent_notifs.notifier(:moi, "Salut tous le monde !")
       @ent_notifs.my_channels.to_json
     end
@@ -151,7 +152,7 @@ class SinatraApp < Sinatra::Base
         config_apps[ :survol ] = application[ 'description' ]
         config_apps[ :lien ] = "/portail/#/show-app?app=#{application[ 'id' ]}"
         url = "#{application[ 'url' ]}"
-        url = ENT_SERVER + url unless application[ 'url' ].to_s.start_with? "http"
+        url = ENT_SERVER + url unless application[ 'url' ].to_s.start_with? 'http'
         config_apps[ :url ] = url
         # Gérer les notifications sur chaque application
         config_apps[ :notifications ] = 0
