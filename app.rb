@@ -49,7 +49,7 @@ class SinatraApp < Sinatra::Base
   helpers ConfigHelpers
 
   # routes
-  get "#{APP_PATH}/" do
+  get "#{APP_PATH}/?" do
     erb :app
   end
 
