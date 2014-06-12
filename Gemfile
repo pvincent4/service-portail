@@ -1,5 +1,4 @@
 # -*- coding: utf-8; mode: ruby -*-
-ruby "2.1.1"
 
 source 'https://rubygems.org'
 source 'http://gems.erasme.org'
