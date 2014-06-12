@@ -10,7 +10,7 @@ require 'app'
 Faye::WebSocket.load_adapter('thin')
 
 use Rack::Rewrite do
-  rewrite %r{/portail/(.*(css|js|html|png|jpg|gif|jpeg|eot|svg|ttf|woff))}, '/app/$1'
+  rewrite %r{#{APP_PATH}/(.*(css|js|html|png|jpg|gif|jpeg|eot|svg|ttf|woff))}, '/app/$1'
 end
 
 use Rack::Session::Cookie,
