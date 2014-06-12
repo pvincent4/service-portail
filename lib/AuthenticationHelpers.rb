@@ -40,7 +40,24 @@ module AuthenticationHelpers
       session[:current_user][:user] ||= session[:user]
       session[:current_user][:info] ||= session[:extra]
       session[:current_user][:info][:ENTStructureNomCourant] ||= session[:current_user][:ENTPersonStructRattachRNE]
+
+      session[:current_user][:is_logged] = true
+      user_annuaire = Annuaire.get_user( session[:current_user][:info][:uid] )
+      session[:current_user][:sexe] = user_annuaire['sexe'] 
+      session[:current_user][:avatar] = ANNUAIRE[:url].gsub(/\/api\/app/, '') + user_annuaire['avatar']
+      #session[:current_user][:ENTStructureNomCourant] = user_annuaire['ENTStructureNomCourant']
+      session[:current_user][:profils] = user_annuaire['profils'].map.with_index {
+        |profil, i|
+        { index: i,
+          type: profil['profil_id'],
+          uai: profil['etablissement_code_uai'],
+          etablissement: profil['etablissement_nom'],
+          nom: profil['profil_nom'] }
+      }
+      session[:current_user][:profil_actif] = 0
+
     end
+p    session[:current_user]
     session[:current_user]
   end
 

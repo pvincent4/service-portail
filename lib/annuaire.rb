@@ -74,6 +74,7 @@ module Annuaire
    end
 
    def send_request( service, param, expand, error_msg )
+     p sign( ANNUAIRE[:url], "#{service}/#{CGI.escape( param )}", { expand: expand } )
       RestClient.get( sign( ANNUAIRE[:url], "#{service}/#{CGI.escape( param )}", { expand: expand } ) ) do
          |response, request, result|
          if response.code == 200

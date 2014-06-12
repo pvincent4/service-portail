@@ -24,5 +24,5 @@ vagrant/
 
 /config/env.rb
 /config/options.rb
-/config/CAS*.rb
+/config/portail.yaml
 

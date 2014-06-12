@@ -4,6 +4,7 @@ require 'rubygems'
 require 'bundler'
 require 'sinatra/reloader'
 require 'open-uri'
+require 'uri'
 require 'json'
 require 'yaml'
 
@@ -18,24 +19,24 @@ require_relative './lib/annuaire'
 class Hash
   def to_html
     [ '<ul>',
-       map { |k, v|
-         [ "<li><strong>#{k}</strong> : ", v.respond_to?(:to_html) ? v.to_html : "<span>#{v}</span></li>" ]
-       },
-       '</ul>'
+      map { |k, v|
+        [ "<li><strong>#{k}</strong> : ", v.respond_to?(:to_html) ? v.to_html : "<span>#{v}</span></li>" ]
+      },
+      '</ul>'
     ].join
   end
 end
 
 # Application Sinatra servant de base
 class SinatraApp < Sinatra::Base
-  @@my_channel_list=[]
+  @ent_notifs=[]
 
   configure do
     set :app_file, __FILE__
     set :root, APP_ROOT
     set :public_folder, proc { File.join( root, 'public' ) }
     set :inline_templates, true
-    set :protection, true
+    set :protection, true #, except: :frame_options
   end
 
   configure :development do
@@ -53,24 +54,13 @@ class SinatraApp < Sinatra::Base
   end
 
   # {{{ API
+  #
+  # Gestion de session côtế client
+  #
   get "#{APP_PATH}/api/user" do
     return { user: '',
-              info: { },
-              is_logged: false }.to_json unless session[:authenticated]
-
-    session[:current_user][:is_logged] = true
-    user_annuaire = Annuaire.get_user( session[:current_user][:info][:uid] )
-    session[:current_user][:sexe] = user_annuaire[:sexe]
-    session[:current_user][:ENTStructureNomCourant] = user_annuaire[:ENTStructureNomCourant]
-    session[:current_user][:profils] = user_annuaire['profils'].map.with_index {
-      |profil, i|
-      { index: i,
-         type: profil['profil_id'],
-         uai: profil['etablissement_code_uai'],
-         etablissement: profil['etablissement_nom'],
-         nom: profil['profil_nom'] }
-    }
-    session[:current_user][:profil_actif] = 0
+             info: { },
+             is_logged: false }.to_json unless session[:authenticated]
 
     session[:current_user].to_json
   end
@@ -87,54 +77,76 @@ class SinatraApp < Sinatra::Base
     session[:current_user].to_json
   end
 
+  #
+  # Agrégateur RSS
+  #
   get "#{APP_PATH}/api/news" do
-    rss = SimpleRSS.parse open( config[:url_news] )
-
-    rss.items
-    .first( 5 )
-    .map { |news|
-      news[:description] = news[:content] if news.has? :content
-      news[:image] = news[:description].match( /http.*png/ )
-
-      news[:description] = news[:description].to_s.encode( 'UTF-8', { invalid: :replace, undef: :replace, replace: '?' } )
-      news[:description] = HTML_Truncator.truncate( news[:description], 30 )
-
-      news
-    }.to_json
+    # THINK : Comment mettre des priorités sur les différents flux ?
+    news=[]
+    config[:news_feed].each { |f|
+      begin
+        rss = SimpleRSS.parse open(f[:flux]) 
+        rss.items
+          .first( f[:nb] )
+          .map { |n|     
+          n.each { |k,v| n[k] = URI.unescape(n[k]).to_s.force_encoding("UTF-8").encode! if n[k].is_a? String }
+          n[:description] = n[:content_encoded] if n.has? :content_encoded
+          n[:image] = n[:content]
+          n[:orderby] =  n[:pubDate].to_i
+          n[:pubDate] = n[:pubDate].strftime "%d/%m/%Y"
+          news.push n
+        }
+      rescue 
+        puts "impossible d'ouvrir #{f[:flux].to_s}"
+      end
+    }
+    # Tri anté-chronologique
+    news.sort!{|n1,n2| n2.orderby <=> n1.orderby}
+    news.to_json
   end
 
-    get "#{APP_PATH}/api/notifications" do
-     #redirect login! unless session[:authenticated]
-     profil=session[:current_user][:info].ENTPersonProfils.split(":")[0]
-     uai=session[:current_user][:info].ENTPersonProfils.split(":")[1]
-     etb=Annuaire.get_etablissement(uai)
-     opts= { :serveur =>"http://localhost:3001#{APP_PATH}/faye",
-             :profil => profil,
-             :uai => uai,
-             :uid => session[:current_user][:info].uid,
-             :classes => etb["classes"].map{ |c| c["libelle"]},
-             :groupes => etb["groupes_eleves"].map{ |g| g["libelle"]},
-             :groupes_libres => etb["groupes_libres"].map{ |g| g["libelle"]}
-             }
-     @@my_channel_list=EntNotifs.new opts
-     @@my_channel_list.my_channels.flatten(99).reject {|c| !c.to_s.start_with?("/") }.to_json
-   end
+  get "#{APP_PATH}/api/notifications" do
+    #redirect login! unless session[:authenticated]
+    profil=session[:current_user][:info].ENTPersonProfils.split(":")[0]
+    uai=session[:current_user][:info].ENTPersonProfils.split(":")[1]
+    etb=Annuaire.get_etablissement(uai)
+    opts= { :serveur =>"http://localhost:3001#{APP_PATH}/faye",
+            :profil => profil,
+            :uai => uai,
+            :uid => session[:current_user][:info].uid,
+            :classes => etb["classes"].map{ |c| c["libelle"]},
+            :groupes => etb["groupes_eleves"].map{ |g| g["libelle"]},
+            :groupes_libres => etb["groupes_libres"].map{ |g| g["libelle"]}
+          }
+    @@my_channel_list=EntNotifs.new opts
+    @@my_channel_list.my_channels.flatten(99).reject {|c| !c.to_s.start_with?("/") }.to_json
+  end
 
+  #
+  # Service liste des applications
+  #
   get "#{APP_PATH}/api/apps" do
     user_applications = Annuaire.get_user( session[:current_user][:info][:uid] )['applications']
+    uai_courant = session[:current_user][:profils][ session[:current_user][:profil_actif] ][:uai]
     # traitement des apps renvoyées par l'annuaire
-    user_applications.each {
-      |application|
-
-      unless config[ :apps_tiles ][ application[ 'id' ] ].nil?
+    user_applications.reject{|a| a[ 'etablissement_code_uai' ] != uai_courant }.each { |application|
+      config_apps = config[ :apps_tiles ][ application[ 'id' ] ]
+      unless config_apps.nil?
         # On regarde si le profils actif de l'utilisateur comporte le code détablissement pour lequel l'application est activée
-        config[ :apps_tiles ][ application[ 'id' ] ][ :active ] = application[ 'active' ] && application[ 'etablissement_code_uai' ] == session[:current_user][:profils][ session[:current_user][:profil_actif] ][:uai]
-        config[ :apps_tiles ][ application[ 'id' ] ][ :nom ] = application[ 'libelle' ]
-        config[ :apps_tiles ][ application[ 'id' ] ][ :survol ] = application[ 'description' ]
-        config[ :apps_tiles ][ application[ 'id' ] ][ :lien ] = "/portail/#/show-app?app=#{application[ 'id' ]}"
+        config_apps[ :active ] = application[ 'active' ]
+        config_apps[ :nom ] = application[ 'libelle' ]
+        config_apps[ :survol ] = application[ 'description' ]
+        config_apps[ :lien ] = "/portail/#/show-app?app=#{application[ 'id' ]}"
         url = "#{application[ 'url' ]}"
         url = ENT_SERVER + url unless application[ 'url' ].to_s.start_with? "http"
-        config[ :apps_tiles ][ application[ 'id' ] ][ :url ] = url
+        config_apps[ :url ] = url
+        # Gérer les notifications sur chaque application
+        config_apps[ :notifications ] = 0
+        # THINK : Peut-être qu'il faut faire ce travail côté client AngularJS, afin de le rendre asynchrone et non bloquant.
+        unless config_apps[ :url_notif ].empty?
+          resp = Net::HTTP.get_response(URI.parse config_apps[ :url_notif ])
+          config_apps[ :notifications ] = resp.body if resp.body.is_a? Numeric
+        end
       end
     }
 

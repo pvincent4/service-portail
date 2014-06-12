@@ -8,5 +8,4 @@ module ConfigHelpers
 
       @config
    end
-
 end
