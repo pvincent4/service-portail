@@ -25,5 +25,6 @@ vagrant/
 /config/env.rb
 /config/options.rb
 /config/CAS*.rb
+/config/authentication.rb
 
 /public/app/scripts/services/constants.js
