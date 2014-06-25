@@ -58,6 +58,8 @@ class SinatraApp < Sinatra::Base
   # Gestion de session côtế client
   #
   get "#{APP_PATH}/api/user" do
+    content_type :json
+
     return { user: '',
             info: { },
             is_logged: false }.to_json unless session[:authenticated]
@@ -93,6 +95,8 @@ class SinatraApp < Sinatra::Base
   # Agrégateur RSS
   #
   get "#{APP_PATH}/api/news" do
+    content_type :json
+
     # THINK : Comment mettre des priorités sur les différents flux ?
     news=[]
     config[:news_feed].each { |f|
@@ -118,6 +122,8 @@ class SinatraApp < Sinatra::Base
   end
 
   get "#{APP_PATH}/api/notifications" do
+    content_type :json
+
     # redirect login! unless session[:authenticated]
     if is_logged?
       profil = session[:current_user][:info].ENTPersonProfils.split( ':' )[0]
@@ -141,6 +147,8 @@ class SinatraApp < Sinatra::Base
   # Service liste des applications
   #
   get "#{APP_PATH}/api/apps" do
+    content_type :json
+
     user_applications = Annuaire.get_user( session[:current_user][:info][:uid] )['applications']
     uai_courant = session[:current_user][:profils][ session[:current_user][:profil_actif] ][:uai]
     # traitement des apps renvoyées par l'annuaire
