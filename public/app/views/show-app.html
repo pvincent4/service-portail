@@ -8,7 +8,7 @@
 	<div class="collapse navbar-collapse">
 
 	  <a class="laclasse-com gris1 pull-left col-xs-4 col-sm-3 col-md-2 col-lg-2" href="{{prefix}}/">
-	    <div class="petit-logo gris4" data-ng-style="{'background-image': 'url(' + prefix + '/bower_components/charte-graphique-laclasse-com/images/logolaclasse.svg) '}" >
+	    <div class="petit-logo gris4" data-ng-style="{'background-image': 'url('+prefix+'/bower_components/charte-graphique-laclasse-com/images/logolaclasse.svg) '}" >
 	    </div>
 	    <span>laclasse.com</span>
 	  </a>
@@ -25,7 +25,7 @@
 	      </select>
 	    </div>
 	    <span class="glyphicon glyphicon-chevron-down" data-ng-show="current_user.is_logged"></span>
-	    <a href="/portail/login" data-ng-hide="current_user.is_logged">connectez-vous</a>
+	    <a href="{{prefix}}/login" data-ng-hide="current_user.is_logged">connectez-vous</a>
 	    <a class="dropdown-toggle" data-ng-show="current_user.is_logged">
 	      <h6>{{current_user['info']['LaclassePrenom']}} {{current_user['info']['LaclasseNom']}}</h6>
 	      <span class="glyphicon glyphicon-chevron-down" data-ng-show="current_user.is_logged"></span>

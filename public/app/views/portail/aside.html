@@ -24,8 +24,8 @@
     </span>
 
     <span class="connect-register" data-ng-hide="current_user.is_logged">
-      <a href="login" title="Connexion avec Laclasse.com">se connecter</a>
-      <a href="register" title="Création de compte avec Laclasse.com">s'inscrire</a>
+      <a href="{{prefix}}/login" title="Connexion avec Laclasse.com">se connecter</a>
+      <a href="{{prefix}}/register" title="Création de compte avec Laclasse.com">s'inscrire</a>
     </span>
   </div>
 </div>
@@ -36,9 +36,9 @@
     <ul data-rn-carousel data-rn-carousel-indicator>
       <li data-ng-repeat="news in newsfeed" data-ng-style="{'background-image': 'url(' + news.image + ')'}">
 	<div class="news-content">
-          <span class="pub-date">{{ news.pubDate }}</span>
+	  <span class="pub-date">{{ news.pubDate }}</span>
 	  <a href="{{ news.link }}">
-              <h6>{{ news.title }}</h6>
+	      <h6>{{ news.title }}</h6>
 	  </a>
 	  <span data-ng-bind-html="news.trusted_description"></span>
 	  <a class="lire-la-suite" href="{{ news.link }}">(lire la suite)</a>
