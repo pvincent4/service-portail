@@ -4,12 +4,12 @@ angular.module( 'portailApp.services.authentication', [  ] );
 
 angular.module('portailApp.services.authentication')
     .factory('User',
-	     [ '$resource', 'APPLICATION_PREFIX',
-	       function( $resource, APPLICATION_PREFIX ) {
-		   return $resource( APPLICATION_PREFIX + '/api/user',
+	     [ '$resource', 'APP_PATH',
+	       function( $resource, APP_PATH ) {
+		   return $resource( APP_PATH + '/api/user',
 				     {},
 				     { change_profil_actif: { method: 'PUT',
-							      url: APPLICATION_PREFIX + '/api/user/profil_actif/:index',
+							      url: APP_PATH + '/api/user/profil_actif/:index',
 							      params: { index: '@index' } 
                                                             } 
                                      });
@@ -17,9 +17,9 @@ angular.module('portailApp.services.authentication')
 
 angular.module('portailApp.services.authentication')
     .factory('UserApps',
-	     [ '$resource', 'APPLICATION_PREFIX',
-	       function( $resource, APPLICATION_PREFIX ) {
-		   return $resource( APPLICATION_PREFIX + '/api/apps' );
+	     [ '$resource', 'APP_PATH',
+	       function( $resource, APP_PATH ) {
+		   return $resource( APP_PATH + '/api/apps' );
 	       } ] );
 
 angular.module( 'portailApp.services.authentication' )

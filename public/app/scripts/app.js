@@ -12,20 +12,20 @@ angular.module('portailApp',
 	    'ui.bootstrap',
 	    'angular-carousel',
 	    'flow'])
-	.config(['$stateProvider', '$urlRouterProvider', 'APPLICATION_PREFIX',
-	    function($stateProvider, $urlRouterProvider, APPLICATION_PREFIX) {
+	.config(['$stateProvider', '$urlRouterProvider', 'APP_PATH',
+	    function($stateProvider, $urlRouterProvider, APP_PATH) {
 		$stateProvider
 			.state('portail',
-				{templateUrl: APPLICATION_PREFIX + '/views/portail/index.html'})
+				{templateUrl: APP_PATH + '/views/portail/index.html'})
 			.state('portail.apps',
 				{url: '/',
 				    views: {
 					'aside': {
-					    templateUrl: APPLICATION_PREFIX + '/views/portail/aside.html',
+					    templateUrl: APP_PATH + '/views/portail/aside.html',
 					    controller: 'PortailAsideCtrl'
 					},
 					'main': {
-					    templateUrl: APPLICATION_PREFIX + '/views/portail/apps.html',
+					    templateUrl: APP_PATH + '/views/portail/apps.html',
 					    controller: 'PortailAppsDamierCtrl'
 					}
 				    }
@@ -34,24 +34,24 @@ angular.module('portailApp',
 				{url: '/user',
 				    views: {
 					'aside': {
-					    templateUrl: APPLICATION_PREFIX + '/views/portail/aside.html',
+					    templateUrl: APP_PATH + '/views/portail/aside.html',
 					    controller: 'PortailAsideCtrl'
 					},
 					'main': {
-					    templateUrl: APPLICATION_PREFIX + '/views/portail/user.html',
+					    templateUrl: APP_PATH + '/views/portail/user.html',
 					    controller: 'PortailUserCtrl'
 					}
 				    }
 				})
 			.state('app-wrapper',
 				{url: '/show-app?app',
-				    templateUrl: APPLICATION_PREFIX + '/views/show-app.html',
+				    templateUrl: APP_PATH + '/views/show-app.html',
 				    controller: 'AppWrapperCtrl'});
 
 		$urlRouterProvider.otherwise('/');
 	    }])
-	.run(['$rootScope', '$location', 'currentUser', 'notifications', 'APPLICATION_PREFIX',
-	    function($rootScope, $location, currentUser, notifications, APPLICATION_PREFIX) {
+	.run(['$rootScope', '$location', 'currentUser', 'notifications', 'APP_PATH',
+	    function($rootScope, $location, currentUser, notifications, APP_PATH) {
 		function subnotif(ch) {
 		    client.subscribe(ch, function(msg) {
 			$.gritter.add({
@@ -69,7 +69,7 @@ angular.module('portailApp',
 
 		$rootScope.$location = $location;
 		window.scope = $rootScope;
-		var client = new Faye.Client(APPLICATION_PREFIX + '/faye', {
+		var client = new Faye.Client(APP_PATH + '/faye', {
 		    timeout: 120
 		});
 		notifications.get().then(function(response) {
@@ -100,9 +100,9 @@ angular.module('portailApp',
 			client.publish(canal.moi, {
 			    type: 'Connexion',
 			    title: 'Service du portail',
-			    image: APPLICATION_PREFIX + '/bower_components/charte-graphique-laclasse-com/images/logolaclasse.svg',
+			    image: APP_PATH + '/bower_components/charte-graphique-laclasse-com/images/logolaclasse.svg',
 			    class_name: 'gritter-light',
-			    text: 'Bienvenue sur le portail de votre ENT. Pour gérer vos notifications, rendez-vous, <a href="' + APPLICATION_PREFIX + '/notifs">Cliquez par là</a>...'
+			    text: 'Bienvenue sur le portail de votre ENT. Pour gérer vos notifications, rendez-vous, <a href="' + APP_PATH + '/notifs">Cliquez par là</a>...'
 			});
 		    }, 3000);
 

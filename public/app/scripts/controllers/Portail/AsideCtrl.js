@@ -2,10 +2,10 @@
 
 angular.module( 'portailApp.controllers' )
     .controller( 'PortailAsideCtrl',
-		 [ '$scope', '$sce', 'currentUser', 'news', 'APPLICATION_PREFIX',
-		   function( $scope, $sce, currentUser, news, APPLICATION_PREFIX ) {
+		 [ '$scope', '$sce', 'currentUser', 'news', 'APP_PATH',
+		   function( $scope, $sce, currentUser, news, APP_PATH ) {
 		       currentUser.get().then( function( response ) {
-                           $scope.prefix = APPLICATION_PREFIX;
+                           $scope.prefix = APP_PATH;
 			   $scope.current_user = response;
 			   $scope.avatar = '';
 
@@ -14,9 +14,9 @@ angular.module( 'portailApp.controllers' )
 			            $scope.avatar = $scope.current_user['avatar'];
 			        } else
 			       if ( $scope.current_user['sexe'] == 'F' ) {
-				   $scope.avatar = APPLICATION_PREFIX + '/bower_components/charte-graphique-laclasse-com/images/avatar_feminin.svg';
+				   $scope.avatar = APP_PATH + '/bower_components/charte-graphique-laclasse-com/images/avatar_feminin.svg';
 			       } else {
-				   $scope.avatar = APPLICATION_PREFIX + '/bower_components/charte-graphique-laclasse-com/images/avatar_masculin.svg';
+				   $scope.avatar = APP_PATH + '/bower_components/charte-graphique-laclasse-com/images/avatar_masculin.svg';
 			       }
 			   }
 
