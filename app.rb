@@ -151,8 +151,11 @@ class SinatraApp < Sinatra::Base
 
     user_applications = Annuaire.get_user( session[:current_user][:info][:uid] )['applications']
     uai_courant = session[:current_user][:profils][ session[:current_user][:profil_actif] ][:uai]
+
     # traitement des apps renvoyées par l'annuaire
-    user_applications.reject{|a| a[ 'etablissement_code_uai' ] != uai_courant }.each { |application|
+    user_applications
+      .reject{|a| a[ 'etablissement_code_uai' ] != uai_courant }
+      .each { |application|
       config_apps = config[ :apps_tiles ][ application[ 'id' ] ]
       unless config_apps.nil?
         # On regarde si le profils actif de l'utilisateur comporte le code détablissement pour lequel l'application est activée
@@ -163,6 +166,7 @@ class SinatraApp < Sinatra::Base
         url = "#{application[ 'url' ]}"
         url = ENT_SERVER + url unless application[ 'url' ].to_s.start_with? 'http'
         config_apps[ :url ] = url
+
         # Gérer les notifications sur chaque application
         config_apps[ :notifications ] = 0
         # THINK : Peut-être qu'il faut faire ce travail côté client AngularJS, afin de le rendre asynchrone et non bloquant.
