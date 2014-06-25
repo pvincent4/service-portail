@@ -6,9 +6,9 @@
 angular.module( 'portailApp.services.notifications', [  ] );
 angular.module( 'portailApp.services.notifications' )
     .service('notifications',
-	     [ '$http', 'APPLICATION_PREFIX',
-	       function( $http, APPLICATION_PREFIX ) {
+	     [ '$http', 'APP_PATH',
+	       function( $http, APP_PATH ) {
 		   this.get = _.memoize( function() {
-		       return $http.get( APPLICATION_PREFIX + '/api/notifications' );
+		       return $http.get( APP_PATH + '/api/notifications' );
 		   });
 	       } ] );
