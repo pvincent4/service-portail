@@ -61,8 +61,8 @@ class SinatraApp < Sinatra::Base
     content_type :json
 
     return { user: '',
-            info: { },
-            is_logged: false }.to_json unless session[:authenticated]
+             info: {},
+             is_logged: false }.to_json unless session[:authenticated]
 
     session[:current_user][:is_logged] = true
     user_annuaire = Annuaire.get_user( session[:current_user][:info][:uid] )
@@ -71,17 +71,16 @@ class SinatraApp < Sinatra::Base
     session[:current_user][:profils] = user_annuaire['profils'].map.with_index {
       |profil, i|
       { index: i,
-       type: profil['profil_id'],
-       uai: profil['etablissement_code_uai'],
-       etablissement: profil['etablissement_nom'],
-       nom: profil['profil_nom'] }
+        type: profil['profil_id'],
+        uai: profil['etablissement_code_uai'],
+        etablissement: profil['etablissement_nom'],
+        nom: profil['profil_nom'] }
     }
     session[:current_user][:profil_actif] = 0
   end
 
   post "#{APP_PATH}/api/user" do
-    p '$save() appelé, TODO'
-    p params
+    # TODO
     session[:current_user].to_json
   end
 
@@ -98,7 +97,7 @@ class SinatraApp < Sinatra::Base
     content_type :json
 
     # THINK : Comment mettre des priorités sur les différents flux ?
-    news=[]
+    news = []
     config[:news_feed].each { |f|
       begin
         rss = SimpleRSS.parse open(f[:flux])
@@ -154,7 +153,7 @@ class SinatraApp < Sinatra::Base
 
     # traitement des apps renvoyées par l'annuaire
     user_applications
-      .reject{|a| a[ 'etablissement_code_uai' ] != uai_courant }
+      .reject { |a| a[ 'etablissement_code_uai' ] != uai_courant }
       .each { |application|
       config_apps = config[ :apps_tiles ][ application[ 'id' ] ]
       unless config_apps.nil?
