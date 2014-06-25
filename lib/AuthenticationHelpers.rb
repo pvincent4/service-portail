@@ -43,7 +43,7 @@ module AuthenticationHelpers
 
       session[:current_user][:is_logged] = true
       user_annuaire = Annuaire.get_user( session[:current_user][:info][:uid] )
-      session[:current_user][:sexe] = user_annuaire['sexe'] 
+      session[:current_user][:sexe] = user_annuaire['sexe']
       session[:current_user][:avatar] = ANNUAIRE[:url].gsub(/\/api\/app/, '') + user_annuaire['avatar']
       #session[:current_user][:ENTStructureNomCourant] = user_annuaire['ENTStructureNomCourant']
       session[:current_user][:profils] = user_annuaire['profils'].map.with_index {
@@ -57,7 +57,7 @@ module AuthenticationHelpers
       session[:current_user][:profil_actif] = 0
 
     end
-p    session[:current_user]
+
     session[:current_user]
   end
 
