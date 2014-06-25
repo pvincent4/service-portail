@@ -162,7 +162,7 @@ class SinatraApp < Sinatra::Base
         config_apps[ :active ] = application[ 'active' ]
         config_apps[ :nom ] = application[ 'libelle' ]
         config_apps[ :survol ] = application[ 'description' ]
-        config_apps[ :lien ] = "/portail/#/show-app?app=#{application[ 'id' ]}"
+        config_apps[ :lien ] = "#{APP_PATH}/#/show-app?app=#{application[ 'id' ]}"
         url = "#{application[ 'url' ]}"
         url = ENT_SERVER + url unless application[ 'url' ].to_s.start_with? 'http'
         config_apps[ :url ] = url
