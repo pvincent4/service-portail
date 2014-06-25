@@ -2,8 +2,9 @@
 
 angular.module( 'portailApp.controllers' )
     .controller( 'PortailUserCtrl',
-		 [ '$scope', 'currentUser',
-		   function( $scope, currentUser ) {
+		 [ '$scope', 'currentUser', 'APPLICATION_PREFIX',
+		   function( $scope, currentUser, APPLICATION_PREFIX ) {
+		       $scope.prefix = APPLICATION_PREFIX;
 		       $scope.annuler = function() {
 			   console.debug( 'annuler les modifications')
 		       };
