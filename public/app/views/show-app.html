@@ -8,7 +8,7 @@
 	<div class="collapse navbar-collapse">
 
 	  <a class="laclasse-com gris1 pull-left col-xs-4 col-sm-3 col-md-2 col-lg-2" href="{{prefix}}/">
-	    <div class="petit-logo gris4" data-ng-style="{'background-image': 'url('+prefix+'/bower_components/charte-graphique-laclasse-com/images/logolaclasse.svg) '}" >
+	    <div class="petit-logo gris4" data-ng-style="{'background-image': 'url(\'' + prefix + '/bower_components/charte-graphique-laclasse-com/images/logolaclasse.svg\')' }" >
 	    </div>
 	    <span>laclasse.com</span>
 	  </a>
@@ -31,8 +31,8 @@
 	      <span class="glyphicon glyphicon-chevron-down" data-ng-show="current_user.is_logged"></span>
 	    </a>
 	    <ul role="menu" class="dropdown-menu gris3" data-ng-show="current_user.is_logged">
-	      <li ng-repeat="item in menu">
-		<a href="{{item.lien}}" data-ng-style="{'background-image': 'url(' + prefix +'/bower_components/charte-graphique-laclasse-com/images/' + item.icone + ') '}" >
+	      <li data-ng-repeat="item in menu">
+		<a href="{{item.lien}}" data-ng-style="{'background-image': 'url(\'' + prefix +'/bower_components/charte-graphique-laclasse-com/images/' + item.icone + '\')' }" >
 		  {{item.texte}}
 		</a>
 	      </li>
