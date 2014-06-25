@@ -126,8 +126,8 @@ class SinatraApp < Sinatra::Base
 
     # redirect login! unless session[:authenticated]
     if is_logged?
-      profil = session[:current_user][:info].ENTPersonProfils.split( ':' )[0]
-      uai = session[:current_user][:info].ENTPersonProfils.split( ':' )[1]
+      profil = session[:current_user][:profils][ 0 ][:type]
+      uai = session[:current_user][:profils][ 0 ][:uai]
       etb = Annuaire.get_etablissement(uai)
       opts= {serveur: "http://localhost:9292/#{APP_PATH}/faye",
              profil: profil,
