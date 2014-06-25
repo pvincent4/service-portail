@@ -1,7 +1,6 @@
 <div class="row-fluid header">
   <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 logolaclasse gris4">
-    <a href="{{prefix}}/"
-       data-ng-style="{ 'background-image' : 'url(\'' + prefix + '/bower_components/charte-graphique-laclasse-com/images/logolaclasse.svg\')' }" >
+    <a href="{{prefix}}/" data-ng-style="{ 'background-image' : prefix ? 'url(\'' + prefix + '/bower_components/charte-graphique-laclasse-com/images/logolaclasse.svg\')' : '' }" >
       <h3>laclasse.com</h3>
     </a>
   </div>
