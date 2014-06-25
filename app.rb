@@ -129,14 +129,14 @@ class SinatraApp < Sinatra::Base
       profil = session[:current_user][:profils][ 0 ][:type]
       uai = session[:current_user][:profils][ 0 ][:uai]
       etb = Annuaire.get_etablissement(uai)
-      opts= {serveur: "http://localhost:9292/#{APP_PATH}/faye",
-             profil: profil,
-             uai: uai,
-             uid: session[:current_user][:info].uid,
-             classes: etb['classes'].map { |c| c['libelle'] },
-             groupes: etb['groupes_eleves'].map { |g| g['libelle'] },
-             groupes_libres: etb['groupes_libres'].map { |g| g['libelle'] }
-            }
+      opts = { serveur: "#{APP_PATH}/faye",
+               profil: profil,
+               uai: uai,
+               uid: session[:current_user][:info].uid,
+               classes: etb['classes'].map { |c| c['libelle'] },
+               groupes: etb['groupes_eleves'].map { |g| g['libelle'] },
+               groupes_libres: etb['groupes_libres'].map { |g| g['libelle'] }
+             }
       @ent_notifs = EntNotifs.new opts
       #### @ent_notifs.notifier(:moi, "Salut tous le monde !")
       @ent_notifs.my_channels.to_json
