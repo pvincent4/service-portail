@@ -77,6 +77,8 @@ class SinatraApp < Sinatra::Base
         nom: profil['profil_nom'] }
     }
     session[:current_user][:profil_actif] = 0
+
+    session[:current_user].to_json
   end
 
   post "#{APP_PATH}/api/user" do
