@@ -310,6 +310,7 @@ body { font-family:'Open Sans', sans-serif;
 		  width:100% }
 
 .user-menu li a:hover { background-color:#16161d;
+			background-repeat: no-repeat;
 			color:#fff }
 
 .user-menu li a * { float:left }
