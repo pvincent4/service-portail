@@ -25,10 +25,10 @@ module AuthenticationHelpers
   def logout!( url )
     session[:authenticated] = false
     session[:current_user] = nil
-    CasAuth::OPTIONS[:ssl] ? protocol = 'https://' : protocol = 'http://'
+    CASAUTH::CONFIG[:ssl] ? protocol = 'https://' : protocol = 'http://'
 
-    puts protocol + CasAuth::OPTIONS[:host] + CasAuth::OPTIONS[:logout_url] + '?url=' + URI.encode( url )
-    redirect protocol + CasAuth::OPTIONS[:host] + CasAuth::OPTIONS[:logout_url] + '?destination=' + URI.encode( url )
+    puts protocol + CASAUTH::CONFIG[:host] + CASAUTH::CONFIG[:logout_url] + '?url=' + URI.encode( url )
+    redirect protocol + CASAUTH::CONFIG[:host] + CASAUTH::CONFIG[:logout_url] + '?destination=' + URI.encode( url )
   end
 
   #
