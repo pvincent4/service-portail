@@ -10,7 +10,6 @@ require 'yaml'
 
 Bundler.require( :default, ENV['RACK_ENV'].to_sym )     # require tout les gems définis dans Gemfile
 
-require_relative './config/options'
 require_relative './lib/AuthenticationHelpers'
 require_relative './lib/ConfigHelpers'
 require_relative './lib/annuaire'
@@ -165,7 +164,7 @@ class SinatraApp < Sinatra::Base
         config_apps[ :survol ] = application[ 'description' ]
         config_apps[ :lien ] = "#{APP_PATH}/#/show-app?app=#{application[ 'id' ]}"
         url = "#{application[ 'url' ]}"
-        url = ENT_SERVER + url unless application[ 'url' ].to_s.start_with? 'http'
+        url = URL_ENT + url unless application[ 'url' ].to_s.start_with? 'http'
         config_apps[ :url ] = url
 
         # Gérer les notifications sur chaque application

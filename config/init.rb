@@ -7,9 +7,7 @@ def __DIR__(*args)
   ::File.expand_path(::File.join(dir, *args.map{|a| a.to_s}))
 end
 
-puts "loading config/env"
-require __DIR__('env')
 
-puts "loading config/authentication"
-require __DIR__('authentication')
+puts "loading config/options"
+require __DIR__('options')
 
