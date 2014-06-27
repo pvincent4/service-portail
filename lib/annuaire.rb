@@ -35,7 +35,7 @@ module Annuaire
    # Construction de la signature
    def build_signature(canonical_string, ts)
       digest = OpenSSL::Digest.new( 'sha1' )
-      digested_message = Base64.encode64( OpenSSL::HMAC.digest( digest, ANNUAIRE[:secret], canonical_string ) )
+      digested_message = Base64.encode64( OpenSSL::HMAC.digest( digest, ANNUAIRE[:api_key], canonical_string ) )
       { app_id: ANNUAIRE[:app_id],
             timestamp: ts,
             signature: digested_message }.map { |key, value| "#{key}=#{CGI.escape(value)}" }.join( ';' ).chomp
@@ -74,6 +74,7 @@ module Annuaire
    end
 
    def send_request( service, param, expand, error_msg )
+     p sign( ANNUAIRE[:url], "#{service}/#{CGI.escape( param )}", { expand: expand } )
       RestClient.get( sign( ANNUAIRE[:url], "#{service}/#{CGI.escape( param )}", { expand: expand } ) ) do
          |response, request, result|
          if response.code == 200
@@ -87,13 +88,13 @@ module Annuaire
    def search_matiere( label )
       label = URI.escape( label )
 
-      RestClient.get( sign( ANNUAIRE[:url], "matieres/libelle/#{label}", {}, ANNUAIRE[:secret], ANNUAIRE[:app_id] ) ) do
+      RestClient.get( sign( ANNUAIRE[:url], "matieres/libelle/#{label}", {}, ANNUAIRE[:api_key], ANNUAIRE[:app_id] ) ) do
          |response, request, result|
          if response.code == 200
             return JSON.parse( response )
          else
             STDERR.puts "Matière inconnue : #{label}"
-            STDERR.puts 'URL fautive: ' + sign( ANNUAIRE[:url], "/matieres/libelle/#{label}", {}, ANNUAIRE[:secret], ANNUAIRE[:app_id] )
+            STDERR.puts 'URL fautive: ' + sign( ANNUAIRE[:url], "/matieres/libelle/#{label}", {}, ANNUAIRE[:api_key], ANNUAIRE[:app_id] )
             return { 'id' => nil }
          end
       end
@@ -103,7 +104,7 @@ module Annuaire
       code_uai = URI.escape( code_uai )
       nom = URI.escape( nom )
 
-      RestClient.get( sign( ANNUAIRE[:url], 'regroupement', { etablissement: code_uai, nom: nom }, ANNUAIRE[:secret], ANNUAIRE[:app_id] ) ) do
+      RestClient.get( sign( ANNUAIRE[:url], 'regroupement', { etablissement: code_uai, nom: nom }, ANNUAIRE[:api_key], ANNUAIRE[:app_id] ) ) do
          |response, request, result|
          if response.code == 200
             return JSON.parse( response )[0]
@@ -119,7 +120,7 @@ module Annuaire
       nom = URI.escape( nom )
       prenom = URI.escape( prenom )
 
-      RestClient.get( sign( ANNUAIRE[:url], 'users', { nom: nom, prenom: prenom, etablissement: code_uai }, ANNUAIRE[:secret], ANNUAIRE[:app_id] ) ) do
+      RestClient.get( sign( ANNUAIRE[:url], 'users', { nom: nom, prenom: prenom, etablissement: code_uai }, ANNUAIRE[:api_key], ANNUAIRE[:app_id] ) ) do
          |response, request, result|
          if response.code == 200
             return JSON.parse( response )[0]
