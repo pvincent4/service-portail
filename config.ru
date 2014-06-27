@@ -25,7 +25,7 @@ use Rack::Session::Cookie,
 use OmniAuth::Builder do
     configure do |config|
       config.path_prefix = "#{APP_PATH}/auth"
-      config.full_host = CASAUTH::CONFIG.[:full_host]
+      config.full_host = CASAUTH::CONFIG[:full_host]
       
     end
     provider :cas, CASAUTH::CONFIG
