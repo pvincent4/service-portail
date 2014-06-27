@@ -24,20 +24,13 @@ use Rack::Session::Cookie,
 use OmniAuth::Builder do
     configure do |config|
       config.path_prefix = "#{APP_PATH}/auth"
+      config.full_host = CASAUTH::CONFIG.full_host
     end
     provider :cas, CASAUTH::CONFIG
 end
 
+
 use Faye::RackAdapter, NOTIFICATIONS
-
-#    mount: "#{APP_PATH}/faye",
-#    timeout: 25,
-#    engine:  {
-#                type: Faye::Redis,
-#                host: 'localhost',
-#                port: 6379
-#             }
-
 
 #bayeux = Faye::RackAdapter.new(:mount => "#{APP_PATH}/faye",
 #                                  :timeout => 25,
