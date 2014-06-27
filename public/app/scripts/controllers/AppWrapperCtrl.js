@@ -2,18 +2,18 @@
 
 angular.module('portailApp.controllers')
         .controller('AppWrapperCtrl',
-                ['$scope', '$http', '$stateParams', '$sce', 'currentUser', 'APPLICATION_PREFIX',
-                    function($scope, $http, $stateParams, $sce, currentUser, APPLICATION_PREFIX) {
-                           $scope.prefix = APPLICATION_PREFIX;
+                ['$scope', '$http', '$stateParams', '$sce', 'currentUser', 'APP_PATH',
+                    function($scope, $http, $stateParams, $sce, currentUser, APP_PATH) {
+                           $scope.prefix = APP_PATH;
 			   $scope.menu = [{icone: 'logolaclasse.svg',
                                 texte: 'retour au portail',
-                                lien: APPLICATION_PREFIX + '/'},
+                                lien: APP_PATH + '/'},
                             {icone: '12_aide.svg',
                                 texte: 'aide',
-                                lien: APPLICATION_PREFIX + '/'},
+                                lien: APP_PATH + '/'},
                             {icone: '12_aide.svg',
                                 texte: 'se déconnecter',
-                                lien: APPLICATION_PREFIX + '/logout'}];
+                                lien: APP_PATH + '/logout'}];
 
                         currentUser.get().then(function(response) {
                             $scope.current_user = response;

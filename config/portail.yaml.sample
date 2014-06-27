@@ -1,25 +1,26 @@
----
 :news_feed:
     -
         :titre: "Editoriaux d'Erasme"
-        :flux: http://erasme.blogs.laclasse.com/feed/
+        :flux: http://erasme-parc-dactivites-innovantes.blogs.dev.laclasse.com/feed/
+        #http://erasme.blogs.laclasse.com/feed/
         :icone: ''
         :nb: 1  
     -
         :titre: "blog du projet ENT"
-        :flux: http://ent-laclasse.blogs.laclasse.com/feed/
+        :flux: http://test.blogs.dev.laclasse.com/feed/
+        #http://ent-laclasse.blogs.laclasse.com/feed/
         :icone: ''
         :nb: 3
-    -
-        :titre: "Rhone.fr"
-        :flux: http://http://edurhone.blogs.laclasse.com/feed/
-        :icone: ''
-        :nb: 1    
+#    -
+#        :titre: "Rhone.fr"
+#        :flux: http://http://edurhone.blogs.laclasse.com/feed/
+#        :icone: ''
+#        :nb: 1    
 
 :apps_tiles:
   MAIL:
     :index: 1
-    :icone: "/app/bower_components/charte-graphique-laclasse-com/images/01_messagerie.svg"
+    :icone: "bower_components/charte-graphique-laclasse-com/images/01_messagerie.svg"
     :couleur: bleu
     :notifications: 0
     :url_notif: ''
@@ -29,7 +30,7 @@
     :active: false
   DOC:
     :index: 2
-    :icone: "/app/bower_components/charte-graphique-laclasse-com/images/02_documents.svg"
+    :icone: "bower_components/charte-graphique-laclasse-com/images/02_documents.svg"
     :couleur: jaune
     :notifications: 0
     :url_notif: ''
@@ -38,7 +39,7 @@
     :active: false
   CTXT:
     :index: 3
-    :icone: "/app/bower_components/charte-graphique-laclasse-com/images/03_cahierdetextes.svg"
+    :icone: "bower_components/charte-graphique-laclasse-com/images/03_cahierdetextes.svg"
     :couleur: violet
     :notifications: 0
     :url_notif: ''
@@ -47,7 +48,7 @@
     :active: false
   TELESRV:
     :index: 4
-    :icone: "/app/bower_components/charte-graphique-laclasse-com/images/04_notesabsences.svg"
+    :icone: "bower_components/charte-graphique-laclasse-com/images/04_notesabsences.svg"
     :couleur: vert
     :notifications: 0
     :url_notif: ''
@@ -56,7 +57,7 @@
     :active: false
   LPC:
     :index: 5
-    :icone: "/app/bower_components/charte-graphique-laclasse-com/images/05_validationcompetences.svg"
+    :icone: "bower_components/charte-graphique-laclasse-com/images/05_validationcompetences.svg"
     :couleur: rouge
     :notifications: 0
     :url_notif: ''
@@ -66,7 +67,7 @@
     :active: false
   CCNUM:
     :index: 6
-    :icone: "/app/bower_components/charte-graphique-laclasse-com/images/06_thematiques.svg"
+    :icone: "bower_components/charte-graphique-laclasse-com/images/06_thematiques.svg"
     :couleur: vert
     :notifications: 0
     :url_notif: ''
@@ -76,7 +77,7 @@
     :active: false
   BLOGS:
     :index: 7
-    :icone: "/app/bower_components/charte-graphique-laclasse-com/images/07_blogs.svg"
+    :icone: "bower_components/charte-graphique-laclasse-com/images/07_blogs.svg"
     :couleur: bleu
     :notifications: 0
     :url_notif: ''
@@ -86,7 +87,7 @@
     :active: false
   GAR:
     :index: 8
-    :icone: "/app/bower_components/charte-graphique-laclasse-com/images/08_ressources.svg"
+    :icone: "bower_components/charte-graphique-laclasse-com/images/08_ressources.svg"
     :couleur: jaune
     :notifications: 0
     :url_notif: ''
@@ -96,7 +97,7 @@
     :active: false
   TROMBI:
     :index: 9
-    :icone: "/app/bower_components/charte-graphique-laclasse-com/images/09_trombi.svg"
+    :icone: "bower_components/charte-graphique-laclasse-com/images/09_trombi.svg"
     :couleur: violet
     :notifications: 0
     :url_notif: ''
@@ -106,7 +107,7 @@
     :active: false
   SUIVIELV:
     :index: 10
-    :icone: "/app/bower_components/charte-graphique-laclasse-com/images/10_suivi.svg"
+    :icone: "bower_components/charte-graphique-laclasse-com/images/10_suivi.svg"
     :couleur: bleu
     :notifications: 0
     :url_notif: ''
@@ -117,17 +118,17 @@
     :active: false
   Publi:
     :index: 11
-    :icone: "/app/bower_components/charte-graphique-laclasse-com/images/11_publipostage.svg"
+    :icone: "bower_components/charte-graphique-laclasse-com/images/11_publipostage.svg"
     :couleur: jaune
     :notifications: 0
     :url_notif: ''
     :nom: ''
     :survol: ''
-    :url: http://www.perdu.com
+    :url: 
     :active: false
   AIDE:
     :index: 12
-    :icone: "/app/bower_components/charte-graphique-laclasse-com/images/12_aide.svg"
+    :icone: "bower_components/charte-graphique-laclasse-com/images/12_aide.svg"
     :couleur: rouge
     :notifications: 0
     :url_notif: ''
@@ -137,7 +138,7 @@
     :url: http://www.perdu.com
   ADMIN:
     :index: 13
-    :icone: "/app/bower_components/charte-graphique-laclasse-com/images/13_admin.svg"
+    :icone: "bower_components/charte-graphique-laclasse-com/images/13_admin.svg"
     :couleur: jaune
     :notifications: 0
     :url_notif: ''
@@ -147,7 +148,7 @@
     :active: false
   PRONOTE:
     :index: 14
-    :icone: "/app/bower_components/charte-graphique-laclasse-com/images/04_notesabsences.svg"
+    :icone: "bower_components/charte-graphique-laclasse-com/images/04_notesabsences.svg"
     :couleur: rouge
     :notifications: 0
     :url_notif: ''

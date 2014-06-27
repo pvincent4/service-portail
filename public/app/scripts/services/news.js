@@ -3,9 +3,9 @@
 angular.module( 'portailApp.services.news', [  ] );
 angular.module( 'portailApp.services.news' )
     .service('news',
-	     [ '$http', 'APPLICATION_PREFIX',
-	       function( $http, APPLICATION_PREFIX ) {
+	     [ '$http', 'APP_PATH',
+	       function( $http, APP_PATH ) {
 		   this.get = _.memoize( function() {
-		       return $http.get( APPLICATION_PREFIX + '/api/news' );
+		       return $http.get( APP_PATH + '/api/news' );
 		   });
 	       } ] );
