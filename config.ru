@@ -2,14 +2,14 @@
 
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 
-require 'redis'
-require 'faye'
-require 'faye/redis'
+# require 'redis'
+# require 'faye'
+# require 'faye/redis'
 
 require './config/init'
 require 'app'
 
-Faye::WebSocket.load_adapter('thin')
+# Faye::WebSocket.load_adapter('thin')
 
 use Rack::Rewrite do
   rewrite %r{#{APP_PATH}/(.*(css|js|html|png|jpg|gif|jpeg|eot|svg|ttf|woff))}, '/app/$1'
@@ -32,7 +32,7 @@ use OmniAuth::Builder do
 end
 
 
-use Faye::RackAdapter, NOTIFICATIONS
+#use Faye::RackAdapter, NOTIFICATIONS
 
 #bayeux = Faye::RackAdapter.new(:mount => "#{APP_PATH}/faye",
 #                                  :timeout => 25,

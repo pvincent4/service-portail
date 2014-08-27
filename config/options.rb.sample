@@ -78,17 +78,17 @@ QUIZS = {
 #
 # Configuration du service de notifications
 #
-NOTIFICATIONS = {
-      mount: '#{APP_PATH}/faye',
-      timeout: 25,
-      engine: {
-          host: 'http://www.laclasse.com',
-          type: Faye::Redis,
-          port: 6379
-      }
-}
+# NOTIFICATIONS = {
+#       mount: '#{APP_PATH}/faye',
+#       timeout: 25,
+#       engine: {
+#           host: 'http://www.laclasse.com',
+#           type: Faye::Redis,
+#           port: 6379
+#       }
+# }
 
-# 
+#
 # Configuration du service REDIS
 #
 REDIS = {
