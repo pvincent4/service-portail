@@ -2,19 +2,6 @@
 
 // Declare app level module which depends on filters, and services
 angular.module('portailApp',
-			.state('portail.user',
-				{url: '/user',
-				    views: {
-					'aside': {
-					    templateUrl: APP_PATH + '/views/portail/aside.html',
-					    controller: 'PortailAsideCtrl'
-					},
-					'main': {
-					    templateUrl: APP_PATH + '/views/portail/user.html',
-					    controller: 'PortailUserCtrl'
-					}
-				    }
-				})
 	       ['portailApp.controllers',
 		'portailApp.services.constants',
 		'portailApp.services.authentication',
@@ -43,6 +30,19 @@ angular.module('portailApp',
 				 }
 			     }
 			    })
+		     // .state('portail.user',
+		     //		    {url: '/user',
+		     //		     views: {
+		     //			 'aside': {
+		     //			     templateUrl: APP_PATH + '/views/portail/aside.html',
+		     //			     controller: 'PortailAsideCtrl'
+		     //			 },
+		     //			 'main': {
+		     //			     templateUrl: APP_PATH + '/views/portail/user.html',
+		     //			     controller: 'PortailUserCtrl'
+		     //			 }
+		     //		     }
+		     //		    })
 		     .state('app-wrapper',
 			    {url: '/show-app?app',
 			     templateUrl: APP_PATH + '/views/show-app.html',
