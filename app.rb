@@ -69,13 +69,24 @@ class SinatraApp < Sinatra::Base
     session[:current_user][:ENTStructureNomCourant] = user_annuaire[:ENTStructureNomCourant]
     session[:current_user][:profils] = user_annuaire['profils'].map.with_index {
       |profil, i|
-      { index: i,
-        type: profil['profil_id'],
-        uai: profil['etablissement_code_uai'],
-        etablissement: profil['etablissement_nom'],
-        nom: profil['profil_nom'] }
+      # renommage de champs
+      profil['index'] = i
+      profil['type'] = profil['profil_id']
+      profil['uai'] = profil['etablissement_code_uai']
+      profil['etablissement'] = profil['etablissement_nom']
+      profil['nom'] = profil['profil_nom']
+
+      # calcule du droit d'admin, true pour les TECH et les ADM
+      profil['admin'] = extra['roles'].select { |r| r['etablissement_code_uai'] == profil['etablissement_code_uai'] && ( r['role_id'] == 'TECH' || r['role_id'].match('ADM.*') ) }.length > 0
+
+      profil
+      # { index: i,
+      #   type: profil['profil_id'],
+      #   uai: profil['etablissement_code_uai'],
+      #   etablissement: profil['etablissement_nom'],
+      #   nom: profil['profil_nom'] }
     }
-    session[:current_user][:profil_actif] = 0
+    session[:current_user][:profil_actif] = session[:current_user][:profils].select { |p| p['actif'] }
 
     session[:current_user].to_json
   end
