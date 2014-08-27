@@ -19,18 +19,16 @@ use Rack::Session::Cookie,
     key: 'rack.session',
     path: APP_PATH,
     expire_after: 3600, # In seconds
-    secret: '#{SESSION_KEY}' 
-
+    secret: '#{SESSION_KEY}'
 
 use OmniAuth::Builder do
-    configure do |config|
-      config.path_prefix = "#{APP_PATH}/auth"
-      config.full_host = CASAUTH::CONFIG[:full_host]
-      
-    end
-    provider :cas, CASAUTH::CONFIG
-end
+  configure do |config|
+    config.path_prefix = "#{APP_PATH}/auth"
+    config.full_host = CASAUTH::CONFIG[:full_host]
 
+  end
+  provider :cas, CASAUTH::CONFIG
+end
 
 #use Faye::RackAdapter, NOTIFICATIONS
 
@@ -41,6 +39,5 @@ end
 #bayeux.on(:subscribe) { | client_id, channel |
 #        puts client_id.to_s + " has subscribed to channel '" + channel.to_s + "'"
 #    }
-
 
 run SinatraApp
