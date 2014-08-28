@@ -5,7 +5,5 @@ angular.module( 'portailApp.services.news' )
     .service('news',
 	     [ '$http', 'APP_PATH',
 	       function( $http, APP_PATH ) {
-		   this.get = _.memoize( function() {
-		       return $http.get( APP_PATH + '/api/news' );
-		   });
+		   this.get = function() { return $http.get( APP_PATH + '/api/news' ); };
 	       } ] );

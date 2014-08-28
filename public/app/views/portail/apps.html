@@ -1,4 +1,4 @@
-<div class="row-fluid damier">
+<div class="row damier">
   <div data-ng-repeat="app in apps | orderBy:'index'" class="col-xs-12 col-sm-6 col-md-3 col-lg-3 petite case {{ app.couleur }}" data-ng-show="current_user.is_logged">
     <a data-ui-sref="app-wrapper({ app: app.id })" data-ng-show="app.active === true"
        data-ng-style="{'background-image': 'url(\'' + prefix + '/' + app.icone + '\')' }" title="{{ app.survol }}">
