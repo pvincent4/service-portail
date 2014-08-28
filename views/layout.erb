@@ -31,16 +31,16 @@
 
   <body>
 
-    <div class="container-fluid">
+    <div class="container">
 
       <div id="flash"></div>
-      
+
       <!-- Main component for a primary marketing message or call to action -->
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="background-color:#E7E7E7;">
 	<%= yield %>
       </div>
 
-    </div> <!-- /container-fluid -->
+    </div> <!-- /container -->
 
 
     <!-- Bootstrap core JavaScript
@@ -57,17 +57,17 @@
     <script src="<%= APP_PATH %>/bower_components/angular-carousel/dist/angular-carousel.min.js"></script>
     <script src="<%= APP_PATH %>/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <script src="<%= APP_PATH %>/bower_components/ng-flow/dist/ng-flow-standalone.min.js"></script>
-    <script src="<%= APP_PATH %>/bower_components/faye/include.min.js"></script>
+    <!-- <script src="<%= APP_PATH %>/bower_components/faye/include.min.js"></script> -->
     <script src="<%= APP_PATH %>/bower_components/jquery.gritter/js/jquery.gritter.min.js"></script>
 
     <script src="<%= APP_PATH %>/scripts/controllers/main.js"></script>
     <script src="<%= APP_PATH %>/scripts/controllers/ProfilActifCtrl.js"></script>
     <script src="<%= APP_PATH %>/scripts/controllers/Portail/AsideCtrl.js"></script>
     <script src="<%= APP_PATH %>/scripts/controllers/Portail/AppsDamierCtrl.js"></script>
-    <script src="<%= APP_PATH %>/scripts/controllers/Portail/UserCtrl.js"></script>
+    <!-- <script src="<%= APP_PATH %>/scripts/controllers/Portail/UserCtrl.js"></script> -->
     <script src="<%= APP_PATH %>/scripts/controllers/AppWrapperCtrl.js"></script>
-    <script src="<%= APP_PATH %>/scripts/services/constants.js"></script>
-    <script src="<%= APP_PATH %>/scripts/services/authentication.js"></script>
+    <script src="<%= APP_PATH %>/scripts/constants.js"></script>
+    <script src="<%= APP_PATH %>/scripts/services/user.js"></script>
     <script src="<%= APP_PATH %>/scripts/services/news.js"></script>
     <script src="<%= APP_PATH %>/scripts/services/notifications.js"></script>
     <script src="<%= APP_PATH %>/scripts/app.js"></script>

@@ -1,8 +1,8 @@
 'use strict';
 
-angular.module( 'portailApp.services.authentication', [  ] );
+angular.module( 'portailApp.services.user', [  ] );
 
-angular.module('portailApp.services.authentication')
+angular.module('portailApp.services.user')
     .factory('User',
 	     [ '$resource', 'APP_PATH',
 	       function( $resource, APP_PATH ) {
@@ -15,14 +15,14 @@ angular.module('portailApp.services.authentication')
 				     });
 	       } ] );
 
-angular.module('portailApp.services.authentication')
+angular.module('portailApp.services.user')
     .factory('UserApps',
 	     [ '$resource', 'APP_PATH',
 	       function( $resource, APP_PATH ) {
 		   return $resource( APP_PATH + '/api/apps' );
 	       } ] );
 
-angular.module( 'portailApp.services.authentication' )
+angular.module( 'portailApp.services.user' )
     .service('currentUser',
 	     [ 'User', 'UserApps',
 	       function( User, UserApps ) {

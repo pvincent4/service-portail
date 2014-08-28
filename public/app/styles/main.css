@@ -88,12 +88,12 @@ body {
 body { font-family:'Open Sans', sans-serif;
        padding:0 }
 
-.container-fluid { margin:0;
+.container { margin:0;
 		   max-width:100%;
 		   padding:0;
 		   width:100% }
 
-.container-fluid * { margin:0;
+.container * { margin:0;
 		     padding:0 }
 
 .aside { background-color:#16161d;
@@ -373,7 +373,7 @@ body { font-family:'Open Sans', sans-serif;
 		    width: 100% }
 .user-profil accordion .panel-heading a span { color:#b2b2b2 }
 
-.user-profil accordion .panel-body .row-fluid div { padding:1em }
+.user-profil accordion .panel-body .row div { padding:1em }
 
 .user-profil label { font-weight:400;
 		     padding-bottom:.33em }
@@ -382,7 +382,7 @@ body { font-family:'Open Sans', sans-serif;
 		     border-radius:0;
 		     color:#000 }
 
-.user-profil accordion .panel-body .row-fluid div.avatar { padding-top:3.8em;
+.user-profil accordion .panel-body .row div.avatar { padding-top:3.8em;
 							   text-align:center }
 
 .user-profil .avatar svg { background:blue;
