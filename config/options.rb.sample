@@ -35,16 +35,16 @@ SERVICE_ANNUAIRE_ENT = 'http://www.dev.laclasse/com/annuaire/'
 #
 module CASAUTH
   CONFIG = {
-  host: 'www.dev.laclasse.com',
-  ssl: true,
-  port: 443,
-  disable_ssl_verification: true,
-  login_url: '/sso/login',
-  service_validate_url: '/sso/serviceValidate',
-  logout_url: '/sso/logout',
-  logout_saml_url: '/saml/saml2/idp/SingleLogoutService.php',
-  full_host: 'www.dev.laclasse.com'   # Pour OmniAuthCAS
-}
+    host: 'www.dev.laclasse.com',
+    ssl: true,
+    port: 443,
+    disable_ssl_verification: true,
+    login_url: '/sso/login',
+    service_validate_url: '/sso/serviceValidate',
+    logout_url: '/sso/logout',
+    logout_saml_url: '/saml/saml2/idp/SingleLogoutService.php',
+    # full_host: 'www.dev.laclasse.com'   # Pour OmniAuthCAS
+  }
 end
 
 #
