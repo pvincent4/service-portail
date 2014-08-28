@@ -161,8 +161,8 @@ class SinatraApp < Sinatra::Base
 
     # redirect login! unless session[:authenticated]
     if is_logged?
-      profil = session[:current_user][:profils][ 0 ][:type]
-      uai = session[:current_user][:profils][ 0 ][:uai]
+      profil = session[:current_user][:profil_actif][ 0 ]['type']
+      uai = session[:current_user][:profil_actif][ 0 ]['uai']
       etb = Annuaire.get_etablissement(uai)
       opts = { serveur: "#{APP_PATH}/faye",
                profil: profil,
@@ -185,7 +185,7 @@ class SinatraApp < Sinatra::Base
     content_type :json
 
     user_applications = Annuaire.get_user( session[:current_user][:info][:uid] )['applications']
-    uai_courant = session[:current_user][:profil_actif][0]['uai']
+    uai_courant = session[:current_user][:profil_actif][ 0 ]['uai']
 
     # traitement des apps renvoyées par l'annuaire
     user_applications
