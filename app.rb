@@ -93,8 +93,35 @@ class SinatraApp < Sinatra::Base
     session[:current_user].to_json
   end
 
-  put "#{APP_PATH}/api/user/profil_actif/:index" do
-    session[:current_user][:profil_actif] = params[ :index ].to_i
+  put "#{APP_PATH}/api/user/profil_actif/?" do
+    content_type :json
+
+    param :profil_id, String, required: true
+    param :uai, String, required: true
+
+    Annuaire.put_user_profil_actif( session[:current_user][:info][:uid],
+                                    params[:profil_id],
+                                    params[:uai] )
+
+    # FIXME: copy-pasta du get au-dessus
+    user_annuaire = Annuaire.get_user( session[:current_user][:info][:uid] )
+    session[:current_user][:sexe] = user_annuaire[:sexe]
+    session[:current_user][:ENTStructureNomCourant] = user_annuaire[:ENTStructureNomCourant]
+    session[:current_user][:profils] = user_annuaire['profils'].map.with_index do
+      |profil, i|
+      # renommage de champs
+      profil['index'] = i
+      profil['type'] = profil['profil_id']
+      profil['uai'] = profil['etablissement_code_uai']
+      profil['etablissement'] = profil['etablissement_nom']
+      profil['nom'] = profil['profil_nom']
+
+      # calcule du droit d'admin, true pour les TECH et les ADM
+      profil['admin'] = user_annuaire['roles'].select { |r| r['etablissement_code_uai'] == profil['etablissement_code_uai'] && ( r['role_id'] == 'TECH' || r['role_id'].match('ADM.*') ) }.length > 0
+
+      profil
+    end
+    session[:current_user][:profil_actif] = session[:current_user][:profils].select { |p| p['actif'] }
 
     session[:current_user].to_json
   end
