@@ -16,7 +16,7 @@
 	<select data-ng-controller="ProfilActifCtrl"
 		data-ng-model="current_user.profil_actif[0]"
 		data-ng-change="reload()"
-		data-ng-options="profil as profil.etablissement + ' : ' + profil.nom group by profil.etablissement for profil in current_user.profils" >
+		data-ng-options="profil as profil.etablissement + ' : ' + profil.nom group by profil.etablissement for profil in current_user.profils track by profil.index" >
 	</select>
 	<br>
 	<a class="logout" href="logout" title="Déconnexion de Laclasse.com">se déconnecter</a>
