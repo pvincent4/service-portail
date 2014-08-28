@@ -44,6 +44,8 @@ class SinatraApp < Sinatra::Base
     # dont_reload '/path/to/other/file'
   end
 
+  helpers Sinatra::Param
+
   helpers AuthenticationHelpers
   helpers ConfigHelpers
 

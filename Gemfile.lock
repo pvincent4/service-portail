@@ -132,6 +132,8 @@ GEM
       rack-test
       sinatra (~> 1.4.0)
       tilt (~> 1.3)
+    sinatra-param (1.2.2)
+      sinatra (~> 1.3)
     slop (3.5.0)
     thin (1.6.2)
       daemons (>= 1.0.9)
@@ -170,4 +172,5 @@ DEPENDENCIES
   simple-rss
   sinatra
   sinatra-contrib
+  sinatra-param
   thin

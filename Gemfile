@@ -5,6 +5,7 @@ source 'http://gems.erasme.org'
 
 gem 'rake'
 gem 'sinatra'
+gem 'sinatra-param'
 gem 'json'
 gem 'omniauth'
 gem 'omniauth-cas'
@@ -29,7 +30,7 @@ group :development do
   gem 'guard'
   gem 'guard-rspec'
   gem 'guard-bundler'
-  gem 'rb-fsevent' 
+  gem 'rb-fsevent'
   gem 'rb-inotify'
   gem 'jasmine'
 end
