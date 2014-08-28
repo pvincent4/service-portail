@@ -26,10 +26,6 @@ angular.module( 'portailApp.services.authentication' )
     .service('currentUser',
 	     [ 'User', 'UserApps',
 	       function( User, UserApps ) {
-		   this.get = _.memoize( function() {
-		       return User.get().$promise;
-		   } );
-		   this.apps = _.memoize( function() {
-		       return UserApps.query().$promise;
-		   } );
+		   this.get = function() { return User.get().$promise; };
+		   this.apps = function() { return UserApps.query().$promise; };
 	       } ] );
