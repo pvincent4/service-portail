@@ -45,15 +45,15 @@ To allow files to be either selected and drag-dropped, you'll assign drop target
 
 After this, interaction with Flow.js is done by listening to events:
 
-    r.on('fileAdded', function(file, event){
-        ...
-      });
-    r.on('fileSuccess', function(file,message){
-        ...
-      });
-    r.on('fileError', function(file, message){
-        ...
-      });
+    flow.on('fileAdded', function(file, event){
+       console.log(file, event);
+    });
+    flow.on('fileSuccess', function(file,message){
+        console.log(file,message);
+    });
+    flow.on('fileError', function(file, message){
+        console.log(file, message);
+    });
 
 ## How do I set it up with my server?
 
@@ -97,14 +97,17 @@ The object is loaded with a configuration options:
     
 Available configuration options are:
 
-* `target` The target URL for the multipart POST request. (Default: `/`)
+* `target` The target URL for the multipart POST request. This can be a string or a function. If a
+function, it will be passed a FlowFile, a FlowChunk and isTest boolean (Default: `/`)
 * `singleFile` Enable single file upload. Once one file is uploaded, second file will overtake existing one, first one will be canceled. (Default: false)
 * `chunkSize` The size in bytes of each uploaded chunk of data. The last uploaded chunk will be at least this size and up to two the size, see [Issue #51](https://github.com/23/resumable.js/issues/51) for details and reasons. (Default: `1*1024*1024`)
 * `forceChunkSize` Force all chunks to be less or equal than chunkSize. Otherwise, the last chunk will be greater than or equal to `chunkSize`. (Default: `false`)
 * `simultaneousUploads` Number of simultaneous uploads (Default: `3`)
 * `fileParameterName` The name of the multipart POST parameter to use for the file chunk  (Default: `file`)
-* `query` Extra parameters to include in the multipart POST with data. This can be an object or a function. If a function, it will be passed a FlowFile and a FlowChunk object (Default: `{}`)
-* `headers` Extra headers to include in the multipart POST with data (Default: `{}`)
+* `query` Extra parameters to include in the multipart POST with data. This can be an object or a
+ function. If a function, it will be passed a FlowFile, a FlowChunk object and a isTest boolean
+ (Default: `{}`)
+* `headers` Extra headers to include in the multipart POST with data. If a function, it will be passed a FlowFile, a FlowChunk object and a isTest boolean (Default: `{}`)
 * `withCredentials` Standard CORS requests do not send or set any cookies by default. In order to
  include cookies as part of the request, you need to set the `withCredentials` property to true.
 (Default: `false`)
@@ -132,9 +135,15 @@ parameter must be adjusted together with `progressCallbacksInterval` parameter. 
 
 #### Methods
 
-* `.assignBrowse(domNodes, isDirectory, singleFile)` Assign a browse action to one or more DOM nodes. Pass in `true` to allow directories to be selected (Chrome only, support can be checked with `supportDirectory` property).
-To prevent multiple file uploads set singleFile to true.
-Note: avoid using `a` and `button` tags as file upload buttons, use span instead.
+* `.assignBrowse(domNodes, isDirectory, singleFile, attributes)` Assign a browse action to one or more DOM nodes.
+  * `domNodes` array of dom nodes or a single node.
+  * `isDirectory` Pass in `true` to allow directories to be selected (Chrome only, support can be checked with `supportDirectory` property).
+  * `singleFile` To prevent multiple file uploads set this to true. Also look at config parameter `singleFile`.
+  * `attributes` Pass object of keys and values to set custom attributes on input fields.
+   For example, you can set `accept` attribute to `image/*`. This means that user will be able to select only images.
+   Full list of attributes: http://www.w3.org/TR/html-markup/input.file.html#input.file-attributes
+
+   Note: avoid using `a` and `button` tags as file upload buttons, use span instead.
 * `.assignDrop(domNodes)` Assign one or more DOM nodes as a drop target.
 * `.on(event, callback)` Listen for event from Flow.js (see below)
 * `.off([event, [callback]])`:

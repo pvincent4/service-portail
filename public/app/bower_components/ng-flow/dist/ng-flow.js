@@ -104,7 +104,8 @@ angular.module('flow.btn', ['flow.init'])
     'link': function(scope, element, attrs) {
       var isDirectory = attrs.hasOwnProperty('flowDirectory');
       var isSingleFile = attrs.hasOwnProperty('flowSingleFile');
-      scope.$flow.assignBrowse(element, isDirectory, isSingleFile);
+      var inputAttrs = attrs.hasOwnProperty('flowAttrs') && scope.$eval(attrs.flowAttrs);
+      scope.$flow.assignBrowse(element, isDirectory, isSingleFile, inputAttrs);
     }
   };
 }]);
@@ -117,7 +118,7 @@ angular.module('flow.dragEvents', ['flow.init'])
     return {
       'scope': false,
       'link': function(scope, element, attrs) {
-        element.bind('drop', function (event) {
+        element.bind('drop dragover', function (event) {
           event.preventDefault();
         });
       }
@@ -132,20 +133,24 @@ angular.module('flow.dragEvents', ['flow.init'])
       'scope': false,
       'link': function(scope, element, attrs) {
         var promise;
+        var enter = false;
         element.bind('dragover', function (event) {
           if (!isFileDrag(event)) {
             return ;
           }
-          if (!promise) {
+          if (!enter) {
             scope.$apply(attrs.flowDragEnter);
-          } else {
-            $timeout.cancel(promise);
+            enter = true;
           }
+          $timeout.cancel(promise);
+          event.preventDefault();
+        });
+        element.bind('dragleave drop', function (event) {
           promise = $timeout(function () {
             scope.$eval(attrs.flowDragLeave);
             promise = null;
+            enter = false;
           }, 100);
-          event.preventDefault();
         });
         function isFileDrag(dragEvent) {
           var fileDrag = false;
