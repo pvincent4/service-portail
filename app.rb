@@ -146,15 +146,7 @@ class SinatraApp < Sinatra::Base
   get "#{APP_PATH}/api/apps" do
     content_type :json
 
-    return [ { id: 'thematiques',
-               nom: 'thematiques',
-               url: 'http://perdu.com' },
-             { id: 'contact',
-               nom: 'contact',
-               url: 'http://perdu.com' },
-             { id: 'aide',
-               nom: 'aide',
-               url: 'http://perdu.com' } ].to_json unless session[:authenticated]
+    return config[ :apps_publiques ].to_json unless session[:authenticated]
 
     user_applications = Annuaire.get_user( session[:current_user][:info][:uid] )['applications']
     uai_courant = session[:current_user][:profil_actif][ 0 ]['uai']
