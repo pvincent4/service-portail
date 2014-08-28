@@ -1,6 +1,6 @@
 {
   "name": "flow.js",
-  "version": "2.3.0",
+  "version": "2.6.1",
   "main": "./dist/flow.js",
   "ignore": [
     "**/.*",
@@ -11,11 +11,11 @@
     "samples"
   ],
   "homepage": "https://github.com/flowjs/flow.js",
-  "_release": "2.3.0",
+  "_release": "2.6.1",
   "_resolution": {
     "type": "version",
-    "tag": "v2.3.0",
-    "commit": "6116aa4280450da24198f80786ac652d0d621ae5"
+    "tag": "v2.6.1",
+    "commit": "a6dd575c8273f477f8a8f42738139f65131412e5"
   },
   "_source": "git://github.com/flowjs/flow.js.git",
   "_target": "~2",

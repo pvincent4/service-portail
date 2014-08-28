@@ -73,6 +73,7 @@
                         destination,
                         slidesCount = 0,
                         swipeMoved = false,
+                        animOnIndexChange = true,
                         // javascript based animation easing
                         timestamp;
 
@@ -85,12 +86,21 @@
                         updateIndicatorArray();
                         scope.$watch('carouselIndex', function(newValue) {
                             scope.indicatorIndex = newValue;
+                            scope.carouselExposedIndex = newValue;
                         });
                         scope.$watch('indicatorIndex', function(newValue) {
                             goToSlide(newValue, true);
                         });
 
                     }
+
+                    if (angular.isDefined(iAttributes.rnCarouselPreventAnimation)) {
+                        animOnIndexChange = false;
+                    }
+
+                    scope.$watch('carouselExposedIndex', function(newValue) {
+                        goToSlide(newValue, true);
+                    });
 
                     // enable carousel indicator
                     if (angular.isDefined(iAttributes.rnCarouselIndicator)) {
@@ -129,7 +139,7 @@
                                         newValue = 0;
                                         updateParentIndex(newValue);
                                     }
-                                    goToSlide(newValue, true);
+                                    goToSlide(newValue, animOnIndexChange);
                                 }
                             });
                             isIndexBound = true;
@@ -174,13 +184,16 @@
                             containerWidth = slides[0].getBoundingClientRect().width;
                         }
                         // console.log('getCarouselWidth', containerWidth);
-                        return Math.floor(containerWidth);
+                        return containerWidth;
                     }
 
                     function updateContainerWidth() {
                         // force the carousel container width to match the first slide width
                         container.css('width', '100%');
-                        container.css('width', getCarouselWidth() + 'px');
+                        var width = getCarouselWidth();
+                        if (width) {
+                            container.css('width', width + 'px');
+                        }
                     }
 
                     function scroll(x) {
@@ -405,9 +418,7 @@
                         has3d,
                         transforms = {
                             'webkitTransform':'-webkit-transform',
-                            'OTransform':'-o-transform',
                             'msTransform':'-ms-transform',
-                            'MozTransform':'-moz-transform',
                             'transform':'transform'
                         };
                         // Add it to the body to get the computed style
