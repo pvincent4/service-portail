@@ -57,52 +57,52 @@ ANNUAIRE = {
   api_mode: 'v3'
 }
 
-#
-# Configuration du service Etherpad
-#
-ETHERPAD = {
-  url: 'http://www.dev.laclasse.com/pads',
-  api_key: 'Clé secrete de signature des échanges',
-  default_text: 'Vous etes a present sur etherpad. \n Celui-ci est un document collaboratif. \n'
-}
-
-#
-# Configuration du service de quizs
-#
-QUIZS = {
-  url: 'http://www.dev.laclasse.com',
-  uri_open: '/pls/education/quizz.lance_exercice?p_exo_id=',
-  uri_modif: '/pls/education/!page.laclasse?contexte=DOCUMENTS&paction=modifier_element&ptype=',
-  api_key: 'Clé secrete de signature des échanges'
-}
-
-#
-# Configuration du service de notifications
-#
-# NOTIFICATIONS = {
-#       mount: '#{APP_PATH}/faye',
-#       timeout: 25,
-#       engine: {
-#           host: 'http://www.laclasse.com',
-#           type: Faye::Redis,
-#           port: 6379
-#       }
+# #
+# # Configuration du service Etherpad
+# #
+# ETHERPAD = {
+#   url: 'http://www.dev.laclasse.com/pads',
+#   api_key: 'Clé secrete de signature des échanges',
+#   default_text: 'Vous etes a present sur etherpad. \n Celui-ci est un document collaboratif. \n'
 # }
 
-#
-# Configuration du service REDIS
-#
-REDIS = {
-      Host: 'http://www.laclasse.com',
-      port: 6379,
-      redis_root: 'com.laclasse.dev.'
-}
+# #
+# # Configuration du service de quizs
+# #
+# QUIZS = {
+#   url: 'http://www.dev.laclasse.com',
+#   uri_open: '/pls/education/quizz.lance_exercice?p_exo_id=',
+#   uri_modif: '/pls/education/!page.laclasse?contexte=DOCUMENTS&paction=modifier_element&ptype=',
+#   api_key: 'Clé secrete de signature des échanges'
+# }
 
-#
-# Configuration du service de mail
-#
-MAIL = {
-  adress: "smtp.laclasse.com",
-  enable_starttls_auto: false,
-  webmail_host: 'http://www.dev.laclasse.com/mail/'
-}
+# #
+# # Configuration du service de notifications
+# #
+# NOTIFICATIONS = {
+#   mount: '#{APP_PATH}/faye',
+#   timeout: 25,
+#   engine: {
+#     host: 'http://www.laclasse.com',
+#     type: Faye::Redis,
+#     port: 6379
+#   }
+# }
+
+# #
+# # Configuration du service REDIS
+# #
+# REDIS = {
+#       Host: 'http://www.laclasse.com',
+#       port: 6379,
+#       redis_root: 'com.laclasse.dev.'
+# }
+
+# #
+# # Configuration du service de mail
+# #
+# MAIL = {
+#   adress: "smtp.laclasse.com",
+#   enable_starttls_auto: false,
+#   webmail_host: 'http://www.dev.laclasse.com/mail/'
+# }
