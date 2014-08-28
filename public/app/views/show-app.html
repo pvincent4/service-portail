@@ -19,9 +19,9 @@
 	    <div class="profil-select-wrapper">
 	      <span data-ng-hide="current_user.is_logged">profil public</span>
 	      <select data-ng-controller="ProfilActifCtrl"
-		      data-ng-model="current_user['profil_actif']"
-		      data-ng-options="profil['index'] as profil['etablissement'] + ' : ' + profil['nom'] group by profil['etablissement'] for profil in current_user['profils']" data-ng-change="reload()"
-		      data-ng-show="current_user.is_logged">
+		      data-ng-model="current_user.profil_actif[0]"
+		      data-ng-change="reload()"
+		      data-ng-options="profil as profil.etablissement + ' : ' + profil.nom group by profil.etablissement for profil in current_user.profils track by profil.index" >
 	      </select>
 	    </div>
 	    <span class="glyphicon glyphicon-chevron-down" data-ng-show="current_user.is_logged"></span>
