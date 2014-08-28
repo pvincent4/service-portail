@@ -17,6 +17,20 @@
 #        :icone: ''
 #        :nb: 1    
 
+:apps_publiques:
+    -
+	:id: 'thematiques'
+	:nom: 'thematiques'
+	:url: 'http://perdu.com'
+    -
+	:id: 'contact'
+	:nom: 'contact'
+	:url: 'http://perdu.com'
+    -
+	:id: 'aide'
+	:nom: 'aide'
+	:url: 'http://perdu.com'
+
 :apps_tiles:
   MAIL:
     :index: 1
