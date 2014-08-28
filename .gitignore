@@ -27,5 +27,5 @@ vagrant/
 /config/portail.yaml
 /config/CAS*.rb
 /config/authentication.rb
-
+/config/portail.yaml
 /public/app/scripts/constants.js
