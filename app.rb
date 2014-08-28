@@ -67,7 +67,7 @@ class SinatraApp < Sinatra::Base
     user_annuaire = Annuaire.get_user( session[:current_user][:info][:uid] )
     session[:current_user][:sexe] = user_annuaire[:sexe]
     session[:current_user][:ENTStructureNomCourant] = user_annuaire[:ENTStructureNomCourant]
-    session[:current_user][:profils] = user_annuaire['profils'].map.with_index {
+    session[:current_user][:profils] = user_annuaire['profils'].map.with_index do
       |profil, i|
       # renommage de champs
       profil['index'] = i
@@ -77,15 +77,10 @@ class SinatraApp < Sinatra::Base
       profil['nom'] = profil['profil_nom']
 
       # calcule du droit d'admin, true pour les TECH et les ADM
-      profil['admin'] = extra['roles'].select { |r| r['etablissement_code_uai'] == profil['etablissement_code_uai'] && ( r['role_id'] == 'TECH' || r['role_id'].match('ADM.*') ) }.length > 0
+      profil['admin'] = user_annuaire['roles'].select { |r| r['etablissement_code_uai'] == profil['etablissement_code_uai'] && ( r['role_id'] == 'TECH' || r['role_id'].match('ADM.*') ) }.length > 0
 
       profil
-      # { index: i,
-      #   type: profil['profil_id'],
-      #   uai: profil['etablissement_code_uai'],
-      #   etablissement: profil['etablissement_nom'],
-      #   nom: profil['profil_nom'] }
-    }
+    end
     session[:current_user][:profil_actif] = session[:current_user][:profils].select { |p| p['actif'] }
 
     session[:current_user].to_json
@@ -161,7 +156,7 @@ class SinatraApp < Sinatra::Base
     content_type :json
 
     user_applications = Annuaire.get_user( session[:current_user][:info][:uid] )['applications']
-    uai_courant = session[:current_user][:profils][ session[:current_user][:profil_actif] ][:uai]
+    uai_courant = session[:current_user][:profil_actif][0]['uai']
 
     # traitement des apps renvoyées par l'annuaire
     user_applications
