@@ -118,27 +118,27 @@ class SinatraApp < Sinatra::Base
     news.to_json
   end
 
-  get "#{APP_PATH}/api/notifications" do
-    content_type :json
+  # get "#{APP_PATH}/api/notifications" do
+  #   content_type :json
 
-    # redirect login! unless session[:authenticated]
-    if is_logged?
-      profil = session[:current_user][:profil_actif][ 0 ]['type']
-      uai = session[:current_user][:profil_actif][ 0 ]['uai']
-      etb = Annuaire.get_etablissement(uai)
-      opts = { serveur: "#{APP_PATH}/faye",
-               profil: profil,
-               uai: uai,
-               uid: session[:current_user][:info].uid,
-               classes: etb['classes'].map { |c| c['libelle'] },
-               groupes: etb['groupes_eleves'].map { |g| g['libelle'] },
-               groupes_libres: etb['groupes_libres'].map { |g| g['libelle'] }
-             }
-      @ent_notifs = EntNotifs.new opts
-      #### @ent_notifs.notifier(:moi, "Salut tous le monde !")
-      @ent_notifs.my_channels.to_json
-    end
-  end
+  #   # redirect login! unless session[:authenticated]
+  #   if is_logged?
+  #     profil = session[:current_user][:profil_actif][ 0 ]['type']
+  #     uai = session[:current_user][:profil_actif][ 0 ]['uai']
+  #     etb = Annuaire.get_etablissement(uai)
+  #     opts = { serveur: "#{APP_PATH}/faye",
+  #              profil: profil,
+  #              uai: uai,
+  #              uid: session[:current_user][:info].uid,
+  #              classes: etb['classes'].map { |c| c['libelle'] },
+  #              groupes: etb['groupes_eleves'].map { |g| g['libelle'] },
+  #              groupes_libres: etb['groupes_libres'].map { |g| g['libelle'] }
+  #            }
+  #     @ent_notifs = EntNotifs.new opts
+  #     #### @ent_notifs.notifier(:moi, "Salut tous le monde !")
+  #     @ent_notifs.my_channels.to_json
+  #   end
+  # end
 
   #
   # Service liste des applications
