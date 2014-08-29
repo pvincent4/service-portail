@@ -32,7 +32,14 @@
 	    </a>
 	    <ul role="menu" class="dropdown-menu gris3" data-ng-show="current_user.is_logged">
 	      <li data-ng-repeat="item in menu">
-		<a href="{{item.lien}}" data-ng-style="{'background-image': 'url(\'' + prefix +'/bower_components/charte-graphique-laclasse-com/images/' + item.icone + '\')' }" >
+		<a data-ng-show="item.app"
+		   data-ui-sref="app-wrapper({ app: item.app })"
+		   data-ng-style="{'background-image': 'url(\'' + prefix +'/bower_components/charte-graphique-laclasse-com/images/' + item.icone + '\')' }" >
+		  {{item.texte}}
+		</a>
+		<a data-ng-show="item.lien"
+		   href="{{item.lien}}"
+		   data-ng-style="{'background-image': 'url(\'' + prefix +'/bower_components/charte-graphique-laclasse-com/images/' + item.icone + '\')' }" >
 		  {{item.texte}}
 		</a>
 	      </li>
