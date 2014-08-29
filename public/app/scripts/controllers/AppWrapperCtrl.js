@@ -10,7 +10,7 @@ angular.module( 'portailApp.controllers' )
 					 lien: APP_PATH + '/' },
 				       { icone: '12_aide.svg',
 					 texte: 'aide',
-					 lien: APP_PATH + '/' },
+					 app: 'aide' },
 				       { icone: '12_aide.svg',
 					 texte: 'se déconnecter',
 					 lien: APP_PATH + '/logout' } ];
