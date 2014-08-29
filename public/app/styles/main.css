@@ -199,8 +199,8 @@ body { font-family:'Open Sans', sans-serif;
 						  float:right }
 
 .rn-carousel-slide .news-content .pub-date { color:#ddd;
-                                             font-size: 0.8em;
-                                             float:right }
+					     font-size: 0.8em;
+					     float:right }
 
 .damier .case { float:left;
 		position:relative }
@@ -326,6 +326,9 @@ body { font-family:'Open Sans', sans-serif;
 				  width:100% }
 
 .user-menu li a.dropdown-toggle span { width:100% }
+
+.user-menu option,
+.user-menu optgroup { background-color: #323232; }
 
 .iframe { height:calc( 100% - 1.5em ) }
 
