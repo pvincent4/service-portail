@@ -35,17 +35,22 @@ module AuthenticationHelpers
   # récupération des données envoyée par CAS
   #
   def set_current_user( env )
-    session[:current_user] = { user: nil, info: nil }
-    if session[:user]
+    session[:current_user] = { user: nil,
+                               info: nil,
+                               is_logged: false }
+
+    user_annuaire = Annuaire.get_user( session[:extra][:uid] )
+
+    if session[:user] && !user_annuaire.nil?
       session[:current_user][:user] ||= session[:user]
       session[:current_user][:info] ||= session[:extra]
       session[:current_user][:info][:ENTStructureNomCourant] ||= session[:current_user][:ENTPersonStructRattachRNE]
 
       session[:current_user][:is_logged] = true
-      user_annuaire = Annuaire.get_user( session[:current_user][:info][:uid] )
       session[:current_user][:sexe] = user_annuaire['sexe']
       session[:current_user][:avatar] = ANNUAIRE[:url].gsub(/\/api\/app/, '') + user_annuaire['avatar']
-      #session[:current_user][:ENTStructureNomCourant] = user_annuaire['ENTStructureNomCourant']
+      # session[:current_user][:avatar] = ANNUAIRE[:url].gsub( %{/\/api\/app/}, '' ) + user_annuaire['avatar']
+      # session[:current_user][:ENTStructureNomCourant] = user_annuaire['ENTStructureNomCourant']
       session[:current_user][:profils] = user_annuaire['profils'].map.with_index do
         |profil, i|
         # renommage de champs
