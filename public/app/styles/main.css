@@ -126,11 +126,12 @@ body { font-family:'Open Sans', sans-serif;
 			 line-height:0;
 			 position:absolute }
 
-.aside .user .connect-register a,.aside .user-info a.logout { border:1px solid #fff;
-							      color:#fff;
-							      margin:.5em;
-							      padding:.5em;
-							      text-transform:uppercase }
+.aside .user .connect-register a,
+.aside .user-info a.logout { border:1px solid #fff;
+			     color:#fff;
+			     margin:.5em;
+			     padding:.5em;
+			     text-transform:uppercase }
 
 .aside .user-info a.logout { line-height:3 }
 
@@ -216,6 +217,7 @@ body { font-family:'Open Sans', sans-serif;
 .damier .petite.case .app-name { bottom:8%;
 				 font-weight:lighter;
 				 text-transform:lowercase;
+				 /* text-shadow: 0px 0px 3px #006; */
 				 left:0;
 				 position:absolute;
 				 width:100% }
@@ -434,6 +436,11 @@ div,html,body,.rn-carousel-slides { height:100% }
 }
 
 @media (max-height: 768px) {
-    .damier .petite.case { height: 33.333% }
+    .damier .petite.case { height: 25% }
+    .damier .petite.case a { background-position: center top }
+    .damier .petite.case .app-name { font-weight:normal }
     .damier .petite.case a span { font-size:1.1em }
+    .damier .presentation { font-size:1.6em }
+    .rn-carousel-slide .news-content h6 { font-size: 1.2em }
+    .rn-carousel-slide .news-content { font-size: 0.9em }
 }
