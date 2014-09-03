@@ -67,8 +67,18 @@
     :nom: ''
     :survol: ''
     :active: false
-  LPC:
+  PRONOTE:
     :index: 5
+    :icone: "bower_components/charte-graphique-laclasse-com/images/04_notesabsences.svg"
+    :couleur: rouge
+    :notifications: 0
+    :url_notif: ''
+    :nom: ''
+    :survol: ''
+    :url: '#'
+    :active: false
+  LPC:
+    :index: 6
     :icone: "bower_components/charte-graphique-laclasse-com/images/05_validationcompetences.svg"
     :couleur: rouge
     :notifications: 0
@@ -78,7 +88,7 @@
     :url: http://www.perdu.com
     :active: false
   CCNUM:
-    :index: 6
+    :index: 7
     :icone: "bower_components/charte-graphique-laclasse-com/images/06_thematiques.svg"
     :couleur: vert
     :notifications: 0
@@ -88,7 +98,7 @@
     :url: ''
     :active: false
   BLOGS:
-    :index: 7
+    :index: 8
     :icone: "bower_components/charte-graphique-laclasse-com/images/07_blogs.svg"
     :couleur: bleu
     :notifications: 0
@@ -98,7 +108,7 @@
     :url: http://www.perdu.com
     :active: false
   GAR:
-    :index: 8
+    :index: 9
     :icone: "bower_components/charte-graphique-laclasse-com/images/08_ressources.svg"
     :couleur: jaune
     :notifications: 0
@@ -108,7 +118,7 @@
     :url: http://www.perdu.com
     :active: false
   TROMBI:
-    :index: 9
+    :index: 10
     :icone: "bower_components/charte-graphique-laclasse-com/images/09_trombi.svg"
     :couleur: violet
     :notifications: 0
@@ -118,7 +128,7 @@
     :url: http://www.perdu.com
     :active: false
   SUIVIELV:
-    :index: 10
+    :index: 11
     :icone: "bower_components/charte-graphique-laclasse-com/images/10_suivi.svg"
     :couleur: bleu
     :notifications: 0
@@ -129,7 +139,7 @@
     :url: http://www.perdu.com
     :active: false
   Publi:
-    :index: 11
+    :index: 12
     :icone: "bower_components/charte-graphique-laclasse-com/images/11_publipostage.svg"
     :couleur: jaune
     :notifications: 0
@@ -139,7 +149,7 @@
     :url:
     :active: false
   AIDE:
-    :index: 12
+    :index: 13
     :icone: "bower_components/charte-graphique-laclasse-com/images/12_aide.svg"
     :couleur: rouge
     :notifications: 0
@@ -149,7 +159,7 @@
     :survol: 'Aide en ligne'
     :url: http://www.perdu.com
   ADMIN:
-    :index: 13
+    :index: 14
     :icone: "bower_components/charte-graphique-laclasse-com/images/13_admin.svg"
     :couleur: jaune
     :notifications: 0
@@ -157,16 +167,6 @@
     :nom: ''
     :survol: ''
     :url: http://www.perdu.com
-    :active: false
-  PRONOTE:
-    :index: 14
-    :icone: "bower_components/charte-graphique-laclasse-com/images/04_notesabsences.svg"
-    :couleur: rouge
-    :notifications: 0
-    :url_notif: ''
-    :nom: ''
-    :survol: ''
-    :url: '#'
     :active: false
   empty2:
     :index: 15
