@@ -13,7 +13,7 @@ angular.module( 'portailApp.controllers' )
 					 app: 'aide' },
 				       { icone: '12_aide.svg',
 					 texte: 'se déconnecter',
-					 lien: APP_PATH + '/logout' } ];
+					 lien: '/logout' } ];
 
 		       currentUser.get().then( function ( response ) {
 			   $scope.current_user = response;
