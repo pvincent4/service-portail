@@ -20,7 +20,8 @@
 	"ng-flow": "latest",
 	"jquery.gritter": "latest",
 	"angular-animate": "latest",
-	"ngAnimate": "latest"
+	"ngAnimate": "latest",
+	"ngFitText": "latest"
     },
     "devDependencies": {
 	"angular-mocks": "latest",

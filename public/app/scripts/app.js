@@ -11,7 +11,8 @@ angular.module( 'portailApp', [ 'portailApp.controllers',
 				'ui.bootstrap',
 				'angular-carousel',
 				'flow',
-				'ngAnimate' ] )
+				'ngAnimate',
+				'ngFitText' ] )
     .config( [ '$stateProvider', '$urlRouterProvider', 'APP_PATH',
 	       function ( $stateProvider, $urlRouterProvider, APP_PATH ) {
 		   $urlRouterProvider.otherwise( '/' );
