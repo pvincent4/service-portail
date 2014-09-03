@@ -227,8 +227,12 @@ body { font-family:'Open Sans', sans-serif;
 .damier .petite.case img { height:66%;
 			   width:100%; }
 .logolaclasse h3,
-.damier .petite.case .app-name { height:33%;
-				 width:100%; }
+.damier .petite.case .app-name { width:100%;
+				 overflow: hidden; }
+.logolaclasse h3 { max-height:33%; }
+.damier .petite.case .app-name { max-height:26.5%;
+				 margin-top:6%; }
+
 .logolaclasse h3,
 .damier .petite.case a span { font-size:1.5em;
 			      font-weight:lighter }
