@@ -4,7 +4,7 @@
        data-ng-show="app.active === true"
        title="{{ app.survol }}">
       <span class="compteur-notification orange-brillant" data-ng-show="app.notifications > 0">{{app.notifications}}</span>
-      <img data-ng-src="{{prefix}}/{{app.icone}}" />
+      <img data-ng-src="{{prefix}}/{{app.icone}}" data-ng-show="app.icone"/>
       <span class="app-name">{{ app.nom }}</span>
     </a>
   </div>
