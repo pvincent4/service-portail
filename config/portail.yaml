@@ -1,12 +1,14 @@
 :news_feed:
     -
 	:titre: "Editoriaux d'Erasme"
-	:flux: http://ent-laclasse.blogs.laclasse.com/category/editos/feed/
+	:flux: http://erasme-parc-dactivites-innovantes.blogs.dev.laclasse.com/feed/
+	#http://erasme.blogs.laclasse.com/feed/
 	:icone: ''
 	:nb: 1
     -
 	:titre: "blog du projet ENT"
-	:flux: http://ent-laclasse.blogs.laclasse.com/feed/
+	:flux: http://test.blogs.dev.laclasse.com/feed/
+	#http://ent-laclasse.blogs.laclasse.com/feed/
 	:icone: ''
 	:nb: 3
 #    -
@@ -167,7 +169,7 @@
     :nom: ''
     :survol: ''
     :url: '#'
-    :active: false
+    :active: true
   empty2:
     :index: 15
     :icone: ''
@@ -177,7 +179,7 @@
     :nom: ''
     :survol: ''
     :url: '#'
-    :active: false
+    :active: true
   empty3:
     :index: 16
     :icone: ''
@@ -187,4 +189,4 @@
     :nom: ''
     :survol: ''
     :url: '#'
-    :active: false
+    :active: true
