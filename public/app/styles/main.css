@@ -450,6 +450,7 @@ svg * { fill:#fff }
 }
 
 @media (max-height: 768px) {
+    .damier .logos img { margin: 5% auto 0; }
     .damier .petite.case { height: 25% }
     .damier .petite.case a { background-position: center top }
     .damier .petite.case .app-name { font-weight:normal }
