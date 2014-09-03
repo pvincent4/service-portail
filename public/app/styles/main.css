@@ -204,9 +204,9 @@ body { font-family:'Open Sans', sans-serif;
 .damier .case { float:left;
 		position:relative }
 
-.logolaclasse a h3 { font-size: 2.6em;
+.logolaclasse a h3 { font-size: 2em;
 		     font-weight: bold;
-		     line-height: 2.6em; }
+		     line-height: 2em; }
 
 .logolaclasse img,
 .logolaclasse h3,
