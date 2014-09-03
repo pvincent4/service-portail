@@ -318,7 +318,7 @@ body { font-family:'Open Sans', sans-serif;
 
 .user-menu li a:hover { background-color:#16161d;
 			background-repeat: no-repeat;
-			color:#16161d; }
+			color:#fff; }
 
 .user-menu li a * { float:left }
 
