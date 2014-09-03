@@ -38,7 +38,7 @@
       <li data-ng-repeat="news in newsfeed" data-ng-style="{'background-image': news.image !== null ? 'url(\'' + news.image + '\')' : '' }">
 	<div class="news-content">
 	  <span class="pub-date">{{ news.pubDate }}</span>
-	  <a href="{{ news.link }}">
+	  <a href="{{ news.link }}" target="_blank">
 	      <h6>{{ news.title }}</h6>
 	  </a>
 	  <span data-ng-bind-html="news.trusted_description"></span>
