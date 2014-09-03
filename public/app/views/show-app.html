@@ -24,7 +24,6 @@
 		      data-ng-options="profil as profil.etablissement + ' : ' + profil.nom group by profil.etablissement for profil in current_user.profils track by profil.index" >
 	      </select>
 	    </div>
-	    <span class="glyphicon glyphicon-chevron-down" data-ng-show="current_user.is_logged"></span>
 	    <a href="{{prefix}}/login" data-ng-hide="current_user.is_logged">connectez-vous</a>
 	    <a class="dropdown-toggle" data-ng-show="current_user.is_logged">
 	      <h6>{{current_user['info']['LaclassePrenom']}} {{current_user['info']['LaclasseNom']}}</h6>
