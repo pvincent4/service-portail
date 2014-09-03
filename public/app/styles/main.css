@@ -273,7 +273,7 @@ body { font-family:'Open Sans', sans-serif;
 .laclasse-com span { display:inline-block;
 		     float:left;
 		     color:#fff;
-		     padding-left:1em }
+		     min-width:9em; }
 
 .user-menu { color:#fff;
 	     padding-right:1em;
@@ -281,7 +281,8 @@ body { font-family:'Open Sans', sans-serif;
 
 .user-menu .profil-select-wrapper { float:left;
 				    overflow:hidden;
-				    text-align:left }
+				    text-align:left;
+				    min-width:7em; }
 .user-menu .profil-select-wrapper span { padding-left:1em }
 .user-menu .glyphicon { float:left;
 			line-height:1.5em;

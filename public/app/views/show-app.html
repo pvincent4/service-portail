@@ -1,21 +1,21 @@
 <div id="app-wrapper">
-  <div class="row en-tete">
+  <div class="en-tete">
 
     <nav class="navbar navbar-default" role="navigation">
       <div class="container">
 
 	<!-- Collect the nav links, forms, and other content for toggling -->
-	<div class="collapse navbar-collapse">
+	<div class="collapse navbar-collapse bleu">
 
-	  <a class="laclasse-com gris1 pull-left col-xs-4 col-sm-3 col-md-2 col-lg-2" href="{{prefix}}/">
+	  <a class="laclasse-com gris1 pull-left" href="{{prefix}}/">
 	    <div class="petit-logo gris4" data-ng-style="{'background-image': 'url(\'' + prefix + '/bower_components/charte-graphique-laclasse-com/images/logolaclasse.svg\')' }" >
 	    </div>
 	    <span>laclasse.com</span>
 	  </a>
 
-	  <span class="titre col-xs-2 col-sm-5 col-md-6 col-lg-7 bleu">{{app.nom}}</span>
+	  <span class="titre">{{app.nom}}</span>
 
-	  <div class="user-menu dropdown col-xs-6 col-sm-4 col-md-4 col-lg-3 gris4 pull-right">
+	  <div class="user-menu dropdown gris4 pull-right">
 	    <div class="profil-select-wrapper">
 	      <span data-ng-hide="current_user.is_logged">profil public</span>
 	      <select data-ng-show="current_user.is_logged"
