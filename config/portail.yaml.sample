@@ -1,33 +1,14 @@
 :news_feed:
-    -
-	:titre: "Editoriaux d'Erasme"
-	:flux: http://ent-laclasse.blogs.laclasse.com/category/editos/feed/
-	:icone: ''
-	:nb: 1
-    -
-	:titre: "blog du projet ENT"
-	:flux: http://ent-laclasse.blogs.laclasse.com/feed/
-	:icone: ''
-	:nb: 3
-#    -
-#        :titre: "Rhone.fr"
-#        :flux: http://http://edurhone.blogs.laclasse.com/feed/
-#        :icone: ''
-#        :nb: 1
-
-:apps_publiques:
-    -
-	:id: 'thematiques'
-	:nom: 'thematiques'
-	:url: 'http://www.laclasse.com//v25/statique/thematiques/presentation.html'
-    -
-	:id: 'contact'
-	:nom: 'contact'
-	:url: 'http://perdu.com'
-    -
-	:id: 'aide'
-	:nom: 'aide'
-	:url: 'http://perdu.com'
+   -
+    :titre: "Editoriaux d'Erasme"
+    :flux: http://ent-laclasse.blogs.laclasse.com/category/editos/feed/
+    :icone: ''
+    :nb: 1
+   -
+    :titre: "blog du projet ENT"
+    :flux: http://ent-laclasse.blogs.laclasse.com/feed/
+    :icone: ''
+    :nb: 3
 
 :apps_tiles:
   MAIL:
@@ -80,7 +61,7 @@
   LPC:
     :index: 6
     :icone: "bower_components/charte-graphique-laclasse-com/images/05_validationcompetences.svg"
-    :couleur: rouge
+    :couleur: vert
     :notifications: 0
     :url_notif: ''
     :nom: ''
@@ -90,7 +71,7 @@
   CCNUM:
     :index: 7
     :icone: "bower_components/charte-graphique-laclasse-com/images/06_thematiques.svg"
-    :couleur: vert
+    :couleur: bleu
     :notifications: 0
     :url_notif: ''
     :nom: ''
@@ -100,7 +81,7 @@
   BLOGS:
     :index: 8
     :icone: "bower_components/charte-graphique-laclasse-com/images/07_blogs.svg"
-    :couleur: bleu
+    :couleur: jaune
     :notifications: 0
     :url_notif: ''
     :nom: ''
@@ -110,7 +91,7 @@
   GAR:
     :index: 9
     :icone: "bower_components/charte-graphique-laclasse-com/images/08_ressources.svg"
-    :couleur: jaune
+    :couleur: violet
     :notifications: 0
     :url_notif: ''
     :nom: ''
@@ -120,7 +101,7 @@
   TROMBI:
     :index: 10
     :icone: "bower_components/charte-graphique-laclasse-com/images/09_trombi.svg"
-    :couleur: violet
+    :couleur: bleu
     :notifications: 0
     :url_notif: ''
     :nom: ''
@@ -130,7 +111,7 @@
   SUIVIELV:
     :index: 11
     :icone: "bower_components/charte-graphique-laclasse-com/images/10_suivi.svg"
-    :couleur: bleu
+    :couleur: jaune
     :notifications: 0
     :url_notif: ''
     :nom: ''
@@ -138,10 +119,10 @@
     :lien: ''
     :url: http://www.perdu.com
     :active: false
-  Publi:
+  PUBLI:
     :index: 12
     :icone: "bower_components/charte-graphique-laclasse-com/images/11_publipostage.svg"
-    :couleur: jaune
+    :couleur: rouge
     :notifications: 0
     :url_notif: ''
     :nom: ''
@@ -151,7 +132,7 @@
   AIDE:
     :index: 13
     :icone: "bower_components/charte-graphique-laclasse-com/images/12_aide.svg"
-    :couleur: rouge
+    :couleur: jaune
     :notifications: 0
     :url_notif: ''
     :active: true
@@ -161,7 +142,7 @@
   ADMIN:
     :index: 14
     :icone: "bower_components/charte-graphique-laclasse-com/images/13_admin.svg"
-    :couleur: jaune
+    :couleur: rouge
     :notifications: 0
     :url_notif: ''
     :nom: ''
@@ -177,14 +158,29 @@
     :nom: ''
     :survol: ''
     :url: '#'
-    :active: false
+    :active: true
   empty3:
     :index: 16
     :icone: ''
-    :couleur: orange
+    :couleur: violet
     :notifications: 0
     :url_notif: ''
     :nom: ''
     :survol: ''
     :url: '#'
-    :active: false
+    :active: true
+
+:apps_publiques:
+   -
+    :id: 'thematiques'
+    :nom: 'thematiques'
+    :url: 'http://perdu.com'
+   -
+    :id: 'contact'
+    :nom: 'contact'
+    :url: 'http://perdu.com'
+   -
+    :id: 'aide'
+    :nom: 'aide'
+    :url: 'http://perdu.com'
+
