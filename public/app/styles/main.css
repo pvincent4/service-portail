@@ -281,7 +281,6 @@ body { font-family:'Open Sans', sans-serif;
 
 .user-menu .profil-select-wrapper { float:left;
 				    overflow:hidden;
-				    width:calc( 12em - 15px );
 				    text-align:left }
 .user-menu .profil-select-wrapper span { padding-left:1em }
 .user-menu .glyphicon { float:left;
@@ -289,12 +288,12 @@ body { font-family:'Open Sans', sans-serif;
 			padding:0;
 			width:12px }
 .user-menu .dropdown-toggle .glyphicon { float:right }
-.user-menu select { -moz-appearance:none;
+.user-menu select { padding-right: 3px;
+		    -moz-appearance:none;
 		    -webkit-appearance:none;
 		    appearance:none;
 		    background:transparent;
-		    border:0;
-		    width:12em }
+		    border:0; }
 
 .user-menu a { color:#fff;
 	       cursor:pointer;
