@@ -230,7 +230,8 @@ body { font-family:'Open Sans', sans-serif;
 .damier .petite.case .app-name { width:100%;
 				 overflow: hidden; }
 .logolaclasse h3 { max-height:33%; }
-.damier .petite.case .app-name { max-height:26.5%;
+.damier .petite.case .app-name { line-height: 1.1em;
+				 max-height:2.2em;
 				 margin-top:6%; }
 
 .logolaclasse h3,
