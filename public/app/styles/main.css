@@ -79,22 +79,25 @@ body {
 }
 
 
-.nav,.pagination,.carousel,.panel-title a { cursor:pointer }
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600italic,600,700,700italic,800,800italic);
+
+.nav,
+.pagination,
+.carousel,
+.panel-title a { cursor:pointer }
 
 #flash { display:none }
-
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600italic,600,700,700italic,800,800italic);
 
 body { font-family:'Open Sans', sans-serif;
        padding:0 }
 
 .container { margin:0;
-		   max-width:100%;
-		   padding:0;
-		   width:100% }
+	     max-width:100%;
+	     padding:0;
+	     width:100% }
 
 .container * { margin:0;
-		     padding:0 }
+	       padding:0 }
 
 .aside { background-color:#16161d;
 	 box-shadow:5px 0 8px 0 rgba(0,0,0,0.5);
@@ -115,10 +118,11 @@ body { font-family:'Open Sans', sans-serif;
 		    position:absolute;
 		    width:100% }
 
-.logolaclasse h3,.aside .user .user-info h3 { color:#fff;
-					      font-weight:700;
-					      padding:0;
-					      text-decoration:none }
+.logolaclasse h3,
+.aside .user .user-info h3 { color:#fff;
+			     font-weight:700;
+			     padding:0;
+			     text-decoration:none }
 
 .aside .user-info span { background:transparent;
 			 bottom:0;
@@ -161,11 +165,11 @@ body { font-family:'Open Sans', sans-serif;
 		  text-decoration:none;
 		  width:100% }
 
-.logolaclasse a h3 { font-weight:900;
-		     bottom:0;
-		     position:absolute;
-		     text-align:center;
-		     width:100% }
+/* .logolaclasse a h3 { font-weight:900; */
+/*		     bottom:0; */
+/*		     position:absolute; */
+/*		     text-align:center; */
+/*		     width:100% } */
 
 .aside .avatar { background-color:#aff }
 
@@ -206,21 +210,28 @@ body { font-family:'Open Sans', sans-serif;
 .damier .case { float:left;
 		position:relative }
 
-.logolaclasse a,
-.damier .petite.case a { background-position:center center;
-			 background-repeat:no-repeat;
-			 background-size:auto 66% }
+/* .logolaclasse a, */
+/* .damier .petite.case a { background-position:center center; */
+/*			 background-repeat:no-repeat; */
+/*			 background-size:auto 66% } */
 
+.logolaclasse a h3 { font-size: 2.6em;
+		     font-weight: bold;
+		     line-height: 2.6em; }
+
+.logolaclasse img,
+.logolaclasse h3,
+.damier .petite.case img,
+.damier .petite.case .app-name { float: left; }
+.logolaclasse img,
+.damier .petite.case img { height:66%;
+			   width:100%; }
+.logolaclasse h3,
+.damier .petite.case .app-name { height:33%;
+				 width:100%; }
+.logolaclasse h3,
 .damier .petite.case a span { font-size:1.5em;
 			      font-weight:lighter }
-
-.damier .petite.case .app-name { bottom:8%;
-				 font-weight:lighter;
-				 text-transform:lowercase;
-				 /* text-shadow: 0px 0px 3px #006; */
-				 left:0;
-				 position:absolute;
-				 width:100% }
 
 .damier .petite.case a .compteur-notification { border-radius:1em;
 						color:#fff;
@@ -344,7 +355,9 @@ body { font-family:'Open Sans', sans-serif;
 .user-profil *,
 .user-profil a { color:#16161d }
 
-.user-profil h1,.user-profil h2,.user-profil h3 { line-height:1.5em }
+.user-profil h1,
+.user-profil h2,
+.user-profil h3 { line-height:1.5em }
 
 .user-profil h3 { color:#b2b2b2;
 		  font-weight:bolder }
@@ -388,7 +401,7 @@ body { font-family:'Open Sans', sans-serif;
 		     color:#000 }
 
 .user-profil accordion .panel-body .row div.avatar { padding-top:3.8em;
-							   text-align:center }
+						     text-align:center }
 
 .user-profil .avatar svg { background:blue;
 			   fill:#FF0 }
@@ -410,13 +423,20 @@ body { font-family:'Open Sans', sans-serif;
 			     padding:.5em 2em;
 			     text-transform:uppercase }
 
-html,#app-wrapper { overflow:hidden }
+html,
+#app-wrapper { overflow:hidden }
 
-.panel-group div,.user-profil accordion,.user-profil accordion div { height:auto }
+.panel-group div,
+.user-profil accordion,
+.user-profil accordion div { height:auto }
 
-div,html,body,.rn-carousel-slides { height:100% }
+div,
+html,
+body,
+.rn-carousel-slides { height:100% }
 
-.aside .header,.damier .petite.case { height:25% }
+.aside .header,
+.damier .petite.case { height:25% }
 
 .damier .grande.case { height:75% }
 .damier .presentation { color:#fff;
@@ -426,7 +446,7 @@ div,html,body,.rn-carousel-slides { height:100% }
 .damier .logos img { display:block;
 		     margin:20% auto 0 }
 
-/* svg * { fill:#fff } */
+svg * { fill:#fff }
 
 /* CSS dépendant d'une résolution */
 @media screen and (min-width: 992px) {
