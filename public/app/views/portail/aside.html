@@ -8,7 +8,7 @@
 
   <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 user" data-ng-style="{ 'background-image': 'url(\'' + avatar + '\')' }">
 
-    <span class="user-info" data-ng-show="current_user.is_logged">
+    <span class="user-info" data-ng-if="current_user.is_logged">
       <span>
 	<!-- <a data-ui-sref="portail.user"> -->
 	<h3>{{current_user['info']['LaclassePrenom']}} {{current_user['info']['LaclasseNom']}}</h3>
@@ -24,7 +24,7 @@
       </span>
     </span>
 
-    <span class="connect-register" data-ng-hide="current_user.is_logged">
+    <span class="connect-register" data-ng-if="!current_user.is_logged">
       <a href="{{prefix}}/login" title="Connexion avec Laclasse.com">se connecter</a>
       <!-- <a href="{{prefix}}/register" title="Création de compte avec Laclasse.com">s'inscrire</a> -->
     </span>
