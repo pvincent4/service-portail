@@ -439,7 +439,7 @@ body,
 .damier .presentation em { font-weight:bolder }
 .damier .logos img { display:block;
 		     margin:20% auto 0;
-		     max-width: 80%; }
+		     max-width: 50%; }
 
 svg * { fill:#fff }
 
