@@ -244,7 +244,7 @@ body { font-family:'Open Sans', sans-serif;
 		  height:1.5em;
 		  max-height:1.5em;
 		  min-height:1.5em }
-
+.navbar-default { box-shadow:0; }
 .titre { font-weight:bolder;
 	 padding-left:1em }
 
