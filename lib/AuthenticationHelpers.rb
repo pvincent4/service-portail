@@ -13,7 +13,7 @@ module AuthenticationHelpers
   def login!( route )
     unless route.empty?
       route += '?' + env['QUERY_STRING'] unless env['QUERY_STRING'].empty?
-      route = URI.escape(env['rack.url_scheme'] + '://' + env['HTTP_HOST'] + route)
+      route = URI.escape(request.scheme + '://' + env['HTTP_HOST'] + route)
       redirect  APP_PATH + "/auth/cas?url=#{URI.encode( route )}"
     end
     redirect APP_PATH + '/auth/cas'
