@@ -278,10 +278,7 @@ body { font-family:'Open Sans', sans-serif;
 				    text-align:left;
 				    min-width:7em; }
 .user-menu .profil-select-wrapper span { padding-left:1em }
-.user-menu .glyphicon { float:left;
-			line-height:1.5em;
-			padding:0;
-			width:12px }
+.user-menu .glyphicon { line-height:1.5em; }
 .user-menu .dropdown-toggle .glyphicon { float:right }
 .user-menu select { padding-right: 3px;
 		    -moz-appearance:none;
