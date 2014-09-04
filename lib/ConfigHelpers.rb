@@ -4,7 +4,7 @@ module ConfigHelpers
   attr_accessor :config
 
   def config
-    @config = YAML.load_file './config/portail.yaml' if @config.nil?
+    @config = JSON.parse( File.read( './config/portail.json' ), symbolize_names: true ) if @config.nil?
 
     @config
   end
