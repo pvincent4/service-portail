@@ -336,8 +336,12 @@ body { font-family:'Open Sans', sans-serif;
 .user-menu optgroup { background-color: #323232; }
 
 .iframe { height:calc( 100% - 1.5em ) }
+.iframe.ios { overflow: scroll;
+	      -webkit-overflow-scrolling: touch; }
 
 .iframe iframe { border:0;
+		 padding: 0;
+		 margin: 0;
 		 height:100%;
 		 width:100% }
 
