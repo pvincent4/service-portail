@@ -56,8 +56,10 @@
 
   </div>
 
-  <div class="row iframe">
-    <iframe data-ng-src="{{app.url}}" frameBorder="0">
+  <div class="row iframe" data-ng-class="{'ios': iOS}">
+    <iframe data-ng-src="{{app.url}}"
+	    frameBorder="0"
+	    scrolling="{{iOS ? 'no': 'yes'}}">
     </iframe>
   </div>
 </div>

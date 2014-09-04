@@ -4,6 +4,7 @@ angular.module( 'portailApp.controllers' )
     .controller( 'AppWrapperCtrl',
 		 [ '$scope', '$http', '$stateParams', '$sce', 'currentUser', 'APP_PATH',
 		   function ( $scope, $http, $stateParams, $sce, currentUser, APP_PATH ) {
+		       $scope.iOS = ( navigator.userAgent.match( /iPad/i ) !== null ) || ( navigator.userAgent.match( /iPhone/i ) !== null );
 		       $scope.prefix = APP_PATH;
 		       $scope.menu = [ { icone: 'logolaclasse.svg',
 					 texte: 'retour au portail',
