@@ -155,7 +155,7 @@ class SinatraApp < Sinatra::Base
     user_applications
       .reject { |a| a[ 'etablissement_code_uai' ] != uai_courant }
       .each { |application|
-      config_apps = config[ :apps_tiles ][ application[ 'id' ] ]
+      config_apps = config[ :apps_tiles ][ application[ 'id' ].to_sym ]
       unless config_apps.nil?
         # On regarde si le profils actif de l'utilisateur comporte le code détablissement pour lequel l'application est activée
         config_apps[ :active ] = application[ 'active' ]
