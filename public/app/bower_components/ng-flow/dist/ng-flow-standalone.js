@@ -1260,7 +1260,7 @@
         (this.fileObj.file.mozSlice ? 'mozSlice' :
           (this.fileObj.file.webkitSlice ? 'webkitSlice' :
             'slice')));
-      var bytes = this.fileObj.file[func](this.startByte, this.endByte);
+      var bytes = this.fileObj.file[func](this.startByte, this.endByte, this.fileObj.file.type);
 
       // Set up request and listen for event
       this.xhr = new XMLHttpRequest();
@@ -1389,7 +1389,7 @@
         each(query, function (v, k) {
           data.append(k, v);
         });
-        data.append(this.flowObj.opts.fileParameterName, blob);
+        data.append(this.flowObj.opts.fileParameterName, blob, this.fileObj.file.name);
       }
 
       this.xhr.open(method, target, true);
@@ -1506,7 +1506,7 @@
    * Library version
    * @type {string}
    */
-  Flow.version = '2.6.1';
+  Flow.version = '2.6.2';
 
   if ( typeof module === "object" && module && typeof module.exports === "object" ) {
     // Expose Flow as module.exports in loaders that implement the Node
@@ -1596,9 +1596,11 @@ angular.module('flow.provider', [])
 angular.module('flow.init', ['flow.provider'])
   .controller('flowCtrl', ['$scope', '$attrs', '$parse', 'flowFactory',
   function ($scope, $attrs, $parse, flowFactory) {
-    // create the flow object
+
     var options = angular.extend({}, $scope.$eval($attrs.flowInit));
-    var flow = flowFactory.create(options);
+
+    // use existing flow object or create a new one
+    var flow  = $scope.$eval($attrs.flowObject) || flowFactory.create(options);
 
     flow.on('catchAll', function (eventName) {
       var args = Array.prototype.slice.call(arguments);
