@@ -9,15 +9,41 @@
         <div data-ui-view="main"></div>
 
     </div>
-    
+
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" data-ng-if="!current_user.is_logged">
         <!-- Page publique -->
-        <div>
-            <img data-ng-src="{{prefix}}/bower_components/charte-graphique-laclasse-com/images/logolaclasse.svg" />
+        <div class="row">
+            <img class="logo filtered-bg" data-ng-src="/portail/bower_components/charte-graphique-laclasse-com/images/logolaclasse.svg" />
         </div>
-        <style>
-           body { background-color: #1aaacc; }
-        </style>
+        <div class="row title filtered-fg">
+            <span class="nomENT">laclasse.com</span><br />
+            <span class="descENT">Espace Numérique de Travail<br />
+                des collèges et écoles du Rhône</span>
+        </div>
+        <div class="row connexion">
+            <span class="bienvenue">Bienvenue !</span><br />
+            <button class="btn btn-sm btn-info" type="submit">
+                se connecter
+            </button>
+        </div>
+        <div class="row footer">
+        </div>
     </div>
-
+    <!--
+    TODO : 
+    - Enlever "portail" en dur dans l'url des images (La variable 'prefix' est vide ??)
+    - Rendre les textes proportionnels au viewport.
+    -->
+    <style>
+        body { background-color: #1aaacc; color:white; }
+        .filtered-bg { opacity: 0.20; filter: alpha(opacity=20); }
+        .filtered-fg { opacity: 0.50; filter: alpha(opacity=50); }
+        .logo { width:55%; position:absolute; top:-9.9%; left:-5.6%; }
+        .title { position:absolute; top:77%; left:10%; text-align: center; }
+        .nomENT { font-weight: bold; font-size: 2em;}
+        .descENT { font-size: 1.3em;}
+        .connexion { position:absolute; top:30%; left:60%; text-align: center; }
+        .connexion .btn-sm {font-size: 1.4em; font-variant: small-caps; padding-left: 20px; padding-right: 20px; border: 1px solid white;}
+        .bienvenue {font-size: 3em;font-weight:bolder; }
+    </style>
 </div>
