@@ -49,9 +49,25 @@
         .descENT { font-size: 1.3em;}
         .connexion { position:absolute; top:30%; left:60%; text-align: center; }
         .connexion .btn-sm {font-size: 1.4em; font-variant: small-caps; padding-left: 20px; padding-right: 20px; border: 1px solid white;}
-        .bienvenue {font-size: 3em;font-weight:bolder; }
+        .connexion .bienvenue {font-size: 3em;font-weight:bolder; }
         .footer {text-align: center;}
         .footer .rhone { width:25%; position:absolute; top:87%; left:40%; right:40%;}
         .footer .acad { width:10%; position:absolute; top:89%; right:1%; }
+
+        /* CSS dépendant d'une résolution */
+        @media (max-width: 480px) {
+            .connexion {left:50%;}
+            .connexion .bienvenue {font-size: 1.4em;}
+            .title { top:50%; left: 5%; }
+            .title .nomENT {font-size: 1.1em;}
+            .title .descENT {font-size: 0.5em;}
+            .connexion .btn-sm{font-size: 0.5em;}
+        }
+        @media (max-height: 480px) {
+            .connexion .bienvenue {font-size: 1.5em;}
+            .title .nomENT {font-size: 1.1em;}
+            .title .descENT {font-size: 0.5em;}
+            .connexion .btn-sm{font-size: 0.9em;}
+        }
     </style>
 </div>
