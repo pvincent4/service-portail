@@ -10,8 +10,9 @@
 
     </div>
 
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" data-ng-if="!current_user.is_logged">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 page_publique" data-ng-if="!current_user.is_logged">
         <!-- Page publique -->
+        current_user.is_logged={{current_user.is_logged}}
         <div class="row">
             <img class="logo filtered-bg" data-ng-src="/portail/bower_components/charte-graphique-laclasse-com/images/logolaclasse.svg" />
         </div>
@@ -36,38 +37,6 @@
     <!--
     TODO : 
     - Enlever "portail" en dur dans l'url des images (La variable 'prefix' est vide ??)- externaliser la CSS
-    - externaliser la CSS
     - Rendre les textes proportionnels au viewport.
     -->
-    <style>
-        body { background-color: #1aaacc; color:white; }
-        .filtered-bg { opacity: 0.20; filter: alpha(opacity=20); }
-        .filtered-fg { opacity: 0.50; filter: alpha(opacity=50); }
-        .logo { width:55%; position:absolute; top:-9.7%; left:-5.6%; }
-        .title { position:absolute; top:72%; left:10%; text-align: center; }
-        .nomENT { font-weight: bold; font-size: 2em;}
-        .descENT { font-size: 1.3em;}
-        .connexion { position:absolute; top:30%; left:60%; text-align: center; }
-        .connexion .btn-sm {font-size: 1.4em; font-variant: small-caps; padding-left: 20px; padding-right: 20px; border: 1px solid white;}
-        .connexion .bienvenue {font-size: 3em;font-weight:bolder; }
-        .footer {text-align: center;}
-        .footer .rhone { width:25%; position:absolute; top:87%; left:40%; right:40%;}
-        .footer .acad { width:10%; position:absolute; top:89%; right:1%; }
-
-        /* CSS dépendant d'une résolution */
-        @media (max-width: 480px) {
-            .connexion {left:50%;}
-            .connexion .bienvenue {font-size: 1.4em;}
-            .title { top:50%; left: 5%; }
-            .title .nomENT {font-size: 1.1em;}
-            .title .descENT {font-size: 0.5em;}
-            .connexion .btn-sm{font-size: 0.5em;}
-        }
-        @media (max-height: 480px) {
-            .connexion .bienvenue {font-size: 1.5em;}
-            .title .nomENT {font-size: 1.1em;}
-            .title .descENT {font-size: 0.5em;}
-            .connexion .btn-sm{font-size: 0.9em;}
-        }
-    </style>
 </div>
