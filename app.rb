@@ -63,8 +63,7 @@ class SinatraApp < Sinatra::Base
 
     return { user: '',
              info: {},
-             is_logged: false }.to_json unless session[:authenticated]
-
+             is_logged: false }.to_json unless is_logged? 
     session[:current_user].to_json
   end
 
@@ -121,7 +120,7 @@ class SinatraApp < Sinatra::Base
   # get "#{APP_PATH}/api/notifications" do
   #   content_type :json
 
-  #   # redirect login! unless session[:authenticated]
+  #   # redirect login! unless is_logged?
   #   if is_logged?
   #     profil = session[:current_user][:profil_actif][ 0 ]['type']
   #     uai = session[:current_user][:profil_actif][ 0 ]['uai']
@@ -146,7 +145,7 @@ class SinatraApp < Sinatra::Base
   get "#{APP_PATH}/api/apps" do
     content_type :json
 
-    return config[ :apps_publiques ].to_json unless session[:authenticated]
+    return config[ :apps_publiques ].to_json unless is_logged?
 
     user_applications = Annuaire.get_user( session[:current_user][:info][:uid] )['applications']
     uai_courant = session[:current_user][:profil_actif][ 0 ]['uai']
@@ -199,7 +198,7 @@ class SinatraApp < Sinatra::Base
   end
 
   get "#{APP_PATH}/protected" do
-    throw( :halt, [ 401, "Not authorized\n" ] ) unless session[:authenticated]
+    throw( :halt, [ 401, "Not authorized\n" ] ) unless is_logged?
     erb :auth_protected
   end
 
