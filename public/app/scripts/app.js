@@ -19,7 +19,8 @@ angular.module( 'portailApp', [ 'portailApp.controllers',
 
 		   $stateProvider
 		       .state( 'portail', {
-			   templateUrl: APP_PATH + '/views/portail/index.html'
+			   templateUrl: APP_PATH + '/views/portail/index.html',
+                           controller: 'PortailPublicCtrl'
 		       } )
 		       .state( 'portail.apps', {
 			   url: '/',
