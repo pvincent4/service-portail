@@ -459,3 +459,4 @@ svg * { fill:#fff }
 .page_publique .footer .rhone { width:25%; position:absolute; top:87%; left:40%; right:40%;}
 .page_publique .footer .acad { width:10%; position:absolute; top:89%; right:1%; }
 .page_publique .annonce { text-align: left; padding:2%; margin:5%; height:30%; overflow-y: auto; }
+.page_publique .aide {position:absolute; right:1%; width:5%;}
