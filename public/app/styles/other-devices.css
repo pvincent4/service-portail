@@ -1,0 +1,42 @@
+/*
+CSS d'adatation des pages et des éléemnts aux différents devices
+/* 
+    Created on : 11 sept. 2014, 10:42:44
+    Author     : pgl
+*/
+
+/* CSS dépendant d'une résolution pour la page de splash */
+@media (max-width: 480px) {
+    .page_publique .connexion {left:50%;}
+    .page_publique .connexion .bienvenue {font-size: 1.4em;}
+    .page_publique .title { top:50%; left: 5%; }
+    .page_publique .title .nomENT {font-size: 1.1em;}
+    .page_publique .title .descENT {font-size: 0.5em;}
+    .page_publique .connexion .btn-sm{font-size: 0.5em;}
+    .page_publique .annonce {font-size: 0.5em;}
+}
+@media (max-height: 480px) {
+    .page_publique .connexion .bienvenue {font-size: 1.5em;}
+    .page_publique .title .nomENT {font-size: 1.1em;}
+    .page_publique .title .descENT {font-size: 0.5em;}
+    .page_publique .connexion .btn-sm{font-size: 0.9em;}
+    .page_publique .annonce {font-size: 0.5em;}
+}
+
+
+/* CSS dépendant d'une résolution pour le damier d'applications */
+@media screen and (min-width: 992px) {
+    .aside .slider { height:75% }
+    .aside .user .connect-register a { margin:20% auto 0 }
+}
+
+@media (max-height: 768px) {
+    .damier .logos img { margin: 5% auto 0; }
+    .damier .petite.case { height: 25% }
+    .damier .petite.case a { background-position: center top }
+    .damier .petite.case .app-name { font-weight:normal }
+    .damier .petite.case a span { font-size:1.1em }
+    .rn-carousel-slide .news-content h6 { font-size: 1.2em }
+    .rn-carousel-slide .news-content { font-size: 0.9em }
+}
+
