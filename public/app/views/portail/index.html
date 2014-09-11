@@ -9,11 +9,10 @@
         <div data-ui-view="main"></div>
 
     </div>
-
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 page_publique" data-ng-if="!current_user.is_logged">
         <!-- Page publique -->
         <div class="row">
-            <img class="logo filtered-bg" data-ng-src="{{prefix}}/bower_components/charte-graphique-laclasse-com/images/logolaclasse.svg" />
+            <img class="logo filtered-bg" data-ng-src="{{prefix}}/bower_components/charte-graphique-laclasse-com/images/logolaclasse.svg" alt="Logo ENT" />
         </div>
         <div class="row title filtered-fg">
             <span class="nomENT">laclasse.com</span><br />
@@ -22,15 +21,21 @@
         </div>
         <div class="row connexion">
             <span class="bienvenue">Bienvenue !</span><br />
-            <form method="get" action="{{prefix}}/login">
-                <button class="btn btn-sm btn-info" type="submit">
-                    se connecter
-                </button>
-            </form>
+
+            <a href="{{prefix}}/login" class="btn btn-sm btn-info" title="Connexion à l'ENT">
+                se connecter
+            </a>
+            <div class="annonce">
+                <p>{{annonce}}</p>
+            </div>
         </div>
         <div class="row footer filtered-fg">
-            <img class="rhone" data-ng-src="{{prefix}}/bower_components/charte-graphique-laclasse-com/images/logo-rhone-blanc.svg" />
-            <img class="acad" data-ng-src="{{prefix}}/bower_components/charte-graphique-laclasse-com/images/logo-academie-blanc.png" />
+            <a href="http://www.rhone.fr/" target="_blank">
+                <img class="rhone" data-ng-src="{{prefix}}/bower_components/charte-graphique-laclasse-com/images/logo-rhone-blanc.svg" alt="Logo Département du Rhône" />
+            </a>
+            <a href="http://www.ac-lyon.fr/" target="_blank">
+                <img class="acad" data-ng-src="{{prefix}}/bower_components/charte-graphique-laclasse-com/images/logo-academie-blanc.png" alt="Logo Académie de Lyon" />
+            </a>
         </div>
     </div>
 </div>

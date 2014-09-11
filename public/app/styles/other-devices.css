@@ -13,12 +13,14 @@ CSS d'adatation des pages et des éléemnts aux différents devices
     .page_publique .title .nomENT {font-size: 1.1em;}
     .page_publique .title .descENT {font-size: 0.5em;}
     .page_publique .connexion .btn-sm{font-size: 0.5em;}
+    .page_publique .annonce {font-size: 0.5em;}
 }
 @media (max-height: 480px) {
     .page_publique .connexion .bienvenue {font-size: 1.5em;}
     .page_publique .title .nomENT {font-size: 1.1em;}
     .page_publique .title .descENT {font-size: 0.5em;}
     .page_publique .connexion .btn-sm{font-size: 0.9em;}
+    .page_publique .annonce {font-size: 0.5em;}
 }
 
 
