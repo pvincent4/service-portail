@@ -444,18 +444,17 @@ body,
 
 svg * { fill:#fff }
 
-/* CSS dépendant d'une résolution */
-@media screen and (min-width: 992px) {
-    .aside .slider { height:75% }
-    .aside .user .connect-register a { margin:20% auto 0 }
-}
-
-@media (max-height: 768px) {
-    .damier .logos img { margin: 5% auto 0; }
-    .damier .petite.case { height: 25% }
-    .damier .petite.case a { background-position: center top }
-    .damier .petite.case .app-name { font-weight:normal }
-    .damier .petite.case a span { font-size:1.1em }
-    .rn-carousel-slide .news-content h6 { font-size: 1.2em }
-    .rn-carousel-slide .news-content { font-size: 0.9em }
-}
+/* style de la page publique de splash */
+.page_publique { background-color: #1aaacc; color:white; }
+.page_publique .filtered-bg { opacity: 0.20; filter: alpha(opacity=20); }
+.page_publique .filtered-fg { opacity: 0.50; filter: alpha(opacity=50); }
+.page_publique .logo { width:55%; position:absolute; top:-9.7%; left:-5.6%; }
+.page_publique .title { position:absolute; top:72%; left:10%; text-align: center; }
+.page_publique .nomENT { font-weight: bold; font-size: 2em;}
+.page_publique .descENT { font-size: 1.3em;}
+.page_publique .connexion { position:absolute; top:30%; left:60%; text-align: center; }
+.page_publique .connexion .btn-sm {font-size: 1.4em; font-variant: small-caps; padding-left: 20px; padding-right: 20px; border: 1px solid white;}
+.page_publique .connexion .bienvenue {font-size: 3em;font-weight:bolder; }
+.page_publique .footer {text-align: center;}
+.page_publique .footer .rhone { width:25%; position:absolute; top:87%; left:40%; right:40%;}
+.page_publique .footer .acad { width:10%; position:absolute; top:89%; right:1%; }
