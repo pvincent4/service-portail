@@ -1,11 +1,11 @@
 <div class="row portail">
     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 aside" data-ng-if="current_user.is_logged">
-
+        <!-- Page de gauche / connecté -->
         <div data-ui-view="aside"></div>
 
     </div>
     <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8" data-ng-if="current_user.is_logged">
-
+        <!-- Page des apps / connecté -->
         <div data-ui-view="main"></div>
 
     </div>
