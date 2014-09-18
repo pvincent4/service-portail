@@ -157,7 +157,7 @@ class SinatraApp < Sinatra::Base
       config_apps = config[ :apps_tiles ][ application[ 'id' ].to_sym ]
       unless config_apps.nil?
         # On regarde si le profils actif de l'utilisateur comporte le code détablissement pour lequel l'application est activée
-        config_apps[ :active ] = application[ 'active' ]
+        config_apps[ :active ] = application[ 'active' ] || ( application[ 'id' ] == 'ADMIN' && session[:current_user][:profil_actif][0]['admin'] )
         config_apps[ :nom ] = application[ 'libelle' ]
         config_apps[ :survol ] = application[ 'description' ]
         config_apps[ :lien ] = "#{APP_PATH}/#/show-app?app=#{application[ 'id' ]}"
