@@ -63,7 +63,7 @@ class SinatraApp < Sinatra::Base
 
     return { user: '',
              info: {},
-             is_logged: false }.to_json unless is_logged? 
+             is_logged: false }.to_json unless is_logged?
     session[:current_user].to_json
   end
 
@@ -161,8 +161,7 @@ class SinatraApp < Sinatra::Base
         config_apps[ :nom ] = application[ 'libelle' ]
         config_apps[ :survol ] = application[ 'description' ]
         config_apps[ :lien ] = "#{APP_PATH}/#/show-app?app=#{application[ 'id' ]}"
-        url = "#{application[ 'url' ]}"
-        url = URL_ENT + url unless application[ 'url' ].to_s.start_with? 'http'
+        url = "#{URL_ENT}#{application[ 'url' ]}" unless application[ 'url' ].to_s.start_with? 'http'
         config_apps[ :url ] = url
 
         # Gérer les notifications sur chaque application
