@@ -22,31 +22,24 @@ angular.module( 'portailApp', [ 'portailApp.controllers',
 			   templateUrl: APP_PATH + '/views/portail/index.html',
 			   controller: 'PortailCtrl'
 		       } )
-		       .state( 'portail.apps', {
-			   url: '/',
-			   views: {
-			       'aside': {
-				   templateUrl: APP_PATH + '/views/portail/aside.html',
-				   controller: 'PortailAsideCtrl'
-			       },
-			       'main': {
-				   templateUrl: APP_PATH + '/views/portail/apps.html',
-				   controller: 'PortailAppsDamierCtrl'
-			       }
-			   }
-		       } )
-		       .state( 'app-wrapper', {
-			   url: '/show-app?app',
-			   templateUrl: APP_PATH + '/views/show-app.html',
-			   controller: 'AppWrapperCtrl'
-		       } );
+		       .state( 'portail.logged',
+			       { parent: 'portail',
+				 url: '/',
+				 views: {
+				     'main': {
+					 templateUrl: APP_PATH + '/views/portail/apps.html',
+					 controller: 'PortailAppsDamierCtrl'
+				     }
+				 }
+			       } )
+		       .state( 'app-wrapper',
+			       { url: '/show-app?app',
+				 templateUrl: APP_PATH + '/views/show-app.html',
+				 controller: 'AppWrapperCtrl'
+			       } );
 		   // .state('portail.user',
 		   //		    {url: '/user',
 		   //		     views: {
-		   //			 'aside': {
-		   //			     templateUrl: APP_PATH + '/views/portail/aside.html',
-		   //			     controller: 'PortailAsideCtrl'
-		   //			 },
 		   //			 'main': {
 		   //			     templateUrl: APP_PATH + '/views/portail/user.html',
 		   //			     controller: 'PortailUserCtrl'
