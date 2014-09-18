@@ -13,12 +13,13 @@ angular.module( 'portailApp.controllers' )
 			   if ( $scope.current_user.is_logged ) {
 				if ( $scope.current_user['avatar'] !== null ) {
 				    $scope.avatar = $scope.current_user['avatar'];
-				} else
-			       if ( $scope.current_user['sexe'] == 'F' ) {
-				   $scope.avatar = APP_PATH + '/bower_components/charte-graphique-laclasse-com/images/avatar_feminin.svg';
-			       } else {
-				   $scope.avatar = APP_PATH + '/bower_components/charte-graphique-laclasse-com/images/avatar_masculin.svg';
-			       }
+				} else {
+				    if ( $scope.current_user['sexe'] == 'F' ) {
+					$scope.avatar = APP_PATH + '/bower_components/charte-graphique-laclasse-com/images/avatar_feminin.svg';
+				    } else {
+					$scope.avatar = APP_PATH + '/bower_components/charte-graphique-laclasse-com/images/avatar_masculin.svg';
+				    }
+				}
 			   }
 
 			   news.get().then( function( response ) {
