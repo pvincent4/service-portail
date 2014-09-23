@@ -96,25 +96,28 @@ class SinatraApp < Sinatra::Base
 
     # THINK : Comment mettre des priorités sur les différents flux ?
     news = []
-    config[:news_feed].each { |f|
+    config[:news_feed].each do |feed|
       begin
-        rss = SimpleRSS.parse open(f[:flux])
+        rss = SimpleRSS.parse open( feed[:flux] )
         rss.items
-          .first( f[:nb] )
-          .map { |n|
-          n.each { |k, _| n[k] = URI.unescape(n[k]).to_s.force_encoding( 'UTF-8' ).encode! if n[k].is_a? String }
-          n[:description] = n[:content_encoded] if n.has? :content_encoded
-          n[:image] = n[:content]
-          n[:orderby] =  n[:pubDate].to_i
-          n[:pubDate] = n[:pubDate].strftime '%d/%m/%Y'
-          news.push n
-        }
+           .first( feed[:nb] )
+           .each do |article|
+          article.each do |k, _|
+            article[k] = URI.unescape( article[k] ).to_s.force_encoding( 'UTF-8' ).encode! if article[k].is_a? String
+          end
+          article[:description] = article[:content_encoded] if article.has? :content_encoded
+          article[:image] = article[:content]
+          article[:orderby] =  article[:pubDate].to_i
+          article[:pubDate] = article[:pubDate].strftime '%d/%m/%Y'
+          news << article
+        end
       rescue
-        puts "impossible d'ouvrir #{f[:flux]}"
+        puts "impossible d'ouvrir #{feed[:flux]}"
       end
-    }
+    end
     # Tri anté-chronologique
     news.sort! { |n1, n2| n2.orderby <=> n1.orderby }
+
     news.to_json
   end
 
