@@ -186,6 +186,12 @@ class SinatraApp < Sinatra::Base
       app
     }.to_json
   end
+
+  get "#{APP_PATH}/api/version" do
+    content_type :text
+
+    `git describe`
+  end
   # }}}
 
   # {{{ auth
