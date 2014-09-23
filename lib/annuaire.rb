@@ -183,7 +183,7 @@ module Annuaire
       if response.code == 200
         return JSON.parse( response )[0]
       else
-        STDERR.puts "Error seeting profil_actif to #{profil_id} for user #{id} and etablissement #{code_uai}"
+        STDERR.puts "Error setting profil_actif to #{profil_id} for user #{id} and etablissement #{code_uai}"
         return { 'id' => nil }
       end
     end
