@@ -103,7 +103,10 @@ class SinatraApp < Sinatra::Base
                  .first( feed[:nb] )
                  .each do |article|
           article.each do |k, _|
-            article[k] = URI.unescape( article[k] ).to_s.force_encoding( 'UTF-8' ).encode! if article[k].is_a? String
+            if article[k].is_a? String
+              article[k] = URI.unescape( article[k] ).to_s.force_encoding( 'UTF-8' ).encode!
+              article[k] = HTMLEntities.new.decode article[k]
+            end
           end
           article[:description] = article[:content_encoded] if article.has? :content_encoded
           article[:image] = article[:content]
