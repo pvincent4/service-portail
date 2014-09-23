@@ -19,6 +19,7 @@ gem 'redis-server'
 gem 'rest-client'
 gem 'simple-rss'
 gem 'html_truncator'
+gem 'htmlentities'
 
 # Gems spécifiques ENT
 gem 'ent_notifs'
