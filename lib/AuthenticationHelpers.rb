@@ -41,32 +41,28 @@ module AuthenticationHelpers
 
     user_annuaire = Annuaire.get_user( session[:extra][:uid] )
 
-    if session[:user] && !user_annuaire.nil?
-      session[:current_user][:user] ||= session[:user]
-      session[:current_user][:info] ||= session[:extra]
-      session[:current_user][:info][:ENTStructureNomCourant] ||= session[:current_user][:ENTPersonStructRattachRNE]
-
-      session[:current_user][:is_logged] = true
-      session[:current_user][:sexe] = user_annuaire['sexe']
-      session[:current_user][:avatar] = ANNUAIRE[:url].gsub(/\/api\/app/, '') + user_annuaire['avatar']
-      # session[:current_user][:avatar] = ANNUAIRE[:url].gsub( %{/\/api\/app/}, '' ) + user_annuaire['avatar']
-      # session[:current_user][:ENTStructureNomCourant] = user_annuaire['ENTStructureNomCourant']
-      session[:current_user][:profils] = user_annuaire['profils'].map.with_index do
-        |profil, i|
-        # renommage de champs
-        profil['index'] = i
-        profil['type'] = profil['profil_id']
-        profil['uai'] = profil['etablissement_code_uai']
-        profil['etablissement'] = profil['etablissement_nom']
-        profil['nom'] = profil['profil_nom']
-
-        # calcule du droit d'admin, true pour les TECH et les ADM
-        profil['admin'] = user_annuaire['roles'].select { |r| r['etablissement_code_uai'] == profil['etablissement_code_uai'] && ( r['role_id'] == 'TECH' || r['role_id'].match('ADM.*') ) }.length > 0
-
-        profil
-      end
-      session[:current_user][:profil_actif] = session[:current_user][:profils].select { |p| p['actif'] }
-
+    if session[:user] && !user_annuaire.nil? && user_annuaire['profils'].select do |profil| profil['bloque'].nil? end.length > 0
+      session[:current_user] = {
+        user: session[:user],
+        info: session[:extra],
+        is_logged: true,
+        sexe: user_annuaire['sexe'],
+        avatar: ANNUAIRE[:url].gsub( %r{/api/app/}, '' ) + user_annuaire['avatar'],
+        profils: user_annuaire['profils']
+          .select do |profil| profil['bloque'].nil? end
+          .map.with_index do |profil, i|
+          # renommage de champs
+          profil['index'] = i
+          profil['type'] = profil['profil_id']
+          profil['uai'] = profil['etablissement_code_uai']
+          profil['etablissement'] = profil['etablissement_nom']
+          profil['nom'] = profil['profil_nom']
+          # calcule du droit d'admin, true pour les TECH et les ADM
+          profil['admin'] = user_annuaire['roles'].select { |r| r['etablissement_code_uai'] == profil['etablissement_code_uai'] && ( r['role_id'] == 'TECH' || r['role_id'].match('ADM.*') ) }.length > 0
+          profil
+        end,
+        profil_actif: user_annuaire['profils'].select { |p| p['actif'] }
+      }
     end
 
     session[:current_user]
@@ -77,12 +73,10 @@ module AuthenticationHelpers
   #
   def init_session( env )
     session['init'] = true
-    if session
-      session[:user] = env['omniauth.auth'].extra.user
-      session[:extra] = env['omniauth.auth'].extra
-      session[:authenticated] = true
-    end
-    set_current_user env
-  end
+    session[:user] = env['omniauth.auth'].extra.user
+    session[:extra] = env['omniauth.auth'].extra
+    session[:authenticated] = true
 
+    set_current_user( env )
+  end
 end
