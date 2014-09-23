@@ -163,7 +163,8 @@ module Annuaire
 
   def get_user_regroupements( uid )
     @search = false
-    RestClient.get( sign( ANNUAIRE[:url], "users/#{CGI.escape( uid )}/regroupements", {} ) ) do
+    uid = URI.escape( uid )
+    RestClient.get( sign( ANNUAIRE[:url], "users/#{uid}/regroupements", {} ) ) do
       |response, _request, _result|
       if response.code == 200
         return JSON.parse( response )
@@ -174,6 +175,7 @@ module Annuaire
   end
 
   def put_user( uid, params )
+    uid = URI.escape( uid )
     params.each do |key, _value|
       params[ key ] = URI.escape( params[ key ] )
     end
@@ -189,17 +191,17 @@ module Annuaire
     end
   end
 
-  def put_user_profil_actif( id, profil_id, code_uai )
-    id = URI.escape( id )
+  def put_user_profil_actif( uid, profil_id, code_uai )
+    uid = URI.escape( uid )
     profil_id = URI.escape( profil_id )
     code_uai = URI.escape( code_uai )
 
-    RestClient.put( sign( ANNUAIRE[:url], "users/#{id}/profil_actif", uai: code_uai, profil_id: profil_id ), '' ) do
+    RestClient.put( sign( ANNUAIRE[:url], "users/#{uid}/profil_actif", uai: code_uai, profil_id: profil_id ), '' ) do
       |response, _request, _result|
       if response.code == 200
         return JSON.parse( response )[0]
       else
-        STDERR.puts "Error setting profil_actif to #{profil_id} for user #{id} and etablissement #{code_uai}"
+        STDERR.puts "Error setting profil_actif to #{profil_id} for user #{uid} and etablissement #{code_uai}"
         return { 'id' => nil }
       end
     end
