@@ -1,30 +1,35 @@
 {
-    "name": "app",
-    "version": "0.0.0",
-    "dependencies": {
-	"angular": "latest",
-	"json3": "latest",
-	"es5-shim": "latest",
-	"jquery": "latest",
-	"bootstrap": "latest",
-	"angular-resource": "latest",
-	"angular-cookies": "latest",
-	"angular-sanitize": "latest",
-	"angular-ui-router": "latest",
-	"angular-bootstrap": "latest",
-	"angular-carousel": "latest",
-	"Font-Awesome": "latest",
-	"faye": "latest",
-	"underscore": "latest",
-	"charte-graphique-laclasse-com": "git@gitlab.erasme.org:laclasse/charte-graphique-laclasse-com.git#latest",
-	"ng-flow": "latest",
-	"jquery.gritter": "latest",
-	"angular-animate": "latest",
-	"ngAnimate": "latest",
-	"ngFitText": "latest"
-    },
-    "devDependencies": {
-	"angular-mocks": "latest",
-	"angular-scenario": "latest"
-    }
+  "name": "app",
+  "version": "0.0.0",
+  "dependencies": {
+    "angular": "latest",
+    "json3": "latest",
+    "es5-shim": "latest",
+    "jquery": "latest",
+    "bootstrap": "latest",
+    "angular-resource": "latest",
+    "angular-cookies": "latest",
+    "angular-sanitize": "latest",
+    "angular-ui-router": "latest",
+    "angular-ui-date": "latest",
+    "angular-bootstrap": "latest",
+    "angular-carousel": "latest",
+    "Font-Awesome": "latest",
+    "faye": "latest",
+    "underscore": "latest",
+    "charte-graphique-laclasse-com": "git@gitlab.erasme.org:laclasse/charte-graphique-laclasse-com.git#latest",
+    "ng-flow": "latest",
+    "jquery.gritter": "latest",
+    "angular-animate": "latest",
+    "ngAnimate": "latest",
+    "ngFitText": "latest",
+    "angular-i18n": "~1.2.25"
+  },
+  "devDependencies": {
+    "angular-mocks": "latest",
+    "angular-scenario": "latest"
+  },
+  "resolutions": {
+    "angular": "1.2.25"
+  }
 }

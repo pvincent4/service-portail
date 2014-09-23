@@ -9,6 +9,7 @@ angular.module( 'portailApp', [ 'portailApp.controllers',
 				'ngResource',
 				'ui.router',
 				'ui.bootstrap',
+				'ui.date',
 				'angular-carousel',
 				'flow',
 				'ngAnimate',
@@ -32,20 +33,21 @@ angular.module( 'portailApp', [ 'portailApp.controllers',
 				     }
 				 }
 			       } )
+		       .state('portail.user',
+			      { parent: 'portail',
+				url: '/user',
+				views: {
+				    'main': {
+					templateUrl: APP_PATH + '/views/portail/user.html',
+					controller: 'PortailUserCtrl'
+				    }
+				}
+			      })
 		       .state( 'app-wrapper',
 			       { url: '/show-app?app',
 				 templateUrl: APP_PATH + '/views/show-app.html',
 				 controller: 'AppWrapperCtrl'
 			       } );
-		   // .state('portail.user',
-		   //		    {url: '/user',
-		   //		     views: {
-		   //			 'main': {
-		   //			     templateUrl: APP_PATH + '/views/portail/user.html',
-		   //			     controller: 'PortailUserCtrl'
-		   //			 }
-		   //		     }
-		   //		    })
 	       }
 	     ] );
 // .run(['$rootScope', '$location', 'currentUser', 'notifications', 'APP_PATH',

@@ -176,8 +176,15 @@ module Annuaire
 
   def put_user( uid, params )
     uid = URI.escape( uid )
+
     params.each do |key, _value|
-      params[ key ] = URI.escape( params[ key ] )
+      if params[ key ].is_a? String
+        params[ key ] = URI.escape( params[ key ] )
+      elsif params[ key ].is_a? Date
+        params[ key ] = URI.escape( params[ key ].iso8601 )
+      else
+        params[ key ] = URI.escape( params[ key ].to_s )
+      end
     end
 
     RestClient.put( sign( ANNUAIRE[:url], "users/#{uid}", params ), '' ) do

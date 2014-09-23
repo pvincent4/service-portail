@@ -12,9 +12,9 @@
 
 	<span class="user-info" data-ng-if="current_user.is_logged">
 	  <span>
-	    <!-- <a data-ui-sref="portail.user"> -->
-	    <h3>{{current_user['info']['LaclassePrenom']}} {{current_user['info']['LaclasseNom']}}</h3>
-	    <!-- </a> -->
+	    <a data-ui-sref="portail.user">
+	      <h3>{{current_user.prenom}} {{current_user.nom}}</h3>
+	    </a>
 	    <br>
 	    <select data-ng-controller="ProfilActifCtrl"
 		    data-ng-model="current_user.profil_actif[0]"

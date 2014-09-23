@@ -7,12 +7,22 @@ angular.module('portailApp.services.user')
 	     [ '$resource', 'APP_PATH',
 	       function( $resource, APP_PATH ) {
 		   return $resource( APP_PATH + '/api/user',
-				     {},
-				     { change_profil_actif: { method: 'PUT',
+				     {  },
+				     { update: { method: 'PUT',
+						 params: { login: '@login',
+							   password: '@password',
+							   nom: '@nom',
+							   prenom: '@prenom',
+							   sexe: '@sexe',
+							   date_naissance: '@date_naissance',
+							   adresse: '@adresse',
+							   code_postal: '@code_postal',
+							   ville: '@ville',
+							   bloque: '@bloque' } },
+				       change_profil_actif: { method: 'PUT',
 							      url: APP_PATH + '/api/user/profil_actif/:index',
-							      params: { profil_id: '@profil_id' }
-							    }
-				     });
+							      params: { profil_id: '@profil_id' } }
+				     } );
 	       } ] );
 
 angular.module('portailApp.services.user')

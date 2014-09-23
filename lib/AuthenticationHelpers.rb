@@ -44,9 +44,17 @@ module AuthenticationHelpers
     if session[:user] && !user_annuaire.nil? && user_annuaire['profils'].select do |profil| profil['bloque'].nil? end.length > 0
       session[:current_user] = {
         user: session[:user],
+        login: user_annuaire['login'],
+        sexe: user_annuaire['sexe'],
+        nom: user_annuaire['nom'],
+        prenom: user_annuaire['prenom'],
+        date_naissance: user_annuaire['date_naissance'],
+        adresse: user_annuaire['adresse'],
+        code_postal: user_annuaire['code_postal'],
+        ville: user_annuaire['ville'],
+        bloque: user_annuaire['bloque'],
         info: session[:extra],
         is_logged: true,
-        sexe: user_annuaire['sexe'],
         avatar: ANNUAIRE[:url].gsub( %r{/api/app/}, '' ) + user_annuaire['avatar'],
         profils: user_annuaire['profils']
           .select do |profil| profil['bloque'].nil? end
@@ -63,6 +71,10 @@ module AuthenticationHelpers
         end,
         profil_actif: user_annuaire['profils'].select { |p| p['actif'] }
       }
+    end
+
+    session[:current_user].each do |key, _value|
+      session[:current_user][ key ] = URI.unescape( session[:current_user][ key ] ) if session[:current_user][ key ].is_a? String
     end
 
     session[:current_user]

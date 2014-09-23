@@ -27,7 +27,7 @@
 	    </div>
 <!--	    <a href="{{prefix}}/login" data-ng-if="!current_user.is_logged">connectez-vous</a>-->
 	    <a class="dropdown-toggle" data-ng-if="current_user.is_logged">
-	      <h6>{{current_user['info']['LaclassePrenom']}} {{current_user['info']['LaclasseNom']}}</h6> <span class="glyphicon glyphicon-chevron-down"></span>
+	      <h6>{{current_user.prenom}} {{current_user.nom}}</h6> <span class="glyphicon glyphicon-chevron-down"></span>
 	    </a>
 	    <ul role="menu" class="dropdown-menu gris3" data-ng-if="current_user.is_logged">
 	      <li data-ng-repeat="item in menu">
