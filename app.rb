@@ -118,6 +118,9 @@ class SinatraApp < Sinatra::Base
         puts "impossible d'ouvrir #{feed[:flux]}"
       end
     end
+
+    news.uniq! { |article| article[:description] }
+
     # Tri anté-chronologique
     news.sort! { |n1, n2| n2.orderby <=> n1.orderby }
 
