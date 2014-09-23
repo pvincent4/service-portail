@@ -69,6 +69,8 @@ class SinatraApp < Sinatra::Base
   end
 
   put "#{APP_PATH}/api/user" do
+    content_type :json
+
     param :login,          String,  required: false
     param :password,       String,  required: false
     param :nom,            String,  required: false
@@ -82,6 +84,10 @@ class SinatraApp < Sinatra::Base
 
     Annuaire.put_user( session[:current_user][:info][:uid],
                        params )
+
+    set_current_user( env )
+
+    session[:current_user].to_json
   end
 
   put "#{APP_PATH}/api/user/profil_actif/?" do
