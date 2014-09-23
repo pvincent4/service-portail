@@ -173,6 +173,22 @@ module Annuaire
     end
   end
 
+  def put_user( uid, params )
+    params.each do |key, _value|
+      params[ key ] = URI.escape( params[ key ] )
+    end
+
+    RestClient.put( sign( ANNUAIRE[:url], "users/#{uid}", params ), '' ) do
+      |response, _request, _result|
+      if response.code == 200
+        return JSON.parse( response )[0]
+      else
+        STDERR.puts "Error updating user #{uid}"
+        return { 'id' => nil }
+      end
+    end
+  end
+
   def put_user_profil_actif( id, profil_id, code_uai )
     id = URI.escape( id )
     profil_id = URI.escape( profil_id )
