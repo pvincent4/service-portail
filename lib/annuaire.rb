@@ -156,19 +156,19 @@ module Annuaire
   end
 
   # Service Utilisateur : init de la session et de son environnement
-  def get_user( id )
+  def get_user( uid )
     @search = false
-    send_request 'users', CGI.escape( id ), 'true', 'User inconnu'
+    send_request 'users', CGI.escape( uid ), 'true', 'User inconnu'
   end
 
-  def get_user_regroupements( id )
+  def get_user_regroupements( uid )
     @search = false
-    RestClient.get( sign( ANNUAIRE[:url], "users/#{CGI.escape( id )}/regroupements", {} ) ) do
+    RestClient.get( sign( ANNUAIRE[:url], "users/#{CGI.escape( uid )}/regroupements", {} ) ) do
       |response, _request, _result|
       if response.code == 200
         return JSON.parse( response )
       else
-        STDERR.puts "erreur getting user's regroupements : #{CGI.escape( id )}"
+        STDERR.puts "erreur getting user's regroupements : #{CGI.escape( uid )}"
       end
     end
   end
