@@ -64,6 +64,7 @@ class SinatraApp < Sinatra::Base
     return { user: '',
              info: {},
              is_logged: false }.to_json unless is_logged?
+
     session[:current_user].to_json
   end
 
