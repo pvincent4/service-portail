@@ -98,10 +98,10 @@ class SinatraApp < Sinatra::Base
     news = []
     config[:news_feed].each do |feed|
       begin
-        rss = SimpleRSS.parse open( feed[:flux] )
-        rss.items
-           .first( feed[:nb] )
-           .each do |article|
+        SimpleRSS.parse( open( feed[:flux] ) )
+                 .items
+                 .first( feed[:nb] )
+                 .each do |article|
           article.each do |k, _|
             article[k] = URI.unescape( article[k] ).to_s.force_encoding( 'UTF-8' ).encode! if article[k].is_a? String
           end
