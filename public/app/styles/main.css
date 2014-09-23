@@ -444,6 +444,9 @@ body,
 
 svg * { fill:#fff }
 
+.ui-datepicker,
+.ui-datepicker div { height: auto; }
+
 /* style de la page publique de splash */
 .page_publique { background-color: #1aaacc; color:white; }
 .page_publique .filtered-bg { opacity: 0.20; filter: alpha(opacity=20); }

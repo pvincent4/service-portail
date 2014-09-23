@@ -2,17 +2,9 @@
 
 angular.module( 'portailApp.controllers' )
     .controller( 'PortailUserCtrl',
-		 [ '$scope', 'currentUser', 'APP_PATH',
-		   function( $scope, currentUser, APP_PATH ) {
+		 [ '$scope', '$state', 'currentUser', 'APP_PATH',
+		   function( $scope, $state, currentUser, APP_PATH ) {
 		       $scope.prefix = APP_PATH;
-		       $scope.annuler = function() {
-			   console.debug( 'annuler les modifications')
-		       };
-		       $scope.enregistrer = function() {
-			   $scope.current_user.$save();
-			   console.debug($scope.current_user)
-		       };
-
 		       $scope.groups = [ { ouvert: true },
 					 { ouvert: false },
 					 { ouvert: false },
@@ -20,5 +12,17 @@ angular.module( 'portailApp.controllers' )
 
 		       currentUser.get().then( function( response ) {
 			   $scope.current_user = response;
+			   $scope.current_user.date_naissance = _($scope.current_user).has('date_naissance') ? new Date( $scope.current_user.date_naissance ) : new Date();
+
+			   $scope.enregistrer = function() {
+			       $scope.current_user.$update( {} )
+				   .then( function() {
+				       $state.go( 'portail.logged' );
+				   } );
+			   };
+
+			   $scope.annuler = function() {
+			       $state.go( 'portail.logged' );
+			   };
 		       });
 		   } ] );
