@@ -90,6 +90,17 @@ class SinatraApp < Sinatra::Base
     session[:current_user].to_json
   end
 
+  post "#{APP_PATH}/api/user/avatar/?" do
+    content_type :json
+
+    Annuaire.put_user_avatar( session[:current_user][:info][:uid],
+                              params[:file].to_json )
+
+    set_current_user( env )
+
+    session[:current_user].to_json
+  end
+
   put "#{APP_PATH}/api/user/profil_actif/?" do
     content_type :json
 
