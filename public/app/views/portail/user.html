@@ -66,22 +66,10 @@
 	    </div>
 	  </div>
 
-	  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 avatar" data-flow-init>
-	    <span data-ng-if="!$flow.files.length">
-	      <img class="svg" data-ng-src="{{current_user.avatar}}" data-ng-if="current_user.avatar !== ''" />
-	      <data-ng-include class="svg"
-			       data-src="{{prefix}}/bower_components/charte-graphique-laclasse-com/images/avatar_feminin.svg"
-			       data-ng-if="current_user.extra.sexe === 'F'"></data-ng-include>
-	      <data-ng-include class="svg"
-			       data-src="{{prefix}}/bower_components/charte-graphique-laclasse-com/images/avatar_masculin.svg"
-			       data-ng-if="current_user.extra.sexe === 'M' || current_user.extra.sexe === null"></data-ng-include>
-	    </span>
-	    <img flow-img="$flow.files[0]" data-ng-if="$flow.files.length" />
-	    <br>
-	    <button flow-btn>changer de photo</button>
-	    <div class="alert" flow-drop>
-	      Glissez-déposez votre photo ici.
-	    </div>
+	  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 avatar">
+	    <img data-ng-src="{{current_user.new_avatar}}" />
+	    <input type="file" name="image"
+		   onchange="angular.element( this ).scope().new_avatar( this.files )" />
 	  </div>
 	</div>
 
