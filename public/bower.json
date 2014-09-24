@@ -18,12 +18,12 @@
     "faye": "latest",
     "underscore": "latest",
     "charte-graphique-laclasse-com": "git@gitlab.erasme.org:laclasse/charte-graphique-laclasse-com.git#latest",
-    "ng-flow": "latest",
     "jquery.gritter": "latest",
     "angular-animate": "latest",
     "ngAnimate": "latest",
     "ngFitText": "latest",
-    "angular-i18n": "~1.2.25"
+    "angular-i18n": "latest",
+    "ng-file-upload": "latest"
   },
   "devDependencies": {
     "angular-mocks": "latest",
