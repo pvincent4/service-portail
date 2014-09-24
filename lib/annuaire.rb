@@ -202,16 +202,10 @@ module Annuaire
     uid = URI.escape( uid )
 
     RestClient.post( sign( ANNUAIRE[:url], "users/#{uid}/upload/avatar", {} ), image: image ) do
-      |response, request, result|
-      if response.code == 200
+      |response, _request, _result|
+      if response.code == 201
         return JSON.parse( response )[0]
       else
-        p 'request:'
-        p request
-        p 'response:'
-        p response
-        p 'result:'
-        p result
         STDERR.puts "Error uploading avatar for user #{uid}"
         return { 'id' => nil }
       end
