@@ -28,7 +28,7 @@ angular.module( 'portailApp.controllers' )
 				   $upload.upload( {
 				       url: APP_PATH + '/api/user/avatar',
 				       method: 'POST',
-				       image: $scope.current_user.new_avatar
+				       file: $scope.current_user.new_avatar
 				   } );
 			       }
 
