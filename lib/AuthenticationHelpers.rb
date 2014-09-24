@@ -41,7 +41,7 @@ module AuthenticationHelpers
 
     user_annuaire = Annuaire.get_user( session[:extra][:uid] )
 
-    if session[:user] && !user_annuaire.nil? && user_annuaire['profils'].select do |profil| profil['bloque'].nil? end.length > 0
+    if session[:user] && !user_annuaire.nil? # && user_annuaire['profils'].select do |profil| profil['bloque'].nil? end.length > 0
       session[:current_user] = {
         user: session[:user],
         login: user_annuaire['login'],
