@@ -17,7 +17,7 @@ module Annuaire
 
   # Petit setter pour les tests unitaires
   def set_search(arg)
-    @search=arg
+    @search = arg
   end
 
   # Fonction de vérification du mode d'api paramétrée dans la conf et init des paramètres
