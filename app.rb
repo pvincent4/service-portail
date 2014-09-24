@@ -73,6 +73,7 @@ class SinatraApp < Sinatra::Base
 
     # param :login,          String,  required: false
     # param :password,       String,  required: false
+    # param :bloque,         Boolean, required: false
     param :nom,            String,  required: false
     param :prenom,         String,  required: false
     param :sexe,           String,  required: false, in: [ 'F', 'M' ]
@@ -80,7 +81,6 @@ class SinatraApp < Sinatra::Base
     param :adresse,        String,  required: false
     param :code_postal,    Integer, required: false, within: 0..999_999
     param :ville,          String,  required: false
-    # param :bloque,         Boolean, required: false
 
     Annuaire.put_user( session[:current_user][:info][:uid],
                        params )
