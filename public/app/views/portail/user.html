@@ -8,7 +8,7 @@
   <div class="form">
     <accordion close-others="false">
 
-      <accordion-group data-is-open="groups[ 0 ].ouvert">
+      <accordion-group data-is-open="groups[ 0 ].ouvert" data-ng-if="groups[ 0 ].enabled">
 	<accordion-heading>
 	  <span class="glyphicon" ng-class="{'glyphicon-chevron-down': groups[ 0 ].ouvert, 'glyphicon-chevron-right': !groups[ 0 ].ouvert}"> informations</span>
 	</accordion-heading>
@@ -76,7 +76,7 @@
 
       </accordion-group>
 
-      <accordion-group data-is-open="groups[ 1 ].ouvert">
+      <accordion-group data-is-open="groups[ 1 ].ouvert" data-ng-if="groups[ 1 ].enabled">
 	<accordion-heading>
 	  <span class="glyphicon" ng-class="{'glyphicon-chevron-down': groups[ 1 ].ouvert, 'glyphicon-chevron-right': !groups[ 1 ].ouvert}"> mot de passe</span>
 	</accordion-heading>
@@ -103,14 +103,14 @@
 
       </accordion-group>
 
-      <accordion-group data-is-open="groups[ 2 ].ouvert">
+      <accordion-group data-is-open="groups[ 2 ].ouvert" data-ng-if="groups[ 2 ].enabled">
 	<accordion-heading>
 	  <span class="glyphicon" ng-class="{'glyphicon-chevron-down': groups[ 2 ].ouvert, 'glyphicon-chevron-right': !groups[ 2 ].ouvert}"> droits</span>
 	</accordion-heading>
 	<p>The body of the accordion group grows to fit the contents</p>
       </accordion-group>
 
-      <accordion-group data-is-open="groups[ 3 ].ouvert">
+      <accordion-group data-is-open="groups[ 3 ].ouvert" data-ng-if="groups[ 3 ].enabled">
 	<accordion-heading>
 	  <span class="glyphicon" ng-class="{'glyphicon-chevron-down': groups[ 3 ].ouvert, 'glyphicon-chevron-right': !groups[ 3 ].ouvert}"> statistiques</span>
 	</accordion-heading>
