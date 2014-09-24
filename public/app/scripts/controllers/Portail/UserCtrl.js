@@ -5,10 +5,14 @@ angular.module( 'portailApp.controllers' )
 		 [ '$scope', '$state', 'currentUser', 'APP_PATH',
 		   function( $scope, $state, currentUser, APP_PATH ) {
 		       $scope.prefix = APP_PATH;
-		       $scope.groups = [ { ouvert: true },
-					 { ouvert: false },
-					 { ouvert: false },
-					 { ouvert: false } ];
+		       $scope.groups = [ { ouvert: true,
+					   enabled: true },
+					 { ouvert: false,
+					   enabled: false },
+					 { ouvert: false,
+					   enabled: false },
+					 { ouvert: false,
+					   enabled: false } ];
 
 		       currentUser.get().then( function( response ) {
 			   $scope.current_user = response;
