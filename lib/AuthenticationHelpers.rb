@@ -53,6 +53,7 @@ module AuthenticationHelpers
         code_postal: user_annuaire['code_postal'],
         ville: user_annuaire['ville'],
         bloque: user_annuaire['bloque'],
+        id_jointure_aaf: user_annuaire['id_jointure_aaf'],
         info: session[:extra],
         is_logged: true,
         avatar: ANNUAIRE[:url].gsub( %r{/api/app/}, '' ) + user_annuaire['avatar'],
