@@ -13,7 +13,8 @@ angular.module( 'portailApp', [ 'portailApp.controllers',
 				'angular-carousel',
 				'ngAnimate',
 				'ngFitText',
-				'angularFileUpload' ] )
+				'angularFileUpload',
+				'flow' ] )
     .config( [ '$stateProvider', '$urlRouterProvider', 'APP_PATH',
 	       function ( $stateProvider, $urlRouterProvider, APP_PATH ) {
 		   $urlRouterProvider.otherwise( '/' );
