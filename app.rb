@@ -194,10 +194,10 @@ class SinatraApp < Sinatra::Base
   get "#{APP_PATH}/api/apps" do
     content_type :json
 
-    return config[ :apps_publiques ].to_json unless is_logged?
+    return config[ :apps_publiques ].to_json unless is_logged? && !session[:current_user][:profil_actif].first.nil?
 
     user_applications = Annuaire.get_user( session[:current_user][:info][:uid] )['applications']
-    uai_courant = session[:current_user][:profil_actif][ 0 ]['uai']
+    uai_courant = session[:current_user][:profil_actif].first['uai']
 
     # traitement des apps renvoyées par l'annuaire
     user_applications
