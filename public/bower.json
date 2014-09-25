@@ -23,13 +23,11 @@
     "ngAnimate": "latest",
     "ngFitText": "latest",
     "angular-i18n": "latest",
-    "ng-file-upload": "latest"
+    "ng-file-upload": "latest",
+      "ng-flow": "latest"
   },
   "devDependencies": {
     "angular-mocks": "latest",
     "angular-scenario": "latest"
-  },
-  "resolutions": {
-    "angular": "1.2.25"
   }
 }
