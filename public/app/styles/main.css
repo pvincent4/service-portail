@@ -394,13 +394,16 @@ body { font-family:'Open Sans', sans-serif;
 
 .user-profil input { background-color:#b2b2b2;
 		     border-radius:0;
-		     color:#000 }
+		     color:#000;
+		     padding: 0 3px; }
 
 .user-profil accordion .panel-body .row div.avatar { padding-top:3.8em;
 						     text-align:center }
 
 .user-profil .avatar svg { background:blue;
 			   fill:#FF0 }
+
+.user-profil .avatar img { background-color: #1aa1cc; }
 
 .user-profil .avatar button { border:1px solid #000;
 			      padding:.5em 2em }
