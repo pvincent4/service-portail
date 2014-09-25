@@ -35,6 +35,7 @@
 		<label for="datenaissance">date de naissance :</label>
 		<input class="form-control"
 		       ui-date="{ dateFormat: 'dd/mm/yy' }"
+		       ui-date-format="yy-mm-dd"
 		       data-ng-disabled="!current_user.editable"
 		       data-ng-model="current_user.date_naissance"
 		       data-ng-required="true">

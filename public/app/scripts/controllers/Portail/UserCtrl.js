@@ -17,7 +17,6 @@ angular.module( 'portailApp.controllers' )
 		       currentUser.get().then( function( response ) {
 			   $scope.current_user = response;
 			   $scope.current_user.editable = _($scope.current_user.id_jointure_aaf).isNull();
-			   $scope.current_user.date_naissance = _($scope.current_user).has('date_naissance') ? new Date( $scope.current_user.date_naissance ) : new Date();
 
 			   $scope.new_avatar = function( flowFile ) {
 			       $scope.current_user.new_avatar = flowFile.file;
