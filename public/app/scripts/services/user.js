@@ -37,6 +37,6 @@ angular.module( 'portailApp.services.user' )
     .service('currentUser',
 	     [ 'User', 'UserApps',
 	       function( User, UserApps ) {
-		   this.get = _.memoize ( function() { return User.get().$promise; } );
+		   this.get = function() { return User.get().$promise; };
 		   this.apps = function() { return UserApps.query().$promise; };
 	       } ] );
