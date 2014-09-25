@@ -22,17 +22,15 @@ angular.module( 'portailApp.controllers' )
 			       $scope.current_user.new_avatar = flowFile.file;
 			   };
 
-			   $scope.enregistrer = function() {
-			       if ( !_($scope.current_user.new_avatar).isNull() ) {
-				   currentUser.avatar.upload( $scope.current_user.new_avatar );
+			   $scope.fermer = function( sauvegarder ) {
+			       if ( sauvegarder ) {
+				   if ( !_($scope.current_user.new_avatar).isNull() ) {
+				       currentUser.avatar.upload( $scope.current_user.new_avatar );
+				   }
+
+				   $scope.current_user.$update();
 			       }
 
-			       $scope.current_user.$update();
-
-			       $state.go( 'portail.logged' );
-			   };
-
-			   $scope.annuler = function() {
 			       $state.go( 'portail.logged' );
 			   };
 		       });
