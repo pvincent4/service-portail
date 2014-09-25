@@ -43,7 +43,8 @@ angular.module( 'portailApp.services.user' )
 			$upload.upload( {
 			    url: APP_PATH + '/api/user/avatar',
 			    method: 'POST',
-			    file: fichier
+			    file: fichier,
+			    fileFormDataName: 'image'
 			} );
 		    },
 				    delete: function() {
