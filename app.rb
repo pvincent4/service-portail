@@ -101,6 +101,16 @@ class SinatraApp < Sinatra::Base
     session[:current_user].to_json
   end
 
+  delete "#{APP_PATH}/api/user/avatar/?" do
+    content_type :json
+
+    Annuaire.delete_user_avatar( session[:current_user][:info][:uid] )
+
+    set_current_user( env )
+
+    session[:current_user].to_json
+  end
+
   put "#{APP_PATH}/api/user/profil_actif/?" do
     content_type :json
 

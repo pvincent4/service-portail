@@ -25,7 +25,7 @@ angular.module( 'portailApp.controllers' )
 
 			   $scope.enregistrer = function() {
 			       if ( !_($scope.current_user.new_avatar).isNull() ) {
-				   currentUser.upload_avatar( $scope.current_user.new_avatar );
+				   currentUser.avatar.upload( $scope.current_user.new_avatar );
 			       }
 
 			       $scope.current_user.$update();
