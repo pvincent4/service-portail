@@ -65,6 +65,7 @@ class SinatraApp < Sinatra::Base
              info: {},
              is_logged: false }.to_json unless is_logged?
 
+    set_current_user( env )
     session[:current_user].to_json
   end
 
