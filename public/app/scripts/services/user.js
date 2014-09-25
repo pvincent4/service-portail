@@ -35,15 +35,19 @@ angular.module( 'portailApp.services.user' )
 
 angular.module( 'portailApp.services.user' )
     .service( 'currentUser',
-	      [ '$upload', 'APP_PATH', 'User', 'UserApps',
-		function( $upload, APP_PATH, User, UserApps ) {
+	      [ '$http', '$upload', 'APP_PATH', 'User', 'UserApps',
+		function( $http, $upload, APP_PATH, User, UserApps ) {
 		    this.get = function() { return User.get().$promise; };
 		    this.apps = function() { return UserApps.query().$promise; };
-		    this.upload_avatar = function( fichier ) {
+		    this.avatar = { upload: function( fichier ) {
 			$upload.upload( {
 			    url: APP_PATH + '/api/user/avatar',
 			    method: 'POST',
 			    file: fichier
 			} );
-		    };
+		    },
+				    delete: function() {
+					$http.delete( APP_PATH + '/api/user/avatar' );
+				    }
+				  };
 		} ] );

@@ -212,6 +212,20 @@ module Annuaire
     end
   end
 
+  def delete_user_avatar( uid )
+    uid = URI.escape( uid )
+
+    RestClient.delete( sign( ANNUAIRE[:url], "users/#{uid}/avatar", {} ) ) do
+      |response, _request, _result|
+      if response.code == 200
+        return JSON.parse( response )[0]
+      else
+        STDERR.puts "Error deleting avatar for user #{uid}"
+        return { 'id' => nil }
+      end
+    end
+  end
+
   def put_user_profil_actif( uid, profil_id, code_uai )
     uid = URI.escape( uid )
     profil_id = URI.escape( profil_id )
