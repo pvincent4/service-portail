@@ -2,8 +2,8 @@
 
 angular.module( 'portailApp.controllers' )
     .controller( 'PortailUserCtrl',
-		 [ '$scope', '$state', '$upload', 'currentUser', 'APP_PATH',
-		   function( $scope, $state, $upload, currentUser, APP_PATH ) {
+		 [ '$scope', '$state', 'currentUser', 'APP_PATH',
+		   function( $scope, $state, currentUser, APP_PATH ) {
 		       $scope.prefix = APP_PATH;
 		       $scope.groups = [ { ouvert: true,
 					   enabled: true },
@@ -25,11 +25,7 @@ angular.module( 'portailApp.controllers' )
 
 			   $scope.enregistrer = function() {
 			       if ( !_($scope.current_user.new_avatar).isNull() ) {
-				   $upload.upload( {
-				       url: APP_PATH + '/api/user/avatar',
-				       method: 'POST',
-				       file: $scope.current_user.new_avatar
-				   } );
+				   currentUser.upload_avatar( $scope.current_user.new_avatar );
 			       }
 
 			       $scope.current_user.$update();
