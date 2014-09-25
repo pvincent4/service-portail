@@ -56,7 +56,7 @@ module AuthenticationHelpers
         id_jointure_aaf: user_annuaire['id_jointure_aaf'],
         info: session[:extra],
         is_logged: true,
-        avatar: ANNUAIRE[:url].gsub( %r{/api/app/}, '' ) + user_annuaire['avatar'],
+        avatar: ANNUAIRE[:url].gsub( %r{/api/app}, '' ) + user_annuaire['avatar'],
         profils: user_annuaire['profils']
           .select do |profil| profil['bloque'].nil? end
           .map.with_index do |profil, i|
