@@ -95,7 +95,7 @@ class SinatraApp < Sinatra::Base
     content_type :json
 
     Annuaire.put_user_avatar( session[:current_user][:info][:uid],
-                              params[:image] )
+                              File.read( params[:image][:tempfile] ) )
 
     set_current_user( env )
 
