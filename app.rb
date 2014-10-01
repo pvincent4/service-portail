@@ -95,7 +95,7 @@ class SinatraApp < Sinatra::Base
     content_type :json
 
     Annuaire.put_user_avatar( session[:current_user][:info][:uid],
-                              params[:image] )
+                              File.read( params[:image][:tempfile] ) )
 
     set_current_user( env )
 
@@ -210,8 +210,7 @@ class SinatraApp < Sinatra::Base
         config_apps[ :nom ] = application[ 'libelle' ]
         config_apps[ :survol ] = application[ 'description' ]
         config_apps[ :lien ] = "#{APP_PATH}/#/show-app?app=#{application[ 'id' ]}"
-        url = "#{URL_ENT}#{application[ 'url' ]}" unless application[ 'url' ].to_s.start_with? 'http'
-        config_apps[ :url ] = url
+        config_apps[ :url ] = application[ 'url' ].to_s.start_with?( 'http' ) ? application[ 'url' ] : "#{URL_ENT}#{application[ 'url' ]}"
 
         # Gérer les notifications sur chaque application
         config_apps[ :notifications ] = 0
