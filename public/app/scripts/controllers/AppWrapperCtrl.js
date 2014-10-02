@@ -20,10 +20,19 @@ angular.module( 'portailApp.controllers' )
 			   $scope.current_user = response;
 
 			   currentUser.apps().then( function ( response ) {
+                               // Intégrer les pages statiques
+                               if ($stateParams.static) {
+			       $scope.app = { nom: '',
+					      url: $sce.trustAsResourceUrl( APP_PATH + '/pages/' + $stateParams.static ),
+                                              static: true };
+                               } else {
+                               // intégrer les applications dynamiques
 			       var app = _( response ).findWhere( { id: $stateParams.app } );
 			       $scope.app = { nom: app.nom,
-					      url: $sce.trustAsResourceUrl( app.url ) };
-			   } );
+					      url: $sce.trustAsResourceUrl( app.url ),
+                                              static: app.url.match( /\/pages\// ) !== null };
+                                      }
+                           } );
 		       } );
 		   }
 		 ] );
