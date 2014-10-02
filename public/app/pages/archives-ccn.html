@@ -1,16 +1,172 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
+<html lang="fr">
     <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width">
+        <meta charset="utf-8">
+        <meta http-equiv="content-language" content="fr">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Classes culturelles numériques Laclasse.com">
+        <meta name="author" content="Erasme">
+        <link rel="shortcut icon" href="img/favicon.png">
+
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="mobile-web-app-capable" content="yes">
+
+        <title>Classes culturelles numériques Laclasse.com</title>
+        <link rel="stylesheet" type="text/css" href="/app/bower_components/jquery-ui/themes/smoothness/jquery-ui.min.css" />
+        <!-- Bootstrap core CSS -->
+        <link href="/app/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="/app/bower_components/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet" />
+
+        <!-- Custom styles for this template -->
+        <!-- <link href="/portail/bower_components/jquery.gritter/css/jquery.gritter.css" rel="stylesheet" type="text/css" > -->
+        <link href="/app/bower_components/angular-carousel/dist/angular-carousel.min.css"  rel="stylesheet" type="text/css" >
+        <link href="/app/bower_components/ngAnimate/css/ng-animation.css"  rel="stylesheet" type="text/css" >
+        <link href="/app/bower_components/charte-graphique-laclasse-com/css/main.css"  rel="stylesheet" type="text/css" >
+
+        <link href="/app/styles/main.css" rel="stylesheet" type="text/css">
+        <link href="/app/styles/other-devices.css" rel="stylesheet" type="text/css">
+
+        <!--surcharges spécifiques à cette page -->
+        <style>
+            .aside { 
+                background-color:white;
+            }  
+            .laius {
+                margin:4%;
+                text-align: justify;
+            }
+        </style>
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
     </head>
+
     <body>
-        <div>TODO Page d'archive des projets</div>
+
+        <div class="container">
+
+            <div id="flash"></div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="ng-scope">
+                    <div class="row">
+                        <div class="animate scale-fade ng-scope" style="">
+                            <div class="row portail ng-scope">
+                                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 aside">
+                                    <p class="laius">
+                                        <a class="btn btn-default" href="ccn.html">&LeftArrow;retour</a>
+                                    </p>
+                                </div>
+                                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                                    <div class="row damier ng-scope">
+                                        <div class="col-xs-12 col-sm-6 col-md-3 petite case animate scale-fade-in gris2">
+                                            <a class="ng-scope" href="http://miam.laclasse.com/" title="" target="_blank">
+                                                <img class="ng-scope" src="/app/bower_components/charte-graphique-laclasse-com/images/06_thematiques.svg">
+                                                <span class="app-name ng-binding">Miam</span>
+                                            </a>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 col-md-3 petite case animate scale-fade-in bleu">
+                                            <a class="ng-scope" href="http://novaterra.laclasse.com/" title="" target="_blank">
+                                                <img class="ng-scope" src="/app/bower_components/charte-graphique-laclasse-com/images/06_thematiques.svg">
+                                                <span class="app-name ng-binding">Odyssée spatiale</span>
+                                            </a>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 col-md-3 petite case animate scale-fade-in jaune">
+                                            <a class="ng-scope" href="http://archeologies.laclasse.com/" title="" target="_blank">
+                                                <img class="ng-scope" src="/app/bower_components/charte-graphique-laclasse-com/images/06_thematiques.svg">
+                                                <span class="app-name ng-binding">Archéologie</span>
+                                            </a>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 col-md-3 petite case animate scale-fade-in orange">
+                                            <a class="ng-scope" href="http://bd.laclasse.com/" title="" target="_blank">
+                                                <img class="ng-scope" src="/app/bower_components/charte-graphique-laclasse-com/images/06_thematiques.svg">
+                                                <span class="app-name ng-binding">BD</span>
+                                            </a>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 col-md-3 petite case animate scale-fade-in violet">
+                                            <a class="ng-scope" href="http://cine.laclasse.com/" title="" target="_blank">
+                                                <img class="ng-scope" src="/app/bower_components/charte-graphique-laclasse-com/images/06_thematiques.svg">
+                                                <span class="app-name ng-binding">Ciné</span>
+                                            </a>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 col-md-3 petite case animate scale-fade-in vert">
+                                            <a class="ng-scope" href="http://cluemo.laclasse.com/" title="" target="_blank">
+                                                <img class="ng-scope" src="/app/bower_components/charte-graphique-laclasse-com/images/06_thematiques.svg">
+                                                <span class="app-name ng-binding">Cluémo</span>
+                                            </a>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 col-md-3 petite case animate scale-fade-in rouge">
+                                            <a class="ng-scope" href="http://etudiantsvoyageurs.laclasse.com/" title="" target="_blank">
+                                                <img class="ng-scope" src="/app/bower_components/charte-graphique-laclasse-com/images/06_thematiques.svg">
+                                                <span class="app-name ng-binding">Etudiants voyageurs</span>
+                                            </a>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 col-md-3 petite case animate scale-fade-in vert">
+                                            <a class="ng-scope" href="http://finisterrae.laclasse.com" title="" target="_blank">
+                                                <img class="ng-scope" src="/app/bower_components/charte-graphique-laclasse-com/images/06_thematiques.svg">
+                                                <span class="app-name ng-binding">Finisterrae</span>
+                                            </a>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 col-md-3 petite case animate scale-fade-in gris4">
+                                            <a class="ng-scope" href="http://ledechetmatiere.laclasse.com/" title="" target="_blank">
+                                                <img class="ng-scope" src="/app/bower_components/charte-graphique-laclasse-com/images/06_thematiques.svg">
+                                                <span class="app-name ng-binding">Le déchet matière</span>
+                                            </a>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 col-md-3 petite case animate scale-fade-in violet">
+                                            <a class="ng-scope" href="http://maisondeladanse.laclasse.com/" title="" target="_blank">
+                                                <img class="ng-scope" src="/app/bower_components/charte-graphique-laclasse-com/images/06_thematiques.svg">
+                                                <span class="app-name ng-binding">Maison de la danse</span>
+                                            </a>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 col-md-3 petite case animate scale-fade-in noir">
+                                            <a class="ng-scope" href="http://musique.laclasse.com/" title="" target="_blank">
+                                                <img class="ng-scope" src="/app/bower_components/charte-graphique-laclasse-com/images/06_thematiques.svg">
+                                                <span class="app-name ng-binding">Musique</span>
+                                            </a>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 col-md-3 petite case animate scale-fade-in jaune">
+                                            <a class="ng-scope" href="http://science.laclasse.com/" title="" target="_blank">
+                                                <img class="ng-scope" src="/app/bower_components/charte-graphique-laclasse-com/images/06_thematiques.svg">
+                                                <span class="app-name ng-binding">Science</span>
+                                            </a>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 col-md-3 petite case animate scale-fade-in orange">
+                                            <a class="ng-scope" href="http://picture.laclasse.com/" title="" target="_blank">
+                                                <img class="ng-scope" src="/app/bower_components/charte-graphique-laclasse-com/images/06_thematiques.svg">
+                                                <span class="app-name ng-binding">Picture</span>
+                                            </a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- /container -->
+
+
+            <!-- Bootstrap core JavaScript
+            ================================================== -->
+            <!-- Placed at the end of the document so the pages load faster -->
+
+            <script src="/app/bower_components/jquery/dist/jquery.min.js"></script>
+            <script src="/app/bower_components/jquery-ui/jquery-ui.min.js"></script>
+            <script src="/app/bower_components/underscore/underscore-min.js"></script>
+            <script src="/app/bower_components/ng-file-upload/angular-file-upload-shim.min.js"></script>
+            <!-- <script src="/portail/bower_components/faye/include.min.js"></script> -->
+
+            <script src="/app/bower_components/angular/angular.min.js"></script>
+            <script src="/app/bower_components/angular-i18n/angular-locale_fr-fr.js"></script>
+            <script src="/app/bower_components/angular-resource/angular-resource.min.js"></script>
+            <script src="/app/bower_components/angular-touch/angular-touch.min.js"></script>
+            <script src="/app/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+            <script src="/app/bower_components/angular-carousel/dist/angular-carousel.min.js"></script>
+            <script src="/app/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+            <script src="/app/bower_components/angular-animate/angular-animate.min.js"></script>
+
     </body>
 </html>
