@@ -28,12 +28,7 @@ angular.module( 'portailApp', [ 'portailApp.controllers',
 		       .state( 'portail.logged',
 			       { parent: 'portail',
 				 url: '/',
-				 resolve: { current_apps: [ 'currentUser',
-							    function( currentUser ) {
-								currentUser.apps().then( function( response ) {
-								    return response;
-								} );
-							    } ] },
+				 resolve: { current_apps: [ 'currentUser', function( currentUser ) { return currentUser.apps().then( function( response ) { return response; } ); } ] },
 				 views: {
 				     'main': {
 					 templateUrl: APP_PATH + '/views/portail/apps.html',
