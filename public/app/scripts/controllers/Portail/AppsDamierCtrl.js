@@ -2,16 +2,10 @@
 
 angular.module( 'portailApp.controllers' )
     .controller( 'PortailAppsDamierCtrl',
-		 [ '$scope', 'currentUser', 'news', 'APP_PATH',
-		   function( $scope, currentUser, news, APP_PATH ) {
+		 [ '$scope', 'current_user', 'current_apps', 'APP_PATH',
+		   function( $scope, current_user, current_apps, APP_PATH ) {
 		       $scope.prefix = APP_PATH;
 
-		       currentUser.get().then( function( response ) {
-			   $scope.current_user = response;
-			   if ( $scope.current_user.is_logged ) {
-			       currentUser.apps().then( function( response ) {
-				   $scope.apps = response;
-			       });
-			   }
-		       });
+		       $scope.current_user = current_user;
+		       $scope.apps = current_apps;
 		   } ] );

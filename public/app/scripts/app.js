@@ -21,12 +21,24 @@ angular.module( 'portailApp', [ 'portailApp.controllers',
 
 		   $stateProvider
 		       .state( 'portail', {
+			   resolve: { current_user: [ 'currentUser',
+						      function( currentUser ) {
+							  currentUser.get().then( function( response ) {
+							      return response;
+							  } );
+						      } ] },
 			   templateUrl: APP_PATH + '/views/portail/index.html',
 			   controller: 'PortailCtrl'
 		       } )
 		       .state( 'portail.logged',
 			       { parent: 'portail',
 				 url: '/',
+				 resolve: { current_apps: [ 'currentUser',
+							    function( currentUser ) {
+								currentUser.apps().then( function( response ) {
+								    return response;
+								} );
+							    } ] },
 				 views: {
 				     'main': {
 					 templateUrl: APP_PATH + '/views/portail/apps.html',
