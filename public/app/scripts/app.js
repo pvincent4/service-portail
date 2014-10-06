@@ -45,7 +45,7 @@ angular.module( 'portailApp', [ 'portailApp.controllers',
 				}
 			      })
 		       .state( 'app-wrapper',
-			       { url: '/show-app?app',
+			       { url: '/show-app?app?static',
 				 templateUrl: APP_PATH + '/views/show-app.html',
 				 controller: 'AppWrapperCtrl'
 			       } );
