@@ -21,12 +21,7 @@ angular.module( 'portailApp', [ 'portailApp.controllers',
 
 		   $stateProvider
 		       .state( 'portail', {
-			   resolve: { current_user: [ 'currentUser',
-						      function( currentUser ) {
-							  currentUser.get().then( function( response ) {
-							      return response;
-							  } );
-						      } ] },
+			   resolve: { current_user: [ 'currentUser', function( currentUser ) { return currentUser.get().then( function( response ) { return response; } ); } ] },
 			   templateUrl: APP_PATH + '/views/portail/index.html',
 			   controller: 'PortailCtrl'
 		       } )
