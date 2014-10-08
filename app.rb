@@ -231,7 +231,7 @@ class SinatraApp < Sinatra::Base
   get "#{APP_PATH}/api/version" do
     content_type :text
 
-    `git describe`
+    APP_VERSION
   end
   # }}}
 
