@@ -48,8 +48,7 @@ namespace :preprocess_assets do
   desc 'Minify CSS using Sass'
   task css: :load_config do
     STDERR.puts 'Sassification of vendor CSS'
-    uglified = Sass.compile( [ 'public/app/vendor/bootstrap/dist/css/bootstrap.min.css',
-                               'public/app/vendor/bootstrap/dist/css/bootstrap-theme.min.css',
+    uglified = Sass.compile( [ 'public/app/vendor/bootstrap/dist/css/bootstrap-theme.min.css',
                                'public/app/vendor/angular-carousel/dist/angular-carousel.min.css',
                                'public/app/vendor/ngAnimate/css/ng-animation.css',
                                'public/app/vendor/charte-graphique-laclasse-com/css/main.css' ]
