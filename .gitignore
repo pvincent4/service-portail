@@ -33,3 +33,4 @@ vagrant/
 /public/app/js/*.min.js*
 /public/app/vendor/*.min.js*
 /public/app/vendor/*.min.css
+/public/app/js/templates/*.html.js

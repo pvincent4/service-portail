@@ -18,11 +18,12 @@
      if ( top != self ) top.location.replace( location );
     </script>
 
+    <link href="<%= APP_PATH %>/app/vendor/bootstrap/dist/css/bootstrap.min.css?v=<%=APP_VERSION%>" rel="stylesheet" />
+
     <% if ENV['RACK_ENV'] == 'production' %>
       <link href="<%= APP_PATH %>/app/vendor/vendor.min.css?v=<%=APP_VERSION%>" rel="stylesheet" type="text/css">
       <link href="<%= APP_PATH %>/app/css/portail.min.css?v=<%=APP_VERSION%>" rel="stylesheet" type="text/css">
     <% else %>
-      <link href="<%= APP_PATH %>/app/vendor/bootstrap/dist/css/bootstrap.min.css?v=<%=APP_VERSION%>" rel="stylesheet" />
       <link href="<%= APP_PATH %>/app/vendor/bootstrap/dist/css/bootstrap-theme.min.css?v=<%=APP_VERSION%>" rel="stylesheet" />
       <link href="<%= APP_PATH %>/app/vendor/angular-carousel/dist/angular-carousel.min.css?v=<%=APP_VERSION%>"  rel="stylesheet" type="text/css" >
       <link href="<%= APP_PATH %>/app/vendor/ngAnimate/css/ng-animation.css?v=<%=APP_VERSION%>"  rel="stylesheet" type="text/css" >
