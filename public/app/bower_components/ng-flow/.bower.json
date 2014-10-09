@@ -29,7 +29,6 @@
     "commit": "4e976618635f0f6731294c64e87b10627d720b34"
   },
   "_source": "git://github.com/flowjs/ng-flow.git",
-  "_target": "~2.5.1",
-  "_originalSource": "ng-flow",
-  "_direct": true
+  "_target": "*",
+  "_originalSource": "ng-flow"
 }
