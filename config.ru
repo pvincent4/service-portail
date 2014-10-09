@@ -13,7 +13,7 @@ require 'app'
 
 use Rack::Rewrite do
   rewrite %r{^#{APP_PATH}(/app/(pages|js|css|vendor)/.*(html|map|css|js|ttf|woff|png|jpg|jpeg|gif|svg)[?v=0-9a-zA-Z\-.]*$)}, '$1'
-  rewrite %r{^/#{APP_PATH}(/(pages|js|css|vendor)/.*(html|map|css|js|ttf|woff|png|jpg|jpeg|gif|svg)[?v=0-9a-zA-Z\-.]*$)}, '/app$1'
+  rewrite %r{^/?#{APP_PATH}(/(pages|js|css|vendor)/.*(html|map|css|js|ttf|woff|png|jpg|jpeg|gif|svg)[?v=0-9a-zA-Z\-.]*$)}, '/app$1'
 end
 
 use Rack::Session::Cookie,
