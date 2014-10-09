@@ -20,6 +20,8 @@ gem 'rest-client'
 gem 'simple-rss'
 gem 'html_truncator'
 gem 'htmlentities'
+gem 'uglifier'
+gem 'sass'
 
 # Gems spécifiques ENT
 gem 'ent_notifs'
