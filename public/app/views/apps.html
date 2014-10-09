@@ -1,0 +1,55 @@
+<div class="row damier">
+  <div data-ng-repeat="app in apps | orderBy:'index'"
+       class="col-xs-12 col-sm-6 col-md-3 col-lg-3 petite case animate scale-fade-in {{ app.couleur }}"
+       data-ng-if="current_user.is_logged">
+    <a data-ui-sref="app-wrapper({ app: app.id })"
+       data-ng-if="app.active"
+       title="{{ app.survol }}">
+      <span class="compteur-notification orange-brillant"
+	    data-ng-if="app.notifications > 0">{{app.notifications}}</span>
+      <img data-ng-src="{{prefix}}/{{app.icone}}"
+	   data-ng-if="app.icone"/>
+      <span class="app-name">{{ app.nom }}</span>
+    </a>
+  </div>
+
+<!--  <span data-ng-if="!current_user.is_logged">
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 grande case presentation bleu"
+	 data-fittext="2">
+      Bienvenue sur <em>laclasse.com</em>, l'Espace Numérique de Travail (ENT) des collèges et des écoles. Ce site est développé par le Département du Rhône en partenariat avec le rectorat de l'académie de Lyon pour un travail en classe et à la maison. Il est ouvert gratuitement aux enseignants et aux élèves.
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 grande case logos blanc">
+      <a href="http://www.rhone.fr/">
+	<img data-ng-src="{{prefix}}/vendor/charte-graphique-laclasse-com/images/logo-rhone.png" />
+      </a>
+      <a href="http://www.ac-lyon.fr/">
+	<img data-ng-src="{{prefix}}/vendor/charte-graphique-laclasse-com/images/logo-academie.png" />
+      </a>
+    </div>
+
+    <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 petite case vert">
+      <a data-ui-sref="app-wrapper({ app: 'thematiques' })">
+	<img data-ng-src="{{prefix}}/vendor/charte-graphique-laclasse-com/images/06_thematiques.svg" />
+	<span class="app-name">classes culturelles numériques</span>
+      </a>
+    </div>
+
+    <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 petite case jaune">
+      <a data-ui-sref="app-wrapper({ app: 'contact' })">
+	<img data-ng-src="{{prefix}}/vendor/charte-graphique-laclasse-com/images/12_aide.svg" />
+	<span class="app-name">information et contact</span>
+      </a>
+    </div>
+
+    <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 petite case rouge">
+      <a data-ui-sref="app-wrapper({ app: 'aide' })">
+	<img data-ng-src="{{prefix}}/vendor/charte-graphique-laclasse-com/images/12_aide.svg" />
+	<span class="app-name">aide</span>
+      </a>
+    </div>
+
+    <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 petite case bleu">
+    </div>
+
+  </span>-->
+</div>
