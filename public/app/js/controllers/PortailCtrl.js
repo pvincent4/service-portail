@@ -19,9 +19,9 @@ angular.module( 'portailApp' )
 			       $scope.avatar = $scope.current_user['avatar'];
 			   } else {
 			       if ( $scope.current_user['sexe'] == 'F' ) {
-				   $scope.avatar = APP_PATH + '/vendor/charte-graphique-laclasse-com/images/avatar_feminin.svg';
+				   $scope.avatar = APP_PATH + '/app/vendor/charte-graphique-laclasse-com/images/avatar_feminin.svg';
 			       } else {
-				   $scope.avatar = APP_PATH + '/vendor/charte-graphique-laclasse-com/images/avatar_masculin.svg';
+				   $scope.avatar = APP_PATH + '/app/vendor/charte-graphique-laclasse-com/images/avatar_masculin.svg';
 			       }
 			   }
 			   news.get().then( function( response ) {
