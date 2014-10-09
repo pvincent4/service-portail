@@ -47,7 +47,7 @@
 	    "url_notif": "",
 	    "notifications": 0,
 	    "couleur": "rouge",
-	    "icone": "vendor/charte-graphique-laclasse-com/images/13_admin.svg",
+	    "icone": "app/vendor/charte-graphique-laclasse-com/images/13_admin.svg",
 	    "index": 14
 	},
 	"AIDE": {
@@ -58,7 +58,7 @@
 	    "url_notif": "",
 	    "notifications": 0,
 	    "couleur": "jaune",
-	    "icone": "vendor/charte-graphique-laclasse-com/images/12_aide.svg",
+	    "icone": "app/vendor/charte-graphique-laclasse-com/images/12_aide.svg",
 	    "index": 13
 	},
 	"PUBLI": {
@@ -69,7 +69,7 @@
 	    "url_notif": "",
 	    "notifications": 0,
 	    "couleur": "rouge",
-	    "icone": "vendor/charte-graphique-laclasse-com/images/11_publipostage.svg",
+	    "icone": "app/vendor/charte-graphique-laclasse-com/images/11_publipostage.svg",
 	    "index": 12
 	},
 	"SUIVIELV": {
@@ -81,7 +81,7 @@
 	    "url_notif": "",
 	    "notifications": 0,
 	    "couleur": "jaune",
-	    "icone": "vendor/charte-graphique-laclasse-com/images/10_suivi.svg",
+	    "icone": "app/vendor/charte-graphique-laclasse-com/images/10_suivi.svg",
 	    "index": 11
 	},
 	"TROMBI": {
@@ -92,7 +92,7 @@
 	    "url_notif": "",
 	    "notifications": 0,
 	    "couleur": "bleu",
-	    "icone": "vendor/charte-graphique-laclasse-com/images/09_trombi.svg",
+	    "icone": "app/vendor/charte-graphique-laclasse-com/images/09_trombi.svg",
 	    "index": 10
 	},
 	"GAR": {
@@ -103,7 +103,7 @@
 	    "url_notif": "",
 	    "notifications": 0,
 	    "couleur": "violet",
-	    "icone": "vendor/charte-graphique-laclasse-com/images/08_ressources.svg",
+	    "icone": "app/vendor/charte-graphique-laclasse-com/images/08_ressources.svg",
 	    "index": 9
 	},
 	"BLOGS": {
@@ -114,7 +114,7 @@
 	    "url_notif": "",
 	    "notifications": 0,
 	    "couleur": "jaune",
-	    "icone": "vendor/charte-graphique-laclasse-com/images/07_blogs.svg",
+	    "icone": "app/vendor/charte-graphique-laclasse-com/images/07_blogs.svg",
 	    "index": 8
 	},
 	"CCNUM": {
@@ -125,7 +125,7 @@
 	    "url_notif": "",
 	    "notifications": 0,
 	    "couleur": "bleu",
-	    "icone": "vendor/charte-graphique-laclasse-com/images/06_thematiques.svg",
+	    "icone": "app/vendor/charte-graphique-laclasse-com/images/06_thematiques.svg",
 	    "index": 7
 	},
 	"LPC": {
@@ -136,7 +136,7 @@
 	    "url_notif": "",
 	    "notifications": 0,
 	    "couleur": "vert",
-	    "icone": "vendor/charte-graphique-laclasse-com/images/05_validationcompetences.svg",
+	    "icone": "app/vendor/charte-graphique-laclasse-com/images/05_validationcompetences.svg",
 	    "index": 6
 	},
 	"PRONOTE": {
@@ -147,7 +147,7 @@
 	    "url_notif": "",
 	    "notifications": 0,
 	    "couleur": "rouge",
-	    "icone": "vendor/charte-graphique-laclasse-com/images/04_notesabsences.svg",
+	    "icone": "app/vendor/charte-graphique-laclasse-com/images/04_notesabsences.svg",
 	    "index": 5
 	},
 	"TELESRV": {
@@ -157,7 +157,7 @@
 	    "url_notif": "",
 	    "notifications": 0,
 	    "couleur": "vert",
-	    "icone": "vendor/charte-graphique-laclasse-com/images/04_notesabsences.svg",
+	    "icone": "app/vendor/charte-graphique-laclasse-com/images/04_notesabsences.svg",
 	    "index": 4
 	},
 	"CTXT": {
@@ -167,7 +167,7 @@
 	    "url_notif": "",
 	    "notifications": 0,
 	    "couleur": "violet",
-	    "icone": "vendor/charte-graphique-laclasse-com/images/03_cahierdetextes.svg",
+	    "icone": "app/vendor/charte-graphique-laclasse-com/images/03_cahierdetextes.svg",
 	    "index": 3
 	},
 	"DOC": {
@@ -177,7 +177,7 @@
 	    "url_notif": "",
 	    "notifications": 0,
 	    "couleur": "jaune",
-	    "icone": "vendor/charte-graphique-laclasse-com/images/02_documents.svg",
+	    "icone": "app/vendor/charte-graphique-laclasse-com/images/02_documents.svg",
 	    "index": 2
 	},
 	"MAIL": {
@@ -188,7 +188,7 @@
 	    "url_notif": "",
 	    "notifications": 0,
 	    "couleur": "bleu",
-	    "icone": "vendor/charte-graphique-laclasse-com/images/01_messagerie.svg",
+	    "icone": "app/vendor/charte-graphique-laclasse-com/images/01_messagerie.svg",
 	    "index": 1
 	}
     },
