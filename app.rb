@@ -7,6 +7,7 @@ require 'open-uri'
 require 'uri'
 require 'json'
 require 'yaml'
+require 'date'
 
 Bundler.require( :default, ENV['RACK_ENV'].to_sym )     # require tout les gems définis dans Gemfile
 
@@ -233,6 +234,26 @@ class SinatraApp < Sinatra::Base
 
     APP_VERSION
   end
+  
+  #
+  # Ressources numériques de l'utilisateur
+  #
+  get "#{APP_PATH}/api/ressources_numeriques" do
+    content_type :json
+    set_current_user( env )
+    ressources = Annuaire.get_user_resources( session[:current_user][:info][:uid] )
+    uai_courant = session[:current_user][:profil_actif].first['uai']
+    # Prendre que les ressources de l'établissement courant.
+    # Qui sont dans la fenêtre d'abonnement
+    # Triées sur les types de ressources desc pour avoir 'MAUEL' en premier, puis 'DICO', puis 'AUTRES'
+    ressources.reject { |r| r[ 'etablissement_code_uai' ] != uai_courant }
+              .reject{ |r|  Date.parse( r['date_deb_abon'] ) >= Date.today }
+              .reject{ |r|  Date.parse( r['date_fin_abon'] ) <= Date.today }
+              .sort!{ |r1, r2| "#{r2['type_ressource']}" <=> "#{r1['type_ressource']}"
+            }.to_json
+              
+  end
+
   # }}}
 
   # {{{ auth
