@@ -83,6 +83,7 @@ module Annuaire
 
     query = args.map { |key, value| "#{key}=#{CGI.escape(value)}" }.join( '&' )
 
+    puts "#{uri}#{@liaison}#{service}#{@coordination}#{query};#{signature}"
     "#{uri}#{@liaison}#{service}#{@coordination}#{query};#{signature}"
   end
 
@@ -159,6 +160,21 @@ module Annuaire
   def get_user( uid )
     @search = false
     send_request 'users', CGI.escape( uid ), 'true', 'User inconnu'
+  end
+
+  # Service Utilisateur : récupération des ressources numériques de l'utilisateur
+  def get_user_resources( uid )
+   @search = false
+    uid = URI.escape( uid )
+    RestClient.get( sign( ANNUAIRE[:url], "users/#{uid}/ressources", {} ) ) do
+      |response, _request, _result|
+      if response.code == 200
+        return JSON.parse( response )
+      else
+        STDERR.puts "erreur getting user's resources : #{CGI.escape( uid )}"
+      end
+    end
+
   end
 
   def get_user_regroupements( uid )
