@@ -2,8 +2,8 @@
 
 angular.module( 'portailApp.controllers' )
     .controller( 'AppWrapperCtrl',
-		 [ '$scope', '$http', '$stateParams', '$sce', 'currentUser', 'APP_PATH',
-		   function ( $scope, $http, $stateParams, $sce, currentUser, APP_PATH ) {
+		 [ '$scope', '$http', '$stateParams', '$sce', 'currentUser', 'APP_PATH', 'UserRessources',
+		   function ( $scope, $http, $stateParams, $sce, currentUser, APP_PATH, UserRessources ) {
 		       $scope.iOS = ( navigator.userAgent.match( /iPad/i ) !== null ) || ( navigator.userAgent.match( /iPhone/i ) !== null );
 		       $scope.prefix = APP_PATH;
 		       $scope.menu = [ { icone: 'logolaclasse.svg',
@@ -18,8 +18,16 @@ angular.module( 'portailApp.controllers' )
 
 		       currentUser.get().then( function ( response ) {
 			   $scope.current_user = response;
-
-			   currentUser.apps().then( function ( response ) {
+                           
+                           // Les ressources numériques de l'utilisateur
+                           $scope.ressources_numeriques = UserRessources;
+                           
+//                           currentUser.ressources_numeriques().then( function ( response ) {
+//                               $scope.ressources_numeriques = response;
+//                           } );
+                           
+			   // Les applications de l'utilisateur
+                           currentUser.apps().then( function ( response ) {
                                // Intégrer les pages statiques
                                if ($stateParams.static) {
 			       $scope.app = { nom: '',

@@ -1,0 +1,24 @@
+<div class="row">
+    <div class="animate scale-fade ng-scope" style="">
+        <div class="row portail ng-scope">
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 aside aside-blanc">
+                <p class="laius">
+                    Un topo sur les ressources numériques... 
+                    Un topo sur les ressources numériques... 
+                    Un topo sur les ressources numériques... 
+                    Un topo sur les ressources numériques... 
+                </p>
+            </div>
+            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                <div class="row damier">
+                    <div data-ng-repeat="ressource in ressources_numeriques| orderBy:'index'"
+                         class="col-xs-12 col-sm-6 col-md-3 col-lg-3 petite case animate scale-fade-in violet"
+                         data-ng-if="current_user.is_logged">
+                        {{ressource.lib}}
+                        test
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
