@@ -26,6 +26,7 @@ angular.module( 'portailApp.services.user' )
 				      } );
 		} ] );
 
+// Services pour les applications
 angular.module( 'portailApp.services.user' )
     .factory( 'UserApps',
 	      [ '$resource', 'APP_PATH',
@@ -33,6 +34,15 @@ angular.module( 'portailApp.services.user' )
 		    return $resource( APP_PATH + '/api/apps' );
 		} ] );
 
+// Services pour les ressources numériques
+angular.module( 'portailApp.services.user' )
+    .factory( 'UserRessources',
+	      [ '$resource', 'APP_PATH',
+		function( $resource, APP_PATH ) {
+		    return $resource( APP_PATH + '/api/resources_numeriques' );
+		} ] );
+
+// Services pour la gestion de l'avatar.
 angular.module( 'portailApp.services.user' )
     .service( 'currentUser',
 	      [ '$http', '$upload', 'APP_PATH', 'User', 'UserApps',
