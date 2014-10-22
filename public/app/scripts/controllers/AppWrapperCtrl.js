@@ -17,12 +17,10 @@ angular.module( 'portailApp.controllers' )
 					 lien: '/logout' } ];
 
 		       currentUser.get().then( function ( response ) {
-			   $scope.current_user = response;
-console.log('Ici dans AppWrapperCtrl');                                                    
+			   $scope.current_user = response;                                                  
                            // Les ressources numériques de l'utilisateur
                            currentUser.ressources().then( function ( response ) {
                                $scope.ressources_numeriques = response;
-console.log($scope.ressources_numeriques);
                            } );
                            
 			   // Les applications de l'utilisateur
