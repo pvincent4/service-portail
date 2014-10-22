@@ -263,14 +263,27 @@ class SinatraApp < Sinatra::Base
     #                           Date.parse( r['date_deb_abon'] ) >= Date.today && 
     #                           Date.parse( r['date_fin_abon'] ) <= Date.today }
     
-    ress_temp.each_with_index { |r, i| 
-      r['couleur'] = couleurs[i.modulo(couleurs.length)]
-      r['icone'] = '08_ressources.svg' 
-      r['icone'] = "05_validationcompetences.svg"  if r['type_ressource'] == "MANUEL"
-      r['icone'] = '07_blogs.svg'                  if r['type_ressource'] == "AUTRE"
-      ressources.push r
+    couleurs.each_with_index { |c, i| 
+      unless ress_temp[i].nil?
+        ress_temp[i]['couleur'] = c
+        ress_temp[i]['icone'] = '08_ressources.svg'
+        ress_temp[i]['icone'] = "05_validationcompetences.svg"  if ress_temp[i]['type_ressource'] == "MANUEL"
+        ress_temp[i]['icone'] = '07_blogs.svg'                  if ress_temp[i]['type_ressource'] == "AUTRE"
+      else
+        # un carré vide, mais avec la bonne couleur !
+        ress_temp.push({"code" => "", "couleur" =>  c})
+      end
     }
-    ressources.to_json
+    ress_temp.to_json
+    
+#    ress_temp.each_with_index { |r, i| 
+#      r['couleur'] = couleurs[i.modulo(couleurs.length)]
+#      r['icone'] = '08_ressources.svg' 
+#      r['icone'] = "05_validationcompetences.svg"  if r['type_ressource'] == "MANUEL"
+#      r['icone'] = '07_blogs.svg'                  if r['type_ressource'] == "AUTRE"
+#      ressources.push r
+#    }
+#    ressources.to_json
   end
 
   # }}}
