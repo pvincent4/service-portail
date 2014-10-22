@@ -247,7 +247,7 @@ class SinatraApp < Sinatra::Base
     # Faire un tableau des couleurs dans le même ordre que les applications, pour les ressources
     config[:apps_tiles].flatten(99).reject { |app| app.class == Symbol }
     .each { |a|
-       couleurs.push a[:couleur]
+      couleurs.push a[:couleur]
     } 
     
     ress_temp = Annuaire.get_user_resources( session[:current_user][:info][:uid] )
@@ -255,18 +255,22 @@ class SinatraApp < Sinatra::Base
     # Prendre que les ressources de l'établissement courant.
     # Qui sont dans la fenêtre d'abonnement
     # Triées sur les types de ressources desc pour avoir 'MANUEL' en premier, puis 'DICO', puis 'AUTRES'
-    ress_temp.reject { |r| r[ 'etablissement_code_uai' ] != uai_courant }
-              .reject{ |r|  Date.parse( r['date_deb_abon'] ) >= Date.today }
-              .reject{ |r|  Date.parse( r['date_fin_abon'] ) <= Date.today }
-              .sort!{ |r1, r2| "#{r2['type_ressource']}" <=> "#{r1['type_ressource']}"
-            }
-     i = 0
-     ress_temp.each { |r| 
-       r[:couleur] = couleurs[i.modulo(couleurs.length)]
-       ressources.push r
-       i += 1
-     }
-     ressources.to_json
+    ress_temp = ress_temp.reject { |r| r[ 'etablissement_code_uai' ] != uai_courant }
+    .reject { |r|  Date.parse( r['date_deb_abon'] ) >= Date.today }
+    .reject { |r|  Date.parse( r['date_fin_abon'] ) <= Date.today }
+    .sort_by{ |r| r['type_ressource'].to_s }
+    .reverse
+    #                           Date.parse( r['date_deb_abon'] ) >= Date.today && 
+    #                           Date.parse( r['date_fin_abon'] ) <= Date.today }
+    
+    ress_temp.each_with_index { |r, i| 
+      r['couleur'] = couleurs[i.modulo(couleurs.length)]
+      r['icone'] = '08_ressources.svg' 
+      r['icone'] = "05_validationcompetences.svg"  if r['type_ressource'] == "MANUEL"
+      r['icone'] = '07_blogs.svg'                  if r['type_ressource'] == "AUTRE"
+      ressources.push r
+    }
+    ressources.to_json
   end
 
   # }}}
