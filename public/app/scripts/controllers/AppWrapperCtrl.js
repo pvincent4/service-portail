@@ -2,8 +2,8 @@
 
 angular.module( 'portailApp.controllers' )
     .controller( 'AppWrapperCtrl',
-		 [ '$scope', '$http', '$stateParams', '$sce', 'currentUser', 'APP_PATH', 'UserRessources',
-		   function ( $scope, $http, $stateParams, $sce, currentUser, APP_PATH, UserRessources ) {
+		 [ '$scope', '$http', '$stateParams', '$sce', 'currentUser', 'APP_PATH',
+		   function ( $scope, $http, $stateParams, $sce, currentUser, APP_PATH ) {
 		       $scope.iOS = ( navigator.userAgent.match( /iPad/i ) !== null ) || ( navigator.userAgent.match( /iPhone/i ) !== null );
 		       $scope.prefix = APP_PATH;
 		       $scope.menu = [ { icone: 'logolaclasse.svg',
@@ -18,13 +18,12 @@ angular.module( 'portailApp.controllers' )
 
 		       currentUser.get().then( function ( response ) {
 			   $scope.current_user = response;
-                           
+console.log('Ici dans AppWrapperCtrl');                                                    
                            // Les ressources numériques de l'utilisateur
-                           $scope.ressources_numeriques = UserRessources;
-                           
-//                           currentUser.ressources_numeriques().then( function ( response ) {
-//                               $scope.ressources_numeriques = response;
-//                           } );
+                           currentUser.ressources().then( function ( response ) {
+                               $scope.ressources_numeriques = response;
+console.log($scope.ressources_numeriques);
+                           } );
                            
 			   // Les applications de l'utilisateur
                            currentUser.apps().then( function ( response ) {
