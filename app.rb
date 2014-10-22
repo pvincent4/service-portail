@@ -241,17 +241,32 @@ class SinatraApp < Sinatra::Base
   get "#{APP_PATH}/api/ressources_numeriques" do
     content_type :json
     set_current_user( env )
-    ressources = Annuaire.get_user_resources( session[:current_user][:info][:uid] )
+    couleurs = []
+    ressources = []
+    
+    # Faire un tableau des couleurs dans le même ordre que les applications, pour les ressources
+    config[:apps_tiles].flatten(99).reject { |app| app.class == Symbol }
+    .each { |a|
+       couleurs.push a[:couleur]
+    } 
+    
+    ress_temp = Annuaire.get_user_resources( session[:current_user][:info][:uid] )
     uai_courant = session[:current_user][:profil_actif].first['uai']
     # Prendre que les ressources de l'établissement courant.
     # Qui sont dans la fenêtre d'abonnement
-    # Triées sur les types de ressources desc pour avoir 'MAUEL' en premier, puis 'DICO', puis 'AUTRES'
-    ressources.reject { |r| r[ 'etablissement_code_uai' ] != uai_courant }
+    # Triées sur les types de ressources desc pour avoir 'MANUEL' en premier, puis 'DICO', puis 'AUTRES'
+    ress_temp.reject { |r| r[ 'etablissement_code_uai' ] != uai_courant }
               .reject{ |r|  Date.parse( r['date_deb_abon'] ) >= Date.today }
               .reject{ |r|  Date.parse( r['date_fin_abon'] ) <= Date.today }
               .sort!{ |r1, r2| "#{r2['type_ressource']}" <=> "#{r1['type_ressource']}"
-            }.to_json
-              
+            }
+     i = 0
+     ress_temp.each { |r| 
+       r[:couleur] = couleurs[i.modulo(couleurs.length)]
+       ressources.push r
+       i += 1
+     }
+     ressources.to_json
   end
 
   # }}}

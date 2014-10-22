@@ -12,10 +12,9 @@
             <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
                 <div class="row damier">
                     <div data-ng-repeat="ressource in ressources_numeriques| orderBy:'index'"
-                         class="col-xs-12 col-sm-6 col-md-3 col-lg-3 petite case animate scale-fade-in violet"
+                         class="col-xs-12 col-sm-6 col-md-3 col-lg-3 petite case animate scale-fade-in {{ ressource.couleur }}"
                          data-ng-if="current_user.is_logged">
                         {{ressource.lib}}
-                        test
                     </div>
                 </div>
             </div>
