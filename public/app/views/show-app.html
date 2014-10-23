@@ -8,7 +8,7 @@
 	<div class="collapse navbar-collapse bleu">
 
 	  <a class="laclasse-com gris1 pull-left" href="{{prefix}}/">
-	    <div class="petit-logo gris4" data-ng-style="{'background-image': 'url(\'' + prefix + '/bower_components/charte-graphique-laclasse-com/images/logolaclasse.svg\')' }" >
+	    <div class="petit-logo gris4" data-ng-style="{'background-image': 'url(' + prefix + '/app/vendor/charte-graphique-laclasse-com/images/logolaclasse.svg)' }" >
 	    </div>
 	    <span>laclasse.com</span>
 	  </a>
@@ -17,7 +17,6 @@
 
 	  <div class="user-menu dropdown gris4 pull-right">
 	    <div class="profil-select-wrapper">
-<!--	      <span data-ng-if="!current_user.is_logged">profil public</span>-->
 	      <select data-ng-if="current_user.is_logged"
 		      data-ng-controller="ProfilActifCtrl"
 		      data-ng-model="current_user.profil_actif[0]"
@@ -25,7 +24,6 @@
 		      data-ng-options="profil as profil.etablissement + ' : ' + profil.nom group by profil.etablissement for profil in current_user.profils track by profil.index" >
 	      </select>
 	    </div>
-<!--	    <a href="{{prefix}}/login" data-ng-if="!current_user.is_logged">connectez-vous</a>-->
 	    <a class="dropdown-toggle" data-ng-if="current_user.is_logged">
 	      <h6>{{current_user.prenom}} {{current_user.nom}}</h6> <span class="glyphicon glyphicon-chevron-down"></span>
 	    </a>
@@ -33,12 +31,12 @@
 	      <li data-ng-repeat="item in menu">
 		<a data-ng-if="item.app"
 		   data-ui-sref="app-wrapper({ app: item.app })"
-		   data-ng-style="{'background-image': 'url(\'' + prefix +'/bower_components/charte-graphique-laclasse-com/images/' + item.icone + '\')' }" >
+		   data-ng-style="{'background-image': 'url(' + prefix +'/vendor/charte-graphique-laclasse-com/images/' + item.icone + ')' }" >
 		  {{item.texte}}
 		</a>
 		<a data-ng-if="item.lien"
 		   href="{{item.lien}}"
-		   data-ng-style="{'background-image': 'url(\'' + prefix +'/bower_components/charte-graphique-laclasse-com/images/' + item.icone + '\')' }" >
+		   data-ng-style="{'background-image': 'url(' + prefix +'/vendor/charte-graphique-laclasse-com/images/' + item.icone + ')' }" >
 		  {{item.texte}}
 		</a>
 	      </li>
@@ -61,8 +59,8 @@
 	    frameBorder="0"
 	    scrolling="{{iOS ? 'no': 'yes'}}">
     </iframe>
-    
-    <div data-ng-if="app.static" ng-include="app.url">    
+
+    <div data-ng-if="app.static" ng-include="app.url">
     </div>
   </div>
 </div>
