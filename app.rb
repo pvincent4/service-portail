@@ -19,10 +19,10 @@ require_relative './lib/annuaire'
 class Hash
   def to_html
     ['<ul>',
-     map { |k, v|
-       [ "<li><strong>#{k}</strong> : ", v.respond_to?(:to_html) ? v.to_html : "<span>#{v}</span></li>" ]
-     },
-     '</ul>'
+      map { |k, v|
+        [ "<li><strong>#{k}</strong> : ", v.respond_to?(:to_html) ? v.to_html : "<span>#{v}</span></li>" ]
+      },
+      '</ul>'
     ].join
   end
 end
@@ -63,8 +63,8 @@ class SinatraApp < Sinatra::Base
     content_type :json
 
     return { user: '',
-             info: {},
-             is_logged: false }.to_json unless is_logged?
+      info: {},
+      is_logged: false }.to_json unless is_logged?
 
     set_current_user( env )
     session[:current_user].to_json
@@ -85,7 +85,7 @@ class SinatraApp < Sinatra::Base
     param :ville,          String,  required: false
 
     Annuaire.put_user( session[:current_user][:info][:uid],
-                       params )
+      params )
 
     set_current_user( env )
 
@@ -96,7 +96,7 @@ class SinatraApp < Sinatra::Base
     content_type :json
 
     Annuaire.put_user_avatar( session[:current_user][:info][:uid],
-                              File.read( params[:image][:tempfile] ) )
+      File.read( params[:image][:tempfile] ) )
 
     set_current_user( env )
 
@@ -120,8 +120,8 @@ class SinatraApp < Sinatra::Base
     param :uai, String, required: true
 
     Annuaire.put_user_profil_actif( session[:current_user][:info][:uid],
-                                    params[:profil_id],
-                                    params[:uai] )
+      params[:profil_id],
+      params[:uai] )
 
     set_current_user( env )
 
@@ -139,9 +139,9 @@ class SinatraApp < Sinatra::Base
     config[:news_feed].each do |feed|
       begin
         SimpleRSS.parse( open( feed[:flux] ) )
-                 .items
-                 .first( feed[:nb] )
-                 .each do |article|
+        .items
+        .first( feed[:nb] )
+        .each do |article|
           article.each do |k, _|
             if article[k].is_a? String
               article[k] = URI.unescape( article[k] ).to_s.force_encoding( 'UTF-8' ).encode!
@@ -202,8 +202,8 @@ class SinatraApp < Sinatra::Base
 
     # traitement des apps renvoyées par l'annuaire
     user_applications
-      .reject { |a| a[ 'etablissement_code_uai' ] != uai_courant }
-      .each { |application|
+    .reject { |a| a[ 'etablissement_code_uai' ] != uai_courant }
+    .each { |application|
       config_apps = config[ :apps_tiles ][ application[ 'id' ].to_sym ]
       unless config_apps.nil?
         # On regarde si le profils actif de l'utilisateur comporte le code détablissement pour lequel l'application est activée
@@ -260,8 +260,6 @@ class SinatraApp < Sinatra::Base
     .reject { |r|  Date.parse( r['date_fin_abon'] ) <= Date.today }
     .sort_by{ |r| r['type_ressource'].to_s }
     .reverse
-    #                           Date.parse( r['date_deb_abon'] ) >= Date.today && 
-    #                           Date.parse( r['date_fin_abon'] ) <= Date.today }
     
     couleurs.each_with_index { |c, i| 
       unless ress_temp[i].nil?
@@ -275,15 +273,6 @@ class SinatraApp < Sinatra::Base
       end
     }
     ress_temp.to_json
-    
-#    ress_temp.each_with_index { |r, i| 
-#      r['couleur'] = couleurs[i.modulo(couleurs.length)]
-#      r['icone'] = '08_ressources.svg' 
-#      r['icone'] = "05_validationcompetences.svg"  if r['type_ressource'] == "MANUEL"
-#      r['icone'] = '07_blogs.svg'                  if r['type_ressource'] == "AUTRE"
-#      ressources.push r
-#    }
-#    ressources.to_json
   end
 
   # }}}
