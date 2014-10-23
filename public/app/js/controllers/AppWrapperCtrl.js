@@ -19,19 +19,25 @@ angular.module( 'portailApp' )
 		       currentUser.get().then( function ( response ) {
 			   $scope.current_user = response;
 
+			   // Les applications de l'utilisateur
 			   currentUser.apps().then( function ( response ) {
 			       // Intégrer les pages statiques
 			       if ($stateParams.static) {
-			       $scope.app = { nom: '',
-					      url: $sce.trustAsResourceUrl( APP_PATH + '/pages/' + $stateParams.static ),
-					      static: true };
+				   $scope.app = { nom: '',
+						  url: $sce.trustAsResourceUrl( APP_PATH + '/pages/' + $stateParams.static ),
+						  static: true };
+
+				   // Les ressources numériques de l'utilisateur
+				   currentUser.ressources().then( function ( response ) {
+				       $scope.ressources_numeriques = response;
+				   } );
 			       } else {
-			       // intégrer les applications dynamiques
-			       var app = _( response ).findWhere( { id: $stateParams.app } );
-			       $scope.app = { nom: app.nom,
-					      url: $sce.trustAsResourceUrl( app.url ),
-					      static: app.url.match( /\/pages\// ) !== null };
-				      }
+				   // intégrer les applications dynamiques
+				   var app = _( response ).findWhere( { id: $stateParams.app } );
+				   $scope.app = { nom: app.nom,
+						  url: $sce.trustAsResourceUrl( app.url ),
+						  static: app.url.match( /\/pages\// ) !== null };
+			       }
 			   } );
 		       } );
 		   }
