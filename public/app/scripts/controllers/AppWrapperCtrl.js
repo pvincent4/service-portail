@@ -17,9 +17,14 @@ angular.module( 'portailApp.controllers' )
 					 lien: '/logout' } ];
 
 		       currentUser.get().then( function ( response ) {
-			   $scope.current_user = response;
-
-			   currentUser.apps().then( function ( response ) {
+			   $scope.current_user = response;                                                  
+                           // Les ressources numériques de l'utilisateur
+                           currentUser.ressources().then( function ( response ) {
+                               $scope.ressources_numeriques = response;
+                           } );
+                           
+			   // Les applications de l'utilisateur
+                           currentUser.apps().then( function ( response ) {
                                // Intégrer les pages statiques
                                if ($stateParams.static) {
 			       $scope.app = { nom: '',
