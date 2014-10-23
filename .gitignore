@@ -24,9 +24,13 @@ vagrant/
 
 /config/env.rb
 /config/options.rb
-/config/portail.yaml
 /config/CAS*.rb
 /config/authentication.rb
-/public/app/scripts/constants.js
+/public/app/js/constants.js
 /config/portail.yaml
 /config/portail.json
+/public/app/css/*.min.css
+/public/app/js/*.min.js*
+/public/app/vendor/*.min.js*
+/public/app/vendor/*.min.css
+/public/app/js/templates/*.html.js

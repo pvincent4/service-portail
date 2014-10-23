@@ -1,0 +1,475 @@
+/* Space out content a bit */
+body {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+/* Everything but the jumbotron gets side spacing for mobile first views */
+.header,
+.marketing,
+.footer {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Custom page header */
+.header {
+    border-bottom: 1px solid #e5e5e5;
+}
+/* Make the masthead heading the same height as the navigation */
+.header h3 {
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 40px;
+    padding-bottom: 19px;
+}
+
+/* Custom page footer */
+.footer {
+    padding-top: 19px;
+    color: #b2b2b2;
+    border-top: 1px solid #e5e5e5;
+}
+
+/* Customize container */
+@media (min-width: 768px) {
+    .container {
+	max-width: 730px;
+    }
+}
+.container-narrow > hr {
+    margin: 30px 0;
+}
+
+/* Main marketing message and sign up button */
+.jumbotron {
+    text-align: center;
+    border-bottom: 1px solid #e5e5e5;
+}
+.jumbotron .btn {
+    font-size: 21px;
+    padding: 14px 24px;
+}
+
+/* Supporting marketing content */
+.marketing {
+    margin: 40px 0;
+}
+.marketing p + h4 {
+    margin-top: 28px;
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+    /* Remove the padding we set earlier */
+    .header,
+    .marketing,
+    .footer {
+	padding-left: 0;
+	padding-right: 0;
+    }
+    /* Space out the masthead */
+    .header {
+	margin-bottom: 30px;
+    }
+    /* Remove the bottom border on the jumbotron for visual effect */
+    .jumbotron {
+	border-bottom: 0;
+    }
+}
+
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600italic,600,700,700italic,800,800italic);
+
+.nav,
+.pagination,
+.carousel,
+.panel-title a { cursor:pointer }
+
+#flash { display:none }
+
+body { font-family:'Open Sans', sans-serif;
+       padding:0 }
+
+.container { margin:0;
+	     max-width:100%;
+	     padding:0;
+	     width:100% }
+
+.container * { margin:0;
+	       padding:0 }
+
+.aside { background-color:#16161d;
+	 box-shadow:5px 0 8px 0 rgba(0,0,0,0.5);
+	 z-index:1 }
+
+.aside .slider { height:50% }
+
+.aside .user { background-position:center center;
+	       background-repeat:no-repeat;
+	       background-size:contain;
+	       text-align:center }
+
+.aside .user * { width:100% }
+
+.aside .user span { background-color:rgba(0,0,0,0.5);
+		    display:block;
+		    height:100%;
+		    position:absolute;
+		    width:100% }
+
+.logolaclasse h3,
+.aside .user .user-info h3 { color:#fff;
+			     font-weight:700;
+			     padding:0;
+			     text-decoration:none }
+
+.aside .user-info span { background:transparent;
+			 bottom:0;
+			 height:auto;
+			 line-height:0;
+			 position:absolute }
+
+.aside .user .connect-register a,
+.aside .user-info a.logout { border:1px solid #fff;
+			     color:#fff;
+			     margin:.5em;
+			     padding:.5em;
+			     text-transform:uppercase }
+
+.aside .user-info a.logout { line-height:3 }
+
+.aside .user .connect-register a { display:block;
+				   margin:10% auto 0;
+				   width:80% }
+
+.aside .user select { color:#fff;
+		      background:transparent;
+		      border:0;
+		      font-weight:lighter;
+		      width:100% }
+
+.aside-blanc { background-color:white; }
+
+.aside-blanc .laius { 
+                    margin:4%;
+                    text-align: justify;
+                    }
+
+.user-info svg { bottom:0;
+		 left:0;
+		 opacity:0.5;
+		 position:absolute }
+
+.damier { overflow-y:auto }
+.damier .petite.case,
+.logolaclasse { text-align:center }
+
+.damier .petite.case a,
+.logolaclasse a { color:#fff;
+		  float:left;
+		  height:100%;
+		  text-decoration:none;
+		  width:100% }
+
+.aside .avatar { background-color:#aff }
+
+.rn-carousel-indicator { bottom:33.333%;
+			 line-height:1em;
+			 position:absolute }
+
+.rn-carousel-indicator span { color:#fff }
+.rn-carousel-indicator span:before { content:'○'}
+.rn-carousel-indicator span.active:before { content:'●'}
+
+.rn-carousel-slide { background-position:center top;
+		     background-repeat:no-repeat;
+		     background-size:auto 66.666% }
+.rn-carousel-slide .news-content { background-color:rgba(255,255,255,0.1);
+				   color:#fff;
+				   bottom:0;
+				   height:33.333%;
+				   padding:5px;
+				   position:absolute;
+				   width:100%;
+				   padding:1em }
+.rn-carousel-slide .news-content h6 { color:#fff;
+				      text-decoration:none;
+				      text-align:center;
+				      font-size: 2em;
+				      font-weight: bolder;
+				      text-transform: uppercase;}
+.rn-carousel-slide .news-content .lire-la-suite { color:#fff;
+						  text-decoration:underline;
+						  font-weight:bolder;
+						  float:right }
+
+.rn-carousel-slide .news-content .pub-date { color:#ddd;
+					     font-size: 0.8em;
+					     float:right }
+
+.damier .case { float:left;
+		position:relative }
+
+.logolaclasse a h3 { font-size: 2em;
+		     font-weight: bold;
+		     line-height: 2em; }
+
+.logolaclasse img,
+.logolaclasse h3,
+.damier .petite.case img,
+.damier .petite.case .app-name { float: left; }
+.logolaclasse img,
+.damier .petite.case img { height:66%;
+			   width:100%; }
+.logolaclasse h3,
+.damier .petite.case .app-name { width:100%;
+				 overflow: hidden; }
+.logolaclasse h3 { max-height:33%; }
+.damier .petite.case .app-name { line-height: 1.1em;
+				 max-height:2.2em;
+				 margin-top:6%; }
+
+.logolaclasse h3,
+.damier .petite.case a span { font-size:1.5em;
+			      font-weight:lighter }
+
+.damier .petite.case a .compteur-notification { border-radius:1em;
+						color:#fff;
+						font-size:2em;
+						font-weight:bolder;
+						padding:0 .4em;
+						position:absolute;
+						right:.5em;
+						top:.5em }
+
+.en-tete,
+.en-tete .navbar,
+.en-tete .user-menu,
+.en-tete .titre { color:#fff;
+		  border:0;
+		  height:1.5em;
+		  max-height:1.5em;
+		  min-height:1.5em }
+.navbar-default { box-shadow:0; }
+.titre { font-weight:bolder;
+	 padding-left:1em }
+
+.laclasse-com { float:left;
+		font-weight:bolder;
+		text-align:center }
+
+.laclasse-com a { color:#fff;
+		  text-decoration:none }
+
+.laclasse-com .petit-logo { display:inline-block;
+			    float:left;
+			    padding-top:1px;
+			    width:1.5em;
+			    height:1.5em;
+			    background-position: left top;
+			    background-repeat: no-repeat;
+			    background-size: auto 90% }
+
+.laclasse-com span { display:inline-block;
+		     float:left;
+		     color:#fff;
+		     min-width:9em; }
+
+.user-menu { color:#fff;
+	     padding-right:1em;
+	     text-align:right }
+
+.user-menu .profil-select-wrapper { float:left;
+				    overflow:hidden;
+				    text-align:left;
+				    min-width:7em; }
+.user-menu .profil-select-wrapper span { padding-left:1em }
+.user-menu .glyphicon { line-height:1.5em; }
+.user-menu .dropdown-toggle .glyphicon { float:right }
+.user-menu select { padding-right: 3px;
+		    -moz-appearance:none;
+		    -webkit-appearance:none;
+		    appearance:none;
+		    background:transparent;
+		    border:0; }
+
+.user-menu a { color:#fff;
+	       cursor:pointer;
+	       display:inline-block;
+	       text-decoration:none;
+	       font-weight:bold }
+
+.user-menu h6 { display:inline;
+		font-weight:700;
+		padding-left:1em }
+
+.user-menu ul { border:0;
+		border-radius:0 }
+
+.user-menu li { border-top:1px solid #fff;
+		text-align:left }
+
+.user-menu li a { color:#fff;
+		  background-position: left center;
+		  background-repeat: no-repeat;
+		  background-size: auto 80%;
+		  height:3.5em;
+		  line-height:3em;
+		  padding:.25em;
+		  padding-left:3em;
+		  width:100% }
+
+.user-menu li a:hover { background-color:#16161d;
+			background-repeat: no-repeat;
+			color:#fff; }
+.user-menu li a:hover span { background-color:#16161d; }
+
+.user-menu li a * { float:left }
+
+.user-menu li a svg { height:3em;
+		      width:3em }
+
+.user-menu li a.dropdown-toggle { display:inline-block;
+				  height:100%;
+				  line-height:1em;
+				  padding:0;
+				  text-align:center;
+				  width:100% }
+
+.user-menu li a.dropdown-toggle span { width:100% }
+
+.user-menu option,
+.user-menu optgroup { background-color: #323232; }
+
+.iframe { height:calc( 100% - 1.5em ) }
+.iframe.ios { overflow: scroll;
+	      -webkit-overflow-scrolling: touch; }
+
+.iframe iframe { border:0;
+		 padding: 0;
+		 margin: 0;
+		 height:100%;
+		 width:100% }
+
+.user-profil { background:#ececed;
+	       padding:0 1em }
+
+.user-profil *,
+.user-profil a { color:#16161d }
+
+.user-profil h1,
+.user-profil h2,
+.user-profil h3 { line-height:1.5em }
+
+.user-profil h3 { color:#b2b2b2;
+		  font-weight:bolder }
+
+.user-profil h1 { color:#1aa1cc;
+		  font-weight:bolder }
+
+.user-profil h2 { color:#1aa1cc;
+		  font-size:1.5em }
+
+.user-profil header { height:12em;
+		      position:absolute;
+		      width:calc( 100% - 2em ) }
+
+.user-profil div.form { bottom:5em;
+			height:calc( 100% - 12em - 5em );
+			overflow-y:auto;
+			position:absolute;
+			top:12em;
+			width:calc( 100% - 2em ) }
+
+.user-profil accordion .panel { background:transparent;
+				border:0;
+				box-shadow:0 }
+
+.user-profil accordion .panel-heading { background:transparent;
+					border-top:1px solid #b2b2b2 }
+.accordion-toggle { display: inline-block;
+		    height: 100%;
+		    padding: 1em;
+		    width: 100% }
+.user-profil accordion .panel-heading a span { color:#b2b2b2 }
+
+.user-profil accordion .panel-body .row div { padding:1em }
+
+.user-profil label { font-weight:400;
+		     padding-bottom:.33em }
+
+.user-profil input { background-color:#b2b2b2;
+		     border-radius:0;
+		     color:#000;
+		     padding: 0 3px; }
+
+.user-profil accordion .panel-body .row div.avatar { padding-top:3.8em;
+						     text-align:center }
+
+.user-profil .avatar svg { background:blue;
+			   fill:#FF0 }
+
+.user-profil .avatar img { background-color: #1aa1cc; }
+
+.user-profil .avatar button { border:1px solid #000;
+			      padding:.5em 2em }
+
+.user-profil footer { background-color:#ececed;
+		      border-top:1px solid #b2b2b2;
+		      bottom:0;
+		      height:5em;
+		      padding:1.25em;
+		      position:absolute;
+		      text-align:center;
+		      width:calc( 100% - 2em ) }
+
+.user-profil footer button { border:1px solid #000;
+			     margin:0 1em;
+			     padding:.5em 2em;
+			     text-transform:uppercase }
+
+html,
+#app-wrapper { overflow:hidden }
+
+.panel-group div,
+.user-profil accordion,
+.user-profil accordion div { height:auto }
+
+div,
+html,
+body,
+.rn-carousel-slides { height:100% }
+
+.aside .header,
+.damier .petite.case { height:25% }
+
+.damier .grande.case { height:75% }
+.damier .presentation { color:#fff;
+			padding:1em }
+.damier .presentation em { font-weight:bolder }
+.damier .logos img { display:block;
+		     margin:20% auto 0;
+		     max-width: 50%; }
+
+svg * { fill:#fff }
+
+.ui-datepicker,
+.ui-datepicker div { height: auto; }
+
+/* style de la page publique de splash */
+.page_publique { background-color: #1aaacc; color:white; }
+.page_publique .filtered-bg { opacity: 0.20; filter: alpha(opacity=20); }
+.page_publique .filtered-fg { opacity: 0.50; filter: alpha(opacity=50); }
+.page_publique .logo { width:55%; position:absolute; top:-9.7%; left:-5.6%; }
+.page_publique .title { position:absolute; top:72%; left:10%; text-align: center; }
+.page_publique .nomENT { font-weight: bold; font-size: 2em;}
+.page_publique .descENT { font-size: 1.3em;}
+.page_publique .connexion { position:absolute; top:30%; left:60%; text-align: center; }
+.page_publique .connexion .btn-sm {font-size: 1.4em; font-variant: small-caps; padding-left: 20px; padding-right: 20px; border: 1px solid white;}
+.page_publique .connexion .bienvenue {font-size: 3em;font-weight:bolder; }
+.page_publique .footer {text-align: center;}
+.page_publique .footer .rhone { width:25%; position:absolute; top:87%; left:40%; right:40%;}
+.page_publique .footer .acad { width:10%; position:absolute; top:89%; right:1%; }
+.page_publique .annonce { text-align: left; padding:2%; margin:5%; height:30%; overflow-y: auto; }
+.page_publique .aide {position:absolute; right:1%; width:5%;}
