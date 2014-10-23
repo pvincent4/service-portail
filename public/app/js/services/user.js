@@ -32,11 +32,19 @@ angular.module( 'portailApp' )
 		} ] );
 
 angular.module( 'portailApp' )
+    .factory( 'UserRessources',
+	      [ '$resource', 'APP_PATH',
+		function( $resource, APP_PATH ) {
+		    return $resource( APP_PATH + '/api/ressources_numeriques' );
+		} ] );
+
+angular.module( 'portailApp' )
     .service( 'currentUser',
-	      [ '$http', '$upload', 'APP_PATH', 'User', 'UserApps',
-		function( $http, $upload, APP_PATH, User, UserApps ) {
+	      [ '$http', '$upload', 'APP_PATH', 'User', 'UserApps', 'UserRessources',
+		function( $http, $upload, APP_PATH, User, UserApps, UserRessources ) {
 		    this.get = function() { return User.get().$promise; };
 		    this.apps = function() { return UserApps.query().$promise; };
+		    this.ressources = function() { return UserRessources.query().$promise; };
 		    this.avatar = { upload: function( fichier ) {
 			$upload.upload( {
 			    url: APP_PATH + '/api/user/avatar',
