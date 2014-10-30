@@ -1,0 +1,30 @@
+language: ruby
+rvm:
+  - "2.1.3"
+
+before_install:
+  - gem update --system
+  - gem --version
+  - gem install rspec
+
+before_script:
+  - cp config/options.rb.sample config/options.rb
+  - cp config/portail.json.sample config/portail.json
+
+script: "bundle exec rspec spec/api/ spec/lib/"
+
+gemfile:
+  - Gemfile
+
+branches:
+  only:
+    - master
+    - develop
+
+notifications:
+  email:
+    recepients:
+      - glemoine@erasme.org
+  slack:
+    rooms:
+      - erasme:IWf0zN63Kuw5HgeJVwhnhxAC#laclassebeta
