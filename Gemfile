@@ -36,4 +36,5 @@ group :development do
   gem 'rb-fsevent'
   gem 'rb-inotify'
   gem 'jasmine'
+  gem 'simplecov'
 end
