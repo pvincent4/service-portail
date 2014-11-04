@@ -32,13 +32,16 @@
 	    </div>
 	    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
 	      <div class="form-group">
-		<label for="datenaissance">date de naissance :</label>
-		<input class="form-control"
-		       ui-date="{ dateFormat: 'dd/mm/yy' }"
-		       ui-date-format="yy-mm-dd"
-		       data-ng-disabled="!current_user.editable"
-		       data-ng-model="current_user.date_naissance"
-		       data-ng-required="true">
+		<label>date de naissance :</label>
+		<div class="dropdown horaire">
+		  <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-target="#" href="">{{current_user.date_naissance | amDateFormat: 'LL'}}</a>
+		  <div class="dropdown-menu" role="menu" ng-click="$event.stopPropagation()">
+		    <datepicker datepicker-options="datepicker_options"
+				data-ng-disabled="!current_user.editable"
+				data-ng-model="current_user.date_naissance"
+				data-ng-required="true"></datepicker>
+		  </div>
+		</div>
 	      </div>
 	    </div>
 	    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">

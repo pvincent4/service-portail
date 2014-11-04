@@ -11,9 +11,11 @@ require 'date'
 
 Bundler.require( :default, ENV['RACK_ENV'].to_sym )     # require tout les gems définis dans Gemfile
 
+require_relative './lib/annuaire'
+
 require_relative './lib/AuthenticationHelpers'
 require_relative './lib/ConfigHelpers'
-require_relative './lib/annuaire'
+require_relative './lib/UserHelpers'
 
 # https://gist.github.com/chastell/1196800
 class Hash
@@ -48,6 +50,7 @@ class SinatraApp < Sinatra::Base
 
   helpers AuthenticationHelpers
   helpers ConfigHelpers
+  helpers UserHelpers
 
   # routes
   get "#{APP_PATH}/?" do
@@ -65,8 +68,7 @@ class SinatraApp < Sinatra::Base
              info: {},
              is_logged: false }.to_json unless is_logged?
 
-    set_current_user
-    session[:current_user]
+    user.full( env ).to_json
   end
 
   put "#{APP_PATH}/api/user" do
@@ -83,33 +85,33 @@ class SinatraApp < Sinatra::Base
     param :code_postal,    Integer, required: false, within: 0..999_999
     param :ville,          String,  required: false
 
-    Annuaire.put_user( session[:current_user][:info][:uid],
+    Annuaire.put_user( user.uid,
                        params )
 
-    set_current_user
+    set_current_user( user.uid )
 
-    session[:current_user]
+    user.full( env ).to_json
   end
 
   post "#{APP_PATH}/api/user/avatar/?" do
     content_type :json
 
-    Annuaire.put_user_avatar( session[:current_user][:info][:uid],
-                              File.read( params[:image][:tempfile] ) )
+    Annuaire.put_user_avatar( user.uid,
+                              File.read( params[:image][:tempfile] ) ) if params[:image]
 
-    set_current_user
+    set_current_user( user.uid )
 
-    session[:current_user]
+    user.full( env ).to_json
   end
 
   delete "#{APP_PATH}/api/user/avatar/?" do
     content_type :json
 
-    Annuaire.delete_user_avatar( session[:current_user][:info][:uid] )
+    Annuaire.delete_user_avatar( user.uid )
 
-    set_current_user
+    set_current_user( user.uid )
 
-    session[:current_user]
+    user.full( env ).to_json
   end
 
   put "#{APP_PATH}/api/user/profil_actif/?" do
@@ -118,13 +120,13 @@ class SinatraApp < Sinatra::Base
     param :profil_id, String, required: true
     param :uai, String, required: true
 
-    Annuaire.put_user_profil_actif( session[:current_user][:info][:uid],
+    Annuaire.put_user_profil_actif( user.uid,
                                     params[:profil_id],
                                     params[:uai] )
 
-    set_current_user
+    set_current_user( user.uid )
 
-    session[:current_user]
+    user.full( env ).to_json
   end
 
   #
@@ -173,13 +175,13 @@ class SinatraApp < Sinatra::Base
 
   #   # redirect login! unless is_logged?
   #   if is_logged?
-  #     profil = session[:current_user][:profil_actif][ 0 ]['type']
-  #     uai = session[:current_user][:profil_actif][ 0 ]['uai']
+  #     profil = user.profil_actif['type']
+  #     uai = user.profil_actif['uai']
   #     etb = Annuaire.get_etablissement(uai)
   #     opts = { serveur: "#{APP_PATH}/faye",
   #              profil: profil,
   #              uai: uai,
-  #              uid: session[:current_user][:info].uid,
+  #              uid: user[:info].uid,
   #              classes: etb['classes'].map { |c| c['libelle'] },
   #              groupes: etb['groupes_eleves'].map { |g| g['libelle'] },
   #              groupes_libres: etb['groupes_libres'].map { |g| g['libelle'] }
@@ -196,10 +198,11 @@ class SinatraApp < Sinatra::Base
   get "#{APP_PATH}/api/apps" do
     content_type :json
 
-    return config[ :apps_publiques ].to_json unless is_logged? && !session[:current_user][:profil_actif].first.nil?
+    # error( 401, 'Not Authorized' ) unless is_logged? && !user.profil_actif.nil?
+    return [] unless is_logged? && !user.profil_actif.nil?
 
-    user_applications = Annuaire.get_user( session[:current_user][:info][:uid] )['applications']
-    uai_courant = session[:current_user][:profil_actif].first['uai']
+    user_applications = Annuaire.get_user( user.uid )['applications']
+    uai_courant = user.profil_actif['uai']
 
     # traitement des apps renvoyées par l'annuaire
     user_applications
@@ -208,7 +211,7 @@ class SinatraApp < Sinatra::Base
       config_apps = config[ :apps_tiles ][ application[ 'id' ].to_sym ]
       if !config_apps.nil?
         # On regarde si le profils actif de l'utilisateur comporte le code détablissement pour lequel l'application est activée
-        config_apps[ :active ] = application[ 'active' ] || ( application[ 'id' ] == 'ADMIN' && session[:current_user][:profil_actif][0]['admin'] )
+        config_apps[ :active ] = application[ 'active' ] || ( application[ 'id' ] == 'ADMIN' && user.profil_actif['admin'] )
         config_apps[ :nom ] = application[ 'libelle' ]
         config_apps[ :survol ] = application[ 'description' ]
         config_apps[ :lien ] = "#{APP_PATH}/#/show-app?app=#{application[ 'id' ]}"
@@ -243,17 +246,16 @@ class SinatraApp < Sinatra::Base
   #
   get "#{APP_PATH}/api/ressources_numeriques" do
     content_type :json
-    set_current_user
     couleurs = []
 
     # Faire un tableau des couleurs dans le même ordre que les applications, pour les ressources
-    config[:apps_tiles].flatten(99).reject { |app| app.class == Symbol }
-                                   .each { |a|
+    config[:apps_tiles].flatten.reject { |app| app.class == Symbol }
+                               .each { |a|
       couleurs.push a[:couleur]
     }
 
-    ress_temp = Annuaire.get_user_resources( session[:current_user][:info][:uid] )
-    uai_courant = session[:current_user][:profil_actif].first['uai']
+    ress_temp = Annuaire.get_user_resources( user.uid )
+    uai_courant = user.profil_actif['uai']
     # Prendre que les ressources de l'établissement courant.
     # Qui sont dans la fenêtre d'abonnement
     # Triées sur les types de ressources desc pour avoir 'MANUEL' en premier, puis 'DICO', puis 'AUTRES'

@@ -1,5 +1,5 @@
 # -*- encoding: utf-8 -*-
-
+require 'pry'
 module AuthenticationHelpers
 
   def is_logged?
@@ -34,29 +34,16 @@ module AuthenticationHelpers
   #
   # récupération des données envoyée par CAS
   #
-  def set_current_user
+  def set_current_user( uid )
     session[:current_user] = { user: nil,
                                info: nil,
                                is_logged: false }
 
-    user_annuaire = Annuaire.get_user( session[:extra][:uid] )
+    user_annuaire = Annuaire.get_user( uid )
 
-    if session[:user] && !user_annuaire.nil? # && user_annuaire['profils'].select do |profil| profil['bloque'].nil? end.length > 0
-      profils = user_annuaire['profils']
-                .select do |profil| profil['bloque'].nil? end
-                .map.with_index do |profil, i|
-        # renommage de champs
-        profil['index'] = i
-        profil['type'] = profil['profil_id']
-        profil['uai'] = profil['etablissement_code_uai']
-        profil['etablissement'] = profil['etablissement_nom']
-        profil['nom'] = profil['profil_nom']
-        # calcule du droit d'admin, true pour les TECH et les ADM
-        profil['admin'] = user_annuaire['roles'].select { |r| r['etablissement_code_uai'] == profil['etablissement_code_uai'] && ( r['role_id'] == 'TECH' || r['role_id'].match('ADM.*') ) }.length > 0
-        profil
-      end
-
+    if session[:user] && !user_annuaire.nil?
       session[:current_user] = { user: session[:user],
+                                 uid: user_annuaire['id_ent'],
                                  login: user_annuaire['login'],
                                  sexe: user_annuaire['sexe'],
                                  nom: user_annuaire['nom'],
@@ -67,11 +54,8 @@ module AuthenticationHelpers
                                  ville: user_annuaire['ville'],
                                  bloque: user_annuaire['bloque'],
                                  id_jointure_aaf: user_annuaire['id_jointure_aaf'],
-                                 info: session[:extra],
                                  is_logged: true,
-                                 avatar: user_annuaire['avatar'].match( /empty$/ ).nil? ? ANNUAIRE[:url].gsub( %r{/api/app}, '' ) + user_annuaire['avatar'] : "#{APP_PATH}/app/vendor/charte-graphique-laclasse-com/images/avatar_#{user_annuaire['sexe'] == 'F' ? 'feminin' : 'masculin'}.svg",
-                                 profils: profils,
-                                 profil_actif: profils.select { |p| p['actif'] }
+                                 avatar: user_annuaire['avatar'].match( /empty$/ ).nil? ? ANNUAIRE[:url].gsub( %r{/api/app}, '' ) + user_annuaire['avatar'] : "#{APP_PATH}/app/vendor/charte-graphique-laclasse-com/images/avatar_#{user_annuaire['sexe'] == 'F' ? 'feminin' : 'masculin'}.svg"
                                }
     end
 
@@ -87,10 +71,9 @@ module AuthenticationHelpers
   #
   def init_session( env )
     session['init'] = true
-    session[:user] = env['omniauth.auth'].extra.user
-    session[:extra] = env['omniauth.auth'].extra
+    session[:user] ||= env['omniauth.auth']['extra']['user']
     session[:authenticated] = true
 
-    set_current_user( env )
+    set_current_user( env['omniauth.auth']['extra']['uid'] )
   end
 end

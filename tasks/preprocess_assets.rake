@@ -14,6 +14,12 @@ namespace :preprocess_assets do
   desc 'Everything'
   task all: [ :templates, :js, :css ]
 
+  desc 'For development deployement'
+  task development: [ :templates, :css ]
+
+  desc 'For production deployement'
+  task production: [ :templates, :js, :css ]
+
   desc 'Javascriptify templates'
   task templates: :load_config do
     STDERR.puts 'Compilation of angular templates into javascript files'
@@ -72,18 +78,19 @@ namespace :preprocess_assets do
   task js: :load_config do
     STDERR.puts 'Uglification of vendor Javascript'
     uglified, source_map = Uglify.those_files_with_map( [ 'public/app/vendor/jquery/dist/jquery.js',
-                                                          'public/app/vendor/jquery-ui/jquery-ui.js',
                                                           'public/app/vendor/underscore/underscore.js',
+                                                          'public/app/vendor/moment/moment.js',
+                                                          'public/app/vendor/moment/locale/fr.js',
                                                           'public/app/vendor/ng-file-upload/angular-file-upload-shim.js',
                                                           'public/app/vendor/angular/angular.js',
                                                           'public/app/vendor/angular-i18n/angular-locale_fr-fr.js',
                                                           'public/app/vendor/angular-resource/angular-resource.js',
+                                                          'public/app/vendor/angular-moment/angular-moment.js',
                                                           'public/app/vendor/angular-touch/angular-touch.js',
                                                           'public/app/vendor/angular-ui-router/release/angular-ui-router.js',
                                                           'public/app/vendor/angular-carousel/dist/angular-carousel.js',
                                                           'public/app/vendor/angular-bootstrap/ui-bootstrap-tpls.js',
                                                           'public/app/vendor/angular-animate/angular-animate.js',
-                                                          'public/app/vendor/angular-ui-date/src/date.js',
                                                           'public/app/vendor/ng-file-upload/angular-file-upload.js',
                                                           'public/app/vendor/ng-flow/dist/ng-flow-standalone.js' ] )
     File.open( './public/app/vendor/vendor.min.js', 'w' )

@@ -2,7 +2,7 @@
   "name": "app",
   "version": "0.0.0",
   "dependencies": {
-      "angular": "latest",
+    "angular": "latest",
     "json3": "latest",
     "es5-shim": "latest",
     "jquery": "latest",
@@ -11,7 +11,6 @@
     "angular-cookies": "latest",
     "angular-sanitize": "latest",
     "angular-ui-router": "latest",
-    "angular-ui-date": "latest",
     "angular-bootstrap": "latest",
     "angular-carousel": "latest",
     "Font-Awesome": "latest",
@@ -23,7 +22,8 @@
     "ngAnimate": "latest",
     "angular-i18n": "latest",
     "ng-file-upload": "latest",
-      "ng-flow": "latest"
+    "ng-flow": "latest",
+    "angular-moment": "~0.8.2"
   },
   "devDependencies": {
     "angular-mocks": "latest",
