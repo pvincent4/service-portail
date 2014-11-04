@@ -34,7 +34,7 @@ module AuthenticationHelpers
   #
   # récupération des données envoyée par CAS
   #
-  def set_current_user( env )
+  def set_current_user
     session[:current_user] = { user: nil,
                                info: nil,
                                is_logged: false }
@@ -42,36 +42,37 @@ module AuthenticationHelpers
     user_annuaire = Annuaire.get_user( session[:extra][:uid] )
 
     if session[:user] && !user_annuaire.nil? # && user_annuaire['profils'].select do |profil| profil['bloque'].nil? end.length > 0
-      session[:current_user] = {
-        user: session[:user],
-        login: user_annuaire['login'],
-        sexe: user_annuaire['sexe'],
-        nom: user_annuaire['nom'],
-        prenom: user_annuaire['prenom'],
-        date_naissance: user_annuaire['date_naissance'],
-        adresse: user_annuaire['adresse'],
-        code_postal: user_annuaire['code_postal'],
-        ville: user_annuaire['ville'],
-        bloque: user_annuaire['bloque'],
-        id_jointure_aaf: user_annuaire['id_jointure_aaf'],
-        info: session[:extra],
-        is_logged: true,
-        avatar: user_annuaire['avatar'].match( /empty$/ ).nil? ? ANNUAIRE[:url].gsub( %r{/api/app}, '' ) + user_annuaire['avatar'] : "#{APP_PATH}/app/vendor/charte-graphique-laclasse-com/images/avatar_#{user_annuaire['sexe'] == 'F' ? 'feminin' : 'masculin'}.svg",
-        profils: user_annuaire['profils']
-          .select do |profil| profil['bloque'].nil? end
-          .map.with_index do |profil, i|
-          # renommage de champs
-          profil['index'] = i
-          profil['type'] = profil['profil_id']
-          profil['uai'] = profil['etablissement_code_uai']
-          profil['etablissement'] = profil['etablissement_nom']
-          profil['nom'] = profil['profil_nom']
-          # calcule du droit d'admin, true pour les TECH et les ADM
-          profil['admin'] = user_annuaire['roles'].select { |r| r['etablissement_code_uai'] == profil['etablissement_code_uai'] && ( r['role_id'] == 'TECH' || r['role_id'].match('ADM.*') ) }.length > 0
-          profil
-        end,
-        profil_actif: user_annuaire['profils'].select { |p| p['actif'] }
-      }
+      profils = user_annuaire['profils']
+                .select do |profil| profil['bloque'].nil? end
+                .map.with_index do |profil, i|
+        # renommage de champs
+        profil['index'] = i
+        profil['type'] = profil['profil_id']
+        profil['uai'] = profil['etablissement_code_uai']
+        profil['etablissement'] = profil['etablissement_nom']
+        profil['nom'] = profil['profil_nom']
+        # calcule du droit d'admin, true pour les TECH et les ADM
+        profil['admin'] = user_annuaire['roles'].select { |r| r['etablissement_code_uai'] == profil['etablissement_code_uai'] && ( r['role_id'] == 'TECH' || r['role_id'].match('ADM.*') ) }.length > 0
+        profil
+      end
+
+      session[:current_user] = { user: session[:user],
+                                 login: user_annuaire['login'],
+                                 sexe: user_annuaire['sexe'],
+                                 nom: user_annuaire['nom'],
+                                 prenom: user_annuaire['prenom'],
+                                 date_naissance: user_annuaire['date_naissance'],
+                                 adresse: user_annuaire['adresse'],
+                                 code_postal: user_annuaire['code_postal'],
+                                 ville: user_annuaire['ville'],
+                                 bloque: user_annuaire['bloque'],
+                                 id_jointure_aaf: user_annuaire['id_jointure_aaf'],
+                                 info: session[:extra],
+                                 is_logged: true,
+                                 avatar: user_annuaire['avatar'].match( /empty$/ ).nil? ? ANNUAIRE[:url].gsub( %r{/api/app}, '' ) + user_annuaire['avatar'] : "#{APP_PATH}/app/vendor/charte-graphique-laclasse-com/images/avatar_#{user_annuaire['sexe'] == 'F' ? 'feminin' : 'masculin'}.svg",
+                                 profils: profils,
+                                 profil_actif: profils.select { |p| p['actif'] }
+                               }
     end
 
     session[:current_user].each do |key, _value|

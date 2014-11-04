@@ -18,12 +18,11 @@ require_relative './lib/annuaire'
 # https://gist.github.com/chastell/1196800
 class Hash
   def to_html
-    ['<ul>',
+    [ '<ul>',
       map { |k, v|
         [ "<li><strong>#{k}</strong> : ", v.respond_to?(:to_html) ? v.to_html : "<span>#{v}</span></li>" ]
       },
-      '</ul>'
-    ].join
+      '</ul>' ].join
   end
 end
 
@@ -63,11 +62,11 @@ class SinatraApp < Sinatra::Base
     content_type :json
 
     return { user: '',
-      info: {},
-      is_logged: false }.to_json unless is_logged?
+             info: {},
+             is_logged: false }.to_json unless is_logged?
 
-    set_current_user( env )
-    session[:current_user].to_json
+    set_current_user
+    session[:current_user]
   end
 
   put "#{APP_PATH}/api/user" do
@@ -85,22 +84,22 @@ class SinatraApp < Sinatra::Base
     param :ville,          String,  required: false
 
     Annuaire.put_user( session[:current_user][:info][:uid],
-      params )
+                       params )
 
-    set_current_user( env )
+    set_current_user
 
-    session[:current_user].to_json
+    session[:current_user]
   end
 
   post "#{APP_PATH}/api/user/avatar/?" do
     content_type :json
 
     Annuaire.put_user_avatar( session[:current_user][:info][:uid],
-      File.read( params[:image][:tempfile] ) )
+                              File.read( params[:image][:tempfile] ) )
 
-    set_current_user( env )
+    set_current_user
 
-    session[:current_user].to_json
+    session[:current_user]
   end
 
   delete "#{APP_PATH}/api/user/avatar/?" do
@@ -108,9 +107,9 @@ class SinatraApp < Sinatra::Base
 
     Annuaire.delete_user_avatar( session[:current_user][:info][:uid] )
 
-    set_current_user( env )
+    set_current_user
 
-    session[:current_user].to_json
+    session[:current_user]
   end
 
   put "#{APP_PATH}/api/user/profil_actif/?" do
@@ -120,12 +119,12 @@ class SinatraApp < Sinatra::Base
     param :uai, String, required: true
 
     Annuaire.put_user_profil_actif( session[:current_user][:info][:uid],
-      params[:profil_id],
-      params[:uai] )
+                                    params[:profil_id],
+                                    params[:uai] )
 
-    set_current_user( env )
+    set_current_user
 
-    session[:current_user].to_json
+    session[:current_user]
   end
 
   #
@@ -139,13 +138,15 @@ class SinatraApp < Sinatra::Base
     config[:news_feed].each do |feed|
       begin
         SimpleRSS.parse( open( feed[:flux] ) )
-        .items
-        .first( feed[:nb] )
-        .each do |article|
+                 .items
+                 .first( feed[:nb] )
+                 .each do |article|
           article.each do |k, _|
             if article[k].is_a? String
               article[k] = URI.unescape( article[k] ).to_s.force_encoding( 'UTF-8' ).encode!
               article[k] = HTMLEntities.new.decode article[k]
+            else
+              next
             end
           end
           article[:description] = article[:content_encoded] if article.has? :content_encoded
@@ -202,10 +203,10 @@ class SinatraApp < Sinatra::Base
 
     # traitement des apps renvoyées par l'annuaire
     user_applications
-    .reject { |a| a[ 'etablissement_code_uai' ] != uai_courant }
-    .each { |application|
+      .reject { |a| a[ 'etablissement_code_uai' ] != uai_courant }
+      .each { |application|
       config_apps = config[ :apps_tiles ][ application[ 'id' ].to_sym ]
-      unless config_apps.nil?
+      if !config_apps.nil?
         # On regarde si le profils actif de l'utilisateur comporte le code détablissement pour lequel l'application est activée
         config_apps[ :active ] = application[ 'active' ] || ( application[ 'id' ] == 'ADMIN' && session[:current_user][:profil_actif][0]['admin'] )
         config_apps[ :nom ] = application[ 'libelle' ]
@@ -220,6 +221,8 @@ class SinatraApp < Sinatra::Base
           resp = Net::HTTP.get_response(URI.parse config_apps[ :url_notif ])
           config_apps[ :notifications ] = resp.body if resp.body.is_a? Numeric
         end
+      else
+        next
       end
     }
 
@@ -234,42 +237,41 @@ class SinatraApp < Sinatra::Base
 
     APP_VERSION
   end
-  
+
   #
   # Ressources numériques de l'utilisateur
   #
   get "#{APP_PATH}/api/ressources_numeriques" do
     content_type :json
-    set_current_user( env )
+    set_current_user
     couleurs = []
-    ressources = []
-    
+
     # Faire un tableau des couleurs dans le même ordre que les applications, pour les ressources
     config[:apps_tiles].flatten(99).reject { |app| app.class == Symbol }
-    .each { |a|
+                                   .each { |a|
       couleurs.push a[:couleur]
-    } 
-    
+    }
+
     ress_temp = Annuaire.get_user_resources( session[:current_user][:info][:uid] )
     uai_courant = session[:current_user][:profil_actif].first['uai']
     # Prendre que les ressources de l'établissement courant.
     # Qui sont dans la fenêtre d'abonnement
     # Triées sur les types de ressources desc pour avoir 'MANUEL' en premier, puis 'DICO', puis 'AUTRES'
     ress_temp = ress_temp.reject { |r| r[ 'etablissement_code_uai' ] != uai_courant }
-    .reject { |r|  Date.parse( r['date_deb_abon'] ) >= Date.today }
-    .reject { |r|  Date.parse( r['date_fin_abon'] ) <= Date.today }
-    .sort_by{ |r| r['type_ressource'].to_s }
-    .reverse
-    
-    couleurs.each_with_index { |c, i| 
-      unless ress_temp[i].nil?
+                         .reject { |r|  Date.parse( r['date_deb_abon'] ) >= Date.today }
+                         .reject { |r|  Date.parse( r['date_fin_abon'] ) <= Date.today }
+                         .sort_by { |r| r['type_ressource'].to_s }
+                         .reverse
+
+    couleurs.each_with_index { |c, i|
+      if !ress_temp[i].nil?
         ress_temp[i]['couleur'] = c
         ress_temp[i]['icone'] = '08_ressources.svg'
-        ress_temp[i]['icone'] = "05_validationcompetences.svg"  if ress_temp[i]['type_ressource'] == "MANUEL"
-        ress_temp[i]['icone'] = '07_blogs.svg'                  if ress_temp[i]['type_ressource'] == "AUTRE"
+        ress_temp[i]['icone'] = '05_validationcompetences.svg'  if ress_temp[i]['type_ressource'] == 'MANUEL'
+        ress_temp[i]['icone'] = '07_blogs.svg'                  if ress_temp[i]['type_ressource'] == 'AUTRE'
       else
         # un carré vide, mais avec la bonne couleur !
-        ress_temp.push({"code" => "", "couleur" =>  c})
+        ress_temp.push( 'code' => '', 'couleur' =>  c )
       end
     }
     ress_temp.to_json
