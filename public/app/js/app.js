@@ -4,11 +4,11 @@
 angular.module( 'portailApp', [ 'ngResource',
 				'ui.router',
 				'ui.bootstrap',
-				'ui.date',
 				'angular-carousel',
 				'ngAnimate',
 				'angularFileUpload',
-				'flow' ] )
+				'flow',
+				'angularMoment' ] )
     .config( [ '$stateProvider', '$urlRouterProvider', 'APP_PATH',
 	       function ( $stateProvider, $urlRouterProvider, APP_PATH ) {
 		   $urlRouterProvider.otherwise( '/' );
