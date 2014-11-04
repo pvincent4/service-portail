@@ -1,21 +1,4 @@
 {
-    "apps_publiques": [
-	{
-	    "url": "http://perdu.com",
-	    "nom": "thematiques",
-	    "id": "thematiques"
-	},
-	{
-	    "url": "http://perdu.com",
-	    "nom": "contact",
-	    "id": "contact"
-	},
-	{
-	    "url": "http://perdu.com",
-	    "nom": "aide",
-	    "id": "aide"
-	}
-    ],
     "apps_tiles": {
 	"empty3": {
 	    "active": true,
