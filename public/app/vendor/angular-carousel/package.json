@@ -1,7 +1,7 @@
 {
   "name": "angular-carousel",
   "description": "Angular Carousel - Mobile friendly touch carousel for AngularJS",
-  "version": "0.2.5",
+  "version": "0.3.5",
   "homepage": "http://revolunet.github.com/angular-carousel",
   "author": "Julien Bouquillon <julien@revolunet.com>",
   "repository": {
@@ -31,6 +31,7 @@
     "grunt-contrib-watch": "^0.5.3",
     "grunt-conventional-changelog": "~1.1.0",
     "grunt-karma": "~0.6.2",
+    "grunt-ng-annotate": "^0.4.0",
     "karma": "~0.10.9",
     "karma-chrome-launcher": "~0.1.2",
     "karma-firefox-launcher": "~0.1.3",
