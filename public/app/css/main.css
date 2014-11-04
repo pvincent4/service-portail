@@ -151,10 +151,10 @@ body { font-family:'Open Sans', sans-serif;
 
 .aside-blanc { background-color:white; }
 
-.aside-blanc .laius { 
-                    margin:4%;
-                    text-align: justify;
-                    }
+.aside-blanc .laius {
+		    margin:4%;
+		    text-align: justify;
+		    }
 
 .user-info svg { bottom:0;
 		 left:0;
@@ -451,6 +451,12 @@ body,
 .damier .logos img { display:block;
 		     margin:20% auto 0;
 		     max-width: 50%; }
+
+.damier .case .glyphicon.glyphicon-cog { color: #fff;
+					 position: absolute;
+					 right: 0.1em;
+					 top: 0.2em;
+					 cursor: pointer; }
 
 svg * { fill:#fff }
 

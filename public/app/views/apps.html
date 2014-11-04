@@ -1,9 +1,13 @@
 <div class="row damier">
   <div data-ng-repeat="app in apps | orderBy:'index'"
-       class="col-xs-12 col-sm-6 col-md-3 col-lg-3 petite case animate scale-fade-in {{ app.couleur }}"
+       class="col-xs-12 col-sm-6 col-md-3 col-lg-3 petite case {{ app.couleur }}"
        data-ng-if="current_user.is_logged">
-    <a data-ui-sref="app-wrapper({ app: app.id })"
-       data-ng-if="app.active"
+    <span class="glyphicon glyphicon-cog"
+	  data-ng-if="app.active && current_user.profil_actif.admin && app.id != 'AIDE' && app.id != 'ADMIN' && app.id != 'empty' && app.id != 'empty2' && app.id != 'empty3'"
+	  data-ng-click="app.toggle_configure()"></span>
+    <a class="animate scale-fade-in"
+       data-ng-if="app.active && !app.configure"
+       data-ui-sref="app-wrapper({ app: app.id })"
        title="{{ app.survol }}">
       <span class="compteur-notification orange-brillant"
 	    data-ng-if="app.notifications > 0">{{app.notifications}}</span>
@@ -11,5 +15,9 @@
 	   data-ng-if="app.icone"/>
       <span class="app-name">{{ app.nom }}</span>
     </a>
+    <div class="animate rotate-right"
+	 data-ng-if="app.active && app.configure">
+      <button data-ng-click="app.deactivate()">Désactiver</button>
+    </div>
   </div>
 </div>
