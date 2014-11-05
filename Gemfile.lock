@@ -9,6 +9,7 @@ GEM
     clamp (0.2.3)
     coderay (1.1.0)
     cookiejar (0.3.2)
+    css2less (0.0.2)
     daemon_controller (0.2.6)
     daemons (1.1.9)
     diff-lcs (1.2.5)
@@ -164,6 +165,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  css2less
   ent_notifs
   faye
   faye-redis

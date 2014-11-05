@@ -37,4 +37,5 @@ group :development do
   gem 'rb-inotify'
   gem 'jasmine'
   gem 'simplecov'
+  gem 'css2less'
 end
