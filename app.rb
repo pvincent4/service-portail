@@ -232,6 +232,8 @@ class SinatraApp < Sinatra::Base
     config[:apps_tiles].map { |id, app|
       app[ :id ] = id
       app
+    }.sort_by { |app|
+      app[:index]
     }.to_json
   end
 
