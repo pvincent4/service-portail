@@ -20,18 +20,9 @@
 
     <link href="<%= APP_PATH %>/app/vendor/bootstrap/dist/css/bootstrap.min.css?v=<%=APP_VERSION%>" rel="stylesheet" />
 
-    <% if ENV['RACK_ENV'] == 'production' %>
-      <link href="<%= APP_PATH %>/app/vendor/vendor.min.css?v=<%=APP_VERSION%>" rel="stylesheet" type="text/css">
-      <link href="<%= APP_PATH %>/app/css/portail.min.css?v=<%=APP_VERSION%>" rel="stylesheet" type="text/css">
-    <% else %>
-      <link href="<%= APP_PATH %>/app/vendor/bootstrap/dist/css/bootstrap-theme.min.css?v=<%=APP_VERSION%>" rel="stylesheet" />
-      <link href="<%= APP_PATH %>/app/vendor/angular-carousel/dist/angular-carousel.min.css?v=<%=APP_VERSION%>"  rel="stylesheet" type="text/css" >
-      <link href="<%= APP_PATH %>/app/vendor/ngAnimate/css/ng-animation.css?v=<%=APP_VERSION%>"  rel="stylesheet" type="text/css" >
-      <link href="<%= APP_PATH %>/app/vendor/charte-graphique-laclasse-com/css/main.css?v=<%=APP_VERSION%>"  rel="stylesheet" type="text/css" >
-
-      <link href="<%= APP_PATH %>/app/css/main.css?v=<%=APP_VERSION%>" rel="stylesheet" type="text/css">
-      <link href="<%= APP_PATH %>/app/css/other-devices.css?v=<%=APP_VERSION%>" rel="stylesheet" type="text/css">
-    <% end %>
+    <link href="<%= APP_PATH %>/app/vendor/vendor.min.css?v=<%=APP_VERSION%>" rel="stylesheet" type="text/css">
+    <link href="<%= APP_PATH %>/app/css/portail.min.css?v=<%=APP_VERSION%>" rel="stylesheet" type="text/css">
+    <link href="<%= APP_PATH %>/app/css/other-devices.css?v=<%=APP_VERSION%>" rel="stylesheet" type="text/css">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
