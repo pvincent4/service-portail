@@ -127,7 +127,7 @@ body {
 	    .news-image {
 		position: absolute;
 		width: 100%;
-		height: 65%;
+		height: 67%;
 	    }
 	    .news-content {
 		background-color:rgba(255,255,255,0.1);
@@ -160,12 +160,17 @@ body {
 	    }
 	}
 	.indicator {
+	    background-color: rgba(0, 0, 0, 0.6);
 	    height: auto;
 	    width: 100%;
 	    text-align: center;
-	    bottom:33.333%;
+	    bottom:33%;
+	    font-size: 20px;
 	    line-height:1em;
 	    position:absolute;
+	    span {
+		padding: 0 5px;
+	    }
 	}
     }
 }
@@ -203,15 +208,15 @@ body {
 	.case {
 	    float:left;
 	    position:relative;
-	    .glyphicon.glyphicon-cog {
+	}
+	.petite.case {
+	    .toggle-configure {
 		color: #fff;
 		position: absolute;
 		right: 0.1em;
 		top: 0.2em;
 		cursor: pointer;
 	    }
-	}
-	.petite.case {
 	    .app-name {
 		line-height: 1.1em;
 		max-height:2.2em;
@@ -251,7 +256,7 @@ body {
     .damier .petite.case,.logolaclasse {
 	text-align:center;
     }
-    .damier .petite.case a,.logolaclasse a {
+    .damier .petite.case a,.damier .petite.case span,.logolaclasse a {
 	color:#fff;
 	float:left;
 	height:100%;
