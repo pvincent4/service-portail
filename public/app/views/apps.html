@@ -2,7 +2,7 @@
   <div data-ng-repeat="case in cases"
        class="col-xs-12 col-sm-6 col-md-3 col-lg-3 petite case {{ case.couleur }}"
        data-ng-if="current_user.is_logged">
-    <a class="animate scale-fade-in"
+    <a class="animate rotate-in"
        data-ng-if="case.app.active && !case.app.configure"
        data-ui-sref="app-wrapper({ app: case.app.id })"
        title="{{ case.app.survol }}">
@@ -12,10 +12,14 @@
 	   data-ng-if="case.app.icone"/>
       <span class="app-name">{{ case.app.nom }}</span>
     </a>
-    <div class="configure" data-ng-if="case.app.active && case.app.configure">
-      <span class="app-name">{{ case.app.nom }}</span>
+    <div class="configure animate rotate-in" data-ng-if="case.app.active && case.app.configure">
+      <label>nom : <input type="text" class="form-control" data-ng-model="case.app.nom" /></label>
+      <label>description : <input type="text" class="form-control" data-ng-model="case.app.survol" /></label>
+      <label>lien : <input type="text" class="form-control" data-ng-model="case.app.lien" /></label>
 
-      <button class="btn btn-lg" data-ng-click="case.app.deactivate()">Désactiver</button>
+      <div class="activation"
+	   ng-switcher
+	   ng-model="case.app.tmp_active"></div>
     </div>
     <button class="btn btn-lg toggle-configure"
 	    data-ng-class="{'open-configure': !case.app.configure, 'close-configure': case.app.configure}"

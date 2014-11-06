@@ -23,7 +23,8 @@
     "angular-i18n": "latest",
     "ng-file-upload": "latest",
     "ng-flow": "latest",
-    "angular-moment": "~0.8.2"
+    "angular-moment": "~0.8.2",
+    "ng-switcher": "*"
   },
   "devDependencies": {
     "angular-mocks": "latest",

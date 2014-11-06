@@ -57,6 +57,7 @@ namespace :preprocess_assets do
     uglified = Sass.compile( [ 'public/app/vendor/bootstrap/dist/css/bootstrap-theme.min.css',
                                'public/app/vendor/angular-carousel/dist/angular-carousel.min.css',
                                'public/app/vendor/ngAnimate/css/ng-animation.css',
+                               'public/app/vendor/ng-switcher/dist/ng-switcher.css',
                                'public/app/vendor/charte-graphique-laclasse-com/css/main.css' ]
                              .map { |fichier| File.read( fichier ) }.join,
                              syntax: :scss,
@@ -91,6 +92,7 @@ namespace :preprocess_assets do
                                                           'public/app/vendor/angular-bootstrap/ui-bootstrap-tpls.js',
                                                           'public/app/vendor/angular-animate/angular-animate.js',
                                                           'public/app/vendor/ng-file-upload/angular-file-upload.js',
+                                                          'public/app/vendor/ng-switcher/dist/ng-switcher.js',
                                                           'public/app/vendor/ng-flow/dist/ng-flow-standalone.js' ] )
     File.open( './public/app/vendor/vendor.min.js', 'w' )
         .write( uglified )
