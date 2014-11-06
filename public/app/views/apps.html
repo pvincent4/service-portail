@@ -2,7 +2,7 @@
   <div data-ng-repeat="case in cases"
        class="col-xs-12 col-sm-6 col-md-3 col-lg-3 petite case {{ case.couleur }}"
        data-ng-if="current_user.is_logged">
-    <a class="animate rotate-in"
+    <a class="animate toggle"
        data-ng-if="case.app.active && !case.app.configure"
        data-ui-sref="app-wrapper({ app: case.app.id })"
        title="{{ case.app.survol }}">
