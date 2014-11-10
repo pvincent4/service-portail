@@ -205,6 +205,15 @@ body {
 }
 .damier {
     overflow-y:auto;
+    .toggle-modification {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	font-size: 2em;
+	height: 2em;
+	width: 2em;
+	z-index: 1;
+    }
     ul {
 	height: 100%;
 	li {
@@ -216,18 +225,27 @@ body {
 	position:relative;
     }
     .petite.case {
+	.handle {
+	    position: absolute;
+	    top: 0.5em;
+	    left: 0.5em;
+	    cursor: pointer;
+	    height: 18px;
+	    width: 18px;
+	}
 	.toggle-configure {
 	    background: transparent;
 	    position: absolute;
-	    top: 0.5em;
 	    cursor: pointer;
 	}
 	.toggle-configure.open-configure {
 	    color: #fff;
+	    top: 1.5em;
 	    left: 0.5em;
 	}
 	.toggle-configure.close-configure {
 	    color: #1aa1cc;
+	    top: 0.5em;
 	    right: 0.5em;
 	}
 	.configure {

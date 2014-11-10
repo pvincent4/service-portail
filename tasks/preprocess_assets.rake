@@ -78,6 +78,7 @@ namespace :preprocess_assets do
   task js: :load_config do
     STDERR.puts 'Uglification of vendor Javascript'
     uglified, source_map = Uglify.those_files_with_map( [ 'public/app/vendor/jquery/dist/jquery.js',
+                                                          'public/app/vendor/jquery-ui/jquery-ui.js',
                                                           'public/app/vendor/underscore/underscore.js',
                                                           'public/app/vendor/moment/moment.js',
                                                           'public/app/vendor/moment/locale/fr.js',
@@ -88,6 +89,7 @@ namespace :preprocess_assets do
                                                           'public/app/vendor/angular-moment/angular-moment.js',
                                                           'public/app/vendor/angular-touch/angular-touch.js',
                                                           'public/app/vendor/angular-ui-router/release/angular-ui-router.js',
+                                                          'public/app/vendor/angular-ui-sortable/sortable.js',
                                                           'public/app/vendor/angular-carousel/dist/angular-carousel.js',
                                                           'public/app/vendor/angular-bootstrap/ui-bootstrap-tpls.js',
                                                           'public/app/vendor/angular-animate/angular-animate.js',
