@@ -33,17 +33,18 @@
 	       ng-model="case.app.tmp_active"></div>
 	</div>
 
+	<span class="glyphicon glyphicon-transfer btn-lg handle"
+	      data-ng-if="modification"></span>
 	<button class="btn btn-lg toggle-configure"
 		data-ng-class="{'open-configure': !case.app.configure, 'close-configure': case.app.configure}"
-		data-ng-if="modification && case.app.id != 'AIDE' && case.app.id != 'ADMIN'"
+		data-ng-if="modification && case.app && case.app.id != 'AIDE' && case.app.id != 'ADMIN'"
 		data-ng-click="case.app.toggle_configure()">
 	  <span class="glyphicon glyphicon-cog"
 		data-ng-if="!case.app.configure"></span>
 	  <i class="fa fa-reply"
 	     data-ng-if="case.app.configure"></i>
 	</button>
-	<span class="glyphicon glyphicon-transfer btn-lg handle"
-	      data-ng-if="modification"></span>
+
       </li>
     </ul>
 
