@@ -559,11 +559,19 @@ body {
 	font-weight:400;
 	padding-bottom:.33em;
     }
-    input {
+    input, .date-naissance {
 	background-color:#b2b2b2;
 	border-radius:0;
 	color:#000;
 	padding: 0 3px;
+	line-height: 34px;
+    }
+    .date-naissance {
+	.dropdown-toggle {
+	    display: inline-block;
+	    height: 100%;
+	    width: 100%;
+	}
     }
     .avatar {
 	svg {
