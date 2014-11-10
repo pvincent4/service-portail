@@ -56,7 +56,8 @@
       </li>
     </ul>
 
-    <span class="glyphicon glyphicon-wrench toggle-modification"
+    <span class="glyphicon toggle-modification"
+	  data-ng-class="{'glyphicon-ok': modification, 'glyphicon-wrench': !modification}"
 	  data-ng-if="current_user.profil_actif.admin"
 	  data-ng-click="toggle_modification()"></span>
 
