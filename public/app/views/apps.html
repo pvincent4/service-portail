@@ -14,7 +14,8 @@
 	  data-ng-if="current_user.is_logged">
 
 	<a class="animate toggle"
-	   data-ng-if="case.app.active && !case.app.configure"
+	   data-ng-if="( case.app.active || modification ) && !case.app.configure"
+	   data-ng-class="{'active': case.app.active, 'inactive': !case.app.active}"
 	   data-ui-sref="app-wrapper({ app: case.app.id })"
 	   title="{{ case.app.survol }}">
 	  <span class="compteur-notification orange-brillant"
@@ -24,14 +25,27 @@
 	  <span class="app-name">{{ case.app.nom }}</span>
 	</a>
 
-	<div class="configure animate rotate-in" data-ng-if="case.app.active && case.app.configure">
-	  <label>nom : <input type="text" class="form-control" data-ng-model="case.app.nom" /></label>
-	  <label>description : <input type="text" class="form-control" data-ng-model="case.app.survol" /></label>
-	  <label>lien : <input type="text" class="form-control" data-ng-model="case.app.lien" /></label>
+	<div class="configure animate rotate-in" data-ng-if="modification && case.app.configure">
+	  <label>nom : <input type="text" class="form-control"
+			      data-ng-model="case.app.nom"
+			      data-ng-change="case.app.$update()"
+			      data-ng-delay="500"/>
+	  </label>
+	  <label>description : <input type="text" class="form-control"
+				      data-ng-model="case.app.survol"
+				      data-ng-change="case.app.$update()"
+				      data-ng-delay="500" />
+	  </label>
+	  <label>lien : <input type="text" class="form-control"
+			       data-ng-model="case.app.lien"
+			       data-ng-change="case.app.$update()"
+			       data-ng-delay="500" />
+	  </label>
 
 	  <div class="activation"
-	       ng-switcher
-	       ng-model="case.app.tmp_active"></div>
+	       data-ng-switcher
+	       data-ng-model="case.app.active"
+	       data-ng-change="case.app.$update()"></div>
 	</div>
 
 	<span class="glyphicon glyphicon-transfer btn-lg handle"

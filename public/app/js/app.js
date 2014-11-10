@@ -10,7 +10,8 @@ angular.module( 'portailApp', [ 'ngResource',
 				'angularFileUpload',
 				'flow',
 				'angularMoment',
-				'theaquaNg' ] )
+				'theaquaNg',
+				'ngDelay' ] )
     .config( [ '$stateProvider', '$urlRouterProvider', 'APP_PATH',
 	       function ( $stateProvider, $urlRouterProvider, APP_PATH ) {
 		   $urlRouterProvider.otherwise( '/' );

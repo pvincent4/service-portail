@@ -28,7 +28,16 @@ angular.module( 'portailApp' )
     .factory( 'UserApps',
 	      [ '$resource', 'APP_PATH',
 		function( $resource, APP_PATH ) {
-		    return $resource( APP_PATH + '/api/apps' );
+		    return $resource( APP_PATH + '/api/apps/:id',
+				      {},
+				      { update: { method: 'PUT',
+						  params: { id: '@id',
+							    active: '@active',
+							    index: '@index',
+							    nom: '@nom',
+							    survol: '@survol',
+							    url: '@url' } }
+				      } );
 		} ] );
 
 angular.module( 'portailApp' )

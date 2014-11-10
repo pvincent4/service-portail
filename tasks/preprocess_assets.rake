@@ -93,6 +93,7 @@ namespace :preprocess_assets do
                                                           'public/app/vendor/angular-carousel/dist/angular-carousel.js',
                                                           'public/app/vendor/angular-bootstrap/ui-bootstrap-tpls.js',
                                                           'public/app/vendor/angular-animate/angular-animate.js',
+                                                          'public/app/vendor/angular-delay/build/angular-delay.js',
                                                           'public/app/vendor/ng-file-upload/angular-file-upload.js',
                                                           'public/app/vendor/ng-switcher/dist/ng-switcher.js',
                                                           'public/app/vendor/ng-flow/dist/ng-flow-standalone.js' ] )

@@ -308,11 +308,13 @@ body {
     }
 }
 .damier.modification {
-    // border: 1em dotted #000;
     .petite.case {
 	width: 24%;
 	height: 23.7%;
 	margin: 0.5%;
+	.inactive {
+	    opacity: 0.33;
+	}
     }
 }
 .damier .petite.case,.logolaclasse {

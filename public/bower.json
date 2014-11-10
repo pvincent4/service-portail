@@ -25,7 +25,8 @@
     "ng-flow": "latest",
     "angular-moment": "~0.8.2",
     "ng-switcher": "*",
-    "angular-ui-sortable": "~0.13.0"
+    "angular-ui-sortable": "~0.13.0",
+    "angular-delay": "~0.1.2"
   },
   "devDependencies": {
     "angular-mocks": "latest",
