@@ -4,6 +4,7 @@
 angular.module( 'portailApp', [ 'ngResource',
 				'ui.router',
 				'ui.bootstrap',
+				'ui.sortable',
 				'angular-carousel',
 				'ngAnimate',
 				'angularFileUpload',
