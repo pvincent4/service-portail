@@ -206,12 +206,18 @@ body {
 .damier {
     overflow-y:auto;
     .toggle-modification {
-	position: absolute;
-	right: 0;
-	bottom: 0;
+	background-color: rgba(0, 0, 0, 0.33);
+	border-top-right-radius: 66%;
+	top: 95%;
+	color: #fff;
+	cursor: pointer;
 	font-size: 2em;
-	height: 2em;
-	width: 2em;
+	height: 5%;
+	line-height: 2em;
+	position: absolute;
+	left: 0;
+	text-align: center;
+	width: 5%;
 	z-index: 1;
     }
     ul {
@@ -234,12 +240,6 @@ body {
 	    position: absolute;
 	    text-align: right;
 	    top: 0;
-	    // position: absolute;
-	    // top: 0.5em;
-	    // left: 0.5em;
-	    // cursor: pointer;
-	    // height: 18px;
-	    // width: 18px;
 	}
 	.toggle-configure {
 	    background: transparent;
