@@ -205,6 +205,12 @@ body {
 }
 .damier {
     overflow-y:auto;
+    ul {
+	height: 100%;
+	li {
+	    list-style-type: none;
+	}
+    }
     .case {
 	float:left;
 	position:relative;
