@@ -299,6 +299,14 @@ body {
 	}
     }
 }
+.damier.modification {
+    border: 1em dotted #000;
+    .petite.case {
+	width: 23%;
+	height: 22.7%;
+	margin: 1%;
+    }
+}
 .damier .petite.case,.logolaclasse {
     text-align:center;
 }
