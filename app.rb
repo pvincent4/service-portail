@@ -52,7 +52,7 @@ class SinatraApp < Sinatra::Base
   helpers ConfigHelpers
   helpers UserHelpers
 
-  # routes
+  ##### routes #################################################################
   get "#{APP_PATH}/?" do
     erb :app
   end
@@ -71,6 +71,7 @@ class SinatraApp < Sinatra::Base
     user.full( env ).to_json
   end
 
+  ##### API ####################################################################
   put "#{APP_PATH}/api/user" do
     content_type :json
 
@@ -235,6 +236,19 @@ class SinatraApp < Sinatra::Base
     }.sort_by { |app|
       app[:index]
     }.to_json
+  end
+
+  put "#{APP_PATH}/api/apps/:id" do
+    content_type :json
+
+    param :id, String, required: true
+    param :active, Boolean
+    param :index, Integer
+    param :nom, String
+    param :survol, String
+    param :url, String
+
+    STDERR.puts "#{params}"
   end
 
   get "#{APP_PATH}/api/version" do
