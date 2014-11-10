@@ -35,7 +35,7 @@
 	</div>
 
 	<span class="glyphicon glyphicon-transfer btn-lg handle"
-	      data-ng-if="modification"></span>
+	      data-ng-if="modification && !case.app.configure"></span>
 	<button class="btn btn-lg toggle-configure"
 		data-ng-class="{'open-configure': !case.app.configure, 'close-configure': case.app.configure}"
 		data-ng-if="modification && case.app && case.app.id != 'AIDE' && case.app.id != 'ADMIN'"
