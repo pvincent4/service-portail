@@ -226,12 +226,20 @@ body {
     }
     .petite.case {
 	.handle {
+	    background-color: rgba(0, 0, 0, 0.33);
+	    border-radius: 0;
+	    cursor: move;
+	    height: 1.25em;
+	    left: 0;
 	    position: absolute;
-	    top: 0.5em;
-	    left: 0.5em;
-	    cursor: pointer;
-	    height: 18px;
-	    width: 18px;
+	    text-align: right;
+	    top: 0;
+	    // position: absolute;
+	    // top: 0.5em;
+	    // left: 0.5em;
+	    // cursor: pointer;
+	    // height: 18px;
+	    // width: 18px;
 	}
 	.toggle-configure {
 	    background: transparent;
@@ -240,12 +248,12 @@ body {
 	}
 	.toggle-configure.open-configure {
 	    color: #fff;
-	    top: 1.5em;
-	    left: 0.5em;
+	    top: 0;
+	    left: 0;
 	}
 	.toggle-configure.close-configure {
 	    color: #1aa1cc;
-	    top: 0.5em;
+	    top: 0;
 	    right: 0.5em;
 	}
 	.configure {
@@ -300,11 +308,11 @@ body {
     }
 }
 .damier.modification {
-    border: 1em dotted #000;
+    // border: 1em dotted #000;
     .petite.case {
-	width: 23%;
-	height: 22.7%;
-	margin: 1%;
+	width: 24%;
+	height: 23.7%;
+	margin: 0.5%;
     }
 }
 .damier .petite.case,.logolaclasse {
