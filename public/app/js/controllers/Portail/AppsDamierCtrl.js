@@ -7,6 +7,7 @@ angular.module( 'portailApp' )
 		       $scope.prefix = APP_PATH;
 		       $scope.current_user = current_user;
 		       $scope.cases = CASES;
+		       var apps_indexes_changed = false;
 
 		       $scope.modification = false;
 		       $scope.sortable_options = {
@@ -15,13 +16,7 @@ angular.module( 'portailApp' )
 			   handle: '.handle',
 			   'ui-floating': true,
 			   stop: function( e, ui ) {
-			       console.log( $scope.cases );
-			       _($scope.cases).each( function( c, i ) {
-				   if ( _(c).has( 'app' ) ) {
-				       c.app.index = i;
-				       c.app.$update();
-				   }
-			       } );
+			       apps_indexes_changed = true;
 			   }
 		       };
 
@@ -34,16 +29,26 @@ angular.module( 'portailApp' )
 				       c.app.configure = false;
 				   }
 			       } );
+
+			       if ( apps_indexes_changed ) {
+				   // mise à jour de l'annuaire avec les nouveaux index des apps suite au déplacement
+				   _($scope.cases).each( function( c, i ) {
+				       if ( _(c).has( 'app' ) ) {
+					   c.app.index = i;
+					   c.app.$update();
+				       }
+				   } );
+			       }
 			   }
 		       };
 
-		   _.chain(current_apps)
-		   .select( function( app ) { return app.active; } )
-		   .each( function( app, i ) {
-		       $scope.cases[ i ].app = app;
-		       $scope.cases[ i ].app.configure = false;
-		       $scope.cases[ i ].app.tmp_active = $scope.cases[ i ].app.active;
+		       _.chain(current_apps)
+			   .select( function( app ) { return app.active; } )
+			   .each( function( app, i ) {
+			       $scope.cases[ i ].app = app;
+			       $scope.cases[ i ].app.configure = false;
+			       $scope.cases[ i ].app.tmp_active = $scope.cases[ i ].app.active;
 
-		       $scope.cases[ i ].app.toggle_configure = function() { app.configure = !app.configure; };
-		   } );
-		 } ] );
+			       $scope.cases[ i ].app.toggle_configure = function() { app.configure = !app.configure; };
+			   } );
+		   } ] );
