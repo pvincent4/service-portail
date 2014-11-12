@@ -217,7 +217,8 @@ module Annuaire
   def put_user_avatar( uid, image )
     uid = URI.escape( uid )
 
-    RestClient.post( sign( ANNUAIRE[:url], "users/#{uid}/upload/avatar", {} ), image: image ) do
+    RestClient.post( sign( ANNUAIRE[:url], "users/#{uid}/upload/avatar", {} ),
+                     image: Base64.encode64( image ) ) do
       |response, _request, _result|
       if response.code == 201
         return JSON.parse( response )[0]
