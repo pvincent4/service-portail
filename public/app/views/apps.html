@@ -7,9 +7,20 @@
 	  data-ng-if="current_user.is_logged">
 
 	<a class="animate toggle"
-	   data-ng-if="( case.app.active || modification ) && !case.app.configure"
+	   data-ng-if="case.app.active && !modification && !case.app.configure"
 	   data-ng-class="{'active': case.app.active, 'inactive': !case.app.active}"
 	   data-ui-sref="app-wrapper({ app: case.app.id })"
+	   title="{{ case.app.survol }}">
+	  <span class="compteur-notification orange-brillant"
+		data-ng-if="case.app.notifications > 0">{{case.app.notifications}}</span>
+	  <img data-ng-src="{{prefix}}/{{case.app.icone}}"
+	       data-ng-if="case.app.icone"/>
+	  <span class="app-name">{{ case.app.nom }}</span>
+	</a>
+
+	<a class="animate toggle"
+	   data-ng-if="modification && !case.app.configure"
+	   data-ng-class="{'active': case.app.active, 'inactive': !case.app.active}"
 	   title="{{ case.app.survol }}">
 	  <span class="compteur-notification orange-brillant"
 		data-ng-if="case.app.notifications > 0">{{case.app.notifications}}</span>
