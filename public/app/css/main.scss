@@ -245,16 +245,14 @@ body {
 	    background: transparent;
 	    position: absolute;
 	    cursor: pointer;
+	    top: 0;
+	    right: 0.5em;
 	}
 	.toggle-configure.open-configure {
 	    color: #fff;
-	    top: 0;
-	    left: 0;
 	}
 	.toggle-configure.close-configure {
 	    color: #1aa1cc;
-	    top: 0;
-	    right: 0.5em;
 	}
 	.configure {
 	    background-color: #fff;
@@ -333,7 +331,17 @@ body {
 
 .damier.modification {
     .toggle-modification {
+	background-color: #0f8;
+	border-top: 4px solid white;
+	border-right: 2px solid white;
+	border-top-right-radius: 0;
+    }
+    .toggle-modification.cancel {
 	background-color: #f80;
+	border-top-right-radius: 66%;
+	border-right: 4px solid white;
+	border-left: 2px solid white;
+	left: 5%;
     }
     .petite.case {
 	width: 24%;

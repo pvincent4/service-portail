@@ -20,17 +20,29 @@ angular.module( 'portailApp' )
 			   }
 		       };
 
-		       $scope.toggle_modification = function() {
+		       $scope.toggle_modification = function( save ) {
 			   $scope.modification = !$scope.modification;
 			   $scope.sortable_options.disabled = !$scope.sortable_options.disabled;
-			   if ( !$scope.modification ) {
+			   if ( $scope.modification ) {
+			       _(current_apps).each( function( app ) {
+				   app.draft = angular.copy( app );
+			       } );
+			   } else {
 			       _($scope.cases).each( function( c ) {
 				   if ( _(c).has( 'app' ) ) {
 				       c.app.configure = false;
+				       if ( save && c.app.dirty ) {
+					   _.chain(c.app.draft)
+					       .keys()
+					       .each( function( key ) {
+						   c.app[ key ] = angular.copy( c.app.draft[ key ] );
+					       } );
+					   c.app.$update();
+				       }
 				   }
 			       } );
 
-			       if ( apps_indexes_changed ) {
+			       if ( save && apps_indexes_changed ) {
 				   // mise à jour de l'annuaire avec les nouveaux index des apps suite au déplacement
 				   _($scope.cases).each( function( c, i ) {
 				       if ( _(c).has( 'app' ) ) {
@@ -43,12 +55,14 @@ angular.module( 'portailApp' )
 		       };
 
 		       _.chain(current_apps)
-			   .select( function( app ) { return app.active; } )
+			   .sortBy( function( app ) { return !app.active; } )
 			   .each( function( app, i ) {
 			       $scope.cases[ i ].app = app;
+			       $scope.cases[ i ].app.draft = angular.copy( app );
 			       $scope.cases[ i ].app.configure = false;
-			       $scope.cases[ i ].app.tmp_active = $scope.cases[ i ].app.active;
+			       $scope.cases[ i ].app.dirty = false;
 
 			       $scope.cases[ i ].app.toggle_configure = function() { app.configure = !app.configure; };
+			       $scope.cases[ i ].app.is_dirty = function() { app.dirty = true; };
 			   } );
 		   } ] );
