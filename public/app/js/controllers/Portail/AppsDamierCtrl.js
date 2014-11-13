@@ -9,6 +9,17 @@ angular.module( 'portailApp' )
 		       $scope.cases = CASES;
 		       var apps_indexes_changed = false;
 
+		       var tool_app = function( app ) {
+			   app.draft = angular.copy( app );
+			   app.configure = false;
+			   app.dirty = false;
+
+			   app.toggle_configure = function() { app.configure = !app.configure; };
+			   app.is_dirty = function() { app.dirty = true; };
+
+			   return app;
+		       };
+
 		       $scope.modification = false;
 		       $scope.sortable_options = {
 			   disabled: !$scope.modification,
@@ -38,6 +49,7 @@ angular.module( 'portailApp' )
 						   c.app[ key ] = angular.copy( c.app.draft[ key ] );
 					       } );
 					   c.app.$update();
+					   c.app = tool_app( c.app );
 				       }
 				   }
 			       } );
@@ -57,12 +69,6 @@ angular.module( 'portailApp' )
 		       _.chain(current_apps)
 			   .sortBy( function( app ) { return !app.active; } )
 			   .each( function( app, i ) {
-			       $scope.cases[ i ].app = app;
-			       $scope.cases[ i ].app.draft = angular.copy( app );
-			       $scope.cases[ i ].app.configure = false;
-			       $scope.cases[ i ].app.dirty = false;
-
-			       $scope.cases[ i ].app.toggle_configure = function() { app.configure = !app.configure; };
-			       $scope.cases[ i ].app.is_dirty = function() { app.dirty = true; };
+			       $scope.cases[ i ].app = tool_app( app );
 			   } );
 		   } ] );
