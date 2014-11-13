@@ -20,39 +20,36 @@
 
 	<a class="animate toggle"
 	   data-ng-if="modification && !case.app.configure"
-	   data-ng-class="{'active': case.app.active, 'inactive': !case.app.active}"
-	   title="{{ case.app.survol }}">
+	   data-ng-class="{'active': case.app.draft.active, 'inactive': !case.app.draft.active}"
+	   title="{{ case.app.draft.survol }}">
 	  <span class="compteur-notification orange-brillant"
 		data-ng-if="case.app.notifications > 0">{{case.app.notifications}}</span>
-	  <img data-ng-src="{{prefix}}/{{case.app.icone}}"
-	       data-ng-if="case.app.icone"/>
-	  <span class="app-name">{{ case.app.nom }}</span>
+	  <img data-ng-src="{{prefix}}/{{case.app.draft.icone}}"
+	       data-ng-if="case.app.draft.icone"/>
+	  <span class="app-name">{{ case.app.draft.nom }}</span>
 	</a>
 
 	<div class="configure animate rotate-in" data-ng-if="modification && case.app.configure">
 	  <label>nom : <input type="text" class="form-control"
-			      data-ng-model="case.app.nom"
-			      data-ng-change="case.app.$update()"
-			      data-ng-delay="500"/>
+			      data-ng-model="case.app.draft.nom"
+			      data-ng-change="case.app.is_dirty()" />
 	  </label>
 	  <label>description : <input type="text" class="form-control"
-				      data-ng-model="case.app.survol"
-				      data-ng-change="case.app.$update()"
-				      data-ng-delay="500" />
+				      data-ng-model="case.app.draft.survol"
+				      data-ng-change="case.app.is_dirty()" />
 	  </label>
 	  <label>lien : <input type="text" class="form-control"
-			       data-ng-model="case.app.lien"
-			       data-ng-change="case.app.$update()"
-			       data-ng-delay="500" />
+			       data-ng-model="case.app.draft.lien"
+			       data-ng-change="case.app.is_dirty()" />
 	  </label>
 
 	  <div class="activation"
 	       data-ng-switcher
-	       data-ng-model="case.app.active"
-	       data-ng-change="case.app.$update()"></div>
+	       data-ng-model="case.app.draft.active"
+	       data-ng-change="case.app.is_dirty()"></div>
 	</div>
 
-	<span class="glyphicon glyphicon-transfer btn-lg handle"
+	<span class="btn-lg handle"
 	      data-ng-if="modification && !case.app.configure"></span>
 	<button class="btn btn-lg toggle-configure"
 		data-ng-class="{'open-configure': !case.app.configure, 'close-configure': case.app.configure}"
@@ -70,6 +67,9 @@
     <span class="glyphicon toggle-modification"
 	  data-ng-class="{'glyphicon-ok': modification, 'glyphicon-wrench': !modification}"
 	  data-ng-if="current_user.profil_actif.admin"
-	  data-ng-click="toggle_modification()"></span>
+	  data-ng-click="toggle_modification( true )"></span>
+    <span class="glyphicon glyphicon-remove toggle-modification cancel"
+	  data-ng-if="modification"
+	  data-ng-click="toggle_modification( false )"></span>
 
 </div>
