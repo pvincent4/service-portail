@@ -3,7 +3,7 @@
 
     <ul ui-sortable="sortable_options" data-ng-model="cases">
       <li data-ng-repeat="case in cases"
-	  class="col-xs-6 col-sm-3 col-md-3 col-lg-3 petite case {{ case.couleur }}"
+	  class="col-xs-6 col-sm-4 col-md-3 col-lg-3 petite case {{ case.couleur }}"
 	  data-ng-if="current_user.is_logged">
 
 	<a class="animate toggle"
