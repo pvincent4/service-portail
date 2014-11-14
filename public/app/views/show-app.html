@@ -1,66 +1,71 @@
 <div id="app-wrapper">
-  <div class="en-tete">
+    <div class="en-tete">
 
-    <nav class="navbar navbar-default" role="navigation">
-      <div class="container">
+	<nav class="navbar navbar-default" role="navigation">
+	    <div class="container bleu">
 
-	<!-- Collect the nav links, forms, and other content for toggling -->
-	<div class="collapse navbar-collapse bleu">
-
-	  <a class="laclasse-com gris1 pull-left" href="{{prefix}}/">
-	    <div class="petit-logo gris4" data-ng-style="{'background-image': 'url(' + prefix + '/app/vendor/charte-graphique-laclasse-com/images/logolaclasse.svg)' }" >
-	    </div>
-	    <span>laclasse.com</span>
-	  </a>
-
-	  <span class="titre">{{app.nom}}</span>
-
-	  <div class="user-menu dropdown gris4 pull-right">
-	    <div class="profil-select-wrapper">
-	      <select data-ng-if="current_user.is_logged"
-		      data-ng-controller="ProfilActifCtrl"
-		      data-ng-model="current_user.profil_actif[0]"
-		      data-ng-change="reload()"
-		      data-ng-options="profil as profil.etablissement + ' : ' + profil.nom group by profil.etablissement for profil in current_user.profils track by profil.index" >
-	      </select>
-	    </div>
-	    <a class="dropdown-toggle" data-ng-if="current_user.is_logged">
-	      <h6>{{current_user.prenom}} {{current_user.nom}}</h6> <span class="glyphicon glyphicon-chevron-down"></span>
-	    </a>
-	    <ul role="menu" class="dropdown-menu gris3" data-ng-if="current_user.is_logged">
-	      <li data-ng-repeat="item in menu">
-		<a data-ng-if="item.app"
-		   data-ui-sref="app-wrapper({ app: item.app })"
-		   data-ng-style="{'background-image': 'url(' + prefix +'/vendor/charte-graphique-laclasse-com/images/' + item.icone + ')' }" >
-		  {{item.texte}}
+		<a class="laclasse-com gris1 pull-left" href="{{prefix}}/">
+		    <div class="petit-logo gris4" data-ng-style="{'background-image': 'url(' + prefix + '/app/vendor/charte-graphique-laclasse-com/images/logolaclasse.svg)' }" >
+		    </div>
+		    <span>laclasse.com</span>
 		</a>
-		<a data-ng-if="item.lien"
-		   href="{{item.lien}}"
-		   data-ng-style="{'background-image': 'url(' + prefix +'/vendor/charte-graphique-laclasse-com/images/' + item.icone + ')' }" >
-		  {{item.texte}}
-		</a>
-	      </li>
-	      <li>
-		<a class="dropdown-toggle">
-		  <span class="glyphicon glyphicon-chevron-up"></span>
-		</a>
-	      </li>
-	    </ul>
-	  </div>
 
-	</div><!-- /.navbar-collapse -->
-      </div><!-- /.container -->
-    </nav>
+		<span class="titre">{{app.nom}}</span>
 
-  </div>
+		<div class="user-menu gris4 pull-right">
+		    <div class="profil-select-wrapper">
+			<select data-ng-if="current_user.is_logged"
+				data-ng-controller="ProfilActifCtrl"
+				data-ng-model="current_user.profil_actif"
+				data-ng-change="reload()"
+				data-ng-options="profil as profil.etablissement + ' : ' + profil.nom group by profil.etablissement for profil in current_user.profils track by profil.index" >
+			</select>
+		    </div>
+		    <span class="dropdown" data-ng-if="current_user.is_logged">
+			<a class="dropdown-toggle">
+			    <h6>{{current_user.prenom}} {{current_user.nom}}</h6><span class="glyphicon glyphicon-chevron-down"></span>
+			</a>
+			<ul class="dropdown-menu gris3">
+			    <li>
+				<a href="/"
+				   data-ng-style="{'background-image': 'url(' + prefix +'/vendor/charte-graphique-laclasse-com/images/logolaclasse.svg)' }" >
+				    retour au portail
+				</a>
+			    </li>
+			    <li>
+				<a data-ui-sref="app-wrapper({ app: 'aide' })"
+				   data-ng-style="{'background-image': 'url(' + prefix +'/vendor/charte-graphique-laclasse-com/images/12_aide.svg)' }" >
+				    aide
+				</a>
+			    </li>
+			    <li>
+				<a href="/logout"
+				   data-ng-style="{'background-image': 'url(' + prefix +'/vendor/charte-graphique-laclasse-com/images/12_aide.svg)' }" >
+				    se déconnecter
+				</a>
+			    </li>
+			    <li>
+				<a class="dropdown-toggle">
+				    <span class="glyphicon glyphicon-chevron-up"></span>
+				</a>
+			    </li>
+			</ul>
+		    </span>
 
-  <div class="row iframe" data-ng-class="{'ios': iOS}">
-    <iframe data-ng-src="{{app.url}}" ng-if="!app.static"
-	    frameBorder="0"
-	    scrolling="{{iOS ? 'no': 'yes'}}">
-    </iframe>
+		</div>
 
-    <div data-ng-if="app.static" ng-include="app.url">
+	    </div><!-- /.container -->
+	</nav>
+
     </div>
-  </div>
+
+    <div class="row iframe" data-ng-class="{'ios': iOS}">
+	<iframe data-ng-src="{{app.url}}" ng-if="!app.static"
+		frameBorder="0"
+		scrolling="{{iOS ? 'no': 'yes'}}">
+	</iframe>
+
+	<div data-ng-if="app.static" ng-include="app.url">
+	</div>
+    </div>
 </div>
