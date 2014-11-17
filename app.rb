@@ -262,17 +262,10 @@ class SinatraApp < Sinatra::Base
   #
   get "#{APP_PATH}/api/ressources_numeriques" do
     content_type :json
-    couleurs = []
-
-    # Faire un tableau des couleurs dans le même ordre que les applications, pour les ressources
-    config[:apps_tiles].flatten.reject { |app| app.class == Symbol }
-                               .each { |a|
-      couleurs.push a[:couleur]
-    }
 
     ress_temp = Annuaire.get_user_resources( user.uid )
     uai_courant = user.profil_actif['uai']
-    # Prendre que les ressources de l'établissement courant.
+    # Ne prendre que les ressources de l'établissement courant.
     # Qui sont dans la fenêtre d'abonnement
     # Triées sur les types de ressources desc pour avoir 'MANUEL' en premier, puis 'DICO', puis 'AUTRES'
     ress_temp = ress_temp.reject { |r| r[ 'etablissement_code_uai' ] != uai_courant }
@@ -280,23 +273,49 @@ class SinatraApp < Sinatra::Base
                          .reject { |r|  Date.parse( r['date_fin_abon'] ) <= Date.today }
                          .sort_by { |r| r['type_ressource'].to_s }
                          .reverse
-
-    couleurs.each_with_index { |c, i|
-      if !ress_temp[i].nil?
-        ress_temp[i]['couleur'] = c
-        ress_temp[i]['icone'] = '08_ressources.svg'
-        ress_temp[i]['icone'] = '05_validationcompetences.svg'  if ress_temp[i]['type_ressource'] == 'MANUEL'
-        ress_temp[i]['icone'] = '07_blogs.svg'                  if ress_temp[i]['type_ressource'] == 'AUTRE'
-      else
-        # un carré vide, mais avec la bonne couleur !
-        ress_temp.push( 'code' => '', 'couleur' =>  c )
-      end
-    }
-    ress_temp.to_json
+                         .each { |r|
+                           r['icone'] = '08_ressources.svg'
+                           r['icone'] = '05_validationcompetences.svg'  if r['type_ressource'] == 'MANUEL'
+                           r['icone'] = '07_blogs.svg'                  if r['type_ressource'] == 'AUTRE'
+                         }
+    # Associer les couleurs des carrés                   
+    colorize(ress_temp).to_json
   end
 
-  # }}}
 
+  #
+  # Classes et groupes de l'utilisateur
+  #
+  get "#{APP_PATH}/api/mes_regroupements" do
+    content_type :json
+    mes_regpts = []
+    
+    rgpts = Annuaire.get_user_regroupements( user.uid )
+    uai_courant = user.profil_actif['uai']
+    # Pour les classes 
+    # filtrer sur les regroupements de l'établissement courant.
+    rgpts['classes']
+    .reject { |r| r[ 'etablissement_code' ] != uai_courant }
+    .sort_by { |r| r['classe_libelle'].to_s }
+    .reverse # Pour avoir les 6eme avant les 3eme
+    .each { |c|p
+      obj_cls = {nom: c['classe_libelle'], cls_id: c['classe_id'], uai: uai_courant }
+      mes_regpts.push obj_cls
+    }.uniq! # supprime les doublons dûs aux matieres enseaignées qui peuvent être plusieurs pour une classe
+    
+    rgpts['groupes_eleves']
+    .reject { |r| r[ 'etablissement_code' ] != uai_courant }
+    .sort_by { |r| r['groupe_libelle'].to_s }
+    .each { |c|
+      obj_grp = {nom: c['groupe_libelle'], cls_id: c['groupe_id'], uai: uai_courant }
+      mes_regpts.push obj_grp
+    }.uniq! 
+    #rgpts = ress_temp[groupes_libres].reject { |r| r[ 'etablissement_code' ] != uai_courant }
+    # Associer les couleurs des carrés    
+    colorize(mes_regpts).to_json
+  end
+  # }}
+  
   # {{{ auth
   get "#{APP_PATH}/auth/:provider/callback" do
     init_session( request.env )
