@@ -28,16 +28,21 @@ angular.module( 'portailApp' )
 
                        // Les applications de l'utilisateur
                        currentUser.apps().then( function ( response ) {
-                           // Intégrer les pages statiques
                            if ($stateParams.static) {
+                               // Pour la navigation inter pages-statiques (d'une page statique à une autres,
+                               // on définit que l'on va vers une page statique afin de l'intégrer correctement et sans ifram dans 
+                               // le template d'affichage.
                                $scope.app = { nom: '',
                                               url: $sce.trustAsResourceUrl( APP_PATH + '/pages/' + $stateParams.static ),
                                               static: true };
                            } else {
-                               // intégrer les applications dynamiques
+                               // Toutes les applications en iframe et les pages statiques
                                var app = _( response ).findWhere( { id: $stateParams.app } );
                                $scope.app = { nom: app.nom,
                                               url: $sce.trustAsResourceUrl( app.url ),
+                                              // Si l'application contient */pages/* dans son url
+                                              // elle est statique, on lui ajoute le paramètre 'static=true'
+                                              // pour qu'elle soit intégrée dans le template de rendu comme une page statique.
                                               static: app.url.match( /\/pages\// ) !== null };
                            }
                         } );
