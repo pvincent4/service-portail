@@ -32,8 +32,7 @@
     /* Page app wrapper */
     #app-wrapper .en-tete { height: 3em;
 			    min-height: 3em;
-			    max-height: 3em;
-			    border-bottom: 1px solid #fff; }
+			    max-height: 3em; }
     #app-wrapper .en-tete .laclasse-com span { display: none; }
     #app-wrapper .en-tete .user-menu { width: calc( 100% - 3em ); }
     #app-wrapper .en-tete .user-menu select { width: 100%;
@@ -160,8 +159,7 @@
     #app-wrapper .en-tete,
     #app-wrapper .en-tete .navbar { height: 3em;
 				    min-height: 3em;
-				    max-height: 3em;
-				    border-bottom: 1px solid #fff; }
+				    max-height: 3em; }
     #app-wrapper .en-tete .user-menu { width: calc( 100% - 3em ); }
     #app-wrapper .en-tete .user-menu select { width: 100%;
 					      padding: 0; }
