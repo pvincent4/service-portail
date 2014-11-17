@@ -90,7 +90,7 @@ body {
 	.connect-register {
 	    a {
 		display:block;
-		margin:10% auto 0;
+		margin: 20% auto 0;
 		width:80%;
 	    }
 	}
@@ -564,7 +564,7 @@ body {
 	    position:absolute;
 	    width:calc( 100% - 2em );
 	}
-	div.form {
+	.form {
 	    bottom:5em;
 	    height:calc( 100% - 12em - 5em );
 	    overflow-y:auto;
