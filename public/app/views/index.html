@@ -11,7 +11,7 @@
 	    <span class="user-info">
 		<span>
 		    <a data-ui-sref="portail.user">
-			<h3>{{current_user.prenom}} {{current_user.nom}}</h3>
+			<h3 data-ng-cloak>{{current_user.prenom}} {{current_user.nom}}</h3>
 		    </a>
 		    <br>
 		    <select data-ng-controller="ProfilActifCtrl"
@@ -37,8 +37,8 @@
 		    <img class="news-image"
 			 data-ng-src="{{news.image ? news.image: prefix + '/app/vendor/charte-graphique-laclasse-com/images/logolaclasse.svg'}}" />
 		    <div class="news-content">
-			<span class="pub-date">{{ news.pubDate }}</span>
-			<a href="{{ news.link }}" target="_blank"><h6>{{ news.title }}</h6></a>
+			<span class="pub-date" data-ng-cloak>{{ news.pubDate }}</span>
+			<a href="{{ news.link }}" target="_blank"><h6 data-ng-cloak>{{ news.title }}</h6></a>
 			<span data-ng-bind-html="news.trusted_description"></span>
 		    </div>
 		</li>
@@ -75,7 +75,7 @@
 		se connecter
 	    </a>
 	    <div class="annonce">
-		<p>{{annonce}}</p>
+		<p data-ng-cloak>{{annonce}}</p>
 	    </div>
 	</div>
 	<div class="row footer filtered-fg">
