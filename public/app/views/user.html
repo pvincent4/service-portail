@@ -1,9 +1,9 @@
 <div class="row user-profil">
     <header>
 	<h3>profil utilisateur</h3>
-	<h1>{{current_user.prenom}} {{current_user.nom}}</h1>
-	<h2>{{current_user.profil_actif.etablissement}}</h2>
-	<h2>{{current_user.profil_actif.nom}}</h2>
+	<h1 data-ng-cloak>{{current_user.prenom}} {{current_user.nom}}</h1>
+	<h2 data-ng-cloak>{{current_user.profil_actif.etablissement}}</h2>
+	<h2 data-ng-cloak>{{current_user.profil_actif.nom}}</h2>
     </header>
     <div class="form">
 	<accordion close-others="false">
@@ -34,7 +34,7 @@
 			    <div class="form-group">
 				<label>date de naissance :</label>
 				<span class="dropdown form-control date-naissance">
-				    <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-target="#" href="">{{current_user.date_naissance | amDateFormat: 'LL'}}</a>
+				    <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-target="#" href="" data-ng-cloak>{{current_user.date_naissance | amDateFormat: 'LL'}}</a>
 				    <div class="dropdown-menu" role="menu" ng-click="$event.stopPropagation()">
 					<datepicker datepicker-options="datepicker_options"
 						    data-ng-disabled="!current_user.editable"
