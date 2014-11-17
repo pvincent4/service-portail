@@ -12,22 +12,23 @@ module ConfigHelpers
   # Renvoie le tableau des cases avec leurs couleurs
   def damier
     c = []
-    self.config[:apps_tiles].flatten
-    .reject { |app| app.class == Symbol }
-    .each { |a| c.push a[:couleur] }
+    tiles = self.config[:apps_tiles].flatten.reject { |app| app.class == Symbol }.reverse!
+    tiles.each { |a| c.push a[:couleur] }
     c
   end
   
   # Ajouter les couleurs du damier à un tableau de choses
-  # s'il y a moins de 16 éléments danas le tableau de choses, on complète avec des carrés de couleur vide.
+  # s'il y a moins de 16 éléments dans le tableau de choses, on complète avec des carrés de couleur vide.
   def colorize (a)
+    d = self.damier
     a.each_with_index { |e, i|
-      e['couleur'] = damier[i.modulo(damier.length)]
+      e['couleur'] = d[i.modulo(d.length)]
     }     
-    # Completer le dameir jusqu'à 16
-    if a.length < damier.length
-      (damier.length - a.length).times { |i|
-        a.push('couleur' => damier[i])
+    # Completer le damier jusqu'à 16
+    if a.length < d.length
+      (d.length - a.length).times { |i|
+        # a grandit d'1 à chaque passage
+        a.push('couleur' => d[a.length])
       }
     end
     a
