@@ -25,12 +25,12 @@ module AnnuaireSpe
 
   # Service Utilisateur : récupération des ressources numériques de l'utilisateur
   def get_user_resources( uid )
-    response = Annuaire.send_request_signed(ANNUAIRE[:url], "app/users/#{uid}/ressources", {"expand" => "true"}) 
+    response = Annuaire.send_request_signed(ANNUAIRE[:url], ANNUAIRE[:service_annuaire_user] + "#{uid}/ressources", {"expand" => "true"}) 
   end
 
   # Liste des regroupements de l'utilisateur connecté
   def get_user_regroupements( uid )
-    response = Annuaire.send_request_signed(ANNUAIRE[:url], "app/users/#{uid}/regroupements", {"expand" => "true"}) 
+    response = Annuaire.send_request_signed(ANNUAIRE[:url], ANNUAIRE[:service_annuaire_user] + "#{uid}/regroupements", {"expand" => "true"}) 
   end
 
   # Modification des données de l'utilisateur connecté
@@ -45,19 +45,19 @@ module AnnuaireSpe
         params[ key ] = URI.escape( params[ key ].to_s )
       end
     end
-    response = Annuaire.put_request_signed(ANNUAIRE[:url], "app/users/#{uid}", params ) 
+    response = Annuaire.put_request_signed(ANNUAIRE[:url], ANNUAIRE[:service_annuaire_user] + "#{uid}", params ) 
   end
 
   # Modification avatar
   def put_user_avatar( uid, image )
     uid = URI.escape( uid )
-    response = Annuaire.post_request_signed(ANNUAIRE[:url], "app/users/#{uid}/upload/avatar", {}, image: Base64.encode64( image ) ) 
+    response = Annuaire.post_request_signed(ANNUAIRE[:url], ANNUAIRE[:service_annuaire_user] + "#{uid}/upload/avatar", {}, image: Base64.encode64( image ) ) 
   end
 
   # Suppression avatar
   def delete_user_avatar( uid )
     uid = URI.escape( uid )
-    response = Annuaire.delete_request_signed(ANNUAIRE[:url], "app/users/#{uid}/avatar", {} ) 
+    response = Annuaire.delete_request_signed(ANNUAIRE[:url], ANNUAIRE[:service_annuaire_user] + "#{uid}/avatar", {} ) 
   end
 
   # Modification du profil actif de l'utilisateur connecté
@@ -65,7 +65,7 @@ module AnnuaireSpe
     uid = URI.escape( uid )
     profil_id = URI.escape( profil_id )
     code_uai = URI.escape( code_uai )
-   response = Annuaire.put_request_signed(ANNUAIRE[:url], "app/users/#{uid}/profil_actif", uai: code_uai, profil_id: profil_id ) 
+   response = Annuaire.put_request_signed(ANNUAIRE[:url], ANNUAIRE[:service_annuaire_user] + "#{uid}/profil_actif", uai: code_uai, profil_id: profil_id ) 
   end
 
   # Liste des personnels d'un etablissement
