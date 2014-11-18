@@ -90,7 +90,7 @@ body {
 	.connect-register {
 	    a {
 		display:block;
-		margin:10% auto 0;
+		margin: 20% auto 0;
 		width:80%;
 	    }
 	}
@@ -128,6 +128,7 @@ body {
 		position: absolute;
 		width: 100%;
 		height: 67%;
+		opacity: 0.6;
 	    }
 	    .news-content {
 		background-color:rgba(255,255,255,0.1);
@@ -138,11 +139,13 @@ body {
 		position:absolute;
 		width:100%;
 		padding:1em;
+		font-size: 12px;
+		font-weight: normal;
 		h6 {
 		    color:#fff;
 		    text-decoration:none;
 		    text-align:center;
-		    font-size: 2em;
+		    font-size: 16px;
 		    font-weight: bolder;
 		    text-transform: uppercase;
 		}
@@ -270,6 +273,7 @@ body {
 	    }
 	}
 	.app-name {
+	    font-size: 16px;
 	    line-height: 1.1em;
 	    max-height:2.2em;
 	    margin-top:6%;
@@ -398,7 +402,7 @@ body {
 	width:100%;
 	overflow: hidden;
     }
-    .logolaclasse h3,.damier .petite.case a span {
+    .logolaclasse h3 {
 	font-size:1.5em;
 	font-weight:lighter;
     }
@@ -414,11 +418,13 @@ body {
     }
     .titre {
 	font-weight:bolder;
+	font-size: 14px;
 	padding-left:1em;
     }
     .laclasse-com {
 	float:left;
 	font-weight:bolder;
+	font-size: 14px;
 	text-align:center;
 	a {
 	    color:#fff;
@@ -462,6 +468,8 @@ body {
 	    }
 	}
 	select {
+	    font-size: 12px;
+	    font-weight: normal;
 	    padding-right: 3px;
 	    -moz-appearance:none;
 	    -webkit-appearance:none;
@@ -532,6 +540,8 @@ body {
     }
     .iframe {
 	height:calc( 100% - 1.5em );
+	box-shadow: inset 0 0 10px #000;
+	padding: 5px;
 	iframe {
 	    border:0;
 	    padding: 0;
@@ -563,8 +573,9 @@ body {
 	    height:12em;
 	    position:absolute;
 	    width:calc( 100% - 2em );
+	    padding-left: 3em;
 	}
-	div.form {
+	.form {
 	    bottom:5em;
 	    height:calc( 100% - 12em - 5em );
 	    overflow-y:auto;

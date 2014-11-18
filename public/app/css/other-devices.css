@@ -1,85 +1,171 @@
-/* Mobile & Tablet, portrait */
+/**** Portrait ****************************************************************/
 @media screen and (orientation: portrait) {
-    /* Page publique */
-    .page_publique .connexion {left:50%;}
-    .page_publique .connexion .bienvenue {font-size: 1.4em;}
-    .page_publique .title { top:50%; left: 5%; }
-    .page_publique .title .nomENT {font-size: 1.1em;}
-    .page_publique .title .descENT {font-size: 0.5em;}
-    .page_publique .connexion .btn-sm{font-size: 0.5em;}
-    .page_publique .annonce {font-size: 0.5em;}
-
     /* Page loggué */
-    .news { display: none; }
     .aside { height: 3em; }
+    .aside .news { display: none; }
     .aside .logolaclasse, .aside .user { height: 100%; }
     .aside .logolaclasse a img { height: 100%;
 				 width: auto; }
-    .aside .logolaclasse a h3 { height: 100%;
-				max-height: 100%;
-				width: auto; }
-    .user-info a.logout, .user-info br { display: none; }
+    .aside .logolaclasse a h3 { display: none; }
+    .aside .user-info span a h3 { font-size: 1.5em; }
+    .aside .user-info a.logout, .user-info br { display: none; }
+    .aside .user select { font-weight: normal; }
 
     /* Page loggué, damier */
     .damier .toggle-modification { display: none; }
+    .damier .petite.case a span { font-weight: normal; }
 
     /* Page loggué, user */
-    .user-profil h1, .user-profil h2, .user-profil h3 { line-height: 1em; }
-    .user-profil h1 { font-weight: 1.5em; }
-    .user-profil div.form { bottom: 8em;
-			    height: calc(100% - 12em - 8em); }
-    .user-profil footer { height: 8em; }
+    .user-profil header { height: 6.5em; }
+    .user-profil header h1, .user-profil header h2, .user-profil header h3 { line-height: 1em; }
+    .user-profil header h1 { font-size: 1.5em; }
+
+    .user-profil .form { top: 6.5em;
+			 bottom: 6em;
+			 height: calc(100% - 6.5em - 6em); }
+    .user-profil .form accordion .panel-body .row div { padding: 0; }
+
+    .user-profil footer { height: 6em;
+			  padding: 0.25em; }
     .user-profil footer button { padding: 0.25em 0.5em; }
 
     /* Page app wrapper */
-    .en-tete, .en-tete .navbar { height: 3em;
-				 max-height: 3em;
-				 min-height: 3em; }
-    .laclasse-com .petit-logo { width: 3em;
-				height: 3em; }
-}
-@media screen and (orientation: portrait) and (max-width: 400px) {
-    .user-info a h3 { font-size: 1em; }
+    #app-wrapper .en-tete { height: 3em;
+			    min-height: 3em;
+			    max-height: 3em; }
+    #app-wrapper .en-tete .laclasse-com span { display: none; }
+    #app-wrapper .en-tete .user-menu { width: calc( 100% - 3em ); }
+    #app-wrapper .en-tete .user-menu select { width: 100%;
+					      padding: 0; }
+    #app-wrapper .en-tete .user-menu .dropdown { display: none; }
+    #app-wrapper .en-tete .laclasse-com .petit-logo { height: 2.9em;
+						      width: 3em; }
 
-    .aside .logolaclasse a h3 { font-size: 1em;
-				line-height: 3em; }
-    #app-wrapper .user-menu .profil-select-wrapper, .app-wrapper .user-menu a { max-width: calc( 50% - 1.5em ); }
-}
-@media screen and (orientation: portrait) and (min-width: 400px) {
-    .user-info a h3 { font-size: 1.25em; }
-    .aside .logolaclasse a h3 { font-size: 1.5em;
-				line-height: 2em; }
-    .user-menu .profil-select-wrapper, .user-menu a { max-width: 15em; }
-}
-@media screen and (orientation: portrait) and (max-width: 640px) {
-    .en-tete .laclasse-com span { display: none; }
-    .user-menu { width: calc( 100% - 3em ); }
+    /* Page publique */
+    .page_publique .connexion {left:50%;}
+    .page_publique .title { top:50%; left: 5%; }
 }
 
-/* Mobile, paysage */
+@media screen and (orientation: portrait) and (max-width: 335px) {
+    /* Page loggué */
+
+    /* Page loggué, damier */
+    .damier .petite.case a span { font-size: 1em; }
+
+    /* Page loggué, user */
+
+    /* Page app wrapper */
+
+    /* Page publique */
+}
+
+@media screen and (orientation: portrait) and (max-width: 480px) {
+    /* Page loggué */
+
+    /* Page loggué, damier */
+
+    /* Page loggué, user */
+
+    /* Page app wrapper */
+
+    /* Page publique */
+    .page_publique .connexion .bienvenue {font-size: 1.4em;}
+    .page_publique .connexion .btn-sm{font-size: 1.1em;}
+}
+
+/**** Paysage *****************************************************************/
+@media screen and (orientation: landscape) {
+    /* Page loggué */
+
+    /* Page loggué, damier */
+
+    /* Page loggué, user */
+
+    /* Page app wrapper */
+
+    /* Page publique */
+}
+
 @media screen and (orientation: landscape) and (max-height: 480px) {
-    .page_publique .connexion .bienvenue {font-size: 1.5em;}
-    .page_publique .title .nomENT {font-size: 1.1em;}
-    .page_publique .title .descENT {font-size: 0.5em;}
-    .page_publique .connexion .btn-sm{font-size: 0.9em;}
-    .page_publique .annonce {font-size: 0.5em;}
+    /* Page loggué */
+    .aside { height: 3em; }
+    .aside .news { display: none; }
+    .aside .logolaclasse, .aside .user { height: 100%; }
+    .aside .logolaclasse a img { height: 100%;
+				 width: auto; }
+    .aside .logolaclasse a h3 { display: none; }
+    .aside .user-info span a h3 { font-size: 1.5em; }
+    .aside .user-info a.logout, .user-info br { display: none; }
+    .aside .user select { font-weight: normal; }
 
-    .petite.case { height: 50%; }
+    /* Page loggué, damier */
+
+    /* Page loggué, user */
+
+    /* Page app wrapper */
+
+    /* Page publique */
+    .page_publique .connexion .bienvenue {font-size: 1.4em;}
+    .page_publique .connexion .btn-sm{font-size: 1.1em;}
+    .page_publique .nomENT { font-size: 1.25em; }
+    .page_publique .descENT { font-size: 1em; }
 }
 
-/* Tablet, paysage */
-@media screen and (orientation: landscape) and (max-height: 768px) {
+@media screen and (orientation: landscape) and (max-height: 640px) {
+    /* Page loggué */
+
+    /* Page loggué, damier */
+    .damier .toggle-modification { display: none; }
+    .damier .petite.case a span { font-weight: normal; }
+
+    /* Page loggué, user */
+    .user-profil header { height: 6.5em; }
+    .user-profil header h1, .user-profil header h2, .user-profil header h3 { line-height: 1em; }
+    .user-profil header h1 { font-size: 1.5em; }
+
+    .user-profil .form { top: 6.5em;
+			 bottom: 6em;
+			 height: calc(100% - 6.5em - 6em); }
+    .user-profil .form accordion .panel-body .row div { padding: 0; }
+
+    .user-profil footer { height: 6em;
+			  padding: 0.25em; }
+    .user-profil footer button { padding: 0.25em 0.5em; }
+
+    /* Page app wrapper */
+    #app-wrapper .en-tete .laclasse-com span { display: none; }
+    #app-wrapper .en-tete .user-menu .dropdown { display: none; }
+    #app-wrapper .en-tete .laclasse-com .petit-logo { height: 2.9em;
+						      width: 3em; }
+    /* Page loggué, damier */
     .damier .logos img { margin: 5% auto 0; }
     .damier .petite.case { height: 33% }
     .damier .petite.case a { background-position: center top }
     .damier .petite.case .app-name { font-weight:normal }
     .damier .petite.case a span { font-size:1.1em }
-    .rn-carousel-slide .news-content h6 { font-size: 1.2em }
-    .rn-carousel-slide .news-content { font-size: 0.9em }
 }
 
-/* Desktop */
-@media screen and (orientation: landscape) and (min-width: 992px) {
-    .aside .slider { height:75% }
-    .aside .user .connect-register a { margin:20% auto 0 }
+@media screen and (orientation: landscape) and (max-height: 768px) {
+    /* Page loggué */
+    .logolaclasse a h3 { font-size: 1.5em; }
+    .aside .news ul[rn-carousel] .news-content { font-size: 0.8em; }
+    .aside .news ul[rn-carousel] .news-content h6 { font-size: 1.25em; }
+
+    /* Page loggué, damier */
+
+    /* Page loggué, user */
+
+    /* Page app wrapper */
+    #app-wrapper .en-tete,
+    #app-wrapper .en-tete .navbar { height: 3em;
+				    min-height: 3em;
+				    max-height: 3em; }
+    #app-wrapper .en-tete .user-menu { width: calc( 100% - 3em ); }
+    #app-wrapper .en-tete .user-menu select { width: 100%;
+					      padding: 0; }
+    #app-wrapper .en-tete .laclasse-com { height: 1.4em; }
+    #app-wrapper .en-tete .laclasse-com .petit-logo { height: 2.9em;
+						      width: 3em; }
+
+    /* Page publique */
 }

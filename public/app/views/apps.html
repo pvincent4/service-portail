@@ -12,10 +12,10 @@
 	   data-ui-sref="app-wrapper({ app: case.app.id })"
 	   title="{{ case.app.survol }}">
 	  <span class="compteur-notification orange-brillant"
-		data-ng-if="case.app.notifications > 0">{{case.app.notifications}}</span>
+		data-ng-if="case.app.notifications > 0" data-ng-cloak>{{case.app.notifications}}</span>
 	  <img data-ng-src="{{prefix}}/{{case.app.icone}}"
 	       data-ng-if="case.app.icone"/>
-	  <span class="app-name">{{ case.app.nom }}</span>
+	  <span class="app-name" data-ng-cloak>{{ case.app.nom }}</span>
 	</a>
 
 	<a class="animate toggle"
@@ -23,10 +23,10 @@
 	   data-ng-class="{'active': case.app.draft.active, 'inactive': !case.app.draft.active}"
 	   title="{{ case.app.draft.survol }}">
 	  <span class="compteur-notification orange-brillant"
-		data-ng-if="case.app.notifications > 0">{{case.app.notifications}}</span>
+		data-ng-if="case.app.notifications > 0" data-ng-cloak>{{case.app.notifications}}</span>
 	  <img data-ng-src="{{prefix}}/{{case.app.draft.icone}}"
 	       data-ng-if="case.app.draft.icone"/>
-	  <span class="app-name">{{ case.app.draft.nom }}</span>
+	  <span class="app-name" data-ng-cloak>{{ case.app.draft.nom }}</span>
 	</a>
 
 	<div class="configure animate rotate-in" data-ng-if="modification && case.app.configure">
