@@ -11,7 +11,7 @@
                     <div data-ng-repeat="rgpt in mes_regroupements| orderBy:'index'"
                          class="col-xs-12 col-sm-6 col-md-3 col-lg-3 petite case animate scale-fade-in {{ rgpt.couleur }}"
                          data-ng-if="current_user.is_logged">
-                        <a title="{{rgpt.nom}}" href="{{rgpt.id}}">
+                        <a title="Voir le trombinoscope du regroupement {{rgpt.nom}}" href="{{rgpt.id}}">
                             <span class="app-name">{{rgpt.nom}}</span>
                         </a>   
                     </div>
