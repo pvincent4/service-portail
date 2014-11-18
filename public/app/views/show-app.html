@@ -10,7 +10,7 @@
 		    <span>laclasse.com</span>
 		</a>
 
-		<span class="titre">{{app.nom}}</span>
+		<span class="titre" data-ng-cloak>{{app.nom}}</span>
 
 		<div class="user-menu gris4 pull-right">
 		    <div class="profil-select-wrapper">
@@ -23,7 +23,7 @@
 		    </div>
 		    <span class="dropdown" data-ng-if="current_user.is_logged">
 			<a class="dropdown-toggle">
-			    <h6>{{current_user.prenom}} {{current_user.nom}}</h6><span class="glyphicon glyphicon-chevron-down"></span>
+			    <h6 data-ng-cloak>{{current_user.prenom}} {{current_user.nom}}</h6><span class="glyphicon glyphicon-chevron-down"></span>
 			</a>
 			<ul class="dropdown-menu gris3">
 			    <li>
