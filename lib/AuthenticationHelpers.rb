@@ -39,8 +39,8 @@ module AuthenticationHelpers
                                info: nil,
                                is_logged: false }
 
-    user_annuaire = Annuaire.get_user( uid )
-
+    user_annuaire = AnnuaireSpe.get_user( uid )
+       
     if session[:user] && !user_annuaire.nil?
       session[:current_user] = { user: session[:user],
                                  uid: user_annuaire['id_ent'],

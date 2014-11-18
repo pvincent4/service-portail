@@ -17,6 +17,13 @@ require_relative './lib/AuthenticationHelpers'
 require_relative './lib/ConfigHelpers'
 require_relative './lib/UserHelpers'
 
+
+# Config du GEM AnnuaireSpe.
+Annuaire.configure do |config|
+   config.app_id = ANNUAIRE[:app_id]
+   config.api_key = ANNUAIRE[:api_key]
+ end
+ 
 # https://gist.github.com/chastell/1196800
 class Hash
   def to_html
@@ -86,7 +93,7 @@ class SinatraApp < Sinatra::Base
     param :code_postal,    Integer, required: false, within: 0..999_999
     param :ville,          String,  required: false
 
-    Annuaire.put_user( user.uid,
+    AnnuaireSpe.put_user( user.uid,
                        params )
 
     set_current_user( user.uid )
@@ -97,7 +104,7 @@ class SinatraApp < Sinatra::Base
   post "#{APP_PATH}/api/user/avatar/?" do
     content_type :json
 
-    Annuaire.put_user_avatar( user.uid,
+    AnnuaireSpe.put_user_avatar( user.uid,
                               File.read( params[:image][:tempfile] ) ) if params[:image]
 
     set_current_user( user.uid )
@@ -108,7 +115,7 @@ class SinatraApp < Sinatra::Base
   delete "#{APP_PATH}/api/user/avatar/?" do
     content_type :json
 
-    Annuaire.delete_user_avatar( user.uid )
+    AnnuaireSpe.delete_user_avatar( user.uid )
 
     set_current_user( user.uid )
 
@@ -121,7 +128,7 @@ class SinatraApp < Sinatra::Base
     param :profil_id, String, required: true
     param :uai, String, required: true
 
-    Annuaire.put_user_profil_actif( user.uid,
+    AnnuaireSpe.put_user_profil_actif( user.uid,
                                     params[:profil_id],
                                     params[:uai] )
 
@@ -178,7 +185,7 @@ class SinatraApp < Sinatra::Base
   #   if is_logged?
   #     profil = user.profil_actif['type']
   #     uai = user.profil_actif['uai']
-  #     etb = Annuaire.get_etablissement(uai)
+  #     etb = AnnuaireSpe.get_etablissement(uai)
   #     opts = { serveur: "#{APP_PATH}/faye",
   #              profil: profil,
   #              uai: uai,
@@ -202,7 +209,7 @@ class SinatraApp < Sinatra::Base
     # error( 401, 'Not Authorized' ) unless is_logged? && !user.profil_actif.nil?
     return [] unless is_logged? && !user.profil_actif.nil?
 
-    user_applications = Annuaire.get_user( user.uid )['applications']
+    user_applications = AnnuaireSpe.get_user( user.uid )['applications']
     uai_courant = user.profil_actif['uai']
 
     # traitement des apps renvoyées par l'annuaire
@@ -263,7 +270,7 @@ class SinatraApp < Sinatra::Base
   get "#{APP_PATH}/api/ressources_numeriques" do
     content_type :json
 
-    ress_temp = Annuaire.get_user_resources( user.uid )
+    ress_temp = AnnuaireSpe.get_user_resources( user.uid )
     uai_courant = user.profil_actif['uai']
     # Ne prendre que les ressources de l'établissement courant.
     # Qui sont dans la fenêtre d'abonnement
@@ -290,7 +297,7 @@ class SinatraApp < Sinatra::Base
     content_type :json
     mes_regpts = []
     
-    rgpts = Annuaire.get_user_regroupements( user.uid )
+    rgpts = AnnuaireSpe.get_user_regroupements( user.uid )
     uai_courant = user.profil_actif['uai']
     # Pour les classes 
     # filtrer sur les regroupements de l'établissement courant.
@@ -314,6 +321,16 @@ class SinatraApp < Sinatra::Base
     # Associer les couleurs des carrés    
     colorize(mes_regpts).to_json
   end
+  
+  
+  get "#{APP_PATH}/api/test" do
+    content_type :json
+    mes_regpts = []
+    uai_courant = user.profil_actif['uai']
+    rgpts = AnnuaireSpe.get_etablissement_regroupements( uai_courant )
+    rgpts.to_json
+  end
+  
   # }}
   
   # {{{ auth

@@ -1,3 +1,9 @@
+GIT
+  remote: https://github.com/laclasse-com/gem_annuaire
+  revision: b161274a580309f28e6c3dc01ba7bd3a3dbe40bf
+  specs:
+    annuaire (0.0.3)
+
 GEM
   remote: https://rubygems.org/
   remote: http://gems.erasme.org/
@@ -165,6 +171,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  annuaire!
   css2less
   ent_notifs
   faye

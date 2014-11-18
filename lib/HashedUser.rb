@@ -6,13 +6,13 @@ require_relative './HashIt'
 class HashedUser < HashIt
   def is?( profil )
     # FIXME
-    profils = Annuaire.get_user( @uid )['profils']
+    profils = AnnuaireSpe.get_user( @uid )['profils']
     @ENTPersonProfils.include? "#{profil}:#{profils[0]['uai']}"
   end
 
   def admin?
     # FIXME
-    u_a = Annuaire.get_user( @uid )
+    u_a = AnnuaireSpe.get_user( @uid )
     profil_actif = u_a['profils'].select { |p| p['actif'] }.first
     u_a['roles']
       .select { |r|
@@ -24,7 +24,7 @@ class HashedUser < HashIt
   end
 
   def profils
-    user_annuaire = Annuaire.get_user( uid )
+    user_annuaire = AnnuaireSpe.get_user( uid )
     user_annuaire['profils']
       .select do |profil| profil['bloque'].nil? end
       .map.with_index do |profil, i|
@@ -47,7 +47,7 @@ class HashedUser < HashIt
   def full( env )
     utilisateur = env['rack.session'][:current_user]
 
-    user_annuaire = Annuaire.get_user( utilisateur[:uid] )
+    user_annuaire = AnnuaireSpe.get_user( utilisateur[:uid] )
     utilisateur[ 'profils' ] = user_annuaire['profils']
                                .select do |profil| profil['bloque'].nil? end
                                .map.with_index do |profil, i|
