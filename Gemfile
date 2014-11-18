@@ -22,6 +22,7 @@ gem 'html_truncator'
 gem 'htmlentities'
 gem 'uglifier'
 gem 'sass'
+gem 'annuaire', :git => 'https://github.com/laclasse-com/gem_annuaire' 
 
 # Gems spécifiques ENT
 gem 'ent_notifs'
