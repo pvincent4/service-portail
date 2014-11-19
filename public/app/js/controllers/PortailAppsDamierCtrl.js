@@ -14,7 +14,17 @@ angular.module( 'portailApp' )
 			   app.configure = false;
 			   app.dirty = false;
 
-			   app.toggle_configure = function() { app.configure = !app.configure; };
+			   app.toggle_configure = function() {
+			       _.chain($scope.cases)
+				   .select( function( c ) { return _(c).has( 'app' ); } )
+				   .each( function( c ) {
+				       if ( c.app === app ) {
+					   app.configure = !app.configure;
+				       } else  {
+					   c.app.configure = false;
+				       }
+				   } );
+			   };
 			   app.is_dirty = function() { app.dirty = true; };
 
 			   return app;
