@@ -6,7 +6,6 @@ GIT
 
 GEM
   remote: https://rubygems.org/
-  remote: http://gems.erasme.org/
   specs:
     addressable (2.3.6)
     backports (3.6.3)
