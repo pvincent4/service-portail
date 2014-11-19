@@ -7,7 +7,7 @@
 	  data-ng-if="current_user.is_logged">
 
 	<a class="animate toggle"
-	   data-ng-if="case.app.active && !modification && !case.app.configure"
+	   data-ng-if="case.app.active && !modification && !case.app.configure && case.app.id !== 'config'"
 	   data-ng-class="{'active': case.app.active, 'inactive': !case.app.active}"
 	   data-ui-sref="app-wrapper({ app: case.app.id })"
 	   title="{{ case.app.survol }}">
@@ -19,7 +19,7 @@
 	</a>
 
 	<a class="animate toggle"
-	   data-ng-if="modification && !case.app.configure"
+	   data-ng-if="modification && !case.app.configure && case.app.id !== 'config'"
 	   data-ng-class="{'active': case.app.draft.active, 'inactive': !case.app.draft.active}"
 	   title="{{ case.app.draft.survol }}">
 	  <span class="compteur-notification orange-brillant"
@@ -29,7 +29,7 @@
 	  <span class="app-name" data-ng-cloak>{{ case.app.draft.nom }}</span>
 	</a>
 
-	<div class="configure animate rotate-in" data-ng-if="modification && case.app.configure">
+	<div class="configure animate rotate-in" data-ng-if="modification && case.app.configure && case.app.id != 'config'">
 	  <label>nom : <input type="text" class="form-control"
 			      data-ng-model="case.app.draft.nom"
 			      data-ng-change="case.app.is_dirty()" />
@@ -47,7 +47,7 @@
 
 	<button class="btn btn-lg toggle-configure"
 		data-ng-class="{'open-configure': !case.app.configure, 'close-configure': case.app.configure}"
-		data-ng-if="modification && case.app && case.app.id != 'AIDE' && case.app.id != 'ADMIN'"
+		data-ng-if="modification && case.app && case.app.id != 'AIDE' && case.app.id != 'ADMIN' && case.app.id != 'config'"
 		data-ng-click="case.app.toggle_configure()">
 	  <span class="glyphicon glyphicon-cog"
 		data-ng-if="!case.app.configure"></span>
@@ -55,15 +55,37 @@
 	     data-ng-if="case.app.configure"></i>
 	</button>
 
+
+
+
+	<!-- Case de toggle modification damier -->
+	<a class="animate toggle" href
+	   data-ng-if="insane_tiles_configuration_access && case.app.id == 'config' && ! modification"
+	   data-ng-click="toggle_modification( true )"
+	   title="{{ case.app.survol }}">
+	    <!-- recto -->
+	    <img data-ng-src="{{prefix}}/{{case.app.icone}}"
+		 data-ng-if="case.app.icone && !modification"/>
+	    <span class="app-name" data-ng-cloak
+		  data-ng-if="!modification">{{ case.app.nom }}</span>
+	</a>
+	<div class="configure animate rotate-in" data-ng-if="insane_tiles_configuration_access && case.app.id == 'config' && modification">
+	    <!-- verso -->
+	    <button data-ng-click="toggle_modification( true )"
+		    data-ng-if="modification">valider</button>
+	    <button data-ng-click="toggle_modification( false )"
+		    data-ng-if="modification">annuler</button>
+	</div>
+
       </li>
     </ul>
 
     <span class="glyphicon toggle-modification"
 	  data-ng-class="{'glyphicon-ok': modification, 'glyphicon-wrench': !modification}"
-	  data-ng-if="current_user.profil_actif.admin"
+	  data-ng-if="current_user.profil_actif.admin && !insane_tiles_configuration_access"
 	  data-ng-click="toggle_modification( true )"></span>
     <span class="glyphicon glyphicon-remove toggle-modification cancel"
-	  data-ng-if="modification"
+	  data-ng-if="modification && !insane_tiles_configuration_access"
 	  data-ng-click="toggle_modification( false )"></span>
 
 </div>
