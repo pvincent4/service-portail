@@ -4,6 +4,8 @@ angular.module( 'portailApp' )
     .controller( 'PortailAppsDamierCtrl',
 		 [ '$scope', 'current_user', 'current_apps', 'APP_PATH', 'CASES',
 		   function( $scope, current_user, current_apps, APP_PATH, CASES ) {
+		       $scope.insane_tiles_configuration_access = true;
+
 		       $scope.prefix = APP_PATH;
 		       $scope.current_user = current_user;
 		       $scope.cases = CASES;
@@ -80,4 +82,14 @@ angular.module( 'portailApp' )
 			   .each( function( app, i ) {
 			       $scope.cases[ i ].app = tool_app( app );
 			   } );
+
+		       if ( $scope.insane_tiles_configuration_access ) {
+			   _.chain($scope.cases)
+			       .select( function( c ) { return !_(c).has( 'app' ); } )
+			       .last()
+			       .value().app = { active: true,
+						id: 'config',
+						nom: 'configuration du portail',
+						icone: 'app/vendor/charte-graphique-laclasse-com/images/13_admin.svg' };
+		       }
 		   } ] );
