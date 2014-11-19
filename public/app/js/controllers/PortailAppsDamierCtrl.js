@@ -34,7 +34,6 @@ angular.module( 'portailApp' )
 		       $scope.sortable_options = {
 			   disabled: !$scope.modification,
 			   containment: '.damier',
-			   handle: '.handle',
 			   'ui-floating': true,
 			   stop: function( e, ui ) {
 			       apps_indexes_changed = true;
