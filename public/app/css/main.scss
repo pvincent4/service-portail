@@ -127,6 +127,7 @@ body {
 	    .news-image {
 		position: absolute;
 		width: 100%;
+		max-height: 67%;
 		opacity: 0.6;
 	    }
 	    .news-content {
@@ -247,7 +248,7 @@ body {
 	    background: transparent;
 	    position: absolute;
 	    cursor: pointer;
-	    top: 0;
+	    top: 0.5em;
 	    left: 0.5em;
 	}
 	.toggle-configure.open-configure {

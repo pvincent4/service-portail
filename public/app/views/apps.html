@@ -38,10 +38,6 @@
 				      data-ng-model="case.app.draft.survol"
 				      data-ng-change="case.app.is_dirty()" />
 	  </label>
-	  <label>lien : <input type="text" class="form-control"
-			       data-ng-model="case.app.draft.lien"
-			       data-ng-change="case.app.is_dirty()" />
-	  </label>
 
 	  <div class="activation"
 	       data-ng-switcher
@@ -49,8 +45,6 @@
 	       data-ng-change="case.app.is_dirty()"></div>
 	</div>
 
-	<span class="btn-lg handle"
-	      data-ng-if="modification && !case.app.configure"></span>
 	<button class="btn btn-lg toggle-configure"
 		data-ng-class="{'open-configure': !case.app.configure, 'close-configure': case.app.configure}"
 		data-ng-if="modification && case.app && case.app.id != 'AIDE' && case.app.id != 'ADMIN'"
