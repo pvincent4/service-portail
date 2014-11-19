@@ -26,10 +26,11 @@
     "angular-moment": "~0.8.2",
     "ng-switcher": "*",
     "angular-ui-sortable": "~0.13.0",
-    "angular-delay": "~0.1.2"
+      "angular-delay": "~0.1.2",
+      "ng-color-picker": "https://github.com/joujiahe/ng-color-picker.git#latest"
   },
-  "devDependencies": {
-    "angular-mocks": "latest",
-    "angular-scenario": "latest"
-  }
+    "devDependencies": {
+	"angular-mocks": "latest",
+	"angular-scenario": "latest"
+    }
 }

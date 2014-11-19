@@ -58,7 +58,8 @@ namespace :preprocess_assets do
                                'public/app/vendor/angular-carousel/dist/angular-carousel.min.css',
                                'public/app/vendor/ngAnimate/css/ng-animation.css',
                                'public/app/vendor/ng-switcher/dist/ng-switcher.css',
-                               'public/app/vendor/charte-graphique-laclasse-com/css/main.css' ]
+                               'public/app/vendor/charte-graphique-laclasse-com/css/main.css',
+                               'public/app/vendor/ng-color-picker/color-picker.css' ]
                              .map { |fichier| File.read( fichier ) }.join,
                              syntax: :scss,
                              style: :compressed )
@@ -96,7 +97,8 @@ namespace :preprocess_assets do
                                                           'public/app/vendor/angular-delay/build/angular-delay.js',
                                                           'public/app/vendor/ng-file-upload/angular-file-upload.js',
                                                           'public/app/vendor/ng-switcher/dist/ng-switcher.js',
-                                                          'public/app/vendor/ng-flow/dist/ng-flow-standalone.js' ] )
+                                                          'public/app/vendor/ng-flow/dist/ng-flow-standalone.js',
+                                                          'public/app/vendor/ng-color-picker/color-picker.js' ] )
     File.open( './public/app/vendor/vendor.min.js', 'w' )
         .write( uglified )
     File.open( './public/app/vendor/vendor.min.js.map', 'w' )
