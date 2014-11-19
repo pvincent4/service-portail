@@ -1,7 +1,7 @@
 # -*- coding: utf-8; mode: ruby -*-
 
 source 'https://rubygems.org'
-source 'http://gems.erasme.org'
+#source 'http://gems.erasme.org'
 
 gem 'rake'
 gem 'sinatra'
@@ -22,7 +22,7 @@ gem 'html_truncator'
 gem 'htmlentities'
 gem 'uglifier'
 gem 'sass'
-gem 'annuaire', :git => 'https://github.com/laclasse-com/gem_annuaire' 
+gem 'annuaire', git: 'https://github.com/laclasse-com/gem_annuaire'
 
 # Gems spécifiques ENT
 gem 'ent_notifs'
