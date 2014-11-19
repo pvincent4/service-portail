@@ -208,6 +208,9 @@ body {
 }
 .damier {
     overflow-y:auto;
+    ng-color-picker > ul {
+	height: 1em;
+    }
     .toggle-modification {
 	background-color: rgba(0, 0, 0, 0.33);
 	border-top-right-radius: 66%;

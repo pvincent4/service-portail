@@ -11,7 +11,8 @@ angular.module( 'portailApp', [ 'ngResource',
 				'flow',
 				'angularMoment',
 				'theaquaNg',
-				'ngDelay' ] )
+				'ngDelay',
+				'ngColorPicker' ] )
     .config( [ '$stateProvider', '$urlRouterProvider', 'APP_PATH',
 	       function ( $stateProvider, $urlRouterProvider, APP_PATH ) {
 		   $urlRouterProvider.otherwise( '/' );

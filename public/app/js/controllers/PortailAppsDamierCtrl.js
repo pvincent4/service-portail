@@ -89,7 +89,7 @@ angular.module( 'portailApp' )
 			       .last()
 			       .value().app = { active: true,
 						id: 'config',
-						nom: 'configuration du portail',
-						icone: 'app/vendor/charte-graphique-laclasse-com/images/13_admin.svg' };
+						nom: 'gestion d\'affichage',
+						icone: 'app/images/conf-portail.png' };
 		       }
 		   } ] );
