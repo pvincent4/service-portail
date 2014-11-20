@@ -841,10 +841,23 @@ svg {
 	    color: #fff;
 	}
     }
-    input {
-	width: 100%;
-    }
 }
 .new-app.selected {
     background-color: #16161d;
+}
+.new-app.creation {
+    width: 21em;
+    height: 11em;
+    padding: 0.25em;
+    color: #ececec;
+    legend {
+	margin: 0;
+	color: #ececec;
+    }
+    label, input {
+	width: 100%;
+    }
+    input {
+	color: #16161d;
+    }
 }

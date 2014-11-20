@@ -5,22 +5,24 @@
     <ul>
 	<li class="new-app"
 	    data-ng-repeat="app in apps"
-	    data-ng-class="{'selected': app.selected}">
+	    data-ng-class="{'selected': app.selected, 'creation': app.creation}"
+	    data-ng-click="selected( app )">
 
-	    <a data-ng-click="selected( app )"
+	    <a data-ng-if="!app.creation"
 	       title="{{ app.survol }}">
 		<img class="icone" data-ng-src="{{prefix}}/{{app.icone}}"
 		     data-ng-if="app.icone"/>
 		<span class="app-name" data-ng-cloak>{{ app.nom }}</span>
 	    </a>
-	</li>
 
-	<li class="new-app">
-	    <label>nom<input type="text" /></label>
-	    <label>url<input type="text" /></label>
+	    <fieldset data-ng-if="app.creation">
+		<legend>lien libre</legend>
+
+		<label>nom <input type="text" data-ng-model="app.nom" /></label>
+		<label>url <input type="text" data-ng-model="app.lien" /></label>
+	    </fieldset>
 	</li>
     </ul>
-
     <div class="clearfix"></div>
 </div>
 <div class="modal-footer">

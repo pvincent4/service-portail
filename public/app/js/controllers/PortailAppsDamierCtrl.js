@@ -4,7 +4,7 @@ angular.module( 'portailApp' )
     .controller( 'PortailAppsDamierCtrl',
 		 [ '$scope', '$modal', '$log', 'current_user', 'current_apps', 'APP_PATH', 'CASES',
 		   function( $scope, $modal, $log, current_user, current_apps, APP_PATH, CASES ) {
-		       $scope.insane_tiles_configuration_access = true;
+		       $scope.insane_tiles_configuration_access = false;
 
 		       $scope.prefix = APP_PATH;
 		       $scope.current_user = current_user;
@@ -53,9 +53,17 @@ angular.module( 'portailApp' )
 			       }
 			   } )
 			       .result.then( function( new_app ) {
+				   new_app = tool_app( new_app );
+
+				   if ( new_app.creation ) {
+				       new_app.configure = true;
+				       _.chain($scope.cases)
+					   .select( function( c ) { return !_(c).has( 'app' ); } )
+					   .first()
+					   .value().app = new_app;
+				   }
+
 				   new_app.active = true;
-			       }, function () {
-				   $log.info( 'Modal dismissed at: ' + new Date() );
 			       } );
 		       };
 
