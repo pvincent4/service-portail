@@ -17,13 +17,12 @@ require_relative './lib/AuthenticationHelpers'
 require_relative './lib/ConfigHelpers'
 require_relative './lib/UserHelpers'
 
-
 # Config du GEM AnnuaireSpe.
 Annuaire.configure do |config|
-   config.app_id = ANNUAIRE[:app_id]
-   config.api_key = ANNUAIRE[:api_key]
- end
- 
+  config.app_id = ANNUAIRE[:app_id]
+  config.api_key = ANNUAIRE[:api_key]
+end
+
 # https://gist.github.com/chastell/1196800
 class Hash
   def to_html
@@ -94,7 +93,7 @@ class SinatraApp < Sinatra::Base
     param :ville,          String,  required: false
 
     AnnuaireSpe.put_user( user.uid,
-                       params )
+                          params )
 
     set_current_user( user.uid )
 
@@ -105,7 +104,7 @@ class SinatraApp < Sinatra::Base
     content_type :json
 
     AnnuaireSpe.put_user_avatar( user.uid,
-                              File.read( params[:image][:tempfile] ) ) if params[:image]
+                                 File.read( params[:image][:tempfile] ) ) if params[:image]
 
     set_current_user( user.uid )
 
@@ -129,8 +128,8 @@ class SinatraApp < Sinatra::Base
     param :uai, String, required: true
 
     AnnuaireSpe.put_user_profil_actif( user.uid,
-                                    params[:profil_id],
-                                    params[:uai] )
+                                       params[:profil_id],
+                                       params[:uai] )
 
     set_current_user( user.uid )
 
@@ -237,12 +236,13 @@ class SinatraApp < Sinatra::Base
       end
     }
 
-    config[:apps_tiles].map { |id, app|
+    config[:apps_tiles]
+      .map { |id, app|
       app[ :id ] = id
       app
-    }.sort_by { |app|
-      app[:index]
-    }.to_json
+    }
+      .sort_by { |app| app[:index] }
+      .to_json
   end
 
   put "#{APP_PATH}/api/apps/:id" do
@@ -281,14 +281,13 @@ class SinatraApp < Sinatra::Base
                          .sort_by { |r| r['type_ressource'].to_s }
                          .reverse
                          .each { |r|
-                           r['icone'] = '08_ressources.svg'
-                           r['icone'] = '05_validationcompetences.svg'  if r['type_ressource'] == 'MANUEL'
-                           r['icone'] = '07_blogs.svg'                  if r['type_ressource'] == 'AUTRE'
-                         }
-    # Associer les couleurs des carrés                   
+      r['icone'] = '08_ressources.svg'
+      r['icone'] = '05_validationcompetences.svg'  if r['type_ressource'] == 'MANUEL'
+      r['icone'] = '07_blogs.svg'                  if r['type_ressource'] == 'AUTRE'
+    }
+    # Associer les couleurs des carrés
     colorize(ress_temp).to_json
   end
-
 
   #
   # Classes et groupes de l'utilisateur
@@ -296,33 +295,33 @@ class SinatraApp < Sinatra::Base
   get "#{APP_PATH}/api/mes_regroupements" do
     content_type :json
     mes_regpts = []
-    
+
     rgpts = AnnuaireSpe.get_user_regroupements( user.uid )
     uai_courant = user.profil_actif['uai']
-    # Pour les classes 
+    # Pour les classes
     # filtrer sur les regroupements de l'établissement courant.
     rgpts['classes']
-    .reject { |r| r[ 'etablissement_code' ] != uai_courant }
-    .sort_by { |r| r['classe_libelle'].to_s }
-    .reverse # Pour avoir les 6eme avant les 3eme
-    .each { |c|p
-      obj_cls = {nom: c['classe_libelle'], cls_id: c['classe_id'], uai: uai_courant }
-      mes_regpts.push obj_cls
-    }.uniq! # supprime les doublons dûs aux matieres enseaignées qui peuvent être plusieurs pour une classe
-    
-    rgpts['groupes_eleves']
-    .reject { |r| r[ 'etablissement_code' ] != uai_courant }
-    .sort_by { |r| r['groupe_libelle'].to_s }
-    .each { |c|
-      obj_grp = {nom: c['groupe_libelle'], cls_id: c['groupe_id'], uai: uai_courant }
-      mes_regpts.push obj_grp
-    }.uniq! 
-    #rgpts = ress_temp[groupes_libres].reject { |r| r[ 'etablissement_code' ] != uai_courant }
-    # Associer les couleurs des carrés    
-    colorize(mes_regpts).to_json
+      .reject { |r| r[ 'etablissement_code' ] != uai_courant }
+      .sort_by { |r| r['classe_libelle'].to_s }
+      .reverse # Pour avoir les 6eme avant les 3eme
+      .each { |c|p
+        obj_cls = { nom: c['classe_libelle'], cls_id: c['classe_id'], uai: uai_courant }
+        mes_regpts.push obj_cls
+      }.uniq! # supprime les doublons dûs aux matieres enseaignées qui peuvent être plusieurs pour une classe
+
+      rgpts['groupes_eleves']
+        .reject { |r| r[ 'etablissement_code' ] != uai_courant }
+        .sort_by { |r| r['groupe_libelle'].to_s }
+        .each { |c|
+        obj_grp = { nom: c['groupe_libelle'], cls_id: c['groupe_id'], uai: uai_courant }
+        mes_regpts.push obj_grp
+      }.uniq!
+      # rgpts = ress_temp[groupes_libres].reject { |r| r[ 'etablissement_code' ] != uai_courant }
+
+      # Associer les couleurs des carrés
+      colorize( mes_regpts ).to_json
   end
-  
-  
+
   get "#{APP_PATH}/api/test" do
     content_type :json
     mes_regpts = []
@@ -330,9 +329,9 @@ class SinatraApp < Sinatra::Base
     rgpts = AnnuaireSpe.get_etablissement_regroupements( uai_courant )
     rgpts.to_json
   end
-  
+
   # }}
-  
+
   # {{{ auth
   get "#{APP_PATH}/auth/:provider/callback" do
     init_session( request.env )
