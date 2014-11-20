@@ -8,6 +8,11 @@ angular.module( 'portailApp' )
 		       $scope.apps = apps;
 		       $scope.selected = { apps: null };
 
+		       $scope.apps.push( { creation: true,
+					   nom: '',
+					   lien: '',
+					   couleur: '' } );
+
 		       $scope.selected = function( app ) {
 			   _($scope.apps).each( function( app ) {
 			       app.selected = false;
