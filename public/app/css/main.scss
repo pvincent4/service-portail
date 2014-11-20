@@ -303,7 +303,6 @@ body {
     }
 }
 
-
 @keyframes keyframes1 {
     0% {
 	transform: rotate(-1deg);
@@ -357,9 +356,8 @@ body {
 	width: 24%;
 	height: 23.7%;
 	margin: 0.5%;
-	box-shadow: 0 0 5px 3px #777;
 	animation-delay: 0.25s;
-	animation-duration: 0.15s;
+	animation-duration: 0.05s;
 	animation-iteration-count: 5; // infinite;
 	transform-origin: 50% 10%;
 
@@ -373,6 +371,9 @@ body {
     .petite.case:nth-child( 2n - 1 ) {
 	animation-name: keyframes2;
 	animation-direction: alternate;
+    }
+    .ui-sortable-helper {
+	box-shadow: 5px 5px 10px 0 #ececec;
     }
 }
 .damier .petite.case,.logolaclasse {
@@ -817,4 +818,33 @@ svg {
 
 .modal-dialog, .modal-dialog div {
     height: auto;
+}
+
+// Popup d'ajout d'app
+.new-app {
+    background-color: #777;
+    float: left;
+    height: 10em;
+    list-style: outside none none;
+    width: 10em;
+    margin: 0.5em;
+    a {
+	display: block;
+	height: 100%;
+	width: 100%;
+	.icone {
+	    width: 100%;
+	    height: 66%;
+	    margin-top: 1em;
+	}
+	.app-name {
+	    color: #fff;
+	}
+    }
+    input {
+	width: 100%;
+    }
+}
+.new-app.selected {
+    background-color: #16161d;
 }

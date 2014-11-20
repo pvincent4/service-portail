@@ -1,0 +1,29 @@
+<div class="modal-header">
+    <h3 class="modal-title">Ajouter une case</h3>
+</div>
+<div class="modal-body">
+    <ul>
+	<li class="new-app"
+	    data-ng-repeat="app in apps"
+	    data-ng-class="{'selected': app.selected}">
+
+	    <a data-ng-click="selected( app )"
+	       title="{{ app.survol }}">
+		<img class="icone" data-ng-src="{{prefix}}/{{app.icone}}"
+		     data-ng-if="app.icone"/>
+		<span class="app-name" data-ng-cloak>{{ app.nom }}</span>
+	    </a>
+	</li>
+
+	<li class="new-app">
+	    <label>nom<input type="text" /></label>
+	    <label>url<input type="text" /></label>
+	</li>
+    </ul>
+
+    <div class="clearfix"></div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" data-ng-click="ok()">Valider</button>
+    <button class="btn btn-warning" data-ng-click="cancel()">Annuler</button>
+</div>

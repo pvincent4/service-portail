@@ -44,42 +44,16 @@ angular.module( 'portailApp' )
 
 		       $scope.add_tile = function() {
 			   $modal.open( {
-			       template: '<div class="modal-header"> \
-				   <h3 class="modal-title">Ajouter une case</h3> \
-			       </div> \
-				   <div class="modal-body"> \
-				   <ul> \
-				   <li ng-repeat="app in apps"> \
-				   <a ng-click="selected.app = app">{{ app }}</a> \
-			       </li> \
-			       </ul> \
-			       Selected: <b>{{ selected.app }}</b> \
-			       </div> \
-				   <div class="modal-footer"> \
-				   <button class="btn btn-primary" ng-click="ok()">OK</button> \
-				   <button class="btn btn-warning" ng-click="cancel()">Cancel</button> \
-			       </div>',
-			       controller: [ '$scope', '$modalInstance', 'apps',
-					     function( $scope, $modalInstance, apps ) {
-						 $scope.selected = { apps: null };
-
-						 $scope.ok = function () {
-						     $modalInstance.close($scope.selected.item);
-						 };
-
-						 $scope.cancel = function () {
-						     $modalInstance.dismiss('cancel');
-						 };
-					     } ],
-			       size: 'sm',
+			       templateUrl: 'views/popup_ajout_app.html',
+			       controller: 'PopupAjoutAppCtrl',
 			       resolve: {
 				   apps: function () {
-				       return _(current_apps).sortBy( function( app ) { return !app.active; } );
+				       return _(current_apps).select( function( app ) { return !app.active; } );
 				   }
 			       }
 			   } )
 			       .result.then( function( new_app ) {
-				   console.log( new_app )
+				   new_app.active = true;
 			       }, function () {
 				   $log.info( 'Modal dismissed at: ' + new Date() );
 			       } );
