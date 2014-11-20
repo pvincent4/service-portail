@@ -251,7 +251,6 @@ body {
 	    color: #1aa1cc;
 	}
 	.configure {
-	    background-color: #fff;
 	    padding: 1em;
 	    label {
 		text-align: left;
@@ -353,6 +352,8 @@ body {
 	}
     }
     .petite.case {
+	perspective: 600px;
+	position: relative;
 	width: 24%;
 	height: 23.7%;
 	margin: 0.5%;
@@ -360,9 +361,32 @@ body {
 	animation-duration: 0.05s;
 	animation-iteration-count: 5; // infinite;
 	transform-origin: 50% 10%;
-
+	.front, .back {
+	    position: absolute;
+	    top: 0;
+	    left: 0;
+	    height: 100%;
+	    width: 100%;
+	    backface-visibility: hidden;
+	    transform-style: preserve-3d;
+	    transition: all 0.4s ease-in-out 0s;
+	}
+	.front {
+	    transform: rotateY(0deg);
+	}
+	.back {
+	    transform: rotateY(180deg);
+	}
 	.inactive {
 	    opacity: 0.33;
+	}
+    }
+    .petite.case.flip {
+	.front {
+	    transform: rotateY(180deg);
+	}
+	.back {
+	    transform: rotateY(0deg);
 	}
     }
     .petite.case:nth-child( 2n ) {
