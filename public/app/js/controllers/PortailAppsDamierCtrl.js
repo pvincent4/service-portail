@@ -4,7 +4,7 @@ angular.module( 'portailApp' )
     .controller( 'PortailAppsDamierCtrl',
 		 [ '$scope', '$modal', '$log', 'current_user', 'current_apps', 'APP_PATH', 'CASES',
 		   function( $scope, $modal, $log, current_user, current_apps, APP_PATH, CASES ) {
-		       $scope.insane_tiles_configuration_access = false;
+		       $scope.insane_tiles_configuration_access = true;
 
 		       $scope.prefix = APP_PATH;
 		       $scope.current_user = current_user;
