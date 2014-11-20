@@ -42,6 +42,10 @@ angular.module( 'portailApp' )
 			   }
 		       };
 
+		       $scope.add_tile = function() {
+			   alert('j\'ajoute une case')
+		       };
+
 		       $scope.toggle_modification = function( save ) {
 			   $scope.modification = !$scope.modification;
 			   $scope.sortable_options.disabled = !$scope.sortable_options.disabled;
@@ -86,10 +90,16 @@ angular.module( 'portailApp' )
 		       if ( $scope.insane_tiles_configuration_access ) {
 			   _.chain($scope.cases)
 			       .select( function( c ) { return !_(c).has( 'app' ); } )
-			       .last()
-			       .value().app = { active: true,
-						id: 'config',
-						nom: 'gestion d\'affichage',
-						icone: 'app/images/conf-portail.png' };
+			       .last( 2 )
+			       .each( function( c, index ) {
+				   var admin_portail_apps = [ { active: false,
+								id: 'add_app',
+								nom: 'ajout d\'application' },
+							      { active: true,
+								id: 'config',
+								nom: 'gestion d\'affichage',
+								icone: 'app/images/conf-portail.png' }];
+				   c.app = admin_portail_apps[ index ];
+			       } );
 		       }
 		   } ] );
