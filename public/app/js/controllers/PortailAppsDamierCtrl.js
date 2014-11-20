@@ -2,8 +2,8 @@
 
 angular.module( 'portailApp' )
     .controller( 'PortailAppsDamierCtrl',
-		 [ '$scope', 'current_user', 'current_apps', 'APP_PATH', 'CASES',
-		   function( $scope, current_user, current_apps, APP_PATH, CASES ) {
+		 [ '$scope', '$modal', '$log', 'current_user', 'current_apps', 'APP_PATH', 'CASES',
+		   function( $scope, $modal, $log, current_user, current_apps, APP_PATH, CASES ) {
 		       $scope.insane_tiles_configuration_access = true;
 
 		       $scope.prefix = APP_PATH;
@@ -43,7 +43,46 @@ angular.module( 'portailApp' )
 		       };
 
 		       $scope.add_tile = function() {
-			   alert('j\'ajoute une case')
+			   $modal.open( {
+			       template: '<div class="modal-header"> \
+				   <h3 class="modal-title">Ajouter une case</h3> \
+			       </div> \
+				   <div class="modal-body"> \
+				   <ul> \
+				   <li ng-repeat="app in apps"> \
+				   <a ng-click="selected.app = app">{{ app }}</a> \
+			       </li> \
+			       </ul> \
+			       Selected: <b>{{ selected.app }}</b> \
+			       </div> \
+				   <div class="modal-footer"> \
+				   <button class="btn btn-primary" ng-click="ok()">OK</button> \
+				   <button class="btn btn-warning" ng-click="cancel()">Cancel</button> \
+			       </div>',
+			       controller: [ '$scope', '$modalInstance', 'apps',
+					     function( $scope, $modalInstance, apps ) {
+						 $scope.selected = { apps: null };
+
+						 $scope.ok = function () {
+						     $modalInstance.close($scope.selected.item);
+						 };
+
+						 $scope.cancel = function () {
+						     $modalInstance.dismiss('cancel');
+						 };
+					     } ],
+			       size: 'sm',
+			       resolve: {
+				   apps: function () {
+				       return _(current_apps).sortBy( function( app ) { return !app.active; } );
+				   }
+			       }
+			   } )
+			       .result.then( function( new_app ) {
+				   console.log( new_app )
+			       }, function () {
+				   $log.info( 'Modal dismissed at: ' + new Date() );
+			       } );
 		       };
 
 		       $scope.toggle_modification = function( save ) {
