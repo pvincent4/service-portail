@@ -54,10 +54,16 @@ end
 # Configuration du service d'annuaire de l'ENT
 #
 ANNUAIRE = {
-  url: 'http://www.dev.laclasse.com/api/app',
-  app_id: 'Identifiant de l application dans l annuaire',
-  api_key: 'Clé secrete de signature des requetes REST',
-  api_mode: 'v3'
+  url:                            'https://v3dev.laclasse.com/api' ,
+  api_key:                        "Clé du portail dans l'annuaire=",
+  app_id:                         'PORTAIL',
+  api_mode:                       'v3',
+  service_annuaire_user:          'app/users/',
+  service_annuaire_regroupements: 'app/regroupements/',
+  service_annuaire_profils:       'app/profils/',
+  service_annuaire_personnel:     'app/etablissements/',
+  service_annuaire_diffusionInfo: 'app/',
+  service_annuaire_publipostage:  'app/publipostages/',
 }
 
 # #
