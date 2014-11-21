@@ -28,6 +28,10 @@ angular.module( 'portailApp' )
 				   } );
 			   };
 			   app.is_dirty = function() { app.dirty = true; };
+			   app.remove = function() {
+			       app.active = false;
+			       app.toggle_configure();
+			   };
 
 			   return app;
 		       };

@@ -68,10 +68,8 @@
 
 		    <ng-color-picker selected="case.couleur"></ng-color-picker>
 
-		    <div class="activation"
-			 data-ng-switcher
-			 data-ng-model="case.app.draft.active"
-			 data-ng-change="case.app.is_dirty()"></div>
+		    <button class="btn btn-lg btn-danger"
+			    data-ng-click="case.app.remove()">Supprimer</button>
 		</div>
 
 		<!-- Case de d'ajout d'application -->
