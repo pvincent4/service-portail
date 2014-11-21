@@ -10,13 +10,11 @@
 
 	<span class="titre" data-ng-cloak>{{app.nom}}</span>
 
-	<div class="dropdown user-menu pull-right">
-	    <a class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">
+	<div class="dropdown user-menu pull-right" dropdown>
+	    <a class="dropdown-toggle" id="dropdownMenu1" dropdown-toggle>
 		{{current_user.prenom}} {{current_user.nom}}
-		<span class="caret"></span>
 	    </a>
-	    <ul class="gris3 dropdown-menu" role="menu" aria-labelledby="dropdownMenu1"
-		data-ng-click="prevent($event)">
+	    <ul class="gris3 dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" dropdown-menu>
 		<li>
 		    <a href="/"
 		       data-ng-style="{'background-image': 'url(' + prefix +'/vendor/charte-graphique-laclasse-com/images/logolaclasse.svg)' }" >
