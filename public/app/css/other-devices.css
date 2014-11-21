@@ -7,9 +7,9 @@
     .aside .logolaclasse a img { height: 100%;
 				 width: auto; }
     .aside .logolaclasse a h3 { display: none; }
-    .aside .user-info span a h3 { font-size: 1.5em; }
-    .aside .user-info a.logout, .user-info br { display: none; }
-    .aside .user select { font-weight: normal; }
+    .aside .user-info a, .aside .user-info br { display: none; }
+    .aside .user select { font-weight: normal;
+			  height: 100%; }
 
     /* Page loggué, damier */
     .damier .toggle-modification { display: none; }
@@ -30,16 +30,12 @@
     .user-profil footer button { padding: 0.25em 0.5em; }
 
     /* Page app wrapper */
-    #app-wrapper .en-tete { height: 3em;
-			    min-height: 3em;
-			    max-height: 3em; }
-    #app-wrapper .en-tete .laclasse-com span { display: none; }
-    #app-wrapper .en-tete .user-menu { width: calc( 100% - 3em ); }
-    #app-wrapper .en-tete .user-menu select { width: 100%;
-					      padding: 0; }
-    #app-wrapper .en-tete .user-menu .dropdown { display: none; }
-    #app-wrapper .en-tete .laclasse-com .petit-logo { height: 2.9em;
-						      width: 3em; }
+    .en-tete .profil-select-wrapper {
+	max-width: 14em;
+    }
+    .en-tete .laclasse-com span {
+	display: none;
+    }
 
     /* Page publique */
     .page_publique .connexion {left:50%;}
@@ -67,6 +63,9 @@
     /* Page loggué, user */
 
     /* Page app wrapper */
+    .en-tete .user-menu {
+	display: none;
+    }
 
     /* Page publique */
     .page_publique .connexion .bienvenue {font-size: 1.4em;}
@@ -133,10 +132,7 @@
     .user-profil footer button { padding: 0.25em 0.5em; }
 
     /* Page app wrapper */
-    #app-wrapper .en-tete .laclasse-com span { display: none; }
-    #app-wrapper .en-tete .user-menu .dropdown { display: none; }
-    #app-wrapper .en-tete .laclasse-com .petit-logo { height: 2.9em;
-						      width: 3em; }
+
     /* Page loggué, damier */
     .damier .logos img { margin: 5% auto 0; }
     .damier .petite.case { height: 33% }
@@ -156,16 +152,6 @@
     /* Page loggué, user */
 
     /* Page app wrapper */
-    #app-wrapper .en-tete,
-    #app-wrapper .en-tete .navbar { height: 3em;
-				    min-height: 3em;
-				    max-height: 3em; }
-    #app-wrapper .en-tete .user-menu { width: calc( 100% - 3em ); }
-    #app-wrapper .en-tete .user-menu select { width: 100%;
-					      padding: 0; }
-    #app-wrapper .en-tete .laclasse-com { height: 1.4em; }
-    #app-wrapper .en-tete .laclasse-com .petit-logo { height: 2.9em;
-						      width: 3em; }
 
     /* Page publique */
 }

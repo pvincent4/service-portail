@@ -1,62 +1,50 @@
 <div id="app-wrapper">
-    <div class="en-tete">
 
-	<nav class="navbar navbar-default" role="navigation">
-	    <div class="container bleu">
 
-		<a class="laclasse-com gris1 pull-left" href="{{prefix}}/">
-		    <div class="petit-logo gris4" data-ng-style="{'background-image': 'url(' + prefix + '/app/vendor/charte-graphique-laclasse-com/images/logolaclasse.svg)' }" >
-		    </div>
-		    <span>laclasse.com</span>
-		</a>
+    <div class="en-tete container gris4" role="navigation">
+	<a class="laclasse-com gris1 pull-left" href="{{prefix}}/">
+	    <div class="petit-logo gris4" data-ng-style="{'background-image': 'url(' + prefix + '/app/vendor/charte-graphique-laclasse-com/images/logolaclasse.svg)' }" >
+	    </div>
+	    <span>laclasse.com</span>
+	</a>
 
-		<span class="titre" data-ng-cloak>{{app.nom}}</span>
+	<span class="titre" data-ng-cloak>{{app.nom}}</span>
 
-		<div class="user-menu gris4 pull-right">
-		    <div class="profil-select-wrapper">
-			<select data-ng-if="current_user.is_logged"
-				data-ng-controller="ProfilActifCtrl"
-				data-ng-model="current_user.profil_actif"
-				data-ng-change="reload()"
-				data-ng-options="profil as profil.etablissement + ' : ' + profil.nom group by profil.etablissement for profil in current_user.profils track by profil.index" >
-			</select>
-		    </div>
-		    <span class="dropdown" data-ng-if="current_user.is_logged">
-			<a class="dropdown-toggle">
-			    <h6 data-ng-cloak>{{current_user.prenom}} {{current_user.nom}}</h6><span class="glyphicon glyphicon-chevron-down"></span>
-			</a>
-			<ul class="dropdown-menu gris3">
-			    <li>
-				<a href="/"
-				   data-ng-style="{'background-image': 'url(' + prefix +'/vendor/charte-graphique-laclasse-com/images/logolaclasse.svg)' }" >
-				    retour au portail
-				</a>
-			    </li>
-			    <li>
-				<a data-ui-sref="app-wrapper({ app: 'aide' })"
-				   data-ng-style="{'background-image': 'url(' + prefix +'/vendor/charte-graphique-laclasse-com/images/12_aide.svg)' }" >
-				    aide
-				</a>
-			    </li>
-			    <li>
-				<a href="/logout"
-				   data-ng-style="{'background-image': 'url(' + prefix +'/vendor/charte-graphique-laclasse-com/images/12_aide.svg)' }" >
-				    se déconnecter
-				</a>
-			    </li>
-			    <li>
-				<a class="dropdown-toggle">
-				    <span class="glyphicon glyphicon-chevron-up"></span>
-				</a>
-			    </li>
-			</ul>
-		    </span>
+	<div class="dropdown user-menu pull-right">
+	    <a class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">
+		{{current_user.prenom}} {{current_user.nom}}
+		<span class="caret"></span>
+	    </a>
+	    <ul class="gris3 dropdown-menu" role="menu" aria-labelledby="dropdownMenu1"
+		data-ng-click="prevent($event)">
+		<li>
+		    <a href="/"
+		       data-ng-style="{'background-image': 'url(' + prefix +'/vendor/charte-graphique-laclasse-com/images/logolaclasse.svg)' }" >
+			retour au portail
+		    </a>
+		</li>
+		<li>
+		    <a data-ui-sref="app-wrapper({ app: 'aide' })"
+		       data-ng-style="{'background-image': 'url(' + prefix +'/vendor/charte-graphique-laclasse-com/images/12_aide.svg)' }" >
+			aide
+		    </a>
+		</li>
+		<li>
+		    <a href="/logout"
+		       data-ng-style="{'background-image': 'url(' + prefix +'/vendor/charte-graphique-laclasse-com/images/12_aide.svg)' }" >
+			se déconnecter
+		    </a>
+		</li>
+	    </ul>
+	</div>
 
-		</div>
-
-	    </div><!-- /.container -->
-	</nav>
-
+	<select class="gris4 profil-select-wrapper pull-right"
+		data-ng-if="current_user.is_logged"
+		data-ng-controller="ProfilActifCtrl"
+		data-ng-model="current_user.profil_actif"
+		data-ng-change="reload()"
+		data-ng-options="profil as profil.etablissement + ' : ' + profil.nom group by profil.etablissement for profil in current_user.profils track by profil.index" >
+	</select>
     </div>
 
     <div class="row iframe" data-ng-class="{'ios': iOS}">

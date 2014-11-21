@@ -103,12 +103,13 @@ body {
 	}
     }
     .user-info {
-	span {
-	    background:transparent;
-	    bottom:0;
-	    height:auto;
-	    line-height:0;
-	    position:absolute;
+	background:transparent;
+	bottom:0;
+	height:auto;
+	line-height:0;
+	position:absolute;
+	h3 {
+	    line-height: 2;
 	}
 	a.logout {
 	    line-height:3;
@@ -388,6 +389,10 @@ body {
 	.back {
 	    transform: rotateY(0deg);
 	}
+	.toggle-configure {
+	    left: auto;
+	    right: 0.5em;
+	}
     }
     .petite.case:nth-child( 2n ) {
 	animation-name: keyframes1;
@@ -439,21 +444,100 @@ body {
     font-size:1.5em;
     font-weight:lighter;
 }
-.en-tete,.en-tete .navbar,.en-tete .user-menu,.en-tete .titre {
+
+.en-tete {
     color:#fff;
     border:0;
-    height:1.5em;
-    max-height:1.5em;
-    min-height:1.5em;
+    height:3em;
+    line-height: 3;
+    max-height:3em;
+    min-height:3em;
+    .petit-logo {
+	display:inline-block;
+	float:left;
+	padding-top:1px;
+	width:3em;
+	height:3em;
+	background-position: left top;
+	background-repeat: no-repeat;
+	background-size: auto 90%;
+    }
+    .titre {
+	font-weight:bolder;
+	font-size: 14px;
+	padding-left:1em;
+    }
+    .profil-select-wrapper {
+	height: 100%;
+	border: 0;
+    }
+    .user-menu{
+	color:#fff;
+	text-align:right;
+	min-width: 14em;
+	.dropdown-toggle,
+	.dropdown-menu {
+	    width: 100%;
+	}
+	.dropdown-toggle {
+	    font-size: 14px;
+	    font-weight: bolder;
+	}
+	a {
+	    color:#fff;
+	    cursor:pointer;
+	    display:inline-block;
+	    text-decoration:none;
+	    font-weight:bold;
+	}
+	ul {
+	    border:0;
+	    border-radius:0;
+	}
+	li {
+	    border-top:1px solid #fff;
+	    text-align:left;
+	    a {
+		color:#fff;
+		background-position: left center;
+		background-repeat: no-repeat;
+		background-size: auto 80%;
+		height:3.5em;
+		line-height:3em;
+		padding:.25em;
+		padding-left:3em;
+		width:100%;
+		* {
+		    float:left;
+		}
+		svg {
+		    height:3em;
+		    width:3em;
+		}
+	    }
+	    a:hover {
+		background-color:#16161d;
+		background-repeat: no-repeat;
+		color:#fff;
+		span {
+		    background-color:#16161d;
+		}
+	    }
+	    a.dropdown-toggle {
+		display:inline-block;
+		height:100%;
+		line-height:1em;
+		padding:0;
+		text-align:center;
+		width:100%;
+		span {
+		    width:100%;
+		}
+	    }
+	}
+    }
 }
-.navbar-default {
-    box-shadow:0;
-}
-.titre {
-    font-weight:bolder;
-    font-size: 14px;
-    padding-left:1em;
-}
+
 .laclasse-com {
     float:left;
     font-weight:bolder;
@@ -463,16 +547,6 @@ body {
 	color:#fff;
 	text-decoration:none;
     }
-    .petit-logo {
-	display:inline-block;
-	float:left;
-	padding-top:1px;
-	width:1.5em;
-	height:1.5em;
-	background-position: left top;
-	background-repeat: no-repeat;
-	background-size: auto 90%;
-    }
     span {
 	display:inline-block;
 	float:left;
@@ -480,97 +554,7 @@ body {
 	min-width:9em;
     }
 }
-.user-menu {
-    color:#fff;
-    text-align:right;
-    .profil-select-wrapper {
-	float:left;
-	overflow:hidden;
-	text-align:left;
-	min-width:7em;
-	span {
-	    padding-left:1em;
-	}
-    }
-    .glyphicon {
-	line-height:1.5em;
-    }
-    .dropdown-toggle {
-	.glyphicon {
-	    float:right;
-	}
-    }
-    select {
-	font-size: 12px;
-	font-weight: normal;
-	padding-right: 3px;
-	-moz-appearance:none;
-	-webkit-appearance:none;
-	appearance:none;
-	background:transparent;
-	border:0;
-    }
-    a {
-	color:#fff;
-	cursor:pointer;
-	display:inline-block;
-	text-decoration:none;
-	font-weight:bold;
-    }
-    h6 {
-	display:inline;
-	font-weight:700;
-	padding-left:1em;
-    }
-    ul {
-	border:0;
-	border-radius:0;
-    }
-    li {
-	border-top:1px solid #fff;
-	text-align:left;
-	a {
-	    color:#fff;
-	    background-position: left center;
-	    background-repeat: no-repeat;
-	    background-size: auto 80%;
-	    height:3.5em;
-	    line-height:3em;
-	    padding:.25em;
-	    padding-left:3em;
-	    width:100%;
-	    * {
-		float:left;
-	    }
-	    svg {
-		height:3em;
-		width:3em;
-	    }
-	}
-	a:hover {
-	    background-color:#16161d;
-	    background-repeat: no-repeat;
-	    color:#fff;
-	    span {
-		background-color:#16161d;
-	    }
-	}
-	a.dropdown-toggle {
-	    display:inline-block;
-	    height:100%;
-	    line-height:1em;
-	    padding:0;
-	    text-align:center;
-	    width:100%;
-	    span {
-		width:100%;
-	    }
-	}
-    }
-}
-.user-menu option,.user-menu optgroup {
-    background-color: #323232;
-}
+
 .iframe {
     height:calc( 100% - 1.5em );
     box-shadow: inset 0 0 10px #000;
