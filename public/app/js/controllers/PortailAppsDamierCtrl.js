@@ -102,11 +102,13 @@ angular.module( 'portailApp' )
 			   }
 		       };
 
-		       _.chain(current_apps)
-			   .sortBy( function( app ) { return !app.active; } )
-			   .each( function( app, i ) {
-			       $scope.cases[ i ].app = tool_app( app );
-			   } );
+		       current_apps.$promise.then( function() {
+			   _.chain(current_apps)
+			       .sortBy( function( app ) { return !app.active; } )
+			       .each( function( app, i ) {
+				   $scope.cases[ i ].app = tool_app( app );
+			       } );
+		       } );
 
 		       if ( $scope.insane_tiles_configuration_access ) {
 			   _.chain($scope.cases)
