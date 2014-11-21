@@ -238,6 +238,24 @@ body {
 	position:relative;
     }
     .petite.case {
+	.front, .back {
+	    position: absolute;
+	    top: 0;
+	    left: 0;
+	    height: 100%;
+	    width: 100%;
+	    backface-visibility: hidden;
+	    transform-style: preserve-3d;
+	    transition: all 0.4s ease-in-out 0s;
+	}
+	.front {
+	    transform: rotateY(0deg);
+	    z-index: 900;
+	}
+	.back {
+	    transform: rotateY(-179deg);
+	    z-index: 800;
+	}
 	.toggle-configure {
 	    background: transparent;
 	    position: absolute;
@@ -362,22 +380,6 @@ body {
 	animation-duration: 0.05s;
 	animation-iteration-count: 5; // infinite;
 	transform-origin: 50% 10%;
-	.front, .back {
-	    position: absolute;
-	    top: 0;
-	    left: 0;
-	    height: 100%;
-	    width: 100%;
-	    backface-visibility: hidden;
-	    transform-style: preserve-3d;
-	    transition: all 0.4s ease-in-out 0s;
-	}
-	.front {
-	    transform: rotateY(0deg);
-	}
-	.back {
-	    transform: rotateY(180deg);
-	}
 	.inactive {
 	    opacity: 0.33;
 	}
@@ -388,6 +390,7 @@ body {
 	}
 	.back {
 	    transform: rotateY(0deg);
+	    z-index: 1000;
 	}
 	.toggle-configure {
 	    left: auto;
