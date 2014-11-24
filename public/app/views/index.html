@@ -36,7 +36,7 @@
 			 data-ng-src="{{slide.image ? slide.image: prefix + '/app/vendor/charte-graphique-laclasse-com/images/logolaclasse.svg'}}" />
 		    <div class="carousel-caption">
 			<span class="pub-date" data-ng-cloak>{{ slide.pubDate }}</span>
-			<a href="{{ news.link }}" target="_blank"><h6 data-ng-cloak>{{ slide.title }}</h6></a>
+			<a href="{{ slide.link }}" target="_blank"><h6 data-ng-cloak>{{ slide.title }}</h6></a>
 			<p data-ng-bind-html="slide.trusted_description"></p>
 		    </div>
 		</slide>
