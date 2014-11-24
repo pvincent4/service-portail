@@ -34,7 +34,6 @@ angular.module( 'portailApp', [ 'ngResource',
 		       .state( 'portail.logged',
 			       { parent: 'portail',
 				 url: '/',
-				 resolve: { current_apps: [ 'currentUser', function( currentUser ) { return currentUser.apps().then( function( response ) { return response; } ); } ] },
 				 views: {
 				     'main': {
 					 templateUrl: 'views/apps.html',
