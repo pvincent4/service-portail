@@ -40,7 +40,7 @@ module AuthenticationHelpers
                                is_logged: false }
 
     user_annuaire = AnnuaireSpe.get_user( uid )
-       
+
     if session[:user] && !user_annuaire.nil?
       session[:current_user] = { user: session[:user],
                                  uid: user_annuaire['id_ent'],
@@ -55,7 +55,7 @@ module AuthenticationHelpers
                                  bloque: user_annuaire['bloque'],
                                  id_jointure_aaf: user_annuaire['id_jointure_aaf'],
                                  is_logged: true,
-                                 avatar: user_annuaire['avatar'].match( /empty$/ ).nil? ? ANNUAIRE[:url].gsub( %r{/api/app}, '' ) + user_annuaire['avatar'] : "#{APP_PATH}/app/vendor/charte-graphique-laclasse-com/images/avatar_#{user_annuaire['sexe'] == 'F' ? 'feminin' : 'masculin'}.svg"
+                                 avatar: ANNUAIRE[:url].gsub( %r{/api}, '/' ) + user_annuaire['avatar']
                                }
     end
 
