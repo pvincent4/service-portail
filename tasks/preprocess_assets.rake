@@ -55,7 +55,6 @@ namespace :preprocess_assets do
   task css: :load_config do
     STDERR.puts 'Sassification of vendor CSS'
     uglified = Sass.compile( [ 'public/app/vendor/bootstrap/dist/css/bootstrap-theme.min.css',
-                               'public/app/vendor/angular-carousel/dist/angular-carousel.min.css',
                                'public/app/vendor/ngAnimate/css/ng-animation.css',
                                'public/app/vendor/ng-switcher/dist/ng-switcher.css',
                                'public/app/vendor/charte-graphique-laclasse-com/css/main.css',
@@ -92,7 +91,6 @@ namespace :preprocess_assets do
                                                           'public/app/vendor/angular-touch/angular-touch.js',
                                                           'public/app/vendor/angular-ui-router/release/angular-ui-router.js',
                                                           'public/app/vendor/angular-ui-sortable/sortable.js',
-                                                          'public/app/vendor/angular-carousel/dist/angular-carousel.js',
                                                           'public/app/vendor/angular-bootstrap/ui-bootstrap-tpls.js',
                                                           'public/app/vendor/angular-animate/angular-animate.js',
                                                           'public/app/vendor/angular-delay/build/angular-delay.js',
