@@ -34,18 +34,6 @@
 			 data-ng-if="case.app.draft.icone"/>
 		    <span class="app-name" data-ng-cloak>{{ case.app.draft.nom }}</span>
 		</a>
-
-		<!-- Case de toggle modification damier -->
-		<a href
-		   data-ng-if="insane_tiles_configuration_access && current_user.profil_actif.admin && case.app.id == 'config'"
-		   data-ng-click="toggle_modification( true )"
-		   title="{{ case.app.survol }}">
-		    <!-- recto -->
-		    <img class="icone" data-ng-src="{{prefix}}/{{case.app.icone}}"
-			 data-ng-if="case.app.icone && !modification"/>
-		    <span class="app-name" data-ng-cloak
-			  data-ng-if="!modification">{{ case.app.nom }}</span>
-		</a>
 	    </div>
 
 	    <div class="configure back"
@@ -71,44 +59,23 @@
 		    <button class="btn btn-lg btn-danger"
 			    data-ng-click="case.app.remove()">Supprimer</button>
 		</div>
-
-		<!-- Case de d'ajout d'application -->
-		<a href
-		   data-ng-if="insane_tiles_configuration_access && current_user.profil_actif.admin && case.app.id == 'add_app'"
-		   data-ng-click="add_tile()"
-		   title="Ajout d'application">
-		    <span class="icone">+</span>
-		    <span class="app-name" data-ng-cloak>{{ case.app.nom }}</span>
-		</a>
-
-		<!-- Case de toggle modification damier -->
-		<div class="exit-configure"
-		     data-ng-if="insane_tiles_configuration_access && current_user.profil_actif.admin && case.app.id == 'config'">
-		    <!-- verso -->
-		    <button class="btn btn-lg btn-default"
-			    data-ng-click="toggle_modification( true )"
-			    data-ng-if="modification">valider</button>
-		    <button class="btn btn-lg btn-default"
-			    data-ng-click="toggle_modification( false )"
-			    data-ng-if="modification">annuler</button>
-		</div>
 	    </div>
 	</li>
     </ul>
 
     <span class="glyphicon toggle-modification glyphicon-wrench"
 	  data-ng-class="{'gris4': modification, 'rouge': !modification}"
-	  data-ng-if="current_user.profil_actif.admin && !insane_tiles_configuration_access"
+	  data-ng-if="current_user.profil_actif.admin"
 	  data-ng-click="toggle_modification( !modification )"></span>
     <span class="glyphicon glyphicon-remove toggle-modification cancel rouge"
-	  data-ng-if="modification && !insane_tiles_configuration_access"
+	  data-ng-if="modification"
 	  data-ng-click="toggle_modification( false )"></span>
     <span class="glyphicon glyphicon-ok toggle-modification save vert"
-	  data-ng-if="modification && !insane_tiles_configuration_access"
+	  data-ng-if="modification"
 	  data-ng-click="toggle_modification( true )"></span>
 
     <span class="glyphicon glyphicon-plus toggle-modification add-app bleu"
-	  data-ng-if="modification && !insane_tiles_configuration_access"
+	  data-ng-if="modification"
 	  data-ng-click="add_tile()"></span>
 
 </div>

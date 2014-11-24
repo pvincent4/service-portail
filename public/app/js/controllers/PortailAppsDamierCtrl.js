@@ -4,8 +4,6 @@ angular.module( 'portailApp' )
     .controller( 'PortailAppsDamierCtrl',
 		 [ '$scope', '$modal', '$log', 'current_user', 'current_apps', 'APP_PATH', 'CASES',
 		   function( $scope, $modal, $log, current_user, current_apps, APP_PATH, CASES ) {
-		       $scope.insane_tiles_configuration_access = true;
-
 		       $scope.prefix = APP_PATH;
 		       $scope.current_user = current_user;
 		       $scope.cases = CASES;
@@ -113,20 +111,4 @@ angular.module( 'portailApp' )
 				   $scope.cases[ i ].app = tool_app( app );
 			       } );
 		       } );
-
-		       if ( $scope.insane_tiles_configuration_access ) {
-			   _.chain($scope.cases)
-			       .select( function( c ) { return !_(c).has( 'app' ); } )
-			       .last( 2 )
-			       .each( function( c, index ) {
-				   var admin_portail_apps = [ { active: false,
-								id: 'add_app',
-								nom: 'ajout d\'application' },
-							      { active: true,
-								id: 'config',
-								nom: 'gestion d\'affichage',
-								icone: 'app/images/conf-portail.png' }];
-				   c.app = admin_portail_apps[ index ];
-			       } );
-		       }
 		   } ] );
