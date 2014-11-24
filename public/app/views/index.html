@@ -30,19 +30,19 @@
 	</div>
 
 	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 news">
-	    <ul rn-carousel
-		rn-carousel-index="carouselIndex">
-		<li data-ng-repeat="news in newsfeed">
-		    <img class="news-image"
-			 data-ng-src="{{news.image ? news.image: prefix + '/app/vendor/charte-graphique-laclasse-com/images/logolaclasse.svg'}}" />
-		    <div class="news-content">
-			<span class="pub-date" data-ng-cloak>{{ news.pubDate }}</span>
-			<a href="{{ news.link }}" target="_blank"><h6 data-ng-cloak>{{ news.title }}</h6></a>
-			<span data-ng-bind-html="news.trusted_description"></span>
-		    </div>
-		</li>
-	    </ul>
-	    <div rn-carousel-indicators slides="newsfeed" rn-carousel-index="carouselIndex" class="indicator"></div>
+	    <div>
+		<carousel>
+		    <slide ng-repeat="slide in newsfeed" active="slide.active">
+			<img class="news-image"
+			     data-ng-src="{{news.image ? news.image: prefix + '/app/vendor/charte-graphique-laclasse-com/images/logolaclasse.svg'}}" />
+			<div class="news-content">
+			    <span class="pub-date" data-ng-cloak>{{ news.pubDate }}</span>
+			    <a href="{{ news.link }}" target="_blank"><h6 data-ng-cloak>{{ news.title }}</h6></a>
+			    <span data-ng-bind-html="news.trusted_description"></span>
+			</div>
+		    </slide>
+		</carousel>
+	    </div>
 	</div>
     </div>
 

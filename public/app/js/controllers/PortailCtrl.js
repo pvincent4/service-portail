@@ -10,6 +10,8 @@ angular.module( 'portailApp' )
 		       $scope.prefix = APP_PATH;
 		       $scope.current_user = current_user;
 
+		       $scope.carousel_index = 0;
+
 		       // TODO : faire une factory et un service pour les annonces.
 		       // L'idée est d'aller lire le flux twitter @laclasse avec le hash #sys
 		       $scope.annonce = ""; //"En moment sur Laclasse.com : La version 3 sort des cartons !";
@@ -25,8 +27,10 @@ angular.module( 'portailApp' )
 			       }
 			   }
 			   news.get().then( function( response ) {
-			       $scope.newsfeed = _(response.data).map( function( item ) {
+			       $scope.newsfeed = _(response.data).map( function( item, index ) {
+				   item.id = index;
 				   item.trusted_description = $sce.trustAsHtml( item.description );
+
 				   return item;
 			       });
 			   });
