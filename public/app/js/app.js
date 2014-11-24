@@ -19,7 +19,15 @@ angular.module( 'portailApp', [ 'ngResource',
 
 		   $stateProvider
 		       .state( 'portail', {
-			   resolve: { current_user: [ 'currentUser', function( currentUser ) { return currentUser.get().then( function( response ) { return response; } ); } ] },
+			   resolve: { current_user: [ 'currentUser',
+						      function( currentUser ) {
+							  return currentUser.get()
+							      .then( function( response ) {
+								  return response;
+							      } );
+						      }
+						    ]
+				    },
 			   templateUrl: 'views/index.html',
 			   controller: 'PortailCtrl'
 		       } )
