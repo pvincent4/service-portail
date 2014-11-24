@@ -237,12 +237,11 @@ class SinatraApp < Sinatra::Base
     }
 
     config[:apps_tiles]
-      .map { |id, app|
+      .map do |id, app|
       app[ :id ] = id
       app
-    }
-      .sort_by { |app| app[:index] }
-      .to_json
+    end.sort_by { |app| app[:index] }
+       .to_json
   end
 
   put "#{APP_PATH}/api/apps/:id" do
