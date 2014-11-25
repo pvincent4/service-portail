@@ -49,14 +49,15 @@
 					data-ng-model="case.app.draft.nom"
 					data-ng-change="case.app.is_dirty()" />
 		    </label>
+
 		    <label>description : <input type="text" class="form-control"
 						data-ng-model="case.app.draft.survol"
 						data-ng-change="case.app.is_dirty()" />
 		    </label>
 
-		    <ng-color-picker selected="case.couleur"></ng-color-picker>
+		    <label>couleur : <ng-color-picker selected="case.couleur"></ng-color-picker></label>
 
-		    <button class="btn btn-lg btn-danger"
+		    <button class="btn btn-danger remove"
 			    data-ng-click="case.app.remove()">Supprimer</button>
 		</div>
 	    </div>

@@ -270,17 +270,18 @@ body {
 	    color: #1aa1cc;
 	}
 	.configure {
-	    padding: 1em;
+	    padding: 0.5em;
+	    padding-top: 1em;
+	    font-size: 0.9em;
 	    label {
 		text-align: left;
-	    }
-	    .activation {
-		margin-top: 1em;
-		height: auto;
 		width: 100%;
-		* {
-		    text-align: center;
+		input {
+		    font-size: 0.9em;
 		}
+	    }
+	    .remove {
+		padding: 2px;
 	    }
 	}
 	.app-name {
