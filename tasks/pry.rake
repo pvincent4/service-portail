@@ -15,7 +15,7 @@ namespace :pry do
 
     require_relative '../lib/AuthenticationHelpers'
     require_relative '../lib/ConfigHelpers'
-    require_relative '../lib/annuaire'
+    require_relative '../lib/annuaire_wrapper'
   end
 
   desc 'Open pry with DB environment setup'
