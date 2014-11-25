@@ -1,7 +1,6 @@
 GIT
   remote: https://github.com/laclasse-com/gem_annuaire
-  revision: f249149975831552b2378dbef3f04550b17cf7d8
-  branch: style
+  revision: 6ef896d78f96262ad383ade56f222f494bb23add
   specs:
     annuaire (0.1.1)
 
