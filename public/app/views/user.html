@@ -33,9 +33,9 @@
 			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
 			    <div class="form-group">
 				<label>date de naissance :</label>
-				<span class="dropdown form-control date-naissance">
-				    <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-target="#" href="" data-ng-cloak>{{current_user.date_naissance | amDateFormat: 'LL'}}</a>
-				    <div class="dropdown-menu" role="menu" ng-click="$event.stopPropagation()">
+				<span dropdown class="dropdown form-control date-naissance">
+				    <a dropdown-toggle class="dropdown-toggle" role="button" data-toggle="dropdown" data-target="#" href="" data-ng-cloak>{{current_user.date_naissance | amDateFormat: 'LL'}}</a>
+				    <div dropdown-menu class="dropdown-menu" role="menu" ng-click="$event.stopPropagation()">
 					<datepicker datepicker-options="datepicker_options"
 						    data-ng-disabled="!current_user.editable"
 						    data-ng-model="current_user.date_naissance"

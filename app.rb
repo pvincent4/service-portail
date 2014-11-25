@@ -74,17 +74,16 @@ class SinatraApp < Sinatra::Base
   ##### API ####################################################################
   put "#{APP_PATH}/api/user" do
     content_type :json
-
-    # param :login,          String,  required: false
-    # param :password,       String,  required: false
-    # param :bloque,         Boolean, required: false
     param :nom,            String,  required: false
     param :prenom,         String,  required: false
-    param :sexe,           String,  required: false, in: [ 'F', 'M' ]
+    param :sexe,           String,  required: false, in: %w(F M)
     param :date_naissance, Date,    required: false
     param :adresse,        String,  required: false
     param :code_postal,    Integer, required: false, within: 0..999_999
     param :ville,          String,  required: false
+    # param :login,          String,  required: false
+    # param :password,       String,  required: false
+    # param :bloque,         Boolean, required: false
 
     AnnuaireWrapper.put_user( user.uid,
                               params )
@@ -117,7 +116,6 @@ class SinatraApp < Sinatra::Base
 
   put "#{APP_PATH}/api/user/profil_actif/?" do
     content_type :json
-
     param :profil_id, String, required: true
     param :uai, String, required: true
 
@@ -238,17 +236,45 @@ class SinatraApp < Sinatra::Base
        .to_json
   end
 
+  # get "#{APP_PATH}/api/apps" do
+  #   content_type :json
+  #   param :uai, String, require: true
+
+  #   AnnuaireWrapper::Apps.query_etablissement( uai )
+  # end
+
+  post "#{APP_PATH}/api/apps/" do
+    content_type :json
+    param :etab_id, Integer, required: true
+    param :index, Integer, required: true
+    param :type, String, required: true, in: %w(INTERNAL EXTERNAL)
+    param :application_id, String, required: false
+    param :libelle, String, required: false
+    param :description, String, required: false
+    param :url, String, required: false
+    param :active, Boolean, required: false
+    param :icon, String, required: false
+    param :color, String, required: false
+
+    AnnuaireWrapper::Apps.create( params )
+  end
+
   put "#{APP_PATH}/api/apps/:id" do
     content_type :json
-
     param :id, String, required: true
-    param :active, Boolean
-    param :index, Integer
-    param :nom, String
-    param :survol, String
-    param :url, String
+    param :index, Integer, required: true
+    param :active, Boolean, required: false
+    param :url, String, required: false
+    param :libelle, String, required: false
+    param :description, String, required: false
+    param :icon, String, required: false
+    param :color, String, required: false
 
-    STDERR.puts "#{params}"
+    AnnuaireWrapper::Apps.update( params[:id], params )
+  end
+
+  delete "#{APP_PATH}/api/apps/:id" do
+    AnnuaireWrapper::Apps.delete( param[:id] )
   end
 
   get "#{APP_PATH}/api/version" do
@@ -315,14 +341,13 @@ class SinatraApp < Sinatra::Base
       colorize( mes_regpts ).to_json
   end
 
-  get "#{APP_PATH}/api/test" do
-    content_type :json
-    mes_regpts = []
-    uai_courant = user.profil_actif['uai']
-    rgpts = AnnuaireWrapper.get_etablissement_regroupements( uai_courant )
-    rgpts.to_json
-  end
-
+  # get "#{APP_PATH}/api/test" do
+  #   content_type :json
+  #   mes_regpts = []
+  #   uai_courant = user.profil_actif['uai']
+  #   rgpts = AnnuaireWrapper.get_etablissement_regroupements( uai_courant )
+  #   rgpts.to_json
+  # end
   # }}
 
   # {{{ auth
