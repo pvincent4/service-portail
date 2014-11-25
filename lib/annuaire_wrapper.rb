@@ -10,7 +10,7 @@ require_relative '../config/options'
 # Module d'interfaçage avec l'annuaire
 # Ce module s'appuye sur la gem de signature et de communicationavec l'annuaire.
 #
-module AnnuaireSpe
+module AnnuaireWrapper
   module_function
 
   # Service classes et groupes d'élèves
