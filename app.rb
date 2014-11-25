@@ -17,12 +17,6 @@ require_relative './lib/AuthenticationHelpers'
 require_relative './lib/ConfigHelpers'
 require_relative './lib/UserHelpers'
 
-# Config du GEM AnnuaireSpe.
-Annuaire.configure do |config|
-  config.app_id = ANNUAIRE[:app_id]
-  config.api_key = ANNUAIRE[:api_key]
-end
-
 # https://gist.github.com/chastell/1196800
 class Hash
   def to_html
