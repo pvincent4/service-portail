@@ -203,6 +203,10 @@ class SinatraApp < Sinatra::Base
     user_applications = AnnuaireWrapper.get_user( user.uid )['applications']
     uai_courant = user.profil_actif['uai']
 
+    p "################### Nouvelles Apps"
+    applications = AnnuaireWrapper::Apps.query_etablissement( user.profil_actif['uai'] )
+    p "#############################"
+
     # traitement des apps renvoyées par l'annuaire
     user_applications
       .reject { |a| a[ 'etablissement_code_uai' ] != uai_courant }
