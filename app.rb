@@ -129,6 +129,37 @@ class SinatraApp < Sinatra::Base
   end
 
   #
+  # Classes et groupes de l'utilisateur
+  #
+  get "#{APP_PATH}/api/user/regroupements/?" do
+    content_type :json
+    mes_regpts = []
+
+    rgpts = AnnuaireWrapper.get_user_regroupements( user.uid )
+    uai_courant = user.profil_actif['uai']
+    # Pour les classes
+    # filtrer sur les regroupements de l'établissement courant.
+    rgpts['classes']
+      .reject { |r| r[ 'etablissement_code' ] != uai_courant }
+      .sort_by { |r| r['classe_libelle'].to_s }
+      .reverse # Pour avoir les 6eme avant les 3eme
+      .each { |c|p
+        obj_cls = { nom: c['classe_libelle'], cls_id: c['classe_id'], uai: uai_courant }
+        mes_regpts.push obj_cls
+      }.uniq! # supprime les doublons dûs aux matieres enseaignées qui peuvent être plusieurs pour une classe
+
+      rgpts['groupes_eleves']
+        .reject { |r| r[ 'etablissement_code' ] != uai_courant }
+        .sort_by { |r| r['groupe_libelle'].to_s }
+        .each { |c|
+        obj_grp = { nom: c['groupe_libelle'], cls_id: c['groupe_id'], uai: uai_courant }
+        mes_regpts.push obj_grp
+      }.uniq!
+      # rgpts = ress_temp[groupes_libres].reject { |r| r[ 'etablissement_code' ] != uai_courant }
+
+      # Associer les couleurs des carrés
+      colorize( mes_regpts ).to_json
+  end
   # Agrégateur RSS
   #
   get "#{APP_PATH}/api/news" do
@@ -275,39 +306,6 @@ class SinatraApp < Sinatra::Base
     }
     # Associer les couleurs des carrés
     colorize(ress_temp).to_json
-  end
-
-  #
-  # Classes et groupes de l'utilisateur
-  #
-  get "#{APP_PATH}/api/mes_regroupements" do
-    content_type :json
-    mes_regpts = []
-
-    rgpts = AnnuaireWrapper.get_user_regroupements( user.uid )
-    uai_courant = user.profil_actif['uai']
-    # Pour les classes
-    # filtrer sur les regroupements de l'établissement courant.
-    rgpts['classes']
-      .reject { |r| r[ 'etablissement_code' ] != uai_courant }
-      .sort_by { |r| r['classe_libelle'].to_s }
-      .reverse # Pour avoir les 6eme avant les 3eme
-      .each { |c|p
-        obj_cls = { nom: c['classe_libelle'], cls_id: c['classe_id'], uai: uai_courant }
-        mes_regpts.push obj_cls
-      }.uniq! # supprime les doublons dûs aux matieres enseaignées qui peuvent être plusieurs pour une classe
-
-      rgpts['groupes_eleves']
-        .reject { |r| r[ 'etablissement_code' ] != uai_courant }
-        .sort_by { |r| r['groupe_libelle'].to_s }
-        .each { |c|
-        obj_grp = { nom: c['groupe_libelle'], cls_id: c['groupe_id'], uai: uai_courant }
-        mes_regpts.push obj_grp
-      }.uniq!
-      # rgpts = ress_temp[groupes_libres].reject { |r| r[ 'etablissement_code' ] != uai_courant }
-
-      # Associer les couleurs des carrés
-      colorize( mes_regpts ).to_json
   end
 
   # get "#{APP_PATH}/api/test" do

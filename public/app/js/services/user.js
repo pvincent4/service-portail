@@ -35,7 +35,7 @@ angular.module( 'portailApp' )
     .factory( 'UserMesRegroupements',
 	      [ '$resource', 'APP_PATH',
 		function( $resource, APP_PATH ) {
-		    return $resource( APP_PATH + '/api/mes_regroupements' );
+		    return $resource( APP_PATH + '/api/user/regroupements' );
 		} ] );
 
 angular.module( 'portailApp' )
@@ -44,7 +44,7 @@ angular.module( 'portailApp' )
 		function( $http, $upload, APP_PATH, User, UserRessources, UserMesRegroupements ) {
 		    this.get = function() { return User.get().$promise; };
 		    this.ressources = function() { return UserRessources.query().$promise; };
-		    this.mes_regroupements = function() { return UserMesRegroupements.query().$promise; };
+		    this.regroupements = function() { return UserMesRegroupements.query().$promise; };
 		    this.avatar = { upload: function( fichier ) {
 			$upload.upload( {
 			    url: APP_PATH + '/api/user/avatar',
