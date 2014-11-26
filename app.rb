@@ -200,56 +200,21 @@ class SinatraApp < Sinatra::Base
     # error( 401, 'Not Authorized' ) unless is_logged? && !user.profil_actif.nil?
     return [] unless is_logged? && !user.profil_actif.nil?
 
-    user_applications = AnnuaireWrapper.get_user( user.uid )['applications']
-    uai_courant = user.profil_actif['uai']
-
-    p "################### Nouvelles Apps"
-    applications = AnnuaireWrapper::Apps.query_etablissement( user.profil_actif['uai'] )
-    p "#############################"
-
-    # traitement des apps renvoyées par l'annuaire
-    user_applications
-      .reject { |a| a[ 'etablissement_code_uai' ] != uai_courant }
-      .each { |application|
-      config_apps = config[ :apps_tiles ][ application[ 'id' ].to_sym ]
-      if !config_apps.nil?
-        # On regarde si le profils actif de l'utilisateur comporte le code détablissement pour lequel l'application est activée
-        config_apps[ :active ] = application[ 'active' ] || ( application[ 'id' ] == 'ADMIN' && user.profil_actif['admin'] )
-        config_apps[ :nom ] = application[ 'libelle' ]
-        config_apps[ :survol ] = application[ 'description' ]
-        config_apps[ :lien ] = "#{APP_PATH}/#/show-app?app=#{application[ 'id' ]}"
-        config_apps[ :url ] = application[ 'url' ].to_s.start_with?( 'http' ) ? application[ 'url' ] : "#{URL_ENT}#{application[ 'url' ]}"
-
-        # Gérer les notifications sur chaque application
-        config_apps[ :notifications ] = 0
-        # THINK : Peut-être qu'il faut faire ce travail côté client AngularJS, afin de le rendre asynchrone et non bloquant.
-        unless config_apps[ :url_notif ].empty?
-          resp = Net::HTTP.get_response(URI.parse config_apps[ :url_notif ])
-          config_apps[ :notifications ] = resp.body if resp.body.is_a? Numeric
-        end
-      else
-        next
-      end
-    }
-
-    config[:apps_tiles]
-      .map do |id, app|
-      app[ :id ] = id
-      app
-    end.sort_by { |app| app[:index] }
-       .to_json
+    AnnuaireWrapper::Apps.query_etablissement( user.profil_actif['uai'] ).to_json
   end
 
-  # get "#{APP_PATH}/api/apps" do
-  #   content_type :json
-  #   param :uai, String, require: true
+  get "#{APP_PATH}/api/apps/default" do
+    content_type :json
 
-  #   AnnuaireWrapper::Apps.query_etablissement( uai )
-  # end
+    # error( 401, 'Not Authorized' ) unless is_logged? && !user.profil_actif.nil?
+    return [] unless is_logged? && !user.profil_actif.nil?
+
+    AnnuaireWrapper::Apps.query.to_json
+  end
 
   post "#{APP_PATH}/api/apps/" do
     content_type :json
-    param :etab_id, Integer, required: true
+    param :etab_code_uai, Integer, required: true
     param :index, Integer, required: true
     param :type, String, required: true, in: %w(INTERNAL EXTERNAL)
     param :application_id, String, required: false

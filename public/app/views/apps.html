@@ -4,54 +4,54 @@
     <ul ui-sortable="sortable_options" data-ng-model="cases">
 	<li data-ng-repeat="case in cases"
 	    class="col-xs-6 col-sm-4 col-md-3 col-lg-3 petite case"
-	    data-ng-class="{'flip': case.app.configure || case.app.id == 'add_app' || case.app.id == 'config'}"
+	    data-ng-class="{'flip': case.app.configure || case.app.application_id == 'add_app' || case.app.application_id == 'config'}"
 	    data-ng-if="current_user.is_logged">
 
 	    <div class="front {{ case.couleur }}">
 		<button class="btn btn-lg toggle-configure open-configure"
-			data-ng-if="modification && case.app && case.app.active && case.app.id != 'config' && case.app.id != 'add_app'"
+			data-ng-if="modification && case.app && case.app.active && case.app.application_id != 'config' && case.app.application_id != 'add_app'"
 			data-ng-click="case.app.toggle_configure()">
 		    <span class="glyphicon glyphicon-cog"></span>
 		</button>
 
 		<!-- Affichage normal -->
-		<a data-ng-if="case.app.active && !modification && case.app.id !== 'config'"
-		   data-ui-sref="app-wrapper({ app: case.app.id })"
-		   title="{{ case.app.survol }}">
+		<a data-ng-if="case.app.active && !modification && case.app.application_id !== 'config'"
+		   data-ui-sref="app-wrapper({ app: case.app.application_id })"
+		   title="{{ case.app.description }}">
 		    <span class="compteur-notification orange-brillant"
 			  data-ng-if="case.app.notifications > 0" data-ng-cloak>{{case.app.notifications}}</span>
-		    <img class="icone" data-ng-src="{{prefix}}/{{case.app.icone}}"
-			 data-ng-if="case.app.icone"/>
-		    <span class="app-name" data-ng-cloak>{{ case.app.nom }}</span>
+		    <img class="icone" data-ng-src="{{prefix}}/{{case.app.icon}}"
+			 data-ng-if="case.app.icon"/>
+		    <span class="app-name" data-ng-cloak>{{ case.app.libelle }}</span>
 		</a>
 
 		<!-- Mode modification -->
-		<a data-ng-if="case.app.active && modification && case.app.id !== 'config'"
-		   title="{{ case.app.draft.survol }}">
+		<a data-ng-if="case.app.active && modification && case.app.application_id !== 'config'"
+		   title="{{ case.app.draft.description }}">
 		    <span class="compteur-notification orange-brillant"
 			  data-ng-if="case.app.notifications > 0" data-ng-cloak>{{case.app.notifications}}</span>
-		    <img class="icone" data-ng-src="{{prefix}}/{{case.app.draft.icone}}"
-			 data-ng-if="case.app.draft.icone"/>
-		    <span class="app-name" data-ng-cloak>{{ case.app.draft.nom }}</span>
+		    <img class="icone" data-ng-src="{{prefix}}/{{case.app.draft.icon}}"
+			 data-ng-if="case.app.draft.icon"/>
+		    <span class="app-name" data-ng-cloak>{{ case.app.draft.libelle }}</span>
 		</a>
 	    </div>
 
 	    <div class="configure back"
-		 data-ng-class="{ 'blanc': case.app.id != 'add_app' && case.app.id != 'config', {{case.couleur}}: case.app.id == 'add_app' || case.app.id == 'config'}">
-		<div data-ng-if="case.app.id != 'add_app' && case.app.id != 'config'">
+		 data-ng-class="{ 'blanc': case.app.application_id != 'add_app' && case.app.application_id != 'config', {{case.couleur}}: case.app.application_id == 'add_app' || case.app.application_id == 'config'}">
+		<div data-ng-if="case.app.application_id != 'add_app' && case.app.application_id != 'config'">
 		    <button class="btn btn-lg toggle-configure close-configure"
-			    data-ng-if="modification && case.app && case.app.id != 'config' && case.app.id != 'add_app'"
+			    data-ng-if="modification && case.app && case.app.application_id != 'config' && case.app.application_id != 'add_app'"
 			    data-ng-click="case.app.toggle_configure()">
 			<i class="fa fa-reply"></i>
 		    </button>
 
 		    <label>nom : <input type="text" class="form-control"
-					data-ng-model="case.app.draft.nom"
+					data-ng-model="case.app.draft.libelle"
 					data-ng-change="case.app.is_dirty()" />
 		    </label>
 
 		    <label>description : <input type="text" class="form-control"
-						data-ng-model="case.app.draft.survol"
+						data-ng-model="case.app.draft.description"
 						data-ng-change="case.app.is_dirty()" />
 		    </label>
 
