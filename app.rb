@@ -174,6 +174,7 @@ class SinatraApp < Sinatra::Base
       default = config[:apps][:default][ app['id'].to_sym ]
       app.merge! default unless default.nil?
 
+      app[ 'application_id' ] = app[ 'id' ]
       app
     end.to_json
   end
@@ -197,7 +198,6 @@ class SinatraApp < Sinatra::Base
 
   post "#{APP_PATH}/api/apps/?" do
     content_type :json
-    param :etab_code_uai, Integer, required: true
     param :index, Integer, required: true
     param :type, String, required: true, in: %w(INTERNAL EXTERNAL)
     param :application_id, String, required: false
@@ -208,7 +208,7 @@ class SinatraApp < Sinatra::Base
     param :icon, String, required: false
     param :color, String, required: false
 
-    AnnuaireWrapper::Apps.create( params ).to_json
+    AnnuaireWrapper::Apps.create( user.profil_actif['uai'], params ).to_json
   end
 
   put "#{APP_PATH}/api/apps/:id" do

@@ -1,34 +1,14 @@
 {
     "apps": {
 	"default": {
-	    "ADMIN": {
-		"color": "rouge",
-		"icon": "app/vendor/charte-graphique-laclasse-com/images/13_admin.svg",
-		"index": 14 },
-	    "AIDE": {
-		"color": "jaune",
-		"icon": "app/vendor/charte-graphique-laclasse-com/images/12_aide.svg",
-		"index": 13 },
-	    "PUBLI": {
-		"color": "rouge",
-		"icon": "app/vendor/charte-graphique-laclasse-com/images/11_publipostage.svg",
-		"index": 12 },
-	    "SUIVIELV": {
-		"color": "jaune",
-		"icon": "app/vendor/charte-graphique-laclasse-com/images/10_suivi.svg",
-		"index": 11 },
-	    "TROMBI": {
+	    "MAIL": {
 		"color": "bleu",
-		"icon": "app/vendor/charte-graphique-laclasse-com/images/09_trombi.svg",
-		"index": 10 },
-	    "GAR": {
-		"color": "violet",
-		"icon": "app/vendor/charte-graphique-laclasse-com/images/08_ressources.svg",
-		"index": 9 },
-	    "BLOGS": {
+		"icon": "app/vendor/charte-graphique-laclasse-com/images/01_messagerie.svg",
+		"index": 1 },
+	    "DOC": {
 		"color": "jaune",
-		"icon": "app/vendor/charte-graphique-laclasse-com/images/07_blogs.svg",
-		"index": 8 },
+		"icon": "app/vendor/charte-graphique-laclasse-com/images/02_documents.svg",
+		"index": 2 },
 	    "CCNUM": {
 		"color": "bleu",
 		"icon": "app/vendor/charte-graphique-laclasse-com/images/06_thematiques.svg",
@@ -49,14 +29,34 @@
 		"color": "violet",
 		"icon": "app/vendor/charte-graphique-laclasse-com/images/03_cahierdetextes.svg",
 		"index": 3 },
-	    "DOC": {
+	    "BLOGS": {
 		"color": "jaune",
-		"icon": "app/vendor/charte-graphique-laclasse-com/images/02_documents.svg",
-		"index": 2 },
-	    "MAIL": {
+		"icon": "app/vendor/charte-graphique-laclasse-com/images/07_blogs.svg",
+		"index": 8 },
+	    "GAR": {
+		"color": "violet",
+		"icon": "app/vendor/charte-graphique-laclasse-com/images/08_ressources.svg",
+		"index": 9 },
+	    "TROMBI": {
 		"color": "bleu",
-		"icon": "app/vendor/charte-graphique-laclasse-com/images/01_messagerie.svg",
-		"index": 1 }
+		"icon": "app/vendor/charte-graphique-laclasse-com/images/09_trombi.svg",
+		"index": 10 },
+	    "SUIVIELV": {
+		"color": "jaune",
+		"icon": "app/vendor/charte-graphique-laclasse-com/images/10_suivi.svg",
+		"index": 11 },
+	    "PUBLI": {
+		"color": "rouge",
+		"icon": "app/vendor/charte-graphique-laclasse-com/images/11_publipostage.svg",
+		"index": 12 },
+	    "AIDE": {
+		"color": "jaune",
+		"icon": "app/vendor/charte-graphique-laclasse-com/images/12_aide.svg",
+		"index": 13 },
+	    "ADMIN": {
+		"color": "rouge",
+		"icon": "app/vendor/charte-graphique-laclasse-com/images/13_admin.svg",
+		"index": 14 }
 	}
     },
     "news_feed": [
