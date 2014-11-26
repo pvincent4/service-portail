@@ -94,7 +94,7 @@ module AnnuaireWrapper
     end
 
     def query
-      Annuaire.send_request_signed( :service_annuaire_portail_entree, '', {} )
+      Annuaire.send_request_signed( :service_annuaire_portail_entree, '/applications', {} )
     end
 
     def get( id )
@@ -111,7 +111,7 @@ module AnnuaireWrapper
     end
 
     def delete( id )
-      Annuaire.delete_request_signed( :service_annuaire_portail_entree, "/#{id}" )
+      Annuaire.delete_request_signed( :service_annuaire_portail_entree, "/#{id}", {} )
     end
   end
 end
