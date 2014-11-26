@@ -160,9 +160,64 @@ class SinatraApp < Sinatra::Base
       # Associer les couleurs des carrés
       colorize( mes_regpts ).to_json
   end
+
+  #
+  # Service liste des applications
+  #
+  get "#{APP_PATH}/api/apps/?" do
+    content_type :json
+
+    return [] unless is_logged? && !user.profil_actif.nil?
+
+    AnnuaireWrapper::Apps.query_etablissement( user.profil_actif['uai'] ).to_json
+  end
+
+  get "#{APP_PATH}/api/apps/default/?" do
+    content_type :json
+
+    return [] unless is_logged? && !user.profil_actif.nil?
+
+    AnnuaireWrapper::Apps.query.to_json
+  end
+
+  post "#{APP_PATH}/api/apps/?" do
+    content_type :json
+    param :etab_code_uai, Integer, required: true
+    param :index, Integer, required: true
+    param :type, String, required: true, in: %w(INTERNAL EXTERNAL)
+    param :application_id, String, required: false
+    param :libelle, String, required: false
+    param :description, String, required: false
+    param :url, String, required: false
+    param :active, Boolean, required: false
+    param :icon, String, required: false
+    param :color, String, required: false
+
+    AnnuaireWrapper::Apps.create( params )
+  end
+
+  put "#{APP_PATH}/api/apps/:id" do
+    content_type :json
+    param :id, String, required: true
+    param :index, Integer, required: true
+    param :active, Boolean, required: false
+    param :url, String, required: false
+    param :libelle, String, required: false
+    param :description, String, required: false
+    param :icon, String, required: false
+    param :color, String, required: false
+
+    AnnuaireWrapper::Apps.update( params[:id], params )
+  end
+
+  delete "#{APP_PATH}/api/apps/:id" do
+    AnnuaireWrapper::Apps.delete( param[:id] )
+  end
+
+  #
   # Agrégateur RSS
   #
-  get "#{APP_PATH}/api/news" do
+  get "#{APP_PATH}/api/news/?" do
     content_type :json
 
     # THINK : Comment mettre des priorités sur les différents flux ?
@@ -200,7 +255,7 @@ class SinatraApp < Sinatra::Base
     news.to_json
   end
 
-  # get "#{APP_PATH}/api/notifications" do
+  # get "#{APP_PATH}/api/notifications/?" do
   #   content_type :json
 
   #   # redirect login! unless is_logged?
@@ -223,61 +278,9 @@ class SinatraApp < Sinatra::Base
   # end
 
   #
-  # Service liste des applications
+  # renvoi la version du portail
   #
-  get "#{APP_PATH}/api/apps" do
-    content_type :json
-
-    # error( 401, 'Not Authorized' ) unless is_logged? && !user.profil_actif.nil?
-    return [] unless is_logged? && !user.profil_actif.nil?
-
-    AnnuaireWrapper::Apps.query_etablissement( user.profil_actif['uai'] ).to_json
-  end
-
-  get "#{APP_PATH}/api/apps/default" do
-    content_type :json
-
-    # error( 401, 'Not Authorized' ) unless is_logged? && !user.profil_actif.nil?
-    return [] unless is_logged? && !user.profil_actif.nil?
-
-    AnnuaireWrapper::Apps.query.to_json
-  end
-
-  post "#{APP_PATH}/api/apps/" do
-    content_type :json
-    param :etab_code_uai, Integer, required: true
-    param :index, Integer, required: true
-    param :type, String, required: true, in: %w(INTERNAL EXTERNAL)
-    param :application_id, String, required: false
-    param :libelle, String, required: false
-    param :description, String, required: false
-    param :url, String, required: false
-    param :active, Boolean, required: false
-    param :icon, String, required: false
-    param :color, String, required: false
-
-    AnnuaireWrapper::Apps.create( params )
-  end
-
-  put "#{APP_PATH}/api/apps/:id" do
-    content_type :json
-    param :id, String, required: true
-    param :index, Integer, required: true
-    param :active, Boolean, required: false
-    param :url, String, required: false
-    param :libelle, String, required: false
-    param :description, String, required: false
-    param :icon, String, required: false
-    param :color, String, required: false
-
-    AnnuaireWrapper::Apps.update( params[:id], params )
-  end
-
-  delete "#{APP_PATH}/api/apps/:id" do
-    AnnuaireWrapper::Apps.delete( param[:id] )
-  end
-
-  get "#{APP_PATH}/api/version" do
+  get "#{APP_PATH}/api/version/?" do
     content_type :text
 
     APP_VERSION
@@ -286,7 +289,7 @@ class SinatraApp < Sinatra::Base
   #
   # Ressources numériques de l'utilisateur
   #
-  get "#{APP_PATH}/api/ressources_numeriques" do
+  get "#{APP_PATH}/api/ressources_numeriques/?" do
     content_type :json
 
     ress_temp = AnnuaireWrapper.get_user_resources( user.uid )
