@@ -11,7 +11,9 @@ module ConfigHelpers
 
   # Renvoie le tableau des cases avec leurs couleurs
   def damier
-    @config[:apps][:default].map { |app| app[:couleur] }.reverse
+    @config[:apps][:default]
+      .sort_by { |app| app[:index] }
+      .map { |app| app[:couleur] }
   end
 
   # Ajouter les couleurs du damier à un tableau de choses
