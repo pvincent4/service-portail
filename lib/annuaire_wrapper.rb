@@ -93,12 +93,17 @@ module AnnuaireWrapper
       Annuaire.send_request_signed( :service_annuaire_portail_entree, "/etablissement/#{uai}", {} )
     end
 
+    def query
+      Annuaire.send_request_signed( :service_annuaire_portail_entree, '', {} )
+    end
+
     def get( id )
       Annuaire.send_request_signed( :service_annuaire_portail_entree, "/#{id}", {} )
     end
 
-    def create( definition )
-      Annuaire.post_request_signed( :service_annuaire_portail_entree, '', definition )
+    def create( uai, definition )
+      definition[ 'etab_code_uai' ] = uai
+      Annuaire.post_request_signed( :service_annuaire_portail_entree, '', {}, definition )
     end
 
     def update( id, definition )

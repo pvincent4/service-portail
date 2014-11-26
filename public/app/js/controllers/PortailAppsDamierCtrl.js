@@ -2,8 +2,8 @@
 
 angular.module( 'portailApp' )
     .controller( 'PortailAppsDamierCtrl',
-		 [ '$scope', '$modal', '$log', 'current_user', 'currentUser', 'APP_PATH', 'CASES',
-		   function( $scope, $modal, $log, current_user, currentUser, APP_PATH, CASES ) {
+		 [ '$scope', '$modal', '$log', 'current_user', 'Apps', 'APP_PATH', 'CASES',
+		   function( $scope, $modal, $log, current_user, Apps, APP_PATH, CASES ) {
 		       $scope.prefix = APP_PATH;
 		       $scope.current_user = current_user;
 		       $scope.cases = CASES;
@@ -44,7 +44,8 @@ angular.module( 'portailApp' )
 			   }
 		       };
 
-		       currentUser.apps()
+		       Apps.query()
+			   .$promise
 			   .then( function( response ) {
 			       $scope.current_apps = response;
 			       $scope.add_tile = function() {

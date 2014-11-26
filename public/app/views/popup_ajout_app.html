@@ -9,17 +9,18 @@
 	    data-ng-click="selected( app )">
 
 	    <a data-ng-if="!app.creation"
-	       title="{{ app.survol }}">
-		<img class="icone" data-ng-src="{{prefix}}/{{app.icone}}"
-		     data-ng-if="app.icone"/>
-		<span class="app-name" data-ng-cloak>{{ app.nom }}</span>
+	       title="{{ app.description }}">
+		<img class="icone" data-ng-src="{{prefix}}/{{app.icon}}"
+		     data-ng-if="app.icon"/>
+		<span class="app-name" data-ng-cloak>{{ app.libelle }}</span>
 	    </a>
 
 	    <fieldset data-ng-if="app.creation">
 		<legend>lien libre</legend>
 
-		<label>nom <input type="text" data-ng-model="app.nom" /></label>
-		<label>url <input type="text" data-ng-model="app.lien" /></label>
+		<label>libellé <input type="text" data-ng-model="app.libelle" /></label>
+		<label>description <input type="text" data-ng-model="app.description" /></label>
+		<label>url <input type="text" data-ng-model="app.url" /></label>
 	    </fieldset>
 	</li>
     </ul>
