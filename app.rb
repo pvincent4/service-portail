@@ -143,7 +143,7 @@ class SinatraApp < Sinatra::Base
       .reject { |r| r[ 'etablissement_code' ] != uai_courant }
       .sort_by { |r| r['classe_libelle'].to_s }
       .reverse # Pour avoir les 6eme avant les 3eme
-      .each { |c|p
+      .each { |c|
         obj_cls = { nom: c['classe_libelle'], cls_id: c['classe_id'], uai: uai_courant }
         mes_regpts.push obj_cls
       }.uniq! # supprime les doublons dûs aux matieres enseaignées qui peuvent être plusieurs pour une classe
