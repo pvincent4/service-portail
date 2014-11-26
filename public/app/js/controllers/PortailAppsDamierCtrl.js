@@ -53,8 +53,16 @@ angular.module( 'portailApp' )
 				       templateUrl: 'views/popup_ajout_app.html',
 				       controller: 'PopupAjoutAppCtrl',
 				       resolve: {
-					   apps: function () {
-					       return _($scope.current_apps).select( function( app ) { return !app.active; } );
+					   current_apps: function () {
+					       return _.chain($scope.cases)
+						   .select( function( c ) {
+						       return _(c).has('app');
+						   } )
+						   .map( function( c ) {
+						       return c.app.application_id;
+						   } )
+						   .compact()
+						   .value();
 					   }
 				       }
 				   } )
@@ -62,12 +70,16 @@ angular.module( 'portailApp' )
 					   new_app = tool_app( new_app );
 
 					   if ( new_app.creation ) {
+					       new_app.$save();
+
+					       new_app.dirty = true;
 					       new_app.configure = true;
-					       _.chain($scope.cases)
-						   .select( function( c ) { return !_(c).has( 'app' ); } )
-						   .first()
-						   .value().app = new_app;
 					   }
+
+					   _.chain($scope.cases)
+					       .select( function( c ) { return !_(c).has( 'app' ); } )
+					       .first()
+					       .value().app = new_app;
 
 					   new_app.active = true;
 				       } );

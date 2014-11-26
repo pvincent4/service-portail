@@ -5,6 +5,7 @@
     <ul>
 	<li class="new-app"
 	    data-ng-repeat="app in apps"
+	    data-ng-if="!app.present"
 	    data-ng-class="{'selected': app.selected, 'creation': app.creation}"
 	    data-ng-click="selected( app )">
 
@@ -19,7 +20,6 @@
 		<legend>lien libre</legend>
 
 		<label>libellé <input type="text" data-ng-model="app.libelle" /></label>
-		<label>description <input type="text" data-ng-model="app.description" /></label>
 		<label>url <input type="text" data-ng-model="app.url" /></label>
 	    </fieldset>
 	</li>
