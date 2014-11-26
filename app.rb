@@ -164,6 +164,20 @@ class SinatraApp < Sinatra::Base
   #
   # Service liste des applications
   #
+  get "#{APP_PATH}/api/apps/default/?" do
+    content_type :json
+
+    return [] unless is_logged? && !user.profil_actif.nil?
+
+    AnnuaireWrapper::Apps.query
+                         .map do |app|
+      default = config[:apps][:default][ app['id'].to_sym ]
+      app.merge! default unless default.nil?
+
+      app
+    end.to_json
+  end
+
   get "#{APP_PATH}/api/apps/?" do
     content_type :json
 
@@ -172,12 +186,13 @@ class SinatraApp < Sinatra::Base
     AnnuaireWrapper::Apps.query_etablissement( user.profil_actif['uai'] ).to_json
   end
 
-  get "#{APP_PATH}/api/apps/default/?" do
+  get "#{APP_PATH}/api/apps/:id" do
     content_type :json
+    param :id, Integer, required: true
 
     return [] unless is_logged? && !user.profil_actif.nil?
 
-    AnnuaireWrapper::Apps.query.to_json
+    AnnuaireWrapper::Apps.get( params[:id] ).to_json
   end
 
   post "#{APP_PATH}/api/apps/?" do
@@ -193,12 +208,12 @@ class SinatraApp < Sinatra::Base
     param :icon, String, required: false
     param :color, String, required: false
 
-    AnnuaireWrapper::Apps.create( params )
+    AnnuaireWrapper::Apps.create( params ).to_json
   end
 
   put "#{APP_PATH}/api/apps/:id" do
     content_type :json
-    param :id, String, required: true
+    param :id, Integer, required: true
     param :index, Integer, required: true
     param :active, Boolean, required: false
     param :url, String, required: false
@@ -207,11 +222,14 @@ class SinatraApp < Sinatra::Base
     param :icon, String, required: false
     param :color, String, required: false
 
-    AnnuaireWrapper::Apps.update( params[:id], params )
+    AnnuaireWrapper::Apps.update( params[:id], params ).to_json
   end
 
   delete "#{APP_PATH}/api/apps/:id" do
-    AnnuaireWrapper::Apps.delete( param[:id] )
+    content_type :json
+    param :id, Integer, required: true
+
+    AnnuaireWrapper::Apps.delete( param[:id] ).to_json
   end
 
   #

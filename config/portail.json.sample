@@ -1,190 +1,74 @@
 {
-    "apps_tiles": {
-	"empty3": {
-	    "active": true,
-	    "url": "#",
-	    "survol": "",
-	    "nom": "",
-	    "url_notif": "",
-	    "notifications": 0,
-	    "couleur": "violet",
-	    "icone": "",
-	    "index": 16
-	},
-	"empty2": {
-	    "active": true,
-	    "url": "#",
-	    "survol": "",
-	    "nom": "",
-	    "url_notif": "",
-	    "notifications": 0,
-	    "couleur": "vert",
-	    "icone": "",
-	    "index": 15
-	},
-	"ADMIN": {
-	    "active": false,
-	    "url": "http://www.perdu.com",
-	    "survol": "",
-	    "nom": "",
-	    "url_notif": "",
-	    "notifications": 0,
-	    "couleur": "rouge",
-	    "icone": "app/vendor/charte-graphique-laclasse-com/images/13_admin.svg",
-	    "index": 14
-	},
-	"AIDE": {
-	    "url": "http://www.perdu.com",
-	    "survol": "Aide en ligne",
-	    "nom": "aide",
-	    "active": true,
-	    "url_notif": "",
-	    "notifications": 0,
-	    "couleur": "jaune",
-	    "icone": "app/vendor/charte-graphique-laclasse-com/images/12_aide.svg",
-	    "index": 13
-	},
-	"PUBLI": {
-	    "active": false,
-	    "url": null,
-	    "survol": "",
-	    "nom": "",
-	    "url_notif": "",
-	    "notifications": 0,
-	    "couleur": "rouge",
-	    "icone": "app/vendor/charte-graphique-laclasse-com/images/11_publipostage.svg",
-	    "index": 12
-	},
-	"SUIVIELV": {
-	    "active": false,
-	    "url": "http://www.perdu.com",
-	    "lien": "",
-	    "survol": "",
-	    "nom": "",
-	    "url_notif": "",
-	    "notifications": 0,
-	    "couleur": "jaune",
-	    "icone": "app/vendor/charte-graphique-laclasse-com/images/10_suivi.svg",
-	    "index": 11
-	},
-	"TROMBI": {
-	    "active": false,
-	    "url": "http://www.perdu.com",
-	    "survol": "",
-	    "nom": "",
-	    "url_notif": "",
-	    "notifications": 0,
-	    "couleur": "bleu",
-	    "icone": "app/vendor/charte-graphique-laclasse-com/images/09_trombi.svg",
-	    "index": 10
-	},
-	"GAR": {
-	    "active": false,
-	    "url": "http://www.perdu.com",
-	    "survol": "",
-	    "nom": "",
-	    "url_notif": "",
-	    "notifications": 0,
-	    "couleur": "violet",
-	    "icone": "app/vendor/charte-graphique-laclasse-com/images/08_ressources.svg",
-	    "index": 9
-	},
-	"BLOGS": {
-	    "active": false,
-	    "url": "http://www.perdu.com",
-	    "survol": "",
-	    "nom": "",
-	    "url_notif": "",
-	    "notifications": 0,
-	    "couleur": "jaune",
-	    "icone": "app/vendor/charte-graphique-laclasse-com/images/07_blogs.svg",
-	    "index": 8
-	},
-	"CCNUM": {
-	    "active": false,
-	    "url": "",
-	    "survol": "",
-	    "nom": "",
-	    "url_notif": "",
-	    "notifications": 0,
-	    "couleur": "bleu",
-	    "icone": "app/vendor/charte-graphique-laclasse-com/images/06_thematiques.svg",
-	    "index": 7
-	},
-	"LPC": {
-	    "active": false,
-	    "url": "http://www.perdu.com",
-	    "survol": "",
-	    "nom": "",
-	    "url_notif": "",
-	    "notifications": 0,
-	    "couleur": "vert",
-	    "icone": "app/vendor/charte-graphique-laclasse-com/images/05_validationcompetences.svg",
-	    "index": 6
-	},
-	"PRONOTE": {
-	    "active": false,
-	    "url": "#",
-	    "survol": "",
-	    "nom": "",
-	    "url_notif": "",
-	    "notifications": 0,
-	    "couleur": "rouge",
-	    "icone": "app/vendor/charte-graphique-laclasse-com/images/04_notesabsences.svg",
-	    "index": 5
-	},
-	"TELESRV": {
-	    "active": false,
-	    "survol": "",
-	    "nom": "",
-	    "url_notif": "",
-	    "notifications": 0,
-	    "couleur": "vert",
-	    "icone": "app/vendor/charte-graphique-laclasse-com/images/04_notesabsences.svg",
-	    "index": 4
-	},
-	"CTXT": {
-	    "active": false,
-	    "survol": "",
-	    "nom": "",
-	    "url_notif": "",
-	    "notifications": 0,
-	    "couleur": "violet",
-	    "icone": "app/vendor/charte-graphique-laclasse-com/images/03_cahierdetextes.svg",
-	    "index": 3
-	},
-	"DOC": {
-	    "active": false,
-	    "survol": "",
-	    "nom": "",
-	    "url_notif": "",
-	    "notifications": 0,
-	    "couleur": "jaune",
-	    "icone": "app/vendor/charte-graphique-laclasse-com/images/02_documents.svg",
-	    "index": 2
-	},
-	"MAIL": {
-	    "active": false,
-	    "url": "http://www.perdu.com",
-	    "survol": "",
-	    "nom": "messagerie",
-	    "url_notif": "",
-	    "notifications": 0,
-	    "couleur": "bleu",
-	    "icone": "app/vendor/charte-graphique-laclasse-com/images/01_messagerie.svg",
-	    "index": 1
+    "apps": {
+	"default": {
+	    "ADMIN": {
+		"color": "rouge",
+		"icon": "app/vendor/charte-graphique-laclasse-com/images/13_admin.svg",
+		"index": 14 },
+	    "AIDE": {
+		"color": "jaune",
+		"icon": "app/vendor/charte-graphique-laclasse-com/images/12_aide.svg",
+		"index": 13 },
+	    "PUBLI": {
+		"color": "rouge",
+		"icon": "app/vendor/charte-graphique-laclasse-com/images/11_publipostage.svg",
+		"index": 12 },
+	    "SUIVIELV": {
+		"color": "jaune",
+		"icon": "app/vendor/charte-graphique-laclasse-com/images/10_suivi.svg",
+		"index": 11 },
+	    "TROMBI": {
+		"color": "bleu",
+		"icon": "app/vendor/charte-graphique-laclasse-com/images/09_trombi.svg",
+		"index": 10 },
+	    "GAR": {
+		"color": "violet",
+		"icon": "app/vendor/charte-graphique-laclasse-com/images/08_ressources.svg",
+		"index": 9 },
+	    "BLOGS": {
+		"color": "jaune",
+		"icon": "app/vendor/charte-graphique-laclasse-com/images/07_blogs.svg",
+		"index": 8 },
+	    "CCNUM": {
+		"color": "bleu",
+		"icon": "app/vendor/charte-graphique-laclasse-com/images/06_thematiques.svg",
+		"index": 7 },
+	    "LPC": {
+		"color": "vert",
+		"icon": "app/vendor/charte-graphique-laclasse-com/images/05_validationcompetences.svg",
+		"index": 6 },
+	    "PRONOTE": {
+		"color": "rouge",
+		"icon": "app/vendor/charte-graphique-laclasse-com/images/04_notesabsences.svg",
+		"index": 5 },
+	    "TELESRV": {
+		"color": "vert",
+		"icon": "app/vendor/charte-graphique-laclasse-com/images/04_notesabsences.svg",
+		"index": 4 },
+	    "CTXT": {
+		"color": "violet",
+		"icon": "app/vendor/charte-graphique-laclasse-com/images/03_cahierdetextes.svg",
+		"index": 3 },
+	    "DOC": {
+		"color": "jaune",
+		"icon": "app/vendor/charte-graphique-laclasse-com/images/02_documents.svg",
+		"index": 2 },
+	    "MAIL": {
+		"color": "bleu",
+		"icon": "app/vendor/charte-graphique-laclasse-com/images/01_messagerie.svg",
+		"index": 1 }
 	}
     },
     "news_feed": [
 	{
 	    "nb": 1,
-	    "icone": "",
+	    "icon": "",
 	    "flux": "http://ent-laclasse.blogs.laclasse.com/category/editos/feed/",
 	    "titre": "Editoriaux d'Erasme"
 	},
 	{
 	    "nb": 3,
-	    "icone": "",
+	    "icon": "",
 	    "flux": "http://ent-laclasse.blogs.laclasse.com/feed/",
 	    "titre": "blog du projet ENT"
 	}

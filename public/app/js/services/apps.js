@@ -6,7 +6,6 @@ angular.module( 'portailApp' )
 		function( $resource, APP_PATH ) {
 		    return $resource( APP_PATH + '/api/apps/:id',
 				      { application_id	: '@application_id',
-					etab_code_uai	: '@etab_code_uai',
 					index		: '@index',
 					type		: '@type',
 					libelle		: '@libelle',
@@ -17,6 +16,6 @@ angular.module( 'portailApp' )
 					color		: '@color' },
 				      { update: { method: 'PUT' },
 					query_default: { methode: 'GET',
-							 url: APP_PATH + '/api/apps/defaults',
+							 url: APP_PATH + '/api/apps/default/',
 							 isArray: true } } );
 		} ] );

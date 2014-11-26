@@ -2,10 +2,10 @@
 
 angular.module( 'portailApp' )
     .controller( 'PopupAjoutAppCtrl',
-		 [ '$scope', '$modalInstance', 'APP_PATH', 'apps',
-		   function( $scope, $modalInstance, APP_PATH, apps ) {
+		 [ '$scope', '$modalInstance', 'APP_PATH', 'Apps',
+		   function( $scope, $modalInstance, APP_PATH, Apps ) {
 		       $scope.prefix = APP_PATH;
-		       $scope.apps = apps;
+		       $scope.apps = Apps.query_default();
 		       $scope.selected = { apps: null };
 
 		       $scope.apps.push( { creation: true,
