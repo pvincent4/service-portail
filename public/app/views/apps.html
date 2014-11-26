@@ -22,6 +22,9 @@
 			  data-ng-if="case.app.notifications > 0" data-ng-cloak>{{case.app.notifications}}</span>
 		    <img class="icone" data-ng-src="{{prefix}}/{{case.app.icon}}"
 			 data-ng-if="case.app.icon"/>
+		    <em class="icone" data-ng-if="!case.app.icon">
+			{{case.app.libelle[0]}}
+		    </em>
 		    <span class="app-name" data-ng-cloak>{{ case.app.libelle }}</span>
 		</a>
 
@@ -32,6 +35,9 @@
 			  data-ng-if="case.app.notifications > 0" data-ng-cloak>{{case.app.notifications}}</span>
 		    <img class="icone" data-ng-src="{{prefix}}/{{case.app.draft.icon}}"
 			 data-ng-if="case.app.draft.icon"/>
+		    <em class="icone" data-ng-if="!case.app.icon">
+			{{case.app.draft.libelle[0]}}
+		    </em>
 		    <span class="app-name" data-ng-cloak>{{ case.app.draft.libelle }}</span>
 		</a>
 	    </div>
