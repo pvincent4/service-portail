@@ -5,7 +5,8 @@ angular.module( 'portailApp' )
 	      [ '$resource', 'APP_PATH',
 		function( $resource, APP_PATH ) {
 		    return $resource( APP_PATH + '/api/apps/:id',
-				      { application_id	: '@application_id',
+				      { id              : '@id',
+					application_id	: '@application_id',
 					index		: '@index',
 					type		: '@type',
 					libelle		: '@libelle',
