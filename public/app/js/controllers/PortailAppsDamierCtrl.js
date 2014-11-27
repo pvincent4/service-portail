@@ -130,8 +130,8 @@ angular.module( 'portailApp' )
 				   $scope.current_apps.$promise.then( function() {
 				       _.chain($scope.current_apps)
 					   .sortBy( function( app ) { return !app.active; } )
-					   .each( function( app, i ) {
-					       $scope.cases[ i ].app = tool_app( app );
+					   .each( function( app ) {
+					       $scope.cases[ app.index ].app = tool_app( app );
 					   } );
 				   } );
 			       } );
