@@ -107,6 +107,8 @@ module AnnuaireWrapper
     end
 
     def update( id, definition )
+      definition.delete( 'splat' ) # WTF
+      definition.delete( 'captures' ) # WTF
       Annuaire.put_request_signed( :service_annuaire_portail_entree, "/#{id}", definition )
     end
 
