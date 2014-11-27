@@ -2,15 +2,27 @@
 
 angular.module( 'portailApp' )
     .controller( 'PortailAppsDamierCtrl',
-		 [ '$scope', '$modal', '$log', 'current_user', 'Apps', 'APP_PATH', 'CASES',
-		   function( $scope, $modal, $log, current_user, Apps, APP_PATH, CASES ) {
+		 [ '$scope', '$modal', '$log', '$q', 'current_user', 'Apps', 'APP_PATH', 'CASES',
+		   function( $scope, $modal, $log, $q, current_user, Apps, APP_PATH, CASES ) {
 		       $scope.prefix = APP_PATH;
 		       $scope.current_user = current_user;
-		       $scope.cases = CASES;
 		       var apps_indexes_changed = false;
 
+		       $scope.modification = false;
+		       $scope.sortable_options = {
+			   disabled: !$scope.modification,
+			   containment: '.damier',
+			   'ui-floating': true,
+			   stop: function( e, ui ) {
+			       apps_indexes_changed = true;
+
+			       _($scope.cases).each( function( c, i ) {
+				   c.index = i;
+			       } );
+			   }
+		       };
+
 		       var tool_app = function( app ) {
-			   app.draft = angular.copy( app );
 			   app.configure = false;
 			   app.dirty = false;
 
@@ -34,98 +46,96 @@ angular.module( 'portailApp' )
 			   return app;
 		       };
 
-		       $scope.modification = false;
-		       $scope.sortable_options = {
-			   disabled: !$scope.modification,
-			   containment: '.damier',
-			   'ui-floating': true,
-			   stop: function( e, ui ) {
-			       apps_indexes_changed = true;
+		       $scope.add_tile = function() {
+			   $modal.open( {
+			       templateUrl: 'views/popup_ajout_app.html',
+			       controller: 'PopupAjoutAppCtrl',
+			       resolve: {
+				   current_apps: function () {
+				       return _.chain($scope.cases)
+					   .select( function( c ) {
+					       return _(c).has('app');
+					   } )
+					   .map( function( c ) {
+					       return c.app.application_id;
+					   } )
+					   .compact()
+					   .value();
+				   }
+			       }
+			   } )
+			       .result.then( function( new_app ) {
+				   new_app = tool_app( new_app );
+				   new_app.active = true;
+
+				   var recipient = _.chain($scope.cases)
+					   .select( function( c ) { return !_(c.app).has( 'libelle' ); } )
+					   .first()
+					   .value();
+				   new_app.index = recipient.index;
+				   recipient.app = new_app;
+
+				   if ( new_app.creation ) {
+				       new_app.$save();
+
+				       new_app.dirty = true;
+				       new_app.configure = true;
+				   }
+			       } );
+		       };
+
+		       $scope.toggle_modification = function( save ) {
+			   $scope.modification = !$scope.modification;
+			   $scope.sortable_options.disabled = !$scope.sortable_options.disabled;
+			   if ( !$scope.modification ) {
+			       var promesses = [];
+
+			       _($scope.cases).each( function( c ) {
+				   if ( _(c).has( 'app' ) ) {
+				       c.app.configure = false;
+				       if ( save && c.app.dirty ) {
+					   c.app.color = c.app.new_color;
+					   promesses.push( c.app.$update() );
+					   c.app = tool_app( c.app );
+				       }
+				   }
+			       } );
+
+			       if ( save && apps_indexes_changed ) {
+				   // mise à jour de l'annuaire avec les nouveaux index des apps suite au déplacement
+				   _($scope.cases).each( function( c, i ) {
+				       if ( _(c).has( 'app' ) ) {
+					   c.app.index = i;
+					   promesses.push( c.app.$update() );
+				       }
+				   } );
+			       }
+
+			       $q.all( promesses ).then( retrieve_apps );
 			   }
 		       };
 
-		       Apps.query()
-			   .$promise
-			   .then( function( response ) {
-			       $scope.current_apps = response;
-			       $scope.add_tile = function() {
-				   $modal.open( {
-				       templateUrl: 'views/popup_ajout_app.html',
-				       controller: 'PopupAjoutAppCtrl',
-				       resolve: {
-					   current_apps: function () {
-					       return _.chain($scope.cases)
-						   .select( function( c ) {
-						       return _(c).has('app');
-						   } )
-						   .map( function( c ) {
-						       return c.app.application_id;
-						   } )
-						   .compact()
-						   .value();
-					   }
-				       }
-				   } )
-				       .result.then( function( new_app ) {
-					   new_app = tool_app( new_app );
+		       var retrieve_apps = function() {
+			   $scope.cases = _( angular.copy( CASES ) ).map( function( c, i ) {
+			       c.index = i;
 
-					   if ( new_app.creation ) {
-					       new_app.$save();
-
-					       new_app.dirty = true;
-					       new_app.configure = true;
-					   }
-
-					   _.chain($scope.cases)
-					       .select( function( c ) { return !_(c).has( 'app' ); } )
-					       .first()
-					       .value().app = new_app;
-
-					   new_app.active = true;
-				       } );
-			       };
-
-			       $scope.toggle_modification = function( save ) {
-				   $scope.modification = !$scope.modification;
-				   $scope.sortable_options.disabled = !$scope.sortable_options.disabled;
-				   if ( $scope.modification ) {
-				       _($scope.current_apps).each( function( app ) {
-					   app.draft = angular.copy( app );
-				       } );
-				   } else {
-				       _($scope.cases).each( function( c ) {
-					   if ( _(c).has( 'app' ) ) {
-					       c.app.configure = false;
-					       if ( save && c.app.dirty ) {
-						   _.chain(c.app.draft)
-						       .keys()
-						       .each( function( key ) {
-							   c.app[ key ] = angular.copy( c.app.draft[ key ] );
-						       } );
-						   c.app.$update();
-						   c.app = tool_app( c.app );
-					       }
-					   }
-				       } );
-
-				       if ( save && apps_indexes_changed ) {
-					   // mise à jour de l'annuaire avec les nouveaux index des apps suite au déplacement
-					   _($scope.cases).each( function( c, i ) {
-					       if ( _(c).has( 'app' ) ) {
-						   c.app.index = i;
-						   c.app.$update();
-					       }
-					   } );
-				       }
-				   }
-			       };
-
-			       $scope.current_apps.$promise.then( function() {
-				   _.chain($scope.current_apps)
-				       .sortBy( function( app ) { return !app.active; } )
-				       .each( function( app, i ) {
-					   $scope.cases[ i ].app = tool_app( app );
-				       } );
-			       } );
+			       return c;
 			   } );
+
+			   Apps.query()
+			       .$promise
+			       .then( function( response ) {
+				   $scope.current_apps = response;
+
+				   $scope.current_apps.$promise.then( function() {
+				       _.chain($scope.current_apps)
+					   .sortBy( function( app ) { return !app.active; } )
+					   .each( function( app, i ) {
+					       $scope.cases[ i ].app = tool_app( app );
+					   } );
+				   } );
+			       } );
+		       };
+
+		       retrieve_apps();
 		   } ] );
