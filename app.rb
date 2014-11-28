@@ -85,8 +85,8 @@ class SinatraApp < Sinatra::Base
     # param :password,       String,  required: false
     # param :bloque,         Boolean, required: false
 
-    AnnuaireWrapper.put_user( user.uid,
-                              params )
+    AnnuaireWrapper::User.put( user.uid,
+                               params )
 
     set_current_user( user.uid )
 
@@ -96,7 +96,7 @@ class SinatraApp < Sinatra::Base
   post "#{APP_PATH}/api/user/avatar/?" do
     content_type :json
 
-    AnnuaireWrapper.put_user_avatar( user.uid,
+    AnnuaireWrapper::User.put_avatar( user.uid,
                                      params[:image] ) if params[:image]
 
     set_current_user( user.uid )
@@ -107,7 +107,7 @@ class SinatraApp < Sinatra::Base
   delete "#{APP_PATH}/api/user/avatar/?" do
     content_type :json
 
-    AnnuaireWrapper.delete_user_avatar( user.uid )
+    AnnuaireWrapper::User.delete_avatar( user.uid )
 
     set_current_user( user.uid )
 
@@ -119,9 +119,9 @@ class SinatraApp < Sinatra::Base
     param :profil_id, String, required: true
     param :uai, String, required: true
 
-    AnnuaireWrapper.put_user_profil_actif( user.uid,
-                                           params[:profil_id],
-                                           params[:uai] )
+    AnnuaireWrapper::User.put_profil_actif( user.uid,
+                                            params[:profil_id],
+                                            params[:uai] )
 
     set_current_user( user.uid )
 
@@ -135,7 +135,7 @@ class SinatraApp < Sinatra::Base
     content_type :json
     mes_regpts = []
 
-    rgpts = AnnuaireWrapper.get_user_regroupements( user.uid )
+    rgpts = AnnuaireWrapper::User.get_regroupements( user.uid )
     uai_courant = user.profil_actif['uai']
     # Pour les classes
     # filtrer sur les regroupements de l'établissement courant.
@@ -294,7 +294,7 @@ class SinatraApp < Sinatra::Base
   #   if is_logged?
   #     profil = user.profil_actif['type']
   #     uai = user.profil_actif['uai']
-  #     etb = AnnuaireWrapper.get_etablissement(uai)
+  #     etb = AnnuaireWrapper::Etablissement.get(uai)
   #     opts = { serveur: "#{APP_PATH}/faye",
   #              profil: profil,
   #              uai: uai,
@@ -324,7 +324,7 @@ class SinatraApp < Sinatra::Base
   get "#{APP_PATH}/api/ressources_numeriques/?" do
     content_type :json
 
-    ress_temp = AnnuaireWrapper.get_user_resources( user.uid )
+    ress_temp = AnnuaireWrapper::User.get_resources( user.uid )
     uai_courant = user.profil_actif['uai']
     # Ne prendre que les ressources de l'établissement courant.
     # Qui sont dans la fenêtre d'abonnement
@@ -347,7 +347,7 @@ class SinatraApp < Sinatra::Base
   #   content_type :json
   #   mes_regpts = []
   #   uai_courant = user.profil_actif['uai']
-  #   rgpts = AnnuaireWrapper.get_etablissement_regroupements( uai_courant )
+  #   rgpts = AnnuaireWrapper::Etablissement.get_regroupements( uai_courant )
   #   rgpts.to_json
   # end
   # }}
