@@ -39,7 +39,7 @@ module AuthenticationHelpers
                                info: nil,
                                is_logged: false }
 
-    user_annuaire = AnnuaireWrapper.get_user( uid )
+    user_annuaire = AnnuaireWrapper::User.get( uid )
 
     if session[:user] && !user_annuaire.nil?
       session[:current_user] = { user: session[:user],
