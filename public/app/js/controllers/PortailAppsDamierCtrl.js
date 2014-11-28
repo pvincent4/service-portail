@@ -6,9 +6,8 @@ angular.module( 'portailApp' )
 		   function( $scope, $modal, $log, $q, current_user, Apps, APP_PATH, CASES ) {
 		       $scope.prefix = APP_PATH;
 		       $scope.current_user = current_user;
-		       var apps_indexes_changed = false;
-
 		       $scope.modification = false;
+		       var apps_indexes_changed = false;
 		       $scope.sortable_options = {
 			   disabled: !$scope.modification,
 			   containment: '.damier',
@@ -21,6 +20,11 @@ angular.module( 'portailApp' )
 			       } );
 			   }
 		       };
+		       $scope.couleurs = [ '#1aa1cc',
+					   '#80ba66',
+					   '#eb5454',
+					   '#9c75ab',
+					   '#e8c254' ];
 
 		       var tool_app = function( app ) {
 			   app.configure = false;
@@ -41,6 +45,16 @@ angular.module( 'portailApp' )
 			   app.remove = function() {
 			       app.active = false;
 			       app.toggle_configure();
+			   };
+			   app.colorize = function() {
+			       // if ( app.new_color ) {
+			       //	   return { 'background-color': app.new_color };
+			       // } else
+				   if ( app.color ) {
+				   return { 'background-color': app.color };
+			       } else {
+				   return {};
+			       }
 			   };
 
 			   return app;
@@ -94,7 +108,7 @@ angular.module( 'portailApp' )
 				   if ( _(c).has( 'app' ) ) {
 				       c.app.configure = false;
 				       if ( save && c.app.dirty ) {
-					   c.app.color = c.app.new_color;
+					   // c.app.color = c.app.new_color;
 					   promesses.push( c.app.$update() );
 					   c.app = tool_app( c.app );
 				       }

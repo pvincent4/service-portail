@@ -11,8 +11,7 @@ require_relative '../config/options'
 # Ce module s'appuye sur la gem de signature et de communicationavec l'annuaire.
 #
 module AnnuaireWrapper
-  module_function
-
+  # fonctions relatives au profil utilisateur
   module User
     module_function
     # Service Utilisateur : init de la session et de son environnement
@@ -72,6 +71,7 @@ module AnnuaireWrapper
     end
   end
 
+  # fonctions relatives à l'établissement
   module Etablissement
     module_function
 
@@ -84,38 +84,43 @@ module AnnuaireWrapper
     def get_regroupements( uai )
       Annuaire.send_request_signed( :service_annuaire_personnel, "#{uai}/users", 'expand' => 'true' )
     end
+
+    # Module d'interfaçage Annuaire relatif aux applications affichées sur le portail
+    module Apps
+      module_function
+
+      # Liste des apps d'un établissement
+      def query_etablissement( uai )
+        Annuaire.send_request_signed( :service_annuaire_portail_entree, "/etablissement/#{uai}", {} )
+      end
+
+      def get( id )
+        Annuaire.send_request_signed( :service_annuaire_portail_entree, "/#{id}", {} )
+      end
+
+      def create( uai, definition )
+        definition[ 'etab_code_uai' ] = uai
+        Annuaire.post_request_signed( :service_annuaire_portail_entree, '', {}, definition )
+      end
+
+      def update( id, definition )
+        definition.delete( 'splat' ) # WTF
+        definition.delete( 'captures' ) # WTF
+        Annuaire.put_request_signed( :service_annuaire_portail_entree, "/#{id}", definition )
+      end
+
+      def delete( id )
+        Annuaire.delete_request_signed( :service_annuaire_portail_entree, "/#{id}", {} )
+      end
+    end
   end
 
   # Module d'interfaçage Annuaire relatif aux applications affichées sur le portail
   module Apps
     module_function
 
-    # Liste des apps d'un établissement
-    def query_etablissement( uai )
-      Annuaire.send_request_signed( :service_annuaire_portail_entree, "/etablissement/#{uai}", {} )
-    end
-
-    def query
+    def query_defaults
       Annuaire.send_request_signed( :service_annuaire_portail_entree, '/applications', {} )
-    end
-
-    def get( id )
-      Annuaire.send_request_signed( :service_annuaire_portail_entree, "/#{id}", {} )
-    end
-
-    def create( uai, definition )
-      definition[ 'etab_code_uai' ] = uai
-      Annuaire.post_request_signed( :service_annuaire_portail_entree, '', {}, definition )
-    end
-
-    def update( id, definition )
-      definition.delete( 'splat' ) # WTF
-      definition.delete( 'captures' ) # WTF
-      Annuaire.put_request_signed( :service_annuaire_portail_entree, "/#{id}", definition )
-    end
-
-    def delete( id )
-      Annuaire.delete_request_signed( :service_annuaire_portail_entree, "/#{id}", {} )
     end
   end
 end

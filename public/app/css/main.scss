@@ -209,9 +209,6 @@ body {
 }
 .damier {
     overflow-y:auto;
-    ng-color-picker > ul {
-	height: 1em;
-    }
     .toggle-modification {
 	border-radius: 1em;
 	box-shadow: 0 0 5px #16161d;
@@ -407,6 +404,9 @@ body {
     }
     .ui-sortable-helper {
 	box-shadow: 5px 5px 10px 0 #ececec;
+    }
+    ng-color-picker {
+	display: inline-block;
     }
 }
 .damier .petite.case,.logolaclasse {

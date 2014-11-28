@@ -169,7 +169,7 @@ class SinatraApp < Sinatra::Base
 
     return [] unless is_logged? && !user.profil_actif.nil?
 
-    AnnuaireWrapper::Apps.query
+    AnnuaireWrapper::Apps.query_defaults
                          .map do |app|
       default = config[:apps][:default][ app['id'].to_sym ]
 
@@ -185,8 +185,8 @@ class SinatraApp < Sinatra::Base
 
     return [] unless is_logged? && !user.profil_actif.nil?
 
-    AnnuaireWrapper::Apps.query_etablissement( user.profil_actif['uai'] )
-                         .map do |app|
+    apps = AnnuaireWrapper::Etablissement::Apps.query_etablissement( user.profil_actif['uai'] )
+                                               .map do |app|
       default = config[:apps][:default][ app['application_id'].to_sym ] unless app['application_id'].nil?
 
       unless default.nil?
@@ -198,7 +198,24 @@ class SinatraApp < Sinatra::Base
       end
 
       app
-    end.to_json
+    end
+
+    indexes = apps.map { |a| a['index'] }.sort
+    duplicates = indexes.select { |e| indexes.count( e ) > 1 }.uniq
+    free_indexes = (0..15).to_a - indexes
+
+    duplicates.each do |i|
+      unless free_indexes.empty?
+        app = apps.select { |a| a['index'] == i }.last
+        STDERR.puts "From #{app['index']}... "
+        app['index'] = free_indexes.pop
+        STDERR.puts "... to #{app['index']}"
+
+        # AnnuaireWrapper::Etablissement::Apps.update( app['index'], app )
+      end
+    end
+
+    apps.to_json
   end
 
   get "#{APP_PATH}/api/apps/:id" do
@@ -207,7 +224,7 @@ class SinatraApp < Sinatra::Base
 
     return [] unless is_logged? && !user.profil_actif.nil?
 
-    AnnuaireWrapper::Apps.get( params[:id] ).to_json
+    AnnuaireWrapper::Etablissement::Apps.get( params[:id] ).to_json
   end
 
   post "#{APP_PATH}/api/apps/?" do
@@ -222,7 +239,7 @@ class SinatraApp < Sinatra::Base
     param :icon, String, required: false
     param :color, String, required: false
 
-    AnnuaireWrapper::Apps.create( user.profil_actif['uai'], params ).to_json
+    AnnuaireWrapper::Etablissement::Apps.create( user.profil_actif['uai'], params ).to_json
   end
 
   put "#{APP_PATH}/api/apps/:id" do
@@ -236,14 +253,14 @@ class SinatraApp < Sinatra::Base
     param :icon, String, required: false
     param :color, String, required: false
 
-    AnnuaireWrapper::Apps.update( params[:id], params ).to_json
+    AnnuaireWrapper::Etablissement::Apps.update( params[:id], params ).to_json
   end
 
   delete "#{APP_PATH}/api/apps/:id" do
     content_type :json
     param :id, Integer, required: true
 
-    AnnuaireWrapper::Apps.delete( param[:id] ).to_json
+    AnnuaireWrapper::Etablissement::Apps.delete( param[:id] ).to_json
   end
 
   #
