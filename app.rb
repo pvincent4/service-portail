@@ -172,6 +172,7 @@ class SinatraApp < Sinatra::Base
     AnnuaireWrapper::Apps.query
                          .map do |app|
       default = config[:apps][:default][ app['id'].to_sym ]
+
       app.merge! default unless default.nil?
 
       app[ 'application_id' ] = app[ 'id' ]
@@ -184,7 +185,20 @@ class SinatraApp < Sinatra::Base
 
     return [] unless is_logged? && !user.profil_actif.nil?
 
-    AnnuaireWrapper::Apps.query_etablissement( user.profil_actif['uai'] ).to_json
+    AnnuaireWrapper::Apps.query_etablissement( user.profil_actif['uai'] )
+                         .map do |app|
+      default = config[:apps][:default][ app['application_id'].to_sym ] unless app['application_id'].nil?
+
+      unless default.nil?
+        app.merge! default
+
+        app[ 'icon' ] = default[ 'icon' ] if app[ 'icon' ].nil?
+        app[ 'color' ] = default[ 'color' ] if app[ 'color' ].nil?
+        app[ 'index' ] = default[ 'index' ] if app[ 'index' ] == -1
+      end
+
+      app
+    end.to_json
   end
 
   get "#{APP_PATH}/api/apps/:id" do

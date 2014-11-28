@@ -104,7 +104,7 @@ angular.module( 'portailApp' )
 			       if ( save && apps_indexes_changed ) {
 				   // mise à jour de l'annuaire avec les nouveaux index des apps suite au déplacement
 				   _($scope.cases).each( function( c, i ) {
-				       if ( _(c).has( 'app' ) ) {
+				       if ( _(c.app).has( 'id' ) ) {
 					   c.app.index = i;
 					   promesses.push( c.app.$update() );
 				       }

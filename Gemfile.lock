@@ -1,8 +1,8 @@
 GIT
   remote: https://github.com/laclasse-com/gem_annuaire
-  revision: 6ef896d78f96262ad383ade56f222f494bb23add
+  revision: 5ef91fec5926d97675baeae0f7042972b03366d4
   specs:
-    annuaire (0.1.1)
+    annuaire (0.1.2)
 
 GEM
   remote: https://rubygems.org/
@@ -51,7 +51,7 @@ GEM
       websocket-driver (>= 0.4.0)
     ffi (1.9.6)
     formatador (0.2.5)
-    guard (2.8.2)
+    guard (2.9.0)
       formatador (>= 0.2.4)
       listen (~> 2.7)
       lumberjack (~> 1.0)
@@ -63,7 +63,7 @@ GEM
     guard-rspec (4.3.1)
       guard (~> 2.1)
       rspec (>= 2.14, < 4.0)
-    hashie (3.3.1)
+    hashie (3.3.2)
     hiredis (0.5.2)
     hitimes (1.2.2)
     html_truncator (0.4.0)
@@ -77,7 +77,7 @@ GEM
       rake
     jasmine-core (2.1.2)
     json (1.8.1)
-    listen (2.8.1)
+    listen (2.8.2)
       celluloid (>= 0.15.2)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
@@ -87,7 +87,7 @@ GEM
     mini_portile (0.6.1)
     multi_json (1.10.1)
     netrc (0.8.0)
-    nokogiri (1.6.4.1)
+    nokogiri (1.6.5)
       mini_portile (~> 0.6.0)
     omniauth (1.2.2)
       hashie (>= 1.2, < 4)
