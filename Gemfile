@@ -22,10 +22,10 @@ gem 'html_truncator'
 gem 'htmlentities'
 gem 'uglifier'
 gem 'sass'
-gem 'annuaire', git: 'https://github.com/laclasse-com/gem_annuaire'
+gem 'annuaire', git: 'https://github.com/laclasse-com/gem_annuaire', branch: 'master'
 
 # Gems spécifiques ENT
-gem 'ent_notifs'
+# gem 'ent_notifs'
 
 group :development do
   gem 'sinatra-contrib'
