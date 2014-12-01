@@ -14,6 +14,7 @@
     /* Page loggué, damier */
     .damier .toggle-modification { display: none; }
     .damier .petite.case a span { font-weight: normal; }
+    .damier .petite.case.empty { display: none; }
 
     /* Page loggué, user */
     .user-profil header { height: 6.5em; }
