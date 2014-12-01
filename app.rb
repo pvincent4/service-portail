@@ -190,7 +190,11 @@ class SinatraApp < Sinatra::Base
       default = config[:apps][:default][ app['application_id'].to_sym ] unless app['application_id'].nil?
 
       unless default.nil?
-        app.merge! default
+        app.merge! default.inject( {} ) { |memo, (k, v)|
+          memo[ k.to_s ] = v
+
+          memo
+        }
 
         app[ 'icon' ] = default[ 'icon' ] if app[ 'icon' ].nil?
         app[ 'color' ] = default[ 'color' ] if app[ 'color' ].nil?
