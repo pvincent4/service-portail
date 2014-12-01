@@ -1,6 +1,7 @@
 GIT
   remote: https://github.com/laclasse-com/gem_annuaire
-  revision: 5ef91fec5926d97675baeae0f7042972b03366d4
+  revision: 0b18be19223325ecd9c94d1696436d8cb5b1b5b6
+  branch: master
   specs:
     annuaire (0.1.2)
 
@@ -30,8 +31,6 @@ GEM
       http_parser.rb (>= 0.6.0)
     em-socksify (0.3.0)
       eventmachine (>= 1.0.0.beta.4)
-    ent_notifs (0.1.2)
-      faye (>= 1.0.1)
     eventmachine (1.0.3)
     execjs (2.2.2)
     faye (1.0.3)
@@ -51,7 +50,7 @@ GEM
       websocket-driver (>= 0.4.0)
     ffi (1.9.6)
     formatador (0.2.5)
-    guard (2.9.0)
+    guard (2.10.0)
       formatador (>= 0.2.4)
       listen (~> 2.7)
       lumberjack (~> 1.0)
@@ -77,7 +76,7 @@ GEM
       rake
     jasmine-core (2.1.2)
     json (1.8.1)
-    listen (2.8.2)
+    listen (2.8.3)
       celluloid (>= 0.15.2)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
@@ -172,7 +171,6 @@ PLATFORMS
 DEPENDENCIES
   annuaire!
   css2less
-  ent_notifs
   faye
   faye-redis
   guard
