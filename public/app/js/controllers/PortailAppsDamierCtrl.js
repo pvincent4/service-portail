@@ -29,6 +29,7 @@ angular.module( 'portailApp' )
 		       var tool_app = function( app ) {
 			   app.configure = false;
 			   app.dirty = false;
+			   app.to_delete = false;
 
 			   app.toggle_configure = function() {
 			       _.chain($scope.cases)
@@ -45,12 +46,11 @@ angular.module( 'portailApp' )
 			   app.remove = function() {
 			       app.active = false;
 			       app.toggle_configure();
+			       app.is_dirty();
+			       app.to_delete = true;
 			   };
 			   app.colorize = function() {
-			       // if ( app.new_color ) {
-			       //	   return { 'background-color': app.new_color };
-			       // } else
-				   if ( app.color ) {
+			       if ( app.color ) {
 				   return { 'background-color': app.color };
 			       } else {
 				   return {};
@@ -109,7 +109,11 @@ angular.module( 'portailApp' )
 				       c.app.configure = false;
 				       if ( save && c.app.dirty ) {
 					   // c.app.color = c.app.new_color;
-					   promesses.push( c.app.$update() );
+					   if ( c.app.to_delete ) {
+					       promesses.push( c.app.$delete() );
+					   } else {
+					       promesses.push( c.app.$update() );
+					   }
 					   c.app = tool_app( c.app );
 				       }
 				   }
