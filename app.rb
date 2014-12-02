@@ -264,7 +264,7 @@ class SinatraApp < Sinatra::Base
     content_type :json
     param :id, Integer, required: true
 
-    AnnuaireWrapper::Etablissement::Apps.delete( param[:id] ).to_json
+    AnnuaireWrapper::Etablissement::Apps.delete( params[:id] ).to_json
   end
 
   #
