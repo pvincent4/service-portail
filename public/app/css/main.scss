@@ -76,46 +76,51 @@ body {
 	background-position:center center;
 	background-repeat:no-repeat;
 	background-size:contain;
-	text-align:center;
-	* {
-	    width:100%;
-	}
-	h3 {
-	    text-align: left;
-	}
-	span {
-	    background-color:rgba(0,0,0,0.5);
-	    display:block;
+	.user-info {
+	    text-align:left;
+	    display: block;
+	    position: relative;
 	    height:100%;
-	    position:absolute;
 	    width:100%;
-	}
-	.connect-register {
-	    a {
-		display:block;
-		margin: 20% auto 0;
-		width:80%;
+	    background-color: rgba( 0, 0, 0, 0.5 );
+	    * {
+		float: left;
+		width:100%;
 	    }
-	}
-	select {
-	    color:#fff;
-	    background:transparent;
-	    border:0;
-	    font-weight:lighter;
-	    width:100%;
-	}
-    }
-    .user-info {
-	background:transparent;
-	bottom:0;
-	height:auto;
-	line-height:0;
-	position:absolute;
-	h3 {
-	    line-height: 2;
-	}
-	a.logout {
-	    line-height:3;
+	    h3 {
+		font-weight: 700;
+		position: absolute;
+		left: 0;
+		top: 20%;
+	    }
+	    a {
+		color: #fff;
+	    }
+	    .logout {
+		border:1px solid #fff;
+		text-transform:uppercase;
+		width: 11em;
+		padding: 0.25em;
+		position: absolute;
+		top: 75%;
+		left: calc( 50% - 11em / 2 );
+	    }
+	    select {
+		color: #fff;
+		background:transparent;
+		border:0;
+		font-weight:lighter;
+		width:100%;
+		position: absolute;
+		top: 60%;
+		left: 0;
+	    }
+	    svg {
+		bottom:0;
+		left:0;
+		opacity:0.5;
+		position:absolute;
+	    }
 	}
     }
     .avatar {
@@ -184,32 +189,18 @@ body {
     }
 }
 
-.logolaclasse h3,.aside .user .user-info h3 {
+.logolaclasse h3
+{
     color:#fff;
     font-weight:700;
     padding:0;
     text-decoration:none;
-}
-.aside .user .connect-register a,.aside .user-info a.logout {
-    border:1px solid #fff;
-    color:#fff;
-    margin:.5em;
-    padding:.5em;
-    text-transform:uppercase;
 }
 .aside-blanc {
     background-color:white;
     .laius {
 	margin:4%;
 	text-align: justify;
-    }
-}
-.user-info {
-    svg {
-	bottom:0;
-	left:0;
-	opacity:0.5;
-	position:absolute;
     }
 }
 .damier {
@@ -242,6 +233,7 @@ body {
 	position:relative;
     }
     .petite.case {
+	position: relative;
 	.front, .back {
 	    position: absolute;
 	    top: 0;
@@ -297,10 +289,12 @@ body {
 	    }
 	}
 	.app-name {
+	    position: absolute;
 	    font-size: 16px;
 	    line-height: 1.1em;
 	    max-height:2.2em;
-	    margin-top:6%;
+	    left: 0;
+	    bottom: 10px;
 	}
 	a {
 	    .compteur-notification {
@@ -462,7 +456,6 @@ body {
     font-size: 10em;
     font-style: normal;
     font-weight: bolder;
-
 }
 .logolaclasse h3,.damier .petite.case .app-name {
     width:100%;
