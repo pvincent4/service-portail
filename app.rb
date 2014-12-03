@@ -183,6 +183,16 @@ class SinatraApp < Sinatra::Base
   get "#{APP_PATH}/api/apps/?" do
     content_type :json
 
+    STDERR.puts '/!\ FIXME WITH THE FORCE OF A THOUSAND SUNS!!!!'
+    STDERR.puts '/!\ OH HAI!'
+    STDERR.puts '/!\ U CAN HAZ APPS!'
+    STDERR.puts '/!\ SO AWESOME!'
+    STDERR.puts '/!\ Trève de plaisanterie ce pourrissage de log n\'a pour but'
+    STDERR.puts '/!\ que de donner le temps aux bits d\'arriver à destination.'
+    STDERR.puts '/!\ Dijkstra, pardonnez-leurs, ils ne savent pas ce qu\'ils font.'
+    STDERR.puts '/!\ (désolé)'
+    STDERR.puts '/!\ KTHXBYE.'
+
     return [] unless is_logged? && !user.profil_actif.nil?
 
     apps = AnnuaireWrapper::Etablissement::Apps.query_etablissement( user.profil_actif['uai'] )
