@@ -55,6 +55,12 @@
 			 height: calc(100% - 6.5em - 6em); }
     .user-profil .form accordion .panel-body .row div { padding: 0; }
 }
+@media screen and (orientation: landscape) and (max-height: 640px) {
+    .damier .petite.case { height: 33%; }
+}
+@media screen and (orientation: landscape) and (max-height: 400px) {
+    .damier .petite.case { height: 50%; }
+}
 
 /**** Portrait ****************************************************************/
 @media screen and (max-height: 778px) { /* (orientation: portrait) { */
