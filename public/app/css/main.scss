@@ -122,7 +122,8 @@ body {
 	background-color:#aff;
     }
     .news {
-	.news-image{
+	.news-image {
+	    transition: all 0.4s ease-in-out 0s;
 	    margin: auto;
 	    width: 100%;
 	    max-height: 67%;
@@ -175,7 +176,11 @@ body {
 		margin: 1px 6px;
 	    }
 	}
-
+    }
+    .news:hover {
+	.news-image{
+	    opacity: 0.9;
+	}
     }
 }
 
