@@ -13,159 +13,63 @@
     }
 }
 
-/**** Portrait ****************************************************************/
-@media screen and (orientation: portrait) {
+/* -md, -lg */
+/* @media screen and (min-width: 992px) { */
+
+/* } */
+
+/* -xs, -sm */
+@media screen and (max-width: 992px) {
     /* Page loggué */
     .aside { height: 3em; }
-    .aside .news { display: none; }
     .aside .logolaclasse, .aside .user { height: 100%; }
+    .aside .logolaclasse { width: 3em; }
     .aside .logolaclasse a img { height: 100%;
-				 width: auto; }
-    .aside .logolaclasse a h3 { display: none; }
-    .aside .user-info a, .aside .user-info br { display: none; }
-    .aside .user select { font-weight: normal;
-			  height: 100%; }
+				 width: auto;
+				 margin-top: 0; }
+    .aside .user { width: calc( 100% - 3em );
+		   background-position: left; }
+    .aside .user .user-info select { top: 0;
+				     left: 3em;
+				     height: 100%;
+				     width: 100%; }
 
-    /* Page loggué, damier */
-    .damier .toggle-modification { display: none; }
-    .damier .petite.case a span { font-weight: normal; }
-    .damier .petite.case.empty { display: none; }
-
-    /* Page loggué, user */
-    .user-profil header { height: 6.5em; }
-    .user-profil header h1, .user-profil header h2, .user-profil header h3 { line-height: 1em; }
-    .user-profil header h1 { font-size: 1.5em; }
-
-    .user-profil .form { top: 6.5em;
-			 bottom: 6em;
-			 height: calc(100% - 6.5em - 6em); }
-    .user-profil .form accordion .panel-body .row div { padding: 0; }
-
+    /* Page profil utilisateur */
+    .user-profil header { padding-left: 0; }
     .user-profil footer { height: 6em;
 			  padding: 0.25em; }
     .user-profil footer button { padding: 0.25em 0.5em; }
 
     /* Page app wrapper */
-    .en-tete .profil-select-wrapper {
-	max-width: 14em;
-    }
-    .en-tete .laclasse-com span {
-	display: none;
-    }
+    .en-tete .profil-select-wrapper { width: calc( 100% - 3em ); }
+}
 
+/* -xs */
+@media screen and (max-width: 768px) {
+    /* Page profil utilisateur */
+    .user-profil header { height: 6.5em; }
+    .user-profil header h1, .user-profil header h2, .user-profil header h3 { line-height: 1em; }
+    .user-profil header h1 { font-size: 1.5em; }
+    .user-profil .form { top: 6.5em;
+			 bottom: 6em;
+			 height: calc(100% - 6.5em - 6em); }
+    .user-profil .form accordion .panel-body .row div { padding: 0; }
+}
+
+/**** Portrait ****************************************************************/
+@media screen and (max-height: 778px) { /* (orientation: portrait) { */
     /* Page publique */
     .page_publique .connexion {left:50%;}
     .page_publique .title { top:50%; left: 5%; }
 }
 
 @media screen and (orientation: portrait) and (max-width: 480px) {
-    /* Page loggué */
-
-    /* Page loggué, damier */
-
-    /* Page loggué, user */
-
-    /* Page app wrapper */
-    .en-tete .user-menu {
-	display: none;
-    }
-
     /* Page publique */
     .page_publique .connexion .bienvenue {font-size: 1.4em;}
     .page_publique .connexion .btn-sm{font-size: 1.1em;}
 }
 
-@media screen and (orientation: portrait) and (max-width: 335px) {
-    /* Page loggué */
-
-    /* Page loggué, damier */
-    .damier .petite.case a span { font-size: 1em; }
-
-    /* Page loggué, user */
-
-    /* Page app wrapper */
-
-    /* Page publique */
-}
-
-/**** Paysage *****************************************************************/
-@media screen and (orientation: landscape) {
-    /* Page loggué */
-
-    /* Page loggué, damier */
-
-    /* Page loggué, user */
-
-    /* Page app wrapper */
-
-    /* Page publique */
-}
-
-
-@media screen and (orientation: landscape) and (max-height: 768px) {
-    /* Page loggué */
-    .logolaclasse a h3 { font-size: 1.5em; }
-    .aside .news ul[rn-carousel] .news-content { font-size: 0.8em; }
-    .aside .news ul[rn-carousel] .news-content h6 { font-size: 1.25em; }
-
-    /* Page loggué, damier */
-
-    /* Page loggué, user */
-
-    /* Page app wrapper */
-
-    /* Page publique */
-}
-
-@media screen and (orientation: landscape) and (max-height: 640px) {
-    /* Page loggué */
-
-    /* Page loggué, damier */
-    .damier .toggle-modification { display: none; }
-    .damier .petite.case a span { font-weight: normal; }
-
-    /* Page loggué, user */
-    .user-profil header { height: 6.5em; }
-    .user-profil header h1, .user-profil header h2, .user-profil header h3 { line-height: 1em; }
-    .user-profil header h1 { font-size: 1.5em; }
-
-    .user-profil .form { top: 6.5em;
-			 bottom: 6em;
-			 height: calc(100% - 6.5em - 6em); }
-    .user-profil .form accordion .panel-body .row div { padding: 0; }
-
-    .user-profil footer { height: 6em;
-			  padding: 0.25em; }
-    .user-profil footer button { padding: 0.25em 0.5em; }
-
-    /* Page app wrapper */
-
-    /* Page loggué, damier */
-    .damier .logos img { margin: 5% auto 0; }
-    /* .damier .petite.case { height: 33% } */
-    .damier .petite.case a { background-position: center top }
-    .damier .petite.case .app-name { font-weight:normal }
-    .damier .petite.case a span { font-size:1.1em }
-}
-
-@media screen and (orientation: landscape) and (max-height: 480px) {
-    /* Page loggué */
-    .aside { height: 3em; }
-    .aside .news { display: none; }
-    .aside .logolaclasse, .aside .user { height: 100%; }
-    .aside .logolaclasse a img { height: 100%;
-				 width: auto; }
-    .aside .logolaclasse a h3 { display: none; }
-    .aside .user-info span a h3 { font-size: 1.5em; }
-    .aside .user-info a.logout, .user-info br { display: none; }
-    .aside .user select { font-weight: normal; }
-
-    /* Page loggué, damier */
-
-    /* Page loggué, user */
-
-    /* Page app wrapper */
-
+@media screen and (orientation: landscape) and (max-width: 778px) {
     /* Page publique */
     .page_publique .connexion .bienvenue {font-size: 1.4em;}
     .page_publique .connexion .btn-sm{font-size: 1.1em;}
