@@ -209,7 +209,9 @@ body {
 }
 .damier {
     overflow-y:auto;
-    .toggle-modification {
+    .toggle-modification {	// Mode normal
+	background-image: url('../vendor/charte-graphique-laclasse-com/images/icon_admin-off-blanc.svg');
+	background-position: center;
 	border-radius: 1em;
 	box-shadow: 0 0 5px #16161d;
 	color: #fff;
@@ -259,12 +261,20 @@ body {
 	    cursor: pointer;
 	    top: 0.5em;
 	    left: 0.5em;
-	}
-	.toggle-configure.open-configure {
-	    color: #fff;
-	}
-	.toggle-configure.close-configure {
-	    color: #1aa1cc;
+	    height: 1em;
+	    width: 1em;
+	    .icone {
+		display: inline-block;
+		height: 100%;
+		width: 100%;
+		background-position: center;
+	    }
+	    .icone.parametrer {
+		background-image: url('../vendor/charte-graphique-laclasse-com/images/icon_admin-parametrer.svg');
+	    }
+	    .icone.visualiser {
+		background-image: url('../vendor/charte-graphique-laclasse-com/images/icon_admin-viz.svg');
+	    }
 	}
 	.configure {
 	    padding: 0.5em;
@@ -342,7 +352,8 @@ body {
 }
 
 .damier.modification {
-    .toggle-modification {
+    .toggle-modification {	// Mode modification
+	background-image: url('../vendor/charte-graphique-laclasse-com/images/icon_admin-on-noir.svg');
     }
     .toggle-modification.save, .toggle-modification.cancel, .toggle-modification.add-app {
 	height: 1.5em;
@@ -351,15 +362,19 @@ body {
 	right: 1.25em;
     }
     .toggle-modification.save {
-	top: calc( 100% - 5em );
-    }
-    .toggle-modification.cancel {
+	background-image: url('../vendor/charte-graphique-laclasse-com/images/icon_admin-valider.svg');
 	top: calc( 100% - 7em );
     }
+    .toggle-modification.cancel {
+	background-image: url('../vendor/charte-graphique-laclasse-com/images/icon_admin-annuler.svg');
+	top: calc( 100% - 5em );
+    }
     .toggle-modification.add-app {
+	background-image: url('../vendor/charte-graphique-laclasse-com/images/icon_admin-ajouter.svg');
 	right: 3.5em;
 	top: calc( 100% - 2.65em );
     }
+
     .exit-configure {
 	button {
 	    font-size: 2em;

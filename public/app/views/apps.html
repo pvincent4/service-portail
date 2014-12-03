@@ -13,7 +13,7 @@
 		<button class="btn btn-lg toggle-configure open-configure"
 			data-ng-if="modification && case.app && case.app.active"
 			data-ng-click="case.app.toggle_configure()">
-		    <span class="glyphicon glyphicon-cog"></span>
+		    <span class="icone parametrer"></span>
 		</button>
 
 		<!-- Affichage normal -->
@@ -48,7 +48,7 @@
 		<button class="btn btn-lg toggle-configure close-configure"
 			data-ng-if="modification && case.app"
 			data-ng-click="case.app.toggle_configure()">
-		    <i class="fa fa-reply"></i>
+		    <span class="icone visualiser"></span>
 		</button>
 
 		<label>nom : <input type="text" class="form-control"
@@ -70,18 +70,21 @@
 	</li>
     </ul>
 
-    <span class="glyphicon toggle-modification glyphicon-wrench"
+    <!-- Mode normal -->
+    <span class="toggle-modification"
 	  data-ng-class="{'gris4': modification, 'rouge': !modification}"
 	  data-ng-if="current_user.profil_actif.admin"
 	  data-ng-click="toggle_modification( !modification )"></span>
-    <span class="glyphicon glyphicon-remove toggle-modification cancel rouge"
+
+    <!-- Mode modification -->
+    <span class="toggle-modification cancel"
 	  data-ng-if="modification"
 	  data-ng-click="toggle_modification( false )"></span>
-    <span class="glyphicon glyphicon-ok toggle-modification save vert"
+    <span class="toggle-modification save"
 	  data-ng-if="modification"
 	  data-ng-click="toggle_modification( true )"></span>
 
-    <span class="glyphicon glyphicon-plus toggle-modification add-app bleu"
+    <span class="toggle-modification add-app"
 	  data-ng-if="modification"
 	  data-ng-click="add_tile()"></span>
 
