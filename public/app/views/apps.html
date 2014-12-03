@@ -4,7 +4,7 @@
     <ul ui-sortable="sortable_options" data-ng-model="cases">
 	<li data-ng-repeat="case in cases | orderBy:'index'"
 	    class="col-xs-6 col-sm-4 col-md-3 col-lg-3 petite case"
-	    data-ng-class="{'flip': case.app.configure, 'empty': !case.app || !case.app.id}"
+	    data-ng-class="{'flip': case.app.configure, 'empty hidden-xs': !case.app || !case.app.id}"
 	    data-ng-if="current_user.is_logged">
 
 	    <div class="front"
@@ -71,7 +71,7 @@
     </ul>
 
     <!-- Mode normal -->
-    <span class="toggle-modification"
+    <span class="hidden-xs hidden-sm toggle-modification"
 	  data-ng-if="current_user.profil_actif.admin"
 	  data-ng-click="toggle_modification( !modification )"></span>
 
