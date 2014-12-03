@@ -1,3 +1,18 @@
+@media screen and (max-height: 660px) {
+    .damier .petite.case a .icone {
+	font-size: 6.5em;
+    }
+    .damier .petite.case a .app-name {
+	bottom: 5px;
+    }
+}
+
+@media screen and (max-height: 490px) {
+    .damier .petite.case a .icone {
+	font-size: 4em;
+    }
+}
+
 /**** Portrait ****************************************************************/
 @media screen and (orientation: portrait) {
     /* Page loggué */
@@ -43,19 +58,6 @@
     .page_publique .title { top:50%; left: 5%; }
 }
 
-@media screen and (orientation: portrait) and (max-width: 335px) {
-    /* Page loggué */
-
-    /* Page loggué, damier */
-    .damier .petite.case a span { font-size: 1em; }
-
-    /* Page loggué, user */
-
-    /* Page app wrapper */
-
-    /* Page publique */
-}
-
 @media screen and (orientation: portrait) and (max-width: 480px) {
     /* Page loggué */
 
@@ -73,6 +75,19 @@
     .page_publique .connexion .btn-sm{font-size: 1.1em;}
 }
 
+@media screen and (orientation: portrait) and (max-width: 335px) {
+    /* Page loggué */
+
+    /* Page loggué, damier */
+    .damier .petite.case a span { font-size: 1em; }
+
+    /* Page loggué, user */
+
+    /* Page app wrapper */
+
+    /* Page publique */
+}
+
 /**** Paysage *****************************************************************/
 @media screen and (orientation: landscape) {
     /* Page loggué */
@@ -86,17 +101,12 @@
     /* Page publique */
 }
 
-@media screen and (orientation: landscape) and (max-height: 480px) {
+
+@media screen and (orientation: landscape) and (max-height: 768px) {
     /* Page loggué */
-    /* .aside { height: 3em; } */
-    /* .aside .news { display: none; } */
-    /* .aside .logolaclasse, .aside .user { height: 100%; } */
-    /* .aside .logolaclasse a img { height: 100%; */
-    /*				 width: auto; } */
-    /* .aside .logolaclasse a h3 { display: none; } */
-    /* .aside .user-info span a h3 { font-size: 1.5em; } */
-    /* .aside .user-info a.logout, .user-info br { display: none; } */
-    /* .aside .user select { font-weight: normal; } */
+    .logolaclasse a h3 { font-size: 1.5em; }
+    .aside .news ul[rn-carousel] .news-content { font-size: 0.8em; }
+    .aside .news ul[rn-carousel] .news-content h6 { font-size: 1.25em; }
 
     /* Page loggué, damier */
 
@@ -105,12 +115,8 @@
     /* Page app wrapper */
 
     /* Page publique */
-    .page_publique .connexion .bienvenue {font-size: 1.4em;}
-    .page_publique .connexion .btn-sm{font-size: 1.1em;}
-    .page_publique .nomENT { font-size: 1.25em; }
-    .page_publique .descENT { font-size: 1em; }
-
 }
+
 @media screen and (orientation: landscape) and (max-height: 640px) {
     /* Page loggué */
 
@@ -136,17 +142,23 @@
 
     /* Page loggué, damier */
     .damier .logos img { margin: 5% auto 0; }
-    .damier .petite.case { height: 33% }
+    /* .damier .petite.case { height: 33% } */
     .damier .petite.case a { background-position: center top }
     .damier .petite.case .app-name { font-weight:normal }
     .damier .petite.case a span { font-size:1.1em }
 }
 
-@media screen and (orientation: landscape) and (max-height: 768px) {
+@media screen and (orientation: landscape) and (max-height: 480px) {
     /* Page loggué */
-    .logolaclasse a h3 { font-size: 1.5em; }
-    .aside .news ul[rn-carousel] .news-content { font-size: 0.8em; }
-    .aside .news ul[rn-carousel] .news-content h6 { font-size: 1.25em; }
+    .aside { height: 3em; }
+    .aside .news { display: none; }
+    .aside .logolaclasse, .aside .user { height: 100%; }
+    .aside .logolaclasse a img { height: 100%;
+				 width: auto; }
+    .aside .logolaclasse a h3 { display: none; }
+    .aside .user-info span a h3 { font-size: 1.5em; }
+    .aside .user-info a.logout, .user-info br { display: none; }
+    .aside .user select { font-weight: normal; }
 
     /* Page loggué, damier */
 
@@ -155,4 +167,9 @@
     /* Page app wrapper */
 
     /* Page publique */
+    .page_publique .connexion .bienvenue {font-size: 1.4em;}
+    .page_publique .connexion .btn-sm{font-size: 1.1em;}
+    .page_publique .nomENT { font-size: 1.25em; }
+    .page_publique .descENT { font-size: 1em; }
+
 }
