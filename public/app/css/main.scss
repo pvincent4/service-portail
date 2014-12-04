@@ -204,9 +204,10 @@ body {
 }
 .damier {
     overflow-y:auto;
-    .toggle-modification {	// Mode normal
-	background-image: url('../vendor/charte-graphique-laclasse-com/images/icon_admin-off-blanc.svg');
+    .bouton-modification {	// Mode normal
+	background-image: url('../vendor/charte-graphique-laclasse-com/images/icon_admin-outils-gris.svg');
 	background-position: center;
+	background-repeat: no-repeat;
 	border-radius: 1em;
 	box-shadow: 0 0 5px #16161d;
 	color: #fff;
@@ -220,6 +221,9 @@ body {
 	top: calc(100% - 3em);
 	width: 2em;
 	z-index: 9999;
+    }
+    .bouton-modification.toggle {
+	background-size: 70%;
     }
     ul {
 	height: 100%;
@@ -350,24 +354,24 @@ body {
 }
 
 .damier.modification {
-    .toggle-modification {	// Mode modification
-	background-image: url('../vendor/charte-graphique-laclasse-com/images/icon_admin-on-noir.svg');
+    .bouton-modification {	// Mode modification
+	background-image: url('../vendor/charte-graphique-laclasse-com/images/icon_admin-outils-blancs.svg');
     }
-    .toggle-modification.save, .toggle-modification.cancel, .toggle-modification.add-app {
+    .bouton-modification.save, .bouton-modification.cancel, .bouton-modification.add-app {
 	height: 1.5em;
 	width: 1.5em;
 	line-height: 1.55em;
 	right: 1.25em;
     }
-    .toggle-modification.save {
+    .bouton-modification.save {
 	background-image: url('../vendor/charte-graphique-laclasse-com/images/icon_admin-valider.svg');
 	top: calc( 100% - 7em );
     }
-    .toggle-modification.cancel {
+    .bouton-modification.cancel {
 	background-image: url('../vendor/charte-graphique-laclasse-com/images/icon_admin-annuler.svg');
 	top: calc( 100% - 5em );
     }
-    .toggle-modification.add-app {
+    .bouton-modification.add-app {
 	background-image: url('../vendor/charte-graphique-laclasse-com/images/icon_admin-ajouter.svg');
 	right: 3.5em;
 	top: calc( 100% - 2.65em );
