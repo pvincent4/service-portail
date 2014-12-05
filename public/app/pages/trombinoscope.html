@@ -1,19 +1,30 @@
-<div class="row">
+<div class="row" data-ng-controller="PortailTrombiCtrl">
     <div class="animate scale-fade ng-scope" style="">
         <div class="row portail ng-scope">
             <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 aside aside-blanc">
                 <p class="laius">
                     Liste des classes de l'utilisateur connecté. Point d'entrée du trombinoscope.
+                    <br/>
+                    <a ng-click="retour()" ng-show="eleves">Retour à la liste des classes</a>
                 </p>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
                 <div class="row damier">
-                    <div data-ng-repeat="rgpt in mes_regroupements| orderBy:'index'"
-                         class="col-xs-12 col-sm-6 col-md-3 col-lg-3 petite case animate scale-fade-in {{ rgpt.couleur }}"
-                         data-ng-if="current_user.is_logged">
-                        <a title="Voir le trombinoscope du regroupement {{rgpt.nom}}" href="{{rgpt.id}}">
+                    <div data-ng-repeat="rgpt in mes_regroupements"
+                         class="col-xs-12 col-sm-6 col-md-3 col-lg-3 petite case animate scale-fade-in"
+                         style="background-color: {{ rgpt.color }}"
+                         data-ng-if="current_user.is_logged" ng-hide="eleves">
+                        <a title="Voir le trombinoscope du regroupement {{rgpt.nom}}" ng-click="showElevesRegroupement(rgpt.cls_id)" ng-show="rgpt.nom">
                             <span class="app-name">{{rgpt.nom}}</span>
                         </a>   
+                    </div>
+
+                     <div data-ng-repeat="eleve in eleves"
+                         class="col-xs-12 col-sm-6 col-md-3 col-lg-3 petite case animate scale-fade-in"
+                         style="background-color: {{ eleve.color }}"
+                         data-ng-if="current_user.is_logged" ng-show="eleves">
+                             <img ng-src="/{{eleve.avatar}}" ng-hide="eleve.avatar==''" class="avatar" />      
+                            <span class="eleve-first-name">{{eleve.prenom}} {{eleve.nom}}</span>
                     </div>
                 </div>
             </div>

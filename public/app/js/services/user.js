@@ -39,6 +39,13 @@ angular.module( 'portailApp' )
 		} ] );
 
 angular.module( 'portailApp' )
+    .factory( 'RegroupementDetail',
+	      [ '$resource', 'APP_PATH',
+		function( $resource, APP_PATH ) {
+		    return $resource( APP_PATH + '/api/regroupement_detail/:id' );
+		} ] );
+
+angular.module( 'portailApp' )
     .service( 'currentUser',
 	      [ '$http', '$upload', 'APP_PATH', 'User', 'UserRessources', 'UserMesRegroupements',
 		function( $http, $upload, APP_PATH, User, UserRessources, UserMesRegroupements ) {
