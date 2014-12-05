@@ -272,6 +272,18 @@ class SinatraApp < Sinatra::Base
   end
 
   #
+  # Classes et groupes de l'utilisateur
+  #
+  get "#{APP_PATH}/api/regroupement_detail/:id" do
+    content_type :json
+    mes_amis = []
+
+    mes_amis = AnnuaireWrapper::Etablissement.regroupement_detail( params[:id] )
+    puts mes_amis['eleves']
+    colorize( mes_amis['eleves'] ).to_json
+  end
+
+  #
   # Agrégateur RSS
   #
   get "#{APP_PATH}/api/news/?" do
