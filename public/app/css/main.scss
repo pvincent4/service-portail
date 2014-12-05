@@ -63,7 +63,7 @@ body {
 }
 .aside {
     background-color:#16161d;
-    box-shadow:5px 0 8px 0 rgba(0,0,0,0.5);
+    box-shadow:5px 0 8px 0 rgba(0, 0, 0, 0.5);
     z-index:999;
     .news {
 	height:75%;
@@ -76,6 +76,9 @@ body {
 	background-position:center center;
 	background-repeat:no-repeat;
 	background-size:contain;
+	.user-info:hover {
+	    background-color: rgba( 0, 0, 0, 0.2 );
+	}
 	.user-info {
 	    text-align:left;
 	    display: block;
@@ -83,6 +86,7 @@ body {
 	    height:100%;
 	    width:100%;
 	    background-color: rgba( 0, 0, 0, 0.5 );
+	    transition: all 0.4s ease-in-out 0s;
 	    * {
 		float: left;
 		width:100%;
@@ -209,15 +213,13 @@ body {
 	background-position: center;
 	background-repeat: no-repeat;
 	border-radius: 1em;
-	box-shadow: 0 0 5px #16161d;
-	color: #fff;
+	box-shadow: 8px 5px 5px #16161d;
 	cursor: pointer;
 	font-size: 2em;
 	height: 2em;
 	line-height: 2em;
 	position: absolute;
 	right: 1em;
-	text-align: center;
 	top: calc(100% - 3em);
 	width: 2em;
 	z-index: 9999;
@@ -268,6 +270,7 @@ body {
 		height: 100%;
 		width: 100%;
 		background-position: center;
+		background-size: 100% 100%;
 	    }
 	    .icone.parametrer {
 		background-image: url('../vendor/charte-graphique-laclasse-com/images/icon_admin-parametrer.svg');
