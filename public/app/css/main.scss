@@ -210,14 +210,12 @@ body {
 	background-repeat: no-repeat;
 	border-radius: 1em;
 	box-shadow: 8px 5px 5px #16161d;
-	color: #fff;
 	cursor: pointer;
 	font-size: 2em;
 	height: 2em;
 	line-height: 2em;
 	position: absolute;
 	right: 1em;
-	text-align: center;
 	top: calc(100% - 3em);
 	width: 2em;
 	z-index: 9999;
@@ -268,6 +266,7 @@ body {
 		height: 100%;
 		width: 100%;
 		background-position: center;
+		background-size: 100% 100%;
 	    }
 	    .icone.parametrer {
 		background-image: url('../vendor/charte-graphique-laclasse-com/images/icon_admin-parametrer.svg');
