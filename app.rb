@@ -200,9 +200,9 @@ class SinatraApp < Sinatra::Base
       default = config[:apps][:default][ app['application_id'].to_sym ] unless app['application_id'].nil?
 
       unless default.nil?
-        app[ 'icon' ] = default[ 'icon' ] if app[ 'icon' ].nil?
-        app[ 'color' ] = default[ 'color' ] if app[ 'color' ].nil?
-        app[ 'index' ] = default[ 'index' ] if app[ 'index' ] == -1
+        app[ 'icon' ] = default[ :icon ] if app[ 'icon' ].nil?
+        app[ 'color' ] = default[ :color ] if app[ 'color' ].nil?
+        app[ 'index' ] = default[ :index ] if app[ 'index' ] == -1
       end
 
       app
