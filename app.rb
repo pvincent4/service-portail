@@ -144,7 +144,7 @@ class SinatraApp < Sinatra::Base
       .sort_by { |r| r['classe_libelle'].to_s }
       .reverse # Pour avoir les 6eme avant les 3eme
       .each { |c|
-        obj_cls = { nom: c['classe_libelle'], cls_id: c['classe_id'], uai: uai_courant }
+        obj_cls = { nom: c['classe_libelle'], cls_id: c['classe_id'], uai: uai_courant, etablissement_nom: c['etablissement_nom']}
         mes_regpts.push obj_cls
       }.uniq! # supprime les doublons dûs aux matieres enseaignées qui peuvent être plusieurs pour une classe
 
@@ -152,7 +152,7 @@ class SinatraApp < Sinatra::Base
         .reject { |r| r[ 'etablissement_code' ] != uai_courant }
         .sort_by { |r| r['groupe_libelle'].to_s }
         .each { |c|
-        obj_grp = { nom: c['groupe_libelle'], cls_id: c['groupe_id'], uai: uai_courant }
+        obj_grp = { nom: c['groupe_libelle'], cls_id: c['groupe_id'], uai: uai_courant, etablissement_nom: c['etablissement_nom'] }
         mes_regpts.push obj_grp
       }.uniq!
       # rgpts = ress_temp[groupes_libres].reject { |r| r[ 'etablissement_code' ] != uai_courant }
