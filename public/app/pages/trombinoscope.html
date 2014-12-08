@@ -1,41 +1,45 @@
 <style>
 .classe-name {
-top: 0.5em;
-left: 0;
-font-family: "Futura Bold";
-font-size: 5em;
-font-weight: bold;
+    top: 0.5em;
+    left: 0;
+    font-family: "Futura Bold";
+    font-size: 5em;
+    font-weight: bold;
 }
 .classe-name, .college-name {
-position: absolute;
-width: 100%;
-text-align: center;
-color: #505050 !important;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    color: #505050 !important;
 }
 .college-name {
-top: 7em;
-left: 0;
-font-family: "Futura Light";
-font-size: 1.2em;
-font-weight: bold;
-text-transform: capitalize;
+    top: 7em;
+    left: 0;
+    font-family: "Futura Light";
+    font-size: 1.2em;
+    font-weight: bold;
+    text-transform: capitalize;
 }
-.carnet-first-name {
-top: 6em;
-left: 0.8em;
+.trombi-first-name {
+    top: 1em;
+    left: 0.8em;
 }
-.carnet-first-name, .carnet-last-name, .carnet-classe, .carnet-etab {
-position: absolute;
-font-family: "Futura Bold";
-font-weight: bold;
-text-transform: uppercase;
-font-size: 1.6em;
-color: #505050 !important;
-width: 0%!important;
+.trombi-first-name, .trombi-last-name, .trombi-classe, .trombi-etab {
+    position: absolute;
+    font-family: "Futura Bold";
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 1.6em;
+    color: #505050 !important;
+    width: 0%!important;
 }
-.carnet-last-name {
-top: 7em;
-left: 0.8em;
+.trombi-last-name {
+    top: 2em;
+    left: 0.8em;
+}
+.avatar {
+    width: 100%;
+    height: 100%;
 }
 </style>
 <div class="row" data-ng-controller="PortailTrombiCtrl">
@@ -65,8 +69,8 @@ left: 0.8em;
                          style="background-color: {{ eleve.color }}"
                          data-ng-if="current_user.is_logged" ng-show="eleves">
                              <img ng-src="/{{eleve.avatar}}" ng-hide="eleve.avatar==''" class="avatar" />      
-                            <span class="carnet-first-name">{{eleve.prenom}}</span>
-                            <span class="carnet-last-name">{{eleve.nom}}</span>
+                            <span class="trombi-first-name">{{eleve.prenom}}</span>
+                            <span class="trombi-last-name">{{eleve.nom}}</span>
                     </div>
                 </div>
             </div>
