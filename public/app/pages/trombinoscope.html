@@ -1,3 +1,43 @@
+<style>
+.classe-name {
+top: 0.5em;
+left: 0;
+font-family: "Futura Bold";
+font-size: 5em;
+font-weight: bold;
+}
+.classe-name, .college-name {
+position: absolute;
+width: 100%;
+text-align: center;
+color: #505050 !important;
+}
+.college-name {
+top: 7em;
+left: 0;
+font-family: "Futura Light";
+font-size: 1.2em;
+font-weight: bold;
+text-transform: capitalize;
+}
+.carnet-first-name {
+top: 6em;
+left: 0.8em;
+}
+.carnet-first-name, .carnet-last-name, .carnet-classe, .carnet-etab {
+position: absolute;
+font-family: "Futura Bold";
+font-weight: bold;
+text-transform: uppercase;
+font-size: 1.6em;
+color: #505050 !important;
+width: 0%!important;
+}
+.carnet-last-name {
+top: 7em;
+left: 0.8em;
+}
+</style>
 <div class="row" data-ng-controller="PortailTrombiCtrl">
     <div class="animate scale-fade ng-scope" style="">
         <div class="row portail ng-scope">
@@ -15,7 +55,8 @@
                          style="background-color: {{ rgpt.color }}"
                          data-ng-if="current_user.is_logged" ng-hide="eleves">
                         <a title="Voir le trombinoscope du regroupement {{rgpt.nom}}" ng-click="showElevesRegroupement(rgpt.cls_id)" ng-show="rgpt.nom">
-                            <span class="app-name">{{rgpt.nom}}</span>
+                            <span class="classe-name">{{rgpt.nom}}</span>
+                            <span class="college-name">{{rgpt.etablissement_nom}}</span>
                         </a>   
                     </div>
 
@@ -24,7 +65,8 @@
                          style="background-color: {{ eleve.color }}"
                          data-ng-if="current_user.is_logged" ng-show="eleves">
                              <img ng-src="/{{eleve.avatar}}" ng-hide="eleve.avatar==''" class="avatar" />      
-                            <span class="eleve-first-name">{{eleve.prenom}} {{eleve.nom}}</span>
+                            <span class="carnet-first-name">{{eleve.prenom}}</span>
+                            <span class="carnet-last-name">{{eleve.nom}}</span>
                     </div>
                 </div>
             </div>
