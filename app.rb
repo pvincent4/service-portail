@@ -219,7 +219,7 @@ class SinatraApp < Sinatra::Base
         app['index'] = free_indexes.pop
         STDERR.puts "... to #{app['index']}"
 
-        AnnuaireWrapper::Etablissement::Apps.update( app['index'], app )
+        AnnuaireWrapper::Etablissement::Apps.update( app['id'], app )
       end
     end
 
