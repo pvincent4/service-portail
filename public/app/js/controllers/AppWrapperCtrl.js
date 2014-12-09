@@ -18,10 +18,7 @@ angular.module( 'portailApp' )
 			       } );
 			       break;
 			   case "TROMBI":
-			       // Application Trombinoscope
-			       currentUser.regroupements().then( function ( response ) {
-				   $scope.mes_regroupements = response;
-			       } );
+			   		//Nothing to do    
 			       break;
 			   default:
 			   }
