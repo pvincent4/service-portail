@@ -938,4 +938,15 @@ svg {
     .petite.case a {
 	cursor: pointer;
     }
+    .petite.case.classe{
+	span {
+	    height: auto;
+	}
+	a.retour {
+	    height: auto;
+	    span {
+		width: auto;
+	    }
+	}
+    }
 }

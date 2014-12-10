@@ -8,12 +8,14 @@ angular.module( 'portailApp' )
 		       currentUser.regroupements().then( function ( response ) {
 			   $scope.mes_regroupements = response;
 
-			   $scope.showElevesRegroupement = function( regtId ){
-			       $scope.eleves = RegroupementDetail.query( { id: regtId } );
+			   $scope.showElevesRegroupement = function( regroupement ){
+			       $scope.regroupement = regroupement;
+			       $scope.eleves = RegroupementDetail.query( { id: regroupement.cls_id } );
 			   };
 
 			   $scope.retour = function() {
 			       $scope.eleves = undefined;
+			       $scope.regroupement = undefined;
 			   };
 		       });
 		   }
