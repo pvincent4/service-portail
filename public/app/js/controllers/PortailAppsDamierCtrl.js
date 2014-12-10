@@ -95,6 +95,16 @@ angular.module( 'portailApp' )
 			   if ( !$scope.modification ) {
 			       var promesses = [];
 
+			       if ( save && apps_indexes_changed ) {
+				   // mise à jour de l'annuaire avec les nouveaux index des apps suite au déplacement
+				   _($scope.cases).each( function( c, i ) {
+				       if ( _(c.app).has( 'id' ) ) {
+					   c.app.index = i;
+					   promesses.push( c.app.$update() );
+				       }
+				   } );
+			       }
+
 			       _($scope.cases).each( function( c ) {
 				   if ( _(c).has( 'app' ) ) {
 				       c.app.configure = false;
@@ -108,16 +118,6 @@ angular.module( 'portailApp' )
 				       }
 				   }
 			       } );
-
-			       if ( save && apps_indexes_changed ) {
-				   // mise à jour de l'annuaire avec les nouveaux index des apps suite au déplacement
-				   _($scope.cases).each( function( c, i ) {
-				       if ( _(c.app).has( 'id' ) ) {
-					   c.app.index = i;
-					   promesses.push( c.app.$update() );
-				       }
-				   } );
-			       }
 
 			       $q.all( promesses ).then( retrieve_apps );
 			   }
