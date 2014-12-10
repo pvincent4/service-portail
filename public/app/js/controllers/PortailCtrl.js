@@ -5,10 +5,14 @@
 
 angular.module( 'portailApp' )
     .controller( 'PortailCtrl',
-		 [ '$scope', '$sce', 'current_user', 'APP_PATH', 'news',
-		   function( $scope, $sce, current_user, APP_PATH, news ) {
+		 [ '$scope', '$sce', '$state', 'current_user', 'APP_PATH', 'news',
+		   function( $scope, $sce, $state, current_user, APP_PATH, news ) {
 		       $scope.prefix = APP_PATH;
 		       $scope.current_user = current_user;
+
+		       $scope.go_home = function() {
+			   $state.go( 'portail.logged' );
+		       };
 
 		       $scope.carousel_index = 0;
 

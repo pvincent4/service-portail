@@ -2,10 +2,14 @@
 
 angular.module( 'portailApp' )
     .controller( 'AppWrapperCtrl',
-		 [ '$scope', '$http', '$stateParams', '$sce', 'currentUser', 'Apps', 'APP_PATH',
-		   function ( $scope, $http, $stateParams, $sce, currentUser, Apps, APP_PATH ) {
+		 [ '$scope', '$http', '$stateParams', '$sce', '$state', 'currentUser', 'Apps', 'APP_PATH',
+		   function ( $scope, $http, $stateParams, $sce, $state, currentUser, Apps, APP_PATH ) {
 		       $scope.iOS = ( navigator.userAgent.match( /iPad/i ) !== null ) || ( navigator.userAgent.match( /iPhone/i ) !== null );
 		       $scope.prefix = APP_PATH;
+
+		       $scope.go_home = function() {
+			   $state.go( 'portail.logged' );
+		       };
 
 		       currentUser.get().then( function ( response ) {
 			   $scope.current_user = response;
@@ -18,7 +22,7 @@ angular.module( 'portailApp' )
 			       } );
 			       break;
 			   case "TROMBI":
-			   		//Nothing to do    
+			       //Nothing to do
 			       break;
 			   default:
 			   }

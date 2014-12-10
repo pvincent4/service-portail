@@ -440,6 +440,7 @@ body {
     width:100%;
 }
 .logolaclasse {
+    cursor: pointer;
     a {
 	h3 {
 	    font-size: 2em;
@@ -559,6 +560,7 @@ body {
     font-weight:bolder;
     font-size: 14px;
     text-align:center;
+    cursor: pointer;
     a {
 	color:#fff;
 	text-decoration:none;
@@ -925,6 +927,7 @@ svg {
 	font-size: 1.6em;
 	// color: #505050 !important;
 	width: auto!important;
+	text-shadow: 0 0 1px #16161d;
     }
     .trombi-last-name {
 	top: 2em;

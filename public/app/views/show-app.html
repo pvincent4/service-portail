@@ -1,8 +1,7 @@
 <div id="app-wrapper">
 
-
     <div class="en-tete container gris4" role="navigation">
-	<a class="laclasse-com gris1 pull-left" href="{{prefix}}/">
+	<a class="laclasse-com gris1 pull-left" data-ng-click="go_home()">
 	    <div class="petit-logo gris4" data-ng-style="{'background-image': 'url(' + prefix + '/app/vendor/charte-graphique-laclasse-com/images/logolaclasse.svg)' }" >
 	    </div>
 	    <span class="hidden-xs hidden-sm">laclasse.com</span>
@@ -16,7 +15,7 @@
 	    </a>
 	    <ul class="gris3 dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" dropdown-menu>
 		<li>
-		    <a href="/"
+		    <a data-ng-click="go_home()"
 		       data-ng-style="{'background-image': 'url(' + prefix +'/vendor/charte-graphique-laclasse-com/images/logolaclasse.svg)' }" >
 			retour au portail
 		    </a>
