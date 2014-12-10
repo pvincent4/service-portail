@@ -61,8 +61,10 @@
 					    data-ng-change="case.app.is_dirty()" />
 		</label>
 
-		<label data-ng-click="case.app.is_dirty()">couleur : <ng-color-picker selected="case.app.color"
-										      colors="couleurs"></ng-color-picker></label>
+		<label data-ng-click="case.app.is_dirty()">
+		    <ng-color-picker selected="case.app.color"
+				     colors="couleurs"></ng-color-picker>
+		</label>
 
 		<button class="btn btn-danger remove"
 			data-ng-click="case.app.remove()">Supprimer</button>

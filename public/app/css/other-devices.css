@@ -24,6 +24,7 @@
     .aside { height: 3em; }
     .aside .logolaclasse, .aside .user { height: 100%; }
     .aside .logolaclasse { width: 3em; }
+    .aside .logolaclasse a h3 { font-size: 1.7em; }
     .aside .logolaclasse a img { height: 100%;
 				 width: auto;
 				 margin-top: 0; }
