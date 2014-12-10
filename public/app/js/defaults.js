@@ -17,4 +17,9 @@ angular.module( 'portailApp' )
 			  { couleur: 'jaune' },
 			  { couleur: 'rouge' },
 			  { couleur: 'vert' },
-			  { couleur: 'violet' } ] );
+			  { couleur: 'violet' } ] )
+    .constant( 'COULEURS', [ '#1aa1cc',
+			     '#80ba66',
+			     '#eb5454',
+			     '#9c75ab',
+			     '#e8c254' ] );

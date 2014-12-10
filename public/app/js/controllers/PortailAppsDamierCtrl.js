@@ -2,8 +2,8 @@
 
 angular.module( 'portailApp' )
     .controller( 'PortailAppsDamierCtrl',
-		 [ '$scope', '$modal', '$log', '$q', 'current_user', 'Apps', 'APP_PATH', 'CASES',
-		   function( $scope, $modal, $log, $q, current_user, Apps, APP_PATH, CASES ) {
+		 [ '$scope', '$modal', '$log', '$q', 'current_user', 'Apps', 'APP_PATH', 'CASES', 'COULEURS',
+		   function( $scope, $modal, $log, $q, current_user, Apps, APP_PATH, CASES, COULEURS ) {
 		       $scope.prefix = APP_PATH;
 		       $scope.current_user = current_user;
 		       $scope.modification = false;
@@ -20,11 +20,7 @@ angular.module( 'portailApp' )
 			       } );
 			   }
 		       };
-		       $scope.couleurs = [ '#1aa1cc',
-					   '#80ba66',
-					   '#eb5454',
-					   '#9c75ab',
-					   '#e8c254' ];
+		       $scope.couleurs = COULEURS;
 
 		       var tool_app = function( app ) {
 			   app.configure = false;
