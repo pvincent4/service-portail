@@ -79,22 +79,19 @@ angular.module( 'portailApp' )
 			       }
 			   } )
 			       .result.then( function( new_app ) {
-				   new_app = tool_app( new_app );
-				   new_app.active = true;
-
 				   var recipient = _.chain($scope.cases)
 					   .select( function( c ) { return !_(c.app).has( 'libelle' ); } )
 					   .first()
 					   .value();
 				   new_app.index = recipient.index;
-				   recipient.app = new_app;
 
-				   if ( new_app.creation ) {
-				       new_app.$save();
+				   new_app.dirty = true;
+				   new_app.configure = true;
+				   new_app.active = true;
 
-				       new_app.dirty = true;
-				       new_app.configure = true;
-				   }
+				   new_app.$save().then( function() {
+				       recipient.app = tool_app( new_app );
+				   } );
 			       } );
 		       };
 
@@ -108,7 +105,6 @@ angular.module( 'portailApp' )
 				   if ( _(c).has( 'app' ) ) {
 				       c.app.configure = false;
 				       if ( save && c.app.dirty ) {
-					   // c.app.color = c.app.new_color;
 					   if ( c.app.to_delete ) {
 					       promesses.push( c.app.$delete() );
 					   } else {

@@ -176,6 +176,9 @@ class SinatraApp < Sinatra::Base
       app.merge! default unless default.nil?
 
       app[ 'application_id' ] = app[ 'id' ]
+      app.delete( 'id' )
+      app[ 'type' ] = 'INTERNAL'
+
       app
     end.to_json
   end
