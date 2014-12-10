@@ -1,79 +1,40 @@
-<style media="screen" type="text/css">
-.classe-name {
-    top: 0.5em;
-    left: 0;
-    font-family: "Futura Bold";
-    font-size: 5em;
-    font-weight: bold;
-}
-.classe-name, .college-name {
-    position: absolute;
-    width: 100%;
-    text-align: center;
-    color: #505050 !important;
-}
-.college-name {
-    top: 7em;
-    left: 0;
-    font-family: "Futura Light";
-    font-size: 1.2em;
-    font-weight: bold;
-    text-transform: capitalize;
-}
-.trombi-first-name {
-    top: 1em;
-    left: 0.8em;
-}
-.trombi-first-name, .trombi-last-name, .trombi-classe, .trombi-etab {
-    position: absolute;
-    font-family: "Futura Bold";
-    font-weight: bold;
-    text-transform: uppercase;
-    font-size: 1.6em;
-    color: #505050 !important;
-    width: auto!important;
-}
-.trombi-last-name {
-    top: 2em;
-    left: 0.8em;
-}
-.avatar {
-    width: 100%;
-    height: 100%;
-}
-</style>
 <div class="row" data-ng-controller="PortailTrombiCtrl">
     <div class="animate scale-fade ng-scope" style="">
-        <div class="row portail ng-scope">
-            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 aside aside-blanc">
-                <p class="laius">
-                    Liste des classes de l'utilisateur connecté. Point d'entrée du trombinoscope.
-                    <br/>
-                    <a ng-click="retour()" ng-show="eleves">Retour à la liste des classes</a>
-                </p>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
-                <div class="row damier">
-                    <div data-ng-repeat="rgpt in mes_regroupements"
-                         class="col-xs-12 col-sm-6 col-md-3 col-lg-3 petite case animate scale-fade-in"
-                         style="background-color: {{ rgpt.color }}"
-                         data-ng-if="current_user.is_logged" ng-hide="eleves">
-                        <a title="Voir le trombinoscope du regroupement {{rgpt.nom}}" ng-click="showElevesRegroupement(rgpt.cls_id)" ng-show="rgpt.nom">
-                            <span class="classe-name">{{rgpt.nom}}</span>
-                            <span class="college-name">{{rgpt.etablissement_nom}}</span>
-                        </a>   
-                    </div>
+	<div class="row portail ng-scope">
+	    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 aside aside-blanc">
+		<p class="laius">
+		    Liste des classes de l'utilisateur connecté. Point d'entrée du trombinoscope.
+		    <br/>
+		    <a data-ng-click="retour()"
+		       data-ng-if="eleves">Retour à la liste des classes</a>
+		</p>
+	    </div>
+	    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+		<div class="row damier trombinoscope">
+		    <div data-ng-repeat="rgpt in mes_regroupements"
+			 class="col-xs-12 col-sm-6 col-md-3 col-lg-3 petite case animate scale-fade-in"
+			 data-ng-style="{'background-color': rgpt.color}"
+			 data-ng-if="current_user.is_logged && !eleves">
+			<a title="Voir le trombinoscope du regroupement {{rgpt.nom}}"
+			   data-ng-click="showElevesRegroupement(rgpt.cls_id)"
+			   data-ng-if="rgpt.nom">
+			    <span class="classe-name">{{rgpt.nom}}</span>
+			    <span class="college-name">{{rgpt.etablissement_nom}}</span>
+			</a>
+		    </div>
 
-                     <div data-ng-repeat="eleve in eleves"
-                         class="col-xs-12 col-sm-6 col-md-3 col-lg-3 petite case animate scale-fade-in"
-                         style="background-color: {{ eleve.color }}"
-                         data-ng-if="current_user.is_logged" ng-show="eleves">
-                             <img ng-src="/{{eleve.avatar}}" ng-hide="eleve.avatar==''" class="avatar" />      
-                            <span class="trombi-first-name">{{eleve.prenom}}</span>
-                            <span class="trombi-last-name">{{eleve.nom}}</span>
-                    </div>
-                </div>
-            </div>
-        </div>
+		    <div data-ng-repeat="eleve in eleves"
+			 class="col-xs-12 col-sm-6 col-md-3 col-lg-3 petite case animate scale-fade-in"
+			 data-ng-style="{'background-color': eleve.color}"
+			 data-ng-if="current_user.is_logged && eleves">
+			<img class="avatar"
+			     data-ng-src="{{eleve.avatar}}"
+			     data-ng-if="eleve.avatar != ''"/>
+			<span class="trombi-first-name">{{eleve.prenom}}</span>
+			<span class="trombi-last-name">{{eleve.nom}}</span>
+		    </div>
+		</div>
+	    </div>
+	</div>
     </div>
 </div>

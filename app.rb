@@ -279,10 +279,14 @@ class SinatraApp < Sinatra::Base
   #
   get "#{APP_PATH}/api/regroupement_detail/:id" do
     content_type :json
-    mes_amis = []
 
     mes_amis = AnnuaireWrapper::Etablissement.regroupement_detail( params[:id] )
-    puts mes_amis['eleves']
+    mes_amis['eleves'] = mes_amis['eleves'].map { |e|
+      e[ 'avatar' ] = ANNUAIRE[:url].gsub( %r{/api}, '/' ) + e[ 'avatar' ]
+
+      e
+    }
+
     colorize( mes_amis['eleves'] ).to_json
   end
 
