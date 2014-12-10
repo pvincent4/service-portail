@@ -9,7 +9,15 @@ angular.module( 'portailApp' )
 			   .then( function( response ) {
 			       $scope.apps = response;
 			       _($scope.apps).each( function( app ) {
-				   app.present = _(current_apps).contains( app.application_id );
+				   app.available = function() {
+				       return !_.chain(current_apps)
+					   .reject( function( a ) {
+					       return a.to_delete;
+					   } )
+					   .pluck( 'application_id' )
+					   .contains( app.application_id )
+					   .value();
+				   };
 			       } );
 
 			       $scope.apps.push( new Apps( { creation: true,

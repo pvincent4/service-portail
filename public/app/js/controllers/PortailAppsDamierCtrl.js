@@ -67,11 +67,8 @@ angular.module( 'portailApp' )
 			       resolve: {
 				   current_apps: function () {
 				       return _.chain($scope.cases)
-					   .select( function( c ) {
-					       return _(c).has('app');
-					   } )
 					   .map( function( c ) {
-					       return c.app.application_id;
+					       return c.app;
 					   } )
 					   .compact()
 					   .value();
@@ -88,6 +85,7 @@ angular.module( 'portailApp' )
 				   new_app.dirty = true;
 				   new_app.configure = true;
 				   new_app.active = true;
+				   new_app.to_delete = false;
 
 				   new_app.$save().then( function() {
 				       recipient.app = tool_app( new_app );
