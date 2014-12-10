@@ -137,6 +137,15 @@ body {
 	    max-height: 67%;
 	    opacity: 0.6;
 	}
+	.carousel-control.right, .carousel-control.left {
+	    background-image: none;
+	}
+	.carousel-control .icon-prev,
+	.carousel-control .icon-next,
+	.carousel-control .glyphicon-chevron-left,
+	.carousel-control .glyphicon-chevron-right {
+	    top: 33%;
+	}
 	.carousel-caption {
 	    background-color:rgba(255,255,255,0.1);
 	    color:#fff;
