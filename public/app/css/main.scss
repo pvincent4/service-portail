@@ -845,6 +845,7 @@ svg {
 // Popup d'ajout d'app
 .new-app {
     background-color: #777;
+    opacity: 0.66;
     float: left;
     height: 10em;
     list-style: outside none none;
@@ -860,12 +861,17 @@ svg {
 	    margin-top: 1em;
 	}
 	.app-name {
+	    display: inline-block;
 	    color: #fff;
+	    width: 100%;
+	    text-align: center;
+	    font-size: 85%;
 	}
     }
 }
 .new-app.selected {
-    background-color: #16161d;
+    box-shadow: 0 0 0 4px #8e8e8e;
+    opacity: 1;
 }
 .new-app.creation {
     width: 21em;

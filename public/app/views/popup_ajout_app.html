@@ -10,7 +10,8 @@
 	    data-ng-click="selected( app )">
 
 	    <a data-ng-if="!app.creation"
-	       title="{{ app.description }}">
+	       title="{{ app.description }}"
+	       data-ng-style="{'background-color': app.color }">
 		<img class="icone" data-ng-src="{{prefix}}/{{app.icon}}"
 		     data-ng-if="app.icon"/>
 		<span class="app-name" data-ng-cloak>{{ app.libelle }}</span>
