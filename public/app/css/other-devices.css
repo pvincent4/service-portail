@@ -1,17 +1,17 @@
 @media screen and (max-height: 660px) {
-    .damier .petite.case a .icone {
-	font-size: 6.5em;
-    }
+    /* .damier .petite.case a .icone { */
+    /*	font-size: 6.5em; */
+    /* } */
     .damier .petite.case a .app-name {
 	bottom: 5px;
     }
 }
 
-@media screen and (max-height: 490px) {
-    .damier .petite.case a .icone {
-	font-size: 4em;
-    }
-}
+/* @media screen and (max-height: 490px) { */
+/*     .damier .petite.case a .icone { */
+/*	font-size: 4em; */
+/*     } */
+/* } */
 
 /* -md, -lg */
 /* @media screen and (min-width: 992px) { */

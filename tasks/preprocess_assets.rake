@@ -98,7 +98,8 @@ namespace :preprocess_assets do
                                                           'public/app/vendor/ng-switcher/dist/ng-switcher.js',
                                                           'public/app/vendor/ng-flow/dist/ng-flow-standalone.js',
                                                           'public/app/vendor/ng-color-picker/color-picker.js',
-                                                          'public/app/vendor/angular-carousel/dist/angular-carousel.js' ] )
+                                                          'public/app/vendor/angular-carousel/dist/angular-carousel.js',
+                                                          'public/app/vendor/ngFitText/src/ng-FitText.js' ] )
     File.open( './public/app/vendor/vendor.min.js', 'w' )
         .write( uglified )
     File.open( './public/app/vendor/vendor.min.js.map', 'w' )
