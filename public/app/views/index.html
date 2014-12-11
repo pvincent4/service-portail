@@ -28,8 +28,11 @@
 	    </span>
 	</div>
 
-	<carousel class="col-xs-12 col-sm-12 col-md-12 col-lg-12 hidden-xs hidden-sm news">
-	    <slide ng-repeat="slide in newsfeed" active="slide.active">
+	<ul class="col-xs-12 col-sm-12 col-md-12 col-lg-12 hidden-xs hidden-sm news"
+	    rn-carousel
+	    rn-carousel-controls
+	    rn-carousel-index="news_index">
+	    <li ng-repeat="slide in newsfeed" active="slide.active">
 		<img class="news-image"
 		     data-ng-src="{{slide.image ? slide.image: prefix + '/app/vendor/charte-graphique-laclasse-com/images/logolaclasse.svg'}}" />
 		<div class="carousel-caption">
@@ -37,8 +40,13 @@
 		    <a href="{{ slide.link }}" target="_blank"><h6 data-ng-cloak>{{ slide.title }}</h6></a>
 		    <p data-ng-bind-html="slide.trusted_description"></p>
 		</div>
-	    </slide>
-	</carousel>
+	    </li>
+	</ul>
+	<div class="angular-carousel-indicators"
+	     rn-carousel-indicators
+	     data-ng-if="newsfeed.length > 1"
+	     slides="newsfeed"
+	     rn-carousel-index="news_index"></div>
     </div>
 
     <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">

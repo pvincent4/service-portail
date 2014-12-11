@@ -27,7 +27,8 @@
     "angular-ui-sortable": "~0.13.0",
     "angular-delay": "~0.1.2",
     "ng-color-picker": "https://github.com/joujiahe/ng-color-picker.git#latest",
-    "angular-touch": "~1.3.3"
+    "angular-touch": "~1.3.3",
+    "angular-carousel": "~0.3.7"
   },
   "devDependencies": {
     "angular-mocks": "latest",

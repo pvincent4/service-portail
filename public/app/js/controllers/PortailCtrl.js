@@ -37,6 +37,7 @@ angular.module( 'portailApp' )
 
 				   return item;
 			       });
+			       $scope.news_index = 0;
 			   });
 		       }
 		   } ] );
