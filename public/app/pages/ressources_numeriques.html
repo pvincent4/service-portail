@@ -19,7 +19,7 @@
 			 data-ng-class="{'empty': !ressource.code}"
 			 data-ng-style="{'background-color': ressource.color }"
 			 data-ng-if="current_user.is_logged">
-			<a title="{{ressource.nom_court}}" href="{{ressource.url_access_get}}" data-ng-if="ressource.code != ''">
+			<a title="{{ressource.nom_court}}" href="{{ressource.url_access_get}}" data-ng-if="ressource.code != ''" target="_blank">
 			    <img data-ng-src="{{prefix}}/app/vendor/charte-graphique-laclasse-com/images/{{ ressource.icone }}">
 			    <span class="app-name">{{ressource.lib}}</span>
 			</a>
