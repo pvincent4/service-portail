@@ -19,7 +19,6 @@ angular.module( 'portailApp' )
 					   .value();
 				   };
 			       } );
-
 			       $scope.apps.push( new Apps( { creation: true,
 							     present: false,
 							     type: 'EXTERNAL',
@@ -28,7 +27,7 @@ angular.module( 'portailApp' )
 							     url: '',
 							     color: '',
 							     active: true } ) );
-			   });
+			   } );
 		       $scope.selected = { apps: null };
 
 		       $scope.selected = function( app ) {
