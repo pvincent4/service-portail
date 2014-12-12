@@ -392,14 +392,6 @@ class SinatraApp < Sinatra::Base
     # Associer les couleurs des carrés
     colorize(ress_temp).to_json
   end
-
-  # get "#{APP_PATH}/api/test" do
-  #   content_type :json
-  #   mes_regpts = []
-  #   uai_courant = user.profil_actif['uai']
-  #   rgpts = AnnuaireWrapper::Etablissement.get_regroupements( uai_courant )
-  #   rgpts.to_json
-  # end
   # }}
 
   # {{{ auth
