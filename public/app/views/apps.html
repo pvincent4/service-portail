@@ -16,6 +16,13 @@
 		    <span class="icone parametrer"></span>
 		</button>
 
+		<label class="couleurs"
+		       data-ng-click="case.app.is_dirty()"
+		       data-ng-if="modification && case.app && case.app.active">
+		    <ng-color-picker selected="case.app.color"
+				     colors="couleurs"></ng-color-picker>
+		</label>
+
 		<!-- Affichage normal -->
 		<a data-ng-if="case.app.active && !modification"
 		   data-ui-sref="app-wrapper({ app: case.app.application_id })"
@@ -63,11 +70,6 @@
 		<label>description : <input type="text" class="form-control"
 					    data-ng-model="case.app.description"
 					    data-ng-change="case.app.is_dirty()" />
-		</label>
-
-		<label data-ng-click="case.app.is_dirty()">
-		    <ng-color-picker selected="case.app.color"
-				     colors="couleurs"></ng-color-picker>
 		</label>
 
 		<button class="btn btn-danger remove"
