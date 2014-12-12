@@ -40,6 +40,9 @@ angular.module( 'portailApp' )
 				   } else {
 				       // Toutes les applications en iframe et les pages statiques
 				       var app = _( response ).findWhere( { application_id: $stateParams.app } );
+				       if ( _(app).isUndefined() ) {
+					   app = _( response ).findWhere( { libelle: $stateParams.app } );
+				       }
 				       $scope.app = { nom: app.nom,
 						      url: $sce.trustAsResourceUrl( app.url ),
 						      // Si l'application contient */pages/* dans son url
