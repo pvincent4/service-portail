@@ -298,7 +298,13 @@ class SinatraApp < Sinatra::Base
 
     # THINK : Comment mettre des priorités sur les différents flux ?
     news = []
-    config[:news_feed].each do |feed|
+
+    fluxes = AnnuaireWrapper::Etablissement::Flux.query_etablissement( user.profil_actif['uai'] )
+    fluxes = config[:news_feed] if fluxes.empty? || fluxes.nil?
+
+    fluxes.each do |feed|
+      feed = Hash[ feed.map { |k, v| [k.to_sym, v] } ]
+
       begin
         SimpleRSS.parse( open( feed[:flux] ) )
                  .items

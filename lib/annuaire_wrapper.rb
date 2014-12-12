@@ -90,6 +90,15 @@ module AnnuaireWrapper
       Annuaire.send_request_signed( :service_annuaire_regroupement, "#{uid}", 'expand' => 'true' )
     end
 
+    # Module d'interfaçage Annuaire relatif aux flux RSS affichés sur le portail
+    module Flux
+      module_function
+
+      def query_etablissement( uai )
+        Annuaire.send_request_signed :service_annuaire_portail_flux, "/etablissement/#{uai}", {}
+      end
+    end
+
     # Module d'interfaçage Annuaire relatif aux applications affichées sur le portail
     module Apps
       module_function
