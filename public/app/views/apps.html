@@ -16,12 +16,11 @@
 		    <span class="icone parametrer"></span>
 		</button>
 
-		<label class="couleurs"
-		       data-ng-click="case.app.is_dirty()"
-		       data-ng-if="modification && case.app && case.app.active">
-		    <ng-color-picker selected="case.app.color"
+		<ng-color-picker class="couleurs"
+				     data-ng-click="case.app.is_dirty()"
+				     data-ng-if="modification && case.app && case.app.active"
+				     selected="case.app.color"
 				     colors="couleurs"></ng-color-picker>
-		</label>
 
 		<!-- Affichage normal -->
 		<a data-ng-if="case.app.active && !modification"
