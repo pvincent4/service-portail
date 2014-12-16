@@ -44,8 +44,7 @@ angular.module( 'portailApp' )
 					   app = _( response ).findWhere( { libelle: $stateParams.app } );
 				       }
 				       if ( app.type == 'EXTERNAL' ) {
-					       //app.url = APP_PATH + '/redirect/?url=' + app.url;
-					   app.url = 'https://www.google.com/webhp?#q=' + app.url + '&btnI=I';
+					   app.url = APP_PATH + '/redirect/?url=' + app.url;
 				       }
 				       $scope.app = { nom: app.nom,
 						      url: $sce.trustAsResourceUrl( app.url ),
