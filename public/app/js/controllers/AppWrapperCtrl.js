@@ -45,7 +45,7 @@ angular.module( 'portailApp' )
 				       }
 				       if ( app.type == 'EXTERNAL' ) {
 					       //app.url = APP_PATH + '/redirect/?url=' + app.url;
-					   app.url = 'http://www.google.com/webhp?#q=' + app.url + '&btnI=I';
+					   app.url = 'https://www.google.com/webhp?#q=' + app.url + '&btnI=I';
 				       }
 				       $scope.app = { nom: app.nom,
 						      url: $sce.trustAsResourceUrl( app.url ),
