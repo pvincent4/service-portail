@@ -57,12 +57,6 @@ class SinatraApp < Sinatra::Base
     erb :app
   end
 
-  get "#{APP_PATH}/redirect/" do
-    param :url, String, required: true
-
-    erb :redirect, locals: { url: params[:url] }, layout: false
-  end
-
   ##### API ####################################################################
   # {{{ API
   #

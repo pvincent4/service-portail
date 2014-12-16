@@ -44,7 +44,7 @@ angular.module( 'portailApp' )
 					   app = _( response ).findWhere( { libelle: $stateParams.app } );
 				       }
 				       if ( app.type == 'EXTERNAL' ) {
-					   app.url = APP_PATH + '/redirect/?url=' + app.url;
+					   app.url.replace( /^http:/, 'https:' );
 				       }
 				       $scope.app = { nom: app.nom,
 						      url: $sce.trustAsResourceUrl( app.url ),
