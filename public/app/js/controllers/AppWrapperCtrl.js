@@ -44,6 +44,7 @@ angular.module( 'portailApp' )
 					   app = _( response ).findWhere( { libelle: $stateParams.app } );
 				       }
 				       if ( app.type == 'EXTERNAL' ) {
+					   // solution un peu sale pour contourner le fait qu'on ne peut pas afficher du http dans une iframe en https
 					   app.url = app.url.replace( /^http:/, 'https:' );
 				       }
 				       $scope.app = { nom: app.nom,
