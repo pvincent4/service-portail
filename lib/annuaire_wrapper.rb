@@ -97,6 +97,25 @@ module AnnuaireWrapper
       def query_etablissement( uai )
         Annuaire.send_request_signed :service_annuaire_portail_flux, "/etablissement/#{uai}", {}
       end
+
+      def get( id )
+        Annuaire.send_request_signed( :service_annuaire_portail_flux, "/#{id}", {} )
+      end
+
+      def create( uai, definition )
+        definition[ 'etab_code_uai' ] = uai
+        Annuaire.post_request_signed( :service_annuaire_portail_flux, '', {}, definition )
+      end
+
+      def update( id, definition )
+        definition.delete( 'splat' ) # WTF
+        definition.delete( 'captures' ) # WTF
+        Annuaire.put_request_signed( :service_annuaire_portail_flux, "/#{id}", definition )
+      end
+
+      def delete( id )
+        Annuaire.delete_request_signed( :service_annuaire_portail_flux, "/#{id}", {} )
+      end
     end
 
     # Module d'interfaçage Annuaire relatif aux applications affichées sur le portail
