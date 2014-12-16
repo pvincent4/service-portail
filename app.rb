@@ -57,6 +57,13 @@ class SinatraApp < Sinatra::Base
     erb :app
   end
 
+  get "#{APP_PATH}/redirect/" do
+    param :url, String, required: true
+
+    redirect params[:url]
+  end
+
+  ##### API ####################################################################
   # {{{ API
   #
   # Gestion de session côtế client
@@ -71,7 +78,6 @@ class SinatraApp < Sinatra::Base
     user.full( env ).to_json
   end
 
-  ##### API ####################################################################
   put "#{APP_PATH}/api/user" do
     content_type :json
     param :nom,            String,  required: false

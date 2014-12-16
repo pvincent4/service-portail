@@ -43,6 +43,9 @@ angular.module( 'portailApp' )
 				       if ( _(app).isUndefined() ) {
 					   app = _( response ).findWhere( { libelle: $stateParams.app } );
 				       }
+				       if ( app.type == 'EXTERNAL' ) {
+					   app.url = APP_PATH + '/redirect/?url=' + app.url;
+				       }
 				       $scope.app = { nom: app.nom,
 						      url: $sce.trustAsResourceUrl( app.url ),
 						      // Si l'application contient */pages/* dans son url
