@@ -54,6 +54,8 @@ module AnnuaireWrapper
       Annuaire.post_raw_request_signed( :service_annuaire_user, "#{uid}/upload/avatar",
                                         {},
                                         image: File.open( new_filename ) )
+
+      File.delete new_filename
     end
 
     # Suppression avatar
