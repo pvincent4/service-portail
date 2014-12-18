@@ -87,7 +87,7 @@ module AnnuaireWrapper
       Annuaire.send_request_signed( :service_annuaire_personnel, "#{uai}/users", 'expand' => 'true' )
     end
 
-    # detail d'un regrouement
+    # detail d'un regroupement
     def regroupement_detail( uid )
       Annuaire.send_request_signed( :service_annuaire_regroupement, "#{uid}", 'expand' => 'true' )
     end
