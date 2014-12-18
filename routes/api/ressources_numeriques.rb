@@ -12,7 +12,7 @@ module Portail
           app.get "#{APP_PATH}/api/ressources_numeriques/?" do
             content_type :json
 
-            ress_temp = AnnuaireWrapper::User.app.get_resources( user.uid )
+            ress_temp = AnnuaireWrapper::User.get_resources( user.uid )
             uai_courant = user.profil_actif['uai']
             # Ne prendre que les ressources de l'établissement courant.
             # Qui sont dans la fenêtre d'abonnement

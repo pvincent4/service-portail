@@ -14,16 +14,6 @@ angular.module( 'portailApp' )
 		       currentUser.get().then( function ( response ) {
 			   $scope.current_user = response;
 
-			   switch ($stateParams.app) {
-			   case "GAR":
-			       // Les ressources numériques de l'utilisateur
-			       currentUser.ressources().then( function ( response ) {
-				   $scope.ressources_numeriques = response;
-			       } );
-			       break;
-			   default:
-			   }
-
 			   // Les applications de l'utilisateur
 			   Apps.query()
 			       .$promise.then( function ( response ) {

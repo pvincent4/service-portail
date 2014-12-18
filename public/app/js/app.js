@@ -58,6 +58,11 @@ angular.module( 'portailApp', [ 'ngResource',
 				 templateUrl: 'views/trombinoscope.html',
 				 controller: 'PortailTrombiCtrl'
 			       } )
+		       .state( 'ressources-numeriques',
+			       { url: '/ressources-numeriques',
+				 templateUrl: 'views/ressources_numeriques.html',
+				 controller: 'RessourcesNumeriquesCtrl'
+			       } )
 		       .state( 'app-wrapper',
 			       { url: '/show-app?app?static',
 				 templateUrl: 'views/show-app.html',
