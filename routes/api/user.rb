@@ -81,7 +81,7 @@ module Portail
             content_type :json
             mes_regpts = []
 
-            rgpts = AnnuaireWrapper::User.app.get_regroupements( user.uid )
+            rgpts = AnnuaireWrapper::User.get_regroupements( user.uid )
             uai_courant = user.profil_actif['uai']
             # Pour les classes
             # filtrer sur les regroupements de l'établissement courant.
@@ -113,7 +113,7 @@ module Portail
           #
           # Classes et groupes de l'utilisateur
           #
-          app.get "#{APP_PATH}/api/regroupements/:id" do
+          app.get "#{APP_PATH}/api/user/regroupements/:id" do
             content_type :json
 
             mes_amis = AnnuaireWrapper::Etablissement.regroupement_detail( params[:id] )
