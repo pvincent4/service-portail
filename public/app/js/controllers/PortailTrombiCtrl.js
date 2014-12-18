@@ -1,5 +1,4 @@
 'use strict';
-'use strict';
 
 angular.module( 'portailApp' )
     .controller( 'PortailTrombiCtrl',
@@ -31,5 +30,4 @@ angular.module( 'portailApp' )
 		       });
 		   }
 		 ]
-	       )
-;
+	       );
