@@ -43,16 +43,21 @@ angular.module( 'portailApp', [ 'ngResource',
 				     }
 				 }
 			       } )
-		       .state('portail.user',
-			      { parent: 'portail',
-				url: '/user',
-				views: {
-				    'main': {
-					templateUrl: 'views/user.html',
-					controller: 'PortailUserCtrl'
-				    }
-				}
-			      })
+		       .state( 'portail.user',
+			       { parent: 'portail',
+				 url: '/user',
+				 views: {
+				     'main': {
+					 templateUrl: 'views/user.html',
+					 controller: 'PortailUserCtrl'
+				     }
+				 }
+			       } )
+		       .state( 'trombinoscope',
+			       { url: '/trombinoscope',
+				 templateUrl: 'views/trombinoscope.html',
+				 controller: 'PortailTrombiCtrl'
+			       } )
 		       .state( 'app-wrapper',
 			       { url: '/show-app?app?static',
 				 templateUrl: 'views/show-app.html',

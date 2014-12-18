@@ -21,9 +21,6 @@ angular.module( 'portailApp' )
 				   $scope.ressources_numeriques = response;
 			       } );
 			       break;
-			   case "TROMBI":
-			       //Nothing to do
-			       break;
 			   default:
 			   }
 
