@@ -15,16 +15,16 @@ module Portail
             return [] unless is_logged? && !user.profil_actif.nil?
 
             AnnuaireWrapper::Apps.query_defaults
-                                 .map do |app|
-              default = config[:apps][:default][ app['id'].to_sym ]
+                                 .map do |appli|
+              default = config[:apps][:default][ appli['id'].to_sym ]
 
-              app.merge! default unless default.nil?
+              appli.merge! default unless default.nil?
 
-              app[ 'application_id' ] = app[ 'id' ]
-              app.delete( 'id' )
-              app[ 'type' ] = 'INTERNAL'
+              appli[ 'application_id' ] = appli[ 'id' ]
+              appli.delete( 'id' )
+              appli[ 'type' ] = 'INTERNAL'
 
-              app
+              appli
             end.to_json
           end
 
@@ -91,7 +91,7 @@ module Portail
             param :libelle, String, required: false
             param :description, String, required: false
             param :url, String, required: false
-            param :active, Boolean, required: false
+            param :active, TrueClass, required: false
             param :icon, String, required: false
             param :color, String, required: false
 
@@ -102,7 +102,7 @@ module Portail
             content_type :json
             param :id, Integer, required: true
             param :index, Integer, required: true
-            param :active, Boolean, required: false
+            param :active, TrueClass, required: false
             param :url, String, required: false
             param :libelle, String, required: false
             param :description, String, required: false

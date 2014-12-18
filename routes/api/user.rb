@@ -29,7 +29,7 @@ module Portail
             param :ville,          String,  required: false
             # param :login,          String,  required: false
             # param :password,       String,  required: false
-            # param :bloque,         Boolean, required: false
+            # param :bloque,         TrueClass, required: false
 
             AnnuaireWrapper::User.put( user.uid,
                                        params )
