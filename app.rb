@@ -13,9 +13,9 @@ Bundler.require( :default, ENV['RACK_ENV'].to_sym )     # require tout les gems 
 
 require_relative './lib/annuaire_wrapper'
 
-require_relative './lib/AuthenticationHelpers'
-require_relative './lib/ConfigHelpers'
-require_relative './lib/UserHelpers'
+require_relative './helpers/Authentication'
+require_relative './helpers/Config'
+require_relative './helpers/User'
 
 require_relative './routes/auth'
 require_relative './routes/api/user'
@@ -55,22 +55,22 @@ class SinatraApp < Sinatra::Base
 
   helpers Sinatra::Param
 
-  helpers AuthenticationHelpers
-  helpers ConfigHelpers
-  helpers UserHelpers
+  helpers Portail::Helpers::Authentication
+  helpers Portail::Helpers::Config
+  helpers Portail::Helpers::User
 
   ##### routes #################################################################
   get "#{APP_PATH}/?" do
     erb :app
   end
 
-  register Sinatra::Portail::Auth
+  register Portail::Routes::Auth
 
-  register Sinatra::Portail::Api::User
-  register Sinatra::Portail::Api::Apps
-  register Sinatra::Portail::Api::News
-  register Sinatra::Portail::Api::RessourcesNumeriques
-  register Sinatra::Portail::Api::Version
+  register Portail::Routes::Api::User
+  register Portail::Routes::Api::Apps
+  register Portail::Routes::Api::News
+  register Portail::Routes::Api::RessourcesNumeriques
+  register Portail::Routes::Api::Version
 end
 
 SinatraApp.run! if __FILE__ == $PROGRAM_NAME

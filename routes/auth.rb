@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-module Sinatra
-  module Portail
+module Portail
+  module Routes
     module Auth
       def self.registered( app )
         app.get "#{APP_PATH}/auth/:provider/callback" do

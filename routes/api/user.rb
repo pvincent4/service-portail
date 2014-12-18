@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-module Sinatra
-  module Portail
+module Portail
+  module Routes
     module Api
       module User
         def self.registered( app )
