@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module( 'portailApp' )
-    .controller( 'PortailTrombiCtrl',
+    .controller( 'TrombinoscopeCtrl',
 		 [ '$scope', '$state', 'currentUser', 'RegroupementDetail', 'COULEURS',
 		   function( $scope, $state, currentUser, RegroupementDetail, COULEURS ) {
 		       var randomize_colors = function( ary, couleurs ) {

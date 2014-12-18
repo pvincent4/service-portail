@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module( 'portailApp' )
-    .controller( 'PortailAppsDamierCtrl',
+    .controller( 'DamierAppsCtrl',
 		 [ '$scope', '$modal', '$log', '$q', 'current_user', 'Apps', 'APP_PATH', 'CASES', 'COULEURS',
 		   function( $scope, $modal, $log, $q, current_user, Apps, APP_PATH, CASES, COULEURS ) {
 		       $scope.prefix = APP_PATH;

@@ -39,7 +39,7 @@ angular.module( 'portailApp', [ 'ngResource',
 				 views: {
 				     'main': {
 					 templateUrl: 'views/apps.html',
-					 controller: 'PortailAppsDamierCtrl'
+					 controller: 'DamierAppsCtrl'
 				     }
 				 }
 			       } )
@@ -49,14 +49,14 @@ angular.module( 'portailApp', [ 'ngResource',
 				 views: {
 				     'main': {
 					 templateUrl: 'views/user.html',
-					 controller: 'PortailUserCtrl'
+					 controller: 'ModificationUserCtrl'
 				     }
 				 }
 			       } )
 		       .state( 'trombinoscope',
 			       { url: '/trombinoscope',
 				 templateUrl: 'views/trombinoscope.html',
-				 controller: 'PortailTrombiCtrl'
+				 controller: 'TrombinoscopeCtrl'
 			       } )
 		       .state( 'ressources-numeriques',
 			       { url: '/ressources-numeriques',

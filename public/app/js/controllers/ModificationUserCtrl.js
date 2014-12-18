@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module( 'portailApp' )
-    .controller( 'PortailUserCtrl',
+    .controller( 'ModificationUserCtrl',
 		 [ '$scope', '$state', 'current_user', 'currentUser', 'APP_PATH',
 		   function( $scope, $state, current_user, currentUser, APP_PATH ) {
 		       $scope.prefix = APP_PATH;
