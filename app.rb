@@ -17,6 +17,7 @@ require_relative './helpers/Authentication'
 require_relative './helpers/Config'
 require_relative './helpers/User'
 
+require_relative './routes/index'
 require_relative './routes/auth'
 require_relative './routes/api/user'
 require_relative './routes/api/apps'
@@ -60,9 +61,8 @@ class SinatraApp < Sinatra::Base
   helpers Portail::Helpers::User
 
   ##### routes #################################################################
-  get "#{APP_PATH}/?" do
-    erb :app
-  end
+
+  register Portail::Routes::Index
 
   register Portail::Routes::Auth
 
