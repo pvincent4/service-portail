@@ -63,6 +63,16 @@ angular.module( 'portailApp', [ 'ngResource',
 				 templateUrl: 'views/ressources_numeriques.html',
 				 controller: 'RessourcesNumeriquesCtrl'
 			       } )
+		       .state( 'classes-culturelles-numeriques',
+			       { url: '/classes-culturelles-numeriques',
+				 templateUrl: 'views/ccn.html',
+				 controller: 'CCNCtrl'
+			       } )
+		       .state( 'classes-culturelles-numeriques-archivees',
+			       { url: '/classes-culturelles-numeriques-archivees',
+				 templateUrl: 'views/archives-ccn.html',
+				 controller: 'CCNCtrl'
+			       } )
 		       .state( 'app-wrapper',
 			       { url: '/show-app?app?static',
 				 templateUrl: 'views/show-app.html',
