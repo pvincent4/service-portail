@@ -38,8 +38,6 @@ end
 
 # Application Sinatra servant de base
 class SinatraApp < Sinatra::Base
-  @ent_notifs = []
-
   configure do
     set :app_file, __FILE__
     set :root, APP_ROOT
