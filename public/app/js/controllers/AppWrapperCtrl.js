@@ -28,7 +28,15 @@ angular.module( 'portailApp' )
 				       // Toutes les applications en iframe et les pages statiques
 				       var app = _( response ).findWhere( { application_id: $stateParams.app } );
 				       if ( _(app).isUndefined() ) {
-					   app = _( response ).findWhere( { libelle: $stateParams.app } );
+					   		app = _( response ).findWhere( { libelle: $stateParams.app } );
+				       }
+				       //App still undefined => app is not visible from this priofil => redirect to portail
+				       if ( _(app).isUndefined() ) {
+				       	var loc = window.location.href,
+ 							  	index = loc.indexOf('#');
+								if (index > 0) {
+								  window.location = loc.substring(0, index);
+								}
 				       }
 				       if ( app.type == 'EXTERNAL' ) {
 					   // solution un peu sale pour contourner le fait qu'on ne peut pas afficher du http dans une iframe en https
