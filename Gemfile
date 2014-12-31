@@ -21,6 +21,7 @@ gem 'simple-rss'
 gem 'html_truncator'
 gem 'htmlentities'
 gem 'uglifier'
+gem 'therubyracer' #used when no node.js is install on computer
 gem 'sass'
 gem 'annuaire', git: 'https://github.com/laclasse-com/gem_annuaire', branch: 'master'
 
