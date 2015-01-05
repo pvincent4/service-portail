@@ -14,19 +14,6 @@ angular.module( 'portailApp' )
 		       currentUser.get().then( function ( response ) {
 			   $scope.current_user = response;
 
-			   switch ($stateParams.app) {
-			   case "GAR":
-			       // Les ressources numériques de l'utilisateur
-			       currentUser.ressources().then( function ( response ) {
-				   $scope.ressources_numeriques = response;
-			       } );
-			       break;
-			   case "TROMBI":
-			       //Nothing to do
-			       break;
-			   default:
-			   }
-
 			   // Les applications de l'utilisateur
 			   Apps.query()
 			       .$promise.then( function ( response ) {
@@ -41,7 +28,19 @@ angular.module( 'portailApp' )
 				       // Toutes les applications en iframe et les pages statiques
 				       var app = _( response ).findWhere( { application_id: $stateParams.app } );
 				       if ( _(app).isUndefined() ) {
-					   app = _( response ).findWhere( { libelle: $stateParams.app } );
+					   		app = _( response ).findWhere( { libelle: $stateParams.app } );
+				       }
+				       //App still undefined => app is not visible from this priofil => redirect to portail
+				       if ( _(app).isUndefined() ) {
+				       	var loc = window.location.href,
+ 							  	index = loc.indexOf('#');
+								if (index > 0) {
+								  window.location = loc.substring(0, index);
+								}
+				       }
+				       if ( app.type == 'EXTERNAL' ) {
+					   // solution un peu sale pour contourner le fait qu'on ne peut pas afficher du http dans une iframe en https
+					   app.url = app.url.replace( /^http:/, 'https:' );
 				       }
 				       $scope.app = { nom: app.nom,
 						      url: $sce.trustAsResourceUrl( app.url ),

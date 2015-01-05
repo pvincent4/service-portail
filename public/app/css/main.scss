@@ -228,7 +228,7 @@ body {
 .aside-blanc {
     background-color:white;
     .laius {
-	margin:4%;
+	margin:40px;
 	text-align: justify;
     }
 }
@@ -532,6 +532,7 @@ body {
     .profil-select-wrapper {
 	height: 100%;
 	border: 0;
+	float: right;
     }
     .user-menu {
 	color:#fff;

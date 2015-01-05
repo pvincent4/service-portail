@@ -54,6 +54,8 @@ module AnnuaireWrapper
       Annuaire.post_raw_request_signed( :service_annuaire_user, "#{uid}/upload/avatar",
                                         {},
                                         image: File.open( new_filename ) )
+
+      File.delete new_filename
     end
 
     # Suppression avatar
@@ -68,6 +70,11 @@ module AnnuaireWrapper
       profil_id = URI.escape( profil_id )
       code_uai = URI.escape( code_uai )
       Annuaire.put_request_signed( :service_annuaire_user, "#{uid}/profil_actif", uai: code_uai, profil_id: profil_id )
+    end
+
+    # Generate signed user's news url
+    def get_signed_news_url uid
+      Annuaire.sign( :service_annuaire_portail_news, '/' + uid , {} )
     end
   end
 
@@ -85,7 +92,7 @@ module AnnuaireWrapper
       Annuaire.send_request_signed( :service_annuaire_personnel, "#{uai}/users", 'expand' => 'true' )
     end
 
-    # detail d'un regrouement
+    # detail d'un regroupement
     def regroupement_detail( uid )
       Annuaire.send_request_signed( :service_annuaire_regroupement, "#{uid}", 'expand' => 'true' )
     end
@@ -96,6 +103,25 @@ module AnnuaireWrapper
 
       def query_etablissement( uai )
         Annuaire.send_request_signed :service_annuaire_portail_flux, "/etablissement/#{uai}", {}
+      end
+
+      def get( id )
+        Annuaire.send_request_signed( :service_annuaire_portail_flux, "/#{id}", {} )
+      end
+
+      def create( uai, definition )
+        definition[ 'etab_code_uai' ] = uai
+        Annuaire.post_request_signed( :service_annuaire_portail_flux, '', {}, definition )
+      end
+
+      def update( id, definition )
+        definition.delete( 'splat' ) # WTF
+        definition.delete( 'captures' ) # WTF
+        Annuaire.put_request_signed( :service_annuaire_portail_flux, "/#{id}", definition )
+      end
+
+      def delete( id )
+        Annuaire.delete_request_signed( :service_annuaire_portail_flux, "/#{id}", {} )
       end
     end
 
