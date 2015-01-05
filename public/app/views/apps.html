@@ -83,12 +83,13 @@
     </ul>
 
     <!-- Mode normal -->
-    <span class="hidden-xs hidden-sm bouton-modification toggle"
-	  data-ng-class="{'blanc': !modification, 'gris4': modification}"
-	  data-ng-if="current_user.profil_actif.admin"
+    <span class="hidden-xs hidden-sm bouton-modification toggle blanc"
+	  data-ng-if="current_user.profil_actif.admin && !modification"
 	  data-ng-click="toggle_modification( !modification )"></span>
 
     <!-- Mode modification -->
+    <span class="hidden-xs hidden-sm bouton-modification toggle gris4"
+	  data-ng-if="modification"></span>
     <span class="bouton-modification cancel gris3"
 	  data-ng-if="modification"
 	  data-ng-click="toggle_modification( false )"></span>
