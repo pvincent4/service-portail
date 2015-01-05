@@ -22,7 +22,7 @@ module Portail
             fluxes << {
               :nb => 5,
               :icon => '',
-              :flux => Annuaire.sign( :service_annuaire_portail_news, '/' + user.uid, {} ),
+              :flux => AnnuaireWrapper::User::get_signed_news_url(user.uid),
               :titre => 'News de l\'utilisateur'
             }
 

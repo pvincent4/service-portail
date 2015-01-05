@@ -71,6 +71,11 @@ module AnnuaireWrapper
       code_uai = URI.escape( code_uai )
       Annuaire.put_request_signed( :service_annuaire_user, "#{uid}/profil_actif", uai: code_uai, profil_id: profil_id )
     end
+
+    # Generate signed user's news url
+    def get_signed_news_url uid
+      Annuaire.sign( :service_annuaire_portail_news, '/' + uid , {} )
+    end
   end
 
   # fonctions relatives à l'établissement
