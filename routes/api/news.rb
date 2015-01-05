@@ -18,6 +18,14 @@ module Portail
             fluxes = AnnuaireWrapper::Etablissement::Flux.query_etablissement( user.profil_actif['uai'] )
             fluxes = config[:news_feed] if fluxes.empty? || fluxes.nil?
 
+            # Add user news
+            fluxes << {
+              :nb => 5,
+              :icon => '',
+              :flux => AnnuaireWrapper::User::get_signed_news_url(user.uid),
+              :titre => 'News de l\'utilisateur'
+            }
+
             fluxes.each do |feed|
               feed = Hash[ feed.map { |k, v| [k.to_sym, v] } ]
 
