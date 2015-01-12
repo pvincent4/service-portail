@@ -12,7 +12,7 @@ module Portail
           app.get "#{APP_PATH}/api/apps/default/?" do
             content_type :json
 
-            return [] unless is_logged? && !user.profil_actif.nil?
+            return [] unless logged? && !user.profil_actif.nil?
 
             AnnuaireWrapper::Apps.query_defaults
                                  .map do |appli|
@@ -41,7 +41,7 @@ module Portail
             STDERR.puts '/!\ (désolé)'
             STDERR.puts '/!\ KTHXBYE.'
 
-            return [] unless is_logged? && !user.profil_actif.nil?
+            return [] unless logged? && !user.profil_actif.nil?
 
             apps = AnnuaireWrapper::Etablissement::Apps.query_etablissement( user.profil_actif['uai'] )
                                                        .map do |app|
@@ -78,7 +78,7 @@ module Portail
             content_type :json
             param :id, Integer, required: true
 
-            return [] unless is_logged? && !user.profil_actif.nil?
+            return [] unless logged? && !user.profil_actif.nil?
 
             AnnuaireWrapper::Etablissement::Apps.app.get( params[:id] ).to_json
           end

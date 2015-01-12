@@ -4,7 +4,7 @@ module Laclasse
   module Helpers
     module Authentication
 
-      def is_logged?
+      def logged?
         session[:authenticated]
       end
 

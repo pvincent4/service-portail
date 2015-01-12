@@ -19,7 +19,7 @@ module Portail
         end
 
         app.get "#{APP_PATH}/protected" do
-          throw( :halt, [ 401, "Not authorized\n" ] ) unless is_logged?
+          throw( :halt, [ 401, "Not authorized\n" ] ) unless logged?
           erb :auth_protected
         end
 
