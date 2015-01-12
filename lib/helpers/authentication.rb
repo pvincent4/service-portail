@@ -1,9 +1,9 @@
 # -*- encoding: utf-8 -*-
+require 'annuaire'
 
 module Laclasse
   module Helpers
     module Authentication
-
       def logged?
         session[:authenticated]
       end
@@ -14,55 +14,51 @@ module Laclasse
       #
       def login!( route )
         unless route.empty?
-          route += '?' + env['QUERY_STRING'] unless env['QUERY_STRING'].empty?
-          route = URI.escape(request.scheme + '://' + env['HTTP_HOST'] + route)
-          redirect APP_PATH + "/auth/cas?url=#{URI.encode( route )}"
+          route += "?#{env['QUERY_STRING']}" unless env['QUERY_STRING'].empty?
+          route = URI.escape( "#{env['rack.url_scheme']}://#{env['HTTP_HOST']}#{route}" )
+          redirect "#{APP_PATH}/auth/cas?url=#{URI.encode( route )}"
         end
-        redirect APP_PATH + '/auth/cas'
+
+        redirect "#{APP_PATH}/auth/cas"
       end
 
       #
       # Délogue l'utilisateur du serveur CAS et de l'application
       #
       def logout!( url )
+        url += "?#{env['QUERY_STRING']}" unless env['QUERY_STRING'].empty?
         session[:authenticated] = false
         session[:current_user] = nil
-        CASAUTH::CONFIG[:ssl] ? protocol = 'https://' : protocol = 'http://'
+        protocol = CASAUTH::CONFIG[:ssl] ? 'https://' : 'http://'
 
-        puts protocol + CASAUTH::CONFIG[:host] + CASAUTH::CONFIG[:logout_url] + '?url=' + URI.encode( url )
-        redirect protocol + CASAUTH::CONFIG[:host] + CASAUTH::CONFIG[:logout_url] + '?destination=' + URI.encode( url )
+        redirect "#{protocol}#{CASAUTH::CONFIG[:host]}#{CASAUTH::CONFIG[:logout_url]}?destination=#{URI.encode(url)}"
       end
 
       #
-      # récupération des données envoyée par CAS
+      # Récupération des données de l'annuaire concernant l'utilisateur
       #
-      def set_current_user( uid )
-        session[:current_user] = { user: nil,
-                                   info: nil,
-                                   is_logged: false }
+      def init_current_user( uid )
+        session[:current_user] = { user: session[:user].nil? ? nil : session[:user],
+                                   info: session[:extra].nil? ? nil : session[:extra],
+                                   is_logged: !session[:user].nil? }
 
-        user_annuaire = AnnuaireWrapper::User.get( uid )
-
-        if session[:user] && !user_annuaire.nil?
-          session[:current_user] = { user: session[:user],
-                                     uid: user_annuaire['id_ent'],
-                                     login: user_annuaire['login'],
-                                     sexe: user_annuaire['sexe'],
-                                     nom: user_annuaire['nom'],
-                                     prenom: user_annuaire['prenom'],
-                                     date_naissance: user_annuaire['date_naissance'],
-                                     adresse: user_annuaire['adresse'],
-                                     code_postal: user_annuaire['code_postal'],
-                                     ville: user_annuaire['ville'],
-                                     bloque: user_annuaire['bloque'],
-                                     id_jointure_aaf: user_annuaire['id_jointure_aaf'],
-                                     is_logged: true,
-                                     avatar: ANNUAIRE[:url].gsub( %r{/api}, '/' ) + user_annuaire['avatar']
-                                   }
-        end
-
-        session[:current_user].each do |key, _value|
-          session[:current_user][ key ] = URI.unescape( session[:current_user][ key ] ) if session[:current_user][ key ].is_a? String
+        user_annuaire = Laclasse::Annuaire.send_request_signed( :service_annuaire_user, "#{uid}", 'expand' => 'true' )
+        unless user_annuaire.nil?
+          session[:current_user].merge!( uid: user_annuaire['id_ent'],
+                                         login: user_annuaire['login'],
+                                         sexe: user_annuaire['sexe'],
+                                         nom: user_annuaire['nom'],
+                                         prenom: user_annuaire['prenom'],
+                                         date_naissance: user_annuaire['date_naissance'],
+                                         adresse: user_annuaire['adresse'],
+                                         code_postal: user_annuaire['code_postal'],
+                                         ville: user_annuaire['ville'],
+                                         bloque: user_annuaire['bloque'],
+                                         id_jointure_aaf: user_annuaire['id_jointure_aaf'],
+                                         avatar: ANNUAIRE[:url].gsub( %r{/api}, '/' ) + user_annuaire['avatar'],
+                                         roles_max_priority_etab_actif: user_annuaire['roles_max_priority_etab_actif'],
+                                         user_detailed: user_annuaire
+                                       )
         end
 
         session[:current_user]
@@ -72,11 +68,11 @@ module Laclasse
       # Initialisation de la session après l'authentification
       #
       def init_session( env )
-        session['init'] = true
-        session[:user] ||= env['omniauth.auth']['extra']['user']
+        session[:user] = env['omniauth.auth'].extra.user
+        session[:extra] = env['omniauth.auth'].extra
         session[:authenticated] = true
 
-        set_current_user( env['omniauth.auth']['extra']['uid'] )
+        init_current_user( env['omniauth.auth']['extra']['uid'] )
       end
     end
   end
