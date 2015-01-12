@@ -1,6 +1,6 @@
 # -*- encoding: utf-8 -*-
 
-module Portail
+module Laclasse
   module Helpers
     module Authentication
 
@@ -16,7 +16,7 @@ module Portail
         unless route.empty?
           route += '?' + env['QUERY_STRING'] unless env['QUERY_STRING'].empty?
           route = URI.escape(request.scheme + '://' + env['HTTP_HOST'] + route)
-          redirect  APP_PATH + "/auth/cas?url=#{URI.encode( route )}"
+          redirect APP_PATH + "/auth/cas?url=#{URI.encode( route )}"
         end
         redirect APP_PATH + '/auth/cas'
       end
