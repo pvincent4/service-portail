@@ -44,16 +44,16 @@ module Portail
             return [] unless logged? && !user.profil_actif.nil?
 
             apps = AnnuaireWrapper::Etablissement::Apps.query_etablissement( user.profil_actif['uai'] )
-                                                       .map do |app|
-              default = config[:apps][:default][ app['application_id'].to_sym ] unless app['application_id'].nil?
+                                                       .map do |application|
+              default = config[:apps][:default][ application['application_id'].to_sym ] unless application['application_id'].nil?
 
               unless default.nil?
-                app[ 'icon' ] = default[ :icon ] if app[ 'icon' ].nil?
-                app[ 'color' ] = default[ :color ] if app[ 'color' ].nil?
-                app[ 'index' ] = default[ :index ] if app[ 'index' ] == -1
+                application[ 'icon' ] = default[ :icon ] if application[ 'icon' ].nil?
+                application[ 'color' ] = default[ :color ] if application[ 'color' ].nil?
+                application[ 'index' ] = default[ :index ] if application[ 'index' ] == -1
               end
 
-              app
+              application
             end
 
             indexes = apps.map { |a| a['index'] }.sort

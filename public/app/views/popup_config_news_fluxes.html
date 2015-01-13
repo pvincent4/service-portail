@@ -1,13 +1,19 @@
 <div class="modal-header">
     <h3 class="modal-title">Gérer les flux RSS affichés sur le portail de l'établissement</h3>
 </div>
-<div class="modal-body">
+<div class="modal-body config-fluxes">
     <ul>
-	<li>
-	    bla
+	<li data-ng-repeat="flux in current_flux">
+	    <label>titre <input type="text" data-ng-model="flux.title" /></label>
+	    <label>url <input type="text" data-ng-model="flux.flux" /></label>
+	    <label>nb <input type="text" data-ng-model="flux.nb" /></label>
+
+	    <button data-ng-click="delete( flux )"><span class="glyphicon glyphicon-trash"></span></button>
 	</li>
     </ul>
     <div class="clearfix"></div>
+
+    <button data-ng-click="add_flux()"><span class="glyphicon glyphicon-plus-sign"></span></button>
 </div>
 <div class="modal-footer">
     <button class="btn btn-default" data-ng-click="cancel()">

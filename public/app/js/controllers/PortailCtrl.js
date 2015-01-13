@@ -25,12 +25,7 @@ angular.module( 'portailApp' )
 			   $scope.config_news_fluxes = function() {
 			       $modal.open( {
 				   templateUrl: 'views/popup_config_news_fluxes.html',
-				   controller: 'PopupConfigNewsFluxesCtrl',
-				   resolve: {
-				       current_fluxes: function () {
-					   return [];
-				       }
-				   }
+				   controller: 'PopupConfigNewsFluxesCtrl'
 			       } )
 				   .result.then( function() {
 				       console.log( 'Config fluxes finie.')
