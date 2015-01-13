@@ -5,8 +5,8 @@
 
 angular.module( 'portailApp' )
     .controller( 'PortailCtrl',
-		 [ '$scope', '$sce', '$state', 'current_user', 'APP_PATH', 'news',
-		   function( $scope, $sce, $state, current_user, APP_PATH, news ) {
+		 [ '$scope', '$sce', '$state', '$modal', 'current_user', 'APP_PATH', 'news',
+		   function( $scope, $sce, $state, $modal, current_user, APP_PATH, news ) {
 		       $scope.prefix = APP_PATH;
 		       $scope.current_user = current_user;
 
@@ -21,6 +21,22 @@ angular.module( 'portailApp' )
 		       $scope.annonce = ""; //"En moment sur Laclasse.com : La version 3 sort des cartons !";
 
 		       if ( $scope.current_user.is_logged ) {
+
+			   $scope.config_news_fluxes = function() {
+			       $modal.open( {
+				   templateUrl: 'views/popup_config_news_fluxes.html',
+				   controller: 'PopupConfigNewsFluxesCtrl',
+				   resolve: {
+				       current_fluxes: function () {
+					   return [];
+				       }
+				   }
+			       } )
+				   .result.then( function() {
+				       console.log( 'Config fluxes finie.')
+				   } );
+			   };
+
 			   news.get().then( function( response ) {
 			       $scope.newsfeed = _(response.data).map( function( item, index ) {
 				   item.id = index;
