@@ -4,11 +4,25 @@
 <div class="modal-body config-fluxes">
     <ul>
 	<li data-ng-repeat="flux in current_flux">
-	    <label>titre <input type="text" data-ng-model="flux.title" /></label>
-	    <label>url <input type="text" data-ng-model="flux.flux" /></label>
-	    <label>nb <input type="text" data-ng-model="flux.nb" /></label>
+	    <label>titre <input type="text"
+				data-ng-model="flux.title"
+				data-ng-change="dirtify( flux )" /></label>
+	    <label>url <input type="text"
+			      data-ng-model="flux.flux"
+			      data-ng-change="dirtify( flux )" /></label>
+	    <label>nombre d'articles à inclure <select data-ng-options="minute for minute in minutes"
+						       data-ng-model="flux.nb"
+						       data-ng-change="dirtify( flux )" /></select>
+	    </label>
 
-	    <button data-ng-click="delete( flux )"><span class="glyphicon glyphicon-trash"></span></button>
+	    <div class="controls">
+		<button class="btn-default delete"
+			data-ng-click="delete( flux )"><span class="glyphicon glyphicon-trash"></span></button>
+		<button class="btn-primary save"
+			data-ng-if="flux.dirty"
+			data-ng-click="save( flux )"><span class="glyphicon glyphicon-ok-sign"></span></button>
+	    </div>
+	    <div class="clearfix"></div>
 	</li>
     </ul>
     <div class="clearfix"></div>
@@ -16,10 +30,7 @@
     <button data-ng-click="add_flux()"><span class="glyphicon glyphicon-plus-sign"></span></button>
 </div>
 <div class="modal-footer">
-    <button class="btn btn-default" data-ng-click="cancel()">
-	<span class="glyphicon glyphicon-remove-sign"></span> Annuler
-    </button>
-    <button class="btn btn-success" data-ng-click="ok()">
-	<span class="glyphicon glyphicon-ok-sign"></span> Valider
+    <button class="btn btn-default" data-ng-click="close()">
+	<span class="glyphicon glyphicon-remove-sign"></span> Fermer
     </button>
 </div>

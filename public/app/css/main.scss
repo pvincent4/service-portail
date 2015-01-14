@@ -894,113 +894,156 @@ svg {
     height: auto;
 }
 
-// Popup d'ajout d'app
-.new-app {
-    background-color: #777;
-    opacity: 0.66;
-    float: left;
-    height: 10em;
-    list-style: outside none none;
-    width: 10em;
-    margin: 0.5em;
-    cursor: pointer;
-    a {
-	display: block;
-	height: 100%;
-	width: 100%;
-	.icone {
-	    width: 100%;
-	    height: 66%;
-	    margin-top: 1em;
-	}
-	.app-name {
-	    display: inline-block;
-	    color: #fff;
-	    width: 100%;
-	    text-align: center;
-	    font-size: 85%;
-	}
-    }
-}
-.new-app.selected {
-    box-shadow: 0 0 0 4px #8e8e8e;
-    opacity: 1;
-}
-.new-app.creation {
-    width: 21em;
-    height: 11em;
-    padding: 0.25em;
-    color: #ececec;
-    legend {
-	margin: 0;
-	color: #ececec;
-    }
-    label, input {
-	width: 100%;
-    }
-    input {
-	color: #16161d;
-    }
-}
-
-// Trombinoscope
-.trombinoscope{
-    .classe-name {
-	top: 0.5em;
-	left: 0;
-	// font-family: "Futura Bold";
-	font-size: 5em;
-	font-weight: bold;
-    }
-    .classe-name, .college-name {
+// Popup de configuration des flux RSS
+.config-fluxes {
+    button {
+	height: 2em;
+	width: 2em;
+	border-radius: 1em;
+	line-height: 1em;
 	position: absolute;
-	width: 100%;
-	text-align: center;
-	// color: #505050 !important;
-    }
-    .college-name {
-	top: 7em;
-	left: 0;
-	// font-family: "Futura Light";
-	font-size: 1.2em;
-	font-weight: bold;
-	text-transform: capitalize;
-    }
-    .trombi-first-name {
-	top: 1em;
-	left: 0.8em;
-    }
-    .trombi-first-name, .trombi-last-name, .trombi-classe, .trombi-etab {
-	position: absolute;
-	// font-family: "Futura Bold";
-	font-weight: bold;
-	text-transform: uppercase;
-	font-size: 1.6em;
-	// color: #505050 !important;
-	width: auto!important;
-	// text-shadow: 0 0 1px #16161d;
-    }
-    .trombi-last-name {
-	top: 2em;
-	left: 0.8em;
-    }
-    .avatar {
-	width: 100%;
-	height: 100%;
-	opacity: 0.6;
-    }
-    .petite.case a {
-	cursor: pointer;
-    }
-    .petite.case.classe{
-	span {
-	    height: auto;
+	right: 3px;
+	&.delete {
+	    bottom: 3px;
 	}
-	a.retour {
-	    height: auto;
-	    span {
-		width: auto;
+	&.save {
+	    top: 3px;
+	}
+    }
+    ul {
+	padding: 0;
+	li {
+	    list-style: none;
+	    margin-bottom: 1em;
+	    box-shadow: 1px 2px 3px 0 #89a;
+	    position: relative;
+	    padding: 3px;
+	    label {
+		float: left;
+		width: calc( 100% - 2.5em );
+		input {
+		    float: right;
+		    width: 75%;
+		}
+	    }
+	    .controls {
+		position: absolute;
+		right: 0;
+		top: 0;
+		height: 100%;
+		width: 2.5em;
 	    }
 	}
     }
 }
+
+// Popup d'ajout d'app
+    .new-app {
+	background-color: #777;
+	opacity: 0.66;
+	float: left;
+	height: 10em;
+	list-style: outside none none;
+	width: 10em;
+	margin: 0.5em;
+	cursor: pointer;
+	a {
+	    display: block;
+	    height: 100%;
+	    width: 100%;
+	    .icone {
+		width: 100%;
+		height: 66%;
+		margin-top: 1em;
+	    }
+	    .app-name {
+		display: inline-block;
+		color: #fff;
+		width: 100%;
+		text-align: center;
+		font-size: 85%;
+	    }
+	}
+    }
+    .new-app.selected {
+	box-shadow: 0 0 0 4px #8e8e8e;
+	opacity: 1;
+    }
+    .new-app.creation {
+	width: 21em;
+	height: 11em;
+	padding: 0.25em;
+	color: #ececec;
+	legend {
+	    margin: 0;
+	    color: #ececec;
+	}
+	label, input {
+	    width: 100%;
+	}
+	input {
+	    color: #16161d;
+	}
+    }
+
+    // Trombinoscope
+    .trombinoscope{
+	.classe-name {
+	    top: 0.5em;
+	    left: 0;
+	    // font-family: "Futura Bold";
+	    font-size: 5em;
+	    font-weight: bold;
+	}
+	.classe-name, .college-name {
+	    position: absolute;
+	    width: 100%;
+	    text-align: center;
+	    // color: #505050 !important;
+	}
+	.college-name {
+	    top: 7em;
+	    left: 0;
+	    // font-family: "Futura Light";
+	    font-size: 1.2em;
+	    font-weight: bold;
+	    text-transform: capitalize;
+	}
+	.trombi-first-name {
+	    top: 1em;
+	    left: 0.8em;
+	}
+	.trombi-first-name, .trombi-last-name, .trombi-classe, .trombi-etab {
+	    position: absolute;
+	    // font-family: "Futura Bold";
+	    font-weight: bold;
+	    text-transform: uppercase;
+	    font-size: 1.6em;
+	    // color: #505050 !important;
+	    width: auto!important;
+	    // text-shadow: 0 0 1px #16161d;
+	}
+	.trombi-last-name {
+	    top: 2em;
+	    left: 0.8em;
+	}
+	.avatar {
+	    width: 100%;
+	    height: 100%;
+	    opacity: 0.6;
+	}
+	.petite.case a {
+	    cursor: pointer;
+	}
+	.petite.case.classe{
+	    span {
+		height: auto;
+	    }
+	    a.retour {
+		height: auto;
+		span {
+		    width: auto;
+		}
+	    }
+	}
+    }
