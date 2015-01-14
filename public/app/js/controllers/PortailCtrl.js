@@ -21,6 +21,17 @@ angular.module( 'portailApp' )
 		       $scope.annonce = ""; //"En moment sur Laclasse.com : La version 3 sort des cartons !";
 
 		       if ( $scope.current_user.is_logged ) {
+			   var retrieve_news = function() {
+			       news.get().then( function( response ) {
+				   $scope.newsfeed = _(response.data).map( function( item, index ) {
+				       item.id = index;
+				       item.trusted_description = $sce.trustAsHtml( item.description );
+
+				       return item;
+				   });
+				   $scope.news_index = 0;
+			       });
+			   };
 
 			   $scope.config_news_fluxes = function() {
 			       $modal.open( {
@@ -28,18 +39,10 @@ angular.module( 'portailApp' )
 				   controller: 'PopupConfigNewsFluxesCtrl'
 			       } )
 				   .result.then( function() {
-				       console.log( 'Config fluxes finie.')
+				       retrieve_news();
 				   } );
 			   };
 
-			   news.get().then( function( response ) {
-			       $scope.newsfeed = _(response.data).map( function( item, index ) {
-				   item.id = index;
-				   item.trusted_description = $sce.trustAsHtml( item.description );
-
-				   return item;
-			       });
-			       $scope.news_index = 0;
-			   });
+			   retrieve_news();
 		       }
 		   } ] );
