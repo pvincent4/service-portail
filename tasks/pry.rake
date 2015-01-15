@@ -13,8 +13,8 @@ namespace :pry do
 
     Bundler.require( :default, ENV['RACK_ENV'].to_sym )     # require tout les gems définis dans Gemfile
 
-    require_relative '../helpers/Authentication'
-    require_relative '../helpers/Config'
+    require_relative '../lib/helpers/authentication'
+    require_relative '../lib/helpers/config'
     require_relative '../lib/annuaire_wrapper'
   end
 
