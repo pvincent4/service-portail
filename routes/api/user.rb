@@ -13,7 +13,7 @@ module Portail
 
             return { user: '',
                      info: {},
-                     is_logged: false }.to_json unless is_logged?
+                     is_logged: false }.to_json unless logged?
 
             user.full( env ).to_json
           end

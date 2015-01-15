@@ -13,14 +13,15 @@ Bundler.require( :default, ENV['RACK_ENV'].to_sym )     # require tout les gems 
 
 require_relative './lib/annuaire_wrapper'
 
-require_relative './helpers/Authentication'
-require_relative './helpers/Config'
-require_relative './helpers/User'
+require_relative './lib/helpers/authentication'
+require_relative './lib/helpers/config'
+require_relative './lib/helpers/user'
 
 require_relative './routes/index'
 require_relative './routes/auth'
 require_relative './routes/api/user'
 require_relative './routes/api/apps'
+require_relative './routes/api/flux'
 require_relative './routes/api/news'
 require_relative './routes/api/version'
 require_relative './routes/api/ressources_numeriques'
@@ -54,7 +55,7 @@ class SinatraApp < Sinatra::Base
 
   helpers Sinatra::Param
 
-  helpers Portail::Helpers::Authentication
+  helpers Laclasse::Helpers::Authentication
   helpers Portail::Helpers::Config
   helpers Portail::Helpers::User
 
@@ -66,6 +67,7 @@ class SinatraApp < Sinatra::Base
 
   register Portail::Routes::Api::User
   register Portail::Routes::Api::Apps
+  register Portail::Routes::Api::Flux
   register Portail::Routes::Api::News
   register Portail::Routes::Api::RessourcesNumeriques
   register Portail::Routes::Api::Version

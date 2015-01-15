@@ -42,6 +42,11 @@
 		    <p data-ng-bind-html="slide.trusted_description"></p>
 		</div>
 	    </li>
+
+	    <span class="hidden-xs hidden-sm bouton-config-news blanc"
+		  data-ng-if="current_user.profil_actif.admin"
+		  data-ng-click="config_news_fluxes()"></span>
+
 	</ul>
 	<div class="hidden-xs hidden-sm angular-carousel-indicators"
 	     rn-carousel-indicators

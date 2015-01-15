@@ -1,10 +1,10 @@
 # -*- encoding: utf-8 -*-
 
-module Portail
+module Laclasse
   module Helpers
     module Authentication
 
-      def is_logged?
+      def logged?
         session[:authenticated]
       end
 
@@ -16,7 +16,7 @@ module Portail
         unless route.empty?
           route += '?' + env['QUERY_STRING'] unless env['QUERY_STRING'].empty?
           route = URI.escape(request.scheme + '://' + env['HTTP_HOST'] + route)
-          redirect  APP_PATH + "/auth/cas?url=#{URI.encode( route )}"
+          redirect APP_PATH + "/auth/cas?url=#{URI.encode( route )}"
         end
         redirect APP_PATH + '/auth/cas'
       end
@@ -75,7 +75,6 @@ module Portail
         session['init'] = true
         session[:user] ||= env['omniauth.auth']['extra']['user']
         session[:authenticated] = true
-
         set_current_user( env['omniauth.auth']['extra']['uid'] )
       end
     end
