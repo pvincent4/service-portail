@@ -7,9 +7,11 @@ GIT
 
 GIT
   remote: https://github.com/laclasse-com/laclasse-common
-  revision: 4480cfe6ed3019527799512e556446d938afda25
+  revision: dfec785fad38afa7ca5eb08288ad1251dc2ae2f2
+  branch: develop
   specs:
-    laclasse-common (0.2)
+    laclasse-common (0.3)
+      logstash-logger
       redis-rack (~> 1.5.0)
       rest-client
 
@@ -42,7 +44,7 @@ GEM
       bundler (~> 1.0)
       guard (~> 2.2)
       guard-compat (~> 1.1)
-    guard-compat (1.2.0)
+    guard-compat (1.2.1)
     guard-rspec (4.5.0)
       guard (~> 2.1)
       guard-compat (~> 1.1)
@@ -64,6 +66,10 @@ GEM
       celluloid (>= 0.15.2)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
+    logstash-event (1.2.02)
+    logstash-logger (0.7.0)
+      logstash-event (~> 1.2)
+      stud
     lumberjack (1.0.9)
     method_source (0.8.2)
     mime-types (2.4.3)
@@ -149,6 +155,7 @@ GEM
     sinatra-param (1.2.2)
       sinatra (~> 1.3)
     slop (3.6.0)
+    stud (0.0.18)
     therubyracer (0.12.1)
       libv8 (~> 3.16.14.0)
       ref
