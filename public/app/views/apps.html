@@ -23,7 +23,8 @@
 				     colors="couleurs"></ng-color-picker>
 
 		<!-- Affichage normal -->
-		<a data-ng-if="case.app.active && !modification"
+		<!-- Lien vers app interne -->
+		<a data-ng-if="case.app.active && case.app.type != 'EXTERNAL' && !modification"
 		   data-ui-sref="app-wrapper({ app: case.app.application_id ? case.app.application_id : case.app.libelle })"
 		   title="{{ case.app.description }}">
 		    <span class="compteur-notification orange-brillant"
@@ -36,6 +37,22 @@
 			{{case.app.libelle[0]}}
 		    </div>
 		    <span class="app-name" data-ng-cloak>{{ case.app.libelle }}</span>
+		</a>
+
+		<!-- Lien vers app externe -->
+		<a data-ng-if="case.app.active && case.app.type == 'EXTERNAL' && !modification"
+		   data-ng-href="{{case.app.url}}" target="_blank"
+		   title="{{ case.app.description }}">
+		    <span class="compteur-notification orange-brillant"
+			  data-ng-if="case.app.notifications > 0" data-ng-cloak>{{case.app.notifications}}</span>
+		    <img class="icone" data-ng-src="{{prefix}}/{{case.app.icon}}"
+			 data-ng-if="case.app.icon"/>
+		    <div class="icone"
+			 data-fittext
+			 data-ng-if="!case.app.icon">
+			{{case.app.libelle[0]}}
+		    </div>
+		    <span class="app-name" data-ng-cloak>{{ case.app.libelle }} <i class="glyphicon glyphicon-new-window"></i></span>
 		</a>
 
 		<!-- Mode modification -->
