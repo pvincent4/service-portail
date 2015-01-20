@@ -7,6 +7,8 @@
 	    data-ng-class="{'flip': case.app.configure, 'empty hidden-xs hidden-sm': !case.app || !case.app.id || !case.app.active}"
 	    data-ng-if="current_user.is_logged">
 
+	    <hero konami-code="tetris()" konami-keys="[37, 38, 39, 40]"></hero>
+
 	    <div class="front"
 		 data-ng-class="{ {{case.couleur}}: !case.app.id || ( !case.app.color && !case.app.new_color ) }"
 		 data-ng-style="case.app.colorize()">
