@@ -87,17 +87,17 @@ module Portail
             # filtrer sur les regroupements de l'établissement courant.
             rgpts['classes']
               .reject { |r| r[ 'etablissement_code' ] != uai_courant }
-              .uniq { |x| x['classe_id']}
+              .uniq { |x| x['classe_id'] }
               .sort_by { |r| r['classe_libelle'].to_s }
               .reverse # Pour avoir les 6eme avant les 3eme
               .each { |c|
-                obj_cls = { nom: c['classe_libelle'], cls_id: c['classe_id'], uai: uai_courant, etablissement_nom: c['etablissement_nom']}
+                obj_cls = { nom: c['classe_libelle'], cls_id: c['classe_id'], uai: uai_courant, etablissement_nom: c['etablissement_nom'] }
                 mes_regpts.push obj_cls
               }.uniq! # supprime les doublons dûs aux matieres enseaignées qui peuvent être plusieurs pour une classe
 
               rgpts['groupes_eleves']
                 .reject { |r| r[ 'etablissement_code' ] != uai_courant }
-                .uniq { |x| x['groupe_id']}
+                .uniq { |x| x['groupe_id'] }
                 .sort_by { |r| r['groupe_libelle'].to_s }
                 .each { |c|
                 obj_grp = { nom: c['groupe_libelle'], cls_id: c['groupe_id'], uai: uai_courant, etablissement_nom: c['etablissement_nom'] }
@@ -109,11 +109,10 @@ module Portail
               colorize( mes_regpts ).to_json
           end
 
-
           #
-          # Classes et groupes de l'utilisateur
+          # Élèves des Classes et groupes de l'utilisateur
           #
-          app.get "#{APP_PATH}/api/user/regroupements/:id" do
+          app.get "#{APP_PATH}/api/user/regroupements/:id/eleves" do
             content_type :json
 
             mes_amis = AnnuaireWrapper::Etablissement.regroupement_detail( params[:id] )
