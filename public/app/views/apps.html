@@ -25,30 +25,32 @@
 				     colors="couleurs"></ng-color-picker>
 
 		<!-- Affichage normal -->
-		<!-- Lien vers app interne -->
+		<!-- Lien vers app interne portail -->
+		<a data-ng-if="case.app.active && case.app.type != 'EXTERNAL' && case.app.portail && !modification"
+		   data-ui-sref="{{ case.app.url }}"
+		   title="{{ case.app.description }}">
+		    <div data-ng-include="'views/app-tile-content.html'"></div>
+		</a>
+
+		<!-- Lien vers app laclasse.com -->
 		<a data-ng-if="case.app.active && case.app.type != 'EXTERNAL' && !modification"
 		   data-ui-sref="app.external({ app: case.app.application_id ? case.app.application_id : case.app.libelle })"
 		   title="{{ case.app.description }}">
-
 		    <div data-ng-include="'views/app-tile-content.html'"></div>
-
 		</a>
 
-		<!-- Lien vers app externe -->
-		<a data-ng-if="case.app.active && case.app.type == 'EXTERNAL' && !modification"
-		   data-ng-href="{{case.app.url}}" target="_blank"
+		<!-- Lien vers site externe -->
+		<a data-ng-if="case.app.active && case.app.type == 'EXTERNAL' && !case.app.portail && !modification"
+		   data-ng-href="{{ case.app.url }}"
+		   target="_blank"
 		   title="{{ case.app.description }}">
-
 		    <div data-ng-include="'views/app-tile-content.html'"></div>
-
 		</a>
 
 		<!-- Mode modification -->
 		<a data-ng-if="case.app.active && modification"
 		   title="{{ case.app.description }}">
-
 		    <div data-ng-include="'views/app-tile-content.html'"></div>
-
 		</a>
 	    </div>
 

@@ -55,7 +55,16 @@ angular.module( 'portailApp', [ 'ngResource',
 				 }
 			       } )
 		       .state( 'app',
-			       { url: '/app',
+			       { resolve: { current_user: [ 'currentUser',
+							    function( currentUser ) {
+								return currentUser.get()
+								    .then( function( response ) {
+									return response;
+								    } );
+							    }
+							  ]
+					  },
+				 url: '/app',
 				 templateUrl: 'views/app-wrapper.html',
 				 controller: 'AppWrapperCtrl'
 			       } )

@@ -26,6 +26,7 @@ angular.module( 'portailApp' )
 			   app.configure = false;
 			   app.dirty = false;
 			   app.to_delete = false;
+			   app.portail = app.url.match( /^app\..*/ );
 
 			   app.toggle_configure = function() {
 			       _.chain($scope.cases)
