@@ -11,8 +11,8 @@ angular.module( 'portailApp' )
 		       };
 
 		       currentUser.regroupements().then( function ( response ) {
-			   $scope.mes_regroupements = response;
-			   randomize_colors( $scope.mes_regroupements, COULEURS );
+			   $scope.regroupements = response;
+			   randomize_colors( $scope.regroupements, COULEURS );
 
 			   $scope.showElevesRegroupement = function( regroupement ){
 			       $scope.regroupement = regroupement;

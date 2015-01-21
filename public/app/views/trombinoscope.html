@@ -1,13 +1,13 @@
 <div class="row damier trombinoscope">
-    <div data-ng-repeat="rgpt in mes_regroupements"
+    <div data-ng-repeat="regroupement in regroupements"
 	 class="col-xs-12 col-sm-6 col-md-3 col-lg-2 petite case animate scale-fade-in"
-	 data-ng-style="{'background-color': rgpt.color}"
+	 data-ng-style="{'background-color': regroupement.color}"
 	 data-ng-if="!eleves">
-	<a title="Voir le trombinoscope du regroupement {{rgpt.nom}}"
-	   data-ng-click="showElevesRegroupement( rgpt )"
-	   data-ng-if="rgpt.nom">
-	    <span class="classe-name">{{rgpt.nom}}</span>
-	    <span class="college-name">{{rgpt.etablissement_nom}}</span>
+	<a title="Voir le trombinoscope du regroupement {{regroupement.nom}}"
+	   data-ng-click="showElevesRegroupement( regroupement )"
+	   data-ng-if="regroupement.nom">
+	    <span class="classe-name">{{regroupement.nom}}</span>
+	    <span class="college-name">{{regroupement.etablissement_nom}}</span>
 	</a>
     </div>
 
