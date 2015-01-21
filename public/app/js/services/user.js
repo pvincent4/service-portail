@@ -25,23 +25,32 @@ angular.module( 'portailApp' )
 		} ] );
 
 angular.module( 'portailApp' )
+    .factory( 'UserRessources',
+	      [ '$resource', 'APP_PATH',
+		function( $resource, APP_PATH ) {
+		    return $resource( APP_PATH + '/api/user/ressources_numeriques' );;
+		} ] );
+
+angular.module( 'portailApp' )
     .factory( 'UserRegroupements',
 	      [ '$resource', 'APP_PATH',
 		function( $resource, APP_PATH ) {
 		    return $resource( APP_PATH + '/api/user/regroupements/:id',
 				      { id: '@id' },
-				      { get: { isArray: true } } );
+				      { eleves: { method: 'GET',
+						  url: APP_PATH + '/api/user/regroupements/:id/eleves',
+						  isArray: true } } );
 		} ] );
 
 angular.module( 'portailApp' )
     .service( 'currentUser',
-	      [ '$http', '$upload', '$resource', 'APP_PATH', 'User', 'UserRegroupements',
-		function( $http, $upload, $resource, APP_PATH, User, UserRegroupements ) {
-		    var UserRessources = $resource( APP_PATH + '/api/ressources_numeriques' );
-
+	      [ '$http', '$upload', '$resource', 'APP_PATH', 'User', 'UserRessources', 'UserRegroupements',
+		function( $http, $upload, $resource, APP_PATH, User, UserRessources, UserRegroupements ) {
 		    this.get = function() { return User.get().$promise; };
 		    this.ressources = function() { return UserRessources.query().$promise; };
 		    this.regroupements = function() { return UserRegroupements.query().$promise; };
+		    this.eleves_regroupement = function( id ) { return UserRegroupements.eleves( { id: id } ).$promise; };
+
 		    this.avatar = { upload: function( fichier ) {
 			$upload.upload( {
 			    url: APP_PATH + '/api/user/avatar',

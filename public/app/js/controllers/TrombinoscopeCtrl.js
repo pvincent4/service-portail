@@ -2,8 +2,8 @@
 
 angular.module( 'portailApp' )
     .controller( 'TrombinoscopeCtrl',
-		 [ '$scope', '$state', 'currentUser', 'UserRegroupements', 'COULEURS',
-		   function( $scope, $state, currentUser, UserRegroupements, COULEURS ) {
+		 [ '$scope', '$state', 'currentUser', 'COULEURS',
+		   function( $scope, $state, currentUser, COULEURS ) {
 		       var randomize_colors = function( ary, couleurs ) {
 			   _(ary).each( function( item ) {
 			       item.color = couleurs[ _.random( 0, couleurs.length - 1 ) ];
@@ -16,7 +16,7 @@ angular.module( 'portailApp' )
 
 			   $scope.showElevesRegroupement = function( regroupement ){
 			       $scope.regroupement = regroupement;
-			       UserRegroupements.get( { id: regroupement.cls_id } ).$promise
+			       currentUser.eleves_regroupement( regroupement.cls_id )
 				   .then( function( response ) {
 				       $scope.eleves = response;
 				       randomize_colors( $scope.eleves, COULEURS );

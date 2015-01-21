@@ -24,7 +24,6 @@ require_relative './routes/api/apps'
 require_relative './routes/api/flux'
 require_relative './routes/api/news'
 require_relative './routes/api/version'
-require_relative './routes/api/ressources_numeriques'
 
 # https://gist.github.com/chastell/1196800
 class Hash
@@ -69,7 +68,6 @@ class SinatraApp < Sinatra::Base
   register Portail::Routes::Api::Apps
   register Portail::Routes::Api::Flux
   register Portail::Routes::Api::News
-  register Portail::Routes::Api::RessourcesNumeriques
   register Portail::Routes::Api::Version
 end
 
