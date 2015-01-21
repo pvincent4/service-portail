@@ -994,7 +994,6 @@ svg {
 	.classe-name {
 	    top: 0.5em;
 	    left: 0;
-	    // font-family: "Futura Bold";
 	    font-size: 5em;
 	    font-weight: bold;
 	}
@@ -1002,12 +1001,10 @@ svg {
 	    position: absolute;
 	    width: 100%;
 	    text-align: center;
-	    // color: #505050 !important;
 	}
 	.college-name {
 	    top: 7em;
 	    left: 0;
-	    // font-family: "Futura Light";
 	    font-size: 1.2em;
 	    font-weight: bold;
 	    text-transform: capitalize;
@@ -1018,13 +1015,10 @@ svg {
 	}
 	.trombi-first-name, .trombi-last-name, .trombi-classe, .trombi-etab {
 	    position: absolute;
-	    // font-family: "Futura Bold";
 	    font-weight: bold;
 	    text-transform: uppercase;
 	    font-size: 1.6em;
-	    // color: #505050 !important;
 	    width: auto!important;
-	    // text-shadow: 0 0 1px #16161d;
 	}
 	.trombi-last-name {
 	    top: 2em;
@@ -1045,10 +1039,9 @@ svg {
 	    a.retour {
 		position: absolute;
 		height: auto;
-		bottom: 0;
-		left: 0;
+		bottom: 3px;
+		left: 3px;
 		text-align: left;
-
 		span {
 		    width: auto;
 		}
