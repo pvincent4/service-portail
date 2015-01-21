@@ -54,6 +54,11 @@ angular.module( 'portailApp', [ 'ngResource',
 				     }
 				 }
 			       } )
+		       .state( 'app-wrapper',
+			       { url: '/show-app?app',
+				 templateUrl: 'views/show-app.html',
+				 controller: 'AppWrapperCtrl'
+			       } )
 		       .state( 'trombinoscope',
 			       { url: '/trombinoscope',
 				 templateUrl: 'views/trombinoscope.html',
@@ -73,11 +78,6 @@ angular.module( 'portailApp', [ 'ngResource',
 			       { url: '/classes-culturelles-numeriques-archivees',
 				 templateUrl: 'views/archives-ccn.html',
 				 controller: 'CCNCtrl'
-			       } )
-		       .state( 'app-wrapper',
-			       { url: '/show-app?app?static',
-				 templateUrl: 'views/show-app.html',
-				 controller: 'AppWrapperCtrl'
 			       } );
 	       }
 	     ] );

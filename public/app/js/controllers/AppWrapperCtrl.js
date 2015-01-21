@@ -17,33 +17,20 @@ angular.module( 'portailApp' )
 			   // Les applications de l'utilisateur
 			   Apps.query()
 			       .$promise.then( function ( response ) {
-				   if ($stateParams.static) {
-				       // Pour la navigation inter pages-statiques (d'une page statique à une autres,
-				       // on définit que l'on va vers une page statique afin de l'intégrer correctement et sans ifram dans
-				       // le template d'affichage.
-				       $scope.app = { nom: '',
-						      url: $sce.trustAsResourceUrl( APP_PATH + '/pages/' + $stateParams.static ),
-						      static: true };
-				   } else {
-				       // Toutes les applications en iframe et les pages statiques
-				       var app = _( response ).findWhere( { application_id: $stateParams.app } );
+				   // Toutes les applications en iframe
+				   var app = _( response ).findWhere( { application_id: $stateParams.app } );
 
+				   if ( _(app).isUndefined() ) {
+				       app = _(response).findWhere( { libelle: $stateParams.app } );
+
+				       // App still undefined => app is not visible from this profil => redirect to portail
 				       if ( _(app).isUndefined() ) {
-					   app = _(response).findWhere( { libelle: $stateParams.app } );
-
-					   // App still undefined => app is not visible from this profil => redirect to portail
-					   if ( _(app).isUndefined() ) {
-					       $state.go( '/' );
-					   }
+					   $state.go( '/' );
 				       }
-
-				       $scope.app = { nom: app.nom,
-						      url: $sce.trustAsResourceUrl( app.url ),
-						      // Si l'application contient */pages/* dans son url
-						      // elle est statique, on lui ajoute le paramètre 'static=true'
-						      // pour qu'elle soit intégrée dans le template de rendu comme une page statique.
-						      static: app.url.match( /\/pages\// ) !== null };
 				   }
+
+				   $scope.app = { nom: app.nom,
+						  url: $sce.trustAsResourceUrl( app.url ) };
 			       } );
 		       } );
 		   }
