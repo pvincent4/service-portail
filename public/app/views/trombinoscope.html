@@ -16,7 +16,9 @@
 	<span class="classe-name">{{regroupement.libelle}}</span>
 	<span class="college-name">{{regroupement.etablissement_nom}}</span>
 
-	<a class="btn btn-link retour" data-ng-click="retour()"><span class="glyphicon glyphicon-home"></span> Retour à la liste des classes</a>
+	<a class="retour" data-ng-click="retour()">
+	    <i class="glyphicon glyphicon-home"></i> <i class="glyphicon glyphicon-menu-left"></i> Retour à la liste des classes
+	</a>
     </div>
 
     <div data-ng-repeat="eleve in eleves"
