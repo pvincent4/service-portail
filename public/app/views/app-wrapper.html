@@ -21,7 +21,7 @@
 		    </a>
 		</li>
 		<li>
-		    <a data-ui-sref="app-wrapper({ app: 'aide' })"
+		    <a data-ui-sref="app.external({ app: 'aide' })"
 		       data-ng-style="{'background-image': 'url(' + prefix +'/vendor/charte-graphique-laclasse-com/images/12_aide.svg)' }" >
 			aide
 		    </a>
@@ -44,12 +44,5 @@
 	</select>
     </div>
 
-    <div class="row iframe" data-ng-class="{'ios': iOS}">
-	<iframe id="iframe"
-		data-ng-src="{{app.url}}"
-		data-ng-if="!app.static"
-		frameBorder="0"
-		scrolling="{{iOS ? 'no': 'yes'}}">
-	</iframe>
-    </div>
+    <div data-ui-view="app"></div>
 </div>

@@ -54,30 +54,60 @@ angular.module( 'portailApp', [ 'ngResource',
 				     }
 				 }
 			       } )
-		       .state( 'app-wrapper',
-			       { url: '/show-app?app',
-				 templateUrl: 'views/show-app.html',
+		       .state( 'app',
+			       { url: '/app',
+				 templateUrl: 'views/app-wrapper.html',
 				 controller: 'AppWrapperCtrl'
 			       } )
-		       .state( 'trombinoscope',
-			       { url: '/trombinoscope',
-				 templateUrl: 'views/trombinoscope.html',
-				 controller: 'TrombinoscopeCtrl'
+		       .state( 'app.external',
+			       { parent: 'app',
+				 url: '/external?app',
+				 views: {
+				     'app': {
+					 templateUrl: 'views/iframe.html',
+					 controller: 'IframeCtrl'
+				     }
+				 }
 			       } )
-		       .state( 'ressources-numeriques',
-			       { url: '/ressources-numeriques',
-				 templateUrl: 'views/ressources_numeriques.html',
-				 controller: 'RessourcesNumeriquesCtrl'
+		       .state( 'app.trombinoscope',
+			       { parent: 'app',
+				 url: '/trombinoscope',
+				 views: {
+				     'app': {
+					 templateUrl: 'views/trombinoscope.html',
+					 controller: 'TrombinoscopeCtrl'
+				     }
+				 }
 			       } )
-		       .state( 'classes-culturelles-numeriques',
-			       { url: '/classes-culturelles-numeriques',
-				 templateUrl: 'views/ccn.html',
-				 controller: 'CCNCtrl'
+		       .state( 'app.ressources-numeriques',
+			       { parent: 'app',
+				 url: '/ressources-numeriques',
+				 views: {
+				     'app': {
+					 templateUrl: 'views/ressources_numeriques.html',
+					 controller: 'RessourcesNumeriquesCtrl'
+				     }
+				 }
 			       } )
-		       .state( 'classes-culturelles-numeriques-archivees',
-			       { url: '/classes-culturelles-numeriques-archivees',
-				 templateUrl: 'views/archives-ccn.html',
-				 controller: 'CCNCtrl'
+		       .state( 'app.classes-culturelles-numeriques',
+			       { parent: 'app',
+				 url: '/classes-culturelles-numeriques',
+				 views: {
+				     'app': {
+					 templateUrl: 'views/ccn.html',
+					 controller: 'CCNCtrl'
+				     }
+				 }
+			       } )
+		       .state( 'app.classes-culturelles-numeriques-archivees',
+			       { parent: 'app',
+				 url: '/classes-culturelles-numeriques-archivees',
+				 views: {
+				     'app': {
+					 templateUrl: 'views/archives-ccn.html',
+					 controller: 'CCNCtrl'
+				     }
+				 }
 			       } );
 	       }
 	     ] );
