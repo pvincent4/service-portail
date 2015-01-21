@@ -79,34 +79,26 @@ module Portail
           #
           app.get "#{APP_PATH}/api/user/regroupements/?" do
             content_type :json
-            mes_regpts = []
 
-            rgpts = AnnuaireWrapper::User.get_regroupements( user.uid )
-            uai_courant = user.profil_actif['uai']
-            # Pour les classes
-            # filtrer sur les regroupements de l'établissement courant.
-            rgpts['classes']
-              .reject { |r| r[ 'etablissement_code' ] != uai_courant }
-              .uniq { |x| x['classe_id'] }
-              .sort_by { |r| r['classe_libelle'].to_s }
-              .reverse # Pour avoir les 6eme avant les 3eme
-              .each { |c|
-                obj_cls = { nom: c['classe_libelle'], cls_id: c['classe_id'], uai: uai_courant, etablissement_nom: c['etablissement_nom'] }
-                mes_regpts.push obj_cls
-              }.uniq! # supprime les doublons dûs aux matieres enseaignées qui peuvent être plusieurs pour une classe
+            regroupements = AnnuaireWrapper::User.get_regroupements( user.uid )
+            regroupements = [ regroupements[ 'classes' ],
+                              regroupements[ 'groupes_eleves' ] ]
+                            .flatten
+                            .reject { |regroupement| regroupement[ 'etablissement_code' ] != user.profil_actif['uai'] }
+                            .each { |regroupement|
+              regroupement[ 'id' ] =  regroupement.key?( 'classe_id' ) ? regroupement['classe_id'] : regroupement['groupe_id']
+              regroupement[ 'libelle' ] =  regroupement.key?( 'classe_libelle' ) ? regroupement['classe_libelle'] : regroupement['groupe_libelle']
+            }
+                            .uniq { |regroupement| regroupement['id'] }
+                            .sort_by { |regroupement| regroupement['libelle'].to_s }
+                            .reverse
+                            .map { |regroupement|
+              { libelle: regroupement['libelle'],
+                id: regroupement['id'],
+                etablissement_nom: regroupement['etablissement_nom'] } }
 
-              rgpts['groupes_eleves']
-                .reject { |r| r[ 'etablissement_code' ] != uai_courant }
-                .uniq { |x| x['groupe_id'] }
-                .sort_by { |r| r['groupe_libelle'].to_s }
-                .each { |c|
-                obj_grp = { nom: c['groupe_libelle'], cls_id: c['groupe_id'], uai: uai_courant, etablissement_nom: c['etablissement_nom'] }
-                mes_regpts.push obj_grp
-              }.uniq!
-              # rgpts = ress_temp[groupes_libres].reject { |r| r[ 'etablissement_code' ] != uai_courant }
-
-              # Associer les couleurs des carrés
-              colorize( mes_regpts ).to_json
+            # Associer les couleurs des carrés
+            colorize( regroupements ).to_json
           end
 
           #
@@ -115,14 +107,14 @@ module Portail
           app.get "#{APP_PATH}/api/user/regroupements/:id/eleves" do
             content_type :json
 
-            mes_amis = AnnuaireWrapper::Etablissement.regroupement_detail( params[:id] )
-            mes_amis['eleves'] = mes_amis['eleves'].map { |e|
-              e[ 'avatar' ] = ANNUAIRE[:url].gsub( %r{/api}, '/' ) + e[ 'avatar' ]
+            eleves = AnnuaireWrapper::Etablissement.regroupement_detail( params[:id] )['eleves']
+                                                   .map { |eleve|
+              eleve[ 'avatar' ] = ANNUAIRE[:url].gsub( %r{/api}, '/' ) + eleve[ 'avatar' ]
 
-              e
+              eleve
             }
 
-            colorize( mes_amis['eleves'] ).to_json
+            colorize( eleves ).to_json
           end
 
           #
@@ -135,12 +127,12 @@ module Portail
             # Qui sont dans la fenêtre d'abonnement
             # Triées sur les types de ressources desc pour avoir 'MANUEL' en premier, puis 'DICO', puis 'AUTRES'
             ressources = AnnuaireWrapper::User.get_resources( user.uid )
-                                         .reject { |ressource| ressource[ 'etablissement_code_uai' ] != user.profil_actif['uai'] ||
-                                                   Date.parse( ressource['date_deb_abon'] ) >= Date.today ||
-                                                   Date.parse( ressource['date_fin_abon'] ) <= Date.today }
-                                         .sort_by { |ressource| ressource['type_ressource'].to_s }
-                                         .reverse
-                                         .each { |ressource|
+                                              .reject { |ressource| ressource[ 'etablissement_code_uai' ] != user.profil_actif['uai'] ||
+                                                        Date.parse( ressource['date_deb_abon'] ) >= Date.today ||
+                                                        Date.parse( ressource['date_fin_abon'] ) <= Date.today }
+                                              .sort_by { |ressource| ressource['type_ressource'].to_s }
+                                              .reverse
+                                              .each { |ressource|
               ressource['icone'] = '08_ressources.svg'
               ressource['icone'] = '05_validationcompetences.svg'  if ressource['type_ressource'] == 'MANUEL'
               ressource['icone'] = '07_blogs.svg'                  if ressource['type_ressource'] == 'AUTRE'

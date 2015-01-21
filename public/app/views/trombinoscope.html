@@ -3,17 +3,17 @@
 	 class="col-xs-12 col-sm-6 col-md-3 col-lg-2 petite case animate scale-fade-in"
 	 data-ng-style="{'background-color': regroupement.color}"
 	 data-ng-if="!eleves">
-	<a title="Voir le trombinoscope du regroupement {{regroupement.nom}}"
+	<a title="Voir le trombinoscope du regroupement {{regroupement.libelle}}"
 	   data-ng-click="showElevesRegroupement( regroupement )"
-	   data-ng-if="regroupement.nom">
-	    <span class="classe-name">{{regroupement.nom}}</span>
+	   data-ng-if="regroupement.libelle">
+	    <span class="classe-name">{{regroupement.libelle}}</span>
 	    <span class="college-name">{{regroupement.etablissement_nom}}</span>
 	</a>
     </div>
 
     <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2 petite case classe animate scale-fade-in gris3"
 	 data-ng-if="eleves">
-	<span class="classe-name">{{regroupement.nom}}</span>
+	<span class="classe-name">{{regroupement.libelle}}</span>
 	<span class="college-name">{{regroupement.etablissement_nom}}</span>
 
 	<a class="btn btn-link retour" data-ng-click="retour()"><span class="glyphicon glyphicon-home"></span> Retour à la liste des classes</a>

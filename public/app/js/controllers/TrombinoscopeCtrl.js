@@ -16,7 +16,7 @@ angular.module( 'portailApp' )
 
 			   $scope.showElevesRegroupement = function( regroupement ){
 			       $scope.regroupement = regroupement;
-			       currentUser.eleves_regroupement( regroupement.cls_id )
+			       currentUser.eleves_regroupement( regroupement.id )
 				   .then( function( response ) {
 				       $scope.eleves = response;
 				       randomize_colors( $scope.eleves, COULEURS );
