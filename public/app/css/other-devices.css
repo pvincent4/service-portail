@@ -1,22 +1,8 @@
 @media screen and (max-height: 660px) {
-    /* .damier .petite.case a .icone { */
-    /*	font-size: 6.5em; */
-    /* } */
     .damier .petite.case a .app-name {
 	bottom: 5px;
     }
 }
-
-/* @media screen and (max-height: 490px) { */
-/*     .damier .petite.case a .icone { */
-/*	font-size: 4em; */
-/*     } */
-/* } */
-
-/* -md, -lg */
-/* @media screen and (min-width: 992px) { */
-
-/* } */
 
 /* -xs, -sm */
 @media screen and (max-width: 992px) {
@@ -34,6 +20,7 @@
 				     left: 3em;
 				     height: 100%;
 				     width: 100%; }
+    .damier { height: calc( 100% - 3em ); }
 
     /* Page profil utilisateur */
     .user-profil header { padding-left: 0; }
