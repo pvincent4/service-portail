@@ -1,0 +1,10 @@
+<span class="compteur-notification orange-brillant"
+      data-ng-if="case.app.notifications > 0" data-ng-cloak>{{case.app.notifications}}</span>
+<img class="icone" data-ng-src="{{prefix}}/{{case.app.icon}}"
+     data-ng-if="case.app.icon"/>
+<div class="icone"
+     data-fittext
+     data-ng-if="!case.app.icon">
+    {{case.app.libelle[0]}}
+</div>
+<span class="app-name" data-ng-cloak>{{ case.app.libelle }}<i class="glyphicon glyphicon-new-window" data-ng-if="case.app.type == 'EXTERNAL'"></i></span>
