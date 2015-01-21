@@ -107,16 +107,6 @@ angular.module( 'portailApp', [ 'ngResource',
 					 controller: 'CCNCtrl'
 				     }
 				 }
-			       } )
-		       .state( 'app.classes-culturelles-numeriques-archivees',
-			       { parent: 'app',
-				 url: '/classes-culturelles-numeriques-archivees',
-				 views: {
-				     'app': {
-					 templateUrl: 'views/archives-ccn.html',
-					 controller: 'CCNCtrl'
-				     }
-				 }
 			       } );
 	       }
 	     ] );

@@ -1,7 +1,8 @@
 <div class="row">
     <div class="animate scale-fade ng-scope" style="">
 	<div class="row portail ng-scope">
-	    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 aside aside-blanc">
+	    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 aside aside-blanc"
+		 data-ng-if="!display_archives">
 		<p class="laius">
 			Des collégiens qui jouent sur le web et sur scène avec des auteurs de théâtre et des écrivains,
 			qui philosophent comme Platon sur les animaux du Musée des Confluences,
@@ -19,45 +20,32 @@
 			Sur inscription : <a href="mailto:thematiques@laclasse.com">thematiques@laclasse.com</a>
 		</p>
 	    </div>
+	    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 aside aside-blanc"
+		 data-ng-if="display_archives">
+		<p class="laius">
+		    Au fil des années, des projets pédagogiques, des résidences d'artistes, de scientifiques, et d'écrivains se sont déroulés
+		    dans tout le département du rhône, et parfois au delà, amenant plusieurs classes de différents établissements
+		    à travailler ensemble autour de l'outil numérique.<br/>
+		    Retrouver et revisitez les travaux des classes sur ces projets, ici.<br/><br/>
+		    <a class="btn btn-default" data-ng-click="toggle_archives()">&LeftArrow;&nbsp;retour</a>
+		</p>
+	    </div>
+
 	    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
 		<div class="row damier ng-scope">
-		    <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 petite case animate scale-fade-in jaune">
-			<a title="14-18" href="http://14-18.laclasse.com/?url=spip.php%3Fpage%3Dsommaire&cicas=oui">
-			    <img class="icone" data-ng-src="{{prefix}}/app/vendor/charte-graphique-laclasse-com/images/thematiques/icon_14-18.svg">
-			    <span class="app-name ">14-18</span>
+
+		    <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 petite case animate scale-fade-in {{thematique.couleur}}"
+			 data-ng-repeat="thematique in thematiques">
+			<a title="{{thematique.description}}"
+			   data-ng-href="{{thematique.url}}">
+			    <img class="icone" data-ng-src="{{prefix}}{{thematique.icon}}">
+			    <span class="app-name ">{{thematique.nom}}</span>
 			</a>
 		    </div>
 
-		    <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 petite case animate scale-fade-in bleu">
-			<a title="Zérogaspi" href="http://zerogaspi.laclasse.com/?url=spip.php%3Fpage%3Dsommaire&cicas=oui">
-			    <img class="icone" data-ng-src="{{prefix}}/app/vendor/charte-graphique-laclasse-com/images/thematiques/icon_zero-gaspi.svg">
-			    <span class="app-name ">Zérogaspi</span>
-			</a>
-		    </div>
-
-		    <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 petite case animate scale-fade-in violet">
-			<a title="Philo" href="http://philo.laclasse.com/?url=spip.php%3Fpage%3Dsommaire&cicas=oui">
-			    <img class="icone" data-ng-src="{{prefix}}/app/vendor/charte-graphique-laclasse-com/images/thematiques/icon_philo.svg">
-			    <span class="app-name ">Philo</span>
-			</a>
-		    </div>
-
-		    <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 petite case animate scale-fade-in rouge">
-			<a title="Théâtre" href="http://theatre.laclasse.com/?url=spip.php%3Fpage%3Dsommaire&cicas=oui">
-			    <img class="icone" data-ng-src="{{prefix}}/app/vendor/charte-graphique-laclasse-com/images/thematiques/icon_theatre.svg">
-			    <span class="app-name">Théâtre</span>
-			</a>
-		    </div>
-
-		    <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 petite case animate scale-fade-in vert">
-			<a title="Assises du Roman" href="http://air.laclasse.com/?url=spip.php%3Fpage%3Dsommaire&cicas=oui">
-			    <img class="icone" data-ng-src="{{prefix}}/app/vendor/charte-graphique-laclasse-com/images/thematiques/icon_air-2014.svg">
-			    <span class="app-name">AIR 2014</span>
-			</a>
-		    </div>
-
-		    <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 petite case animate scale-fade-in gris1">
-			<a title="Projets archivés" data-ui-sref="app.classes-culturelles-numeriques-archivees">
+		    <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 petite case animate scale-fade-in gris1"
+			 data-ng-if="!display_archives">
+			<a title="Projets archivés" href data-ng-click="toggle_archives()">
 			    <img class="icone" data-ng-src="{{prefix}}/app/vendor/charte-graphique-laclasse-com/images/06_thematiques.svg">
 			    <span class="app-name">Projets archivés</span>
 			</a>
