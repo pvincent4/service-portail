@@ -25,33 +25,23 @@ angular.module( 'portailApp' )
 		} ] );
 
 angular.module( 'portailApp' )
-    .factory( 'UserRessources',
+    .factory( 'UserRegroupements',
 	      [ '$resource', 'APP_PATH',
 		function( $resource, APP_PATH ) {
-		    return $resource( APP_PATH + '/api/ressources_numeriques' );
-		} ] );
-
-angular.module( 'portailApp' )
-    .factory( 'UserMesRegroupements',
-	      [ '$resource', 'APP_PATH',
-		function( $resource, APP_PATH ) {
-		    return $resource( APP_PATH + '/api/user/regroupements' );
-		} ] );
-
-angular.module( 'portailApp' )
-    .factory( 'RegroupementDetail',
-	      [ '$resource', 'APP_PATH',
-		function( $resource, APP_PATH ) {
-		    return $resource( APP_PATH + '/api/user/regroupements/:id' );
+		    return $resource( APP_PATH + '/api/user/regroupements/:id',
+				      { id: '@id' },
+				      { get: { isArray: true } } );
 		} ] );
 
 angular.module( 'portailApp' )
     .service( 'currentUser',
-	      [ '$http', '$upload', 'APP_PATH', 'User', 'UserRessources', 'UserMesRegroupements',
-		function( $http, $upload, APP_PATH, User, UserRessources, UserMesRegroupements ) {
+	      [ '$http', '$upload', '$resource', 'APP_PATH', 'User', 'UserRegroupements',
+		function( $http, $upload, $resource, APP_PATH, User, UserRegroupements ) {
+		    var UserRessources = $resource( APP_PATH + '/api/ressources_numeriques' );
+
 		    this.get = function() { return User.get().$promise; };
 		    this.ressources = function() { return UserRessources.query().$promise; };
-		    this.regroupements = function() { return UserMesRegroupements.query().$promise; };
+		    this.regroupements = function() { return UserRegroupements.query().$promise; };
 		    this.avatar = { upload: function( fichier ) {
 			$upload.upload( {
 			    url: APP_PATH + '/api/user/avatar',
