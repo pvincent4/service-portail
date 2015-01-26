@@ -19,8 +19,7 @@ gem 'sinatra'
 gem 'sinatra-param'
 
 # Gems spécifiques ENT
-gem 'laclasse-common', git: 'https://github.com/laclasse-com/laclasse-common', branch: 'master'
-gem 'annuaire', git: 'https://github.com/laclasse-com/gem_annuaire', branch: 'master'
+gem 'laclasse-common', git: 'https://github.com/laclasse-com/laclasse-common', branch: 'develop'
 
 group :development do
   gem 'css2less'

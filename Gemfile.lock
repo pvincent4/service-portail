@@ -1,14 +1,7 @@
 GIT
-  remote: https://github.com/laclasse-com/gem_annuaire
-  revision: 052a03842f54e9ca8401e08d68f4c61100fe5762
-  branch: master
-  specs:
-    annuaire (0.1.3)
-
-GIT
   remote: https://github.com/laclasse-com/laclasse-common
-  revision: 9e337dc5b243019375ef308aa4b18afc9b09b896
-  branch: master
+  revision: 1bfa69d986183fe3a622b57ac4c1d8567b5ace57
+  branch: develop
   specs:
     laclasse-common (0.3)
       logstash-logger
@@ -171,7 +164,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  annuaire!
   css2less
   guard
   guard-bundler
