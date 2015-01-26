@@ -60,6 +60,8 @@
 			data-ng-click="case.app.toggle_configure()">
 		    <span class="icone visualiser"></span>
 		</button>
+		<button class="btn btn-xs btn-link remove glyphicon glyphicon-trash"
+			data-ng-click="case.app.remove()"></button>
 
 		<label>nom : <input type="text" class="form-control"
 				    data-ng-model="case.app.libelle"
@@ -75,9 +77,6 @@
 				    data-ng-model="case.app.url"
 				    data-ng-change="case.app.is_dirty()" />
 		</label>
-
-		<button class="btn btn-danger remove"
-			data-ng-click="case.app.remove()">Supprimer</button>
 	    </div>
 	</li>
     </ul>
