@@ -22,7 +22,7 @@ module Portail
               nb: 5,
               icon: '',
               flux: AnnuaireWrapper::User.get_signed_news_url( user.uid ),
-              titre: 'News de l\'utilisateur'
+              title: 'News de l\'utilisateur'
             }
 
             fluxes.each do |feed|
@@ -34,17 +34,19 @@ module Portail
                          .first( feed[:nb] )
                          .each do |article|
                   article.each do |k, _|
-                    if article[k].is_a? String
-                      article[k] = URI.unescape( article[k] ).to_s.force_encoding( 'UTF-8' ).encode!
-                      article[k] = HTMLEntities.new.decode article[k]
+                    if article[ k ].is_a? String
+                      article[ k ] = URI.unescape( article[ k ] ).to_s.force_encoding( 'UTF-8' ).encode!
+                      article[ k ] = HTMLEntities.new.decode( article[ k ] )
                     else
                       next
                     end
                   end
+
                   article[:description] = article[:content_encoded] if article.has? :content_encoded
                   article[:image] = article[:content]
                   article[:orderby] =  article[:pubDate].to_i
-                  article[:pubDate] = article[:pubDate].strftime '%d/%m/%Y'
+                  article[:pubDate] = article[:pubDate].strftime( '%d/%m/%Y' )
+
                   news << article
                 end
               rescue
