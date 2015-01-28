@@ -69,7 +69,7 @@ module Portail
                                                     params[:profil_id],
                                                     params[:uai] )
 
-            set_current_user( user.uid )
+            init_current_user( user.uid )
 
             user.full( env ).to_json
           end
