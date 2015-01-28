@@ -92,27 +92,34 @@ body {
 		font-weight: 700;
 		position: absolute;
 		left: 0;
-		top: 20%;
+		&.initiales {
+		    top: 20%;
+		}
+		&.full-name {
+		    top: 40%;
+		}
 	    }
 	    a {
 		color: #fff;
 	    }
 	    .logout {
 		border:1px solid #fff;
+		background-color: rgba( 0, 0, 0, 0.6 );
 		text-transform:uppercase;
 		width: 11em;
 		padding: 0.25em;
 		position: absolute;
-		top: 75%;
+		top: 85%;
 		left: calc( 50% - 11em / 2 );
 	    }
 	    select {
 		color: #fff;
+		background-color: rgba( 0, 0, 0, 0.6 );
 		border:0;
 		font-weight:lighter;
 		width:100%;
 		position: absolute;
-		top: 60%;
+		top: 75%;
 		left: 0;
 	    }
 	    svg {
@@ -993,8 +1000,23 @@ svg {
     }
 }
 
+.ressources-numeriques {
+    .damier {
+	height: calc( 100% - 3em );
+    }
+}
+
+.classes-culturelles-numeriques {
+    .damier {
+	height: calc( 100% - 3em );
+    }
+}
+
 // Trombinoscope
-.trombinoscope{
+.trombinoscope {
+    .damier {
+	height: calc( 100% - 3em );
+    }
     .avatar {
 	position: absolute;
 	top: 0;

@@ -11,8 +11,8 @@
 	     data-ng-style="{ 'background-image': 'url(' + current_user.avatar + ')' }">
 	    <span class="user-info">
 		<a data-ui-sref="portail.user">
-		    <h3 class="hidden-xs hidden-sm">{{current_user.prenom}} {{current_user.nom}}</h3>
-		    <h3 class="hidden-md hidden-lg">{{current_user.prenom[0]}}{{current_user.nom[0]}}</h3>
+		    <h3 class="hidden-xs hidden-sm full-name">{{current_user.prenom}} {{current_user.nom}}</h3>
+		    <h3 class="hidden-md hidden-lg initiales">{{current_user.prenom[0]}}{{current_user.nom[0]}}</h3>
 		</a>
 		<select class="gris4"
 			data-ng-controller="ProfilActifCtrl"
@@ -25,7 +25,6 @@
 
 	    <span class="connect-register" data-ng-if="!current_user.is_logged">
 		<a href="{{prefix}}/login" title="Connexion avec Laclasse.com">se connecter</a>
-		<!-- <a href="{{prefix}}/register" title="Création de compte avec Laclasse.com">s'inscrire</a> -->
 	    </span>
 	</div>
 
