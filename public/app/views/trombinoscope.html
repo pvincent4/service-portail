@@ -6,15 +6,15 @@
 	<a title="Voir le trombinoscope du regroupement {{regroupement.libelle}}"
 	   data-ng-click="showElevesRegroupement( regroupement )"
 	   data-ng-if="regroupement.libelle">
-	    <span class="classe-name">{{regroupement.libelle}}</span>
-	    <span class="college-name">{{regroupement.etablissement_nom}}</span>
+	    <h1 class="classe-name">{{regroupement.libelle}}</h1>
+	    <h3 class="college-name">{{regroupement.etablissement_nom}}</h3>
 	</a>
     </div>
 
     <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2 petite case classe animate scale-fade-in gris3"
 	 data-ng-if="eleves">
-	<span class="classe-name">{{regroupement.libelle}}</span>
-	<span class="college-name">{{regroupement.etablissement_nom}}</span>
+	<h1 class="classe-name">{{regroupement.libelle}}</h1>
+	<h3 class="college-name">{{regroupement.etablissement_nom}}</h3>
 
 	<button class="btn btn-default retour" data-ng-click="retour()">
 	    <i class="glyphicon glyphicon-arrow-left"></i> Retour à la liste des classes
@@ -28,7 +28,7 @@
 	<img class="avatar"
 	     data-ng-src="{{eleve.avatar}}"
 	     data-ng-if="eleve.avatar != ''"/>
-	<span class="trombi-first-name">{{eleve.prenom}}</span>
-	<span class="trombi-last-name">{{eleve.nom}}</span>
+	<h1 class="trombi-first-name">{{eleve.prenom}}</h1>
+	<h3 class="trombi-last-name">{{eleve.nom}}</h3>
     </div>
 </div>

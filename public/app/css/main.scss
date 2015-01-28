@@ -945,110 +945,98 @@ svg {
 }
 
 // Popup d'ajout d'app
-    .new-app {
-	background-color: #777;
-	opacity: 0.66;
-	float: left;
-	height: 10em;
-	list-style: outside none none;
-	width: 10em;
-	margin: 0.5em;
-	cursor: pointer;
-	a {
-	    display: block;
-	    height: 100%;
+.new-app {
+    background-color: #777;
+    opacity: 0.66;
+    float: left;
+    height: 10em;
+    list-style: outside none none;
+    width: 10em;
+    margin: 0.5em;
+    cursor: pointer;
+    a {
+	display: block;
+	height: 100%;
+	width: 100%;
+	.icone {
 	    width: 100%;
-	    .icone {
-		width: 100%;
-		height: 66%;
-		margin-top: 1em;
-	    }
-	    .app-name {
-		display: inline-block;
-		color: #fff;
-		width: 100%;
-		text-align: center;
-		font-size: 85%;
-	    }
+	    height: 66%;
+	    margin-top: 1em;
 	}
-    }
-    .new-app.selected {
-	box-shadow: 0 0 0 4px #8e8e8e;
-	opacity: 1;
-    }
-    .new-app.creation {
-	width: 21em;
-	height: 11em;
-	padding: 0.25em;
-	color: #ececec;
-	legend {
-	    margin: 0;
-	    color: #ececec;
-	}
-	label, input {
-	    width: 100%;
-	}
-	input {
-	    color: #16161d;
-	}
-    }
-
-    // Trombinoscope
-    .trombinoscope{
-	.classe-name {
-	    top: 0.5em;
-	    left: 0;
-	    font-size: 5em;
-	    font-weight: bold;
-	}
-	.classe-name, .college-name {
-	    position: absolute;
+	.app-name {
+	    display: inline-block;
+	    color: #fff;
 	    width: 100%;
 	    text-align: center;
+	    font-size: 85%;
 	}
-	.college-name {
-	    top: 7em;
-	    left: 0;
-	    font-size: 1.2em;
+    }
+}
+.new-app.selected {
+    box-shadow: 0 0 0 4px #8e8e8e;
+    opacity: 1;
+}
+.new-app.creation {
+    width: 21em;
+    height: 11em;
+    padding: 0.25em;
+    color: #ececec;
+    legend {
+	margin: 0;
+	color: #ececec;
+    }
+    label, input {
+	width: 100%;
+    }
+    input {
+	color: #16161d;
+    }
+}
+
+// Trombinoscope
+.trombinoscope{
+    .avatar {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 0.6;
+	z-index: 1;
+    }
+    .petite.case{
+	.classe-name, .college-name, .trombi-first-name, .trombi-last-name {
+	    display: flex;
+	    justify-content:center;
+	    align-content:center;
+	    flex-direction:column; /* column | row */
 	    font-weight: bold;
-	    text-transform: capitalize;
+	    z-index: 2;
+	    color: #fff;
 	}
-	.trombi-first-name {
-	    top: 1em;
-	    left: 0.8em;
+	.classe-name, .trombi-first-name {
+	    height: 75%;
 	}
-	.trombi-first-name, .trombi-last-name, .trombi-classe, .trombi-etab {
+	.college-name, .trombi-last-name {
+	    height: 25%;
+	}
+    }
+    a {
+	cursor: pointer;
+    }
+    .petite.case.classe{
+	span {
+	    height: auto;
+	}
+	.retour {
 	    position: absolute;
-	    font-weight: bold;
-	    text-transform: uppercase;
-	    font-size: 1.6em;
-	    width: auto!important;
-	}
-	.trombi-last-name {
-	    top: 2em;
-	    left: 0.8em;
-	}
-	.avatar {
-	    width: 100%;
-	    height: 100%;
-	    opacity: 0.6;
-	}
-	.petite.case a {
-	    cursor: pointer;
-	}
-	.petite.case.classe{
+	    height: auto;
+	    top: 3px;
+	    left: 3px;
+	    text-align: left;
 	    span {
-		height: auto;
-	    }
-	    .retour {
-		position: absolute;
-		height: auto;
-		bottom: 3px;
-		left: 3px;
-		text-align: left;
-		span {
-		    width: auto;
-		}
+		width: auto;
 	    }
 	}
     }
+}
