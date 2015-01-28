@@ -19,10 +19,10 @@
 		</button>
 
 		<ng-color-picker class="couleurs"
-				     data-ng-click="case.app.is_dirty()"
-				     data-ng-if="modification && case.app && case.app.active"
-				     selected="case.app.color"
-				     colors="couleurs"></ng-color-picker>
+				 data-ng-click="case.app.is_dirty()"
+				 data-ng-if="modification && case.app && case.app.active"
+				 selected="case.app.color"
+				 colors="couleurs"></ng-color-picker>
 
 		<!-- Affichage normal -->
 		<!-- Lien vers app interne portail -->
@@ -33,14 +33,14 @@
 		</a>
 
 		<!-- Lien vers app laclasse.com -->
-		<a data-ng-if="case.app.active && case.app.type != 'EXTERNAL' && !case.app.portail && !modification"
+		<a data-ng-if="case.app.active && !case.app.external && !case.app.portail && !modification"
 		   data-ui-sref="app.external({ app: case.app.application_id ? case.app.application_id : case.app.libelle })"
 		   title="{{ case.app.description }}">
 		    <div data-ng-include="'views/app-tile-content.html'"></div>
 		</a>
 
 		<!-- Lien vers site externe -->
-		<a data-ng-if="case.app.active && case.app.type == 'EXTERNAL' && !modification"
+		<a data-ng-if="case.app.active && case.app.external && !modification"
 		   data-ng-href="{{ case.app.url }}"
 		   target="_blank"
 		   title="{{ case.app.description }}">

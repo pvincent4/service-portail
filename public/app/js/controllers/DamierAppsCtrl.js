@@ -27,6 +27,7 @@ angular.module( 'portailApp' )
 			   app.dirty = false;
 			   app.to_delete = false;
 			   app.portail = app.url.match( /^app\..*/ );
+			   app.external = app.type == 'EXTERNAL' || app.url.match( /^http.*/ );
 
 			   app.toggle_configure = function() {
 			       _.chain($scope.cases)
