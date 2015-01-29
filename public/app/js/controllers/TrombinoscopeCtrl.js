@@ -10,6 +10,18 @@ angular.module( 'portailApp' )
 			   } );
 		       };
 
+		       $scope.filters = {
+			   regroupements_types: {
+			       classe: true,
+			       groupes_eleves: true
+			   },
+			   text: {
+			       regroupement: '',
+			       user: ''
+			   },
+			   order_asc: true
+		       };
+
 		       currentUser.regroupements().then( function ( response ) {
 			   $scope.regroupements = response;
 			   randomize_colors( $scope.regroupements, COULEURS );

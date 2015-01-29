@@ -1,34 +1,57 @@
-<div class="row damier trombinoscope">
-    <div data-ng-repeat="regroupement in regroupements"
-	 class="col-xs-12 col-sm-6 col-md-3 col-lg-2 petite case animate scale-fade-in"
-	 data-ng-style="{'background-color': regroupement.color}"
-	 data-ng-if="!eleves">
-	<a title="Voir le trombinoscope du regroupement {{regroupement.libelle}}"
-	   data-ng-click="showElevesRegroupement( regroupement )"
-	   data-ng-if="regroupement.libelle">
-	    <h1 class="classe-name">{{regroupement.libelle}}</h1>
-	    <h3 class="college-name">{{regroupement.etablissement_nom}}</h3>
-	</a>
-    </div>
-
-    <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2 petite case classe animate scale-fade-in gris3"
-	 data-ng-if="eleves">
-	<h1 class="classe-name">{{regroupement.libelle}}</h1>
-	<h3 class="college-name">{{regroupement.etablissement_nom}}</h3>
-
-	<button class="btn btn-default retour" data-ng-click="retour()">
+<div class="row trombinoscope">
+    <div class="filters gris3">
+	<button class="btn btn-default retour pull-left"
+		data-ng-if="eleves"
+		data-ng-click="retour()">
 	    <i class="glyphicon glyphicon-arrow-left"></i> Retour à la liste des classes
 	</button>
-    </div>
 
-    <div data-ng-repeat="eleve in eleves"
-	 class="col-xs-12 col-sm-6 col-md-3 col-lg-2 petite case animate scale-fade-in"
-	 data-ng-style="{'background-color': eleve.color}"
-	 data-ng-if="eleves">
-	<img class="avatar"
-	     data-ng-src="{{eleve.avatar}}"
-	     data-ng-if="eleve.avatar != ''"/>
-	<h1 class="trombi-first-name">{{eleve.prenom}}</h1>
-	<h3 class="trombi-last-name">{{eleve.nom}}</h3>
+	<div class="pull-right">
+	    <label data-ng-if="!eleves">
+		<label class="btn"
+		       data-ng-class="{ 'btn-primary': filters.regroupements_types.classes, 'btn-default': !filters.regroupements_types.classes}"
+		       data-ng-model="filters.regroupements_types.classes" btn-checkbox> Classes </label>
+		<label class="btn"
+		       data-ng-class="{ 'btn-primary': filters.regroupements_types.groupes_eleves, 'btn-default': !filters.regroupements_types.groupes_eleves}"
+		       data-ng-model="filters.regroupements_types.groupes_eleves" btn-checkbox> Groupes </label>
+	    </label>
+
+	    <label>Filtre :
+		<input data-ng-model="filters.text.regroupement"
+		       data-ng-if="!eleves" />
+		<input data-ng-model="filters.text.user"
+		       data-ng-if="eleves" />
+	    </label>
+	</div>
+    </div>
+    <div class="damier">
+	<div data-ng-repeat="regroupement in regroupements | filter:{ libelle: filters.text.regroupement } | orderBy:'type' | orderBy:'libelle'"
+	     class="col-xs-12 col-sm-6 col-md-3 col-lg-2 petite case animate scale-fade-in"
+	     data-ng-style="{'background-color': regroupement.color}"
+	     data-ng-if="!eleves && ( ( regroupement.type == 'classe' && filters.regroupements_types.classes ) || ( regroupement.type == 'groupe_eleve' && filters.regroupements_types.groupes_eleves ) )">
+	    <a title="Voir le trombinoscope du regroupement {{regroupement.libelle}}"
+	       data-ng-click="showElevesRegroupement( regroupement )"
+	       data-ng-if="regroupement.libelle">
+		<h1 class="classe-name">{{regroupement.libelle}}</h1>
+		<h3 class="college-name">{{regroupement.etablissement_nom}}</h3>
+	    </a>
+	</div>
+
+	<div class="col-xs-12 col-sm-6 col-md-3 col-lg-2 petite case classe animate scale-fade-in gris3"
+	     data-ng-if="eleves">
+	    <h1 class="classe-name">{{regroupement.libelle}}</h1>
+	    <h3 class="college-name">{{regroupement.etablissement_nom}}</h3>
+	</div>
+
+	<div data-ng-repeat="eleve in eleves | filter:filters.text.user | orderBy:'prenom'"
+	     class="col-xs-12 col-sm-6 col-md-3 col-lg-2 petite case animate scale-fade-in"
+	     data-ng-style="{'background-color': eleve.color}"
+	     data-ng-if="eleves">
+	    <img class="avatar"
+		 data-ng-src="{{eleve.avatar}}"
+		 data-ng-if="eleve.avatar != ''"/>
+	    <h1 class="trombi-first-name">{{eleve.prenom}}</h1>
+	    <h3 class="trombi-last-name">{{eleve.nom}}</h3>
+	</div>
     </div>
 </div>

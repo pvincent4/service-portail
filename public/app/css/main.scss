@@ -1014,8 +1014,12 @@ svg {
 
 // Trombinoscope
 .trombinoscope {
+    .filters {
+	height: 3em;
+	line-height: 3em;
+    }
     .damier {
-	height: calc( 100% - 3em );
+	height: calc( 100% - 6em );
     }
     .avatar {
 	position: absolute;
@@ -1042,23 +1046,13 @@ svg {
 	.college-name, .trombi-last-name {
 	    height: 25%;
 	}
+	&.classe{
+	    span {
+		height: auto;
+	    }
+	}
     }
     a {
 	cursor: pointer;
-    }
-    .petite.case.classe{
-	span {
-	    height: auto;
-	}
-	.retour {
-	    position: absolute;
-	    height: auto;
-	    top: 3px;
-	    left: 3px;
-	    text-align: left;
-	    span {
-		width: auto;
-	    }
-	}
     }
 }

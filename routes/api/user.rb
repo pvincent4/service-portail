@@ -85,17 +85,20 @@ module Portail
                               regroupements[ 'groupes_eleves' ] ]
                             .flatten
                             .reject { |regroupement| regroupement[ 'etablissement_code' ] != user.profil_actif['uai'] }
-                            .each { |regroupement|
+                            .each do |regroupement|
               regroupement[ 'id' ] =  regroupement.key?( 'classe_id' ) ? regroupement['classe_id'] : regroupement['groupe_id']
               regroupement[ 'libelle' ] =  regroupement.key?( 'classe_libelle' ) ? regroupement['classe_libelle'] : regroupement['groupe_libelle']
-            }
+              regroupement[ 'type' ] = regroupement.key?( 'classe_id' ) ? 'classe' : 'groupe_eleve'
+            end
                             .uniq { |regroupement| regroupement['id'] }
                             .sort_by { |regroupement| regroupement['libelle'].to_s }
                             .reverse
-                            .map { |regroupement|
+                            .map do |regroupement|
               { libelle: regroupement['libelle'],
                 id: regroupement['id'],
-                etablissement_nom: regroupement['etablissement_nom'] } }
+                etablissement_nom: regroupement['etablissement_nom'],
+                type: regroupement['type'] }
+            end
 
             # Associer les couleurs des carrés
             colorize( regroupements ).to_json
