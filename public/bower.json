@@ -29,13 +29,14 @@
     "angular-carousel": "~0.3.7",
     "ngFitText": "~3.1.0",
     "angular-konami": "~0.0.1",
-    "blockrain": "~0.1.0"
+      "blockrain": "~0.1.0",
+      "angular-bootstrap-checkbox": "latest"
   },
-  "devDependencies": {
-    "angular-mocks": "latest",
-    "angular-scenario": "latest"
-  },
-  "resolutions": {
-    "angular": "1.3.6"
-  }
+    "devDependencies": {
+	"angular-mocks": "latest",
+	"angular-scenario": "latest"
+    },
+    "resolutions": {
+	"angular": "1.3.6"
+    }
 }

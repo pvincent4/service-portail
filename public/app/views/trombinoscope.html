@@ -7,21 +7,17 @@
 	</button>
 
 	<div class="pull-right">
-	    <label data-ng-if="!eleves">
-		<label class="btn"
-		       data-ng-class="{ 'btn-primary': filters.regroupements_types.classes, 'btn-default': !filters.regroupements_types.classes}"
-		       data-ng-model="filters.regroupements_types.classes" btn-checkbox> Classes </label>
-		<label class="btn"
-		       data-ng-class="{ 'btn-primary': filters.regroupements_types.groupes_eleves, 'btn-default': !filters.regroupements_types.groupes_eleves}"
-		       data-ng-model="filters.regroupements_types.groupes_eleves" btn-checkbox> Groupes </label>
-	    </label>
-
 	    <label>Filtre :
-		<input data-ng-model="filters.text.regroupement"
+		<input class="gris1"
+		       data-ng-model="filters.text.regroupement"
 		       data-ng-if="!eleves" />
-		<input data-ng-model="filters.text.user"
+		<input class="gris1"
+		       data-ng-model="filters.text.user"
 		       data-ng-if="eleves" />
 	    </label>
+
+	    <label data-ng-if="!eleves"><checkbox class="checkbox" data-ng-model="filters.regroupements_types.classes"></checkbox> Classes </label>
+	    <label data-ng-if="!eleves"><checkbox class="checkbox" data-ng-model="filters.regroupements_types.groupes_eleves"></checkbox> Groupes </label>
 	</div>
     </div>
     <div class="damier">

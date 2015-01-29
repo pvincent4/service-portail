@@ -941,6 +941,13 @@ svg {
     .filters {
 	height: 3em;
 	line-height: 3em;
+	color: #fff;
+	input {
+	    border: 0;
+	    padding: 0 3px;
+	    font-weight: bold;
+	    font-size: 1.25em;
+	}
     }
     .damier {
 	height: calc( 100% - 6em );
@@ -979,4 +986,9 @@ svg {
     a {
 	cursor: pointer;
     }
+}
+
+.checkbox {
+    height: 2em;
+    width: 2em;
 }

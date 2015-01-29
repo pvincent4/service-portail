@@ -92,6 +92,7 @@ namespace :preprocess_assets do
                                                           'public/app/vendor/angular-ui-router/release/angular-ui-router.js',
                                                           'public/app/vendor/angular-ui-sortable/sortable.js',
                                                           'public/app/vendor/angular-bootstrap/ui-bootstrap-tpls.js',
+                                                          'public/app/vendor/angular-bootstrap-checkbox/angular-bootstrap-checkbox.js',
                                                           'public/app/vendor/angular-animate/angular-animate.js',
                                                           'public/app/vendor/angular-delay/build/angular-delay.js',
                                                           'public/app/vendor/ng-file-upload/angular-file-upload.js',

@@ -11,14 +11,10 @@ angular.module( 'portailApp' )
 		       };
 
 		       $scope.filters = {
-			   regroupements_types: {
-			       classe: true,
-			       groupes_eleves: true
-			   },
-			   text: {
-			       regroupement: '',
-			       user: ''
-			   },
+			   regroupements_types: { classes: true,
+						  groupes_eleves: false },
+			   text: { regroupement: '',
+				   user: '' },
 			   order_asc: true
 		       };
 
@@ -26,7 +22,7 @@ angular.module( 'portailApp' )
 			   $scope.regroupements = response;
 			   randomize_colors( $scope.regroupements, COULEURS );
 
-			   $scope.showElevesRegroupement = function( regroupement ){
+			   $scope.showElevesRegroupement = function( regroupement ) {
 			       $scope.regroupement = regroupement;
 			       currentUser.eleves_regroupement( regroupement.id )
 				   .then( function( response ) {
