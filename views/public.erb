@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+	<meta charset="utf-8">
+	<meta http-equiv="content-language" content="fr">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Portail Laclasse.com">
+	<meta name="author" content="">
+	<link rel="shortcut icon" href="img/favicon.png">
+
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="mobile-web-app-capable" content="yes">
+
+	<title>Laclasse.com</title>
+
+	<script type="text/javascript">
+	 if ( top != self ) top.location.replace( location );
+	</script>
+
+	<link href="<%= APP_PATH %>/app/vendor/bootstrap/dist/css/bootstrap.min.css?v=<%=APP_VERSION%>" rel="stylesheet" />
+	<link href="<%= APP_PATH %>/app/css/page_publique.css?v=<%=APP_VERSION%>" rel="stylesheet">
+
+	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+		  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		  <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+		  <![endif]-->
+    </head>
+
+    <body>
+
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 page_publique">
+	    <!-- Page publique -->
+	    <div class="row">
+		<img class="logo filtered-bg" src="<%= APP_PATH %>/app/vendor/charte-graphique-laclasse-com/images/logolaclasse.svg" alt="Logo ENT" />
+		<a href="<%= APP_PATH %>/?#/app/external?app=aide" title="Trouver de l'aide...">
+		    <img class="aide" src="<%= APP_PATH %>/app/vendor/charte-graphique-laclasse-com/images/12_aide.svg" alt="image Aide" />
+		</a>
+	    </div>
+	    <div class="row title filtered-fg">
+		<span class="nomENT">laclasse.com</span><br />
+		<span class="descENT">Espace Num&eacute;rique de Travail<br />
+		    des coll&egrave;ges et &eacute;coles du Rh&ocirc;ne</span>
+	    </div>
+	    <div class="row connexion">
+		<span class="bienvenue">Bienvenue !</span><br />
+
+		<a href="<%= APP_PATH %>/login" class="btn btn-sm btn-info" title="Connexion à l'ENT">
+		    se connecter
+		</a>
+	    </div>
+	    <div class="row footer filtered-fg">
+		<a href="http://www.rhone.fr/" target="_blank">
+		    <img class="rhone" src="<%= APP_PATH %>/app/vendor/charte-graphique-laclasse-com/images/logo-rhone-blanc.svg" alt="Logo Département du Rhône" />
+		</a>
+		<a href="http://www.ac-lyon.fr/" target="_blank">
+		    <img class="acad" src="<%= APP_PATH %>/app/vendor/charte-graphique-laclasse-com/images/logo-academie-blanc.png" alt="Logo Académie de Lyon" />
+		</a>
+	    </div>
+	</div>
+
+    </body>
+</html>

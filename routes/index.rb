@@ -5,7 +5,9 @@ module Portail
     module Index
       def self.registered( app )
         app.get "#{APP_PATH}/?" do
-          erb :app
+          erb :app if logged?
+
+          erb :public, layout: nil
         end
       end
     end

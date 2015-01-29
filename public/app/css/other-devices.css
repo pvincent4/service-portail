@@ -49,25 +49,3 @@
 @media screen and (orientation: landscape) and (max-height: 400px) {
     .damier .petite.case { height: 50%; }
 }
-
-/**** Portrait ****************************************************************/
-@media screen and (max-height: 778px) { /* (orientation: portrait) { */
-    /* Page publique */
-    .page_publique .connexion {left:50%;}
-    .page_publique .title { top:50%; left: 5%; }
-}
-
-@media screen and (orientation: portrait) and (max-width: 480px) {
-    /* Page publique */
-    .page_publique .connexion .bienvenue {font-size: 1.4em;}
-    .page_publique .connexion .btn-sm{font-size: 1.1em;}
-}
-
-@media screen and (orientation: landscape) and (max-width: 778px) {
-    /* Page publique */
-    .page_publique .connexion .bienvenue {font-size: 1.4em;}
-    .page_publique .connexion .btn-sm{font-size: 1.1em;}
-    .page_publique .nomENT { font-size: 1.25em; }
-    .page_publique .descENT { font-size: 1em; }
-
-}
