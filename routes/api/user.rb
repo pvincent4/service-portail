@@ -34,7 +34,7 @@ module Portail
             AnnuaireWrapper::User.put( user.uid,
                                        params )
 
-            set_current_user( user.uid )
+            init_current_user( user.uid )
 
             user.full( env ).to_json
           end
@@ -45,7 +45,7 @@ module Portail
             AnnuaireWrapper::User.put_avatar( user.uid,
                                               params[:image] ) if params[:image]
 
-            set_current_user( user.uid )
+            init_current_user( user.uid )
 
             user.full( env ).to_json
           end
@@ -55,7 +55,7 @@ module Portail
 
             AnnuaireWrapper::User.delete_avatar( user.uid )
 
-            set_current_user( user.uid )
+            init_current_user( user.uid )
 
             user.full( env ).to_json
           end
