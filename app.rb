@@ -11,7 +11,7 @@ require 'date'
 
 Bundler.require( :default, ENV['RACK_ENV'].to_sym )     # require tout les gems définis dans Gemfile
 
-require 'lib/helpers/authentication'
+require 'laclasse/common/helpers/authentication'
 
 require_relative './lib/annuaire_wrapper'
 
