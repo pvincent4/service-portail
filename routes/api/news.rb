@@ -21,9 +21,9 @@ module Portail
             fluxes << {
               nb: 5,
               icon: '',
-              flux: AnnuaireWrapper::User.get_signed_news_url( user.uid ),
               title: 'News de l\'utilisateur'
             }
+                        flux: AnnuaireWrapper::User.get_news( user.uid ),
 
             fluxes.each do |feed|
               feed = Hash[ feed.map { |k, v| [k.to_sym, v] } ]

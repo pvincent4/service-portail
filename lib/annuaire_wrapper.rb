@@ -75,7 +75,7 @@ module AnnuaireWrapper
     end
 
     # Generate signed user's news url
-    def get_signed_news_url uid
+    def get_news( uid )
       Laclasse::CrossAppSender.sign( :service_annuaire_portail_news, '/' + uid , {} )
     end
   end
