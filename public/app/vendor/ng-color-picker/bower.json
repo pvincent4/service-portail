@@ -1,5 +1,6 @@
 {
   "name": "ng-color-picker",
+  "version": "1.0",
   "homepage": "https://github.com/joujiahe/ng-color-picker",
   "authors": [
     "Johnson Chou <joujiahe@gmail.com>"
@@ -34,14 +35,5 @@
   "resolutions": {
     "angular": "1.2.0"
   },
-  "license": "MIT",
-  "_release": "c71567adc4",
-  "_resolution": {
-    "type": "branch",
-    "branch": "master",
-    "commit": "c71567adc456ef98afcc144a889fd3ef8a81d9c7"
-  },
-  "_source": "https://github.com/cycojesus/ng-color-picker.git",
-  "_target": "*",
-  "_originalSource": "https://github.com/cycojesus/ng-color-picker.git"
+  "license": "MIT"
 }
