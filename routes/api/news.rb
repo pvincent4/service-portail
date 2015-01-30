@@ -18,21 +18,19 @@ module Portail
             fluxes = config[:news_feed] if fluxes.empty? || fluxes.nil?
 
             # Add user news
-            fluxes << {
-              nb: 5,
-              icon: '',
-              title: 'News de l\'utilisateur'
-            }
+            fluxes << { nb: 5,
+                        icon: '',
                         flux: AnnuaireWrapper::User.get_news( user.uid ),
+                        title: 'News de l\'utilisateur' }
 
             fluxes.each do |feed|
               feed = Hash[ feed.map { |k, v| [k.to_sym, v] } ]
 
               begin
-                SimpleRSS.parse( open( feed[:flux] ) )
-                         .items
-                         .first( feed[:nb] )
-                         .each do |article|
+                news << SimpleRSS.parse( open( feed[:flux] ) )
+                                 .items
+                                 .first( feed[:nb] )
+                                 .map do |article|
                   article.each do |k, _|
                     if article[ k ].is_a? String
                       article[ k ] = URI.unescape( article[ k ] ).to_s.force_encoding( 'UTF-8' ).encode!
@@ -44,22 +42,18 @@ module Portail
 
                   article[:description] = article[:content_encoded] if article.has? :content_encoded
                   article[:image] = article[:content]
-                  article[:orderby] =  article[:pubDate].to_i
-                  article[:pubDate] = article[:pubDate].strftime( '%d/%m/%Y' )
 
-                  news << article
+                  article
                 end
               rescue
-                puts "impossible d'ouvrir #{feed[:flux]}"
+                LOGGER.info "impossible d'ouvrir #{feed[:flux]}"
               end
             end
 
-            news.uniq! { |article| article[:description] }
-
-            # Tri anté-chronologique
-            news.sort! { |n1, n2| n2.orderby <=> n1.orderby }
-
-            news.to_json
+            news
+              .flatten
+              .uniq { |article| article[:description] }
+              .to_json
           end
         end
       end
