@@ -1,3 +1,50 @@
+/* mini bootstrap.css */
+body {
+    line-height: 1.42857;
+}
+.btn-group-sm > .btn, .btn-sm {
+    line-height: 1.5;
+}
+.btn-info {
+    background-color: #5bc0de;
+    color: #fff;
+}
+.btn {
+    -moz-user-select: none;
+    background-image: none;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 400;
+    margin-bottom: 0;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+a {
+    text-decoration: none;
+}
+
+.btn-info.active,
+.btn-info.focus,
+.btn-info:active,
+.btn-info:focus,
+.btn-info:hover,
+.open > .dropdown-toggle.btn-info {
+    color: #FFF;
+    background-color: #31B0D5;
+    border-color: #269ABC;
+}
+.btn.active.focus,
+.btn.active:focus,
+.btn.focus,
+.btn.focus:active,
+.btn:active:focus,
+.btn:focus {
+    outline: thin dotted;
+    outline-offset: -2px;
+}
+
+/* custom */
 body {
     font-family: "Open Sans", sans-serif;
 }
