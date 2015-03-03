@@ -20,7 +20,7 @@
 			data-ng-change="reload()"
 			data-ng-options="profil as profil.etablissement + ' : ' + profil.nom group by profil.etablissement for profil in current_user.profils track by profil.index" >
 		</select>
-		<a class="btn hidden-xs hidden-sm logout" href="/logout" title="Déconnexion de Laclasse.com">se déconnecter</a>
+		<a class="btn hidden-xs hidden-sm logout" data-ng-href="{{prefix}}/logout" title="Déconnexion de Laclasse.com">se déconnecter</a>
 	    </span>
 
 	    <span class="connect-register" data-ng-if="!current_user.is_logged">
