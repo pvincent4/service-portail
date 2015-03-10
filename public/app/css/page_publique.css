@@ -111,14 +111,13 @@ body {
 .page_publique .footer .rhone {
     width: 25%;
     position: absolute;
-    top: 87%;
+    top: 0;
     left: 40%;
-    right: 40%;
 }
 .page_publique .footer .acad {
     width: 10%;
     position: absolute;
-    top: 89%;
+    bottom: 0;
     right: 1%;
 }
 .page_publique .annonce {
@@ -135,7 +134,7 @@ body {
 }
 
 /**** Responsivity ****************************************************************/
-@media screen and (max-height: 778px) { /* (orientation: portrait) { */
+@media screen and (max-height: 778px) {
     .page_publique .connexion {left:50%;}
     .page_publique .title { top:50%; left: 5%; }
 }
