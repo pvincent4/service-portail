@@ -259,9 +259,9 @@ body {
     }
     ul {
 	height: 100%;
-	li {
-	    list-style-type: none;
-	}
+	// li {
+	//     list-style-type: none;
+	// }
     }
     .case {
 	float:left;
@@ -761,7 +761,7 @@ html,#app-wrapper {
 div,html,body {
     height:100%;
 }
-.aside .header,.damier .petite.case {
+.aside .header {
     height:25%;
 }
 svg {
