@@ -13,9 +13,9 @@ angular.module( 'portailApp' )
 							    date_naissance: '@date_naissance',
 							    adresse: '@adresse',
 							    code_postal: '@code_postal',
-							    ville: '@ville' //,
+							    ville: '@ville',
 							    // login: '@login',
-							    // password: '@password',
+							    password: '@password' //,
 							    // bloque: '@bloque'
 							  } },
 					change_profil_actif: { method: 'PUT',

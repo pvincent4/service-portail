@@ -7,8 +7,8 @@ angular.module( 'portailApp' )
 		       $scope.prefix = APP_PATH;
 		       $scope.groups = [ { ouvert: true,
 					   enabled: true },
-					 { ouvert: false,
-					   enabled: false },
+					 { ouvert: true,
+					   enabled: true },
 					 { ouvert: false,
 					   enabled: false },
 					 { ouvert: false,
@@ -20,6 +20,10 @@ angular.module( 'portailApp' )
 
 			   $scope.opened = true;
 		       };
+
+		       $scope.password = { old: '',
+					   new1: '',
+					   new2: '' };
 
 		       $scope.current_user = current_user;
 		       $scope.current_user.editable = _($scope.current_user.id_jointure_aaf).isNull();
@@ -34,6 +38,11 @@ angular.module( 'portailApp' )
 			   if ( sauvegarder ) {
 			       if ( _($scope.current_user).has( 'new_avatar' ) ) {
 				   currentUser.avatar.upload( $scope.current_user.new_avatar );
+			       }
+			       if ( $scope.password.old != '' && $scope.password.new1 != '' && $scope.password.new1 == $scope.password.new2 ) {
+				   // FIXME: test ancien mot de passe
+
+				   $scope.current_user.password = $scope.password.new2;
 			       }
 
 			       $scope.current_user.$update();

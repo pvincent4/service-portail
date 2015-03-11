@@ -28,7 +28,7 @@ module Portail
             param :code_postal,    Integer, required: false, within: 0..999_999
             param :ville,          String,  required: false
             # param :login,          String,  required: false
-            # param :password,       String,  required: false
+            param :password,       String,  required: false
             # param :bloque,         TrueClass, required: false
 
             AnnuaireWrapper::User.put( user.uid,

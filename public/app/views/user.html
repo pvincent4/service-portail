@@ -96,23 +96,29 @@
 		    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 			<div class="form-group">
 			    <label for="oldpasswd">entrer l'ancien mot de passe :</label>
-			    <input type="password" class="form-control" id="oldpasswd">
+			    <input type="password" class="form-control" id="oldpasswd"
+				    data-ng-model="password.old">
 			</div>
 		    </div>
 		    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 			<div class="form-group">
 			    <label for="newpasswd1">entre le nouveau mot de passe :</label>
-			    <input type="password" class="form-control" id="newpasswd1">
+			    <input type="password" class="form-control" id="newpasswd1"
+				    data-ng-model="password.new1">
 			</div>
 		    </div>
 		    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 			<div class="form-group">
 			    <label for="newpasswd2">confirmer le nouveau mot de passe :</label>
-			    <input type="password" class="form-control" id="newpasswd2">
+			    <input type="password" class="form-control" id="newpasswd2"
+				    data-ng-model="password.new2">
 			</div>
 		    </div>
 		</div>
-
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 alert alert-danger"
+			data-ng-if="password.new1 != password.new2">
+			confirmation de mot passe incorrecte, le mot de passe ne sera pas mis à jour.
+		</div>
 	    </accordion-group>
 
 	    <accordion-group data-is-open="groups[ 2 ].ouvert" data-ng-if="groups[ 2 ].enabled">
