@@ -6,11 +6,11 @@
   "dependencies": {},
   "devDependencies": {},
   "homepage": "https://github.com/laclasse-com/charte-graphique-laclasse-com",
-  "_release": "a8be5d2271",
+  "_release": "5debd0a43a",
   "_resolution": {
     "type": "branch",
     "branch": "master",
-    "commit": "a8be5d2271350d85bc8b4dce272f350bb93c29f1"
+    "commit": "5debd0a43ac39670e3a929c7e0ea3ca956f8e011"
   },
   "_source": "https://github.com/laclasse-com/charte-graphique-laclasse-com.git",
   "_target": "*",
