@@ -78,8 +78,8 @@
 				flow-drag-leave="style={}"
 				    data-ng-style="style"
 				    data-ng-class="{ 'reset': current_user.reset_avatar }">
-				    <img class="svg" data-ng-src="{{current_user.avatar}}" data-ng-if="!$flow.files.length" />
-				    <img flow-img="$flow.files[0]" data-ng-if="$flow.files.length" />
+				    <img draggable="false" class="svg" data-ng-src="{{current_user.avatar}}" data-ng-if="!$flow.files.length" />
+				    <img draggable="false" flow-img="$flow.files[0]" data-ng-if="$flow.files.length" />
 				    <br>
 				    <button class="btn btn-default" flow-btn>changer de photo</button>
 			    </div>

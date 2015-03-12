@@ -1,7 +1,7 @@
 <span class="compteur-notification orange-brillant"
       data-ng-if="case.app.notifications > 0" data-ng-cloak>{{case.app.notifications}}</span>
-<img class="icone" data-ng-src="{{prefix}}/{{case.app.icon}}"
-     data-ng-if="case.app.icon"/>
+<img draggable="false" class="icone" data-ng-src="{{prefix}}/{{case.app.icon}}"
+	data-ng-if="case.app.icon"/>
 <div class="icone"
      data-fittext
      data-ng-if="!case.app.icon">
