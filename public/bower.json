@@ -38,6 +38,6 @@
 	"angular-scenario": "latest"
     },
     "resolutions": {
-	"angular": "*"
+	"angular": "~1.3"
     }
 }
