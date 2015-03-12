@@ -8,6 +8,15 @@ module Portail
           #
           # Gestion de session côtế client
           #
+          app.post "#{APP_PATH}/api/user/password/check" do
+            content_type :json
+            param :password, String, required: true
+
+            response = AnnuaireWrapper::User.check_password( user.login,
+                                                             params[:password] )
+            { valid: response }.to_json
+          end
+
           app.get "#{APP_PATH}/api/user" do
             content_type :json
 
