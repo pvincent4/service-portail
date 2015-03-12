@@ -91,7 +91,7 @@ body {
 .page_publique .connexion {
     position: absolute;
     top: 30%;
-    left: 60%;
+    right: 23%;
     text-align: center;
 }
 .page_publique .connexion .btn-sm {
@@ -105,21 +105,35 @@ body {
     font-size: 3em;
     font-weight: bolder;
 }
+
 .page_publique .footer {
-    text-align: center;
+    position: absolute;
+    bottom: 0;
+    height: 15%;
+    width: 100%;
+}
+.page_publique .footer a img {
+    width: 100%;
 }
 .page_publique .footer .rhone {
-    width: 25%;
     position: absolute;
-    bottom: 0;
-    left: 40%;
+    top: 0;
+    right: 52.5%;
+    width: 13%;
 }
-.page_publique .footer .acad {
-    width: 10%;
+.page_publique .footer .grand-lyon {
     position: absolute;
-    bottom: 0;
+    top: 6%;
+    left: 52.5%;
+    width: 21%;
+}
+.page_publique .acad {
+    position: absolute;
     right: 1%;
+    top: 0;
+    width: 13%;
 }
+
 .page_publique .annonce {
     text-align: left;
     padding: 2%;
