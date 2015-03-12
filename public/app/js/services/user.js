@@ -44,15 +44,18 @@ angular.module( 'portailApp' )
 
 angular.module( 'portailApp' )
     .service( 'currentUser',
-	      [ '$http', '$upload', '$resource', 'APP_PATH', 'User', 'UserRessources', 'UserRegroupements',
-		function( $http, $upload, $resource, APP_PATH, User, UserRessources, UserRegroupements ) {
+	      [ '$http', '$upload', '$resource', 'APP_PATH', 'User', 'UserPassword', 'UserRessources', 'UserRegroupements',
+		function( $http, $upload, $resource, APP_PATH, User, UserPassword, UserRessources, UserRegroupements ) {
 		    this.get = function() { return User.get().$promise; };
+		    // this.check_password = function( password ) { return $http.post( APP_PATH + '/api/user/password/check',
+		    //								    { password: '@password' } );
+		    //					       };
 		    this.ressources = function() { return UserRessources.query().$promise; };
 		    this.regroupements = function() { return UserRegroupements.query().$promise; };
 		    this.eleves_regroupement = function( id ) { return UserRegroupements.eleves( { id: id } ).$promise; };
 
 		    this.avatar = { upload: function( fichier ) {
-			$upload.upload( {
+			return $upload.upload( {
 			    url: APP_PATH + '/api/user/avatar',
 			    method: 'POST',
 			    file: fichier,
@@ -60,7 +63,7 @@ angular.module( 'portailApp' )
 			} );
 		    },
 				    delete: function() {
-					$http.delete( APP_PATH + '/api/user/avatar' );
+					return $http.delete( APP_PATH + '/api/user/avatar' );
 				    }
 				  };
 		} ] );
