@@ -25,18 +25,19 @@
       "angular-ui-sortable": "latest",
       "angular-delay": "latest",
     "ng-color-picker": "https://github.com/cycojesus/ng-color-picker.git#latest",
-    "angular-bootstrap-checkbox": "latest"
       "angular-touch": "latest",
       "angular-carousel": "latest",
       "ngFitText": "latest",
       "angular-konami": "latest",
       "blockrain": "latest",
+      "angular-bootstrap-checkbox": "latest",
+      "angular-toastr": "latest"
   },
-  "devDependencies": {
-    "angular-mocks": "latest",
-    "angular-scenario": "latest"
-  },
-  "resolutions": {
-      "angular": "*"
-  }
+    "devDependencies": {
+	"angular-mocks": "latest",
+	"angular-scenario": "latest"
+    },
+    "resolutions": {
+	"angular": "*"
+    }
 }
