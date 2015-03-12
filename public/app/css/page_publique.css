@@ -111,7 +111,7 @@ body {
 .page_publique .footer .rhone {
     width: 25%;
     position: absolute;
-    top: 0;
+    bottom: 0;
     left: 40%;
 }
 .page_publique .footer .acad {
