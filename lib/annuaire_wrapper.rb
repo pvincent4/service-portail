@@ -31,6 +31,20 @@ module AnnuaireWrapper
       Laclasse::CrossAppSender.send_request_signed( :service_annuaire_user, "#{uid}/regroupements", 'expand' => 'true' )
     end
 
+    def check_password( login, password )
+      correct = false
+      begin
+        Laclasse::CrossAppSender.send_request_signed( :service_annuaire_sso, '', { login: login,
+                                                                                   password: password } )
+
+        correct = true
+      rescue RuntimeError
+        LOGGER.info 'Wrong password'
+      end
+
+      return correct
+    end
+
     # Modification des données de l'utilisateur connecté
     def put( uid, params )
       uid = URI.escape( uid )
