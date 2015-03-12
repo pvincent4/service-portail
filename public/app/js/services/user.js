@@ -51,13 +51,6 @@ angular.module( 'portailApp' )
 		    this.regroupements = function() { return UserRegroupements.query().$promise; };
 		    this.eleves_regroupement = function( id ) { return UserRegroupements.eleves( { id: id } ).$promise; };
 
-		    this.check_password = function( password ) {
-			return $http( { method: 'POST',
-					url: 'http://localhost:9292/portail/api/user/password/check',
-					data: 'password=' + password,
-					headers: {'Content-Type': 'application/x-www-form-urlencoded'} } );
-		    };
-
 		    this.avatar = { upload: function( fichier ) {
 			$upload.upload( {
 			    url: APP_PATH + '/api/user/avatar',

@@ -8,15 +8,6 @@ module Portail
           #
           # Gestion de session côtế client
           #
-          app.post "#{APP_PATH}/api/user/password/check" do
-            content_type :json
-            param :password, String, required: true
-
-            response = AnnuaireWrapper::User.check_password( user.login,
-                                                             params[:password] )
-            { valid: response }.to_json
-          end
-
           app.get "#{APP_PATH}/api/user" do
             content_type :json
 
@@ -37,8 +28,13 @@ module Portail
             param :code_postal,    Integer, required: false, within: 0..999_999
             param :ville,          String,  required: false
             # param :login,          String,  required: false
-            param :password,       String,  required: false
+            param :previous_password,       String,  required: false
+            param :new_password,       String,  required: false
             # param :bloque,         TrueClass, required: false
+
+            if params[:previous_password] && AnnuaireWrapper::User.check_password( params[:previous_password] )
+              params[:password] = params[:new_password]
+            end
 
             AnnuaireWrapper::User.put( user.uid,
                                        params )

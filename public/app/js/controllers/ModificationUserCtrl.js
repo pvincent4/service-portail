@@ -2,8 +2,8 @@
 
 angular.module( 'portailApp' )
     .controller( 'ModificationUserCtrl',
-		 [ '$scope', '$state', '$q', 'current_user', 'currentUser', 'APP_PATH',
-		   function( $scope, $state, $q, current_user, currentUser, APP_PATH ) {
+		 [ '$scope', '$state', '$q', 'toastr', 'current_user', 'currentUser', 'APP_PATH',
+		   function( $scope, $state, $q, toastr, current_user, currentUser, APP_PATH ) {
 		       $scope.prefix = APP_PATH;
 		       $scope.groups = [ { ouvert: true,
 					   enabled: true },
@@ -47,33 +47,30 @@ angular.module( 'portailApp' )
 		       };
 
 		       $scope.fermer = function( sauvegarder ) {
+			   var leave = true;
 			   if ( sauvegarder ) {
-			       var prom = $q.defer();
-			       prom.resolve();
-
-			       if ( _($scope.current_user).has( 'new_avatar' ) ) {
-				   prom = currentUser.avatar.upload( $scope.current_user.new_avatar );
-			       } else if ( $scope.current_user.reset_avatar ) {
-				   prom = currentUser.avatar.delete();
-			       }
-
-			       $scope.current_user.wrong_password = false;
-			       if ( $scope.password.old != '' && $scope.password.new1 != '' && $scope.password.new1 == $scope.password.new2 ) {
-				   if ( currentUser.check_password( $scope.password.old ).valid ) {
-				       $scope.current_user.password = $scope.password.new2;
+			       if ( !_($scope.password.old).isEmpty() && !_($scope.password.new1).isEmpty() ) {
+				   if ( $scope.password.new1 == $scope.password.new2 ) {
+				       $scope.current_user.previous_password = $scope.password.old;
+				       $scope.current_user.new_password = $scope.password.new1;
 				   } else {
-				       $scope.current_user.wrong_password = true;
+				       toastr.error( 'Confirmation de mot de passe incorrecte.',
+						     'Erreur',
+						     { timeout: 100000 } );
+				       leave = false;
 				   }
 			       }
 
-			       if ( ! $scope.current_user.wrong_password ) {
-				   prom.then( function() {
-				       $scope.current_user.$update();
+			       $scope.current_user.$update().then( function() {
+				   if ( _($scope.current_user).has( 'new_avatar' ) ) {
+				       currentUser.avatar.upload( $scope.current_user.new_avatar );
+				   } else if ( $scope.current_user.reset_avatar ) {
+				       currentUser.avatar.delete();
+				   }
+			       } );
+			   }
 
-				       $state.go( 'portail.logged' );
-				   } );
-			       }
-			   } else {
+			   if ( leave ) {
 			       $state.go( 'portail.logged' );
 			   }
 		       };
