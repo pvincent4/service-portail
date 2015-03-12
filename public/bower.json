@@ -20,23 +20,23 @@
     "angular-i18n": "latest",
     "ng-file-upload": "latest",
     "ng-flow": "latest",
-    "angular-moment": "~0.8.2",
+      "angular-moment": "latest",
     "ng-switcher": "*",
-    "angular-ui-sortable": "~0.13.0",
-    "angular-delay": "~0.1.2",
+      "angular-ui-sortable": "latest",
+      "angular-delay": "latest",
     "ng-color-picker": "https://github.com/cycojesus/ng-color-picker.git#latest",
-    "angular-touch": "~1.3.3",
-    "angular-carousel": "~0.3.7",
-    "ngFitText": "~3.1.0",
-    "angular-konami": "~0.0.1",
-    "blockrain": "~0.1.0",
     "angular-bootstrap-checkbox": "latest"
+      "angular-touch": "latest",
+      "angular-carousel": "latest",
+      "ngFitText": "latest",
+      "angular-konami": "latest",
+      "blockrain": "latest",
   },
   "devDependencies": {
     "angular-mocks": "latest",
     "angular-scenario": "latest"
   },
   "resolutions": {
-    "angular": "1.3.14"
+      "angular": "*"
   }
 }

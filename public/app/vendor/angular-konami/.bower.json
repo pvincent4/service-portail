@@ -31,7 +31,6 @@
     "commit": "9ddd704890fb83005b38cf28d6cf6aefcc0a059a"
   },
   "_source": "git://github.com/lucasconstantino/angular-konami.git",
-  "_target": "~0.0.1",
-  "_originalSource": "angular-konami",
-  "_direct": true
+  "_target": "*",
+  "_originalSource": "angular-konami"
 }

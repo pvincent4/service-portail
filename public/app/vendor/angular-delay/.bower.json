@@ -35,7 +35,6 @@
     "commit": "6a242115909a1bc347d01e475532cd4df429d205"
   },
   "_source": "git://github.com/brentvatne/angular-delay.git",
-  "_target": "~0.1.2",
-  "_originalSource": "angular-delay",
-  "_direct": true
+  "_target": "*",
+  "_originalSource": "angular-delay"
 }

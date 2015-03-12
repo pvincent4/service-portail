@@ -57,17 +57,22 @@ angular.module( 'portailApp' )
 				   prom = currentUser.avatar.delete();
 			       }
 
+			       $scope.current_user.wrong_password = false;
 			       if ( $scope.password.old != '' && $scope.password.new1 != '' && $scope.password.new1 == $scope.password.new2 ) {
-				   // FIXME: test ancien mot de passe
-
-				   $scope.current_user.password = $scope.password.new2;
+				   if ( currentUser.check_password( $scope.password.old ).valid ) {
+				       $scope.current_user.password = $scope.password.new2;
+				   } else {
+				       $scope.current_user.wrong_password = true;
+				   }
 			       }
 
-			       prom.then( function() {
-				   $scope.current_user.$update();
+			       if ( ! $scope.current_user.wrong_password ) {
+				   prom.then( function() {
+				       $scope.current_user.$update();
 
-				   $state.go( 'portail.logged' );
-			       } );
+				       $state.go( 'portail.logged' );
+				   } );
+			       }
 			   } else {
 			       $state.go( 'portail.logged' );
 			   }

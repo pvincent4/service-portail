@@ -37,7 +37,6 @@
     "commit": "b370d1d38cec0f5db8192c8a1573b0d0b1655ee9"
   },
   "_source": "git://github.com/Aerolab/blockrain.js.git",
-  "_target": "~0.1.0",
-  "_originalSource": "blockrain",
-  "_direct": true
+  "_target": "*",
+  "_originalSource": "blockrain"
 }

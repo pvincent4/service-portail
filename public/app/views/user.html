@@ -102,6 +102,11 @@
 				    data-ng-model="password.old">
 			</div>
 		    </div>
+		    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 alert alert-danger"
+			    data-ng-if="current_user.wrong_password">
+			    mot de passe incorrect.
+		    </div>
+
 		    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 			<div class="form-group">
 			    <label for="newpasswd1">entre le nouveau mot de passe :</label>
