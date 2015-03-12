@@ -57,6 +57,7 @@ namespace :preprocess_assets do
     uglified = Sass.compile( [ 'public/app/vendor/bootstrap/dist/css/bootstrap-theme.min.css',
                                'public/app/vendor/ngAnimate/css/ng-animation.css',
                                'public/app/vendor/ng-switcher/dist/ng-switcher.css',
+                               'public/app/vendor/angular-toastr/dist/angular-toastr.css',
                                'public/app/vendor/charte-graphique-laclasse-com/css/main.css',
                                'public/app/vendor/charte-graphique-laclasse-com/css/damier.css',
                                'public/app/vendor/charte-graphique-laclasse-com/css/bootstrap-theme.css',
@@ -103,7 +104,8 @@ namespace :preprocess_assets do
                                                           'public/app/vendor/angular-carousel/dist/angular-carousel.js',
                                                           'public/app/vendor/ngFitText/src/ng-FitText.js',
                                                           'public/app/vendor/angular-konami/angular-konami.js',
-                                                          'public/app/vendor/blockrain/dist/blockrain.jquery.js' ] )
+                                                          'public/app/vendor/blockrain/dist/blockrain.jquery.js',
+                                                          'public/app/vendor/angular-toastr/dist/angular-toastr.tpls.js' ] )
     File.open( './public/app/vendor/vendor.min.js', 'w' )
         .write( uglified )
     File.open( './public/app/vendor/vendor.min.js.map', 'w' )
