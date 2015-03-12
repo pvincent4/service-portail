@@ -47,6 +47,10 @@ class HashedUser < HashIt
   def full( env )
     utilisateur = env['rack.session'][:current_user]
 
+    [ :nom, :prenom, :adresse, :ville ].each do |key|
+      utilisateur[ key ] = URI.unescape( utilisateur[ key ] )
+    end
+
     user_annuaire = AnnuaireWrapper::User.get( utilisateur[:uid] )
     utilisateur[ 'profils' ] = user_annuaire['profils']
                                .select do |profil| profil['bloque'].nil? end
