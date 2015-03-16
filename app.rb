@@ -15,9 +15,7 @@ require 'laclasse/common/helpers/authentication'
 require 'laclasse/helpers/user'
 
 require_relative './lib/annuaire_wrapper'
-
 require_relative './lib/helpers/config'
-require_relative './lib/helpers/user'
 
 require_relative './routes/index'
 require_relative './routes/auth'
@@ -59,7 +57,6 @@ class SinatraApp < Sinatra::Base
   helpers Laclasse::Helpers::Authentication
   helpers Laclasse::Helpers::User
   helpers Portail::Helpers::Config
-  helpers Portail::Helpers::User
 
   ##### routes #################################################################
 
