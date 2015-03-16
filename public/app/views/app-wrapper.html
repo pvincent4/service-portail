@@ -40,7 +40,7 @@
 		data-ng-controller="ProfilActifCtrl"
 		data-ng-model="current_user.profil_actif"
 		data-ng-change="reload()"
-		data-ng-options="profil as profil.etablissement + ' : ' + profil.nom group by profil.etablissement for profil in current_user.profils track by profil.index" >
+		data-ng-options="profil as profil.etablissement_nom + ' : ' + profil.profil_nom group by profil.etablissement_nom for profil in current_user.profils track by profil.index" >
 	</select>
     </div>
 

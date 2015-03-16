@@ -14,13 +14,13 @@ module Portail
             # THINK : Comment mettre des priorités sur les différents flux ?
             news = []
 
-            fluxes = AnnuaireWrapper::Etablissement::Flux.query_etablissement( user.profil_actif['uai'] )
+            fluxes = AnnuaireWrapper::Etablissement::Flux.query_etablissement( user[:user_detailed]['profil_actif']['etablissement_code_uai'] )
             fluxes = config[:news_feed] if fluxes.empty? || fluxes.nil?
 
             # Add user news
             fluxes << { nb: 5,
                         icon: '',
-                        flux: AnnuaireWrapper::User.get_news( user.uid ),
+                        flux: AnnuaireWrapper::User.get_news( user[:uid] ),
                         title: 'News de l\'utilisateur' }
 
             fluxes.each do |feed|

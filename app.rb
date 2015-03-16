@@ -12,6 +12,7 @@ require 'date'
 Bundler.require( :default, ENV['RACK_ENV'].to_sym )     # require tout les gems définis dans Gemfile
 
 require 'laclasse/common/helpers/authentication'
+require 'laclasse/helpers/user'
 
 require_relative './lib/annuaire_wrapper'
 
@@ -56,6 +57,7 @@ class SinatraApp < Sinatra::Base
   helpers Sinatra::Param
 
   helpers Laclasse::Helpers::Authentication
+  helpers Laclasse::Helpers::User
   helpers Portail::Helpers::Config
   helpers Portail::Helpers::User
 

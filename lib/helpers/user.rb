@@ -5,7 +5,7 @@ require_relative '../HashedUser'
 module Portail
   module Helpers
     module User
-      def user
+      def old_user
         HashedUser.new session[:current_user]
       end
     end

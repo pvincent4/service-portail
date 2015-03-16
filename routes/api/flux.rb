@@ -12,9 +12,9 @@ module Portail
           app.get "#{APP_PATH}/api/flux/?" do
             content_type :json
 
-            return [] unless logged? && !user.profil_actif.nil?
+            return [] unless logged?
 
-            fluxes = AnnuaireWrapper::Etablissement::Flux.query_etablissement( user.profil_actif['uai'] )
+            fluxes = AnnuaireWrapper::Etablissement::Flux.query_etablissement( user[:user_detailed]['profil_actif']['etablissement_code_uai'] )
             fluxes = config[:news_feed] if fluxes.empty? || fluxes.nil?
 
             fluxes.to_json
@@ -24,7 +24,7 @@ module Portail
             content_type :json
             param :id, Integer, required: true
 
-            return [] unless logged? && !user.profil_actif.nil?
+            return [] unless logged?
 
             AnnuaireWrapper::Etablissement::Flux.get( params[:id] ).to_json
           end
@@ -36,7 +36,7 @@ module Portail
             param :flux, String, required: true
             param :title, String, required: true
 
-            AnnuaireWrapper::Etablissement::Flux.create( user.profil_actif['uai'], params ).to_json
+            AnnuaireWrapper::Etablissement::Flux.create( user[:user_detailed]['profil_actif']['etablissement_code_uai'], params ).to_json
           end
 
           app.put "#{APP_PATH}/api/flux/:id" do

@@ -15,7 +15,7 @@ module Portail
                      info: {},
                      is_logged: false }.to_json unless logged?
 
-            user.full( env ).to_json
+            user_verbose.to_json
           end
 
           app.put "#{APP_PATH}/api/user" do
@@ -36,33 +36,33 @@ module Portail
               params[:password] = params[:new_password]
             end
 
-            AnnuaireWrapper::User.put( user.uid,
+            AnnuaireWrapper::User.put( user[:uid],
                                        params )
 
-            init_current_user( user.uid )
+            init_current_user( user[:uid] )
 
-            user.full( env ).to_json
+            user_verbose.to_json
           end
 
           app.post "#{APP_PATH}/api/user/avatar/?" do
             content_type :json
 
-            AnnuaireWrapper::User.put_avatar( user.uid,
+            AnnuaireWrapper::User.put_avatar( user[:uid],
                                               params[:image] ) if params[:image]
 
-            init_current_user( user.uid )
+            init_current_user( user[:uid] )
 
-            user.full( env ).to_json
+            user_verbose.to_json
           end
 
           app.delete "#{APP_PATH}/api/user/avatar/?" do
             content_type :json
 
-            AnnuaireWrapper::User.delete_avatar( user.uid )
+            AnnuaireWrapper::User.delete_avatar( user[:uid] )
 
-            init_current_user( user.uid )
+            init_current_user( user[:uid] )
 
-            user.full( env ).to_json
+            user_verbose.to_json
           end
 
           app.put "#{APP_PATH}/api/user/profil_actif/?" do
@@ -70,13 +70,13 @@ module Portail
             param :profil_id, String, required: true
             param :uai, String, required: true
 
-            AnnuaireWrapper::User.put_profil_actif( user.uid,
+            AnnuaireWrapper::User.put_profil_actif( user[:uid],
                                                     params[:profil_id],
                                                     params[:uai] )
 
-            init_current_user( user.uid )
+            init_current_user( user[:uid] )
 
-            user.full( env ).to_json
+            user_verbose.to_json
           end
 
           #
@@ -85,11 +85,11 @@ module Portail
           app.get "#{APP_PATH}/api/user/regroupements/?" do
             content_type :json
 
-            regroupements = AnnuaireWrapper::User.get_regroupements( user.uid )
+            regroupements = AnnuaireWrapper::User.get_regroupements( user[:uid] )
             regroupements = [ regroupements[ 'classes' ],
                               regroupements[ 'groupes_eleves' ] ]
                             .flatten
-                            .reject { |regroupement| regroupement[ 'etablissement_code' ] != user.profil_actif['uai'] }
+                            .reject { |regroupement| regroupement[ 'etablissement_code' ] != user[:user_detailed]['profil_actif']['etablissement_code_uai'] }
                             .each do |regroupement|
               regroupement[ 'id' ] =  regroupement.key?( 'classe_id' ) ? regroupement['classe_id'] : regroupement['groupe_id']
               regroupement[ 'libelle' ] =  regroupement.key?( 'classe_libelle' ) ? regroupement['classe_libelle'] : regroupement['groupe_libelle']
@@ -134,8 +134,8 @@ module Portail
             # Ne prendre que les ressources de l'établissement courant.
             # Qui sont dans la fenêtre d'abonnement
             # Triées sur les types de ressources desc pour avoir 'MANUEL' en premier, puis 'DICO', puis 'AUTRES'
-            ressources = AnnuaireWrapper::User.get_resources( user.uid )
-                                              .reject { |ressource| ressource[ 'etablissement_code_uai' ] != user.profil_actif['uai'] ||
+            ressources = AnnuaireWrapper::User.get_resources( user[:uid] )
+                                              .reject { |ressource| ressource[ 'etablissement_code_uai' ] != user[:user_detailed]['profil_actif']['etablissement_code_uai'] ||
                                                         Date.parse( ressource['date_deb_abon'] ) >= Date.today ||
                                                         Date.parse( ressource['date_fin_abon'] ) <= Date.today }
                                               .sort_by { |ressource| ressource['type_ressource'].to_s }
