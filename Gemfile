@@ -20,6 +20,7 @@ gem 'sinatra-param'
 
 # Gems spécifiques ENT
 gem 'laclasse-common', git: 'https://github.com/laclasse-com/laclasse-common', branch: 'develop'
+#gem 'laclasse-common', path: '/home/cycojesus/projets/Erasme/laclasse-common'
 
 group :development do
   gem 'css2less'
