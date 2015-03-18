@@ -4,8 +4,8 @@ $LOAD_PATH.unshift(File.dirname(__FILE__))
 
 require './config/init'
 
-require 'laclasse/common/helpers/rack'
-require 'laclasse/common/laclasse_logger'
+require 'laclasse/helpers/rack'
+require 'laclasse/laclasse_logger'
 
 require 'app'
 
