@@ -9,7 +9,7 @@ require 'laclasse/laclasse_logger'
 
 require 'app'
 
-LOGGER = Laclasse::LoggerFactory.getLogger
+LOGGER = Laclasse::LoggerFactory.get_logger
 LOGGER.info "Démarrage du Portail avec #{LOGGER.loggers_count} logger#{LOGGER.loggers_count > 1 ? 's' : ''}"
 
 Laclasse::Helpers::Rack.configure_rake self

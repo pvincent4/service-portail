@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/laclasse-com/laclasse-common
-  revision: d159b7e0484bbd09721c3fd11232e0ea9740721e
-  tag: 0.1
+  revision: 41e9eb6d29f0c358c2601c99267702beea0ea815
+  tag: 0.2.1
   specs:
     laclasse-common (0.3)
       logstash-logger
@@ -60,7 +60,7 @@ GEM
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
     logstash-event (1.2.02)
-    logstash-logger (0.9.0)
+    logstash-logger (0.10.0)
       logstash-event (~> 1.2)
       stud
     lumberjack (1.0.9)
