@@ -1,3 +1,7 @@
+.flippable {
+    perspective: 600px;
+    transform-origin: 50% 10%;
+}
 .flippable .front,
 .flippable .back {
     position: absolute;

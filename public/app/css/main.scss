@@ -351,7 +351,6 @@ body {
 	    }
 	}
 	.petite.case {
-	    perspective: 600px;
 	    position: relative;
 	    width: 24%;
 	    height: 23.7%;
@@ -359,7 +358,6 @@ body {
 	    animation-delay: 0.25s;
 	    animation-duration: 0.05s;
 	    animation-iteration-count: 5;
-	    transform-origin: 50% 10%;
 
 	    .inactive {
 		opacity: 0.33;
