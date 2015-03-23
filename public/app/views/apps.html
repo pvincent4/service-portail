@@ -82,21 +82,21 @@
     </ul>
 
     <!-- Mode normal -->
-    <span class="hidden-xs hidden-sm bouton-modification toggle blanc"
+    <span class="hidden-xs hidden-sm floating-button toggle big off blanc"
 	  data-ng-if="current_user.profil_actif.admin && !modification"
 	  data-ng-click="toggle_modification( !modification )"></span>
 
     <!-- Mode modification -->
-    <span class="hidden-xs hidden-sm bouton-modification toggle gris4"
+    <span class="hidden-xs hidden-sm floating-button toggle big on gris4"
 	  data-ng-if="modification"></span>
-    <span class="bouton-modification cancel gris3"
+    <span class="floating-button small cancel gris3"
 	  data-ng-if="modification"
 	  data-ng-click="toggle_modification( false )"></span>
-    <span class="bouton-modification save gris1"
+    <span class="floating-button small save gris1"
 	  data-ng-if="modification"
 	  data-ng-click="toggle_modification( true )"></span>
 
-    <span class="bouton-modification add-app gris1"
+    <span class="floating-button small action1 add-app gris1"
 	  data-ng-if="modification"
 	  data-ng-click="add_tile()"></span>
 
