@@ -5,6 +5,51 @@
 
 		<link rel="stylesheet" href="css/main.css">
 		<link rel="stylesheet" href="css/damier.css">
+		<link rel="stylesheet" href="css/floating-buttons.css">
+		<!-- Following code in <style> and <style> only for demo purpose -->
+		<style>
+		.hidden {
+			display: hidden;
+		}
+		</style>
+		<script>
+
+		modification = false;
+
+		toggle_modification = function() {
+			modification = !modification;
+			var small_buttons = [ 'cancel', 'save', 'action1' ];
+			var main_button = document.getElementById( 'main' );
+
+			if ( !modification ) {
+				main_button.className = main_button.className.replace( 'on  gris4', 'off blanc' );
+				small_buttons.forEach( function( id ) {
+					console.log(id)
+						document.getElementById( id ).className += ' hidden';
+				} );
+			} else {
+				main_button.className = main_button.className.replace( 'off blanc', 'on  gris4' );
+				small_buttons.forEach( function( id ) {
+					var element = document.getElementById( id );
+					element.className = element.className.replace( 'hidden', '' );
+				} );
+			}
+		};
+
+		action = function( message ) {
+			alert( message );
+			console.log( message );
+		}
+		cancel = function() {
+			action( 'Cancelled!' );
+		}
+		save = function() {
+			action( 'Saved!' );
+		}
+		action1 = function() {
+			action( 'Do something!' );
+		}
+		</script>
 	</head>
 	<body>
 		<div class="damier">
@@ -58,6 +103,16 @@
 					Aenean in sem ac leo mollis blandit.
 				</li>
 			</ul>
+
+			<!-- Mode modification -->
+			<span id="main"    class="floating-button big   toggle off blanc"
+				onClick="toggle_modification();"></span>
+			<span id="cancel"  class="floating-button small cancel     gris3 hidden"
+				onClick="cancel()"></span>
+			<span id="save"    class="floating-button small save       gris1 hidden"
+				onClick="save()"></span>
+			<span id="action1" class="floating-button small action1    gris1 hidden"
+				onClick="action1()"></span>
 		</div>
 	</body>
 </html>

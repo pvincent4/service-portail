@@ -1,9 +1,10 @@
 {
   "name": "angular-konami",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "authors": [
     "Lucas Constantino <lucasconstantinosilva@gmail.com>"
   ],
+  "homepage": "https://github.com/lucasconstantino/angular-konami",
   "description": "A Konami Code directive for Angular applications",
   "main": "angular-konami.js",
   "keywords": [
@@ -23,12 +24,11 @@
     "test",
     "tests"
   ],
-  "homepage": "https://github.com/lucasconstantino/angular-konami",
-  "_release": "0.0.1",
+  "_release": "0.0.2",
   "_resolution": {
     "type": "version",
-    "tag": "0.0.1",
-    "commit": "9ddd704890fb83005b38cf28d6cf6aefcc0a059a"
+    "tag": "0.0.2",
+    "commit": "d30435f57d36812ad70694883542ff5ee7a97ee8"
   },
   "_source": "git://github.com/lucasconstantino/angular-konami.git",
   "_target": "*",
