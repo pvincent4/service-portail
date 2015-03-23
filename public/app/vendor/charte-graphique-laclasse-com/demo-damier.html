@@ -6,6 +6,8 @@
 		<link rel="stylesheet" href="css/main.css">
 		<link rel="stylesheet" href="css/damier.css">
 		<link rel="stylesheet" href="css/floating-buttons.css">
+		<link rel="stylesheet" href="css/flippable.css">
+
 		<!-- Following code in <style> and <style> only for demo purpose -->
 		<style>
 		.hidden {
@@ -24,8 +26,7 @@
 			if ( !modification ) {
 				main_button.className = main_button.className.replace( 'on  gris4', 'off blanc' );
 				small_buttons.forEach( function( id ) {
-					console.log(id)
-						document.getElementById( id ).className += ' hidden';
+					document.getElementById( id ).className += ' hidden';
 				} );
 			} else {
 				main_button.className = main_button.className.replace( 'off blanc', 'on  gris4' );
@@ -49,18 +50,42 @@
 		action1 = function() {
 			action( 'Do something!' );
 		}
+
+		flipped = false;
+		flip = function() {
+			element = document.getElementById( 'flippable' );
+			if ( flipped ) {
+				element.className = element.className.replace( 'show-back', 'show-front' );
+			} else {
+				element.className = element.className.replace( 'show-front', 'show-back' );
+			}
+			flipped = !flipped;
+		}
 		</script>
 	</head>
 	<body>
 		<div class="damier">
 			<ul>
-				<li class="col-xs-6 col-sm-4 col-md-3 col-lg-2 petite case blanc">
-					Donec hendrerit tempor tellus.
+				<li id="flippable" class="col-xs-6 col-sm-4 col-md-3 col-lg-2 petite case flippable show-front">
+					<div class="front bleu">
+						<h3>front</h3>
+						Donec hendrerit tempor tellus.
+						<button	onClick="flip()">
+							<span class="icone parametrer">flip!</span>
+						</button>
+					</div>
+					<div class="back vert">
+						<h3>back</h3>
+						Donec hendrerit tempor tellus.
+						<button	onClick="flip()">
+							<span class="icone parametrer">flip!</span>
+						</button>
+					</div>
 				</li>
 				<li class="col-xs-6 col-sm-4 col-md-3 col-lg-2 petite case noir">
 					Fusce commodo.
 				</li>
-				<li class="col-xs-6 col-sm-4 col-md-3 col-lg-2 petite case bleu">
+				<li class="col-xs-6 col-sm-4 col-md-3 col-lg-2 petite case blanc">
 					Mauris mollis tincidunt felis.
 				</li>
 				<li class="col-xs-6 col-sm-4 col-md-3 col-lg-2 petite case vert">

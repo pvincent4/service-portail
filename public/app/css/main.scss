@@ -254,25 +254,6 @@ body {
 	position: relative;
 
 	&.petite {
-	    .front,
-	    .back {
-		position: absolute;
-		top: 0;
-		left: 0;
-		height: 100%;
-		width: 100%;
-		backface-visibility: hidden;
-		transform-style: preserve-3d;
-		transition: all 0.4s ease-in-out 0s;
-	    }
-	    .front {
-		transform: rotateY(0deg);
-		z-index: 900;
-	    }
-	    .back {
-		transform: rotateY(-179deg);
-		z-index: 800;
-	    }
 	    .toggle-configure {
 		background: transparent;
 		position: absolute;
@@ -389,14 +370,7 @@ body {
 		top: 0.5em;
 	    }
 
-	    &.flip {
-		.front {
-		    transform: rotateY(180deg);
-		}
-		.back {
-		    transform: rotateY(0deg);
-		    z-index: 1000;
-		}
+	    &.show-back {
 		.toggle-configure {
 		    left: auto;
 		    right: 0.5em;

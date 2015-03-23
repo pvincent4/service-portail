@@ -61,6 +61,7 @@ namespace :preprocess_assets do
                                'public/app/vendor/charte-graphique-laclasse-com/css/main.css',
                                'public/app/vendor/charte-graphique-laclasse-com/css/damier.css',
                                'public/app/vendor/charte-graphique-laclasse-com/css/floating-buttons.css',
+                               'public/app/vendor/charte-graphique-laclasse-com/css/flippable.css',
                                'public/app/vendor/charte-graphique-laclasse-com/css/bootstrap-theme.css',
                                'public/app/vendor/ng-color-picker/color-picker.css' ]
                              .map { |fichier| File.read( fichier ) }.join,
