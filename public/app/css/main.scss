@@ -75,9 +75,6 @@ body {
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-size: contain;
-	.user-info:hover {
-	    background-color: rgba( 0, 0, 0, 0.2 );
-	}
 	.user-info {
 	    text-align: left;
 	    display: block;
@@ -86,6 +83,9 @@ body {
 	    width: 100%;
 	    background-color: rgba( 0, 0, 0, 0.5 );
 	    transition: all 0.4s ease-in-out 0s;
+	    &:hover {
+		background-color: rgba( 0, 0, 0, 0.2 );
+	    }
 	    * {
 		float: left;
 		width: 100%;
