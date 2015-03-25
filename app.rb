@@ -19,6 +19,7 @@ require_relative './lib/helpers/config'
 
 require_relative './routes/index'
 require_relative './routes/auth'
+require_relative './routes/status'
 require_relative './routes/api/user'
 require_relative './routes/api/apps'
 require_relative './routes/api/flux'
@@ -61,6 +62,7 @@ class SinatraApp < Sinatra::Base
   ##### routes #################################################################
 
   register Portail::Routes::Index
+  register Portail::Routes::Status
 
   register Portail::Routes::Auth
 
