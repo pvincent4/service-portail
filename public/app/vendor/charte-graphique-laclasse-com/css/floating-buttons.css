@@ -6,7 +6,7 @@
     box-shadow: 8px 5px 5px #16161d;
     cursor: pointer;
     font-size: 2em;
-    top: calc(100% - 3em);
+    bottom: 1em;
     z-index: 9999;
 }
 
@@ -36,14 +36,14 @@
 }
 .floating-button.save {
     background-image: url('../images/icon_admin-valider.svg');
-    top: calc( 100% - 7em );
+    bottom: 5em;
 }
 .floating-button.cancel {
     background-image: url('../images/icon_admin-annuler.svg');
-    top: calc( 100% - 5em );
+    bottom: 3em;
 }
 .floating-button.action1 {
     background-image: url('../images/icon_admin-ajouter.svg');
     right: 3.5em;
-    top: calc( 100% - 2.65em );
+    bottom: 1.35em;
 }
