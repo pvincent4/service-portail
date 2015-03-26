@@ -53,6 +53,9 @@ module Portail
                 application[ 'index' ] = default[ :index ] if application[ 'index' ] == -1
               end
 
+              # FIXME: if only there was a way to fix this in the Annuaire's DB
+              application[ 'icon' ].gsub!( 'charte-graphique-laclasse-com', 'laclasse-common-client' ) unless application[ 'icon' ].nil?
+
               application
             end
 
