@@ -66,9 +66,7 @@ module Portail
             duplicates.each do |i|
               unless free_indexes.empty?
                 app = apps.select { |a| a['index'] == i }.last
-                STDERR.puts "From #{app['index']}... "
                 app['index'] = free_indexes.pop
-                STDERR.puts "... to #{app['index']}"
 
                 AnnuaireWrapper::Etablissement::Apps.update( app['id'], app )
               end
