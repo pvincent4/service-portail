@@ -1,5 +1,5 @@
 <div class="row portail ressources-numeriques">
-    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 aside aside-blanc">
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 aside">
 	<p class="laius">
 	    Retrouvez ici les ressources numériques que votre établissement a sélectionné pour vous.
 	    Ces ressources peuvent être des manuels scolaires en ligne, des dictionnaires,
@@ -17,7 +17,7 @@
 		 data-ng-class="{'empty': !ressource.code}"
 		 data-ng-style="{'background-color': ressource.color }">
 		<a title="{{ressource.nom_court}}" href="{{ressource.url_access_get}}" data-ng-if="ressource.code != ''" target="_blank">
-			<img draggable="false" data-ng-src="{{prefix}}/app/vendor/charte-graphique-laclasse-com/images/{{ ressource.icone }}">
+			<img draggable="false" data-ng-src="{{prefix}}/app/vendor/laclasse-common-client/images/{{ ressource.icone }}">
 			<span class="app-name">{{ressource.lib}}</span>
 		</a>
 	    </div>

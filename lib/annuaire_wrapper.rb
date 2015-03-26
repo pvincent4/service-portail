@@ -18,23 +18,23 @@ module AnnuaireWrapper
     module_function
     # Service Utilisateur : init de la session et de son environnement
     def get( uid )
-      Laclasse::CrossAppSender.send_request_signed( :service_annuaire_user, "#{uid}", 'expand' => 'true' )
+      Laclasse::CrossApp::Sender.send_request_signed( :service_annuaire_user, "#{uid}", 'expand' => 'true' )
     end
 
     # Service Utilisateur : récupération des ressources numériques de l'utilisateur
     def get_resources( uid )
-      Laclasse::CrossAppSender.send_request_signed( :service_annuaire_user, "#{uid}/ressources", 'expand' => 'true' )
+      Laclasse::CrossApp::Sender.send_request_signed( :service_annuaire_user, "#{uid}/ressources", 'expand' => 'true' )
     end
 
     # Liste des regroupements de l'utilisateur connecté
     def get_regroupements( uid )
-      Laclasse::CrossAppSender.send_request_signed( :service_annuaire_user, "#{uid}/regroupements", 'expand' => 'true' )
+      Laclasse::CrossApp::Sender.send_request_signed( :service_annuaire_user, "#{uid}/regroupements", 'expand' => 'true' )
     end
 
     def check_password( login, password )
       correct = false
       begin
-        Laclasse::CrossAppSender.send_request_signed( :service_annuaire_sso, '', { login: login,
+        Laclasse::CrossApp::Sender.send_request_signed( :service_annuaire_sso, '', { login: login,
                                                                                    password: password } )
 
         correct = true
@@ -57,7 +57,7 @@ module AnnuaireWrapper
           params[ key ] = URI.escape( params[ key ].to_s )
         end
       end
-      Laclasse::CrossAppSender.put_request_signed(:service_annuaire_user, "#{uid}", params )
+      Laclasse::CrossApp::Sender.put_request_signed(:service_annuaire_user, "#{uid}", params )
     end
 
     # Modification avatar
@@ -67,7 +67,7 @@ module AnnuaireWrapper
       new_filename = "#{image[:tempfile].path}_#{image[:filename]}"
       File.rename image[:tempfile], new_filename
 
-      Laclasse::CrossAppSender.post_raw_request_signed( :service_annuaire_user, "#{uid}/upload/avatar",
+      Laclasse::CrossApp::Sender.post_raw_request_signed( :service_annuaire_user, "#{uid}/upload/avatar",
                                                         {},
                                                         image: File.open( new_filename ) )
 
@@ -77,7 +77,7 @@ module AnnuaireWrapper
     # Suppression avatar
     def delete_avatar( uid )
       uid = URI.escape( uid )
-      Laclasse::CrossAppSender.delete_request_signed( :service_annuaire_user, "#{uid}/avatar", {} )
+      Laclasse::CrossApp::Sender.delete_request_signed( :service_annuaire_user, "#{uid}/avatar", {} )
     end
 
     # Modification du profil actif de l'utilisateur connecté
@@ -85,12 +85,12 @@ module AnnuaireWrapper
       uid = URI.escape( uid )
       profil_id = URI.escape( profil_id )
       code_uai = URI.escape( code_uai )
-      Laclasse::CrossAppSender.put_request_signed( :service_annuaire_user, "#{uid}/profil_actif", uai: code_uai, profil_id: profil_id )
+      Laclasse::CrossApp::Sender.put_request_signed( :service_annuaire_user, "#{uid}/profil_actif", uai: code_uai, profil_id: profil_id )
     end
 
     # Generate signed user's news url
     def get_news( uid )
-      Laclasse::CrossAppSender.sign( :service_annuaire_portail_news, '/' + uid , {} )
+      Laclasse::CrossApp::Sender.sign( :service_annuaire_portail_news, '/' + uid , {} )
     end
   end
 
@@ -100,17 +100,17 @@ module AnnuaireWrapper
 
     # Liste des personnels d'un etablissement
     def get( uai )
-      Laclasse::CrossAppSender.send_request_signed( :service_annuaire_personnel, "#{uai}", 'expand' => 'true' )
+      Laclasse::CrossApp::Sender.send_request_signed( :service_annuaire_personnel, "#{uai}", 'expand' => 'true' )
     end
 
     # Liste des regroupements d'un établissement
     def get_regroupements( uai )
-      Laclasse::CrossAppSender.send_request_signed( :service_annuaire_personnel, "#{uai}/users", 'expand' => 'true' )
+      Laclasse::CrossApp::Sender.send_request_signed( :service_annuaire_personnel, "#{uai}/users", 'expand' => 'true' )
     end
 
     # detail d'un regroupement
     def regroupement_detail( uid )
-      Laclasse::CrossAppSender.send_request_signed( :service_annuaire_regroupement, "#{uid}", 'expand' => 'true' )
+      Laclasse::CrossApp::Sender.send_request_signed( :service_annuaire_regroupement, "#{uid}", 'expand' => 'true' )
     end
 
     # Module d'interfaçage Annuaire relatif aux flux RSS affichés sur le portail
@@ -118,26 +118,26 @@ module AnnuaireWrapper
       module_function
 
       def query_etablissement( uai )
-        Laclasse::CrossAppSender.send_request_signed :service_annuaire_portail_flux, "/etablissement/#{uai}", {}
+        Laclasse::CrossApp::Sender.send_request_signed :service_annuaire_portail_flux, "/etablissement/#{uai}", {}
       end
 
       def get( id )
-        Laclasse::CrossAppSender.send_request_signed( :service_annuaire_portail_flux, "/#{id}", {} )
+        Laclasse::CrossApp::Sender.send_request_signed( :service_annuaire_portail_flux, "/#{id}", {} )
       end
 
       def create( uai, definition )
         definition[ 'etab_code_uai' ] = uai
-        Laclasse::CrossAppSender.post_request_signed( :service_annuaire_portail_flux, '', {}, definition )
+        Laclasse::CrossApp::Sender.post_request_signed( :service_annuaire_portail_flux, '', {}, definition )
       end
 
       def update( id, definition )
         definition.delete( 'splat' ) # WTF
         definition.delete( 'captures' ) # WTF
-        Laclasse::CrossAppSender.put_request_signed( :service_annuaire_portail_flux, "/#{id}", definition )
+        Laclasse::CrossApp::Sender.put_request_signed( :service_annuaire_portail_flux, "/#{id}", definition )
       end
 
       def delete( id )
-        Laclasse::CrossAppSender.delete_request_signed( :service_annuaire_portail_flux, "/#{id}", {} )
+        Laclasse::CrossApp::Sender.delete_request_signed( :service_annuaire_portail_flux, "/#{id}", {} )
       end
     end
 
@@ -147,26 +147,26 @@ module AnnuaireWrapper
 
       # Liste des apps d'un établissement
       def query_etablissement( uai )
-        Laclasse::CrossAppSender.send_request_signed( :service_annuaire_portail_entree, "/etablissement/#{uai}", {} )
+        Laclasse::CrossApp::Sender.send_request_signed( :service_annuaire_portail_entree, "/etablissement/#{uai}", {} )
       end
 
       def get( id )
-        Laclasse::CrossAppSender.send_request_signed( :service_annuaire_portail_entree, "/#{id}", {} )
+        Laclasse::CrossApp::Sender.send_request_signed( :service_annuaire_portail_entree, "/#{id}", {} )
       end
 
       def create( uai, definition )
         definition[ 'etab_code_uai' ] = uai
-        Laclasse::CrossAppSender.post_request_signed( :service_annuaire_portail_entree, '', {}, definition )
+        Laclasse::CrossApp::Sender.post_request_signed( :service_annuaire_portail_entree, '', {}, definition )
       end
 
       def update( id, definition )
         definition.delete( 'splat' ) # WTF
         definition.delete( 'captures' ) # WTF
-        Laclasse::CrossAppSender.put_request_signed( :service_annuaire_portail_entree, "/#{id}", definition )
+        Laclasse::CrossApp::Sender.put_request_signed( :service_annuaire_portail_entree, "/#{id}", definition )
       end
 
       def delete( id )
-        Laclasse::CrossAppSender.delete_request_signed( :service_annuaire_portail_entree, "/#{id}", {} )
+        Laclasse::CrossApp::Sender.delete_request_signed( :service_annuaire_portail_entree, "/#{id}", {} )
       end
     end
   end
@@ -176,7 +176,7 @@ module AnnuaireWrapper
     module_function
 
     def query_defaults
-      Laclasse::CrossAppSender.send_request_signed( :service_annuaire_portail_entree, '/applications', {} )
+      Laclasse::CrossApp::Sender.send_request_signed( :service_annuaire_portail_entree, '/applications', {} )
     end
   end
 end

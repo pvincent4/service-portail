@@ -1,10 +1,23 @@
+html,
+#app-wrapper {
+    overflow: hidden;
+}
+
+div,
+html,
+body {
+    height: 100%;
+}
+
 body {
     padding-top: 20px;
     padding-bottom: 20px;
-    font-family:'Open Sans', sans-serif;
-    padding:0;
+    font-family: 'Open Sans', sans-serif;
+    padding: 0;
 }
-.header,.marketing,.footer {
+.header,
+.marketing,
+.footer {
     padding-left: 15px;
     padding-right: 15px;
 }
@@ -27,48 +40,55 @@ body {
 	margin: 30px 0;
     }
 }
-.nav,.pagination,.carousel,.panel-title a {
-    cursor:pointer;
+.nav,
+.pagination,
+.carousel,
+.panel-title a {
+    cursor: pointer;
 }
 #flash {
-    display:none;
+    display: none;
 }
 .container {
-    margin:0;
-    max-width:100%;
-    padding:0;
-    width:100%;
+    margin: 0;
+    max-width: 100%;
+    padding: 0;
+    width: 100%;
     * {
-	margin:0;
-	padding:0;
+	margin: 0;
+	padding: 0;
     }
 }
 .aside {
-    background-color:#16161d;
-    box-shadow:5px 0 8px 0 rgba(0, 0, 0, 0.5);
-    z-index:999;
-    .logolaclasse, .user {
+    background-color: #16161d;
+    box-shadow: 5px 0 8px 0 rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    .header {
+	height: 25%;
+    }
+    .logolaclasse,
+    .user {
 	height: 25%;
 	border-bottom: 1px solid #fff;
     }
     .user {
-	background-position:center center;
-	background-repeat:no-repeat;
-	background-size:contain;
-	.user-info:hover {
-	    background-color: rgba( 0, 0, 0, 0.2 );
-	}
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: contain;
 	.user-info {
-	    text-align:left;
+	    text-align: left;
 	    display: block;
 	    position: relative;
-	    height:100%;
-	    width:100%;
+	    height: 100%;
+	    width: 100%;
 	    background-color: rgba( 0, 0, 0, 0.5 );
 	    transition: all 0.4s ease-in-out 0s;
+	    &:hover {
+		background-color: rgba( 0, 0, 0, 0.2 );
+	    }
 	    * {
 		float: left;
-		width:100%;
+		width: 100%;
 	    }
 	    h3 {
 		font-weight: 700;
@@ -85,9 +105,9 @@ body {
 		color: #fff;
 	    }
 	    .logout {
-		border:1px solid #fff;
+		border: 1px solid #fff;
 		background-color: rgba( 0, 0, 0, 0.6 );
-		text-transform:uppercase;
+		text-transform: uppercase;
 		width: 11em;
 		padding: 0.25em;
 		position: absolute;
@@ -97,42 +117,28 @@ body {
 	    select {
 		color: #fff;
 		background-color: rgba( 0, 0, 0, 0.6 );
-		border:0;
-		font-weight:lighter;
-		width:100%;
+		border: 0;
+		font-weight: lighter;
+		width: 100%;
 		position: absolute;
 		top: 70%;
 		left: 0;
 	    }
 	    svg {
-		bottom:0;
-		left:0;
-		opacity:0.5;
-		position:absolute;
+		bottom: 0;
+		left: 0;
+		opacity: 0.5;
+		position: absolute;
 	    }
 	}
     }
     .avatar {
-	background-color:#aff;
+	background-color: #aff;
     }
     .news {
-	height:75%;
+	height: 75%;
 	.bouton-config-news {
-	    background-image: url('../vendor/charte-graphique-laclasse-com/images/icon_admin-outils-gris.svg');
-	    background-position: center;
-	    background-repeat: no-repeat;
-	    border-radius: 1em;
-	    box-shadow: 8px 5px 5px #16161d;
-	    cursor: pointer;
-	    font-size: 2em;
-	    height: 2em;
-	    line-height: 2em;
-	    position: absolute;
-	    right: 1em;
-	    top: calc(100% - 3em);
-	    width: 2em;
-	    z-index: 9999;
-	    background-size: 70%;
+	    background-image: url('../vendor/laclasse-common-client/images/icon_admin-outils-gris.svg');
 	}
 	.news-image {
 	    transition: all 0.4s ease-in-out 0s;
@@ -141,7 +147,8 @@ body {
 	    max-height: 67%;
 	    opacity: 0.6;
 	}
-	.carousel-control.right, .carousel-control.left {
+	.carousel-control.right,
+	.carousel-control.left {
 	    background-image: none;
 	}
 	.carousel-control .icon-prev,
@@ -151,34 +158,34 @@ body {
 	    top: 33%;
 	}
 	.carousel-caption {
-	    background-color:rgba(255,255,255,0.1);
-	    color:#fff;
-	    position:absolute;
-	    bottom:0;
+	    background-color: rgba(255,255,255,0.1);
+	    color: #fff;
+	    position: absolute;
+	    bottom: 0;
 	    left: 0;
-	    height:33.333%;
-	    width:100%;
-	    padding:1em;
+	    height: 33.333%;
+	    width: 100%;
+	    padding: 1em;
 	    font-size: 12px;
 	    font-weight: normal;
-	    text-align:left;
+	    text-align: left;
 	    h6 {
-		color:#fff;
-		text-decoration:none;
+		color: #fff;
+		text-decoration: none;
 		font-size: 16px;
 		font-weight: bolder;
 		text-transform: uppercase;
 	    }
 	    .lire-la-suite {
-		color:#fff;
-		text-decoration:underline;
-		font-weight:bolder;
-		float:right;
+		color: #fff;
+		text-decoration: underline;
+		font-weight: bolder;
+		float: right;
 	    }
 	    .pub-date {
-		color:#ddd;
+		color: #ddd;
 		font-size: 0.8em;
-		float:right;
+		float: right;
 	    }
 	}
 	.rn-carousel-controls {
@@ -213,163 +220,175 @@ body {
 	bottom: 25%;
 	text-align: center;
 	.rn-carousel-indicator {
-	    span, span.active {
+	    span,
+	    span.active {
 		height: 12px;
 		width: 12px;
 		margin: 1px 6px;
 	    }
 	}
     }
-}
-
-.logolaclasse h3
-{
-    color:#fff;
-    font-weight:700;
-    padding:0;
-    text-decoration:none;
-}
-.aside-blanc {
-    background-color:white;
     .laius {
-	margin:40px;
+	margin: 40px;
 	text-align: justify;
     }
 }
+
+.logolaclasse h3 {
+    color: #fff;
+    font-weight: 700;
+    padding: 0;
+    text-decoration: none;
+}
+
 .damier {
-    overflow-y:auto;
-    .bouton-modification {	// Mode normal
-	background-image: url('../vendor/charte-graphique-laclasse-com/images/icon_admin-outils-gris.svg');
-	background-position: center;
-	background-repeat: no-repeat;
-	border-radius: 1em;
-	box-shadow: 8px 5px 5px #16161d;
-	cursor: pointer;
-	font-size: 2em;
-	height: 2em;
-	line-height: 2em;
-	position: absolute;
-	right: 1em;
-	top: calc(100% - 3em);
-	width: 2em;
-	z-index: 9999;
-    }
-    .bouton-modification.toggle {
-	background-size: 70%;
+    overflow-y: auto;
+    .floating-button.off {
+	background-image: url('../vendor/laclasse-common-client/images/icon_admin-outils-gris.svg');
     }
     ul {
 	height: 100%;
-	// li {
-	//     list-style-type: none;
-	// }
     }
     .case {
-	float:left;
-	position:relative;
-    }
-    .petite.case {
+	float: left;
 	position: relative;
-	.front, .back {
-	    position: absolute;
-	    top: 0;
-	    left: 0;
-	    height: 100%;
-	    width: 100%;
-	    backface-visibility: hidden;
-	    transform-style: preserve-3d;
-	    transition: all 0.4s ease-in-out 0s;
-	}
-	.front {
-	    transform: rotateY(0deg);
-	    z-index: 900;
-	}
-	.back {
-	    transform: rotateY(-179deg);
-	    z-index: 800;
-	}
-	.toggle-configure {
-	    background: transparent;
-	    position: absolute;
-	    cursor: pointer;
-	    top: 0.5em;
-	    left: 0.5em;
-	    height: 1em;
-	    width: 1em;
-	    .icone {
-		display: inline-block;
-		height: 100%;
-		width: 100%;
-		background-position: center;
-		background-size: 100% 100%;
-	    }
-	    .icone.parametrer {
-		background-image: url('../vendor/charte-graphique-laclasse-com/images/icon_admin-parametrer.svg');
-	    }
-	    .icone.visualiser {
-		background-image: url('../vendor/charte-graphique-laclasse-com/images/icon_admin-viz.svg');
-	    }
-	}
-	.configure {
-	    padding: 0.5em;
-	    padding-top: 1em;
-	    font-size: 0.9em;
-	    label {
-		text-align: left;
-		width: 100%;
-		input {
-		    font-size: 0.9em;
+
+	&.petite {
+	    .toggle-configure {
+		background: transparent;
+		position: absolute;
+		cursor: pointer;
+		top: 0.5em;
+		left: 0.5em;
+		height: 1em;
+		width: 1em;
+		.icone {
+		    display: inline-block;
+		    height: 100%;
+		    width: 100%;
+		    background-position: center;
+		    background-size: 100% 100%;
+		}
+		.icone.parametrer {
+		    background-image: url('../vendor/laclasse-common-client/images/icon_admin-parametrer.svg');
+		}
+		.icone.visualiser {
+		    background-image: url('../vendor/laclasse-common-client/images/icon_admin-viz.svg');
 		}
 	    }
-	    .remove {
-		padding: 2px;
+	    .configure {
+		padding: 0.5em;
+		padding-top: 1em;
+		font-size: 0.9em;
+		label {
+		    text-align: left;
+		    width: 100%;
+		    input {
+			font-size: 0.9em;
+		    }
+		}
+		.remove {
+		    padding: 2px;
+		    position: absolute;
+		    top: 0.6em;
+		    right: 2.6em;
+		    color: red;
+		}
+		.form-control {
+		    height: auto;
+		}
+	    }
+	    .app-name {
 		position: absolute;
-		top: 0.6em;
-		right: 2.6em;
-		color: red;
+		font-size: 16px;
+		line-height: 1.1em;
+		max-height: 2.2em;
+		left: 0;
+		bottom: 10px;
+		.glyphicon {
+		    font-size: 75%;
+		}
 	    }
-	    .form-control {
-		height: auto;
+	    a {
+		.compteur-notification {
+		    border-radius: 1em;
+		    color: #fff;
+		    font-size: 2em;
+		    font-weight: bolder;
+		    padding: 0 .4em;
+		    position: absolute;
+		    right: .5em;
+		    top: .5em;
+		}
 	    }
-	}
-	.app-name {
-	    position: absolute;
-	    font-size: 16px;
-	    line-height: 1.1em;
-	    max-height:2.2em;
-	    left: 0;
-	    bottom: 10px;
-	    .glyphicon {
-		font-size: 75%;
-	    }
-	}
-	a {
-	    .compteur-notification {
-		border-radius:1em;
-		color:#fff;
-		font-size:2em;
-		font-weight:bolder;
-		padding:0 .4em;
-		position:absolute;
-		right:.5em;
-		top:.5em;
-	    }
+	}				// .petite
+	&.grande {
+	    height: 75%;
 	}
     }
-    .grande.case {
-	height:75%;
-    }
-    .presentation {
-	color:#fff;
-	padding:1em;
-	em {
-	    font-weight:bolder;
+
+    &.modification {
+	.floating-button {
+	    &.on {
+		background-image: url('../vendor/laclasse-common-client/images/icon_admin-outils-blancs.svg');
+	    }
+	    &.save {
+		background-image: url('../vendor/laclasse-common-client/images/icon_admin-valider.svg');
+	    }
+	    &.cancel {
+		background-image: url('../vendor/laclasse-common-client/images/icon_admin-annuler.svg');
+	    }
+	    &.add-app {
+		background-image: url('../vendor/laclasse-common-client/images/icon_admin-ajouter.svg');
+	    }
 	}
-    }
-    .logos {
-	img {
-	    display:block;
-	    margin:20% auto 0;
-	    max-width: 50%;
+	.exit-configure {
+	    button {
+		font-size: 2em;
+		height: 20%;
+		margin-top: 15%;
+		width: 75%;
+	    }
+	}
+	.petite.case {
+	    position: relative;
+	    width: 24%;
+	    height: 23.7%;
+	    margin: 0.5%;
+	    animation-delay: 0.25s;
+	    animation-duration: 0.05s;
+	    animation-iteration-count: 5;
+
+	    .inactive {
+		opacity: 0.33;
+	    }
+	    .couleurs {
+		position: absolute;
+		right: 0.5em;
+		top: 0.5em;
+	    }
+
+	    &.show-back {
+		.toggle-configure {
+		    left: auto;
+		    right: 0.5em;
+		}
+	    }
+	    &:nth-child( 2n ) {
+		animation-name: keyframes1;
+	    }
+	    &:nth-child( 2n - 1 ) {
+		animation-name: keyframes2;
+		animation-direction: alternate;
+	    }
+	}
+
+	.ui-sortable-helper {
+	    box-shadow: 5px 5px 10px 0 #ececec;
+	}
+
+	ng-color-picker {
+	    display: inline-block;
 	}
     }
 }
@@ -396,95 +415,20 @@ body {
     }
 }
 
-.damier.modification {
-    .bouton-modification {	// Mode modification
-	background-image: url('../vendor/charte-graphique-laclasse-com/images/icon_admin-outils-blancs.svg');
-    }
-    .bouton-modification.save, .bouton-modification.cancel, .bouton-modification.add-app {
-	height: 1.5em;
-	width: 1.5em;
-	line-height: 1.55em;
-	right: 1.25em;
-    }
-    .bouton-modification.save {
-	background-image: url('../vendor/charte-graphique-laclasse-com/images/icon_admin-valider.svg');
-	top: calc( 100% - 7em );
-    }
-    .bouton-modification.cancel {
-	background-image: url('../vendor/charte-graphique-laclasse-com/images/icon_admin-annuler.svg');
-	top: calc( 100% - 5em );
-    }
-    .bouton-modification.add-app {
-	background-image: url('../vendor/charte-graphique-laclasse-com/images/icon_admin-ajouter.svg');
-	right: 3.5em;
-	top: calc( 100% - 2.65em );
-    }
-
-    .exit-configure {
-	button {
-	    font-size: 2em;
-	    height: 20%;
-	    margin-top: 15%;
-	    width: 75%;
-	}
-    }
-    .petite.case {
-	perspective: 600px;
-	position: relative;
-	width: 24%;
-	height: 23.7%;
-	margin: 0.5%;
-	animation-delay: 0.25s;
-	animation-duration: 0.05s;
-	animation-iteration-count: 5; // infinite;
-	transform-origin: 50% 10%;
-	.inactive {
-	    opacity: 0.33;
-	}
-	.couleurs {
-	    position: absolute;
-	    right: 0.5em;
-	    top: 0.5em;
-	}
-    }
-    .petite.case.flip {
-	.front {
-	    transform: rotateY(180deg);
-	}
-	.back {
-	    transform: rotateY(0deg);
-	    z-index: 1000;
-	}
-	.toggle-configure {
-	    left: auto;
-	    right: 0.5em;
-	}
-    }
-    .petite.case:nth-child( 2n ) {
-	animation-name: keyframes1;
-    }
-    .petite.case:nth-child( 2n - 1 ) {
-	animation-name: keyframes2;
-	animation-direction: alternate;
-    }
-    .ui-sortable-helper {
-	box-shadow: 5px 5px 10px 0 #ececec;
-    }
-    ng-color-picker {
-	display: inline-block;
-    }
+.damier .petite.case {
+    text-align: center;
 }
-.damier .petite.case,.logolaclasse {
-    text-align:center;
-}
-.damier .petite.case a,.damier .petite.case span,.logolaclasse a {
-    color:#fff;
-    float:left;
-    height:100%;
-    text-decoration:none;
-    width:100%;
+.damier .petite.case a,
+.damier .petite.case span,
+.logolaclasse a {
+    color: #fff;
+    float: left;
+    height: 100%;
+    text-decoration: none;
+    width: 100%;
 }
 .logolaclasse {
+    text-align: center;
     cursor: pointer;
     a {
 	h3 {
@@ -494,51 +438,55 @@ body {
 	}
     }
     h3 {
-	max-height:33%;
+	max-height: 33%;
+	font-size: 1.5em;
+	font-weight: lighter;
     }
 }
-.logolaclasse img,.logolaclasse h3,.damier .petite.case .icone,.damier .petite.case .app-name {
+
+.logolaclasse img,
+.logolaclasse h3,
+.damier .petite.case .icone,
+.damier .petite.case .app-name {
     float: left;
 }
-.logolaclasse img,.damier .petite.case .icone {
+.logolaclasse img,
+.damier .petite.case .icone {
     margin-top: 5%;
-    height:66%;
-    width:100%;
+    height: 66%;
+    width: 100%;
     font-family: 'Open Sans', sans-serif;
     font-size: 10em;
     font-style: normal;
     font-weight: bolder;
 }
-.logolaclasse h3,.damier .petite.case .app-name {
-    width:100%;
+.logolaclasse h3,
+.damier .petite.case .app-name {
+    width: 100%;
     overflow: hidden;
-}
-.logolaclasse h3 {
-    font-size:1.5em;
-    font-weight:lighter;
 }
 
 .en-tete {
-    color:#fff;
-    border:0;
-    height:3em;
+    color: #fff;
+    border: 0;
+    height: 3em;
     line-height: 3;
-    max-height:3em;
-    min-height:3em;
+    max-height: 3em;
+    min-height: 3em;
     .petit-logo {
-	display:inline-block;
-	float:left;
-	padding-top:1px;
-	width:3em;
-	height:3em;
+	display: inline-block;
+	float: left;
+	padding-top: 1px;
+	width: 3em;
+	height: 3em;
 	background-position: left top;
 	background-repeat: no-repeat;
 	background-size: auto 90%;
     }
     .titre {
-	font-weight:bolder;
+	font-weight: bolder;
 	font-size: 14px;
-	padding-left:1em;
+	padding-left: 1em;
     }
     .profil-select-wrapper {
 	height: 100%;
@@ -547,8 +495,8 @@ body {
 	color: #fff;
     }
     .user-menu {
-	color:#fff;
-	text-align:right;
+	color: #fff;
+	text-align: right;
 	min-width: 14em;
 	.dropdown-toggle,
 	.dropdown-menu {
@@ -559,43 +507,43 @@ body {
 	    font-weight: bolder;
 	}
 	a {
-	    color:#fff;
-	    cursor:pointer;
-	    display:inline-block;
-	    text-decoration:none;
-	    font-weight:bold;
+	    color: #fff;
+	    cursor: pointer;
+	    display: inline-block;
+	    text-decoration: none;
+	    font-weight: bold;
 	}
 	ul {
-	    border:0;
-	    border-radius:0;
+	    border: 0;
+	    border-radius: 0;
 	}
 	li {
-	    border-top:1px solid #fff;
-	    text-align:left;
+	    border-top: 1px solid #fff;
+	    text-align: left;
 	    a {
-		color:#fff;
+		color: #fff;
 		background-position: left center;
 		background-repeat: no-repeat;
 		background-size: auto 80%;
-		height:3.5em;
-		line-height:3em;
-		padding:.25em;
-		padding-left:3em;
-		width:100%;
+		height: 3.5em;
+		line-height: 3em;
+		padding: .25em;
+		padding-left: 3em;
+		width: 100%;
 		* {
-		    float:left;
+		    float: left;
 		}
 		svg {
-		    height:3em;
-		    width:3em;
+		    height: 3em;
+		    width: 3em;
 		}
 	    }
 	    a:hover {
-		background-color:#16161d;
+		background-color: #16161d;
 		background-repeat: no-repeat;
-		color:#fff;
+		color: #fff;
 		span {
-		    background-color:#16161d;
+		    background-color: #16161d;
 		}
 	    }
 	}
@@ -603,101 +551,108 @@ body {
 }
 
 .laclasse-com {
-    float:left;
-    font-weight:bolder;
+    float: left;
+    font-weight: bolder;
     font-size: 14px;
-    text-align:center;
+    text-align: center;
     cursor: pointer;
     a {
-	color:#fff;
-	text-decoration:none;
+	color: #fff;
+	text-decoration: none;
     }
     span {
-	display:inline-block;
-	float:left;
-	color:#fff;
-	min-width:9em;
+	display: inline-block;
+	float: left;
+	color: #fff;
+	min-width: 9em;
     }
 }
 
 .iframe {
-    height:calc( 100% - 3em );
+    height: calc( 100% - 3em );
     iframe {
-	border:0;
+	border: 0;
 	padding: 0;
 	margin: 0;
-	height:100%;
-	width:100%;
+	height: 100%;
+	width: 100%;
     }
-}
-.iframe.ios {
-    overflow: scroll;
-    -webkit-overflow-scrolling: touch;
+    &.ios {
+	overflow: scroll;
+	-webkit-overflow-scrolling: touch;
+    }
 }
 .user-profil {
-    background:#ececed;
-    padding:0 1em;
+    background: #ececed;
+    padding: 0 1em;
     h3 {
-	color:#b2b2b2;
-	font-weight:bolder;
+	color: #b2b2b2;
+	font-weight: bolder;
     }
     h1 {
-	color:#1aa1cc;
-	font-weight:bolder;
+	color: #1aa1cc;
+	font-weight: bolder;
     }
     h2 {
-	color:#1aa1cc;
-	font-size:1.5em;
+	color: #1aa1cc;
+	font-size: 1.5em;
     }
     header {
-	height:12em;
-	position:absolute;
-	width:calc( 100% - 2em );
+	height: 12em;
+	position: absolute;
+	width: calc( 100% - 2em );
 	padding-left: 3em;
     }
     .form {
-	bottom:5em;
-	height:calc( 100% - 12em - 5em );
-	overflow-y:auto;
-	position:absolute;
-	top:12em;
-	width:calc( 100% - 2em );
+	bottom: 5em;
+	height: calc( 100% - 12em - 5em );
+	overflow-y: auto;
+	position: absolute;
+	top: 12em;
+	width: calc( 100% - 2em );
     }
     accordion {
 	.panel {
-	    background:transparent;
-	    border:0;
-	    box-shadow:0;
+	    background: transparent;
+	    border: 0;
+	    box-shadow: 0;
 	}
 	.panel-heading {
-	    background:transparent;
-	    border-top:1px solid #b2b2b2;
+	    background: transparent;
+	    border-top: 1px solid #b2b2b2;
 	    a {
 		span {
-		    color:#b2b2b2;
+		    color: #b2b2b2;
 		}
 	    }
 	}
 	.panel-body {
 	    .row {
 		div {
-		    padding:1em;
+		    padding: 1em;
 		}
 		div.avatar {
-		    padding-top:3.8em;
-		    text-align:center;
+		    padding-top: 3.8em;
+		    text-align: center;
 		}
 	    }
 	}
     }
-    label {
-	font-weight:400;
-	padding-bottom:.33em;
+    .accordion-toggle {
+	display: inline-block;
+	height: 100%;
+	padding: 1em;
+	width: 100%;
     }
-    input, .date-naissance {
-	background-color:#b2b2b2;
-	border-radius:0;
-	color:#000;
+    label {
+	font-weight: 400;
+	padding-bottom: .33em;
+    }
+    input,
+    .date-naissance {
+	background-color: #b2b2b2;
+	border-radius: 0;
+	color: #000;
 	padding: 0 3px;
 	line-height: 34px;
     }
@@ -710,8 +665,8 @@ body {
     }
     .avatar {
 	svg {
-	    background:blue;
-	    fill:#FF0;
+	    background: blue;
+	    fill: #FF0;
 	}
 	img {
 	    background-color: #1aa1cc;
@@ -727,94 +682,46 @@ body {
 	}
     }
     footer {
-	background-color:#ececed;
-	border-top:1px solid #b2b2b2;
-	bottom:0;
-	height:5em;
-	padding:1.25em;
-	position:absolute;
-	text-align:center;
-	width:calc( 100% - 2em );
+	background-color: #ececed;
+	border-top: 1px solid #b2b2b2;
+	bottom: 0;
+	height: 5em;
+	padding: 1.25em;
+	position: absolute;
+	text-align: center;
+	width: calc( 100% - 2em );
 	button {
-	    border:1px solid #000;
-	    margin:0 1em;
-	    padding:.5em 2em;
-	    text-transform:uppercase;
+	    border: 1px solid #000;
+	    margin: 0 1em;
+	    padding: .5em 2em;
+	    text-transform: uppercase;
 	}
     }
-}
-.user-profil *,.user-profil a {
-    color:#16161d;
-}
-.user-profil h1,.user-profil h2,.user-profil h3 {
-    line-height:1.5em;
-}
-.accordion-toggle {
-    display: inline-block;
-    height: 100%;
-    padding: 1em;
-    width: 100%;
-}
-html,#app-wrapper {
-    overflow:hidden;
-}
-.panel-group div,.user-profil accordion,.user-profil accordion div {
-    height:auto;
-}
-div,html,body {
-    height:100%;
-}
-.aside .header {
-    height:25%;
-}
-svg {
-    * {
-	fill:#fff;
+    *,
+    a {
+	color: #16161d;
+    }
+    h1,
+    h2,
+    h3 {
+	line-height: 1.5em;
     }
 }
-.ui-datepicker,.ui-datepicker div {
+
+.panel-group div,
+.user-profil accordion,
+.user-profil accordion div {
     height: auto;
 }
 
-.switch {
-    display: inline-block;
-    width: 180px;
-    color: #fff;
-    font-size: 0.9em;
-    font-weight: normal;
-    &.switch-right {
-	background-color: #80ba66;
-	border-color: #80ba66;
-    }
-    &.switch-left {
-	background-color: #eb5454;
-	border-color: #eb5454;
-    }
-    &.switch-left::before {
-	content: "désactivé";
-	line-height: 2.1em;
-	position: absolute;
-	right: 0.9em;
-	text-transform: uppercase;
-    }
-    &.switch-right::before {
-	content: "activé";
-	line-height: 2.1em;
-	position: absolute;
-	left: 0.9em;
-	text-transform: uppercase;
-    }
-    .switch-button {
-	width: 90px;
-	background-color: #8e8e8e;
-	border-color: #8e8e8e;
-    }
-    &.switch-right .switch-button {
-	left: 90px;
+svg {
+    * {
+	fill: #fff;
     }
 }
 
-.modal-dialog, .modal-dialog div {
+.modal-dialog,
+.modal-dialog div {
     height: auto;
 }
 
@@ -888,35 +795,34 @@ svg {
 	    font-size: 85%;
 	}
     }
-}
-.new-app.selected {
-    box-shadow: 0 0 0 4px #8e8e8e;
-    opacity: 1;
-}
-.new-app.creation {
-    width: 21em;
-    height: 11em;
-    padding: 0.25em;
-    color: #ececec;
-    legend {
-	margin: 0;
+    &.selected {
+	box-shadow: 0 0 0 4px #8e8e8e;
+	opacity: 1;
+    }
+    &.creation {
+	width: 21em;
+	height: 11em;
+	padding: 0.25em;
 	color: #ececec;
-    }
-    label, input {
-	width: 100%;
-    }
-    input {
-	color: #16161d;
+	legend {
+	    margin: 0;
+	    color: #ececec;
+	}
+	label,
+	input {
+	    width: 100%;
+	}
+	input {
+	    color: #16161d;
+	}
     }
 }
 
-.ressources-numeriques {
-    .damier {
-	height: calc( 100% - 3em );
-    }
-}
-
+.ressources-numeriques,
 .classes-culturelles-numeriques {
+    .aside {
+	background-color: white;
+    }
     .damier {
 	height: calc( 100% - 3em );
     }
@@ -948,19 +854,24 @@ svg {
 	z-index: 1;
     }
     .petite.case{
-	.classe-name, .college-name, .trombi-first-name, .trombi-last-name {
+	.classe-name,
+	.college-name,
+	.trombi-first-name,
+	.trombi-last-name {
 	    display: flex;
-	    justify-content:center;
-	    align-content:center;
-	    flex-direction:column; /* column | row */
+	    justify-content: center;
+	    align-content: center;
+	    flex-direction: column; /* column | row */
 	    font-weight: bold;
 	    z-index: 2;
 	    color: #fff;
 	}
-	.classe-name, .trombi-first-name {
+	.classe-name,
+	.trombi-first-name {
 	    height: 75%;
 	}
-	.college-name, .trombi-last-name {
+	.college-name,
+	.trombi-last-name {
 	    height: 25%;
 	}
 	&.classe{

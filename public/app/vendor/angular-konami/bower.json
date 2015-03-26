@@ -1,9 +1,10 @@
 {
   "name": "angular-konami",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "authors": [
     "Lucas Constantino <lucasconstantinosilva@gmail.com>"
   ],
+  "homepage": "https://github.com/lucasconstantino/angular-konami",
   "description": "A Konami Code directive for Angular applications",
   "main": "angular-konami.js",
   "keywords": [

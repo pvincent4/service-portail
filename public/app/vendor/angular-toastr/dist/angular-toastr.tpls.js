@@ -7,7 +7,12 @@
   toastr.$inject = ['$animate', '$injector', '$document', '$rootScope', '$sce', 'toastrConfig', '$q'];
 
   function toastr($animate, $injector, $document, $rootScope, $sce, toastrConfig, $q) {
-    var container, index = 0, toasts = [];
+    var container;
+    var index = 0;
+    var toasts = [];
+
+    var previousToastMessage = '';
+
     var containerDefer = $q.defer();
 
     var toast = {
@@ -92,7 +97,7 @@
     /* Internal functions */
     function _buildNotification(type, message, title, optionsOverride)
     {
-      if (typeof title === 'object') {
+      if (angular.isObject(title)) {
         optionsOverride = title;
         title = null;
       }
@@ -132,6 +137,8 @@
 
     function _notify(map) {
       var options = _getOptions();
+
+      if (shouldExit()) { return; }
 
       var newToast = createToast();
 
@@ -194,7 +201,7 @@
         };
         newToast.iconClass = map.iconClass;
         if (map.optionsOverride) {
-          options = angular.extend(options, map.optionsOverride);
+          options = angular.extend(options, cleanOptionsOverride(map.optionsOverride));
           newToast.iconClass = map.optionsOverride.iconClass || newToast.iconClass;
         }
 
@@ -203,6 +210,16 @@
         newToast.el = createToastEl(newToast.scope);
 
         return newToast;
+
+        function cleanOptionsOverride(options) {
+          var badOptions = ['containerId', 'iconClasses', 'maxOpened', 'newestOnTop',
+                            'positionClass', 'preventDuplicates'];
+          for (var i = 0, l = badOptions.length; i < l; i++) {
+            delete options[badOptions[i]];
+          }
+
+          return options;
+        }
       }
 
       function createToastEl(scope) {
@@ -213,6 +230,17 @@
 
       function maxOpenedNotReached() {
         return options.maxOpened && toasts.length <= options.maxOpened || !options.maxOpened;
+      }
+
+      function shouldExit() {
+        if (options.preventDuplicates) {
+          if (map.message === previousToastMessage) {
+            return true;
+          } else {
+            previousToastMessage = map.message;
+          }
+          return false;
+        }
       }
     }
   }
@@ -240,6 +268,7 @@
       onHidden: null,
       onShown: null,
       positionClass: 'toast-top-right',
+      preventDuplicates: false,
       tapToDismiss: true,
       target: 'body',
       timeOut: 5000,
