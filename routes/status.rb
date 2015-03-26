@@ -10,10 +10,12 @@ module Portail
           status = 'OK'
           reason = 'L\'application fonctionne.'
 
-          { app_id: ANNUAIRE[:app_id],
-            status: status,
-            reason: reason
-          }.to_json
+          app_status = app_infos
+
+          app_status[:status] = status
+          app_status[:reason] = reason
+
+          app_status.to_json
         end
       end
     end

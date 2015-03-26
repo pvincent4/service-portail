@@ -13,6 +13,7 @@ Bundler.require( :default, ENV['RACK_ENV'].to_sym )     # require tout les gems 
 
 require 'laclasse/helpers/authentication'
 require 'laclasse/helpers/user'
+require 'laclasse/helpers/app_infos'
 
 require_relative './lib/annuaire_wrapper'
 require_relative './lib/helpers/config'
@@ -57,6 +58,8 @@ class SinatraApp < Sinatra::Base
 
   helpers Laclasse::Helpers::Authentication
   helpers Laclasse::Helpers::User
+  helpers Laclasse::Helpers::AppInfos
+
   helpers Portail::Helpers::Config
 
   ##### routes #################################################################
