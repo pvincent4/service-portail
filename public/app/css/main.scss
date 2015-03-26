@@ -138,7 +138,7 @@ body {
     .news {
 	height: 75%;
 	.bouton-config-news {
-	    background-image: url('../vendor/charte-graphique-laclasse-com/images/icon_admin-outils-gris.svg');
+	    background-image: url('../vendor/laclasse-common-client/images/icon_admin-outils-gris.svg');
 	}
 	.news-image {
 	    transition: all 0.4s ease-in-out 0s;
@@ -244,7 +244,7 @@ body {
 .damier {
     overflow-y: auto;
     .floating-button.off {
-	background-image: url('../vendor/charte-graphique-laclasse-com/images/icon_admin-outils-gris.svg');
+	background-image: url('../vendor/laclasse-common-client/images/icon_admin-outils-gris.svg');
     }
     ul {
 	height: 100%;
@@ -270,10 +270,10 @@ body {
 		    background-size: 100% 100%;
 		}
 		.icone.parametrer {
-		    background-image: url('../vendor/charte-graphique-laclasse-com/images/icon_admin-parametrer.svg');
+		    background-image: url('../vendor/laclasse-common-client/images/icon_admin-parametrer.svg');
 		}
 		.icone.visualiser {
-		    background-image: url('../vendor/charte-graphique-laclasse-com/images/icon_admin-viz.svg');
+		    background-image: url('../vendor/laclasse-common-client/images/icon_admin-viz.svg');
 		}
 	    }
 	    .configure {
@@ -330,16 +330,16 @@ body {
     &.modification {
 	.floating-button {
 	    &.on {
-		background-image: url('../vendor/charte-graphique-laclasse-com/images/icon_admin-outils-blancs.svg');
+		background-image: url('../vendor/laclasse-common-client/images/icon_admin-outils-blancs.svg');
 	    }
 	    &.save {
-		background-image: url('../vendor/charte-graphique-laclasse-com/images/icon_admin-valider.svg');
+		background-image: url('../vendor/laclasse-common-client/images/icon_admin-valider.svg');
 	    }
 	    &.cancel {
-		background-image: url('../vendor/charte-graphique-laclasse-com/images/icon_admin-annuler.svg');
+		background-image: url('../vendor/laclasse-common-client/images/icon_admin-annuler.svg');
 	    }
 	    &.add-app {
-		background-image: url('../vendor/charte-graphique-laclasse-com/images/icon_admin-ajouter.svg');
+		background-image: url('../vendor/laclasse-common-client/images/icon_admin-ajouter.svg');
 	    }
 	}
 	.exit-configure {

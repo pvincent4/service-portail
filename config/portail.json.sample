@@ -3,59 +3,59 @@
 	"default": {
 	    "MAIL": {
 		"color": "#1aa1cc",
-		"icon": "app/vendor/charte-graphique-laclasse-com/images/01_messagerie.svg",
+		"icon": "app/vendor/laclasse-common-client/images/01_messagerie.svg",
 		"index": 0 },
 	    "DOC": {
 		"color": "#e8c254",
-		"icon": "app/vendor/charte-graphique-laclasse-com/images/02_documents.svg",
+		"icon": "app/vendor/laclasse-common-client/images/02_documents.svg",
 		"index": 1 },
 	    "CTXT": {
 		"color": "#9c75ab",
-		"icon": "app/vendor/charte-graphique-laclasse-com/images/03_cahierdetextes.svg",
+		"icon": "app/vendor/laclasse-common-client/images/03_cahierdetextes.svg",
 		"index": 2 },
 	    "TELESRV": {
 		"color": "#80ba66",
-		"icon": "app/vendor/charte-graphique-laclasse-com/images/04_notesabsences.svg",
+		"icon": "app/vendor/laclasse-common-client/images/04_notesabsences.svg",
 		"index": 3 },
 	    "PRONOTE": {
 		"color": "#eb5454",
-		"icon": "app/vendor/charte-graphique-laclasse-com/images/04_notesabsences.svg",
+		"icon": "app/vendor/laclasse-common-client/images/04_notesabsences.svg",
 		"index": 4 },
 	    "LPC": {
 		"color": "#80ba66",
-		"icon": "app/vendor/charte-graphique-laclasse-com/images/05_validationcompetences.svg",
+		"icon": "app/vendor/laclasse-common-client/images/05_validationcompetences.svg",
 		"index": 5 },
 	    "CCNUM": {
 		"color": "#1aa1cc",
-		"icon": "app/vendor/charte-graphique-laclasse-com/images/06_thematiques.svg",
+		"icon": "app/vendor/laclasse-common-client/images/06_thematiques.svg",
 		"index": 6 },
 	    "BLOGS": {
 		"color": "#e8c254",
-		"icon": "app/vendor/charte-graphique-laclasse-com/images/07_blogs.svg",
+		"icon": "app/vendor/laclasse-common-client/images/07_blogs.svg",
 		"index": 7 },
 	    "GAR": {
 		"color": "#9c75ab",
-		"icon": "app/vendor/charte-graphique-laclasse-com/images/08_ressources.svg",
+		"icon": "app/vendor/laclasse-common-client/images/08_ressources.svg",
 		"index": 8 },
 	    "TROMBI": {
 		"color": "#1aa1cc",
-		"icon": "app/vendor/charte-graphique-laclasse-com/images/09_trombi.svg",
+		"icon": "app/vendor/laclasse-common-client/images/09_trombi.svg",
 		"index": 9 },
 	    "SUIVIELV": {
 		"color": "#e8c254",
-		"icon": "app/vendor/charte-graphique-laclasse-com/images/10_suivi.svg",
+		"icon": "app/vendor/laclasse-common-client/images/10_suivi.svg",
 		"index": 10 },
 	    "PUBLI": {
 		"color": "#eb5454",
-		"icon": "app/vendor/charte-graphique-laclasse-com/images/11_publipostage.svg",
+		"icon": "app/vendor/laclasse-common-client/images/11_publipostage.svg",
 		"index": 11 },
 	    "AIDE": {
 		"color": "#e8c254",
-		"icon": "app/vendor/charte-graphique-laclasse-com/images/12_aide.svg",
+		"icon": "app/vendor/laclasse-common-client/images/12_aide.svg",
 		"index": 12 },
 	    "ADMIN": {
 		"color": "#eb5454",
-		"icon": "app/vendor/charte-graphique-laclasse-com/images/13_admin.svg",
+		"icon": "app/vendor/laclasse-common-client/images/13_admin.svg",
 		"index": 13 }
 	}
     },

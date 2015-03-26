@@ -14,7 +14,7 @@
     "angular-bootstrap": "latest",
     "Font-Awesome": "latest",
     "underscore": "latest",
-      "charte-graphique-laclasse-com": "https://github.com/laclasse-com/charte-graphique-laclasse-com.git#latest",
+      "laclasse-common-client": "https://github.com/laclasse-com/laclasse-common-client.git#latest",
     "angular-animate": "latest",
     "ngAnimate": "latest",
     "angular-i18n": "latest",
