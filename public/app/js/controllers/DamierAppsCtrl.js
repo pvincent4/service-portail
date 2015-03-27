@@ -35,14 +35,21 @@ angular.module( 'portailApp' )
 			   } else {
 			       var save_response = function( response ) {
 				   switch ( response.status ) {
-				   case 200: app.status = response.data;
-				   case 404: app.status = { status: 'KO',
+				   case 200:
+				       app.status = response.data;
+				       break;
+				   case 404:
+				       app.status = { status: 'KO',
 							    code: response.status,
 							    reason: 'Serveur de l\'application introuvable.' };
-				   case 500: app.status = { status: 'KO',
+				       break;
+				   case 500:
+				       app.status = { status: 'KO',
 							    code: response.status,
 							    reason: 'Serveur de l\'application en erreur.' };
-				   default: app.status = { status: 'KO',
+				       break;
+				   default:
+				       app.status = { status: 'KO',
 							   code: response.status,
 							   reason: 'Erreur non qualifiée.' };
 				   }
