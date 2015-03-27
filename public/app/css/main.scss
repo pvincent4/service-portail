@@ -253,6 +253,16 @@ body {
 	float: left;
 	position: relative;
 
+	&.unavailable {
+	    .front {
+		opacity: 0.85;
+		.app-name {
+		    text-decoration-line: line-through;
+		    text-decoration-style: double;
+		    text-decoration-color: red;
+		}
+	    }
+	}
 	&.petite {
 	    .toggle-configure {
 		background: transparent;

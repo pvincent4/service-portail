@@ -2,8 +2,8 @@
 
 angular.module( 'portailApp' )
     .controller( 'DamierAppsCtrl',
-		 [ '$scope', '$modal', '$log', '$q', 'current_user', 'Apps', 'APP_PATH', 'CASES', 'COULEURS',
-		   function( $scope, $modal, $log, $q, current_user, Apps, APP_PATH, CASES, COULEURS ) {
+		 [ '$scope', '$modal', '$log', '$q', '$http', 'current_user', 'Apps', 'APP_PATH', 'CASES', 'COULEURS',
+		   function( $scope, $modal, $log, $q, $http, current_user, Apps, APP_PATH, CASES, COULEURS ) {
 		       $scope.prefix = APP_PATH;
 		       $scope.current_user = current_user;
 		       $scope.modification = false;
@@ -26,8 +26,31 @@ angular.module( 'portailApp' )
 			   app.configure = false;
 			   app.dirty = false;
 			   app.to_delete = false;
-			   app.portail = app.url.match( /^app\..*/ );
-			   app.external = app.type == 'EXTERNAL' || app.url.match( /^http.*/ );
+			   app.portail = app.url.match( /^app\..*/ ) !== null;
+			   app.external = ( app.type == 'EXTERNAL' ) || app.url.match( /^http.*/ ) !== null;
+
+			   if ( app.external || app.portail ) {
+			       app.status = { status: 'OK',
+					      available: true };
+			   } else {
+			       var save_response = function( response ) {
+				   switch ( response.status ) {
+				   case 200: app.status = response.data;
+				   case 404: app.status = { status: 'KO',
+							    code: response.status,
+							    reason: 'Serveur de l\'application introuvable.' };
+				   case 500: app.status = { status: 'KO',
+							    code: response.status,
+							    reason: 'Serveur de l\'application en erreur.' };
+				   default: app.status = { status: 'KO',
+							   code: response.status,
+							   reason: 'Erreur non qualifiée.' };
+				   }
+				   app.status.available = app.status.status == 'OK';
+			       };
+			       $http.get( app.url + 'status' ).then( save_response,
+								     save_response );
+			   }
 
 			   app.toggle_configure = function() {
 			       _.chain($scope.cases)
