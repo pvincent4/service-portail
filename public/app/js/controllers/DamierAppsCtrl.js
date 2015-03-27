@@ -29,7 +29,7 @@ angular.module( 'portailApp' )
 			   app.portail = app.url.match( /^app\..*/ ) !== null;
 			   app.external = ( app.type == 'EXTERNAL' ) || app.url.match( /^http.*/ ) !== null;
 
-			   if ( app.external || app.portail ) {
+			   if ( app.external || app.portail || app.application_id == 'MAIL') {
 			       app.status = { status: 'OK',
 					      available: true };
 			   } else {
