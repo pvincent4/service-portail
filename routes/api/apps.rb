@@ -5,7 +5,6 @@ module Portail
     module Api
       module Apps
         def self.registered( app )
-
           #
           # Service liste des applications
           #
@@ -15,7 +14,7 @@ module Portail
             return [] unless logged?
 
             AnnuaireWrapper::Apps.query_defaults
-                                 .map do |appli|
+              .map do |appli|
               default = config[:apps][:default][ appli['id'].to_sym ]
 
               appli.merge! default unless default.nil?
@@ -44,7 +43,7 @@ module Portail
             return [] unless logged?
 
             apps = AnnuaireWrapper::Etablissement::Apps.query_etablissement( user[:user_detailed]['profil_actif']['etablissement_code_uai'] )
-                                                       .map do |application|
+                   .map do |application|
               default = config[:apps][:default][ application['application_id'].to_sym ] unless application['application_id'].nil?
 
               unless default.nil?

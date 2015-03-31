@@ -4,8 +4,7 @@ module Sinatra
   module Portail
     module Api
       module Apps
-        def self.registered( app )
-
+        def self.registered( _app )
         end
       end
     end

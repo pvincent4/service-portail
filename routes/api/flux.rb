@@ -5,7 +5,6 @@ module Portail
     module Api
       module Flux
         def self.registered( app )
-
           #
           # Service liste des applications
           #

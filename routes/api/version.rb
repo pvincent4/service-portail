@@ -5,7 +5,6 @@ module Portail
     module Api
       module Version
         def self.registered( app )
-
           #
           # renvoi la version du portail
           #

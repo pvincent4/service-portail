@@ -16,6 +16,7 @@ module AnnuaireWrapper
   # fonctions relatives au profil utilisateur
   module User
     module_function
+
     # Service Utilisateur : init de la session et de son environnement
     def get( uid )
       Laclasse::CrossApp::Sender.send_request_signed( :service_annuaire_user, "#{uid}", 'expand' => 'true' )
@@ -34,15 +35,15 @@ module AnnuaireWrapper
     def check_password( login, password )
       correct = false
       begin
-        Laclasse::CrossApp::Sender.send_request_signed( :service_annuaire_sso, '', { login: login,
-                                                                                   password: password } )
+        Laclasse::CrossApp::Sender.send_request_signed( :service_annuaire_sso, '', login: login,
+                                                                                   password: password )
 
         correct = true
       rescue RuntimeError
         LOGGER.info 'Wrong password'
       end
 
-      return correct
+      correct
     end
 
     # Modification des données de l'utilisateur connecté
@@ -68,8 +69,8 @@ module AnnuaireWrapper
       File.rename image[:tempfile], new_filename
 
       Laclasse::CrossApp::Sender.post_raw_request_signed( :service_annuaire_user, "#{uid}/upload/avatar",
-                                                        {},
-                                                        image: File.open( new_filename ) )
+                                                          {},
+                                                          image: File.open( new_filename ) )
 
       File.delete new_filename
     end
@@ -90,7 +91,7 @@ module AnnuaireWrapper
 
     # Generate signed user's news url
     def get_news( uid )
-      Laclasse::CrossApp::Sender.sign( :service_annuaire_portail_news, '/' + uid , {} )
+      Laclasse::CrossApp::Sender.sign( :service_annuaire_portail_news, '/' + uid, {} )
     end
   end
 
