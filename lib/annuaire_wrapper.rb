@@ -86,7 +86,10 @@ module AnnuaireWrapper
       uid = URI.escape( uid )
       profil_id = URI.escape( profil_id )
       code_uai = URI.escape( code_uai )
-      Laclasse::CrossApp::Sender.put_request_signed( :service_annuaire_user, "#{uid}/profil_actif", uai: code_uai, profil_id: profil_id )
+      Laclasse::CrossApp::Sender.put_request_signed( :service_annuaire_user,
+                                                     "#{uid}/profil_actif",
+                                                     uai: code_uai,
+                                                     profil_id: profil_id )
     end
 
     # Generate signed user's news url

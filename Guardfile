@@ -1,3 +1,4 @@
+# coding: utf-8
 # A sample Guardfile
 # More info at https://github.com/guard/guard#readme
 #
@@ -10,7 +11,7 @@
 #notification :growl
 
 
-guard :rspec, :bundler => true, :all_after_pass => false, :all_on_start => false, :keep_failed => false  do #, :spec_paths => "spec"
+guard :rspec, bundler: true, all_after_pass: false, all_on_start: false, keep_failed: false  do #, spec_paths: "spec"
   watch(%r{^spec/.+_spec\.rb$})
   watch(%r{^lib/(.+)\.rb$})     { |m| "spec/lib/#{m[1]}_spec.rb" }
   watch(%r{^api/(.+)\.rb$})     { |m| "spec/api/#{m[1]}_spec.rb" }

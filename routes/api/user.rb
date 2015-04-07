@@ -89,10 +89,12 @@ module Portail
             regroupements = [ regroupements[ 'classes' ],
                               regroupements[ 'groupes_eleves' ] ]
                             .flatten
-                            .reject { |regroupement| regroupement[ 'etablissement_code' ] != user[:user_detailed]['profil_actif']['etablissement_code_uai'] }
+                            .reject { |regroupement|
+              regroupement[ 'etablissement_code' ] != user[:user_detailed]['profil_actif']['etablissement_code_uai']
+            }
                             .each do |regroupement|
-              regroupement[ 'id' ] =  regroupement.key?( 'classe_id' ) ? regroupement['classe_id'] : regroupement['groupe_id']
-              regroupement[ 'libelle' ] =  regroupement.key?( 'classe_libelle' ) ? regroupement['classe_libelle'] : regroupement['groupe_libelle']
+              regroupement[ 'id' ] =  regroupement.key?( 'classe_id' ) ? regroupement['classe_id'] : regroupement['groupe_id'] # rubocop:disable Metrics/LineLength
+              regroupement[ 'libelle' ] =  regroupement.key?( 'classe_libelle' ) ? regroupement['classe_libelle'] : regroupement['groupe_libelle'] # rubocop:disable Metrics/LineLength
               regroupement[ 'type' ] = regroupement.key?( 'classe_id' ) ? 'classe' : 'groupe_eleve'
             end
                             .uniq { |regroupement| regroupement['id'] }
@@ -135,9 +137,11 @@ module Portail
             # Qui sont dans la fenêtre d'abonnement
             # Triées sur les types de ressources desc pour avoir 'MANUEL' en premier, puis 'DICO', puis 'AUTRES'
             ressources = AnnuaireWrapper::User.get_resources( user[:uid] )
-                                              .reject { |ressource| ressource[ 'etablissement_code_uai' ] != user[:user_detailed]['profil_actif']['etablissement_code_uai'] ||
-                                                        Date.parse( ressource['date_deb_abon'] ) >= Date.today ||
-                                                        Date.parse( ressource['date_fin_abon'] ) <= Date.today }
+                                              .reject { |ressource|
+              ressource[ 'etablissement_code_uai' ] != user[:user_detailed]['profil_actif']['etablissement_code_uai'] ||
+                Date.parse( ressource['date_deb_abon'] ) >= Date.today ||
+                Date.parse( ressource['date_fin_abon'] ) <= Date.today
+            }
                                               .sort_by { |ressource| ressource['type_ressource'].to_s }
                                               .reverse
                                               .each { |ressource|

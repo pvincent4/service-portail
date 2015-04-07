@@ -82,6 +82,7 @@ namespace :preprocess_assets do
   desc 'Minify JS using Uglifier'
   task js: :load_config do
     STDERR.puts 'Uglification of vendor Javascript'
+    # rubocop:disable Metrics/LineLength
     uglified, source_map = Uglify.those_files_with_map( [ 'public/app/vendor/jquery/dist/jquery.js',
                                                           'public/app/vendor/jquery-ui/jquery-ui.js',
                                                           'public/app/vendor/underscore/underscore.js',
@@ -108,6 +109,7 @@ namespace :preprocess_assets do
                                                           'public/app/vendor/angular-konami/angular-konami.js',
                                                           'public/app/vendor/blockrain/dist/blockrain.jquery.js',
                                                           'public/app/vendor/angular-toastr/dist/angular-toastr.tpls.js' ] )
+    # rubocop:enable Metrics/LineLength
     File.open( './public/app/vendor/vendor.min.js', 'w' )
         .write( uglified )
     File.open( './public/app/vendor/vendor.min.js.map', 'w' )

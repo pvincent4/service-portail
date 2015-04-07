@@ -42,7 +42,7 @@ module Portail
 
             return [] unless logged?
 
-            apps = AnnuaireWrapper::Etablissement::Apps.query_etablissement( user[:user_detailed]['profil_actif']['etablissement_code_uai'] )
+            apps = AnnuaireWrapper::Etablissement::Apps.query_etablissement( user[:user_detailed]['profil_actif']['etablissement_code_uai'] ) # rubocop:disable Metrics/LineLength
                    .map do |application|
               default = config[:apps][:default][ application['application_id'].to_sym ] unless application['application_id'].nil?
 
@@ -53,7 +53,7 @@ module Portail
               end
 
               # FIXME: if only there was a way to fix this in the Annuaire's DB
-              application[ 'icon' ].gsub!( 'charte-graphique-laclasse-com', 'laclasse-common-client' ) unless application[ 'icon' ].nil?
+              application[ 'icon' ].gsub!( 'charte-graphique-laclasse-com', 'laclasse-common-client' ) unless application[ 'icon' ].nil? # rubocop:disable Metrics/LineLength
 
               application
             end
@@ -95,7 +95,7 @@ module Portail
             param :icon, String, required: false
             param :color, String, required: false
 
-            AnnuaireWrapper::Etablissement::Apps.create( user[:user_detailed]['profil_actif']['etablissement_code_uai'], params ).to_json
+            AnnuaireWrapper::Etablissement::Apps.create( user[:user_detailed]['profil_actif']['etablissement_code_uai'], params ).to_json # rubocop:disable Metrics/LineLength
           end
 
           app.put "#{APP_PATH}/api/apps/:id" do

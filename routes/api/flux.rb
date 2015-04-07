@@ -13,7 +13,7 @@ module Portail
 
             return [] unless logged?
 
-            fluxes = AnnuaireWrapper::Etablissement::Flux.query_etablissement( user[:user_detailed]['profil_actif']['etablissement_code_uai'] )
+            fluxes = AnnuaireWrapper::Etablissement::Flux.query_etablissement( user[:user_detailed]['profil_actif']['etablissement_code_uai'] ) # rubocop:disable Metrics/LineLength
             fluxes = config[:news_feed] if fluxes.empty? || fluxes.nil?
 
             fluxes.to_json
@@ -35,7 +35,7 @@ module Portail
             param :flux, String, required: true
             param :title, String, required: true
 
-            AnnuaireWrapper::Etablissement::Flux.create( user[:user_detailed]['profil_actif']['etablissement_code_uai'], params ).to_json
+            AnnuaireWrapper::Etablissement::Flux.create( user[:user_detailed]['profil_actif']['etablissement_code_uai'], params ).to_json # rubocop:disable Metrics/LineLength
           end
 
           app.put "#{APP_PATH}/api/flux/:id" do
