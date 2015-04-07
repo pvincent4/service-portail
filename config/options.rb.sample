@@ -54,7 +54,7 @@ end
 # Configuration du service d'annuaire de l'ENT
 #
 ANNUAIRE = {
-  url:                            'https://v3dev.laclasse.com/api' ,
+  url:                            'https://v3dev.laclasse.com/api',
   api_key:                        "Clé du portail dans l'annuaire=",
   app_id:                         'PORTAIL',
   api_mode:                       'v3',
@@ -63,7 +63,7 @@ ANNUAIRE = {
   service_annuaire_profils:       'app/profils/',
   service_annuaire_personnel:     'app/etablissements/',
   service_annuaire_diffusionInfo: 'app/',
-  service_annuaire_publipostage:  'app/publipostages/',
+  service_annuaire_publipostage:  'app/publipostages/'
 }
 
 # #
