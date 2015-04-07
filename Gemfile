@@ -36,4 +36,5 @@ group :development do
   gem 'sinatra-contrib'
   gem 'therubyracer' # used when no node.js is install on computer
   gem 'uglifier'
+  gem 'rubocop'
 end
