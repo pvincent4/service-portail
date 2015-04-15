@@ -9,8 +9,8 @@ def __DIR__(*args)
   ::File.expand_path(::File.join(dir, *args.map{|a| a.to_s}))
 end
 
-puts 'loading config/common'
-require __DIR__('common')
+# puts 'loading config/common'
+# require __DIR__('common')
 
 puts 'loading config/options'
 require __DIR__('options')
