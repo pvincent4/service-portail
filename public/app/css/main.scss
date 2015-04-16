@@ -243,6 +243,7 @@ body {
 
 .damier {
     overflow-y: auto;
+    background-color: #eee;
     .floating-button.off {
 	background-image: url('../vendor/laclasse-common-client/images/icon_admin-outils-gris.svg');
     }
@@ -255,12 +256,12 @@ body {
 
 	&.unavailable {
 	    .front {
-		opacity: 0.85;
-		.app-name {
-		    text-decoration-line: line-through;
-		    text-decoration-style: double;
-		    text-decoration-color: red;
-		}
+		opacity: 0.33;
+		// .app-name {
+		//     text-decoration-line: line-through;
+		//     text-decoration-style: double;
+		//     text-decoration-color: red;
+		// }
 	    }
 	}
 	&.petite {
