@@ -11,8 +11,9 @@ before_script:
   - cp config/options.rb.sample config/options.rb
   - cp config/portail.json.sample config/portail.json
 
-script: "bundle exec rspec spec/api/ spec/lib/"
-script: "bundle exec rubocop -D"
+script:
+  - "bundle exec rspec spec/api/ spec/lib/"
+  - "bundle exec rubocop -D"
 
 gemfile:
   - Gemfile
