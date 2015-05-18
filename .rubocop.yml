@@ -1,3 +1,11 @@
+AllCops:
+  Exclude:
+    - vendor/**/*
+    - public/**/*
+    - spec/javascripts/**/*
+    - tasks/**/*
+    - Guardfile
+
 Style/SpaceInsideBrackets:
   Enabled: false
 

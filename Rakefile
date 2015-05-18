@@ -1,4 +1,4 @@
-require "bundler"
+require 'bundler'
 require 'rake'
 require 'rake/clean'
 
@@ -9,7 +9,7 @@ PROJECT_SPECS = Dir.glob(File.expand_path('../spec/**/*.rb', __FILE__))
 PROJECT_SPECS.reject! { |e| e =~ /helper\.rb/ }
 PROJECT_SPECS.reject! { |e| e =~ /init\.rb/ }
 
-CLEAN.include %w[
+CLEAN.include %w(
   **/.*.sw?
   *.gem
   .config
@@ -20,7 +20,7 @@ CLEAN.include %w[
   rdoc
   public/doc
   *coverage*
-]
+)
 
 Dir.glob(File.expand_path('../tasks/*.rake', __FILE__)).each do |f|
   import(f)

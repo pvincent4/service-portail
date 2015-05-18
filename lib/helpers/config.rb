@@ -25,16 +25,16 @@ module Portail
       def colorize( a )
         d = damier
 
-        a.each_with_index { |e, i|
+        a.each_with_index do |e, i|
           e['color'] = d[i.modulo(d.length)]
-        }
+        end
 
         # Completer le damier jusqu'à 16
         if a.length < d.length
-          (d.length - a.length).times {
+          (d.length - a.length).times do
             # a grandit d'1 à chaque passage
             a.push('color' => d[a.length])
-          }
+          end
         end
         a
       end

@@ -89,17 +89,16 @@ module Portail
             regroupements = [ regroupements[ 'classes' ],
                               regroupements[ 'groupes_eleves' ] ]
                             .flatten
-                            .reject { |regroupement|
+                            .reject do |regroupement|
               regroupement[ 'etablissement_code' ] != user[:user_detailed]['profil_actif']['etablissement_code_uai']
-            }
+            end
                             .each do |regroupement|
               regroupement[ 'id' ] =  regroupement.key?( 'classe_id' ) ? regroupement['classe_id'] : regroupement['groupe_id'] # rubocop:disable Metrics/LineLength
               regroupement[ 'libelle' ] =  regroupement.key?( 'classe_libelle' ) ? regroupement['classe_libelle'] : regroupement['groupe_libelle'] # rubocop:disable Metrics/LineLength
               regroupement[ 'type' ] = regroupement.key?( 'classe_id' ) ? 'classe' : 'groupe_eleve'
             end
                             .uniq { |regroupement| regroupement['id'] }
-                            .sort_by { |regroupement| regroupement['libelle'].to_s }
-                            .reverse
+                            .sort_by { |regroupement| regroupement['libelle'].to_s }.reverse
                             .map do |regroupement|
               { libelle: regroupement['libelle'],
                 id: regroupement['id'],
@@ -118,11 +117,10 @@ module Portail
             content_type :json
 
             eleves = AnnuaireWrapper::Etablissement.regroupement_detail( params[:id] )['eleves']
-                                                   .map { |eleve|
+                                                   .map do |eleve|
               eleve[ 'avatar' ] = ANNUAIRE[:url].gsub( %r{/api}, '/' ) + eleve[ 'avatar' ]
-
               eleve
-            }
+            end
 
             colorize( eleves ).to_json
           end
@@ -137,18 +135,17 @@ module Portail
             # Qui sont dans la fenêtre d'abonnement
             # Triées sur les types de ressources desc pour avoir 'MANUEL' en premier, puis 'DICO', puis 'AUTRES'
             ressources = AnnuaireWrapper::User.get_resources( user[:uid] )
-                                              .reject { |ressource|
+                                              .reject do |ressource|
               ressource[ 'etablissement_code_uai' ] != user[:user_detailed]['profil_actif']['etablissement_code_uai'] ||
                 Date.parse( ressource['date_deb_abon'] ) >= Date.today ||
                 Date.parse( ressource['date_fin_abon'] ) <= Date.today
-            }
+            end
                                               .sort_by { |ressource| ressource['type_ressource'].to_s }
-                                              .reverse
-                                              .each { |ressource|
+                                              .reverse_each do |ressource|
               ressource['icone'] = '08_ressources.svg'
               ressource['icone'] = '05_validationcompetences.svg'  if ressource['type_ressource'] == 'MANUEL'
               ressource['icone'] = '07_blogs.svg'                  if ressource['type_ressource'] == 'AUTRE'
-            }
+            end
 
             # Associer les couleurs des carrés
             colorize( ressources ).to_json
