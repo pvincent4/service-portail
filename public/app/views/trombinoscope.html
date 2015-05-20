@@ -39,7 +39,7 @@
 	    <h3 class="college-name">{{regroupement.etablissement_nom}}</h3>
 	</div>
 
-	<div data-ng-repeat="eleve in eleves | filter:filters.text.user | orderBy:'prenom'"
+	<div data-ng-repeat="eleve in eleves | filter:filters.text.user | orderBy:'nom'"
 	     class="col-xs-12 col-sm-6 col-md-3 col-lg-2 petite case animate scale-fade-in"
 	     data-ng-style="{'background-color': eleve.color}"
 	     data-ng-if="eleves">
