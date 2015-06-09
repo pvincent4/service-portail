@@ -28,9 +28,9 @@ module Portail
 
               begin
                 news << SimpleRSS.parse( open( feed[:flux] ) )
-                  .items
-                  .first( feed[:nb] )
-                  .map do |article|
+                                 .items
+                                 .first( feed[:nb] )
+                                 .map do |article|
                   article.each do |k, _|
                     if article[ k ].is_a? String
                       article[ k ] = URI.unescape( article[ k ] ).to_s.force_encoding( 'UTF-8' ).encode!
