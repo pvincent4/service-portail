@@ -26,21 +26,21 @@
 
 		<!-- Affichage normal -->
 		<!-- Lien vers app interne portail -->
-		<a data-ng-if="case.app.active && case.app.portail && !modification"
+		<a data-ng-if="case.app.active && case.app.show && case.app.portail && !modification"
 		   data-ui-sref="{{ case.app.url }}"
 		   title="{{ case.app.description }}">
 		    <div data-ng-include="'views/app-tile-content.html'"></div>
 		</a>
 
 		<!-- Lien vers app laclasse.com -->
-		<a data-ng-if="case.app.active && !case.app.external && !case.app.portail && case.app.status.available && !modification"
+		<a data-ng-if="case.app.active && case.app.show && !case.app.external && !case.app.portail && case.app.status.available && !modification"
 		   data-ui-sref="app.external({ app: case.app.application_id ? case.app.application_id : case.app.libelle })"
 		   title="{{ case.app.description }}">
 		    <div data-ng-include="'views/app-tile-content.html'"></div>
 		</a>
 
 		<!-- Lien vers site externe -->
-		<a data-ng-if="case.app.active && case.app.external && !modification"
+		<a data-ng-if="case.app.active && case.app.show && case.app.external && !modification"
 		   data-ng-href="{{ case.app.url }}"
 		   target="_blank"
 		   title="{{ case.app.description }}">
@@ -54,7 +54,7 @@
 		</span>
 
 		<!-- Mode modification -->
-		<a data-ng-if="case.app.active && modification"
+		<a data-ng-if="case.app.active && case.app.show && modification"
 			title="{{ case.app.description }}">
 			<div data-ng-include="'views/app-tile-content.html'"></div>
 		</a>

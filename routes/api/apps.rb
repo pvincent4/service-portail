@@ -43,17 +43,25 @@ module Portail
             return [] unless logged?
 
             apps = AnnuaireWrapper::Etablissement::Apps.query_etablissement( user[:user_detailed]['profil_actif']['etablissement_code_uai'] ) # rubocop:disable Metrics/LineLength
-                   .map do |application|
-              default = config[:apps][:default][ application['application_id'].to_sym ] unless application['application_id'].nil?
+                                                       .map do |application|
+              default = config[:apps][:default][ application['application_id'].to_sym ] unless application['application_id'].nil? # rubocop:disable Metrics/LineLength
+
+              application[ 'hidden' ] = []
 
               unless default.nil?
                 application[ 'icon' ] = default[ :icon ] if application[ 'icon' ].nil?
                 application[ 'color' ] = default[ :color ] if application[ 'color' ].nil?
                 application[ 'index' ] = default[ :index ] if application[ 'index' ] == -1
+
+                # FIXME: ideally this should come from Annuaire
+                application[ 'hidden' ] = default[ :hidden ]
               end
 
               # FIXME: if only there was a way to fix this in the Annuaire's DB
               application[ 'icon' ].gsub!( 'charte-graphique-laclasse-com', 'laclasse-common-client' ) unless application[ 'icon' ].nil? # rubocop:disable Metrics/LineLength
+
+              # FIXME: ideally this should come from Annuaire
+              application[ 'hidden' ] = default[ :hidden ].nil? ? [] : default[ :hidden ]
 
               application
             end

@@ -2,58 +2,72 @@
     "apps": {
 	"default": {
 	    "MAIL": {
+		"hidden": [],
 		"color": "#1aa1cc",
 		"icon": "app/vendor/laclasse-common-client/images/01_messagerie.svg",
 		"index": 0 },
 	    "DOC": {
+		"hidden": [],
 		"color": "#e8c254",
 		"icon": "app/vendor/laclasse-common-client/images/02_documents.svg",
 		"index": 1 },
 	    "CTXT": {
+		"hidden": [],
 		"color": "#9c75ab",
 		"icon": "app/vendor/laclasse-common-client/images/03_cahierdetextes.svg",
 		"index": 2 },
 	    "TELESRV": {
+		"hidden": [],
 		"color": "#80ba66",
 		"icon": "app/vendor/laclasse-common-client/images/04_notesabsences.svg",
 		"index": 3 },
 	    "PRONOTE": {
+		"hidden": [],
 		"color": "#eb5454",
 		"icon": "app/vendor/laclasse-common-client/images/04_notesabsences.svg",
 		"index": 4 },
 	    "LPC": {
+		"hidden": [],
 		"color": "#80ba66",
 		"icon": "app/vendor/laclasse-common-client/images/05_validationcompetences.svg",
 		"index": 5 },
 	    "CCNUM": {
+		"hidden": [],
 		"color": "#1aa1cc",
 		"icon": "app/vendor/laclasse-common-client/images/06_thematiques.svg",
 		"index": 6 },
 	    "BLOGS": {
+		"hidden": [],
 		"color": "#e8c254",
 		"icon": "app/vendor/laclasse-common-client/images/07_blogs.svg",
 		"index": 7 },
 	    "GAR": {
+		"hidden": [],
 		"color": "#9c75ab",
 		"icon": "app/vendor/laclasse-common-client/images/08_ressources.svg",
 		"index": 8 },
 	    "TROMBI": {
+		"hidden": [],
 		"color": "#1aa1cc",
 		"icon": "app/vendor/laclasse-common-client/images/09_trombi.svg",
 		"index": 9 },
 	    "SUIVIELV": {
+		"hidden": [],
 		"color": "#e8c254",
 		"icon": "app/vendor/laclasse-common-client/images/10_suivi.svg",
 		"index": 10 },
 	    "PUBLI": {
+		"hidden": [ "ELV", "TUT" ],
 		"color": "#eb5454",
 		"icon": "app/vendor/laclasse-common-client/images/11_publipostage.svg",
 		"index": 11 },
 	    "AIDE": {
+		"hidden": [],
 		"color": "#e8c254",
 		"icon": "app/vendor/laclasse-common-client/images/12_aide.svg",
 		"index": 12 },
 	    "ADMIN": {
+		"hidden": [ "ELV", "TUT" ],
 		"color": "#eb5454",
 		"icon": "app/vendor/laclasse-common-client/images/13_admin.svg",
 		"index": 13 }

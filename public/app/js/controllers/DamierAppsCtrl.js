@@ -28,6 +28,7 @@ angular.module( 'portailApp' )
 			   app.to_delete = false;
 			   app.portail = app.url.match( /^app\..*/ ) !== null;
 			   app.external = ( app.type == 'EXTERNAL' ) || app.url.match( /^http.*/ ) !== null;
+			   app.show = !_(app.hidden).includes( $scope.current_user.profil_actif.profil_id );
 
 			   if ( app.external || app.portail || app.application_id == 'MAIL') {
 			       app.status = { status: 'OK',
@@ -40,18 +41,18 @@ angular.module( 'portailApp' )
 				       break;
 				   case 404:
 				       app.status = { status: 'KO',
-							    code: response.status,
-							    reason: 'Serveur de l\'application introuvable.' };
+						      code: response.status,
+						      reason: 'Serveur de l\'application introuvable.' };
 				       break;
 				   case 500:
 				       app.status = { status: 'KO',
-							    code: response.status,
-							    reason: 'Serveur de l\'application en erreur.' };
+						      code: response.status,
+						      reason: 'Serveur de l\'application en erreur.' };
 				       break;
 				   default:
 				       app.status = { status: 'KO',
-							   code: response.status,
-							   reason: 'Erreur non qualifiée.' };
+						      code: response.status,
+						      reason: 'Erreur non qualifiée.' };
 				   }
 				   app.status.available = app.status.status == 'OK';
 			       };
@@ -86,7 +87,7 @@ angular.module( 'portailApp' )
 			   };
 
 			   return app;
-		       };
+			   };
 
 		       $scope.add_tile = function() {
 			   $modal.open( {
