@@ -5,6 +5,7 @@ module Portail
     module Api
       module Apps
         # rubocop:disable Metrics/CyclomaticComplexity
+        # rubocop:disable Metrics/PerceivedComplexity
         def self.registered( app )
           #
           # Service liste des applications
@@ -128,6 +129,7 @@ module Portail
             AnnuaireWrapper::Etablissement::Apps.delete( params[:id] ).to_json
           end
         end
+        # rubocop:enable Metrics/PerceivedComplexity
         # rubocop:enable Metrics/CyclomaticComplexity
       end
     end
