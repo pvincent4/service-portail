@@ -43,6 +43,11 @@ module Portail
                   article[:description] = article[:content_encoded] if article.has? :content_encoded
                   article[:image] = article[:content]
 
+                  if article[:image].nil?
+                    images = article[:description].match( /(https?:\/\/.*\.(?:png|jpg))/i )
+                    article[:image] = images[0] unless images.nil?
+                  end
+
                   article
                 end
               rescue
