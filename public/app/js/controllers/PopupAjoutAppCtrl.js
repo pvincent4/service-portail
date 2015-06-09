@@ -27,7 +27,7 @@ angular.module( 'portailApp' )
 							     type: 'EXTERNAL',
 							     libelle: '',
 							     description: '',
-							     url: '',
+							     url: 'http://',
 							     color: '',
 							     active: true } ) );
 			   } );
