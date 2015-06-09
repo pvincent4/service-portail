@@ -44,7 +44,7 @@ module Portail
                   article[:image] = article[:content]
 
                   if article[:image].nil?
-                    images = article[:description].match( /(https?:\/\/.*\.(?:png|jpg))/i )
+                    images = article[:description].match( /(https?:\/\/.*\.(?:png|jpg))/i ) # rubocop:disable Style/RegexpLiteral
                     article[:image] = images[0] unless images.nil?
                   end
 
