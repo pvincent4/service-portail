@@ -33,6 +33,12 @@ angular.module( 'portailApp' )
 			   if ( app.external || app.portail || app.application_id == 'MAIL') {
 			       app.status = { status: 'OK',
 					      available: true };
+
+			       if (app.application_id == 'MAIL') { console.log( app )}
+			   } else if ( app.hidden ) {
+			       app.status = { status: 'KO',
+					      code: 401,
+					      reason: 'Application non affichée.' };
 			   } else {
 			       var save_response = function( response ) {
 				   switch ( response.status ) {

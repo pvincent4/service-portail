@@ -16,7 +16,7 @@ module Portail
             return [] unless logged?
 
             AnnuaireWrapper::Apps.query_defaults
-              .map do |appli|
+                                 .map do |appli|
               default = config[:apps][:default][ appli['id'].to_sym ]
 
               appli.merge! default unless default.nil?
@@ -32,6 +32,8 @@ module Portail
           app.get "#{APP_PATH}/api/apps/?" do
             content_type :json
 
+            is_it_summer_yet = 6 < Time.now.month && Time.now.month < 9
+
             STDERR.puts '/!\ FIXME WITH THE FORCE OF A THOUSAND SUNS!!!!'
             STDERR.puts '/!\ OH HAI!'
             STDERR.puts '/!\ U CAN HAZ APPS!'
@@ -44,29 +46,32 @@ module Portail
 
             return [] unless logged?
 
-            apps = AnnuaireWrapper::Etablissement::Apps.query_etablissement( user[:user_detailed]['profil_actif']['etablissement_code_uai'] ) # rubocop:disable Metrics/LineLength
-                                                       .map do |application|
-              default = config[:apps][:default][ application['application_id'].to_sym ] unless application['application_id'].nil? # rubocop:disable Metrics/LineLength
+            apps = AnnuaireWrapper::Etablissement::Apps
+                   .query_etablissement( user[:user_detailed]['profil_actif']['etablissement_code_uai'] ) # rubocop:disable Metrics/LineLength
+              .map do |application|
+                default = config[:apps][:default][ application['application_id'].to_sym ] unless application['application_id'].nil? # rubocop:disable Metrics/LineLength
 
-              application[ 'hidden' ] = []
+                application[ 'hidden' ] = []
 
-              unless default.nil?
-                application[ 'icon' ] = default[ :icon ] if application[ 'icon' ].nil?
-                application[ 'color' ] = default[ :color ] if application[ 'color' ].nil?
-                application[ 'index' ] = default[ :index ] if application[ 'index' ] == -1
+                unless default.nil?
+                  application[ 'icon' ] = default[ :icon ] if application[ 'icon' ].nil?
+                  application[ 'color' ] = default[ :color ] if application[ 'color' ].nil?
+                  application[ 'index' ] = default[ :index ] if application[ 'index' ] == -1
+
+                  # FIXME: ideally this should come from Annuaire
+                  application[ 'hidden' ] = default[ :hidden ]
+                end
+
+                # FIXME: if only there was a way to fix this in the Annuaire's DB
+                application[ 'icon' ].gsub!( 'charte-graphique-laclasse-com', 'laclasse-common-client' ) unless application[ 'icon' ].nil? # rubocop:disable Metrics/LineLength
 
                 # FIXME: ideally this should come from Annuaire
-                application[ 'hidden' ] = default[ :hidden ]
+                application[ 'hidden' ] = default.nil? || default[ :hidden ].nil? ? [] : default[ :hidden ]
+
+                application[ 'hidden' ] = %w(ELV TUT) if default.nil? || ( !default[:summer] && is_it_summer_yet )
+
+                application
               end
-
-              # FIXME: if only there was a way to fix this in the Annuaire's DB
-              application[ 'icon' ].gsub!( 'charte-graphique-laclasse-com', 'laclasse-common-client' ) unless application[ 'icon' ].nil? # rubocop:disable Metrics/LineLength
-
-              # FIXME: ideally this should come from Annuaire
-              application[ 'hidden' ] = default[ :hidden ].nil? ? [] : default[ :hidden ]
-
-              application
-            end
 
             indexes = apps.map { |a| a['index'] }.sort
             duplicates = indexes.select { |e| indexes.count( e ) > 1 }.uniq

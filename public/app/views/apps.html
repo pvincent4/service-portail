@@ -48,7 +48,7 @@
 		</a>
 
 		<!-- app au status cassé -->
-		<span data-ng-if="case.app && !case.app.portail && !case.app.external && !case.app.status.available && !modification"
+		<span data-ng-if="case.app && case.app.show && !case.app.portail && !case.app.external && !case.app.status.available && !modification"
 			title="{{ case.app.status.reason }}">
 			<div data-ng-include="'views/app-tile-content.html'"></div>
 		</span>

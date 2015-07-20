@@ -3,71 +3,85 @@
 	"default": {
 	    "MAIL": {
 		"hidden": [],
+		"summer": true,
 		"color": "#1aa1cc",
 		"icon": "app/vendor/laclasse-common-client/images/01_messagerie.svg",
 		"index": 0 },
 	    "DOC": {
 		"hidden": [],
+		"summer": false,
 		"color": "#e8c254",
 		"icon": "app/vendor/laclasse-common-client/images/02_documents.svg",
 		"index": 1 },
 	    "CTXT": {
 		"hidden": [],
+		"summer": false,
 		"color": "#9c75ab",
 		"icon": "app/vendor/laclasse-common-client/images/03_cahierdetextes.svg",
 		"index": 2 },
 	    "TELESRV": {
 		"hidden": [],
+		"summer": false,
 		"color": "#80ba66",
 		"icon": "app/vendor/laclasse-common-client/images/04_notesabsences.svg",
 		"index": 3 },
 	    "PRONOTE": {
 		"hidden": [],
+		"summer": false,
 		"color": "#eb5454",
 		"icon": "app/vendor/laclasse-common-client/images/04_notesabsences.svg",
 		"index": 4 },
 	    "LPC": {
 		"hidden": [],
+		"summer": false,
 		"color": "#80ba66",
 		"icon": "app/vendor/laclasse-common-client/images/05_validationcompetences.svg",
 		"index": 5 },
 	    "CCNUM": {
 		"hidden": [],
+		"summer": false,
 		"color": "#1aa1cc",
 		"icon": "app/vendor/laclasse-common-client/images/06_thematiques.svg",
 		"index": 6 },
 	    "BLOGS": {
 		"hidden": [],
+		"summer": true,
 		"color": "#e8c254",
 		"icon": "app/vendor/laclasse-common-client/images/07_blogs.svg",
 		"index": 7 },
 	    "GAR": {
 		"hidden": [],
+		"summer": false,
 		"color": "#9c75ab",
 		"icon": "app/vendor/laclasse-common-client/images/08_ressources.svg",
 		"index": 8 },
 	    "TROMBI": {
 		"hidden": [],
+		"summer": false,
 		"color": "#1aa1cc",
 		"icon": "app/vendor/laclasse-common-client/images/09_trombi.svg",
 		"index": 9 },
 	    "SUIVIELV": {
 		"hidden": [],
+		"summer": false,
 		"color": "#e8c254",
 		"icon": "app/vendor/laclasse-common-client/images/10_suivi.svg",
 		"index": 10 },
 	    "PUBLI": {
 		"hidden": [ "ELV", "TUT" ],
+		"summer": true,
 		"color": "#eb5454",
 		"icon": "app/vendor/laclasse-common-client/images/11_publipostage.svg",
 		"index": 11 },
 	    "AIDE": {
 		"hidden": [],
+		"summer": true,
 		"color": "#e8c254",
 		"icon": "app/vendor/laclasse-common-client/images/12_aide.svg",
 		"index": 12 },
 	    "ADMIN": {
 		"hidden": [ "ELV", "TUT" ],
+		"summer": true,
 		"color": "#eb5454",
 		"icon": "app/vendor/laclasse-common-client/images/13_admin.svg",
 		"index": 13 }
