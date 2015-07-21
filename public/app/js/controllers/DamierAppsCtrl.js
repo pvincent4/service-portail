@@ -33,7 +33,7 @@ angular.module( 'portailApp' )
 			   if ( app.external || app.portail || app.application_id == 'MAIL') {
 			       app.status = { status: 'OK',
 					      available: true };
-			   } else if ( app.show ) {
+			   } else if ( !app.show ) {
 			       app.status = { status: 'KO',
 					      code: 401,
 					      reason: 'Application non affichée.' };
