@@ -12,7 +12,7 @@
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="mobile-web-app-capable" content="yes">
 
-	<title>Laclasse.com</title>
+	<title><%= ENV[ 'RACK_ENV' ] == 'development' ? 'β' : '' %>Laclasse.com</title>
 
 	<script type="text/javascript">
 	 if ( top != self ) top.location.replace( location );
