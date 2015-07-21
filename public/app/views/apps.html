@@ -38,10 +38,9 @@
 					title="{{ case.app.description }}">
 					<div data-ng-include="'views/app-tile-content.html'"></div>
 				</a>
-
 				<!-- ## app au status cassé -->
 				<a data-ng-if="!case.app.portail && !case.app.external && case.app.active && case.app.show && case.app.status.status == 'KO' && !modification"
-					title="{{ case.app.description }}">
+					title="{{ case.app.status.reason }}">
 					<div data-ng-include="'views/app-tile-content.html'"></div>
 				</a>
 
