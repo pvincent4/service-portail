@@ -30,13 +30,18 @@ angular.module( 'portailApp' )
 			   app.external = ( app.type == 'EXTERNAL' ) || app.url.match( /^http.*/ ) !== null;
 			   app.show = !_(app.hidden).includes( $scope.current_user.profil_actif.profil_id );
 
+			   app.status = { app_id: app.application_id,
+					  app_version: '',
+					  available: false,
+					  rack_env: '',
+					  reason: '',
+					  status: 'KO' };
+
 			   if ( app.external || app.portail || app.application_id == 'MAIL') {
-			       app.status = { status: 'OK',
-					      available: true };
+			       app.status.status = 'OK';
+			       app.status.available = true;
 			   } else if ( !app.show ) {
-			       app.status = { status: 'KO',
-					      code: 401,
-					      reason: 'Application non affichée.' };
+			       app.status.reason = 'Application non affichée.';
 			   } else {
 			       var save_response = function( response ) {
 				   switch ( response.status ) {
@@ -44,22 +49,16 @@ angular.module( 'portailApp' )
 				       app.status = response.data;
 				       break;
 				   case 404:
-				       app.status = { status: 'KO',
-						      code: response.status,
-						      reason: 'Serveur de l\'application introuvable.' };
+				       app.status.reason = 'Serveur de l\'application introuvable (' + response.status + ').';
 				       break;
 				   case 500:
-				       app.status = { status: 'KO',
-						      code: response.status,
-						      reason: 'Serveur de l\'application en erreur.' };
+				       app.status.reason = 'Serveur de l\'application en erreur (' + response.status + ').';
 				       break;
 				   default:
-				       app.status = { status: 'KO',
-						      code: response.status,
-						      reason: 'Erreur non qualifiée.' };
+				       app.status.reason = 'Erreur non qualifiée (' + response.status + ').';
 				   }
-				   app.status.available = app.status.status == 'OK';
 			       };
+
 			       $http.get( app.url + 'status' ).then( save_response,
 								     save_response );
 			   }
@@ -83,15 +82,11 @@ angular.module( 'portailApp' )
 			       app.to_delete = true;
 			   };
 			   app.colorize = function() {
-			       if ( app.color ) {
-				   return { 'background-color': app.color };
-			       } else {
-				   return {};
-			       }
+			       return ( app.color ) ? { 'background-color': app.color } : {};
 			   };
 
 			   return app;
-			   };
+		       };
 
 		       $scope.add_tile = function() {
 			   $modal.open( {
