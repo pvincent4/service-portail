@@ -52,7 +52,7 @@ module Portail
                   article
                 end
               rescue
-                LOGGER.info "impossible d'ouvrir #{feed[:flux]}"
+                # LOGGER.info "impossible d'ouvrir #{feed[:flux]}"
               end
             end
 
