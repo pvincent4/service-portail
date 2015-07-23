@@ -1,8 +1,8 @@
 {
   "name": "ngFitText",
-  "version": "3.3.0",
+  "version": "3.3.3",
   "main": [
-    "/src/ng-FitText.js"
+    "src/ng-FitText.js"
   ],
   "keywords": [
     "angular",
@@ -20,14 +20,14 @@
     "index.html"
   ],
   "dependencies": {
-    "angular": "1.2.24"
+    "angular": "1.3.15"
   },
   "homepage": "https://github.com/patrickmarabeas/ng-FitText.js",
-  "_release": "3.3.0",
+  "_release": "3.3.3",
   "_resolution": {
     "type": "version",
-    "tag": "v3.3.0",
-    "commit": "2d22aa5c033203c8454beed6e1abed86bd0cf8e0"
+    "tag": "v3.3.3",
+    "commit": "3413d0ff22f3df7f061cdd4f4b8697f14f4c246d"
   },
   "_source": "git://github.com/patrickmarabeas/ng-FitText.js.git",
   "_target": "*",
