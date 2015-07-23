@@ -49,11 +49,13 @@ angular.module( 'portailApp' )
 		       $scope.fermer = function( sauvegarder ) {
 			   var leave = true;
 			   if ( sauvegarder ) {
+			       var password_confirmed = true;
 			       if ( !_($scope.password.old).isEmpty() && !_($scope.password.new1).isEmpty() ) {
 				   if ( $scope.password.new1 == $scope.password.new2 ) {
 				       $scope.current_user.previous_password = $scope.password.old;
 				       $scope.current_user.new_password = $scope.password.new1;
 				   } else {
+				       password_confirmed = false;
 				       toastr.error( 'Confirmation de mot de passe incorrecte.',
 						     'Erreur',
 						     { timeout: 100000 } );
@@ -61,13 +63,16 @@ angular.module( 'portailApp' )
 				   }
 			       }
 
-			       $scope.current_user.$update().then( function() {
-				   if ( _($scope.current_user).has( 'new_avatar' ) ) {
-				       currentUser.avatar.upload( $scope.current_user.new_avatar );
-				   } else if ( $scope.current_user.reset_avatar ) {
-				       currentUser.avatar.delete();
-				   }
-			       } );
+			       if ( password_confirmed ) {
+				   console.log($scope.current_user);
+				   $scope.current_user.$update().then( function() {
+				       if ( _($scope.current_user).has( 'new_avatar' ) ) {
+					   currentUser.avatar.upload( $scope.current_user.new_avatar );
+				       } else if ( $scope.current_user.reset_avatar ) {
+					   currentUser.avatar.delete();
+				       }
+				   } );
+			       }
 			   }
 
 			   if ( leave ) {

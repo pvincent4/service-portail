@@ -33,7 +33,7 @@ module Portail
             # param :bloque,         TrueClass, required: false
 
             if params[:previous_password] && AnnuaireWrapper::User.check_password( params[:previous_password] )
-              params[:password] = params[:new_password]
+              params['password'] = params[:new_password]
             end
 
             AnnuaireWrapper::User.put( user[:uid],
