@@ -90,7 +90,7 @@
 
 	    </accordion-group>
 
-	    <accordion-group data-is-open="groups[ 1 ].ouvert" data-ng-if="groups[ 1 ].enabled">
+	    <accordion-group data-is-open="groups[ 1 ].ouvert" data-ng-if="groups[ 1 ].enabled && password.changeable">
 		<accordion-heading>
 		    <span class="glyphicon" ng-class="{'glyphicon-chevron-down': groups[ 1 ].ouvert, 'glyphicon-chevron-right': !groups[ 1 ].ouvert}"> mot de passe</span>
 		</accordion-heading>

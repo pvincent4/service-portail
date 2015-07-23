@@ -2,8 +2,8 @@
 
 angular.module( 'portailApp' )
     .controller( 'ModificationUserCtrl',
-		 [ '$scope', '$state', '$q', 'toastr', 'current_user', 'currentUser', 'APP_PATH',
-		   function( $scope, $state, $q, toastr, current_user, currentUser, APP_PATH ) {
+		 [ '$scope', '$state', '$q', 'toastr', 'current_user', 'currentUser', 'Apps', 'APP_PATH',
+		   function( $scope, $state, $q, toastr, current_user, currentUser, Apps, APP_PATH ) {
 		       $scope.prefix = APP_PATH;
 		       $scope.groups = [ { ouvert: true,
 					   enabled: true },
@@ -23,7 +23,13 @@ angular.module( 'portailApp' )
 
 		       $scope.password = { old: '',
 					   new1: '',
-					   new2: '' };
+					   new2: '',
+					   changeable: false };
+		       Apps.query()
+			   .$promise
+			   .then( function( response ) {
+			       $scope.password.changeable = _.chain(response).find({application_id: 'TELESRV'}).isUndefined().value();
+			   } );
 
 		       $scope.current_user = current_user;
 		       $scope.current_user.reset_avatar = false;
