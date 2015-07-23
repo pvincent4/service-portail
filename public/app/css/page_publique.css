@@ -114,6 +114,7 @@ body {
 }
 .page_publique .footer a img {
     width: 100%;
+    border: 0;
 }
 .page_publique .footer .rhone {
     position: absolute;
