@@ -44,15 +44,15 @@ angular.module( 'portailApp' )
 
 angular.module( 'portailApp' )
     .service( 'currentUser',
-	      [ '$http', '$upload', '$resource', 'APP_PATH', 'User', 'UserRessources', 'UserRegroupements',
-		function( $http, $upload, $resource, APP_PATH, User, UserRessources, UserRegroupements ) {
+	      [ '$http', 'Upload', '$resource', 'APP_PATH', 'User', 'UserRessources', 'UserRegroupements',
+		function( $http, Upload, $resource, APP_PATH, User, UserRessources, UserRegroupements ) {
 		    this.get = function() { return User.get().$promise; };
 		    this.ressources = function() { return UserRessources.query().$promise; };
 		    this.regroupements = function() { return UserRegroupements.query().$promise; };
 		    this.eleves_regroupement = function( id ) { return UserRegroupements.eleves( { id: id } ).$promise; };
 
 		    this.avatar = { upload: function( fichier ) {
-			$upload.upload( {
+			Upload.upload( {
 			    url: APP_PATH + '/api/user/avatar',
 			    method: 'POST',
 			    file: fichier,
