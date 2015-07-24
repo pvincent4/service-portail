@@ -14,7 +14,7 @@ angular.module( 'portailApp' )
 				if ( changeable_password ) {
 				    currentUser.get()
 					.then( function( response ) {
-					    if ( !response.default_password ) {
+					    if ( response.default_password ) {
 						$state.go( 'change_password', $state.params, { reload: true, inherit: true, notify: true } );
 					    }
 					} );
