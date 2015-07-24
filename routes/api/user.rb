@@ -32,16 +32,26 @@ module Portail
             param :new_password,       String,  required: false
             # param :bloque,         TrueClass, required: false
 
-            if params[:previous_password] && AnnuaireWrapper::User.check_password( user[:login], params[:previous_password] )
-              params['password'] = params[:new_password]
+            wrong_password = false
+            if params[:previous_password]
+              if AnnuaireWrapper::User.check_password( user[:login], params[:previous_password] )
+                params['password'] = params[:new_password]
+              else
+                wrong_password = true
+              end
             end
 
-            AnnuaireWrapper::User.put( user[:uid],
-                                       params )
+            unless wrong_password
+              AnnuaireWrapper::User.put( user[:uid], params )
 
-            init_current_user( user[:uid] )
+              init_current_user( user[:uid] )
+            end
 
-            user_verbose.to_json
+            utilisateur = user_verbose
+
+            utilisateur[:wrong_password] = true if wrong_password
+
+            utilisateur.to_json
           end
 
           app.post "#{APP_PATH}/api/user/avatar/?" do
@@ -99,7 +109,7 @@ module Portail
             end
                             .uniq { |regroupement| regroupement['id'] }
                             .sort_by { |regroupement| regroupement['libelle'].to_s }.reverse
-                            .map do |regroupement|
+                                                                                    .map do |regroupement|
               { libelle: regroupement['libelle'],
                 id: regroupement['id'],
                 etablissement_nom: regroupement['etablissement_nom'],
@@ -151,7 +161,7 @@ module Portail
             colorize( ressources ).to_json
           end
         end
-      end
+        end
     end
   end
 end

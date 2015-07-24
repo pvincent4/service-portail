@@ -736,6 +736,15 @@ svg {
     height: auto;
 }
 
+.wrong {
+    box-shadow: 0 0 5px 1px red;
+}
+.wrong::after {
+    content: "Mot de passe érroné";
+    color: red;
+    font-weight: bold;
+}
+
 // Popup de configuration des flux RSS
 .config-fluxes {
     button {

@@ -70,7 +70,6 @@ angular.module( 'portailApp' )
 			       }
 
 			       if ( password_confirmed ) {
-				   console.log($scope.current_user);
 				   $scope.current_user.$update().then( function() {
 				       if ( _($scope.current_user).has( 'new_avatar' ) ) {
 					   currentUser.avatar.upload( $scope.current_user.new_avatar );
