@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/laclasse-com/laclasse-common
-  revision: ab3741af7806ced9b37d84e2531da90a8799d41d
+  revision: bd4365747f05a3cb51aaab00f4d355a9983c2b53
   specs:
     laclasse-common (0.2.5)
       logstash-logger
@@ -26,7 +26,7 @@ GEM
     execjs (2.5.2)
     ffi (1.9.10)
     formatador (0.2.5)
-    guard (2.12.8)
+    guard (2.12.9)
       formatador (>= 0.2.4)
       listen (>= 2.7, <= 4.0)
       lumberjack (~> 1.0)
@@ -40,7 +40,7 @@ GEM
       guard (~> 2.2)
       guard-compat (~> 1.1)
     guard-compat (1.2.1)
-    guard-rspec (4.6.2)
+    guard-rspec (4.6.3)
       guard (~> 2.1)
       guard-compat (~> 1.1)
       rspec (>= 2.99.0, < 4.0)
@@ -58,7 +58,7 @@ GEM
     jasmine-core (2.3.4)
     json (1.8.3)
     libv8 (3.16.14.11)
-    listen (3.0.2)
+    listen (3.0.3)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
     logstash-event (1.2.02)
@@ -210,3 +210,6 @@ DEPENDENCIES
   sinatra-param
   therubyracer
   uglifier
+
+BUNDLED WITH
+   1.10.5
