@@ -161,7 +161,7 @@ module Portail
             colorize( ressources ).to_json
           end
         end
-        end
+      end
     end
   end
 end

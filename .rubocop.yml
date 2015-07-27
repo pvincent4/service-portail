@@ -21,6 +21,9 @@ Style/SpaceInsideRangeLiteral:
 Style/AsciiComments:
   Enabled: false
 
+Metrics/ModuleLength:
+  Max: 200
+
 Metrics/ClassLength:
   Max: 300
 
