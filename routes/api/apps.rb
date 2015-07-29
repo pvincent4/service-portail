@@ -32,7 +32,7 @@ module Portail
           app.get "#{APP_PATH}/api/apps/?" do
             content_type :json
 
-            is_it_summer_yet = 6 < Time.now.month && Time.now.month < 9
+            is_it_summer_yet = config[:closed_for_summer] ? 6 < Time.now.month && Time.now.month < 9 : false
 
             STDERR.puts '/!\ FIXME WITH THE FORCE OF A THOUSAND SUNS!!!!'
             STDERR.puts '/!\ OH HAI!'
