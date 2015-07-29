@@ -47,46 +47,46 @@ module Portail
             return [] unless logged?
 
             apps = AnnuaireWrapper::Etablissement::Apps
-                   .query_etablissement( user[:user_detailed]['profil_actif']['etablissement_code_uai'] ) # rubocop:disable Metrics/LineLength
-              .map do |application|
-                default = config[:apps][:default][ application['application_id'].to_sym ] unless application['application_id'].nil? # rubocop:disable Metrics/LineLength
+                   .query_etablissement( user[:user_detailed]['profil_actif']['etablissement_code_uai'] )
+                   .map do |application|
+              default = config[:apps][:default][ application['application_id'].to_sym ] unless application['application_id'].nil?
 
-                application[ 'hidden' ] = []
+              application[ 'hidden' ] = []
 
-                unless default.nil?
-                  application[ 'icon' ] = default[ :icon ] if application[ 'icon' ].nil?
-                  application[ 'color' ] = default[ :color ] if application[ 'color' ].nil?
-                  application[ 'index' ] = default[ :index ] if application[ 'index' ] == -1
-
-                  # FIXME: ideally this should come from Annuaire
-                  application[ 'hidden' ] = default[ :hidden ]
-                end
-
-                # FIXME: if only there was a way to fix this in the Annuaire's DB
-                application[ 'icon' ].gsub!( 'charte-graphique-laclasse-com', 'laclasse-common-client' ) unless application[ 'icon' ].nil? # rubocop:disable Metrics/LineLength
+              unless default.nil?
+                application[ 'icon' ] = default[ :icon ] if application[ 'icon' ].nil?
+                application[ 'color' ] = default[ :color ] if application[ 'color' ].nil?
+                application[ 'index' ] = default[ :index ] if application[ 'index' ] == -1
 
                 # FIXME: ideally this should come from Annuaire
-                application[ 'hidden' ] = default.nil? || default[ :hidden ].nil? ? [] : default[ :hidden ]
-
-                application[ 'hidden' ] = %w(ELV TUT) if default.nil? || ( !default[:summer] && is_it_summer_yet )
-
-                application
+                application[ 'hidden' ] = default[ :hidden ]
               end
 
-              indexes = apps.map { |a| a['index'] }.sort
-              duplicates = indexes.select { |e| indexes.count( e ) > 1 }.uniq
-              free_indexes = (0..15).to_a - indexes
+              # FIXME: if only there was a way to fix this in the Annuaire's DB
+              application[ 'icon' ].gsub!( 'charte-graphique-laclasse-com', 'laclasse-common-client' ) unless application[ 'icon' ].nil?
 
-              duplicates.each do |i|
-                unless free_indexes.empty?
-                  app = apps.reverse.find { |a| a['index'] == i }
-                  app['index'] = free_indexes.pop
+              # FIXME: ideally this should come from Annuaire
+              application[ 'hidden' ] = default.nil? || default[ :hidden ].nil? ? [] : default[ :hidden ]
 
-                  AnnuaireWrapper::Etablissement::Apps.update( app['id'], app )
-                end
+              application[ 'hidden' ] = %w(ELV TUT) if default.nil? || ( !default[:summer] && is_it_summer_yet )
+
+              application
+            end
+
+            indexes = apps.map { |a| a['index'] }.sort
+            duplicates = indexes.select { |e| indexes.count( e ) > 1 }.uniq
+            free_indexes = (0..15).to_a - indexes
+
+            duplicates.each do |i|
+              unless free_indexes.empty?
+                app = apps.reverse.find { |a| a['index'] == i }
+                app['index'] = free_indexes.pop
+
+                AnnuaireWrapper::Etablissement::Apps.update( app['id'], app )
               end
+            end
 
-              apps.to_json
+            apps.to_json
           end
 
           app.get "#{APP_PATH}/api/apps/:id" do
@@ -110,7 +110,7 @@ module Portail
             param :icon, String, required: false
             param :color, String, required: false
 
-            AnnuaireWrapper::Etablissement::Apps.create( user[:user_detailed]['profil_actif']['etablissement_code_uai'], params ).to_json # rubocop:disable Metrics/LineLength
+            AnnuaireWrapper::Etablissement::Apps.create( user[:user_detailed]['profil_actif']['etablissement_code_uai'], params ).to_json
           end
 
           app.put "#{APP_PATH}/api/apps/:id" do

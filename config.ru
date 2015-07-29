@@ -19,12 +19,10 @@ LOGGER.info 'Portail prêt à servir'
 
 Laclasse::Helpers::Rack.configure_rake self
 
-# rubocop:disable Metrics/LineLength
 use Rack::Rewrite do
   rewrite %r{^#{APP_PATH}(/app/(pages|js|css|vendor|images)/.*(html|map|css|js|ttf|woff|png|jpg|jpeg|gif|svg)[?v=0-9a-zA-Z\-.]*$)}, '$1'
   rewrite %r{^/?#{APP_PATH}(/(pages|js|css|vendor|images)/.*(html|map|css|js|ttf|woff|png|jpg|jpeg|gif|svg)[?v=0-9a-zA-Z\-.]*$)}, '/app$1'
 end
-# rubocop:enable Metrics/LineLength
 
 use OmniAuth::Builder do
   configure do |config|

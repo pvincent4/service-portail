@@ -14,7 +14,7 @@ module Portail
             # THINK : Comment mettre des priorités sur les différents flux ?
             news = []
 
-            fluxes = AnnuaireWrapper::Etablissement::Flux.query_etablissement( user[:user_detailed]['profil_actif']['etablissement_code_uai'] ) # rubocop:disable Metrics/LineLength
+            fluxes = AnnuaireWrapper::Etablissement::Flux.query_etablissement( user[:user_detailed]['profil_actif']['etablissement_code_uai'] )
             fluxes = config[:news_feed] if fluxes.empty? || fluxes.nil?
 
             # Add user news
