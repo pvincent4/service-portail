@@ -73,20 +73,20 @@ module Portail
                 application
               end
 
-            indexes = apps.map { |a| a['index'] }.sort
-            duplicates = indexes.select { |e| indexes.count( e ) > 1 }.uniq
-            free_indexes = (0..15).to_a - indexes
+              indexes = apps.map { |a| a['index'] }.sort
+              duplicates = indexes.select { |e| indexes.count( e ) > 1 }.uniq
+              free_indexes = (0..15).to_a - indexes
 
-            duplicates.each do |i|
-              unless free_indexes.empty?
-                app = apps.reverse.find { |a| a['index'] == i }
-                app['index'] = free_indexes.pop
+              duplicates.each do |i|
+                unless free_indexes.empty?
+                  app = apps.reverse.find { |a| a['index'] == i }
+                  app['index'] = free_indexes.pop
 
-                AnnuaireWrapper::Etablissement::Apps.update( app['id'], app )
+                  AnnuaireWrapper::Etablissement::Apps.update( app['id'], app )
+                end
               end
-            end
 
-            apps.to_json
+              apps.to_json
           end
 
           app.get "#{APP_PATH}/api/apps/:id" do
