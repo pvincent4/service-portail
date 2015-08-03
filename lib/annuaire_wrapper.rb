@@ -22,16 +22,6 @@ module AnnuaireWrapper
       Laclasse::CrossApp::Sender.send_request_signed( :service_annuaire_user, "#{uid}", 'expand' => 'true' )
     end
 
-    # Service Utilisateur : récupération des ressources numériques de l'utilisateur
-    def get_resources( uid )
-      Laclasse::CrossApp::Sender.send_request_signed( :service_annuaire_user, "#{uid}/ressources", 'expand' => 'true' )
-    end
-
-    # Liste des regroupements de l'utilisateur connecté
-    def get_regroupements( uid )
-      Laclasse::CrossApp::Sender.send_request_signed( :service_annuaire_user, "#{uid}/regroupements", 'expand' => 'true' )
-    end
-
     def check_password( login, password )
       correct = false
       begin
@@ -61,26 +51,6 @@ module AnnuaireWrapper
       Laclasse::CrossApp::Sender.put_request_signed(:service_annuaire_user, "#{uid}", params )
     end
 
-    # Modification avatar
-    def put_avatar( uid, image )
-      uid = URI.escape( uid )
-
-      new_filename = "#{image[:tempfile].path}_#{image[:filename]}"
-      File.rename image[:tempfile], new_filename
-
-      Laclasse::CrossApp::Sender.post_raw_request_signed( :service_annuaire_user, "#{uid}/upload/avatar",
-                                                          {},
-                                                          image: File.open( new_filename ) )
-
-      File.delete new_filename
-    end
-
-    # Suppression avatar
-    def delete_avatar( uid )
-      uid = URI.escape( uid )
-      Laclasse::CrossApp::Sender.delete_request_signed( :service_annuaire_user, "#{uid}/avatar", {} )
-    end
-
     # Modification du profil actif de l'utilisateur connecté
     def put_profil_actif( uid, profil_id, code_uai )
       uid = URI.escape( uid )
@@ -92,9 +62,73 @@ module AnnuaireWrapper
                                                      profil_id: profil_id )
     end
 
+
+    module Ressources
+      # Service Utilisateur : récupération des ressources numériques de l'utilisateur
+      def query( uid )
+        Laclasse::CrossApp::Sender.send_request_signed( :service_annuaire_user, "#{uid}/ressources", 'expand' => 'true' )
+      end
+    end
+
+    module Regroupements
+      # Liste des regroupements de l'utilisateur connecté
+      def query( uid )
+        Laclasse::CrossApp::Sender.send_request_signed( :service_annuaire_user, "#{uid}/regroupements", 'expand' => 'true' )
+      end
+    end
+
+    module Avatar
+      module_function
+
+      # Modification avatar
+      def update( uid, image )
+        uid = URI.escape( uid )
+
+        new_filename = "#{image[:tempfile].path}_#{image[:filename]}"
+        File.rename image[:tempfile], new_filename
+
+        Laclasse::CrossApp::Sender.post_raw_request_signed( :service_annuaire_user, "#{uid}/upload/avatar",
+                                                            {},
+                                                            image: File.open( new_filename ) )
+
+        File.delete new_filename
+      end
+
+      # Suppression avatar
+      def delete( uid )
+        uid = URI.escape( uid )
+        Laclasse::CrossApp::Sender.delete_request_signed( :service_annuaire_user, "#{uid}/avatar", {} )
+      end
+    end
+
     # Generate signed user's news url
-    def get_news( uid )
-      Laclasse::CrossApp::Sender.sign( :service_annuaire_portail_news, '/' + uid, {} )
+    module News
+      module_function
+
+      def query( uid )
+        Laclasse::CrossApp::Sender.sign( :service_annuaire_portail_news, '/' + uid, {} )
+      end
+    end
+
+    # Emails
+    module Emails
+      module_function
+
+      def query( uid )
+        Laclasse::CrossApp::Sender.send_request_signed( :service_annuaire_user, "#{uid}/emails/", {} )
+      end
+
+      def new( uid, params )
+        Laclasse::CrossApp::Sender.put_request_signed( :service_annuaire_user, "#{uid}/email", {}, params )
+      end
+
+      def update( uid, id, params )
+        Laclasse::CrossApp::Sender.post_request_signed( :service_annuaire_user, "#{uid}/email/#{id}", {}, params )
+      end
+
+      def delete( uid, id )
+        Laclasse::CrossApp::Sender.delete_request_signed( :service_annuaire_user, "#{uid}/email/#{id}", {} )
+      end
     end
   end
 

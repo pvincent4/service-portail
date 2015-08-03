@@ -20,7 +20,7 @@ module Portail
             # Add user news
             fluxes << { nb: 5,
                         icon: '',
-                        flux: AnnuaireWrapper::User.get_news( user[:uid] ),
+                        flux: AnnuaireWrapper::User::News.query( user[:uid] ),
                         title: 'News de l\'utilisateur' }
 
             fluxes.each do |feed|

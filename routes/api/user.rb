@@ -57,8 +57,8 @@ module Portail
           app.post "#{APP_PATH}/api/user/avatar/?" do
             content_type :json
 
-            AnnuaireWrapper::User.put_avatar( user[:uid],
-                                              params[:image] ) if params[:image]
+            AnnuaireWrapper::User::Avatar.update( user[:uid],
+                                                  params[:image] ) if params[:image]
 
             init_current_user( user[:uid] )
 
@@ -68,7 +68,7 @@ module Portail
           app.delete "#{APP_PATH}/api/user/avatar/?" do
             content_type :json
 
-            AnnuaireWrapper::User.delete_avatar( user[:uid] )
+            AnnuaireWrapper::User::Avatar.delete( user[:uid] )
 
             init_current_user( user[:uid] )
 
@@ -95,7 +95,7 @@ module Portail
           app.get "#{APP_PATH}/api/user/regroupements/?" do
             content_type :json
 
-            regroupements = AnnuaireWrapper::User.get_regroupements( user[:uid] )
+            regroupements = AnnuaireWrapper::User::Regroupements.query( user[:uid] )
             regroupements = [ regroupements[ 'classes' ],
                               regroupements[ 'groupes_eleves' ] ]
                             .flatten
@@ -144,8 +144,8 @@ module Portail
             # Ne prendre que les ressources de l'établissement courant.
             # Qui sont dans la fenêtre d'abonnement
             # Triées sur les types de ressources desc pour avoir 'MANUEL' en premier, puis 'DICO', puis 'AUTRES'
-            ressources = AnnuaireWrapper::User.get_resources( user[:uid] )
-                                              .reject do |ressource|
+            ressources = AnnuaireWrapper::User::Ressources.query( user[:uid] )
+                                                          .reject do |ressource|
               ressource[ 'etablissement_code_uai' ] != user[:user_detailed]['profil_actif']['etablissement_code_uai'] ||
                 Date.parse( ressource['date_deb_abon'] ) >= Date.today ||
                 Date.parse( ressource['date_fin_abon'] ) <= Date.today
