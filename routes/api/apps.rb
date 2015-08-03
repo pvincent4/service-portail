@@ -62,9 +62,6 @@ module Portail
                 application[ 'hidden' ] = default[ :hidden ]
               end
 
-              # FIXME: if only there was a way to fix this in the Annuaire's DB
-              application[ 'icon' ].gsub!( 'charte-graphique-laclasse-com', 'laclasse-common-client' ) unless application[ 'icon' ].nil?
-
               # FIXME: ideally this should come from Annuaire
               application[ 'hidden' ] = default.nil? || default[ :hidden ].nil? ? [] : default[ :hidden ]
 
