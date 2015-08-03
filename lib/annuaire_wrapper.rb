@@ -62,7 +62,6 @@ module AnnuaireWrapper
                                                      profil_id: profil_id )
     end
 
-
     module Ressources
       # Service Utilisateur : récupération des ressources numériques de l'utilisateur
       def query( uid )
@@ -119,15 +118,15 @@ module AnnuaireWrapper
       end
 
       def new( uid, params )
-        Laclasse::CrossApp::Sender.put_request_signed( :service_annuaire_user, "#{uid}/email", {}, params )
+        Laclasse::CrossApp::Sender.put_request_signed( :service_annuaire_user, "#{uid}/emails", {}, params )
       end
 
       def update( uid, id, params )
-        Laclasse::CrossApp::Sender.post_request_signed( :service_annuaire_user, "#{uid}/email/#{id}", {}, params )
+        Laclasse::CrossApp::Sender.post_request_signed( :service_annuaire_user, "#{uid}/emails/#{id}", {}, params )
       end
 
       def delete( uid, id )
-        Laclasse::CrossApp::Sender.delete_request_signed( :service_annuaire_user, "#{uid}/email/#{id}", {} )
+        Laclasse::CrossApp::Sender.delete_request_signed( :service_annuaire_user, "#{uid}/emails/#{id}", {} )
       end
     end
   end
