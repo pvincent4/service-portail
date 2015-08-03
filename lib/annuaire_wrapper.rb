@@ -13,6 +13,20 @@ require_relative '../config/options'
 # Ce module s'appuye sur la gem de signature et de communicationavec l'annuaire.
 #
 module AnnuaireWrapper
+  module_function
+
+  def normalize( params )
+    params.each do |key, _value|
+      if params[ key ].is_a? String
+        params[ key ] = URI.escape( params[ key ] )
+      elsif params[ key ].is_a? Date
+        params[ key ] = URI.escape( params[ key ].iso8601 )
+      else
+        params[ key ] = URI.escape( params[ key ].to_s )
+      end
+    end
+  end
+
   # fonctions relatives au profil utilisateur
   module User
     module_function
@@ -39,15 +53,7 @@ module AnnuaireWrapper
     # Modification des données de l'utilisateur connecté
     def put( uid, params )
       uid = URI.escape( uid )
-      params.each do |key, _value|
-        if params[ key ].is_a? String
-          params[ key ] = URI.escape( params[ key ] )
-        elsif params[ key ].is_a? Date
-          params[ key ] = URI.escape( params[ key ].iso8601 )
-        else
-          params[ key ] = URI.escape( params[ key ].to_s )
-        end
-      end
+      params = normalize( params )
       Laclasse::CrossApp::Sender.put_request_signed(:service_annuaire_user, "#{uid}", params )
     end
 
@@ -118,10 +124,12 @@ module AnnuaireWrapper
       end
 
       def new( uid, params )
-        Laclasse::CrossApp::Sender.put_request_signed( :service_annuaire_user, "#{uid}/emails", {}, params )
+        params = normalize( params )
+        Laclasse::CrossApp::Sender.put_request_signed( :service_annuaire_user, "#{uid}/emails", params )
       end
 
       def update( uid, id, params )
+        params = normalize( params )
         Laclasse::CrossApp::Sender.post_request_signed( :service_annuaire_user, "#{uid}/emails/#{id}", {}, params )
       end
 
