@@ -30,20 +30,22 @@ angular.module( 'portailApp' )
 			   .then( function( response ) {
 			       $scope.password.changeable = _.chain(response).find({application_id: 'TELESRV'}).isUndefined().value();
 			   } );
+		       $scope.new_avatar = null;
 
 		       $scope.current_user = current_user;
-		       $scope.current_user.reset_avatar = false;
+		       $scope.reset_avatar = false;
 		       $scope.current_user.editable = _($scope.current_user.id_jointure_aaf).isNull();
 
 		       $scope.current_user.date_naissance = new Date( $scope.current_user.date_naissance );
 
 		       $scope.new_avatar = function( flowFile ) {
-			   $scope.current_user.reset_avatar = false;
+			   $scope.reset_avatar = false;
 			   $scope.current_user.new_avatar = flowFile.file;
+			   $scope.new_avatar = flowFile.file;
 		       };
 
 		       $scope.reset_avatar = function() {
-			   $scope.current_user.reset_avatar = true;
+			   $scope.reset_avatar = true;
 		       };
 
 		       $scope.check_password = function( password ) {
@@ -71,10 +73,10 @@ angular.module( 'portailApp' )
 
 			       if ( password_confirmed ) {
 				   $scope.current_user.$update().then( function() {
-				       if ( _($scope.current_user).has( 'new_avatar' ) ) {
-					   currentUser.avatar.upload( $scope.current_user.new_avatar );
-				       } else if ( $scope.current_user.reset_avatar ) {
-					   currentUser.avatar.delete();
+				       if ( !_($scope.new_avatar).isNull() ) {
+					   $scope.current_user = currentUser.avatar.upload( $scope.new_avatar );
+				       } else if ( $scope.reset_avatar ) {
+					   $scope.current_user = currentUser.avatar.delete();
 				       }
 				   } );
 			       }
