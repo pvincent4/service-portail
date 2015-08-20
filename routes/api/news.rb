@@ -9,7 +9,7 @@ module Portail
           # Agrégateur RSS
           #
           app.get "#{APP_PATH}/api/news/?" do
-            content_type :json
+            content_type :json, charset: 'utf-8'
 
             # THINK : Comment mettre des priorités sur les différents flux ?
             news = []
@@ -41,12 +41,12 @@ module Portail
                   end
 
                   article[:description] = article[:content_encoded] if article.has? :content_encoded
-                  article[:image] = article[:content]
+                  article[:image] = article[:content] if article[:content].match( /^https?:\/\/.*\.(?:png|jpg|jpeg|gif)$/i ) # rubocop:disable Style/RegexpLiteral
 
                   if article[:image].nil?
-                    images = article[:description].match( /(https?:\/\/.*\.(?:png|jpg))/i ) # rubocop:disable Style/RegexpLiteral
+                    images = article[:description].match( /(https?:\/\/.*\.(?:png|jpg|jpeg|gif))/i ) # rubocop:disable Style/RegexpLiteral
                     article[:image] = images[0] unless images.nil?
-                    article[:description].sub!( /(https?:\/\/.*\.(?:png|jpg))/i, '' ) # rubocop:disable Style/RegexpLiteral
+                    article[:description].sub!( /(https?:\/\/.*\.(?:png|jpg|jpeg|gif))/i, '' ) # rubocop:disable Style/RegexpLiteral
                   end
 
                   article
