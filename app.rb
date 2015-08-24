@@ -64,6 +64,11 @@ class SinatraApp < Sinatra::Base
 
   ##### routes #################################################################
 
+  before  do
+    pass if %r{#{APP_PATH}/(auth|login|status)/}.match(request.path)
+    login! request.path_info unless logged?
+  end
+
   register Portail::Routes::Index
   register Portail::Routes::Status
 
