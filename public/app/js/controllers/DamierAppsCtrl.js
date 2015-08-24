@@ -178,8 +178,4 @@ angular.module( 'portailApp' )
 		       };
 
 		       retrieve_apps();
-
-		       $scope.tetris = function() {
-			   $( '.empty' ).blockrain({ autoplay: true, autoplayRestart: true });
-		       };
 		   } ] );
