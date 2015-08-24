@@ -6,7 +6,7 @@ namespace :preprocess_assets do
     require 'rubygems'
     require 'bundler'
 
-    Bundler.require( :default, ENV['RACK_ENV'].to_sym )     # require tout les gems définis dans Gemfile
+    Bundler.require( :default, ENV['RACK_ENV'].to_sym ) # require tout les gems définis dans Gemfile
 
     require_relative '../lib/uglify'
   end
@@ -105,8 +105,6 @@ namespace :preprocess_assets do
                                                           'public/app/vendor/ng-color-picker/color-picker.js',
                                                           'public/app/vendor/angular-carousel/dist/angular-carousel.js',
                                                           'public/app/vendor/ngFitText/src/ng-FitText.js',
-                                                          'public/app/vendor/angular-konami/angular-konami.js',
-                                                          'public/app/vendor/blockrain/dist/blockrain.jquery.js',
                                                           'public/app/vendor/angular-toastr/dist/angular-toastr.tpls.js' ] )
     File.open( './public/app/vendor/vendor.min.js', 'w' )
         .write( uglified )
