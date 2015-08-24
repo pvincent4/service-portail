@@ -9,7 +9,7 @@ require 'json'
 require 'yaml'
 require 'date'
 
-Bundler.require( :default, ENV['RACK_ENV'].to_sym )     # require tout les gems définis dans Gemfile
+Bundler.require( :default, ENV['RACK_ENV'].to_sym ) # require tout les gems définis dans Gemfile
 
 require 'laclasse/helpers/authentication'
 require 'laclasse/helpers/user'
@@ -63,6 +63,11 @@ class SinatraApp < Sinatra::Base
   helpers Portail::Helpers::Config
 
   ##### routes #################################################################
+
+  before  do
+    pass if %r{#{APP_PATH}/(auth|login|status)/}.match(request.path)
+    login! request.path_info unless logged?
+  end
 
   register Portail::Routes::Index
   register Portail::Routes::Status
