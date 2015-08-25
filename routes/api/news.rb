@@ -41,7 +41,7 @@ module Portail
                   end
 
                   article[:description] = article[:content_encoded] if article.has? :content_encoded
-                  article[:image] = article[:content] if article[:content].match( /^https?:\/\/.*\.(?:png|jpg|jpeg|gif)$/i ) # rubocop:disable Style/RegexpLiteral
+                  article[:image] = article[:content] if !article[:content].nil? && article[:content].match( /^https?:\/\/.*\.(?:png|jpg|jpeg|gif)$/i ) # rubocop:disable Style/RegexpLiteral
 
                   if article[:image].nil?
                     images = article[:description].match( /(https?:\/\/.*\.(?:png|jpg|jpeg|gif))/i ) # rubocop:disable Style/RegexpLiteral
