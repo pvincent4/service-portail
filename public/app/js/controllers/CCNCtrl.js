@@ -32,7 +32,12 @@ angular.module( 'portailApp' )
 			     description: 'Assises du Roman',
 			     url: 'http://air.laclasse.com/?url=spip.php%3Fpage%3Dsommaire&cicas=oui',
 			     icon: '/app/vendor/laclasse-common-client/images/thematiques/icon_air-2014.svg',
-			     couleur: 'vert' }
+			     couleur: 'vert' },
+			   { nom: 'Habiter',
+			     description: 'Habiter',
+			     url: 'http://habiter.laclasse.com/?url=spip.php%3Fpage%3Dsommaire&cicas=oui',
+			     icon: '/app/vendor/laclasse-common-client/images/thematiques/icon_habiter.svg',
+			     couleur: 'jaune' }
 		       ];
 
 		       $scope.thematiques_archivees = [
