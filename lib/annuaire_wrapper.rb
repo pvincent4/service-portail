@@ -56,6 +56,8 @@ module AnnuaireWrapper
     end
 
     module Ressources
+      module_function
+
       # Service Utilisateur : récupération des ressources numériques de l'utilisateur
       def query( uid )
         Laclasse::CrossApp::Sender.send_request_signed( :service_annuaire_user, "#{uid}/ressources", 'expand' => 'true' )
@@ -63,6 +65,8 @@ module AnnuaireWrapper
     end
 
     module Regroupements
+      module_function
+
       # Liste des regroupements de l'utilisateur connecté
       def query( uid )
         Laclasse::CrossApp::Sender.send_request_signed( :service_annuaire_user, "#{uid}/regroupements", 'expand' => 'true' )
