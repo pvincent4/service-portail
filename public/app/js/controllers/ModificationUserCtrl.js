@@ -74,9 +74,15 @@ angular.module( 'portailApp' )
 			       if ( password_confirmed ) {
 				   $scope.current_user.$update().then( function() {
 				       if ( !_($scope.new_avatar).isNull() ) {
-					   $scope.current_user = currentUser.avatar.upload( $scope.new_avatar );
+					   currentUser.avatar.upload( $scope.new_avatar )
+					       .then( function( response ) {
+						   $scope.current_user = response.data;
+					       } );
 				       } else if ( $scope.reset_avatar ) {
-					   $scope.current_user = currentUser.avatar.delete();
+					   currentUser.avatar.delete()
+					       .then( function( response ) {
+						   $scope.current_user = response.data;
+					       } );
 				       }
 				   } );
 			       }

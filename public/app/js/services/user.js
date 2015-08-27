@@ -53,15 +53,14 @@ angular.module( 'portailApp' )
 		    this.eleves_regroupement = function( id ) { return UserRegroupements.eleves( { id: id } ).$promise; };
 
 		    this.avatar = { upload: function( fichier ) {
-			Upload.upload( {
-			    url: APP_PATH + '/api/user/avatar',
-			    method: 'POST',
-			    file: fichier,
-			    fileFormDataName: 'image'
-			} );
+			return Upload.upload( { url: APP_PATH + '/api/user/avatar',
+						method: 'POST',
+						file: fichier,
+						fileFormDataName: 'image'
+					      } );
 		    },
 				    delete: function() {
-					$http.delete( APP_PATH + '/api/user/avatar' );
+					return $http.delete( APP_PATH + '/api/user/avatar' );
 				    }
 				  };
 		} ] );
