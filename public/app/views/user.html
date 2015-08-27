@@ -80,11 +80,11 @@
 		    </div>
 
 		    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 avatar"
-			 data-flow-init
-			 data-flow-file-added="new_avatar( $file )">
+			    data-flow-init
+			    data-flow-file-added="new_avatar( $file )">
 			    <div flow-drop
-				flow-drag-enter="style={background: 'green'}"
-				flow-drag-leave="style={}"
+				    flow-drag-enter="style={background: 'green'}"
+				    flow-drag-leave="style={}"
 				    data-ng-style="style"
 				    data-ng-class="{ 'reset': current_user.reset_avatar }">
 				    <img draggable="false" class="svg" data-ng-src="{{current_user.avatar}}" data-ng-if="!$flow.files.length" />
@@ -100,54 +100,54 @@
 	    </accordion-group>
 
 	    <accordion-group data-is-open="groups[ 1 ].ouvert" data-ng-if="groups[ 1 ].enabled && password.changeable">
-		<accordion-heading>
-		    <span class="glyphicon" ng-class="{'glyphicon-chevron-down': groups[ 1 ].ouvert, 'glyphicon-chevron-right': !groups[ 1 ].ouvert}"> mot de passe</span>
-		</accordion-heading>
-		<div class="row">
-		    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-			<div class="form-group">
-			    <label for="oldpasswd">entrer l'ancien mot de passe :</label>
-			    <input type="password" class="form-control" id="oldpasswd"
-				    data-ng-model="password.old">
-			</div>
-		    </div>
+		    <accordion-heading>
+			    <span class="glyphicon" ng-class="{'glyphicon-chevron-down': groups[ 1 ].ouvert, 'glyphicon-chevron-right': !groups[ 1 ].ouvert}"> mot de passe</span>
+		    </accordion-heading>
+		    <div class="row">
+			    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+				    <div class="form-group">
+					    <label for="oldpasswd">entrer l'ancien mot de passe :</label>
+					    <input type="password" class="form-control" id="oldpasswd"
+						    data-ng-model="password.old">
+				    </div>
+			    </div>
 
-		    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-			<div class="form-group">
-			    <label for="newpasswd1">entre le nouveau mot de passe :</label>
-			    <input type="password" class="form-control" id="newpasswd1"
-				    data-ng-model="password.new1">
-			</div>
+			    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+				    <div class="form-group">
+					    <label for="newpasswd1">entre le nouveau mot de passe :</label>
+					    <input type="password" class="form-control" id="newpasswd1"
+						    data-ng-model="password.new1">
+				    </div>
+			    </div>
+			    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+				    <div class="form-group">
+					    <label for="newpasswd2">confirmer le nouveau mot de passe :</label>
+					    <input type="password" class="form-control" id="newpasswd2"
+						    data-ng-model="password.new2">
+				    </div>
+			    </div>
 		    </div>
-		    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-			<div class="form-group">
-			    <label for="newpasswd2">confirmer le nouveau mot de passe :</label>
-			    <input type="password" class="form-control" id="newpasswd2"
-				    data-ng-model="password.new2">
-			</div>
-		    </div>
-		</div>
 	    </accordion-group>
 
 	    <accordion-group data-is-open="groups[ 2 ].ouvert" data-ng-if="groups[ 2 ].enabled">
-		<accordion-heading>
-		    <span class="glyphicon" ng-class="{'glyphicon-chevron-down': groups[ 2 ].ouvert, 'glyphicon-chevron-right': !groups[ 2 ].ouvert}"> droits</span>
-		</accordion-heading>
-		<p>The body of the accordion group grows to fit the contents</p>
+		    <accordion-heading>
+			    <span class="glyphicon" ng-class="{'glyphicon-chevron-down': groups[ 2 ].ouvert, 'glyphicon-chevron-right': !groups[ 2 ].ouvert}"> droits</span>
+		    </accordion-heading>
+		    <p>The body of the accordion group grows to fit the contents</p>
 	    </accordion-group>
 
 	    <accordion-group data-is-open="groups[ 3 ].ouvert" data-ng-if="groups[ 3 ].enabled">
-		<accordion-heading>
-		    <span class="glyphicon" ng-class="{'glyphicon-chevron-down': groups[ 3 ].ouvert, 'glyphicon-chevron-right': !groups[ 3 ].ouvert}"> statistiques</span>
-		</accordion-heading>
-		<p>The body of the accordion group grows to fit the contents</p>
+		    <accordion-heading>
+			    <span class="glyphicon" ng-class="{'glyphicon-chevron-down': groups[ 3 ].ouvert, 'glyphicon-chevron-right': !groups[ 3 ].ouvert}"> statistiques</span>
+		    </accordion-heading>
+		    <p>The body of the accordion group grows to fit the contents</p>
 	    </accordion-group>
 
 	</accordion>
     </div>
 
     <footer>
-	<button data-ng-click="fermer( false )">annuler</button>
-	<button data-ng-click="fermer( true )">enregistrer</button>
+	    <button data-ng-click="fermer( false )">annuler</button>
+	    <button data-ng-click="fermer( true )">enregistrer</button>
     </footer>
 </div>
