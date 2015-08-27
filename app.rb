@@ -3,6 +3,7 @@
 require 'rubygems'
 require 'bundler'
 require 'sinatra/reloader'
+require 'sinatra/json'
 require 'open-uri'
 require 'htmlentities'
 require 'uri'

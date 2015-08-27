@@ -16,7 +16,7 @@ module Portail
             fluxes = AnnuaireWrapper::Etablissement::Flux.query_etablissement( user[:user_detailed]['profil_actif']['etablissement_code_uai'] )
             fluxes = config[:news_feed] if fluxes.empty? || fluxes.nil?
 
-            fluxes.to_json
+            json fluxes
           end
 
           app.get "#{APP_PATH}/api/flux/:id" do
@@ -25,7 +25,7 @@ module Portail
 
             return [] unless logged?
 
-            AnnuaireWrapper::Etablissement::Flux.get( params[:id] ).to_json
+            json AnnuaireWrapper::Etablissement::Flux.get( params[:id] )
           end
 
           app.post "#{APP_PATH}/api/flux/?" do
@@ -35,7 +35,7 @@ module Portail
             param :flux, String, required: true
             param :title, String, required: true
 
-            AnnuaireWrapper::Etablissement::Flux.create( user[:user_detailed]['profil_actif']['etablissement_code_uai'], params ).to_json
+            json AnnuaireWrapper::Etablissement::Flux.create( user[:user_detailed]['profil_actif']['etablissement_code_uai'], params )
           end
 
           app.put "#{APP_PATH}/api/flux/:id" do
@@ -46,14 +46,14 @@ module Portail
             param :flux, String, required: true
             param :title, String, required: true
 
-            AnnuaireWrapper::Etablissement::Flux.update( params[:id], params ).to_json
+            json AnnuaireWrapper::Etablissement::Flux.update( params[:id], params )
           end
 
           app.delete "#{APP_PATH}/api/flux/:id" do
             content_type :json
             param :id, Integer, required: true
 
-            AnnuaireWrapper::Etablissement::Flux.delete( params[:id] ).to_json
+            json AnnuaireWrapper::Etablissement::Flux.delete( params[:id] )
           end
         end
       end

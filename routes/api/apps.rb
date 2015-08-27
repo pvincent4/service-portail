@@ -15,8 +15,8 @@ module Portail
 
             return [] unless logged?
 
-            AnnuaireWrapper::Apps.query_defaults
-                                 .map do |appli|
+            json AnnuaireWrapper::Apps.query_defaults
+                                      .map do |appli|
               default = config[:apps][:default][ appli['id'].to_sym ]
 
               appli.merge! default unless default.nil?
@@ -26,7 +26,7 @@ module Portail
               appli[ 'type' ] = 'INTERNAL'
 
               appli
-            end.to_json
+            end
           end
 
           app.get "#{APP_PATH}/api/apps/?" do
@@ -83,7 +83,7 @@ module Portail
               end
             end
 
-            apps.to_json
+            json apps
           end
 
           app.get "#{APP_PATH}/api/apps/:id" do
@@ -92,7 +92,7 @@ module Portail
 
             return [] unless logged?
 
-            AnnuaireWrapper::Etablissement::Apps.app.get( params[:id] ).to_json
+            json AnnuaireWrapper::Etablissement::Apps.app.get( params[:id] )
           end
 
           app.post "#{APP_PATH}/api/apps/?" do
@@ -107,7 +107,7 @@ module Portail
             param :icon, String, required: false
             param :color, String, required: false
 
-            AnnuaireWrapper::Etablissement::Apps.create( user[:user_detailed]['profil_actif']['etablissement_code_uai'], params ).to_json
+            json AnnuaireWrapper::Etablissement::Apps.create( user[:user_detailed]['profil_actif']['etablissement_code_uai'], params )
           end
 
           app.put "#{APP_PATH}/api/apps/:id" do
@@ -121,14 +121,14 @@ module Portail
             param :icon, String, required: false
             param :color, String, required: false
 
-            AnnuaireWrapper::Etablissement::Apps.update( params[:id], params ).to_json
+            json AnnuaireWrapper::Etablissement::Apps.update( params[:id], params )
           end
 
           app.delete "#{APP_PATH}/api/apps/:id" do
             content_type :json
             param :id, Integer, required: true
 
-            AnnuaireWrapper::Etablissement::Apps.delete( params[:id] ).to_json
+            json AnnuaireWrapper::Etablissement::Apps.delete( params[:id] )
           end
         end
         # rubocop:enable Metrics/PerceivedComplexity

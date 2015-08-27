@@ -28,8 +28,8 @@ module Portail
             param :code_postal,    Integer, required: false, within: 0..999_999
             param :ville,          String,  required: false
             # param :login,          String,  required: false
-            param :previous_password,       String,  required: false
-            param :new_password,       String,  required: false
+            param :previous_password,       String, required: false
+            param :new_password, String, required: false
             # param :bloque,         TrueClass, required: false
 
             wrong_password = false
@@ -51,7 +51,7 @@ module Portail
 
             utilisateur[:wrong_password] = true if wrong_password
 
-            utilisateur.to_json
+            json utilisateur
           end
 
           app.post "#{APP_PATH}/api/user/avatar/?" do
@@ -62,7 +62,7 @@ module Portail
 
             init_current_user( user[:uid] )
 
-            user_verbose.to_json
+            json user_verbose
           end
 
           app.delete "#{APP_PATH}/api/user/avatar/?" do
@@ -72,7 +72,7 @@ module Portail
 
             init_current_user( user[:uid] )
 
-            user_verbose.to_json
+            json user_verbose
           end
 
           app.put "#{APP_PATH}/api/user/profil_actif/?" do
@@ -86,7 +86,7 @@ module Portail
 
             init_current_user( user[:uid] )
 
-            user_verbose.to_json
+            json user_verbose
           end
 
           #
@@ -104,7 +104,7 @@ module Portail
             end
                             .each do |regroupement|
               regroupement[ 'id' ] =  regroupement.key?( 'classe_id' ) ? regroupement['classe_id'] : regroupement['groupe_id']
-              regroupement[ 'libelle' ] =  regroupement.key?( 'classe_libelle' ) ? regroupement['classe_libelle'] : regroupement['groupe_libelle']
+              regroupement[ 'libelle' ] = regroupement.key?( 'classe_libelle' ) ? regroupement['classe_libelle'] : regroupement['groupe_libelle']
               regroupement[ 'type' ] = regroupement.key?( 'classe_id' ) ? 'classe' : 'groupe_eleve'
             end
                             .uniq { |regroupement| regroupement['id'] }
@@ -117,7 +117,7 @@ module Portail
             end
 
             # Associer les couleurs des carrés
-            colorize( regroupements ).to_json
+            json colorize( regroupements )
           end
 
           #
@@ -132,7 +132,7 @@ module Portail
               eleve
             end
 
-            colorize( eleves ).to_json
+            json colorize( eleves )
           end
 
           #
@@ -150,15 +150,15 @@ module Portail
                 Date.parse( ressource['date_deb_abon'] ) >= Date.today ||
                 Date.parse( ressource['date_fin_abon'] ) <= Date.today
             end
-                                              .sort_by { |ressource| ressource['type_ressource'].to_s }
-                                              .reverse_each do |ressource|
+                                                          .sort_by { |ressource| ressource['type_ressource'].to_s }
+                                                          .reverse_each do |ressource|
               ressource['icone'] = '08_ressources.svg'
               ressource['icone'] = '05_validationcompetences.svg'  if ressource['type_ressource'] == 'MANUEL'
               ressource['icone'] = '07_blogs.svg'                  if ressource['type_ressource'] == 'AUTRE'
             end
 
             # Associer les couleurs des carrés
-            colorize( ressources ).to_json
+            json colorize( ressources )
           end
         end
       end

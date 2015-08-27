@@ -57,10 +57,9 @@ module Portail
               end
             end
 
-            news
-              .flatten
-              .uniq { |article| article[:description] }
-              .to_json
+            json news
+                  .flatten
+                  .uniq { |article| article[:description] }
           end
         end
       end
