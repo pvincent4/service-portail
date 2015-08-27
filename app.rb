@@ -48,6 +48,8 @@ class SinatraApp < Sinatra::Base
     set :public_folder, proc { File.join( root, 'public' ) }
     set :inline_templates, true
     set :protection, true
+
+    settings.add_charset << 'application/json'
   end
 
   configure :development do
