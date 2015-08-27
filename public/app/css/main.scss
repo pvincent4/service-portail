@@ -255,14 +255,7 @@ body {
 	position: relative;
 
 	&.unavailable {
-	    .front {
-		opacity: 0.33;
-		// .app-name {
-		//     text-decoration-line: line-through;
-		//     text-decoration-style: double;
-		//     text-decoration-color: red;
-		// }
-	    }
+	    opacity: 0.33;
 	}
 	&.petite {
 	    .toggle-configure {
