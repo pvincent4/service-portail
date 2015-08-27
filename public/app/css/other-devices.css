@@ -8,6 +8,7 @@
 @media screen and (max-width: 992px) {
     /* Page loggué */
     .aside { height: 3em; }
+    .classes-culturelles-numeriques .aside { height: 100%; }
     .aside .logolaclasse, .aside .user { height: 100%; }
     .aside .logolaclasse { width: 3em; }
     .aside .logolaclasse a h3 { font-size: 1.7em; }
