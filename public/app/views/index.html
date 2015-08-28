@@ -29,9 +29,12 @@
 	</div>
 
 	<ul class="col-xs-12 col-sm-12 col-md-12 col-lg-12 hidden-xs hidden-sm news"
+		data-ng-if="newsfeed"
 		rn-carousel
 		rn-carousel-auto-slide="5"
-		rn-carousel-controls-allow-loop="true"
+		rn-carousel-buffered
+		rn-carousel-pause-on-hover
+		rn-carousel-controls-allow-loop
 		rn-carousel-controls
 		rn-carousel-index="news_index">
 		<li ng-repeat="slide in newsfeed | orderBy:'pubDate':true" active="slide.active">
