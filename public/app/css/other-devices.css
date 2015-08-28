@@ -24,26 +24,13 @@
     .damier { height: calc( 100% - 3em ); }
 
     /* Page profil utilisateur */
-    .user-profil header { padding-left: 0; }
-    .user-profil footer { height: 6em;
-			  padding: 0.25em; }
-    .user-profil footer button { padding: 0.25em 0.5em; }
+	.user-profil { height: calc( 100% - 3em ); }
 
     /* Page app wrapper */
     .en-tete .profil-select-wrapper { width: calc( 100% - 3em ); }
 }
 
 /* -xs */
-@media screen and (max-width: 768px) {
-    /* Page profil utilisateur */
-    .user-profil header { height: 6.5em; }
-    .user-profil header h1, .user-profil header h2, .user-profil header h3 { line-height: 1em; }
-    .user-profil header h1 { font-size: 1.5em; }
-    .user-profil .form { top: 6.5em;
-			 bottom: 6em;
-			 height: calc(100% - 6.5em - 6em); }
-    .user-profil .form accordion .panel-body .row div { padding: 0; }
-}
 @media screen and (orientation: landscape) and (max-height: 640px) {
     .damier .petite.case { height: 33%; }
 }
