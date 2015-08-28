@@ -4,7 +4,7 @@
 #
 
 # development ou production
-ENV[ 'RACK_ENV' ]  = 'development'
+ENV[ 'RACK_ENV' ] = 'development'
 
 # niveau de log de l'application
 LOG_LEVEL = Logger::INFO
