@@ -74,15 +74,18 @@ module AnnuaireWrapper
 
       # Modification avatar
       def update( uid, image )
+        [] if image.empty?
 
         new_filename = "#{image[:tempfile].path}_#{image[:filename]}"
         File.rename image[:tempfile], new_filename
 
-        Laclasse::CrossApp::Sender.post_raw_request_signed( :service_annuaire_user, "#{uid}/upload/avatar",
-                                                            {},
-                                                            image: File.open( new_filename ) )
+        response = Laclasse::CrossApp::Sender.post_raw_request_signed( :service_annuaire_user, "#{uid}/upload/avatar",
+                                                                       {},
+                                                                       image: File.open( new_filename ) )
 
         File.delete new_filename
+
+        response
       end
 
       # Suppression avatar
