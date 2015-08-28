@@ -4,6 +4,8 @@ angular.module( 'portailApp' )
     .controller( 'ModificationUserCtrl',
 		 [ '$scope', '$state', '$q', 'toastr', 'current_user', 'currentUser', 'Apps', 'APP_PATH',
 		   function( $scope, $state, $q, toastr, current_user, currentUser, Apps, APP_PATH ) {
+		       var dirty = false;
+
 		       $scope.prefix = APP_PATH;
 		       $scope.groups = [ { ouvert: true,
 					   enabled: true },
@@ -25,6 +27,11 @@ angular.module( 'portailApp' )
 					   new1: '',
 					   new2: '',
 					   changeable: false };
+
+		       $scope.mark_as_dirty = function() {
+			   dirty = true;
+		       };
+
 		       Apps.query()
 			   .$promise
 			   .then( function( response ) {
@@ -56,7 +63,7 @@ angular.module( 'portailApp' )
 
 		       $scope.fermer = function( sauvegarder ) {
 			   var leave = true;
-			   if ( sauvegarder ) {
+			   if ( sauvegarder && dirty ) {
 			       var password_confirmed = true;
 			       if ( !_($scope.password.old).isEmpty() && !_($scope.password.new1).isEmpty() ) {
 				   if ( $scope.password.new1 == $scope.password.new2 ) {

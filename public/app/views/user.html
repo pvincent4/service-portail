@@ -18,55 +18,61 @@
 			    <div class="form-group">
 				<label >nom :</label>
 				<input type="text" class="form-control"
-				       data-ng-disabled="!current_user.editable"
-				       data-ng-model="current_user.nom">
+					data-ng-disabled="!current_user.editable"
+					data-ng-change="mark_as_dirty()"
+					data-ng-model="current_user.nom">
 			    </div>
 			</div>
 			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
-			    <div class="form-group">
-				<label >prénom :</label>
-				<input type="text" class="form-control"
-				       data-ng-disabled="!current_user.editable"
-				       data-ng-model="current_user.prenom">
-			    </div>
+				<div class="form-group">
+					<label >prénom :</label>
+					<input type="text" class="form-control"
+						data-ng-disabled="!current_user.editable"
+						data-ng-change="mark_as_dirty()"
+						data-ng-model="current_user.prenom">
+				</div>
 			</div>
 			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
-			    <div class="form-group">
-				<label>date de naissance :</label>
-				<span dropdown class="dropdown form-control date-naissance">
-				    <a dropdown-toggle class="dropdown-toggle" role="button" data-toggle="dropdown" data-target="#" href="" data-ng-cloak>{{current_user.date_naissance | amDateFormat: 'LL'}}</a>
-				    <div dropdown-menu class="dropdown-menu" role="menu" ng-click="$event.stopPropagation()">
-					<datepicker datepicker-options="datepicker_options"
-						    data-ng-disabled="!current_user.editable"
-						    data-ng-model="current_user.date_naissance"
-						    data-ng-required="true"></datepicker>
-				    </div>
-				</span>
-			    </div>
+				<div class="form-group">
+					<label>date de naissance :</label>
+					<span dropdown class="dropdown form-control date-naissance">
+						<a dropdown-toggle class="dropdown-toggle" role="button" data-toggle="dropdown" data-target="#" href="" data-ng-cloak>{{current_user.date_naissance | amDateFormat: 'LL'}}</a>
+						<div dropdown-menu class="dropdown-menu" role="menu" ng-click="$event.stopPropagation()">
+							<datepicker datepicker-options="datepicker_options"
+								data-ng-disabled="!current_user.editable"
+								data-ng-change="mark_as_dirty()"
+								data-ng-model="current_user.date_naissance"
+								data-ng-required="true"></datepicker>
+						</div>
+					</span>
+				</div>
 			</div>
 			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
-			    <div class="form-group">
-				<label>adresse :</label>
-				<input type="text" class="form-control"
-				       data-ng-disabled="!current_user.editable"
-				       data-ng-model="current_user.adresse">
-			    </div>
+				<div class="form-group">
+					<label>adresse :</label>
+					<input type="text" class="form-control"
+						data-ng-disabled="!current_user.editable"
+						data-ng-change="mark_as_dirty()"
+						data-ng-model="current_user.adresse">
+				</div>
 			</div>
 			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
-			    <div class="form-group">
-				<label>code postal :</label>
-				<input type="text" class="form-control"
-				       data-ng-disabled="!current_user.editable"
-				       data-ng-model="current_user.code_postal">
-			    </div>
+				<div class="form-group">
+					<label>code postal :</label>
+					<input type="text" class="form-control"
+						data-ng-disabled="!current_user.editable"
+						data-ng-change="mark_as_dirty()"
+						data-ng-model="current_user.code_postal">
+				</div>
 			</div>
 			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
-			    <div class="form-group">
-				<label>ville :</label>
-				<input type="text" class="form-control"
-				       data-ng-disabled="!current_user.editable"
-				       data-ng-model="current_user.ville">
-			    </div>
+				<div class="form-group">
+					<label>ville :</label>
+					<input type="text" class="form-control"
+						data-ng-disabled="!current_user.editable"
+						data-ng-change="mark_as_dirty()"
+						data-ng-model="current_user.ville">
+				</div>
 			</div>
 
 			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" data-ng-if="current_user.info.MailAdressePrincipal">
@@ -74,6 +80,7 @@
 					<label>email principal :</label>
 					<input type="text" class="form-control"
 						data-ng-disabled="true"
+						data-ng-change="mark_as_dirty()"
 						data-ng-model="current_user.info.MailAdressePrincipal">
 				</div>
 			</div>
