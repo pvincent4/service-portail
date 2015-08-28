@@ -1,6 +1,6 @@
 <div class="row user-profil">
     <header>
-	<h3>profil utilisateur</h3>
+	<h3>Profil utilisateur</h3>
 	<h1 data-ng-cloak>{{current_user.prenom}} {{current_user.nom}}</h1>
 	<h2 data-ng-cloak>{{current_user.profil_actif.etablissement}}</h2>
 	<h2 data-ng-cloak>{{current_user.profil_actif.nom}}</h2>
@@ -10,83 +10,12 @@
 
 	    <accordion-group data-is-open="groups[ 0 ].ouvert" data-ng-if="groups[ 0 ].enabled">
 		<accordion-heading>
-		    <span class="glyphicon" ng-class="{'glyphicon-chevron-down': groups[ 0 ].ouvert, 'glyphicon-chevron-right': !groups[ 0 ].ouvert}"> modifier mes informations</span>
+		    <span class="glyphicon" ng-class="{'glyphicon-chevron-down': groups[ 0 ].ouvert, 'glyphicon-chevron-right': !groups[ 0 ].ouvert}"> Mes informations</span>
 		</accordion-heading>
 		<div class="row">
-		    <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
-			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
-			    <div class="form-group">
-				<label >nom :</label>
-				<input type="text" class="form-control"
-					data-ng-disabled="!current_user.editable"
-					data-ng-change="mark_as_dirty()"
-					data-ng-model="current_user.nom">
-			    </div>
-			</div>
-			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
-				<div class="form-group">
-					<label >prénom :</label>
-					<input type="text" class="form-control"
-						data-ng-disabled="!current_user.editable"
-						data-ng-change="mark_as_dirty()"
-						data-ng-model="current_user.prenom">
-				</div>
-			</div>
-			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
-				<div class="form-group">
-					<label>date de naissance :</label>
-					<span dropdown class="dropdown form-control date-naissance">
-						<a dropdown-toggle class="dropdown-toggle" role="button" data-toggle="dropdown" data-target="#" href="" data-ng-cloak>{{current_user.date_naissance | amDateFormat: 'LL'}}</a>
-						<div dropdown-menu class="dropdown-menu" role="menu" ng-click="$event.stopPropagation()">
-							<datepicker datepicker-options="datepicker_options"
-								data-ng-disabled="!current_user.editable"
-								data-ng-change="mark_as_dirty()"
-								data-ng-model="current_user.date_naissance"
-								data-ng-required="true"></datepicker>
-						</div>
-					</span>
-				</div>
-			</div>
-			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
-				<div class="form-group">
-					<label>adresse :</label>
-					<input type="text" class="form-control"
-						data-ng-disabled="!current_user.editable"
-						data-ng-change="mark_as_dirty()"
-						data-ng-model="current_user.adresse">
-				</div>
-			</div>
-			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
-				<div class="form-group">
-					<label>code postal :</label>
-					<input type="text" class="form-control"
-						data-ng-disabled="!current_user.editable"
-						data-ng-change="mark_as_dirty()"
-						data-ng-model="current_user.code_postal">
-				</div>
-			</div>
-			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
-				<div class="form-group">
-					<label>ville :</label>
-					<input type="text" class="form-control"
-						data-ng-disabled="!current_user.editable"
-						data-ng-change="mark_as_dirty()"
-						data-ng-model="current_user.ville">
-				</div>
-			</div>
 
-			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" data-ng-if="current_user.info.MailAdressePrincipal">
-				<div class="form-group">
-					<label>email principal :</label>
-					<input type="text" class="form-control"
-						data-ng-disabled="true"
-						data-ng-change="mark_as_dirty()"
-						data-ng-model="current_user.info.MailAdressePrincipal">
-				</div>
-			</div>
-		    </div>
 
-		    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 avatar"
+		    <div class="avatar"
 			    data-flow-init
 			    data-flow-file-added="new_avatar( $file )">
 			    <div flow-drop
@@ -102,37 +31,88 @@
 
 			    <!-- <button class="btn btn-default" data-ng-click="reset_avatar()">supprimer</button> -->
 		    </div>
+
+
+			    <div class="form-group">
+				<label>Nom :</label>
+				<input type="text" class="form-control"
+					data-ng-disabled="!current_user.editable"
+					data-ng-change="mark_as_dirty()"
+					data-ng-model="current_user.nom">
+			    </div>
+				<div class="form-group">
+					<label>Prénom :</label>
+					<input type="text" class="form-control"
+						data-ng-disabled="!current_user.editable"
+						data-ng-change="mark_as_dirty()"
+						data-ng-model="current_user.prenom">
+				</div>
+				<div class="form-group">
+					<label>Date de naissance :</label>
+					<span dropdown class="dropdown form-control date-naissance">
+						<a dropdown-toggle class="dropdown-toggle" role="button" data-toggle="dropdown" data-target="#" href="" data-ng-cloak>{{current_user.date_naissance | amDateFormat: 'LL'}}</a>
+						<div dropdown-menu class="dropdown-menu" role="menu" ng-click="$event.stopPropagation()">
+							<datepicker datepicker-options="datepicker_options"
+								data-ng-disabled="!current_user.editable"
+								data-ng-change="mark_as_dirty()"
+								data-ng-model="current_user.date_naissance"
+								data-ng-required="true"></datepicker>
+						</div>
+					</span>
+				</div>
+				<div class="form-group">
+					<label>Adresse :</label>
+					<input type="text" class="form-control"
+						data-ng-disabled="!current_user.editable"
+						data-ng-change="mark_as_dirty()"
+						data-ng-model="current_user.adresse">
+				</div>
+				<div class="form-group">
+					<label>Code postal :</label>
+					<input type="text" class="form-control"
+						data-ng-disabled="!current_user.editable"
+						data-ng-change="mark_as_dirty()"
+						data-ng-model="current_user.code_postal">
+				</div>
+				<div class="form-group">
+					<label>Ville :</label>
+					<input type="text" class="form-control"
+						data-ng-disabled="!current_user.editable"
+						data-ng-change="mark_as_dirty()"
+						data-ng-model="current_user.ville">
+				</div>
+
+				<div class="form-group">
+					<label>Courriel principal :</label>
+					<input type="text" class="form-control"
+						data-ng-disabled="true"
+						data-ng-change="mark_as_dirty()"
+						data-ng-model="current_user.info.MailAdressePrincipal">
+				</div>
 		</div>
 
 	    </accordion-group>
 
 	    <accordion-group data-is-open="groups[ 1 ].ouvert" data-ng-if="groups[ 1 ].enabled && password.changeable">
 		    <accordion-heading>
-			    <span class="glyphicon" ng-class="{'glyphicon-chevron-down': groups[ 1 ].ouvert, 'glyphicon-chevron-right': !groups[ 1 ].ouvert}"> mot de passe</span>
+			    <span class="glyphicon" ng-class="{'glyphicon-chevron-down': groups[ 1 ].ouvert, 'glyphicon-chevron-right': !groups[ 1 ].ouvert}"> Mot de passe</span>
 		    </accordion-heading>
 		    <div class="row">
-			    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
 				    <div class="form-group">
-					    <label for="oldpasswd">entrer l'ancien mot de passe :</label>
+					    <label for="oldpasswd">Ancien mot de passe :</label>
 					    <input type="password" class="form-control" id="oldpasswd"
 						    data-ng-model="password.old">
 				    </div>
-			    </div>
-
-			    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
 				    <div class="form-group">
-					    <label for="newpasswd1">entre le nouveau mot de passe :</label>
+					    <label for="newpasswd1">Nouveau mot de passe :</label>
 					    <input type="password" class="form-control" id="newpasswd1"
 						    data-ng-model="password.new1">
 				    </div>
-			    </div>
-			    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
 				    <div class="form-group">
-					    <label for="newpasswd2">confirmer le nouveau mot de passe :</label>
+					    <label for="newpasswd2">Confirmer le nouveau mot de passe :</label>
 					    <input type="password" class="form-control" id="newpasswd2"
 						    data-ng-model="password.new2">
 				    </div>
-			    </div>
 		    </div>
 	    </accordion-group>
 
@@ -154,7 +134,7 @@
     </div>
 
     <footer>
-	    <button data-ng-click="fermer( false )">annuler</button>
-	    <button data-ng-click="fermer( true )">enregistrer</button>
+	    <button data-ng-click="fermer( false )">Annuler</button>
+	    <button data-ng-click="fermer( true )">Enregistrer</button>
     </footer>
 </div>
