@@ -39,16 +39,12 @@ module AnnuaireWrapper
 
     # Modification des données de l'utilisateur connecté
     def put( uid, params )
-      uid = URI.escape( uid )
       params = normalize( params )
       Laclasse::CrossApp::Sender.put_request_signed(:service_annuaire_user, "#{uid}", params )
     end
 
     # Modification du profil actif de l'utilisateur connecté
     def put_profil_actif( uid, profil_id, code_uai )
-      uid = URI.escape( uid )
-      profil_id = URI.escape( profil_id )
-      code_uai = URI.escape( code_uai )
       Laclasse::CrossApp::Sender.put_request_signed( :service_annuaire_user,
                                                      "#{uid}/profil_actif",
                                                      uai: code_uai,
@@ -78,7 +74,6 @@ module AnnuaireWrapper
 
       # Modification avatar
       def update( uid, image )
-        uid = URI.escape( uid )
 
         new_filename = "#{image[:tempfile].path}_#{image[:filename]}"
         File.rename image[:tempfile], new_filename
@@ -92,7 +87,6 @@ module AnnuaireWrapper
 
       # Suppression avatar
       def delete( uid )
-        uid = URI.escape( uid )
         Laclasse::CrossApp::Sender.delete_request_signed( :service_annuaire_user, "#{uid}/avatar", {} )
       end
     end
