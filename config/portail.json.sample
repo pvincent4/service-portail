@@ -15,7 +15,7 @@
 		"icon": "app/vendor/laclasse-common-client/images/02_documents.svg",
 		"index": 1 },
 	    "CTXT": {
-		"hidden": [],
+		"hidden": [ "ETA", "COL" ],
 		"summer": false,
 		"color": "#9c75ab",
 		"icon": "app/vendor/laclasse-common-client/images/03_cahierdetextes.svg",

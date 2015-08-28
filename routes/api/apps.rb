@@ -65,7 +65,7 @@ module Portail
               # FIXME: ideally this should come from Annuaire
               application[ 'hidden' ] = default.nil? || default[ :hidden ].nil? ? [] : default[ :hidden ]
 
-              application[ 'hidden' ] = %w(ELV TUT) if default.nil? || ( !default[:summer] && is_it_summer_yet )
+              application[ 'hidden' ] += %w(ELV TUT) if default.nil? || ( !default[:summer] && is_it_summer_yet )
 
               application
             end
