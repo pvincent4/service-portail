@@ -15,8 +15,8 @@ module Portail
 
             return [] unless logged?
 
-            json AnnuaireWrapper::Apps.query_defaults
-                                      .map do |appli|
+            AnnuaireWrapper::Apps.query_defaults
+                                 .map do |appli|
               default = config[:apps][:default][ appli['id'].to_sym ]
 
               appli.merge! default unless default.nil?
@@ -26,7 +26,7 @@ module Portail
               appli[ 'type' ] = 'INTERNAL'
 
               appli
-            end
+            end.to_json
           end
 
           app.get "#{APP_PATH}/api/apps/?" do
