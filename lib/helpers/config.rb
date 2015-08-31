@@ -30,12 +30,12 @@ module Portail
         end
 
         # Completer le damier jusqu'à 16
-        if a.length < d.length
-          (d.length - a.length).times do
-            # a grandit d'1 à chaque passage
-            a.push('color' => d[a.length])
-          end
-        end
+#        if a.length < d.length
+#          (d.length - a.length).times do
+#            # a grandit d'1 à chaque passage
+#            a.push('color' => d[a.length])
+#          end
+#        end
         a
       end
     end
