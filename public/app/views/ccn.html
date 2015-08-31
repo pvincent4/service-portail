@@ -1,32 +1,35 @@
-<div class="row portail ng-scope classes-culturelles-numeriques">
-	<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 aside"
-	 data-ng-if="!display_archives">
-	<p class="laius">
-		Des collégiens qui jouent sur le web et sur scène avec des auteurs de théâtre et des écrivains, qui découvrent que design et développement durable peuvent s'allier contre le gaspillage alimentaire, qui cartographient leur territoire grâce à la Big Data en compagnie d'un philosophe, ou encore qui réalisent une enquête-expo sur la grande guerre avec les archives du Rhône, tout cela ce sont les Classes Culturelles Numériques de laclasse.com. 50 classes, du cm2 à la 3ème engagées dans 5 projets collaboratifs et innovants sur l'ENT, à suivre en ligne toute l'année, et lors des rencontres finales.
-	</p>
-	<p class="laius">
-		En partenariat avec <a href="http://www.ia69.ac-lyon.fr/" target="_blank">l’Inspection Académique</a>
-		et la DANE de <a href="http://www.ac-lyon.fr/" target="_blank">l’Académie de Lyon</a>.
-	</p>
-	<p class="laius">
-		Inscriptions en mai : <a href="mailto:thematiques@laclasse.com">thematiques@laclasse.com</a>
-	</p>
+<div class="row portail classes-culturelles-numeriques">
+	<div class="aside" data-ng-if="!display_archives">
+		<div class="scroller" style="position: relative">
+			<p class="laius">
+				Des collégiens qui jouent sur le web et sur scène avec des auteurs de théâtre et des écrivains, qui découvrent que design et développement durable peuvent s'allier contre le gaspillage alimentaire, qui cartographient leur territoire grâce à la Big Data en compagnie d'un philosophe, ou encore qui réalisent une enquête-expo sur la grande guerre avec les archives du Rhône, tout cela ce sont les Classes Culturelles Numériques de laclasse.com. 50 classes, du cm2 à la 3ème engagées dans 5 projets collaboratifs et innovants sur l'ENT, à suivre en ligne toute l'année, et lors des rencontres finales.
+			</p>
+			<p class="laius">
+				En partenariat avec <a href="http://www.ia69.ac-lyon.fr/" target="_blank">l’Inspection Académique</a>
+				et la DANE de <a href="http://www.ac-lyon.fr/" target="_blank">l’Académie de Lyon</a>.
+			</p>
+			<p class="laius">
+				Inscriptions en mai : <a href="mailto:thematiques@laclasse.com">thematiques@laclasse.com</a>
+			</p>
+		</div>
 	</div>
-	<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 aside aside-blanc"
+	<div class="aside aside-blanc"
 		data-ng-if="display_archives">
-		<p class="laius">
-			Au fil des années, des projets pédagogiques, des résidences d'artistes, de scientifiques, et d'écrivains se sont déroulés
-			dans tout le département du rhône, et parfois au delà, amenant plusieurs classes de différents établissements
-			à travailler ensemble autour de l'outil numérique.<br/>
-			Retrouver et revisitez les travaux des classes sur ces projets, ici.<br/><br/>
-			<button class="btn btn-default" data-ng-click="toggle_archives()"><i class="glyphicon glyphicon-arrow-left"></i> Retour</button>
-		</p>
+		<div class="scroller" style="position: relative">
+			<p class="laius">
+				Au fil des années, des projets pédagogiques, des résidences d'artistes, de scientifiques, et d'écrivains se sont déroulés
+				dans tout le département du rhône, et parfois au delà, amenant plusieurs classes de différents établissements
+				à travailler ensemble autour de l'outil numérique.<br/>
+				Retrouver et revisitez les travaux des classes sur ces projets, ici.<br/><br/>
+				<button class="btn btn-default" data-ng-click="toggle_archives()"><i class="glyphicon glyphicon-arrow-left"></i> Retour</button>
+			</p>
+		</div>
 	</div>
 
-	<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-		<div class="row damier ng-scope">
+	<div class="main">
+		<div class="damier">
 
-			<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 petite case animate scale-fade-in {{thematique.couleur}}"
+			<div class="case animate scale-fade-in {{thematique.couleur}}"
 				data-ng-repeat="thematique in thematiques">
 				<a title="{{thematique.description}}"
 					data-ng-href="{{thematique.url}}"
@@ -36,7 +39,7 @@
 				</a>
 			</div>
 
-			<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 petite case animate scale-fade-in gris1"
+			<div class="case animate scale-fade-in gris1"
 				data-ng-if="!display_archives">
 				<a title="Projets archivés" href data-ng-click="toggle_archives()">
 					<img draggable="false" class="icone" data-ng-src="{{prefix}}/app/vendor/laclasse-common-client/images/06_thematiques.svg">

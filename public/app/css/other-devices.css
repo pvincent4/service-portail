@@ -11,19 +11,33 @@
 	.main {
 		left: 0px; top: 42px;
 	}
-    .classes-culturelles-numeriques .aside { height: 100%; }
+	.mainapp {
+		top: 42px;
+	}
+	.mainapp .main {
+		top: 0px;
+	}
+	.mainapp .aside {
+		display: none;
+	}
+    .classes-culturelles-numeriques .aside { height: 100%; display: none; }
     .aside .logolaclasse, .aside .user { height: 100%; }
     .aside .logolaclasse { width: 42px; }
 /*    .aside .logolaclasse a h3 { font-size: 1.7em; }*/
     .aside .logolaclasse a img { height: 100%;
 				 width: auto;
 				 margin-top: 0; }
-    .aside .user { width: calc( 100% - 42px );
-		   background-position: left; }
-    .aside .user .user-info select { top: 0;
-				     left: 42px;
-				     height: 100%;
-				     width: auto; }
+    .aside .user {
+		width: calc( 100% - 42px );
+		background-position: left;
+	}
+    .aside .user .user-info select {
+		top: 0;
+		left: 42px;
+		height: 100%;
+		max-width: calc( 100% - 84px );
+		width: auto;
+	}
 
     .aside .user .user-info { top: 0px; padding: 0px; }
 
