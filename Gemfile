@@ -17,6 +17,7 @@ gem 'rest-client'
 gem 'simple-rss'
 gem 'sinatra'
 gem 'sinatra-param'
+gem 'sinatra-contrib'
 
 # Gems spécifiques ENT
 gem 'laclasse-common', git: 'https://github.com/laclasse-com/laclasse-common'
@@ -33,7 +34,6 @@ group :development do
   gem 'sass'
   gem 'shotgun'
   gem 'simplecov'
-  gem 'sinatra-contrib'
   gem 'therubyracer' # used when no node.js is install on computer
   gem 'uglifier'
   gem 'rubocop'
