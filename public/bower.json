@@ -27,7 +27,6 @@
     "ng-color-picker": "https://github.com/cycojesus/ng-color-picker.git#latest",
     "angular-touch": "latest",
     "angular-carousel": "latest",
-    "ngFitText": "latest",
     "angular-bootstrap-checkbox": "latest",
     "angular-toastr": "latest"
   },
