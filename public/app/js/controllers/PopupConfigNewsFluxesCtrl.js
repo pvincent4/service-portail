@@ -39,19 +39,4 @@ angular.module( 'portailApp' )
 		       $scope.close = function () {
 			   $modalInstance.close();
 		       };
-
-		       // $scope.ok = function () {
-		       //	   _($scope.current_flux).each( function( flux ) {
-		       //	       console.log(flux)
-		       //	       if ( _(flux).has( 'id' ) ) {
-		       //		   flux.$update();
-		       //	       } {
-		       //		   // le flux de notification de l'utilisateur a un champs titre
-		       //		   if ( !_(flux).has( 'titre' ) && !_(flux.flux).isEmpty() && !_(flux.title).isEmpty() ) {
-		       //		       flux.$save();
-		       //		   }
-		       //	       }
-		       //	   } );
-		       //	   $modalInstance.close();
-		       // };
 		   } ] );

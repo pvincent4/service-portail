@@ -44,5 +44,43 @@ angular.module( 'portailApp' )
 		       };
 
 		       retrieve_news();
+
+		       if ( $scope.current_user.default_password ) {
+			   $modal.open( {
+			       templateUrl: 'views/popup_change_password.html',
+			       resolve: { current_user: function() { return current_user; } },
+			       controller: [ '$scope', '$modalInstance', 'current_user',
+					     function( $scope, $modalInstance, current_user ) {
+						 $scope.current_user = current_user;
+
+						 $scope.fermer = function( sauvegarder ) {
+						     var password_confirmed = true;
+						     if ( !_($scope.password.old).isEmpty() && !_($scope.password.new1).isEmpty() ) {
+							 if ( $scope.password.new1 == $scope.password.new2 ) {
+							     $scope.current_user.previous_password = $scope.password.old;
+							     $scope.current_user.new_password = $scope.password.new1;
+							 } else {
+							     password_confirmed = false;
+							     toastr.error( 'Confirmation de mot de passe incorrecte.',
+									   'Erreur',
+									   { timeout: 100000 } );
+							 }
+						     }
+
+						     if ( password_confirmed ) {
+							 $scope.current_user.$update()
+							     .then( function() {
+								 $modalInstance.close( $scope );
+							     } );
+						     }
+						 };
+					     } ],
+			       backdrop: 'static',
+			       keyboard: false
+			   } )
+			       .result.then( function( scope_popup ) {
+				   $scope.current_user = scope_popup.current_user;
+			       } );
+		       }
 		   }
 		 ] );

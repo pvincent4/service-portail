@@ -29,8 +29,7 @@ angular.module( 'portailApp', [ 'ngResource',
 								  return response;
 							      } );
 						      }
-						    ],
-				      need_to_change_password: [ 'ForcePasswordChange', function( ForcePasswordChange ) { ForcePasswordChange.check(); } ]
+						    ]
 				    },
 			   templateUrl: 'views/index.html',
 			   controller: 'PortailCtrl'
@@ -55,28 +54,6 @@ angular.module( 'portailApp', [ 'ngResource',
 				     }
 				 }
 			       } )
-		       .state( 'change_password',
-			       { parent: 'portail.logged',
-				 url: '/change_password',
-				 onEnter: [ '$stateParams', '$state', '$modal', 'currentUser',
-					    function( $stateParams, $state, $modal, currentUser ) {
-						$modal.open( {
-						    templateUrl: 'views/popup_change_password.html',
-						    controller: 'ModificationUserCtrl',
-						    backdrop: 'static',
-						    keyboard: false,
-						    resolve: { current_user: [ 'currentUser',
-									       function( currentUser ) {
-										   return currentUser.get()
-										       .then( function( response ) {
-											   return response;
-										       } );
-									       }
-									     ] }
-						} );
-					    }]
-			       }
-			     )
 		       .state( 'app',
 			       { resolve: { current_user: [ 'currentUser',
 							    function( currentUser ) {
