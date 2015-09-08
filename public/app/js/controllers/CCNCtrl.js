@@ -30,7 +30,7 @@ angular.module( 'portailApp' )
 			     couleur: 'vert' },
 			   { nom: 'Habiter',
 			     description: 'Représentations cartographiques de l\'espace vécu',
-			     url: 'http://habiter.laclasse.com/?url=spip.php%3Fpage%3Dsommaire&cicas=oui',
+			     url: 'http://habiter.laclasse.com/?url=spip.php%3Fpage%3Dsommaire&cicas=oui&domaine=v3.laclasse.com',
 			     icon: '/app/vendor/laclasse-common-client/images/thematiques/icon_habiter.svg',
 			     couleur: 'jaune' }
 		       ];
@@ -38,17 +38,17 @@ angular.module( 'portailApp' )
 		       $scope.thematiques_archivees = [
 			    { nom: 'Philo',
 			     description: 'Philo',
-			     url: 'http://philo.laclasse.com/?url=spip.php%3Fpage%3Dsommaire&cicas=oui',
+			     url: 'http://philo.laclasse.com/?url=spip.php%3Fpage%3Dsommaire&cicas=oui&domaine=v3.laclasse.com',
 			     icon: '/app/vendor/laclasse-common-client/images/thematiques/icon_philo.svg',
 			     couleur: 'violet' },
 			   { couleur: 'gris2',
-			     url: 'http://miam.laclasse.com/',
+			     url: 'http://miam.laclasse.com/?url=spip.php%3Fpage%3Dsommaire&cicas=oui&domaine=v3.laclasse.com',
 			     icon: '/app/vendor/laclasse-common-client/images/thematiques/icon_miam.svg',
 			     nom: 'Miam',
 			     titre: ''
 			   },
 			   { couleur: 'bleu',
-			     url: 'http://novaterra.laclasse.com/',
+			     url: 'http://novaterra.laclasse.com/?url=spip.php%3Fpage%3Dsommaire&cicas=oui&domaine=v3.laclasse.com',
 			     icon: '/app/vendor/laclasse-common-client/images/thematiques/icon_odysseespatiale.svg',
 			     nom: 'Odyssée spatiale',
 			     titre: ''
@@ -60,43 +60,43 @@ angular.module( 'portailApp' )
 			     titre: ''
 			   },
 			   { couleur: 'orange',
-			     url: 'http://bd.laclasse.com/',
+			     url: 'http://bd.laclasse.com/?url=spip.php%3Fpage%3Dsommaire&cicas=oui&domaine=v3.laclasse.com',
 			     icon: '/app/vendor/laclasse-common-client/images/thematiques/icon_bd.svg',
 			     nom: 'BD',
 			     titre: ''
 			   },
 			   { couleur: 'violet',
-			     url: 'http://cine.laclasse.com/',
+			     url: 'http://cine.laclasse.com/?url=spip.php%3Fpage%3Dsommaire&cicas=oui&domaine=v3.laclasse.com',
 			     icon: '/app/vendor/laclasse-common-client/images/thematiques/icon_cine.svg',
 			     nom: 'Ciné',
 			     titre: ''
 			   },
 			   { couleur: 'vert',
-			     url: 'http://cluemo.laclasse.com/',
+			     url: 'http://cluemo.laclasse.com/?url=spip.php%3Fpage%3Dsommaire&cicas=oui&domaine=v3.laclasse.com',
 			     icon: '/app/vendor/laclasse-common-client/images/thematiques/icon_cluemo.svg',
 			     nom: 'Cluémo',
 			     titre: ''
 			   },
 			   { couleur: 'rouge',
-			     url: 'http://etudiantsvoyageurs.laclasse.com/',
+			     url: 'http://etudiantsvoyageurs.laclasse.com/?url=spip.php%3Fpage%3Dsommaire&cicas=oui&domaine=v3.laclasse.com',
 			     icon: '/app/vendor/laclasse-common-client/images/thematiques/icon_etudiantsvoyageurs.svg',
 			     nom: 'Etudiants voyageurs',
 			     titre: ''
 			   },
 			   { couleur: 'vert',
-			     url: 'http://finisterrae.laclasse.com',
+			     url: 'http://finisterrae.laclasse.com/?url=spip.php%3Fpage%3Dsommaire&cicas=oui&domaine=v3.laclasse.com',
 			     icon: '/app/vendor/laclasse-common-client/images/thematiques/icon_finisterrae.svg',
 			     nom: 'Finisterrae',
 			     titre: ''
 			   },
 			   { couleur: 'gris4',
-			     url: 'http://ledechetmatiere.laclasse.com/',
+			     url: 'http://ledechetmatiere.laclasse.com/?url=spip.php%3Fpage%3Dsommaire&cicas=oui&domaine=v3.laclasse.com',
 			     icon: '/app/vendor/laclasse-common-client/images/thematiques/icon_dechetmatiere.svg',
 			     nom: 'Le déchet matière',
 			     titre: ''
 			   },
 			   { couleur: 'violet',
-			     url: 'http://maisondeladanse.laclasse.com/',
+			     url: 'http://maisondeladanse.laclasse.com/?url=spip.php%3Fpage%3Dsommaire&cicas=oui&domaine=v3.laclasse.com',
 			     icon: '/app/vendor/laclasse-common-client/images/thematiques/icon_maisondeladanse.svg',
 			     nom: 'Maison de la danse',
 			     titre: ''
@@ -108,13 +108,13 @@ angular.module( 'portailApp' )
 			     titre: ''
 			   },
 			   { couleur: 'jaune',
-			     url: 'http://science.laclasse.com/',
+			     url: 'http://science.laclasse.com/?url=spip.php%3Fpage%3Dsommaire&cicas=oui&domaine=v3.laclasse.com',
 			     icon: '/app/vendor/laclasse-common-client/images/thematiques/icon_science.svg',
 			     nom: 'Science',
 			     titre: ''
 			   },
 			   { couleur: 'orange',
-			     url: 'http://picture.laclasse.com/',
+			     url: 'http://picture.laclasse.com/?url=spip.php%3Fpage%3Dsommaire&cicas=oui&domaine=v3.laclasse.com',
 			     icon: '/app/vendor/laclasse-common-client/images/thematiques/icon_picture.svg',
 			     nom: 'Picture',
 			     titre: ''
