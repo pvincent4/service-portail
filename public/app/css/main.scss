@@ -216,7 +216,7 @@ body {
 	height: auto;
 	width: 100%;
 	position: absolute;
-	bottom: 25%;
+	bottom: 33.333%;
 	text-align: center;
 	.rn-carousel-indicator {
 	    span,
@@ -242,7 +242,7 @@ body {
 
 .damier {
     overflow-y: auto;
-	overflow-x: hidden;
+    overflow-x: hidden;
     background-color: #eee;
     .floating-button.off {
 	background-image: url('../vendor/laclasse-common-client/images/icon_admin-outils-gris.svg');
@@ -587,7 +587,7 @@ body {
     }
 }
 .user-profil {
-	overflow-y: auto;
+    overflow-y: auto;
     h3 {
 	color: #b2b2b2;
 	font-weight: bolder;
@@ -625,9 +625,9 @@ body {
 		}
 		div.avatar {
 		    text-align: center;
-			float: right;
-			min-width: 100px;
-			max-width: 250px;
+		    float: right;
+		    min-width: 100px;
+		    max-width: 250px;
 		}
 	    }
 	}
@@ -644,8 +644,8 @@ body {
     }
     input,
     .date-naissance {
-    -webkit-box-shadow: none;
-    box-shadow: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
 	background-color: #f1f1f1;
 	border-radius: 0;
 	color: #000;
@@ -666,10 +666,10 @@ body {
 	}
 	img {
 	    background-color: #1aa1cc;
-		margin-bottom: 10px;
-		width: 100%;
+	    margin-bottom: 10px;
+	    width: 100%;
 	    min-width: 200px;
-    	min-height: 200px;
+	    min-height: 200px;
 	}
 	.reset img {
 	    opacity: 0.25;
@@ -689,7 +689,7 @@ body {
 	    margin: 0 1em;
 	    padding: .5em 2em;
 	    text-transform: uppercase;
-		background-color: transparent;
+	    background-color: transparent;
 	}
     }
     *,
@@ -902,7 +902,7 @@ svg {
 }
 
 .btn {
-	text-transform: uppercase;
+    text-transform: uppercase;
 }
 
 .form-group {
@@ -912,7 +912,7 @@ svg {
 }
 
 .panel-default>.panel-heading+.panel-collapse>.panel-body {
-	border-top: 0px solid black;
+    border-top: 0px solid black;
 }
 
 /* TEST ONLY
@@ -920,12 +920,12 @@ svg {
     width: 12px;
 }
 ::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
     border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb {
     border-radius: 10px;
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
 }*/
 
 
